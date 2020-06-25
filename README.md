@@ -27,15 +27,7 @@
 </div>
 
 
-<br/>
-<div align="center">
-  <sub>Created by <a href="https://www.pankod.com">Pankod</a></sub>
-</div>
-
-
-
 ## About
-
 
 Next.js is a minimalistic React framework that runs on the browser and the server. It offers developers an easy way to get started, and as it uses React.js for templating, it's also a straightforward way for developers with React experience to get productive quickly.
 
@@ -72,7 +64,7 @@ next-boilerplate project provides a lot of features out of the box. Here's an ov
 
 ## Setup & Documentation
 
-Please refer to our [setup guide](https://pankod.github.io/next-boilerplate/docs/setup) to create a new app.
+Please refer to the [setup guide](https://pankod.github.io/next-boilerplate/docs/setup) to create a new app.
 
 
 For more detailed documentation, check out https://pankod.github.io/next-boilerplate/
@@ -87,9 +79,6 @@ For more detailed documentation, check out https://pankod.github.io/next-boilerp
 </div>
 <br/>
 <br/>
-
-Pankod boilerplate is shipped with a CLI tool to streamline the creation of new components. By using the CLI tool, you may easily add pages, class components or functional components to your project and have all the required actions, reducers and imports are automatically created for you.
-<br />
 
 To start the CLI, you may have to install it beforehand if you haven't yet.
 
