@@ -32,6 +32,9 @@ class Auth {
         })
     }
 
+    get isLoggedIn() {
+        return !!this.user;
+    }
 }
 
 export default Auth;
