@@ -1,10 +1,8 @@
 import { observable } from 'mobx';
-import UserModel from 'old/src/Models/UserModel';
-import { auth } from '../../old/src/Firebase/index';
+import { auth } from '../firebase/index';
 
-@observable
-class AuthStore {
-    @observable user: UserModel | null = false;
+class Auth {
+    @observable user: any = false;
     @observable authPending: boolean = true;
     unWatchAuth: any;
 
@@ -16,10 +14,6 @@ class AuthStore {
             this.authPending = false;
             
         })
-    }
-
-    public cleanup = () => {
-        this?.unWatchAuth()
     }
 
     public signOut = () => {
@@ -40,3 +34,4 @@ class AuthStore {
 
 }
 
+export default Auth;
