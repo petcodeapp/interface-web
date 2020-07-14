@@ -1,25 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {useObserver} from 'mobx-react-lite';
+import { AuthProvider, AuthContext } from './views/AuthContext';
+import firebase from 'firebase';
+import { auth } from './firebase/index';
+
+const Xe = () => {
+  const store = React.useContext(AuthContext);
+
+  return useObserver(() => (
+  <div>
+    {
+      !!store.user ? (
+      <h1>{JSON.stringify(store.user)}</h1>
+      ) : (<>
+        <h1>hi</h1>
+        <button onClick={() => {
+          const goo = new firebase.auth.GoogleAuthProvider()
+          auth.signInWithPopup(goo);
+        }}></button>
+        </>
+      )
+    }
+
+  </div>))
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <AuthProvider>
+      <Xe />
+    </AuthProvider>
+    </>
   );
 }
 
