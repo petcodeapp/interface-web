@@ -1,38 +1,9 @@
 import React from "react";
-import { useObserver } from "mobx-react-lite";
-import { AuthProvider, AuthContext } from "./views/Auth/AuthContext";
-import firebase from "firebase";
-import { auth } from "./firebase/index";
 import { ThemeProvider, ColorModeProvider, theme } from "@chakra-ui/core";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import Routes from "./views/Router";
+import { AuthProvider } from './views/Auth/index';
 
-const Xe = () => {
-  const store = React.useContext(AuthContext);
-
-  return useObserver(() => (
-    <div>
-      {!!store.user ? (
-        <>
-          <h1>{JSON.stringify(store.user)}</h1>
-          <button
-            onClick={() => {
-              store.signOut();
-            }}
-          ></button>
-        </>
-      ) : (
-        <>
-          <h1>hi</h1>
-          <button
-            onClick={() => {
-              const goo = new firebase.auth.GoogleAuthProvider();
-              auth.signInWithPopup(goo);
-            }}
-          ></button>
-        </>
-      )}
-    </div>
-  ));
-};
 
 function App() {
   return (
@@ -40,6 +11,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <ColorModeProvider>
           <AuthProvider>
+            <Router>
+              <Switch>
+                <Routes />
+              </Switch>
+            </Router>
           </AuthProvider>
         </ColorModeProvider>
       </ThemeProvider>
