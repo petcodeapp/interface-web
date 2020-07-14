@@ -1,103 +1,44 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<img src="banner.jpg" alt="Performance oriented Next.js application boilerplate with Redux, Typescript, Express.js and Sass." align="center" />
+## Available Scripts
 
-<br/>
-<div align="center" >Performance oriented Next.js application boilerplate with Redux, Typescript, Express.js and Sass.</div>
-<br/>
+In the project directory, you can run:
 
-<div align="center">
-  <!-- CodeClimate -->
-  <a href="https://codeclimate.com/github/pankod/next-boilerplate/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/077c02d5cb9ec7d8a654/maintainability" />
-  </a>
-  <!-- TestCoverage -->
-  <a href="https://codeclimate.com/github/pankod/next-boilerplate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/077c02d5cb9ec7d8a654/test_coverage" /></a>
-  <!-- Build Status -->
-  <a href="https://travis-ci.org/pankod/next-boilerplate">
-    <img src="https://travis-ci.org/pankod/next-boilerplate.svg?branch=master" alt="Build Status" />
-  </a>
-  <!-- Dependency Status -->
-  <a href="https://david-dm.org/pankod/next-boilerplate">
-    <img src="https://david-dm.org/pankod/next-boilerplate.svg" alt="Dependency Status" />
-  </a>
-  <!-- devDependency Status -->
-  <a href="https://david-dm.org/pankod/next-boilerplate#info=devDependencies">
-    <img src="https://david-dm.org/pankod/next-boilerplate/dev-status.svg" alt="devDependency Status" />
-  </a>
-</div>
+### `yarn start`
 
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## About
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-Next.js is a minimalistic React framework that runs on the browser and the server. It offers developers an easy way to get started, and as it uses React.js for templating, it's also a straightforward way for developers with React experience to get productive quickly.
+### `yarn test`
 
-The advantage of this approach is to be able to create rich user experiences in a uniform way, without compromising SEO (Search Engine Optimisation) factors that are key to good ranking on Google and other search engines.
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-This boilerplate makes it easier to get up and running with a well-structured Next.js and TypeScript application.
+### `yarn build`
 
-<br/>
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Features
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-next-boilerplate project provides a lot of features out of the box. Here's an overview of the included components and tools.
+### `yarn eject`
 
-* **Next.js** - Minimalistic framework for server-rendered React applications.
-* **Typescript** - Superset of JavaScript which primarily provides optional static typing, classes and interfaces.
-* **Redux** - A predictable state container for JavaScript apps.
-* **Express.js**- A minimal and flexible Node.js web application framework that handles server-side rendering and integrates with Next.js.
-* **Built-in Project CLI**- Create pages, components, actions, reducers with one command by using built-in cli.
-* **Sass/Scss** - CSS preprocessor, which adds special features such as variables, nested rules and mixins (sometimes referred to as syntactic sugar) into regular CSS.
-* **Docker** - A tool designed to make it easier to create, deploy, and run applications by using containers.
-* **Babel** -  The compiler for next generation JavaScript.
-* **ESLint** - The pluggable linting utility.
-* **Reverse Proxy** - Lightweight server for proxying API requests.
-* **Bundler Analyzer** - Visualize the size of webpack output files with an interactive zoomable treemap.
-* **Jest** - Javascript testing framework , created by developers who created React.
-* **React Testing Library** - Simple and complete React DOM testing utilities that encourage good testing practices.
-* **next-runtime-dotenv** - Expose environment variables to the runtime config of Next.js
-* **next-i18next** - An internationalization-framework which provides a function that takes a key, some options, and returns the value for the current language. Helps you to add language translation support to your app.
-* **Storybook** - An open source tool for developing UI components in isolation for React.
-* **Bootstrap** - The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first websites.
-<br/>
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Setup & Documentation
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Please refer to the [setup guide](https://pankod.github.io/next-boilerplate/docs/setup) to create a new app.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
-For more detailed documentation, check out https://pankod.github.io/next-boilerplate/
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-<br/>
-
-## Built-in CLI
-
-
-<div>
- <img width="600" src="./boilerplate-cli.gif" >
-</div>
-<br/>
-<br/>
-
-To start the CLI, you may have to install it beforehand if you haven't yet.
-
-```
-~ $ npm i -g @pankod/pankod-cli
-```
-
-Then you can use it in your projects:
-```
-~ $ npm run cli
-```
-
-After starting, an interactive menu will let you configure the component to be created. Firstly, you'll be asked for the type of the component whether it's a page or a functional component. Then you'll be prompted with the other options relevant to your selection.
-
-Eventually, you'll end up with a page or component with style and test files in no time.
-
-<br/>
-
-
-## License
-
-Licensed under the MIT License, Copyright © 2018-present Pankod
+To learn React, check out the [React documentation](https://reactjs.org/).
