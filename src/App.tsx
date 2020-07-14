@@ -1,8 +1,9 @@
 import React from "react";
 import { useObserver } from "mobx-react-lite";
-import { AuthProvider, AuthContext } from "./views/Auth";
+import { AuthProvider, AuthContext } from "./views/Auth/AuthContext";
 import firebase from "firebase";
 import { auth } from "./firebase/index";
+import { ThemeProvider, ColorModeProvider, theme } from "@chakra-ui/core";
 
 const Xe = () => {
   const store = React.useContext(AuthContext);
@@ -11,12 +12,12 @@ const Xe = () => {
     <div>
       {!!store.user ? (
         <>
-        <h1>{JSON.stringify(store.user)}</h1>
-        <button onClick={() => {
-          store.signOut();
-        }}>
-
-        </button>
+          <h1>{JSON.stringify(store.user)}</h1>
+          <button
+            onClick={() => {
+              store.signOut();
+            }}
+          ></button>
         </>
       ) : (
         <>
@@ -36,9 +37,12 @@ const Xe = () => {
 function App() {
   return (
     <>
-      <AuthProvider>
-        <Xe />
-      </AuthProvider>
+      <ThemeProvider theme={theme}>
+        <ColorModeProvider>
+          <AuthProvider>
+          </AuthProvider>
+        </ColorModeProvider>
+      </ThemeProvider>
     </>
   );
 }
