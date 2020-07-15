@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import Auth from "../../modules/AuthModule";
+import Auth from "../../modules/Auth";
 
 const AuthStore = new Auth();
 
