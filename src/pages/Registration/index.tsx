@@ -23,7 +23,7 @@ const HeaderTextGroup = () => (
 );
 
 const RegistrationForm = () => (
-    <Flex direction='column' alignItems='center' width={ { xs: '90%', sm: '80%', md: '100%', lg: '70%' } } marginY={8}>
+    <Flex direction='column' alignItems='center' width={ { xs: '90%', sm: '80%', md: '100%', lg: '60%' } } marginY={8}>
         <InputWithIcon
             iconName='hashtag'
             inputGroupProps={ { marginY: 2 } }
@@ -34,7 +34,7 @@ const RegistrationForm = () => (
         </SolidButton>
         <Text color='petcode.neutral.500' fontSize='lg'>
             Already have an account?{ ' ' }
-            <Link color='petcode.blue.400'>
+            <Link color='petcode.blue.400' href='/login'>
                 Sign In
             </Link>
         </Text>

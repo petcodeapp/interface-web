@@ -50,7 +50,7 @@ const LoginForm = () => (
         </SolidButton>
         <Text color='petcode.neutral.500' fontSize='lg'>
             Don't have an account yet?{ ' ' }
-            <Link color='petcode.blue.400'>
+            <Link color='petcode.blue.400' href='/signup'>
                 Sign Up
             </Link>
         </Text>
