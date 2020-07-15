@@ -1,31 +1,28 @@
-import React from 'react';
-import Landing from "../../pages/Landing";
-import PublicRoute from './PublicRoute';
-import PrivateRoute from './PrivateRoute';
-import AdminPage from '../../pages/Admin';
+import React from "react";
+import Landing from "../../pages/Landing/index";
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
+import AdminPage from "../../pages/Admin/index";
+import { useObserver } from "mobx-react-lite";
 
 const Routes = () => {
-    return (
-        <>
-        <PublicRoute restricted path="/">
-            <Landing/>
-        </PublicRoute>
+  return useObserver(() => (
+    <>
+      <PublicRoute restricted path="/">
+        <Landing />
+      </PublicRoute>
 
-        <PrivateRoute path="/dashboard">
-            <AdminPage/>
-        </PrivateRoute>
+      <PrivateRoute path="/dashboard">
+        <AdminPage />
+      </PrivateRoute>
 
-        <PublicRoute path="/about">
-            {/* TODO: Create about page */}
+      <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
-        </PublicRoute>
-
-        <PublicRoute restricted path="auth">
-            {/* TODO: Create auth page */}
-        </PublicRoute>
-
-        </>
-    )
-}
+      <PublicRoute restricted path="auth">
+        {/* TODO: Create auth page */}
+      </PublicRoute>
+    </>
+  ));
+};
 
 export default Routes;
