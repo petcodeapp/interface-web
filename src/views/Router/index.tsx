@@ -9,9 +9,7 @@ import { useObserver } from "mobx-react-lite";
 const Routes = () => {
   return useObserver(() => (
     <>
-      <PublicRoute exact restricted path="/">
-        <Landing />
-      </PublicRoute>
+      
 
       <PublicRoute restricted path="/login">
         <Login />
@@ -23,8 +21,8 @@ const Routes = () => {
 
       <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
-      <PublicRoute restricted path="auth">
-        {/* TODO: Create auth page */}
+      <PublicRoute path="/">
+        <Landing />
       </PublicRoute>
     </>
   ));
