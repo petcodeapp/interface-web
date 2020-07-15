@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Flex, Heading, Image, Link, Text } from '@chakra-ui/core';
 
-import InputWithIcon from '../../components/input/InputWithIcon';
-import SolidButton from '../../components/button/SolidButton';
+import InputWithIcon from '../../components/Shared/input/InputWithIcon';
+import SolidButton from '../../components/Shared/button/SolidButton';
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (
     <Flex direction='column' flexGrow={1} alignItems='center' justifyContent='center' marginLeft={ { xs: 8, sm: 16, md: 4, lg: 16 } } marginRight={ { xs: 8, sm: 16, md: 0 } }>
