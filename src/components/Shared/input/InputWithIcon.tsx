@@ -20,7 +20,7 @@ const InputWithIcon: React.FC<InputWithIconProps> = ({
   inputGroupProps = {},
   inputProps = {},
 }) => (
-  <InputGroup size="lg" {...inputGroupProps}>
+  <InputGroup size="lg" width="100%" {...inputGroupProps}>
     <InputLeftElement
       children={
         <Icon size="25px" name={iconName} color="petcode.neutral.400" />

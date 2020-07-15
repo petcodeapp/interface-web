@@ -34,12 +34,12 @@ const LoginForm = () => (
     <Flex direction='column' alignItems='center' width={ { xs: '90%', md: '80%', lg: '70%' } } marginY={3}>
         <InputWithIcon
             iconName='username'
-            inputGroupProps={ { width: '100%', marginY: 2 } }
+            inputGroupProps={ { marginY: 2 } }
             inputProps={ { placeholder: 'Username' } }
         />
         <InputWithIcon
             iconName='password'
-            inputGroupProps={ { width: '100%', marginY: 2 } }
+            inputGroupProps={ { marginY: 2 } }
             inputProps={ { type: 'password', placeholder: 'Password' } }
         />
         <Text color='petcode.blue.400' fontSize='lg' alignSelf='flex-end'>
@@ -50,7 +50,7 @@ const LoginForm = () => (
         </SolidButton>
         <Text color='petcode.neutral.500' fontSize='lg'>
             Don't have an account yet?{ ' ' }
-            <Link color='petcode.blue.400'>
+            <Link color='petcode.blue.400' href='/signup'>
                 Sign Up
             </Link>
         </Text>
@@ -74,7 +74,7 @@ const LogoWithTagLine = () => (
             One Code. An endless suite of features for pet owners.
         </Heading>
     </>
-)
+);
 
 const LoginPage = () => (
     <Flex direction='row' height='100%'>

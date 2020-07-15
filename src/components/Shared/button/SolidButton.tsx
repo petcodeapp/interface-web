@@ -19,7 +19,7 @@ const SolidButton: React.FunctionComponent<SolidButtonProps & ButtonProps & Moti
     border="none"
     rounded="full"
     width="100%"
-    height="57px"
+    height="52px"
     whileHover={{
         scale: 1.05,
         cursor: "pointer",

@@ -4,12 +4,15 @@ import Login from "../../pages/Login/index";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import AdminPage from "../../pages/Admin/index";
+import Registration from "../../pages/Registration/index";
 import { useObserver } from "mobx-react-lite";
 
 const Routes = () => {
   return useObserver(() => (
     <>
-      
+      <PublicRoute restricted path="/signup">
+        <Registration />
+      </PublicRoute>
 
       <PublicRoute restricted path="/login">
         <Login />
@@ -21,7 +24,7 @@ const Routes = () => {
 
       <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
-      <PublicRoute path="/">
+      <PublicRoute exact path="/">
         <Landing />
       </PublicRoute>
     </>
