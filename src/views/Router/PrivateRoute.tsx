@@ -3,12 +3,12 @@ import { Redirect, Route, RouteProps } from "react-router-dom";
 import { AuthContext } from '../Auth';
 
 const PrivateRoute = ({ children, ...props }: RouteProps) => {
-    const store = useContext(AuthContext);
+    const { isLoggedIn } = useContext(AuthContext);
 
     return (
         <Route {...props}>
             {
-                store.isLoggedIn ? (
+                isLoggedIn ? (
                     {children}
                 ) : (
                     <Redirect to="/" />
