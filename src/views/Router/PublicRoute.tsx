@@ -1,6 +1,8 @@
 import { RouteProps, Route, Redirect } from "react-router-dom";
 import React from "react";
-import { AuthContext } from "../Auth/index";
+import { AuthContext } from "../Auth";
+import { useObserver } from 'mobx-react-lite';
+import { auth } from '../../firebase/index';
 
 interface PublicRouteProps {
   restricted?: boolean;
@@ -12,11 +14,12 @@ const PublicRoute = ({
   ...props
 }: RouteProps & PublicRouteProps) => {
   const { isLoggedIn } = React.useContext(AuthContext);
-  return (
+
+  return useObserver(() => (
     <Route {...props}>
-      {isLoggedIn && restricted ? <Redirect to="/dashboard" /> : { children }}
+      {isLoggedIn ? <Redirect to="/dashboard"/> : children}
     </Route>
-  );
+  ));
 };
 
 export default PublicRoute;
