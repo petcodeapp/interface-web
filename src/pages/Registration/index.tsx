@@ -26,7 +26,7 @@ const RegistrationForm = () => (
     <Flex direction='column' alignItems='center' width={ { xs: '90%', sm: '80%', md: '100%', lg: '70%' } } marginY={8}>
         <InputWithIcon
             iconName='hashtag'
-            inputGroupProps={ { width: '100%', marginY: 2 } }
+            inputGroupProps={ { marginY: 2 } }
             inputProps={ { placeholder: 'Petcode Tag Number' } }
         />
         <SolidButton variantColor='petcode.blue' marginY={3}> 

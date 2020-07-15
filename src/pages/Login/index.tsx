@@ -34,12 +34,12 @@ const LoginForm = () => (
     <Flex direction='column' alignItems='center' width={ { xs: '90%', md: '80%', lg: '70%' } } marginY={3}>
         <InputWithIcon
             iconName='username'
-            inputGroupProps={ { width: '100%', marginY: 2 } }
+            inputGroupProps={ { marginY: 2 } }
             inputProps={ { placeholder: 'Username' } }
         />
         <InputWithIcon
             iconName='password'
-            inputGroupProps={ { width: '100%', marginY: 2 } }
+            inputGroupProps={ { marginY: 2 } }
             inputProps={ { type: 'password', placeholder: 'Password' } }
         />
         <Text color='petcode.blue.400' fontSize='lg' alignSelf='flex-end'>
