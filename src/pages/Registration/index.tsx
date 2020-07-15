@@ -6,14 +6,14 @@ import InputWithIcon from '../../components/input/InputWithIcon';
 import SolidButton from '../../components/button/SolidButton';
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (
-    <Flex direction='column' flexGrow={1} alignItems='center' justifyContent='center' marginLeft={ { xs: 8, sm: 24, md: 16 } } marginRight={ { xs: 8, sm: 24, md: 0 } }>
+    <Flex direction='column' flexGrow={1} alignItems='center' justifyContent='center' marginLeft={ { xs: 8, sm: 16, md: 4, lg: 16 } } marginRight={ { xs: 8, sm: 16, md: 0 } }>
         { children }
     </Flex>
 );
 
 const HeaderTextGroup = () => (
     <>
-        <Heading color='petcode.blue.400' fontSize={ { xs: '5xl', sm: '6xl', md: '5xl', lg: '6xl' } } textAlign='center'>
+        <Heading color='petcode.blue.400' fontSize={ { xs: '5xl', lg: '6xl' } } textAlign='center'>
             Welcome to the PetCode Network!
         </Heading>
         <Text color='petcode.neutral.600' fontSize={ { xs: 'xl', lg: '3xl' } } fontWeight='thin' textAlign='center' lineHeight='shorter'>
