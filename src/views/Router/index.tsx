@@ -24,7 +24,7 @@ const Routes = () => {
 
       <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
-      <PublicRoute path="/">
+      <PublicRoute exact path="/">
         <Landing />
       </PublicRoute>
     </>
