@@ -74,7 +74,7 @@ const LogoWithTagLine = () => (
             One Code. An endless suite of features for pet owners.
         </Heading>
     </>
-)
+);
 
 const LoginPage = () => (
     <Flex direction='row' height='100%'>
