@@ -13,11 +13,11 @@ const PublicRoute = ({
   restricted = false,
   ...props
 }: RouteProps & PublicRouteProps) => {
-  const { isLoggedIn } = React.useContext(AuthContext);
+  const auth = React.useContext(AuthContext); 
 
   return useObserver(() => (
     <Route {...props}>
-      {isLoggedIn ? <Redirect to="/dashboard"/> : children}
+      {auth.isLoggedIn ? <Redirect to="/dashboard"/> : children}
     </Route>
   ));
 };
