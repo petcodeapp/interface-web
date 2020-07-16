@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-import { Flex, Heading, Input, InputProps, Text, FlexProps } from '@chakra-ui/core';
+import { Box, Flex, Heading, Input, InputProps, Text, FlexProps, BoxProps } from '@chakra-ui/core';
 
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react-lite';
 
 const DigitInput = (props: InputProps) => (
-    <Input
-        backgroundColor='petcode.neutral.200'
-        color='transparent'
-        textShadow='0 0 0 black'
-        borderRadius='34px'
-        height='138px'
-        width='138px'
-        borderColor='none'
-        textAlign='center'
-        fontSize='7xl'
-        fontFamily='Nunito'
-        marginX='14px'
-        padding={0}
-        { ...props }
-    />
+    <Box width={ { xs: '64px', sm: '104px', md: '138px' } } height={ { xs: '64px', sm: '104px', md: '138px' } } marginX={ { xs: 2, md: 3 } }>
+        <Input
+            borderRadius={ { xs: '16px', sm: '26px', md: '34px' } }
+            backgroundColor='petcode.neutral.200'
+            color='transparent'
+            textShadow='0 0 0 black'
+            maxWidth='100%'
+            height='100%'
+            borderColor='none'
+            textAlign='center'
+            fontSize={ { xs: '5xl', sm: '6xl', md: '7xl' } }
+            fontFamily='Nunito'
+            paddingX={0}
+            { ...props }
+        />
+    </Box>
 );
 
 type DigitInputGroupProps = {
