@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Box, Flex, Heading, Input, InputProps, Text, FlexProps, BoxProps } from '@chakra-ui/core';
+import { Box, Flex, Heading, Image, Input, InputProps, Link, Text, FlexProps } from '@chakra-ui/core';
 
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react-lite';
@@ -63,13 +63,17 @@ const DigitInputGroup = observer(({ numDigits, ...props }: FlexProps & DigitInpu
 
 const ForgotPasswordPage = () => (
     <Flex direction='column' height='100%' alignItems='center' justifyContent='center'>
-        <Heading color='petcode.blue.400' fontSize='7xl'>
-            Forgot Password
-        </Heading>
-        <Text color='petcode.neutral.600' fontSize='3xl' textAlign='center' fontWeight='thin' maxWidth='700px'>
-            Enter the 4 digit recovery code that was sent to the email linked with your account.
-        </Text>
+        <Box flexGrow={1}/>
+        <Box marginX={4}>
+            <Heading color='petcode.blue.400' fontSize={ { xs: '5xl', md: '7xl' } } textAlign='center'>
+                Forgot Password
+            </Heading>
+            <Text color='petcode.neutral.600' fontSize={ { xs: '2xl', md: '3xl' } } textAlign='center' fontWeight='thin' maxWidth='700px'>
+                Enter the 4 digit recovery code that was sent to the email linked with your account.
+            </Text>
+        </Box>
         <DigitInputGroup numDigits={4} marginTop={10}/>
+        <Box flexGrow={2}/>
     </Flex>
 );
 
