@@ -6,7 +6,11 @@ import { action, observable } from 'mobx';
 import { observer } from 'mobx-react-lite';
 
 const DigitInput = (props: InputProps) => (
-    <Box width={ { xs: '64px', sm: '104px', md: '138px' } } height={ { xs: '64px', sm: '104px', md: '138px' } } marginX={ { xs: 2, md: 3 } }>
+    <Box
+        width={ { xs: '64px', sm: '104px', md: '138px' } }
+        height={ { xs: '64px', sm: '104px', md: '138px' } }
+        marginX={ { xs: 2, md: 3 } }
+    >
         <Input
             borderRadius={ { xs: '16px', sm: '26px', md: '34px' } }
             backgroundColor='petcode.neutral.200'
