@@ -43,7 +43,7 @@ const LoginForm = () => (
             inputProps={ { type: 'password', placeholder: 'Password' } }
         />
         <Text color='petcode.blue.400' fontSize='lg' alignSelf='flex-end'>
-            <Link>Forgot Password?</Link>
+            <Link href='/forgotpassword'>Forgot Password?</Link>
         </Text>
         <SolidButton variantColor='petcode.blue' marginY={3}> 
             <Text fontSize='xl' fontWeight='thin' textTransform='uppercase'>Sign In</Text>
