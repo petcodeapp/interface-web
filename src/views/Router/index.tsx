@@ -1,5 +1,6 @@
 import React from "react";
-import Landing from "../../pages/Landing/index";
+import LandingPage from "../../pages/Landing/index";
+import OldLandingpage from "../../pages/OldLanding/index";
 import LoginPage from "../../pages/Login/index";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -27,10 +28,14 @@ const Routes = () => {
         <AdminPage />
       </PrivateRoute>
 
+      <PublicRoute path="/oldlanding">
+        <OldLandingpage />
+      </PublicRoute>
+
       <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
       <PublicRoute exact path="/">
-        <Landing />
+        <LandingPage />
       </PublicRoute>
     </>
   ));

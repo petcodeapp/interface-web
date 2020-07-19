@@ -1,19 +1,7 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../views/Auth";
-import { useObserver } from "mobx-react";
+import React from 'react';
 
-const Landing = () => {
-  const auth = useContext(AuthContext);
+const LandingPage: React.FunctionComponent = () => (
+    <div>Landing</div>
+);
 
-  return useObserver(() => (
-    <>
-      <div>Hello!</div>
-      {!auth.isLoggedIn && (
-        <button onClick={auth.signInWithGoogle}>Sign in!</button>
-      )}
-      {auth.isLoggedIn && <button onClick={auth.signOut}>Sign out!</button>}
-    </>
-  ));
-};
-
-export default Landing;
+export default LandingPage;
