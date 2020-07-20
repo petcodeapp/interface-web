@@ -43,7 +43,7 @@ const WhatIsItCard = (
                 { header }
             </Text>
             <Box rounded='full' backgroundColor={ iconBgColor } padding={6}>
-                <Icon name={ iconName } color='white' size='55px'/>
+                <Icon name={ iconName } color='white' size='50px'/>
             </Box>
         </Flex>
         <Text color='petcode.neutral.500' fontSize='xl'>
@@ -53,8 +53,8 @@ const WhatIsItCard = (
 );
 
 const WhatIsItSection = () => (
-    <Flex direction='column' alignItems='center'>
-        <Heading color='petcode.blue.400' fontSize='6xl' marginTop={12}>
+    <Flex direction='column' alignItems='center' marginY={12}>
+        <Heading color='petcode.blue.400' fontSize='6xl'>
             What Is It?
         </Heading>
         <Text color='petcode.neutral.500' fontSize='2xl' textAlign='center' marginX={64} marginY={3}>
