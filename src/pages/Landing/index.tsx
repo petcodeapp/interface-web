@@ -5,7 +5,14 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 import SolidButton, { SolidButtonProps } from '../../components/Shared/button/SolidButton';
 
 const SplashButton = (props: SolidButtonProps) => (
-    <SolidButton variantColor='petcode.blue' width='170px' fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em' height='45px' { ...props }/>
+    <SolidButton
+        variantColor='petcode.blue'
+        width='170px'
+        height='45px'
+        fontWeight='thin'
+        textTransform='uppercase'
+        { ...props }
+    />
 );
 
 const Splash = () => (
@@ -24,9 +31,15 @@ const Splash = () => (
                 An endless suite of features for pet owners.
             </Text>
             <Box marginTop={6}>
-                <SplashButton marginRight={4}>Learn More</SplashButton>
-                <SplashButton marginRight={4}>Features</SplashButton>
-                <SplashButton>Get Started</SplashButton>
+                <SplashButton marginRight={4}>
+                    <Text>Learn More</Text>
+                </SplashButton>
+                <SplashButton marginRight={4}>
+                    <Text>Features</Text>
+                </SplashButton>
+                <SplashButton>
+                    <Text>Get Started</Text>
+                </SplashButton>
             </Box>
         </Flex>
     </Box>
