@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, BoxProps, Flex, Heading, Icon, Text } from '@chakra-ui/core';
+import { Box, BoxProps, Flex, Heading, Icon, Image, Text } from '@chakra-ui/core';
 
 import SolidButton, { SolidButtonProps } from '../../components/Shared/button/SolidButton';
 
@@ -22,12 +22,12 @@ const Header = () => (
         <HeaderText marginRight={8}>Home</HeaderText>
         <HeaderText marginRight={8}>About Us</HeaderText>
         <HeaderText marginRight={8}>Purchase</HeaderText>
-        <HeaderText marginRight={8}>
-            <Icon name='template' height='22px' width='22px'/>
+        <HeaderText display='flex' alignItems='center' marginRight={8}>
+            <Icon name='template' size='20px' marginRight={1}/>
             Register
         </HeaderText>
-        <HeaderText>
-            <Icon name='user-circle' height='22px' width='22px'/>
+        <HeaderText display='flex' alignItems='center'>
+            <Icon name='user-circle' size='20px' marginRight={1}/>
             Sign In
         </HeaderText>
     </Flex>
@@ -79,12 +79,43 @@ const Splash = () => (
 
 const WhatIsItSection = () => (
     <Flex direction='column' alignItems='center'>
-        <Heading color='petcode.blue.400' fontSize='6xl' marginTop={12} marginBottom={3}>
+        <Heading color='petcode.blue.400' fontSize='6xl' marginTop={12}>
             What Is It?
         </Heading>
-        <Text color='petcode.neutral.500' fontSize='2xl' textAlign='center' marginX={48}>
+        <Text color='petcode.neutral.500' fontSize='2xl' textAlign='center' marginX={64} marginY={3}>
             The PetCode Tag is a simple tag with a QR code that unlocks all the features below and more.
         </Text>
+        <Flex direction='column' marginX={20}>
+            <Flex direction='row'>
+                <Flex direction='column' flexGrow={1} flexBasis='33%' marginX={6}>
+                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
+                        <Text color='petcode.neutral.600' fontSize='3xl' alignSelf='end' marginRight={6}>
+                            Customizable Pet Profiles
+                        </Text>
+                        <Box rounded='full' backgroundColor='#727DE3' padding={6}>
+                            <Icon name='template' color='white' size='55px'/>
+                        </Box>
+                    </Flex>
+                    <Text color='petcode.neutral.500' fontSize='xl'>
+                        Customize your Pet Profile to match your pet’s behavior, characteristics, dietary needs, and more!
+                    </Text>
+                </Flex>
+                <Image alt='Dog on yellow background' src='/media/dog-on-yellow-background.png' height='300px'/>
+                <Flex direction='column' flexGrow={1} flexBasis='33%' marginX={6}>
+                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
+                        <Box rounded='full' backgroundColor='#4FD1AA' padding={6}>
+                            <Icon name='messages' color='white' size='55px'/>
+                        </Box>
+                        <Text color='petcode.neutral.600' fontSize='3xl' textAlign='right' alignSelf='end' marginLeft={6}>
+                            Contact Information
+                        </Text>
+                    </Flex>
+                    <Text color='petcode.neutral.500' fontSize='xl'>
+                        Keep all your contact information up to date, so you can be easily reached.
+                    </Text>
+                </Flex>
+            </Flex>
+        </Flex>
     </Flex>
 );
 
