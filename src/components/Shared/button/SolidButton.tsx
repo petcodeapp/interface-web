@@ -4,11 +4,9 @@ import { ButtonProps } from "@chakra-ui/core";
 import { MotionProps } from "framer-motion";
 import Button from '../../Motion/Button';
 
-interface SolidButtonProps {
-    variant?: string
-}
+export type SolidButtonProps = ButtonProps & MotionProps;
 
-const SolidButton: React.FunctionComponent<SolidButtonProps & ButtonProps & MotionProps> = ({
+const SolidButton: React.FunctionComponent<SolidButtonProps> = ({
   children,
   variant = "solid",
   ...props
