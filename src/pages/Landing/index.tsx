@@ -77,10 +77,22 @@ const Splash = () => (
     </Box>
 );
 
+const WhatIsItSection = () => (
+    <Flex direction='column' alignItems='center'>
+        <Heading color='petcode.blue.400' fontSize='6xl' marginTop={12} marginBottom={3}>
+            What Is It?
+        </Heading>
+        <Text color='petcode.neutral.500' fontSize='2xl' textAlign='center' marginX={48}>
+            The PetCode Tag is a simple tag with a QR code that unlocks all the features below and more.
+        </Text>
+    </Flex>
+);
+
 const LandingPage: React.FunctionComponent = () => (
     <Flex direction='column' minHeight='100%'>
         <Header/>
         <Splash/>
+        <WhatIsItSection/>
     </Flex>
 );
 
