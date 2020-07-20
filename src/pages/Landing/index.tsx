@@ -87,7 +87,7 @@ const WhatIsItSection = () => (
         </Text>
         <Flex direction='column' marginX={20}>
             <Flex direction='row'>
-                <Flex direction='column' flexGrow={1} flexBasis='33%' marginX={6}>
+                <Flex direction='column' flexBasis='35%' marginRight={24}>
                     <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
                         <Text color='petcode.neutral.600' fontSize='3xl' alignSelf='end' marginRight={6}>
                             Customizable Pet Profiles
@@ -101,7 +101,7 @@ const WhatIsItSection = () => (
                     </Text>
                 </Flex>
                 <Image alt='Dog on yellow background' src='/media/dog-on-yellow-background.png' height='300px'/>
-                <Flex direction='column' flexGrow={1} flexBasis='33%' marginX={6}>
+                <Flex direction='column' flexBasis='35%' marginLeft={24}>
                     <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
                         <Box rounded='full' backgroundColor='#4FD1AA' padding={6}>
                             <Icon name='messages' color='white' size='55px'/>
@@ -112,6 +112,47 @@ const WhatIsItSection = () => (
                     </Flex>
                     <Text color='petcode.neutral.500' fontSize='xl'>
                         Keep all your contact information up to date, so you can be easily reached.
+                    </Text>
+                </Flex>
+            </Flex>
+            <Flex direction='row'>
+                <Flex direction='column' position='relative' top='-70px' flexBasis='33%' paddingLeft={6}>
+                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
+                        <Text color='petcode.neutral.600' fontSize='3xl' alignSelf='end' marginRight={6}>
+                            Medical Information
+                        </Text>
+                        <Box rounded='full' backgroundColor='#4299E1' padding={6}>
+                            <Icon name='clipboard' color='white' size='55px'/>
+                        </Box>
+                    </Flex>
+                    <Text color='petcode.neutral.500' fontSize='xl'>
+                        Display all of your pet’s medical information easily, all in one place.
+                    </Text>
+                </Flex>
+                <Flex direction='column' alignItems='center' flexBasis='33%' marginX={6} marginTop={6}>
+                    <Flex direction='column' alignItems='center'>
+                        <Box rounded='full' backgroundColor='petcode.blue.400' padding={6}>
+                            <Icon name='flag' color='white' size='55px'/>
+                        </Box>
+                        <Text color='petcode.neutral.600' fontSize='3xl' alignSelf='end' textAlign='center' marginRight={6}>
+                            Scan Locations
+                        </Text>
+                    </Flex>
+                    <Text color='petcode.neutral.500' fontSize='xl'>
+                        View everywhere your pet’s tag has been scanned. If your pet is lost, a message can be sent out to all PetCode users within a 5 mile radius.
+                    </Text>
+                </Flex>
+                <Flex direction='column' position='relative' top='-70px' flexBasis='33%' paddingRight={6}>
+                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
+                        <Box rounded='full' backgroundColor='petcode.teal' padding={6}>
+                            <Icon name='link' color='white' size='55px'/>
+                        </Box>
+                        <Text color='petcode.neutral.600' fontSize='3xl' textAlign='right' alignSelf='end' marginLeft={6}>
+                            Integrations
+                        </Text>
+                    </Flex>
+                    <Text color='petcode.neutral.500' fontSize='xl'>
+                        Simplify your pet’s information by using integrations to upload vaccination history and registration.
                     </Text>
                 </Flex>
             </Flex>
