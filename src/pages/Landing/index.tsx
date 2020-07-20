@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, BoxProps, Flex, Heading, Icon, Image, Text } from '@chakra-ui/core';
+import { Box, BoxProps, Flex, FlexProps, Heading, Icon, Image, Text } from '@chakra-ui/core';
 
 import SolidButton, { SolidButtonProps } from '../../components/Shared/button/SolidButton';
 
@@ -77,6 +77,56 @@ const Splash = () => (
     </Box>
 );
 
+type WhatIsItCardProps = {
+    align: 'left'|'center'|'right';
+    header: string;
+    description: string;
+    iconName: string;
+    iconBgColor: string;
+} & FlexProps;
+
+const WhatIsItCard = (
+    {
+        align,
+        header,
+        description,
+        iconName,
+        iconBgColor,
+        ...props 
+    }: WhatIsItCardProps
+) => (
+    <Flex direction='column' { ...props }>
+        <Flex
+            direction={
+                align == 'center' ?
+                    'column-reverse' :
+                    (align == 'right' ? 'row-reverse' : 'row')
+            }
+            alignItems={ align == 'center' ? 'center' : 'end' }
+            justifyContent={ align == 'center' ? null : 'space-between' }
+            marginBottom={3}
+        >
+            <Text
+                color='petcode.neutral.600'
+                fontSize='3xl'
+                margin={
+                    align == 'left' ? '0 1.5rem 0 0' :
+                    (align == 'right' ? '0 0 0 1.5rem' : '')
+                }
+                textAlign={ align }
+            >
+                { header }
+            </Text>
+            <Box rounded='full' backgroundColor={ iconBgColor } padding={6}>
+                <Icon name={ iconName } color='white' size='55px'/>
+            </Box>
+        </Flex>
+        <Text color='petcode.neutral.500' fontSize='xl'>
+            { description }
+        </Text>
+    </Flex>
+);
+
 const WhatIsItSection = () => (
     <Flex direction='column' alignItems='center'>
         <Heading color='petcode.blue.400' fontSize='6xl' marginTop={12}>
@@ -87,74 +137,59 @@ const WhatIsItSection = () => (
         </Text>
         <Flex direction='column' marginX={20}>
             <Flex direction='row'>
-                <Flex direction='column' flexBasis='35%' marginRight={24}>
-                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
-                        <Text color='petcode.neutral.600' fontSize='3xl' alignSelf='end' marginRight={6}>
-                            Customizable Pet Profiles
-                        </Text>
-                        <Box rounded='full' backgroundColor='#727DE3' padding={6}>
-                            <Icon name='template' color='white' size='55px'/>
-                        </Box>
-                    </Flex>
-                    <Text color='petcode.neutral.500' fontSize='xl'>
-                        Customize your Pet Profile to match your pet’s behavior, characteristics, dietary needs, and more!
-                    </Text>
-                </Flex>
+                <WhatIsItCard
+                    align='left'
+                    header='Customizable Pet Profiles'
+                    description='Customize your Pet Profile to match your pet’s behavior, characteristics, dietary needs, and more!'
+                    iconName='template'
+                    iconBgColor='#727DE3'
+                    flexBasis='35%'
+                    marginRight={24}
+                />
                 <Image alt='Dog on yellow background' src='/media/dog-on-yellow-background.png' height='300px'/>
-                <Flex direction='column' flexBasis='35%' marginLeft={24}>
-                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
-                        <Box rounded='full' backgroundColor='#4FD1AA' padding={6}>
-                            <Icon name='messages' color='white' size='55px'/>
-                        </Box>
-                        <Text color='petcode.neutral.600' fontSize='3xl' textAlign='right' alignSelf='end' marginLeft={6}>
-                            Contact Information
-                        </Text>
-                    </Flex>
-                    <Text color='petcode.neutral.500' fontSize='xl'>
-                        Keep all your contact information up to date, so you can be easily reached.
-                    </Text>
-                </Flex>
+                <WhatIsItCard
+                    align='right'
+                    header='Contact Information'
+                    description='Keep all your contact information up to date, so you can be easily reached.'
+                    iconName='messages'
+                    iconBgColor='#4FD1AA'
+                    flexBasis='35%'
+                    marginLeft={24}
+                />
             </Flex>
             <Flex direction='row'>
-                <Flex direction='column' position='relative' top='-70px' flexBasis='33%' paddingLeft={6}>
-                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
-                        <Text color='petcode.neutral.600' fontSize='3xl' alignSelf='end' marginRight={6}>
-                            Medical Information
-                        </Text>
-                        <Box rounded='full' backgroundColor='#4299E1' padding={6}>
-                            <Icon name='clipboard' color='white' size='55px'/>
-                        </Box>
-                    </Flex>
-                    <Text color='petcode.neutral.500' fontSize='xl'>
-                        Display all of your pet’s medical information easily, all in one place.
-                    </Text>
-                </Flex>
-                <Flex direction='column' alignItems='center' flexBasis='33%' marginX={6} marginTop={6}>
-                    <Flex direction='column' alignItems='center'>
-                        <Box rounded='full' backgroundColor='petcode.blue.400' padding={6}>
-                            <Icon name='flag' color='white' size='55px'/>
-                        </Box>
-                        <Text color='petcode.neutral.600' fontSize='3xl' alignSelf='end' textAlign='center' marginRight={6}>
-                            Scan Locations
-                        </Text>
-                    </Flex>
-                    <Text color='petcode.neutral.500' fontSize='xl'>
-                        View everywhere your pet’s tag has been scanned. If your pet is lost, a message can be sent out to all PetCode users within a 5 mile radius.
-                    </Text>
-                </Flex>
-                <Flex direction='column' position='relative' top='-70px' flexBasis='33%' paddingRight={6}>
-                    <Flex direction='row' alignItems='end' justifyContent='space-between' marginBottom={3}>
-                        <Box rounded='full' backgroundColor='petcode.teal' padding={6}>
-                            <Icon name='link' color='white' size='55px'/>
-                        </Box>
-                        <Text color='petcode.neutral.600' fontSize='3xl' textAlign='right' alignSelf='end' marginLeft={6}>
-                            Integrations
-                        </Text>
-                    </Flex>
-                    <Text color='petcode.neutral.500' fontSize='xl'>
-                        Simplify your pet’s information by using integrations to upload vaccination history and registration.
-                    </Text>
-                </Flex>
+                <WhatIsItCard
+                    align='left'
+                    header='Medical Information'
+                    description='Display all of your pet’s medical information easily, all in one place.'
+                    iconName='clipboard'
+                    iconBgColor='#4299E1'
+                    position='relative'
+                    top='-70px'
+                    flexBasis='33%'
+                    paddingLeft={6}
+                />
+                <WhatIsItCard
+                    align='center'
+                    header='Scan Locations'
+                    description='View everywhere your pet’s tag has been scanned. If your pet is lost, a message can be sent out to all PetCode users within a 5 mile radius.'
+                    iconName='flag'
+                    iconBgColor='petcode.blue.400'
+                    flexBasis='33%'
+                    marginTop={6}
+                    paddingLeft={6}
+                />
+                <WhatIsItCard
+                    align='right'
+                    header='Integrations'
+                    description='Simplify your pet’s information by using integrations to upload vaccination history and registration.'
+                    iconName='link'
+                    iconBgColor='petcode.teal'
+                    position='relative'
+                    top='-70px'
+                    flexBasis='33%'
+                    paddingLeft={6}
+                />
             </Flex>
         </Flex>
     </Flex>
