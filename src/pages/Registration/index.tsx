@@ -38,7 +38,7 @@ const RegistrationForm = () => (
                 Sign In
             </Link>
         </Text>
-        <Text color='petcode.yellow' fontSize='lg' marginTop={3}>
+        <Text color='petcode.yellow.400' fontSize='lg' marginTop={3}>
             <Link>
                 Need Help?
             </Link>

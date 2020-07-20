@@ -17,7 +17,7 @@ const HeaderTextGroup = () => (
             Welcome to
         </Text>
         <Box fontSize={ { xs: '6xl', md: '7xl', lg: '8xl' } }>
-            <Heading as='span' color='petcode.yellow' fontSize='inherit'>
+            <Heading as='span' color='petcode.yellow.400' fontSize='inherit'>
                 Pet
             </Heading>
             <Heading as='span' color='petcode.blue.400' fontSize='inherit'>

@@ -34,7 +34,18 @@ export default {
               800: '#1E768E',
               900: '#17586A',
             },
-            yellow: '#FBC658',
+            yellow: {
+                50: '#FDE6B7',
+                100: '#FDDD9E',
+                200: '#FCD586',
+                300: '#FBCC6E',
+                400: '#FBC658',
+                500: '#F9B327',
+                600: '#EA9E06',
+                700: '#BC7F05',
+                800: '#8D5F04',
+                900: '#5E3F02'
+            },
             teal: '#51CBCE',
             neutral: {
                 100: '#F7FAFC',

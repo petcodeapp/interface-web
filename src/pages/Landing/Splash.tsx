@@ -25,7 +25,7 @@ const Splash = () => (
     >
         <Flex direction='column'>
             <Heading
-                color='petcode.yellow' fontSize='6xl'
+                color='petcode.yellow.400' fontSize='6xl'
                 textShadow='0px 4px 4px rgba(0, 0, 0, 0.25)'
             >
                 One Code
