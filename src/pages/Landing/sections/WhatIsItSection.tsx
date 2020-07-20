@@ -10,7 +10,7 @@ type WhatIsItCardProps = {
     iconBgColor: string;
 } & FlexProps;
 
-const WhatIsItCard = (
+const WhatIsItCard: React.FC<WhatIsItCardProps> = (
     {
         align,
         header,
@@ -18,7 +18,7 @@ const WhatIsItCard = (
         iconName,
         iconBgColor,
         ...props 
-    }: WhatIsItCardProps
+    }
 ) => (
     <Flex direction='column' { ...props }>
         <Flex
