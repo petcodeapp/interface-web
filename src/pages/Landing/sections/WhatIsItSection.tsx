@@ -53,7 +53,7 @@ const WhatIsItCard: React.FC<WhatIsItCardProps> = (
 );
 
 const WhatIsItSection = () => (
-    <Flex direction='column' alignItems='center' marginY={12}>
+    <Flex direction='column' alignItems='center' paddingY={12}>
         <Heading color='petcode.blue.400' fontSize='6xl'>
             What Is It?
         </Heading>

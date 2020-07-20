@@ -18,6 +18,7 @@ const Header = () => (
         width='calc(100% - 4rem)'
         paddingX={8}
         paddingY={4}
+        zIndex={999}
     >
         <HeaderText>PetCode</HeaderText>
         <Box flexGrow={1}/>
