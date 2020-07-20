@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 
-import SolidButton, { SolidButtonProps } from '../../../components/Shared/button/SolidButton';
+import BaseButton, { BaseButtonProps } from '../../components/Shared/button/BaseButton';
 
-const SplashButton: React.FC<SolidButtonProps> = (props) => (
-    <SolidButton
+const SplashButton: React.FC<BaseButtonProps> = (props) => (
+    <BaseButton
         variantColor='petcode.blue'
         width='170px'
         height='45px'

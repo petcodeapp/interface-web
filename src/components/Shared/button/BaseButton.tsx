@@ -4,9 +4,9 @@ import { ButtonProps } from "@chakra-ui/core";
 import { MotionProps } from "framer-motion";
 import Button from '../../Motion/Button';
 
-export type SolidButtonProps = ButtonProps & MotionProps;
+export type BaseButtonProps = ButtonProps & MotionProps;
 
-const SolidButton: React.FunctionComponent<SolidButtonProps> = ({
+const BaseButton: React.FunctionComponent<BaseButtonProps> = ({
   children,
   variant = "solid",
   ...props
@@ -16,8 +16,6 @@ const SolidButton: React.FunctionComponent<SolidButtonProps> = ({
     variant={variant}
     border="none"
     rounded="full"
-    width="100%"
-    height="52px"
     whileHover={{
         scale: 1.05,
         cursor: "pointer",
@@ -31,4 +29,4 @@ const SolidButton: React.FunctionComponent<SolidButtonProps> = ({
   </Button>
 );
 
-export default SolidButton;
+export default BaseButton;

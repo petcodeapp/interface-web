@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex, Heading, Image, Link, Text } from '@chakra-ui/core';
 
 import InputWithIcon from '../../components/Shared/input/InputWithIcon';
-import SolidButton from '../../components/Shared/button/SolidButton';
+import BaseButton from '../../components/Shared/button/BaseButton';
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (
     <Flex direction='column' flexGrow={1} flexBasis='calc(50% - 96px)' alignItems='center' justifyContent='center' marginX={ { xs: 4, md: 32 } }>
@@ -45,9 +45,9 @@ const LoginForm = () => (
         <Text color='petcode.blue.400' fontSize='lg' alignSelf='flex-end'>
             <Link href='/forgotpassword'>Forgot Password?</Link>
         </Text>
-        <SolidButton variantColor='petcode.blue' marginY={3}> 
+        <BaseButton variantColor='petcode.blue' width='100%' height='52px' marginY={3}> 
             <Text fontSize='xl' fontWeight='thin' textTransform='uppercase'>Sign In</Text>
-        </SolidButton>
+        </BaseButton>
         <Text color='petcode.neutral.500' fontSize='lg'>
             Don't have an account yet?{ ' ' }
             <Link color='petcode.blue.400' href='/signup'>

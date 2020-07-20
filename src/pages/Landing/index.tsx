@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Box, BoxProps, Flex, Icon, Text } from '@chakra-ui/core';
 
-import Splash from './sections/Splash';
-import WhatIsItSection from './sections/WhatIsItSection';
-import WhyPetCodeSection from './sections/WhyPetCodeSection';
+import Splash from './Splash';
+import WhatIsItSection from './WhatIsItSection';
+import WhyPetCodeSection from './WhyPetCodeSection';
 
 const HeaderText = (props: BoxProps) => (
     <Text color='white' fontSize='lg' textTransform='uppercase' { ...props }/>

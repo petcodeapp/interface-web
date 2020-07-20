@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Button, Flex, Heading } from '@chakra-ui/core';
 
-import SolidButton, { SolidButtonProps } from '../../../components/Shared/button/SolidButton';
-
 const WhyPetcodeSection = () => (
     <Flex direction='column' backgroundColor='petcode.neutral.200' paddingTop={12} paddingBottom={24} paddingLeft={40}>
         <Heading color='petcode.blue.400' fontSize='6xl'>
