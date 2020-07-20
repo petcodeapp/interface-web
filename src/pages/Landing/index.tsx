@@ -5,7 +5,7 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 import SolidButton, { SolidButtonProps } from '../../components/Shared/button/SolidButton';
 
 const SplashButton = (props: SolidButtonProps) => (
-    <SolidButton variantColor='petcode.blue' width='170px' fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em' height='40px' { ...props }/>
+    <SolidButton variantColor='petcode.blue' width='170px' fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em' height='45px' { ...props }/>
 );
 
 const Splash = () => (
