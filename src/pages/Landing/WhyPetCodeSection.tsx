@@ -11,43 +11,46 @@ type LeftGroupProps = {
     displayedSection: IObservableValue<String>
 };
 
-const selectedProps: Omit<BaseButtonProps, 'children'> = {
-    _hover: {},
-    _active: {},
-    variant: 'solid',
-    border: 'none',
-    cursor: 'default'
-};
+const ToggleButton: React.FC<BaseButtonProps & { toggled: boolean }> = ({ children, toggled, ...props }) => (
+    <Button
+        cursor='pointer'
+        variantColor='petcode.blue'
+        variant='outline'
+        paddingX={10}
+        { ...(toggled ? {
+            _hover: {},
+            _active: {},
+            variant: 'solid',
+            border: 'none',
+            cursor: 'default'
+        } : {}) }
+        { ...props }
+    >
+        { children }
+    </Button>
+);
 
 const LeftGroup: React.FC<LeftGroupProps> = observer(({ displayedSection }) => (
     <Flex direction='column' alignItems='start' flexBasis='45%'>
         <Flex direction='row'>
-            <Button
-                cursor='pointer'
-                variantColor='petcode.blue'
-                variant='outline'
+            <ToggleButton
                 roundedLeft='full'
-                paddingX={10}
                 onClick={ action(() => displayedSection.set('features')) }
-                { ...(displayedSection.get() == 'features' ? selectedProps : {} ) }
+                toggled={ displayedSection.get() == 'features' }
             >
                 <Text fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em'>
                     Features
                 </Text>
-            </Button>
-            <Button
-                cursor='pointer'
-                variantColor='petcode.blue'
-                variant='outline'
+            </ToggleButton>
+            <ToggleButton
                 roundedRight='full'
-                paddingX={10}
                 onClick={ action(() => displayedSection.set('comparisons')) }
-                { ...(displayedSection.get() == 'comparisons' ? selectedProps : {} ) }
+                toggled={ displayedSection.get() == 'comparisons' }
             >
                 <Text fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em'>
                     Compare
                 </Text>
-            </Button>
+            </ToggleButton>
         </Flex>
         <Text color='petcode.neutral.600' fontSize='2xl' fontWeight='thin' marginY={5}>
             The PetCode tag is so much more than just a tag, it is an evergrowing network of features for pet owners.
