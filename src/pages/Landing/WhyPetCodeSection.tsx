@@ -94,6 +94,7 @@ const Comparisons = () => {
             name={ value ? 'checkmark' : 'cross' }
             size='25px'
             color={ value ? '#48BB78' : '#E53E3E' }
+            alignSelf='center'
         />
     );
 
@@ -108,7 +109,7 @@ const Comparisons = () => {
         { feature: 'Cost < $20', 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true }
     ], [])
     const columns = useMemo(() => ([
-        { Header: '', Cell: ({ value }: { value: string }) => <TableText>{ value }</TableText>, accessor: 'feature', width: 2 },
+        { Header: '', Cell: ({ value }: { value: string }) => <TableText>{ value }</TableText>, accessor: 'feature', width: 3 },
         { Header: <TableText>PetCode Tag</TableText>, Cell: renderBooleanIcon, accessor: 'PetCode Tag', width: 1 },
         { Header: <TableText>Microchip Implants</TableText>, Cell: renderBooleanIcon, accessor: 'Microchip Implants', width: 1 },
         { Header: <TableText>Standard Tag</TableText>, Cell: renderBooleanIcon, accessor: 'Standard Tag', width: 1 }
@@ -127,12 +128,19 @@ const Comparisons = () => {
     }, useFlexLayout);
 
     return (
-        <Box width='100%' { ...getTableProps() }>
+        <Box width='50%' { ...getTableProps() }>
             <Box>
                 { headerGroups.map((headerGroup: HeaderGroup) => (
                     <Box { ...headerGroup.getHeaderGroupProps() }>
                         { headerGroup.headers.map((column, idx) => (
-                            <Box { ...column.getHeaderProps() }>
+                            <Box
+                                backgroundColor={ idx > 0 ? 'petcode.neutral.100' : '' }
+                                paddingX={1}
+                                paddingY={2}
+                                marginBottom={2}
+                                textAlign='center'
+                                { ...column.getHeaderProps() }
+                            >
                                 { column.render('Header') }
                             </Box>
                         )) }
@@ -143,9 +151,16 @@ const Comparisons = () => {
                 { rows.map((row: Row) => {
                     prepareRow(row);
                     return (
-                        <Box { ...row.getRowProps() }>
+                        <Box
+                            backgroundColor={ row.index % 2 != 0 ? 'petcode.neutral.100' : '' }
+                            paddingX={2}
+                            paddingY={1}
+                            borderLeft='5px solid'
+                            borderLeftColor='petcode.neutral.600'
+                            { ...row.getRowProps() }
+                        >
                             { row.cells.map(cell => (
-                                <Box { ...cell.getCellProps() }>
+                                <Box display='flex' flexDirection='column' { ...cell.getCellProps() }>
                                     { cell.render('Cell') }
                                 </Box>
                             )) }
