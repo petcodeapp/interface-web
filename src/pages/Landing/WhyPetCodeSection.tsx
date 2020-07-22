@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
-import { Button, Flex, Heading, Icon, Text } from '@chakra-ui/core';
+import { Box, Button, Flex, Heading, Icon, Text } from '@chakra-ui/core';
 
 import BaseButton, { BaseButtonProps } from '../../components/Shared/button/BaseButton';
 
 import { action, observable, IObservableValue } from 'mobx';
+import { useTable, useFlexLayout, HeaderGroup, Row } from 'react-table';
 import { observer, useObserver } from 'mobx-react-lite';
 
 type LeftGroupProps = {
@@ -84,57 +85,77 @@ const Features = () => (
     </Flex>
 );
 
-type Tag = 'PetCode Tag'|'Microchip Implants'|'Standard Tag';
-const TAG_OPTIONS: Tag[]  = ['PetCode Tag', 'Microchip Implants', 'Standard Tag'];
-const TAG_FEATURES: { [key: string]: { [key in Tag]: boolean } } = {
-    'Clearly Visible': { 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true },
-    'Immediate Access to Contact Information': { 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true },
-    'Ability to Update Contact Information': { 'PetCode Tag': true, 'Microchip Implants': true, 'Standard Tag': false },
-    'Does Not Require Veterinary Visit': { 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true },
-    'Provides Alternative Contact Methods': { 'PetCode Tag': true, 'Microchip Implants': true, 'Standard Tag': false },
-    'Displays Dietary/Special Needs Info': { 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': false },
-    'Online Pet Profile': { 'PetCode Tag': true, 'Microchip Implants': true, 'Standard Tag': false },
-    'Cost < $20': { 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true }
-};
+const Comparisons = () => {
+    const TableText: React.FC = (props) => (
+        <Text fontSize='lg' color='petcode.neutral.600' { ...props }/>
+    );
+    const renderBooleanIcon = ({ value }: { value: boolean }) => (
+        <Icon
+            name={ value ? 'checkmark' : 'cross' }
+            size='25px'
+            color={ value ? '#48BB78' : '#E53E3E' }
+        />
+    );
 
-const Comparisons = () => (
-    <table>
-        <thead>
-            <tr>
-                <th/>
-                { TAG_OPTIONS.map((option, idx) => (
-                    <th key={ idx }>
-                        <Text fontSize='lg' color='petcode.neutral.600' fontWeight='bold'>
-                            { option }
-                        </Text>
-                    </th>
-                )) }
-            </tr>
-        </thead>
-        <tbody>
-            {
-                Object.keys(TAG_FEATURES).map((feature, idx) => (
-                    <tr key={ idx }>
-                        <td>
-                            <Text fontSize='lg' color='petcode.neutral.600' fontWeight='thin'>
-                                { feature }
-                            </Text>
-                        </td>
-                        { TAG_OPTIONS.map((option, idx) => (
-                            <td key={ idx }>
-                                <Icon
-                                    name={ TAG_FEATURES[feature][option] ? 'checkmark' : 'cross' }
-                                    size='25px'
-                                    color={ TAG_FEATURES[feature][option] ? '#48BB78' : '#E53E3E' }
-                                />
-                            </td>
+    const data = useMemo(() => [
+        { feature: 'Clearly Visible', 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true },
+        { feature: 'Immediate Access to Contact Information', 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true },
+        { feature: 'Ability to Update Contact Information', 'PetCode Tag': true, 'Microchip Implants': true, 'Standard Tag': false },
+        { feature: 'Does Not Require Veterinary Visit', 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true },
+        { feature: 'Provides Alternative Contact Methods', 'PetCode Tag': true, 'Microchip Implants': true, 'Standard Tag': false },
+        { feature: 'Displays Dietary/Special Needs Info', 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': false },
+        { feature: 'Online Pet Profile', 'PetCode Tag': true, 'Microchip Implants': true, 'Standard Tag': false },
+        { feature: 'Cost < $20', 'PetCode Tag': true, 'Microchip Implants': false, 'Standard Tag': true }
+    ], [])
+    const columns = useMemo(() => ([
+        { Header: '', Cell: ({ value }: { value: string }) => <TableText>{ value }</TableText>, accessor: 'feature', width: 2 },
+        { Header: <TableText>PetCode Tag</TableText>, Cell: renderBooleanIcon, accessor: 'PetCode Tag', width: 1 },
+        { Header: <TableText>Microchip Implants</TableText>, Cell: renderBooleanIcon, accessor: 'Microchip Implants', width: 1 },
+        { Header: <TableText>Standard Tag</TableText>, Cell: renderBooleanIcon, accessor: 'Standard Tag', width: 1 }
+    ]), []);
+
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+    } = useTable({
+        data,
+        // @ts-ignore
+        columns
+    }, useFlexLayout);
+
+    return (
+        <Box width='100%' { ...getTableProps() }>
+            <Box>
+                { headerGroups.map((headerGroup: HeaderGroup) => (
+                    <Box { ...headerGroup.getHeaderGroupProps() }>
+                        { headerGroup.headers.map((column, idx) => (
+                            <Box { ...column.getHeaderProps() }>
+                                { column.render('Header') }
+                            </Box>
                         )) }
-                    </tr>
-                ))
-            }
-        </tbody>
-    </table>
-);
+                    </Box>
+                )) }
+            </Box>
+            <Box { ...getTableBodyProps() }>
+                { rows.map((row: Row) => {
+                    prepareRow(row);
+                    return (
+                        <Box { ...row.getRowProps() }>
+                            { row.cells.map(cell => (
+                                <Box { ...cell.getCellProps() }>
+                                    { cell.render('Cell') }
+                                </Box>
+                            )) }
+                        </Box>
+                    );
+                }) }
+            </Box>
+        </Box>
+    );
+};
 
 const WhyPetcodeSection = () => {
     const [displayedSection] = useState(() => observable.box('features'));
