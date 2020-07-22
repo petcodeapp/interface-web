@@ -35,5 +35,9 @@ export default {
     cross: {
         path: <path stroke="currentColor" d="M2.343 2.901l13.382 13.381m-13.382 0l13.382-13.38-13.382 13.38z" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>,
         viewBox: '0 0 18 19'
+    },
+    'qr-code': {
+        path: <path stroke="currentColor" fill="transparent" d="M29.5 3v3.25M49 42h6.5M36 42h-6.5v13m0-35.75V29m0 0h.032m-.032 0h13.032M42.5 55h13m-52-26h13m39 0h.032M6.75 16h6.5a3.25 3.25 0 0 0 3.25-3.25v-6.5A3.25 3.25 0 0 0 13.25 3h-6.5A3.25 3.25 0 0 0 3.5 6.25v6.5A3.25 3.25 0 0 0 6.75 16zm39 0h6.5a3.25 3.25 0 0 0 3.25-3.25v-6.5A3.25 3.25 0 0 0 52.25 3h-6.5a3.25 3.25 0 0 0-3.25 3.25v6.5A3.25 3.25 0 0 0 45.75 16zm-39 39h6.5a3.25 3.25 0 0 0 3.25-3.25v-6.5A3.25 3.25 0 0 0 13.25 42h-6.5a3.25 3.25 0 0 0-3.25 3.25v6.5A3.25 3.25 0 0 0 6.75 55z" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>,
+        viewBox: '0 0 59 58'
     }
 };

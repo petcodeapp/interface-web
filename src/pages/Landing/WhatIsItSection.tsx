@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Box, Flex, FlexProps, Heading, Icon, Image, Text } from '@chakra-ui/core';
 
+import IconBadge from '../../components/Shared/badge/IconBadge';
+
 type WhatIsItCardProps = {
     align: 'left'|'center'|'right';
     header: string;
@@ -42,9 +44,7 @@ const WhatIsItCard: React.FC<WhatIsItCardProps> = (
             >
                 { header }
             </Text>
-            <Box rounded='full' backgroundColor={ iconBgColor } padding={6}>
-                <Icon name={ iconName } color='white' size='50px'/>
-            </Box>
+            <IconBadge iconName={ iconName } backgroundColor={ iconBgColor }/>
         </Flex>
         <Text color='petcode.neutral.500' fontSize='xl'>
             { description }
