@@ -33,6 +33,9 @@ const ToggleButton: React.FC<BaseButtonProps & { toggled: boolean }> = ({ childr
 
 const LeftGroup: React.FC<LeftGroupProps> = observer(({ displayedSection }) => (
     <Flex direction='column' alignItems='start' flexBasis='45%'>
+        <Heading color='petcode.blue.400' fontSize='6xl' marginBottom={12}>
+            Why Petcode?
+        </Heading>
         <Flex direction='row'>
             <ToggleButton
                 roundedLeft='full'
@@ -78,7 +81,7 @@ const Feature: React.FC<FeatureProps> = ({ text }) => (
 );
 
 const Features = () => (
-    <Flex direction='column' justifyContent='center' flexBasis='45%'>
+    <Flex direction='column' justifyContent='center' flexBasis='45%' marginTop={20}>
         <Feature text='Free Online Pet Profile'/>
         <Feature text='Affordable Hi-Tech Tag'/>
         <Feature text='Information Visible on Any Browser'/>
@@ -176,17 +179,12 @@ const WhyPetcodeSection = () => {
     const [displayedSection] = useState(() => observable.box('features'));
 
     return useObserver(() => (
-        <Flex direction='column' backgroundColor='petcode.neutral.200' paddingTop={12} paddingBottom={24} paddingX={16}>
-            <Heading color='petcode.blue.400' fontSize='6xl' marginBottom={12}>
-                Why Petcode?
-            </Heading>
-            <Flex direction='row' justifyContent='space-between'>
-                <LeftGroup displayedSection={ displayedSection }/>
-                { displayedSection.get() == 'features' ?
-                    <Features/> :
-                    <Comparisons/>
-                }
-            </Flex>
+        <Flex direction='row' justifyContent='space-between' backgroundColor='petcode.neutral.200' paddingTop={12} paddingBottom={24} paddingX={16}>
+            <LeftGroup displayedSection={ displayedSection }/>
+            { displayedSection.get() == 'features' ?
+                <Features/> :
+                <Comparisons/>
+            }
         </Flex>
     ));
 };
