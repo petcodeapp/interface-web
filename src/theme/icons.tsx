@@ -31,5 +31,9 @@ export default {
     checkmark: {
         path: <path stroke="currentColor" fill="transparent" d="M3.125 15.625l8.5 8.5 21.25-21.25" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>,
         viewBox: '0 0 36 27'
+    },
+    cross: {
+        path: <path stroke="currentColor" d="M2.343 2.901l13.382 13.381m-13.382 0l13.382-13.38-13.382 13.38z" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>,
+        viewBox: '0 0 18 19'
     }
 };
