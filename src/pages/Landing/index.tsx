@@ -5,6 +5,7 @@ import { Box, BoxProps, Flex, Icon, Text } from '@chakra-ui/core';
 import Splash from './Splash';
 import WhatIsItSection from './WhatIsItSection';
 import WhyPetCodeSection from './WhyPetCodeSection';
+import GetStartedSection from './GetStartedSection';
 
 const HeaderText = (props: BoxProps) => (
     <Text color='white' fontSize='lg' textTransform='uppercase' { ...props }/>
@@ -37,11 +38,12 @@ const Header = () => (
 );
 
 const LandingPage: React.FunctionComponent = () => (
-    <Flex direction='column' minHeight='100%'>
+    <Flex direction='column'>
         <Header/>
         <Splash/>
         <WhatIsItSection/>
         <WhyPetCodeSection/>
+        <GetStartedSection/>
     </Flex>
 );
 
