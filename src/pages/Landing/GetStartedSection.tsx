@@ -2,34 +2,87 @@ import React from 'react';
 
 import { Box, Flex, Heading, Text } from '@chakra-ui/core';
 
-import BaseButton from '../../components/Shared/button/BaseButton';
+import BaseButton, { BaseButtonProps } from '../../components/Shared/button/BaseButton';
 import IconBadge from '../../components/Shared/badge/IconBadge';
 
-const GetStartedSteps = () => (
-    <Flex direction='row'>
-        <Flex direction='column' alignItems='center' flexBasis='25%' position='relative' top='-70px'>
-            <IconBadge iconName='qr-code' backgroundColor='petcode.yellow.400' position='relative' top='70px' border='10px solid' borderColor='petcode.neutral.200'/>
-            <Flex direction='column' alignItems='center' rounded='lg' backgroundColor='petcode.neutral.200' textAlign='center' paddingTop={20} paddingX={5}>
-                <Box rounded='md' backgroundColor='petcode.neutral.500' paddingX={3} paddingY={1} marginBottom={4}>
-                    <Text color='white' textTransform='uppercase'>
-                        Step 1
-                    </Text>
-                </Box>
-                <Text fontSize='2xl' color='petcode.neutral.700' marginBottom={2}>
-                    Order Your PetCode Tag
+type GetStartedStepProps = {
+    iconName: string;
+    step: number;
+    header: string;
+    description: string;
+    buttonText: string;
+    buttonProps?: Omit<BaseButtonProps, 'children'>;
+};
+
+const GetStartedStep: React.FC<GetStartedStepProps> = ({
+    iconName,
+    step,
+    header,
+    description,
+    buttonText,
+    buttonProps = {}
+}) => (
+    <Flex direction='column' alignItems='center' flexBasis='25%' position='relative' top='-70px' marginX={6}>
+        <IconBadge
+            iconName={ iconName }
+            backgroundColor='petcode.yellow.400'
+            position='relative'
+            top='70px'
+            border='10px solid'
+            borderColor='petcode.neutral.200'
+        />
+        <Flex
+            direction='column'
+            alignItems='center'
+            rounded='lg'
+            backgroundColor='petcode.neutral.200'
+            textAlign='center'
+            paddingTop={20}
+            paddingX={5}
+        >
+            <Box rounded='md' backgroundColor='petcode.neutral.500' paddingX={3} paddingY={1} marginBottom={4}>
+                <Text color='white' textTransform='uppercase'>
+                    Step { step }
                 </Text>
-                <Text fontSize='xl' fontWeight='thin' color='petcode.neutral.600'>
-                    Order your PetCode Tag in your local store or in our webshop. Once you have recieved your Tag, you can move onto setting up your Pet Profile.
+            </Box>
+            <Text fontSize='2xl' color='petcode.neutral.700' marginBottom={2}>
+                { header }
+            </Text>
+            <Text fontSize='xl' fontWeight='thin' color='petcode.neutral.600'>
+                { description }
+            </Text>
+            <BaseButton variantColor='petcode.blue' marginY={6} { ...buttonProps }>
+                <Text fontSize='lg' fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em'>
+                    { buttonText }
                 </Text>
-                <BaseButton variantColor='petcode.blue' marginY={6}>
-                    <Text fontSize='lg' fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em'>
-                        Order PetCode Tag
-                    </Text>
-                </BaseButton>
-            </Flex>
+            </BaseButton>
         </Flex>
-        <Flex direction='column' backgroundColor='petcode.neutral.200'></Flex>
-        <Flex direction='column' backgroundColor='petcode.neutral.200'></Flex>
+    </Flex>
+);
+
+const GetStartedSteps = () => (
+    <Flex direction='row' justifyContent='center'>
+        <GetStartedStep
+            iconName='qr-code'
+            step={1}
+            header='Order Your PetCode Tag'
+            description='Order your PetCode Tag in your local store or in our webshop. Once you have recieved your Tag, you can move onto setting up your Pet Profile.'
+            buttonText='Order PetCode Tag'
+        />
+        <GetStartedStep
+            iconName='qr-code'
+            step={1}
+            header='Order Your PetCode Tag'
+            description='Order your PetCode Tag in your local store or in our webshop. Once you have recieved your Tag, you can move onto setting up your Pet Profile.'
+            buttonText='Order PetCode Tag'
+        />
+        <GetStartedStep
+            iconName='qr-code'
+            step={1}
+            header='Order Your PetCode Tag'
+            description='Order your PetCode Tag in your local store or in our webshop. Once you have recieved your Tag, you can move onto setting up your Pet Profile.'
+            buttonText='Order PetCode Tag'
+        />
     </Flex>
 );
 

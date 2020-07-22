@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, FlexProps, Heading, Icon, Image, Text } from '@chakra-ui/core';
+import { Flex, FlexProps, Heading, Image, Text } from '@chakra-ui/core';
 
 import IconBadge from '../../components/Shared/badge/IconBadge';
 
