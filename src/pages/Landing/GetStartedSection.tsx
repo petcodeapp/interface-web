@@ -90,7 +90,7 @@ const GetStartedSteps = () => (
 
 const GetStartedSection = () => (
     <Flex direction='column' alignItems='center' paddingTop={12}>
-        <Heading color='petcode.blue.400' fontSize='6xl' marginBottom={12}>
+        <Heading color='petcode.blue.400' fontSize='6xl' marginBottom={6}>
             Get Started
         </Heading>
         <GetStartedSteps/>
