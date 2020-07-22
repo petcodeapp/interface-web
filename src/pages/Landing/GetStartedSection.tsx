@@ -37,6 +37,7 @@ const GetStartedStep: React.FC<GetStartedStepProps> = ({
             rounded='lg'
             backgroundColor='petcode.neutral.200'
             textAlign='center'
+            height='100%'
             paddingTop={20}
             paddingX={5}
         >
@@ -51,6 +52,7 @@ const GetStartedStep: React.FC<GetStartedStepProps> = ({
             <Text fontSize='xl' fontWeight='thin' color='petcode.neutral.600'>
                 { description }
             </Text>
+            <Box flexGrow={1}/>
             <BaseButton variantColor='petcode.blue' marginY={6} { ...buttonProps }>
                 <Text fontSize='lg' fontWeight='thin' textTransform='uppercase' letterSpacing='0.05em'>
                     { buttonText }
@@ -61,7 +63,7 @@ const GetStartedStep: React.FC<GetStartedStepProps> = ({
 );
 
 const GetStartedSteps = () => (
-    <Flex direction='row' justifyContent='center'>
+    <Flex direction='row' alignItems='stretch' justifyContent='center'>
         <GetStartedStep
             iconName='qr-code'
             step={1}
@@ -70,18 +72,18 @@ const GetStartedSteps = () => (
             buttonText='Order PetCode Tag'
         />
         <GetStartedStep
-            iconName='qr-code'
-            step={1}
-            header='Order Your PetCode Tag'
-            description='Order your PetCode Tag in your local store or in our webshop. Once you have recieved your Tag, you can move onto setting up your Pet Profile.'
-            buttonText='Order PetCode Tag'
+            iconName='user'
+            step={2}
+            header='Create Your PetCode Account'
+            description='Create your PetCode Tag account and set up your pet profile(s) with basic information as well as medical and contact info.'
+            buttonText='Create Account'
         />
         <GetStartedStep
-            iconName='qr-code'
-            step={1}
-            header='Order Your PetCode Tag'
-            description='Order your PetCode Tag in your local store or in our webshop. Once you have recieved your Tag, you can move onto setting up your Pet Profile.'
-            buttonText='Order PetCode Tag'
+            iconName='checkmark'
+            step={3}
+            header='Activate Your PetCode Tag'
+            description='Once you have updated your pet profile and activated the PetCode Tag, you are now done with the setup process. Welcome to the PetCode Network!'
+            buttonText='Activate PetCode Tag'
         />
     </Flex>
 );

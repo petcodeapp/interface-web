@@ -33,12 +33,12 @@ const HeaderTextGroup = () => (
 const LoginForm = () => (
     <Flex direction='column' alignItems='center' width={ { xs: '90%', md: '80%', lg: '70%' } } marginY={3}>
         <InputWithIcon
-            iconName='username'
+            iconName='user'
             inputGroupProps={ { marginY: 2 } }
             inputProps={ { placeholder: 'Username' } }
         />
         <InputWithIcon
-            iconName='password'
+            iconName='lock-closed'
             inputGroupProps={ { marginY: 2 } }
             inputProps={ { type: 'password', placeholder: 'Password' } }
         />
