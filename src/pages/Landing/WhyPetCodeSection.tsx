@@ -131,7 +131,7 @@ const Comparisons = () => {
     }, useFlexLayout);
 
     return (
-        <Box width='50%' { ...getTableProps() }>
+        <Box width={ { md: '50%' } } { ...getTableProps() }>
             <Box>
                 { headerGroups.map((headerGroup: HeaderGroup) => (
                     <Box { ...headerGroup.getHeaderGroupProps() }>
@@ -179,7 +179,7 @@ const WhyPetcodeSection = () => {
     const [displayedSection] = useState(() => observable.box('features'));
 
     return useObserver(() => (
-        <Flex direction='row' justifyContent='space-between' backgroundColor='petcode.neutral.200' paddingTop={12} paddingBottom={24} paddingX={16}>
+        <Flex direction={ { xs: 'column', md: 'row' } } justifyContent='space-between' backgroundColor='petcode.neutral.200' paddingTop={12} paddingBottom={24} paddingX={16}>
             <LeftGroup displayedSection={ displayedSection }/>
             { displayedSection.get() == 'features' ?
                 <Features/> :
