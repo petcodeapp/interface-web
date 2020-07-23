@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Box, Flex, Heading, Image, Input, InputProps, Link, Text, FlexProps } from '@chakra-ui/core';
+import { Box, Flex, Heading, Icon, Input, InputProps, Link, Text, FlexProps } from '@chakra-ui/core';
 
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react-lite';
@@ -67,7 +67,7 @@ const DigitInputGroup = observer(({ numDigits, ...props }: FlexProps & DigitInpu
 
 const BackArrow = () => (
     <Link href='/' display='flex' alignSelf='start' alignItems='center' margin={5}>
-        <Image alt='Back Arrow' src='/media/back-arrow.svg'/>
+        <Icon name='arrow' size='50px' transform='scale(-1, 1)' color='petcode.neutral.400'/>
         <Text color='petcode.neutral.400' fontSize='2xl' marginLeft={4}>Go Back</Text>
     </Link>
 );
