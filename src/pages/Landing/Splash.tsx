@@ -34,7 +34,7 @@ const Splash = () => (
             <Text color='white' fontSize={ { xs: 'xl', md: '3xl' } } width={ { md: '400px' } }>
                 An endless suite of features for pet owners.
             </Text>
-            <Flex direction={ { xs: 'column', md: 'row' } } alignSelf='center' marginTop={6}>
+            <Flex direction={ { xs: 'column', md: 'row' } } alignSelf={ { xs: 'center', md: 'start' } } marginTop={6}>
                 <SplashButton marginRight={4} marginBottom={4}>
                     <Text>Learn More</Text>
                 </SplashButton>
