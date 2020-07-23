@@ -11,6 +11,7 @@ import Footer from './Footer';
 
 const Header = () => (
     <Flex
+        display={ { xs: 'none', md: 'flex' } }
         position='fixed'
         top={0}
         background='rgba(0, 0, 0, 0.4)'
