@@ -6,6 +6,7 @@ import Splash from './Splash';
 import WhatIsItSection from './WhatIsItSection';
 import WhyPetCodeSection from './WhyPetCodeSection';
 import GetStartedSection from './GetStartedSection';
+import TestimonialSection from './TestimonialSection';
 
 const HeaderText = (props: BoxProps) => (
     <Text color='white' fontSize='lg' textTransform='uppercase' { ...props }/>
@@ -44,6 +45,7 @@ const LandingPage: React.FunctionComponent = () => (
         <WhatIsItSection/>
         <WhyPetCodeSection/>
         <GetStartedSection/>
+        <TestimonialSection/>
     </Flex>
 );
 
