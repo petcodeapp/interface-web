@@ -17,7 +17,7 @@ const ToggleButton: React.FC<BaseButtonProps & { toggled: boolean }> = ({ childr
         cursor='pointer'
         variantColor='petcode.blue'
         variant='outline'
-        paddingX={10}
+        paddingX={ { xs: 6, md: 10 } }
         { ...(toggled ? {
             _hover: {},
             _active: {},
@@ -33,12 +33,13 @@ const ToggleButton: React.FC<BaseButtonProps & { toggled: boolean }> = ({ childr
 
 const LeftGroup: React.FC<LeftGroupProps> = observer(({ displayedSection }) => (
     <Flex direction='column' alignItems='start' flexBasis='45%'>
-        <Heading color='petcode.blue.400' fontSize='6xl' marginBottom={12}>
+        <Heading color='petcode.blue.400' fontSize={ { xs: '5xl', md: '6xl' } } marginBottom={12}>
             Why Petcode?
         </Heading>
         <Flex direction='row'>
             <ToggleButton
                 roundedLeft='full'
+                borderRadius='auto'
                 onClick={ action(() => displayedSection.set('features')) }
                 toggled={ displayedSection.get() == 'features' }
             >
@@ -48,6 +49,7 @@ const LeftGroup: React.FC<LeftGroupProps> = observer(({ displayedSection }) => (
             </ToggleButton>
             <ToggleButton
                 roundedRight='full'
+                borderRadius='auto'
                 onClick={ action(() => displayedSection.set('comparisons')) }
                 toggled={ displayedSection.get() == 'comparisons' }
             >
@@ -56,7 +58,7 @@ const LeftGroup: React.FC<LeftGroupProps> = observer(({ displayedSection }) => (
                 </Text>
             </ToggleButton>
         </Flex>
-        <Text color='petcode.neutral.600' fontSize='2xl' fontWeight='thin' marginY={5}>
+        <Text color='petcode.neutral.600' fontSize={ { xs: 'xl', md: '2xl' } } fontWeight='thin' marginY={5}>
             The PetCode tag is so much more than just a tag, it is an evergrowing network of features for pet owners.
         </Text>
         <BaseButton size='md' variantColor='petcode.yellow' paddingX={8}>
@@ -81,7 +83,7 @@ const Feature: React.FC<FeatureProps> = ({ text }) => (
 );
 
 const Features = () => (
-    <Flex direction='column' justifyContent='center' flexBasis='45%' marginTop={20}>
+    <Flex direction='column' justifyContent='center' flexBasis='45%' marginTop={ { xs: 4, md: 20 } }>
         <Feature text='Free Online Pet Profile'/>
         <Feature text='Affordable Hi-Tech Tag'/>
         <Feature text='Information Visible on Any Browser'/>
@@ -131,7 +133,7 @@ const Comparisons = () => {
     }, useFlexLayout);
 
     return (
-        <Box width={ { md: '50%' } } { ...getTableProps() }>
+        <Box width={ { md: '50%' } } marginTop={ { xs: 4, md: 0 } } { ...getTableProps() }>
             <Box>
                 { headerGroups.map((headerGroup: HeaderGroup) => (
                     <Box { ...headerGroup.getHeaderGroupProps() }>
@@ -179,7 +181,14 @@ const WhyPetcodeSection = () => {
     const [displayedSection] = useState(() => observable.box('features'));
 
     return useObserver(() => (
-        <Flex direction={ { xs: 'column', md: 'row' } } justifyContent='space-between' backgroundColor='petcode.neutral.200' paddingTop={12} paddingBottom={24} paddingX={16}>
+        <Flex
+            direction={ { xs: 'column', md: 'row' } }
+            justifyContent='space-between'
+            backgroundColor='petcode.neutral.200'
+            paddingTop={12}
+            paddingBottom={24}
+            paddingX={ { xs: 10, md: 16 } }
+        >
             <LeftGroup displayedSection={ displayedSection }/>
             { displayedSection.get() == 'features' ?
                 <Features/> :

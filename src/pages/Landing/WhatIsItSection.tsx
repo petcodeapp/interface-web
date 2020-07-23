@@ -54,10 +54,10 @@ const WhatIsItCard: React.FC<WhatIsItCardProps> = (
 
 const WhatIsItSection = () => (
     <Flex direction='column' alignItems='center' paddingY={12}>
-        <Heading color='petcode.blue.400' fontSize='6xl'>
+        <Heading color='petcode.blue.400' fontSize={ { xs: '5xl', md: '6xl' } }>
             What Is It?
         </Heading>
-        <Text color='petcode.neutral.500' fontSize='2xl' textAlign='center' marginX={ { xs: 16, md: 64 } } marginY={3}>
+        <Text color='petcode.neutral.500' fontSize={ { xs: 'xl', md: '2xl' } } textAlign='center' marginX={ { xs: 16, md: 64 } } marginY={3}>
             The PetCode Tag is a simple tag with a QR code that unlocks all the features below and more.
         </Text>
         <Flex direction='column' marginX={ { xs: 8, sm: 40, md: 20 } }>
