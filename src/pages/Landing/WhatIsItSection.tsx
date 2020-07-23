@@ -57,11 +57,11 @@ const WhatIsItSection = () => (
         <Heading color='petcode.blue.400' fontSize='6xl'>
             What Is It?
         </Heading>
-        <Text color='petcode.neutral.500' fontSize='2xl' textAlign='center' marginX={64} marginY={3}>
+        <Text color='petcode.neutral.500' fontSize='2xl' textAlign='center' marginX={ { xs: 16, md: 64 } } marginY={3}>
             The PetCode Tag is a simple tag with a QR code that unlocks all the features below and more.
         </Text>
-        <Flex direction='column' marginX={20}>
-            <Flex direction='row'>
+        <Flex direction='column' marginX={ { xs: 8, sm: 40, md: 20 } }>
+            <Flex direction={ { xs: 'column', md: 'row' } } alignItems={ { xs: 'center', md: 'start' } }>
                 <WhatIsItCard
                     align='left'
                     header='Customizable Pet Profiles'
@@ -69,9 +69,9 @@ const WhatIsItSection = () => (
                     iconName='template'
                     iconBgColor='#727DE3'
                     flexBasis='35%'
-                    marginRight={24}
+                    marginRight={ { xs: 0, md: 24 } }
                 />
-                <Image alt='Dog on yellow background' src='/media/dog-on-yellow-background.png' height='300px'/>
+                <Image display={ { xs: 'none', md: 'block' } } alt='Dog on yellow background' src='/media/dog-on-yellow-background.png' height='300px' width='300px'/>
                 <WhatIsItCard
                     align='right'
                     header='Contact Information'
@@ -79,10 +79,11 @@ const WhatIsItSection = () => (
                     iconName='messages'
                     iconBgColor='#4FD1AA'
                     flexBasis='35%'
-                    marginLeft={24}
+                    marginLeft={ { xs: 0, md: 24 } }
+                    marginTop={ { xs: 6, md: 0 } }
                 />
             </Flex>
-            <Flex direction='row'>
+            <Flex direction={ { xs: 'column', md: 'row' } } alignItems={ { xs: 'center', md: 'start' } }>
                 <WhatIsItCard
                     align='left'
                     header='Medical Information'
@@ -90,9 +91,10 @@ const WhatIsItSection = () => (
                     iconName='clipboard'
                     iconBgColor='#4299E1'
                     position='relative'
-                    top='-70px'
+                    top={ { md: '-70px' } }
                     flexBasis='33%'
-                    paddingLeft={6}
+                    paddingLeft={ { xs: 0, md: 6 } }
+                    marginTop={ { xs: 6, md: 0 } }
                 />
                 <WhatIsItCard
                     align='center'
@@ -110,9 +112,10 @@ const WhatIsItSection = () => (
                     iconName='link'
                     iconBgColor='petcode.teal'
                     position='relative'
-                    top='-70px'
+                    top={ { md: '-70px' } }
                     flexBasis='33%'
-                    paddingRight={6}
+                    paddingRight={ { xs: 0, md: 6 } }
+                    marginTop={ { xs: 6, md: 0 } }
                 />
             </Flex>
         </Flex>
