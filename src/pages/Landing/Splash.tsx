@@ -18,10 +18,11 @@ const SplashButton: React.FC<BaseButtonProps> = (props) => (
 const Splash = () => (
     <Box
         backgroundImage='url(/media/karans-dog.JPG)'
-        backgroundPosition='center'
         backgroundSize='cover'
-        paddingY={200}
-        paddingLeft={100}
+        backgroundPosition='center'
+        paddingY={ { xs: 10, md: 200 } }
+        paddingX={ { xs: 10, md: 0 } }
+        paddingLeft={ { md: 100 } }
     >
         <Flex direction='column'>
             <Heading
@@ -30,20 +31,20 @@ const Splash = () => (
             >
                 One Code
             </Heading>
-            <Text color='white' fontSize='3xl' width='400px'>
+            <Text color='white' fontSize={ { xs: 'xl', md: '3xl' } } width={ { md: '400px' } }>
                 An endless suite of features for pet owners.
             </Text>
-            <Box marginTop={6}>
-                <SplashButton marginRight={4}>
+            <Flex direction={ { xs: 'column', md: 'row' } } alignSelf='center' marginTop={6}>
+                <SplashButton marginRight={4} marginBottom={4}>
                     <Text>Learn More</Text>
                 </SplashButton>
-                <SplashButton marginRight={4}>
+                <SplashButton marginRight={4} marginBottom={4}>
                     <Text>Features</Text>
                 </SplashButton>
-                <SplashButton>
+                <SplashButton marginBottom={4}>
                     <Text>Get Started</Text>
                 </SplashButton>
-            </Box>
+            </Flex>
         </Flex>
     </Box>
 );
