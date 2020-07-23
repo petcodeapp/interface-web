@@ -44,7 +44,7 @@ const WhatIsItCard: React.FC<WhatIsItCardProps> = (
             >
                 { header }
             </Text>
-            <IconBadge iconName={ iconName } backgroundColor={ iconBgColor }/>
+            <IconBadge iconName={ iconName } iconSize='50px' iconPadding={6} backgroundColor={ iconBgColor }/>
         </Flex>
         <Text color='petcode.neutral.500' fontSize='xl'>
             { description }
