@@ -22,7 +22,7 @@ const GetStartedStep: React.FC<GetStartedStepProps> = ({
     buttonText,
     buttonProps = {}
 }) => (
-    <Flex direction='column' alignItems='center' flexBasis='25%' position='relative' top='-70px' marginX={6}>
+    <Flex direction='column' alignItems='center' flexBasis='25%' position='relative' top='-70px' marginX={ { xs: 10, sm: 32, md: 6 } }>
         <IconBadge
             iconName={ iconName }
             backgroundColor='petcode.yellow.400'
@@ -65,7 +65,7 @@ const GetStartedStep: React.FC<GetStartedStepProps> = ({
 );
 
 const GetStartedSteps = () => (
-    <Flex direction='row' alignItems='stretch' justifyContent='center'>
+    <Flex direction={ { xs: 'column', md: 'row' } } alignItems='stretch' justifyContent='center'>
         <GetStartedStep
             iconName='qr-code'
             step={1}
