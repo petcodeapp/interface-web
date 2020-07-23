@@ -5,10 +5,19 @@ import { Divider, Flex, Image, Text } from '@chakra-ui/core';
 import IconBadge from '../../components/Shared/badge/IconBadge';
 
 const Footer = () => (
-    <Flex direction='column' backgroundColor='petcode.neutral.700' paddingX={40} paddingY={10}>
-        <Flex direction='row'>
-            <Image alt='PetCode Logo with QR Code' src='/media/petcode-logo-with-qr-code.png' height='45px'/>
-            <Flex direction='row' wrap='wrap' fontSize='sm' color='white' fontWeight='thin' textTransform='uppercase' marginX={6}>
+    <Flex direction='column' backgroundColor='petcode.neutral.700' paddingX={ { xs: 6, md: 40 } } paddingY={10}>
+        <Flex direction={ { xs: 'column', md: 'row' } } alignItems='start'>
+            <Image alt='PetCode Logo with QR Code' src='/media/petcode-logo-with-qr-code.png' height='45px' marginBottom={ { xs: 4, md: 0 } }/>
+            <Flex
+                direction='row'
+                wrap='wrap'
+                fontSize='sm'
+                color='white'
+                fontWeight='thin'
+                textTransform='uppercase'
+                marginX={ { md: 6 } }
+                marginBottom={ { xs: 4, md: 0 } }
+            >
                 <Text flexBasis='33%' marginBottom={2}>Home</Text>
                 <Text flexBasis='33%' marginBottom={2}>Purchase</Text>
                 <Text flexBasis='33%' marginBottom={2}>FAQs</Text>
