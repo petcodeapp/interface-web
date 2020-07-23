@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Flex, Heading, Icon, Text } from '@chakra-ui/core';
 
 const Testimonial = () => (
-    <Flex direction='row' alignItems='center' marginX={64}>
+    <Flex direction={ { xs: 'column', md: 'row' } } alignItems='center' marginX={64}>
         <Box
             rounded='full'
             backgroundImage='url(/media/woman-holding-dog.jpeg)'
@@ -11,7 +11,8 @@ const Testimonial = () => (
             backgroundPosition='center'
             minHeight='250px'
             minWidth='250px'
-            marginRight={12}
+            marginRight={ { md: 12 } }
+            marginBottom={ { xs: 8, md: 0 } }
         />
         <Flex direction='column' fontSize='2xl' fontWeight='thin'>
             <Box marginBottom={2}>
@@ -25,7 +26,7 @@ const Testimonial = () => (
                 “This is an example of a testimonial. When we sell our product, there will be great reviews that go here.”
             </Text>
             <Flex direction='row' alignItems='center' marginBottom={6}>
-                <Text color='petcode.neutral.700' marginRight={8}>- Jane Doe</Text>
+                <Text color='petcode.neutral.700' marginRight={ { md: 8 } }>- Jane Doe</Text>
                 <Text color='petcode.neutral.400'>Pet Owner</Text>
                 <Box flexGrow={1}/>
                 <Icon name='arrow' color='petcode.neutral.400' size='50px'/>
@@ -35,8 +36,8 @@ const Testimonial = () => (
 );
 
 const TestimonialSection = () => (
-    <Flex direction='column' alignItems='center' backgroundColor='petcode.neutral.200' paddingY={12}>
-        <Heading color='petcode.blue.400' fontSize='6xl' marginBottom={12}>
+    <Flex direction='column' alignItems='center' backgroundColor='petcode.neutral.200' paddingY={12} paddingX={10}>
+        <Heading color='petcode.blue.400' fontSize={ { xs: '5xl', md: '6xl' } } marginBottom={12}>
             Owner Testimonials
         </Heading>
         <Testimonial/>
