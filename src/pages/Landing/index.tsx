@@ -7,6 +7,7 @@ import WhatIsItSection from './WhatIsItSection';
 import WhyPetCodeSection from './WhyPetCodeSection';
 import GetStartedSection from './GetStartedSection';
 import TestimonialSection from './TestimonialSection';
+import Footer from './Footer';
 
 const Header = () => (
     <Flex
@@ -45,6 +46,7 @@ const LandingPage: React.FunctionComponent = () => (
         <WhyPetCodeSection/>
         <GetStartedSection/>
         <TestimonialSection/>
+        <Footer/>
     </Flex>
 );
 
