@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex, Heading, Image, Link, Text } from '@chakra-ui/core';
 
 import InputWithIcon from '../../components/Shared/input/InputWithIcon';
-import SolidButton from '../../components/Shared/button/SolidButton';
+import BaseButton from '../../components/Shared/button/BaseButton';
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (
     <Flex direction='column' flexGrow={1} alignItems='center' justifyContent='center' marginLeft={ { xs: 8, sm: 16, md: 4, lg: 16 } } marginRight={ { xs: 8, sm: 16, md: 0 } }>
@@ -29,16 +29,16 @@ const RegistrationForm = () => (
             inputGroupProps={ { marginY: 2 } }
             inputProps={ { placeholder: 'Petcode Tag Number' } }
         />
-        <SolidButton variantColor='petcode.blue' marginY={3}> 
+        <BaseButton variantColor='petcode.blue' width='100%' height='52px' marginY={3}> 
             <Text fontSize='xl' fontWeight='thin' textTransform='uppercase'>Sign Up</Text>
-        </SolidButton>
+        </BaseButton>
         <Text color='petcode.neutral.500' fontSize='lg'>
             Already have an account?{ ' ' }
             <Link color='petcode.blue.400' href='/login'>
                 Sign In
             </Link>
         </Text>
-        <Text color='petcode.yellow' fontSize='lg' marginTop={3}>
+        <Text color='petcode.yellow.400' fontSize='lg' marginTop={3}>
             <Link>
                 Need Help?
             </Link>
