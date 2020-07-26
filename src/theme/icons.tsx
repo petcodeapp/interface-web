@@ -2,8 +2,8 @@ import React from 'react';
 
 export default {
     user: {
-        path: <path stroke="currentColor" fill="transparent" d="M39.5 16.75a13 13 0 1 1-26 0 13 13 0 0 1 26 0zm-13 22.75A22.75 22.75 0 0 0 3.75 62.25h45.5A22.75 22.75 0 0 0 26.5 39.5z" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>,
-        viewBox: '0 0 53 66'
+        path: <path stroke="currentColor" fill="transparent" d="M2.694 14.82A12.775 12.775 0 0 1 9 13.167c2.292 0 4.443.6 6.306 1.653M11.75 7.667a2.75 2.75 0 1 1-5.5 0 2.75 2.75 0 0 1 5.5 0zm5.5 1.833a8.25 8.25 0 1 1-16.5 0 8.25 8.25 0 0 1 16.5 0z" stroke-linecap="round" stroke-linejoin="round"/>,
+        viewBox: '0 0 18 19'
     },
     'lock-closed': { path: <path fill="currentColor" d="M7 10V7a5 5 0 1 1 10 0v3h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h2zm2 0h6V7a3 3 0 0 0-6 0v3zm-4 2v8h14v-8H5zm7 2a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/> },
     hashtag: { path: <path fill="currentColor" d="M11.03 8h3.94l1.06-4.24a1 1 0 1 1 1.94.48L17.03 8H20a1 1 0 0 1 0 2h-3.47l-1 4H18a1 1 0 1 1 0 2h-2.97l-1.06 4.25a1 1 0 1 1-1.94-.49l.94-3.76H9.03l-1.06 4.25a1 1 0 1 1-1.94-.49L6.97 16H4a1 1 0 0 1 0-2h3.47l1-4H6a1 1 0 0 1 0-2h2.97l1.06-4.24a1 1 0 1 1 1.94.48L11.03 8zm-.5 2l-1 4h3.94l1-4h-3.94z"/> },

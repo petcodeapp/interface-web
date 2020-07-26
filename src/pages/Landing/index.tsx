@@ -29,11 +29,11 @@ const Header = () => (
         <Text marginRight={8}>About Us</Text>
         <Text marginRight={8}>Purchase</Text>
         <Text display='flex' alignItems='center' marginRight={8}>
-            <Icon name='template' size='20px' marginRight={1}/>
+            <Icon name='template' size='15px' marginRight={2}/>
             Register
         </Text>
         <Text display='flex' alignItems='center'>
-            <Icon name='user-circle' size='20px' marginRight={1}/>
+            <Icon name='user-circle' size='16px' marginRight={2}/>
             Sign In
         </Text>
     </Flex>
