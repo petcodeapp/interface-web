@@ -20,7 +20,7 @@ const Splash = () => (
         backgroundImage='url(/media/karans-dog.JPG)'
         backgroundSize='cover'
         backgroundPosition='center'
-        paddingY={ { xs: 10, md: 200 } }
+        paddingY={ { xs: 100, sm: 200 } }
         paddingX={ { xs: 10, md: 0 } }
         paddingLeft={ { md: 100 } }
     >
@@ -31,10 +31,10 @@ const Splash = () => (
             >
                 One Code
             </Heading>
-            <Text color='white' fontSize={ { xs: 'xl', md: '3xl' } } width={ { md: '400px' } }>
+            <Text color='white' fontSize={ { xs: 'xl', sm: '3xl' } } width={ { sm: '400px' } }>
                 An endless suite of features for pet owners.
             </Text>
-            <Flex direction={ { xs: 'column', md: 'row' } } alignSelf={ { xs: 'center', md: 'start' } } marginTop={6}>
+            <Flex direction={ { xs: 'column', sm: 'row' } } marginTop={6}>
                 <SplashButton marginRight={4} marginBottom={4}>
                     <Text>Learn More</Text>
                 </SplashButton>
