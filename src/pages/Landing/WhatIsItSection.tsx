@@ -4,7 +4,7 @@ import { Flex, FlexProps, Heading, Image, Text, useTheme } from '@chakra-ui/core
 
 import IconBadge from '../../components/Shared/badge/IconBadge';
 
-import useBreakpoint, { Config } from 'use-breakpoint';
+import useBreakpoint from 'use-breakpoint';
 
 type WhatIsItCardProps = {
     align: 'left'|'center'|'right';
