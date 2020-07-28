@@ -25,6 +25,10 @@ const Routes = () => {
         <ForgotPasswordPage />
       </PublicRoute>
 
+      <PrivateRoute path="/admin">
+        <AdminPage />
+      </PrivateRoute>
+
       <PrivateRoute path="/dashboard">
         <DashboardPage />
       </PrivateRoute>

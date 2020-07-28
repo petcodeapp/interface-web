@@ -6,9 +6,9 @@ import Header from '../../components/Shared/header';
 import Sidebar from './sections/Sidebar';
 
 const DashboardPage = () => (
-    <Flex direction='column' paddingTop='57px'>
+    <Flex direction='column' height='calc(100% - 57px)' paddingTop='57px'>
         <Header backgroundColor='petcode.neutral.700'/>
-        <Flex direction='row'>
+        <Flex direction='row' height='100%'>
             <Sidebar/>
             Dashboard
         </Flex>
