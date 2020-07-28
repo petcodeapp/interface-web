@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Box, Flex, Icon, Text } from '@chakra-ui/core';
 
-import Splash from './Splash';
-import WhatIsItSection from './WhatIsItSection';
-import WhyPetCodeSection from './WhyPetCodeSection';
-import GetStartedSection from './GetStartedSection';
-import TestimonialSection from './TestimonialSection';
-import Footer from './Footer';
+import Splash from './sections/Splash';
+import WhatIsItSection from './sections/WhatIsItSection';
+import WhyPetCodeSection from './sections/WhyPetCodeSection';
+import GetStartedSection from './sections/GetStartedSection';
+import TestimonialSection from './sections/TestimonialSection';
+import Footer from './sections/Footer';
 
 const Header = () => (
     <Flex
