@@ -1,12 +1,13 @@
 import React from "react";
-import LandingPage from "../../pages/Landing/index";
-import OldLandingpage from "../../pages/OldLanding/index";
-import LoginPage from "../../pages/Login/index";
+import LandingPage from "../../pages/Landing";
+import OldLandingpage from "../../pages/OldLanding";
+import LoginPage from "../../pages/Login";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
-import AdminPage from "../../pages/Admin/index";
-import RegistrationPage from "../../pages/Registration/index";
-import ForgotPasswordPage from "../../pages/ForgotPassword/index";
+import AdminPage from "../../pages/Admin";
+import RegistrationPage from "../../pages/Registration/";
+import ForgotPasswordPage from "../../pages/ForgotPassword";
+import DashboardPage from "../../pages/Dashboard";
 import { useObserver } from "mobx-react-lite";
 
 const Routes = () => {
@@ -25,7 +26,7 @@ const Routes = () => {
       </PublicRoute>
 
       <PrivateRoute path="/dashboard">
-        <AdminPage />
+        <DashboardPage />
       </PrivateRoute>
 
       <PublicRoute path="/oldlanding">
