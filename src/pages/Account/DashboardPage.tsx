@@ -4,24 +4,8 @@ import { Box, Flex, Image, Text } from '@chakra-ui/core';
 import QRCode from 'qrcode.react';
 import { withTheme } from 'emotion-theming';
 
-import Header from '../../components/Shared/header';
-import Sidebar from './sections/Sidebar';
-
-type InfoFieldProps = {
-    field: string;
-    value: string;
-};
-
-const InfoField: React.FC<InfoFieldProps> = ({ field, value }) => (
-    <Box>
-        <Text color='petcode.blue.400' fontSize='xl'>
-            { value }
-        </Text>
-        <Text color='petcode.neutral.400' fontSize='sm'>
-            { field }
-        </Text>
-    </Box>
-);
+import AccountPageLayout from './components/AccountPageLayout';
+import InfoField from './components/InfoField';
 
 const Dashboard = withTheme(({ theme }) => (
     <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
@@ -75,13 +59,9 @@ const Dashboard = withTheme(({ theme }) => (
 ));
 
 const DashboardPage = () => (
-    <Flex direction='column' height='calc(100% - 57px)' paddingTop='57px'>
-        <Header backgroundColor='petcode.neutral.700'/>
-        <Flex direction='row' height='100%'>
-            <Sidebar/>
-            <Dashboard/>
-        </Flex>
-    </Flex>
+    <AccountPageLayout>
+        <Dashboard/>
+    </AccountPageLayout>
 );
 
 export default DashboardPage;

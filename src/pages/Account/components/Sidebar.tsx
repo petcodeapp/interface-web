@@ -1,18 +1,22 @@
 import React from 'react';
 
-import { Box, Flex, Icon, Image, Text } from '@chakra-ui/core';
+import { Box, Flex, Icon, Image, Link, Text } from '@chakra-ui/core';
+import { Link as RouterLink, LinkProps, withRouter } from 'react-router-dom';
 
 import BaseButton from '../../../components/Shared/button/BaseButton';
 
-type SidebarItemProps = {
+type SidebarLinkProps = {
     iconName: string;
     text: string;
     selected?: boolean;
-};
+} & LinkProps;
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ iconName, text, selected = false }) => (
-    <Flex
-        direction='row'
+const SidebarLink: React.FC<SidebarLinkProps> = ({ iconName, text, selected = false, ...props }) => (
+    <Link
+        // @ts-ignore
+        as={ RouterLink }
+        display='flex'
+        flexDirection='row'
         fontWeight='thin'
         paddingX={10}
         marginY={3}
@@ -26,13 +30,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ iconName, text, selected = fa
                 marginLeft: '3px'
             }
         ) }
+        { ...props }
     >
         <Icon name={ iconName } size='19px' marginRight={3}/>
         <Text>{ text }</Text>
-    </Flex>
+    </Link>
 );
 
-const Sidebar = () => (
+const Sidebar = withRouter(({ location }) => (
     <Flex direction='column' width='270px' paddingY={10}>
         <Box paddingX={10}>
             <Image alt='Placeholder Dog' src='/media/placeholder-dog.png' width='89px' height='89px' marginBottom={3}/>
@@ -49,11 +54,11 @@ const Sidebar = () => (
             </Flex>
         </Box>
         <Box flexGrow={1}/>
-        <SidebarItem selected iconName='home' text='Dashboard'/>
-        <SidebarItem iconName='phone' text='Contact Info'/>
-        <SidebarItem iconName='heart' text='Pet Info'/>
-        <SidebarItem iconName='clipboard-thin' text='Medical Info'/>
-        <SidebarItem iconName='location' text='Scan Locations'/>
+        <SidebarLink selected={ location.pathname == '/dashboard' } to='/dashboard' iconName='home' text='Dashboard'/>
+        <SidebarLink selected={ location.pathname == '/contactinfo' } to='/contactinfo' iconName='phone' text='Contact Info'/>
+        <SidebarLink selected={ location.pathname == '/petinfo' } to='/petinfo' iconName='heart' text='Pet Info'/>
+        <SidebarLink selected={ location.pathname == '/medicalinfo' } to='/medicalinfo' iconName='clipboard-thin' text='Medical Info'/>
+        <SidebarLink selected={ location.pathname == '/scanlocations' } to='/scanlocations' iconName='location' text='Scan Locations'/>
         <Box flexGrow={3}/>
         <BaseButton
             size='md'
@@ -75,6 +80,6 @@ const Sidebar = () => (
             <Text>Sign Out</Text>
         </BaseButton>
     </Flex>
-);
+));
 
 export default Sidebar;
