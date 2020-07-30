@@ -87,5 +87,9 @@ export default {
             </g>
         ),
         viewBox: '0 0 19 19'
+    },
+    edit: {
+        path: <path stroke="currentColor" fill="transparent" d="M26.366 6.66914l6.9649 6.96486-6.9649-6.96486zm2.9546-2.95455c.9236-.92359 2.1762-1.44246 3.4824-1.44246s2.5588.51887 3.4824 1.44246c.9236.9236 1.4425 2.17626 1.4425 3.48243 0 1.30616-.5189 2.55882-1.4425 3.48238L9.16664 37.7982H2.27271v-7.0357L29.3206 3.71459z" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>,
+        viewBox: '0 0 40 40'
     }
 };

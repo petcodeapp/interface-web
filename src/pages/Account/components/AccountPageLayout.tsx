@@ -8,7 +8,7 @@ import Sidebar from './Sidebar';
 const AccountPageLayout: React.FC = ({ children }) => (
     <Flex direction='column' minHeight='calc(100% - 57px)' paddingTop='57px'>
         <Header backgroundColor='petcode.neutral.700'/>
-        <Flex direction='row' minHeight='100%'>
+        <Flex direction='row' flexGrow={1}>
             <Sidebar/>
             { children }
         </Flex>

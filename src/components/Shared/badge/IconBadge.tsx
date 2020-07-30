@@ -14,8 +14,8 @@ const IconBadge: React.FC<IconBadgeProps> = ({
     iconPadding,
     ...props
 }) => (
-    <Box rounded='full' padding={ iconPadding } { ...props }>
-        <Icon name={ iconName } color='white' size={ iconSize }/>
+    <Box color='white' rounded='full' padding={ iconPadding } { ...props }>
+        <Icon name={ iconName } size={ iconSize }/>
     </Box>
 );
 

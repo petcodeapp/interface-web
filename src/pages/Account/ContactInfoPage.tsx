@@ -1,12 +1,49 @@
 import React, { useState } from 'react';
 
-import { Flex, FlexProps, Text } from '@chakra-ui/core';
+import { Flex, FlexProps, Icon, Text } from '@chakra-ui/core';
 
+import MotionBox from '../../components/Motion/Box';
 import AccountPageLayout from './components/AccountPageLayout';
 import InfoField from './components/InfoField';
 
-import { observable } from 'mobx';
-import { observer } from 'mobx-react';
+import { action, observable } from 'mobx';
+import { observer, useObserver } from 'mobx-react';
+
+const EditButton = () => {
+    const variants = {
+        open: { opacity: 1, width: '100%' },
+        closed: { opacity: 0, width: 0 }
+    };
+
+    const [hovered] = useState(() => observable.box(false));
+
+    return useObserver(() => (
+        <Flex
+            direction='row'
+            position='fixed'
+            bottom={5}
+            right={5}
+            rounded='full'
+            color='petcode.neutral.700'
+            padding={4}
+            transition='all 0.2s'
+            backgroundColor='petcode.yellow.400'
+            cursor='pointer'
+            onMouseEnter={ action(() => hovered.set(true)) }
+            onMouseLeave={ action(() => hovered.set(false)) }
+        >
+            <MotionBox
+                animate={ hovered.get() ? 'open' : 'closed' }
+                variants={ variants }
+            >
+                <Text fontSize='xl' fontWeight='thin' textTransform='uppercase' marginRight={2}>
+                    Edit
+                </Text>
+            </MotionBox>
+            <Icon name='edit' size='30px'/>
+        </Flex>
+    ));
+};
 
 type ContactInfo = {
     level: string;
@@ -18,9 +55,10 @@ type ContactInfo = {
 
 type ContactInfoCardProps = {
     contactInfo: ContactInfo;
+    editable?: boolean;
 } & FlexProps;
 
-const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo, ...props }) => (
+const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo, editable = false, ...props }) => (
     <Flex direction='column' rounded='lg' backgroundColor='white' padding={6} { ...props }>
         <Flex direction='row' justifyContent='space-between'>
             <Text color='petcode.neutral.700' fontSize='2xl' marginBottom={3}>
@@ -74,6 +112,7 @@ const ContactInfoSection = () => {
                     />
                 ))
             }
+            <EditButton/>
         </Flex>
     );
 };
