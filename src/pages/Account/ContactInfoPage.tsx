@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Flex, FlexProps, Icon, Text } from '@chakra-ui/core';
 
 import MotionBox from '../../components/Motion/Box';
+import MotionFlex from '../../components/Motion/Flex';
 import AccountPageLayout from './components/AccountPageLayout';
 import InfoField from './components/InfoField';
 
@@ -18,19 +19,21 @@ const EditButton = () => {
     const [hovered] = useState(() => observable.box(false));
 
     return useObserver(() => (
-        <Flex
+        <MotionFlex
             direction='row'
+            alignItems='center'
             position='fixed'
             bottom={5}
             right={5}
             rounded='full'
             color='petcode.neutral.700'
             padding={4}
-            transition='all 0.2s'
             backgroundColor='petcode.yellow.400'
             cursor='pointer'
             onMouseEnter={ action(() => hovered.set(true)) }
             onMouseLeave={ action(() => hovered.set(false)) }
+            whileTap={ { scale: 1.1 } }
+            transition={ { duration: '0.2' } }
         >
             <MotionBox
                 animate={ hovered.get() ? 'open' : 'closed' }
@@ -41,7 +44,7 @@ const EditButton = () => {
                 </Text>
             </MotionBox>
             <Icon name='edit' size='30px'/>
-        </Flex>
+        </MotionFlex>
     ));
 };
 
@@ -69,7 +72,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
             </Text>
         </Flex>
         <Flex direction='row' justifyContent='space-between'>
-            <InfoField field='Name' value={ contactInfo.name }/>
+            <InfoField editable field='Name' value={ contactInfo.name } onChange={  action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.name = e.target.value)) }/>
         </Flex>
         <Flex direction='row' justifyContent='space-between'>
             <InfoField field='Address' value={ contactInfo.address }/>
