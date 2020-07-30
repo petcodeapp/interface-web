@@ -11,7 +11,7 @@ type InfoFieldProps = {
 const InfoField: React.FC<InfoFieldProps> = ({ field, value, editable = false, ...props }) => (
     <Box>
         { editable ? (
-            <Input variant='flushed' outline='none' value={ value } { ...props }/>
+            <Input variant='flushed' value={ value } { ...props }/>
         ) : (
             <Text color='petcode.blue.400' fontSize='xl'>
                 { value }

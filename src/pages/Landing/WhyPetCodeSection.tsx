@@ -22,7 +22,6 @@ const ToggleButton: React.FC<BaseButtonProps & { toggled: boolean }> = ({ childr
             _hover: {},
             _active: {},
             variant: 'solid',
-            border: 'none',
             cursor: 'default'
         } : {}) }
         { ...props }

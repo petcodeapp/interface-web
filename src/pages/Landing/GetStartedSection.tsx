@@ -23,6 +23,7 @@ const GetStartedStep: React.FC<GetStartedStepProps> = ({
 }) => (
     <Flex direction='column' alignItems='center' flexBasis='25%' position='relative' top='-70px' marginX={ { xs: 10, sm: 32, md: 6 } }>
         <Box
+            rounded='full'
             color='white'
             backgroundColor='petcode.yellow.400'
             position='relative'

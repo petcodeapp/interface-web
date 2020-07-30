@@ -18,7 +18,6 @@ const DigitInput = (props: InputProps) => (
             textShadow='0 0 0 black'
             maxWidth='100%'
             height='100%'
-            borderColor='none'
             textAlign='center'
             fontSize={ { xs: '5xl', sm: '6xl', md: '7xl' } }
             fontFamily='Nunito'
