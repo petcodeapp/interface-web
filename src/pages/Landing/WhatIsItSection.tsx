@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { Flex, FlexProps, Heading, Image, Text, useTheme } from '@chakra-ui/core';
-
-import IconBadge from '../../components/Shared/badge/IconBadge';
+import { Box, Flex, FlexProps, Heading, Icon, Image, Text, useTheme } from '@chakra-ui/core';
 
 import useBreakpoint from 'use-breakpoint';
 
@@ -46,7 +44,9 @@ const WhatIsItCard: React.FC<WhatIsItCardProps> = (
             >
                 { header }
             </Text>
-            <IconBadge iconName={ iconName } iconSize='50px' iconPadding={6} backgroundColor={ iconBgColor }/>
+            <Box color='white' rounded='full' padding={6} backgroundColor={ iconBgColor }>
+                <Icon name={ iconName } size='50px'/>
+            </Box>
         </Flex>
         <Text color='petcode.neutral.500' fontSize='xl'>
             { description }
@@ -102,8 +102,8 @@ const WhatIsItSection = () => {
                         position='relative'
                         top={ { md: '-70px' } }
                         flexBasis='33%'
-                        paddingLeft={ { xs: 0, md: 6 } }
-                        marginTop={ { xs: 6, md: 0 } }
+                        paddingRight={ { xs: 0, md: 10 } }
+                        marginTop={ { xs: 6, md: 12 } }
                     />
                     <WhatIsItCard
                         align='center'
@@ -123,8 +123,8 @@ const WhatIsItSection = () => {
                         position='relative'
                         top={ { md: '-70px' } }
                         flexBasis='33%'
-                        paddingRight={ { xs: 0, md: 6 } }
-                        marginTop={ { xs: 6, md: 0 } }
+                        paddingLeft={ { xs: 0, md: 10 } }
+                        marginTop={ { xs: 6, md: 12 } }
                     />
                 </Flex>
             </Flex>

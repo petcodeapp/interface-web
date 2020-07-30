@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { Box, Flex, Heading, Text } from '@chakra-ui/core';
+import { Box, Flex, Heading, Icon, Text } from '@chakra-ui/core';
 
 import BaseButton, { BaseButtonProps } from '../../components/Shared/button/BaseButton';
-import IconBadge from '../../components/Shared/badge/IconBadge';
 
 type GetStartedStepProps = {
     iconName: string;
@@ -23,16 +22,17 @@ const GetStartedStep: React.FC<GetStartedStepProps> = ({
     buttonProps = {}
 }) => (
     <Flex direction='column' alignItems='center' flexBasis='25%' position='relative' top='-70px' marginX={ { xs: 10, sm: 32, md: 6 } }>
-        <IconBadge
-            iconName={ iconName }
+        <Box
+            color='white'
             backgroundColor='petcode.yellow.400'
             position='relative'
-            iconSize='50px'
-            iconPadding={6}
+            padding={6}
             top='70px'
             border='10px solid'
             borderColor='petcode.neutral.200'
-        />
+        >
+            <Icon name={ iconName } size='50px'/>
+        </Box>
         <Flex
             direction='column'
             alignItems='center'
