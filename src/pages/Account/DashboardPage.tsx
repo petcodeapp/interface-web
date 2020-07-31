@@ -5,7 +5,7 @@ import QRCode from 'qrcode.react';
 import { withTheme } from 'emotion-theming';
 
 import AccountPageLayout from './components/AccountPageLayout';
-import InfoField from './components/InfoField';
+import { InfoFieldText, InfoFieldLabel } from './components/InfoField';
 
 const Dashboard = withTheme(({ theme }) => (
     <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
@@ -49,10 +49,22 @@ const Dashboard = withTheme(({ theme }) => (
                 <Text color='petcode.neutral.700' fontSize='3xl' marginBottom={3}>
                     Account Information
                 </Text>
-                <InfoField field='Name' value='John Doe'/>
-                <InfoField field='Email' value='example@gmail.com'/>
-                <InfoField field='Password' value='*******'/>
-                <InfoField field='Pet Name' value='Max'/>
+                <Box>
+                    <InfoFieldText>John Doe</InfoFieldText>
+                    <InfoFieldLabel>Name</InfoFieldLabel>
+                </Box>
+                <Box>
+                    <InfoFieldText>example@gmail.com</InfoFieldText>
+                    <InfoFieldLabel>Email</InfoFieldLabel>
+                </Box>
+                <Box>
+                    <InfoFieldText>*******</InfoFieldText>
+                    <InfoFieldLabel>Password</InfoFieldLabel>
+                </Box>
+                <Box>
+                    <InfoFieldText>Max</InfoFieldText>
+                    <InfoFieldLabel>Pet Name</InfoFieldLabel>
+                </Box>
             </Flex>
         </Flex>
     </Flex>

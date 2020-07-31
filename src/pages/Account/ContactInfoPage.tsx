@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import { Flex, FlexProps, Icon, Text } from '@chakra-ui/core';
+import { Box, Flex, FlexProps, Icon, Input, Text } from '@chakra-ui/core';
 
 import ExpandButton from '../../components/Shared/button/ExpandButton';
 import AccountPageLayout from './components/AccountPageLayout';
-import InfoField from './components/InfoField';
+import { InfoFieldText, InfoFieldLabel } from './components/InfoField';
 
 import { action, observable, IObservableValue } from 'mobx';
 import { observer, useObserver } from 'mobx-react';
@@ -40,15 +40,29 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
         {
             Object.keys(contactInfo.info).map((field, idx) => (
                 <Flex key={ idx } direction='row' alignItems='center' justifyContent='space-between'>
-                    <InfoField
-                        isEditable={ isEditable.get() }
-                        field={ contactInfo.info[field].displayName }
-                        value={ contactInfo.info[field].value }
-                        flexBasis='60%'
-                        onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
-                            (contactInfo.info[field].value = e.target.value)
-                        ) }
-                    />
+                    <Box flexBasis='60%'>
+                        {
+                            isEditable.get() ? (
+                                <Input
+                                    size='md'
+                                    variant='flushed'
+                                    color='petcode.blue.400'
+                                    fontSize='xl'
+                                    fontFamily='Nunito'
+                                    height='auto'
+                                    value={ contactInfo.info[field].value }
+                                    borderColor='petcode.neutral.400'
+                                    _focus={ { borderColor: 'petcode.blue.400' } }
+                                    onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        (contactInfo.info[field].value = e.target.value)
+                                    ) }
+                                />
+                            ) : (
+                                <InfoFieldText>{ contactInfo.info[field].value }</InfoFieldText>
+                            )
+                        }
+                        <InfoFieldLabel>{ contactInfo.info[field].displayName }</InfoFieldLabel>
+                    </Box>
                     <Flex
                         alignItems='center'
                         justifyContent='center'
