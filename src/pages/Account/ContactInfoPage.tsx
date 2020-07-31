@@ -79,6 +79,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
                 isEditable={ isEditable && isEditable.get() }
                 field='Name'
                 value={ contactInfo.name }
+                flexBasis='60%'
                 onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.name = e.target.value)) }
             />
         </Flex>
@@ -87,6 +88,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
                 isEditable={ isEditable && isEditable.get() }
                 field='Address'
                 value={ contactInfo.address }
+                flexBasis='60%'
                 onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.address = e.target.value)) }
             />
         </Flex>
@@ -95,6 +97,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
                 isEditable={ isEditable && isEditable.get() }
                 field='Phone Number'
                 value={ contactInfo.phoneNumber }
+                flexBasis='60%'
                 onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.phoneNumber = e.target.value)) }
             />
         </Flex>
@@ -103,6 +106,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
                 isEditable={ isEditable && isEditable.get() }
                 field='Email'
                 value={ contactInfo.email }
+                flexBasis='60%'
                 onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.email = e.target.value)) }
             />
         </Flex>
