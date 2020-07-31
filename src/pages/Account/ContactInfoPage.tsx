@@ -9,18 +9,22 @@ import InfoField from './components/InfoField';
 import { action, observable, IObservableValue } from 'mobx';
 import { observer, useObserver } from 'mobx-react';
 
+type VisibleValue = {
+    displayName: string;
+    value: string;
+    visible: boolean;
+};
 
 type ContactInfo = {
     level: string;
-    name: string;
-    address: string;
-    phoneNumber: string;
-    email: string;
+    info: {
+        [key: string]: VisibleValue;
+    };
 };
 
 type ContactInfoCardProps = {
     contactInfo: ContactInfo;
-    isEditable?: IObservableValue<boolean>;
+    isEditable: IObservableValue<boolean>;
 } & FlexProps;
 
 const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo, isEditable, ...props }) => (
@@ -33,60 +37,56 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
                 Visibility
             </Text>
         </Flex>
-        <Flex direction='row' justifyContent='space-between'>
-            <InfoField
-                isEditable={ isEditable && isEditable.get() }
-                field='Name'
-                value={ contactInfo.name }
-                flexBasis='60%'
-                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.name = e.target.value)) }
-            />
-        </Flex>
-        <Flex direction='row' justifyContent='space-between'>
-            <InfoField
-                isEditable={ isEditable && isEditable.get() }
-                field='Address'
-                value={ contactInfo.address }
-                flexBasis='60%'
-                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.address = e.target.value)) }
-            />
-        </Flex>
-        <Flex direction='row' justifyContent='space-between'>
-            <InfoField
-                isEditable={ isEditable && isEditable.get() }
-                field='Phone Number'
-                value={ contactInfo.phoneNumber }
-                flexBasis='60%'
-                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.phoneNumber = e.target.value)) }
-            />
-        </Flex>
-        <Flex direction='row' justifyContent='space-between'>
-            <InfoField
-                isEditable={ isEditable && isEditable.get() }
-                field='Email'
-                value={ contactInfo.email }
-                flexBasis='60%'
-                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.email = e.target.value)) }
-            />
-        </Flex>
+        {
+            Object.keys(contactInfo.info).map((field, idx) => (
+                <Flex key={ idx } direction='row' alignItems='center' justifyContent='space-between'>
+                    <InfoField
+                        isEditable={ isEditable.get() }
+                        field={ contactInfo.info[field].displayName }
+                        value={ contactInfo.info[field].value }
+                        flexBasis='60%'
+                        onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                            (contactInfo.info[field].value = e.target.value)
+                        ) }
+                    />
+                    <Flex
+                        alignItems='center'
+                        justifyContent='center'
+                        rounded='full'
+                        backgroundColor='petcode.yellow.400'
+                        size='32px'
+                        cursor={ isEditable.get() ? 'pointer' : 'default' }
+                        onClick={ action(() =>
+                           isEditable.get() && (contactInfo.info[field].visible = !contactInfo.info[field].visible)
+                        ) }
+                    >
+                        { contactInfo.info[field].visible && <Icon name='checkmark' size='20px' color='petcode.neutral.700'/> }
+                    </Flex>
+                </Flex>
+            ))
+        }
     </Flex>
 ));
 
 const ContactInfoSection = () => {
-    const [data] = useState(() => observable([
+    const [contactInfos] = useState(() => observable([
         {
             level: 'Primary',
-            name: 'John Doe',
-            address: '123 First Street, Cupertino, CA 94087',
-            phoneNumber: '(408) 123 4567',
-            email: 'example@gmail.com'
+            info: {
+                name: { displayName: 'Name', value: 'John Doe', visible: true },
+                address: { displayName: 'Address', value: '123 First Street, Cupertino, CA 94087', visible: true },
+                phoneNumber: { displayName: 'Phone Number', value: '(408) 123 4567', visible: true },
+                email: { displayName: 'Email', value: 'example@gmail.com', visible: true }
+            }
         },
         {
             level: 'Secondary',
-            name: 'Jane Doe',
-            address: '123 Second Street, Cupertino, CA 94087',
-            phoneNumber: '(408) 765 4321',
-            email: 'anotherexample@gmail.com'
+            info: {
+                name: { displayName: 'Name', value: 'Jane Doe', visible: true },
+                address: { displayName: 'Address', value: '123 Second Street, Cupertino, CA 94087', visible: true },
+                phoneNumber: { displayName: 'Phone Number', value: '(408) 765 4321', visible: true },
+                email: { displayName: 'Email', value: 'anotherexample@gmail.com', visible: true }
+            }
         }
     ]));
 
@@ -95,12 +95,12 @@ const ContactInfoSection = () => {
     return useObserver(() => (
         <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
             {
-                data.map((contactInfo, idx) => (
+                contactInfos.map((contactInfo, idx) => (
                     <ContactInfoCard
                         key={ idx }
                         isEditable={ isEditable }
                         contactInfo={ contactInfo }
-                        marginBottom={ data.length - 1 != idx ? 10 : 0 }
+                        marginBottom={ contactInfos.length - 1 != idx ? 10 : 0 }
                     />
                 ))
             }
