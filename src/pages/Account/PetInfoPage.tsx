@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Box, Flex, FlexProps, Icon, IconProps, Link, Text, PseudoBoxProps } from '@chakra-ui/core';
-import { Link as RouterLink } from 'react-router-dom';
+import { Box, Flex, FlexProps, Icon, IconProps, Link, Text, PseudoBoxProps, LinkProps } from '@chakra-ui/core';
+import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 
 import AccountPageLayout from './components/AccountPageLayout';
 
@@ -31,6 +31,21 @@ const BackgroundIcon: React.FC<IconProps> = props => (
     <Icon color='petcode.neutral.700' position='absolute' opacity={0.05} { ...props }/>
 );
 
+const InfoButton: React.FC<LinkProps & RouterLinkProps> = props => (
+    <Link
+        // @ts-ignore
+        as={ RouterLink }
+        display='flex'
+        flexDirection='column'
+        justifyContent='center'
+        rounded='lg'
+        backgroundColor='petcode.yellow.400'
+        flexBasis='250px'
+        padding={6}
+        { ...props }
+    />
+);
+
 const PetInfoSection = () => (
     <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
         <Flex direction='row' alignItems='center' color='petcode.neutral.700'>
@@ -54,41 +69,21 @@ const PetInfoSection = () => (
                 </Text>
             </Flex>
             <Box flexGrow={1}/>
-            <Link
-                // @ts-ignore
-                as={ RouterLink }
+            <InfoButton
                 to='/contactinfo'
-                display='flex'
-                flexDirection='column'
-                justifyContent='center'
-                rounded='lg'
-                backgroundColor='petcode.yellow.400'
-                flexBasis='200px'
-                padding={6}
                 marginX={6}
             >
                 <Text position='relative' fontSize='3xl' zIndex={2}>
                     Contact Information
                 </Text>
                 <BackgroundIcon alignSelf='end' size='100px' name='phone'/>
-            </Link>
-            <Link
-                // @ts-ignore
-                as={ RouterLink }
-                to='/medicalinfo'
-                display='flex'
-                flexDirection='column'
-                justifyContent='center'
-                rounded='lg'
-                backgroundColor='petcode.yellow.400'
-                flexBasis='200px'
-                padding={6}
-            >
+            </InfoButton>
+            <InfoButton to='/medicalinfo'>
                 <Text position='relative' fontSize='3xl' zIndex={2}>
                     Medical Information
                 </Text>
                 <BackgroundIcon alignSelf='end' size='100px' name='clipboard'/>
-            </Link>
+            </InfoButton>
         </Flex>
         <Flex direction='row' justifyContent='space-between' flexWrap='wrap'>
             <PetInfoCard>
