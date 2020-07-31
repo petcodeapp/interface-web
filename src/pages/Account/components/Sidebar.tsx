@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { Box, Flex, Icon, Image, Link, Text } from '@chakra-ui/core';
+import { Box, Flex, Icon, Link, Text } from '@chakra-ui/core';
 import { Link as RouterLink, LinkProps, withRouter } from 'react-router-dom';
 
 import BaseButton from '../../../components/Shared/button/BaseButton';
@@ -45,7 +45,14 @@ const Sidebar = withRouter(({ location }) => {
     return (
         <Flex direction='column' width='270px' paddingY={10}>
             <Box paddingX={10}>
-                <Image alt='Placeholder Dog' src='/media/placeholder-dog.png' width='89px' height='89px' marginBottom={3}/>
+                <Box
+                    rounded='full'
+                    size='89px'
+                    backgroundSize='cover'
+                    backgroundPosition='center'
+                    backgroundImage='url(/media/placeholder-dog.png)'
+                    marginBottom={3}
+                />
                 <Flex direction='row' justifyContent='space-between'>
                     <Flex direction='column'>
                         <Text color='petcode.neutral.700' fontSize='3xl' fontWeight='bold'>
