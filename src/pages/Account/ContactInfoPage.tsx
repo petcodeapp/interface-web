@@ -7,10 +7,12 @@ import MotionFlex from '../../components/Motion/Flex';
 import AccountPageLayout from './components/AccountPageLayout';
 import InfoField from './components/InfoField';
 
-import { action, observable } from 'mobx';
+import { action, observable, IObservableValue } from 'mobx';
 import { observer, useObserver } from 'mobx-react';
 
-const EditButton = () => {
+import { MotionProps } from 'framer-motion';
+
+const EditButton: React.FC<FlexProps & MotionProps> = (props) => {
     const variants = {
         open: { opacity: 1, width: '100%' },
         closed: { opacity: 0, width: 0 }
@@ -34,6 +36,7 @@ const EditButton = () => {
             onMouseLeave={ action(() => hovered.set(false)) }
             whileTap={ { scale: 1.1 } }
             transition={ { duration: '0.2' } }
+            { ...props }
         >
             <MotionBox
                 animate={ hovered.get() ? 'open' : 'closed' }
@@ -58,10 +61,10 @@ type ContactInfo = {
 
 type ContactInfoCardProps = {
     contactInfo: ContactInfo;
-    editable?: boolean;
+    isEditable?: IObservableValue<boolean>;
 } & FlexProps;
 
-const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo, editable = false, ...props }) => (
+const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo, isEditable, ...props }) => (
     <Flex direction='column' rounded='lg' backgroundColor='white' padding={6} { ...props }>
         <Flex direction='row' justifyContent='space-between'>
             <Text color='petcode.neutral.700' fontSize='2xl' marginBottom={3}>
@@ -72,16 +75,36 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
             </Text>
         </Flex>
         <Flex direction='row' justifyContent='space-between'>
-            <InfoField editable field='Name' value={ contactInfo.name } onChange={  action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.name = e.target.value)) }/>
+            <InfoField
+                isEditable={ isEditable && isEditable.get() }
+                field='Name'
+                value={ contactInfo.name }
+                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.name = e.target.value)) }
+            />
         </Flex>
         <Flex direction='row' justifyContent='space-between'>
-            <InfoField field='Address' value={ contactInfo.address }/>
+            <InfoField
+                isEditable={ isEditable && isEditable.get() }
+                field='Address'
+                value={ contactInfo.address }
+                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.address = e.target.value)) }
+            />
         </Flex>
         <Flex direction='row' justifyContent='space-between'>
-            <InfoField field='Phone Number' value={ contactInfo.phoneNumber }/>
+            <InfoField
+                isEditable={ isEditable && isEditable.get() }
+                field='Phone Number'
+                value={ contactInfo.phoneNumber }
+                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.phoneNumber = e.target.value)) }
+            />
         </Flex>
         <Flex direction='row' justifyContent='space-between'>
-            <InfoField field='Email' value={ contactInfo.email }/>
+            <InfoField
+                isEditable={ isEditable && isEditable.get() }
+                field='Email'
+                value={ contactInfo.email }
+                onChange={ action((e: React.ChangeEvent<HTMLInputElement>) => (contactInfo.email = e.target.value)) }
+            />
         </Flex>
     </Flex>
 ));
@@ -104,18 +127,21 @@ const ContactInfoSection = () => {
         }
     ]));
 
+    const [isEditable] = useState(() => observable.box(false));
+
     return (
         <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
             {
                 data.map((contactInfo, idx) => (
                     <ContactInfoCard
                         key={ idx }
+                        isEditable={ isEditable }
                         contactInfo={ contactInfo }
                         marginBottom={ data.length - 1 != idx ? 10 : 0 }
                     />
                 ))
             }
-            <EditButton/>
+            <EditButton onClick={ action(() => isEditable.set(!isEditable.get())) }/>
         </Flex>
     );
 };
