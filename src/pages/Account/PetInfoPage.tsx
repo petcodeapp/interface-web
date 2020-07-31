@@ -1,9 +1,35 @@
 import React from 'react';
 
-import { Box, Flex, Icon, Link, Text } from '@chakra-ui/core';
+import { Box, Flex, FlexProps, Icon, IconProps, Link, Text, PseudoBoxProps } from '@chakra-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
 import AccountPageLayout from './components/AccountPageLayout';
+
+const PetInfoCard: React.FC<FlexProps> = props => (
+    <Flex
+        direction='column'
+        justifyContent='center'
+        rounded='lg'
+        background='white'
+        flexBasis='42.5%'
+        height='100px'
+        padding={6}
+        marginTop={10}
+        { ...props }
+    />
+);
+
+const PetInfoCardText: React.FC<PseudoBoxProps> = props => (
+    <Text color='petcode.neutral.700' fontSize='4xl' { ...props }/>
+);
+
+const PetInfoCardLabel: React.FC<PseudoBoxProps> = props => (
+    <Text color='petcode.blue.400' fontSize='lg' { ...props }/>
+);
+
+const BackgroundIcon: React.FC<IconProps> = props => (
+    <Icon color='petcode.neutral.700' position='absolute' opacity={0.05} { ...props }/>
+);
 
 const PetInfoSection = () => (
     <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
@@ -17,7 +43,7 @@ const PetInfoSection = () => (
                 backgroundImage='url(/media/placeholder-dog.png)'
             />
             <Flex alignItems='center' marginLeft={4}>
-                <Icon position='absolute' size='120px' transform='rotate(12.84deg)' opacity={0.05} name='paw'/>
+                <BackgroundIcon size='120px' transform='rotate(12.84deg)' name='paw'/>
                 <Text
                     position='relative'
                     zIndex={2}
@@ -44,7 +70,7 @@ const PetInfoSection = () => (
                 <Text position='relative' fontSize='3xl' zIndex={2}>
                     Contact Information
                 </Text>
-                <Icon position='absolute' alignSelf='end' size='100px' opacity={0.05} name='phone'/>
+                <BackgroundIcon alignSelf='end' size='100px' name='phone'/>
             </Link>
             <Link
                 // @ts-ignore
@@ -61,8 +87,40 @@ const PetInfoSection = () => (
                 <Text position='relative' fontSize='3xl' zIndex={2}>
                     Medical Information
                 </Text>
-                <Icon position='absolute' alignSelf='end' size='100px' opacity={0.05} name='clipboard'/>
+                <BackgroundIcon alignSelf='end' size='100px' name='clipboard'/>
             </Link>
+        </Flex>
+        <Flex direction='row' justifyContent='space-between' flexWrap='wrap'>
+            <PetInfoCard>
+                <PetInfoCardText>Dog</PetInfoCardText>
+                <PetInfoCardLabel>Species</PetInfoCardLabel>
+                <BackgroundIcon alignSelf='end' size='120px' name='dog'/>
+            </PetInfoCard>
+            <PetInfoCard>
+                <PetInfoCardText>Weimaraner</PetInfoCardText>
+                <PetInfoCardLabel>Breed</PetInfoCardLabel>
+                <BackgroundIcon alignSelf='end' size='100px' transform='rotate(12.84deg)' name='paw'/>
+            </PetInfoCard>
+            <PetInfoCard>
+                <PetInfoCardText>8 Years</PetInfoCardText>
+                <PetInfoCardLabel>Age</PetInfoCardLabel>
+                <BackgroundIcon alignSelf='end' size='120px' name='clock'/>
+            </PetInfoCard>
+            <PetInfoCard>
+                <PetInfoCardText>Gray</PetInfoCardText>
+                <PetInfoCardLabel>Color</PetInfoCardLabel>
+                <BackgroundIcon alignSelf='end' size='100px' name='colors'/>
+            </PetInfoCard>
+            <PetInfoCard>
+                <PetInfoCardText>Friendly</PetInfoCardText>
+                <PetInfoCardLabel>Temperament</PetInfoCardLabel>
+                <BackgroundIcon alignSelf='end' size='100px' transform='rotate(12.84deg)' name='paw'/>
+            </PetInfoCard>
+            <PetInfoCard>
+                <PetInfoCardText>No</PetInfoCardText>
+                <PetInfoCardLabel>Service Animal</PetInfoCardLabel>
+                <BackgroundIcon alignSelf='end' size='120px' name='service-animal'/>
+            </PetInfoCard>
         </Flex>
     </Flex>
 );
