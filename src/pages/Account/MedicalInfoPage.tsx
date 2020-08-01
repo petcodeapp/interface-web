@@ -1,12 +1,190 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Flex } from '@chakra-ui/core';
+import { Box, Flex, Icon, Text } from '@chakra-ui/core';
+import { InfoFieldRow, InfoFieldText, InfoFieldLabel, InfoFieldInput } from './components/InfoField';
 
 import AccountPageLayout from './components/AccountPageLayout';
+import ExpandButton from '../../components/Shared/button/ExpandButton';
+import Checkbox from './components/Checkbox';
 
-const MedicalInfoSection = () => (
-    <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}/>
-);
+import { action, observable } from 'mobx';
+import { useObserver } from 'mobx-react';
+import moment from 'moment';
+
+const MedicalInfoSection = () => {
+    const [pet] = useState(() => observable({
+        allergies: { value: 'Wheat', visible: true },
+        specialNeeds: { value: 'Heat Sensitivity', visible: true },
+        vetName: { value: 'Dr. Veterinarian', visible: true },
+        vetPhoneNumber: { value: '(408) 123 4567', visible: true },
+        vaccinations: [
+            { name: 'Bordetella', date: '2020-07-09' },
+            { name: 'Lyme Disease', date: '2020-06-25' },
+            { name: 'Influenza', date: '2020-06-20' },
+            { name: 'Rabies', date: '2020-06-10' },
+            { name: 'DHPP', date: '2020-06-01' }
+        ]
+    }));
+
+    const [isEditable] = useState(() => observable.box(false));
+
+    return useObserver(() => (
+        <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
+            <Flex direction='column' rounded='lg' backgroundColor='white' padding={6} marginBottom={10}>
+                <InfoFieldRow fontSize='2xl' marginBottom={3}>
+                    <Text color='petcode.neutral.700'>
+                        General Medical Information
+                    </Text>
+                    <Text color='petcode.neutral.400'>
+                        Visibility
+                    </Text>
+                </InfoFieldRow>
+                <InfoFieldRow>
+                    <Box flexBasis='60%'>
+                        {
+                            isEditable.get() ? (
+                                <InfoFieldInput
+                                    value={ pet.specialNeeds.value }
+                                    onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        (pet.specialNeeds.value = e.target.value)
+                                    ) }
+                                />
+                            ) : (
+                                <InfoFieldText>{ pet.specialNeeds.value }</InfoFieldText>
+                            )
+                        }
+                        <InfoFieldLabel>Special Needs</InfoFieldLabel>
+                    </Box>
+                    <Checkbox
+                        checked={ pet.specialNeeds.visible }
+                        cursor={ isEditable.get() ? 'pointer' : 'default' }
+                        onClick={ action(() =>
+                           isEditable.get() && (pet.specialNeeds.visible = !pet.specialNeeds.visible)
+                        ) }
+                    />
+                </InfoFieldRow>
+                <InfoFieldRow>
+                    <Box flexBasis='60%'>
+                        {
+                            isEditable.get() ? (
+                                <InfoFieldInput
+                                    value={ pet.allergies.value }
+                                    onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        (pet.allergies.value = e.target.value)
+                                    ) }
+                                />
+                            ) : (
+                                <InfoFieldText>{ pet.allergies.value }</InfoFieldText>
+                            )
+                        }
+                        <InfoFieldLabel>Allergies</InfoFieldLabel>
+                    </Box>
+                    <Checkbox
+                        checked={ pet.allergies.visible }
+                        cursor={ isEditable.get() ? 'pointer' : 'default' }
+                        onClick={ action(() =>
+                           isEditable.get() && (pet.allergies.visible = !pet.allergies.visible)
+                        ) }
+                    />
+                </InfoFieldRow>
+                <InfoFieldRow>
+                    <Box flexBasis='60%'>
+                        {
+                            isEditable.get() ? (
+                                <InfoFieldInput
+                                    value={ pet.vetName.value }
+                                    onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        (pet.vetName.value = e.target.value)
+                                    ) }
+                                />
+                            ) : (
+                                <InfoFieldText>{ pet.vetName.value }</InfoFieldText>
+                            )
+                        }
+                        <InfoFieldLabel>Veterinarian Name</InfoFieldLabel>
+                    </Box>
+                    <Checkbox
+                        checked={ pet.vetName.visible }
+                        cursor={ isEditable.get() ? 'pointer' : 'default' }
+                        onClick={ action(() =>
+                           isEditable.get() && (pet.vetName.visible = !pet.vetName.visible)
+                        ) }
+                    />
+                </InfoFieldRow>
+                <InfoFieldRow>
+                    <Box flexBasis='60%'>
+                        {
+                            isEditable.get() ? (
+                                <InfoFieldInput
+                                    value={ pet.vetPhoneNumber.value }
+                                    onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                        (pet.vetPhoneNumber.value = e.target.value)
+                                    ) }
+                                />
+                            ) : (
+                                <InfoFieldText>{ pet.vetPhoneNumber.value }</InfoFieldText>
+                            )
+                        }
+                        <InfoFieldLabel>Veterinarian Phone Number</InfoFieldLabel>
+                    </Box>
+                    <Checkbox
+                        checked={ pet.vetPhoneNumber.visible }
+                        cursor={ isEditable.get() ? 'pointer' : 'default' }
+                        onClick={ action(() =>
+                           isEditable.get() && (pet.vetPhoneNumber.visible = !pet.vetPhoneNumber.visible)
+                        ) }
+                    />
+                </InfoFieldRow>
+            </Flex>
+            <Flex direction='column' rounded='lg' backgroundColor='white' padding={6}>
+                <Text color='petcode.neutral.700' fontSize='2xl' marginBottom={3}>
+                    Vaccination History
+                </Text>
+                {
+                    pet.vaccinations.map((vaccination, idx) => (
+                        <Box key={ idx }>
+                            <InfoFieldText>{ vaccination.name }</InfoFieldText>
+                            <InfoFieldLabel>{ moment(vaccination.date).format('MM/DD/YY') }</InfoFieldLabel>
+                        </Box>
+                    ))
+                }
+            </Flex>
+            <ExpandButton
+                position='fixed'
+                bottom={5}
+                right={5}
+                rounded='full'
+                color='petcode.neutral.700'
+                padding={4}
+                backgroundColor='petcode.yellow.400'
+                onClick={ action(() => isEditable.set(!isEditable.get())) }
+                expandChildren={ (
+                    <Text fontSize='xl' fontWeight='thin' textTransform='uppercase' marginRight={2}>
+                        { isEditable.get() ? 'Save' : 'Edit' }
+                    </Text>
+                ) }
+            >
+                <Icon name={ isEditable.get() ? 'checkmark' : 'edit' } size='30px'/>
+            </ExpandButton>
+            <ExpandButton
+                position='fixed'
+                bottom={90}
+                right={5}
+                rounded='full'
+                color='petcode.neutral.700'
+                padding={4}
+                backgroundColor='petcode.yellow.400'
+                expandChildren={ (
+                    <Text fontSize='xl' fontWeight='thin' textTransform='uppercase' whiteSpace='nowrap' marginRight={2}>
+                        Add Vaccination
+                    </Text>
+                ) }
+            >
+                <Text fontSize='5xl' lineHeight={0.5}>+</Text>
+            </ExpandButton>
+        </Flex>
+    ));
+};
 
 const MedicalInfoPage = () => (
     <AccountPageLayout>

@@ -1,27 +1,16 @@
 import React, { useState } from 'react';
 
-import { Box, Flex, FlexProps, Icon, Input, Text } from '@chakra-ui/core';
+import { Box, Flex, FlexProps, Icon, Text } from '@chakra-ui/core';
 
 import ExpandButton from '../../components/Shared/button/ExpandButton';
 import AccountPageLayout from './components/AccountPageLayout';
 import Checkbox from './components/Checkbox';
-import { InfoFieldText, InfoFieldLabel, InfoFieldInput } from './components/InfoField';
+import { InfoFieldRow, InfoFieldText, InfoFieldLabel, InfoFieldInput } from './components/InfoField';
 
 import { action, observable, IObservableValue } from 'mobx';
 import { observer, useObserver } from 'mobx-react';
 
-type VisibleValue = {
-    displayName: string;
-    value: string;
-    visible: boolean;
-};
-
-type ContactInfo = {
-    level: string;
-    info: {
-        [key: string]: VisibleValue;
-    };
-};
+import { ContactInfo } from '../../Models/ContactInfo';
 
 type ContactInfoCardProps = {
     contactInfo: ContactInfo;
@@ -30,42 +19,110 @@ type ContactInfoCardProps = {
 
 const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo, isEditable, ...props }) => (
     <Flex direction='column' rounded='lg' backgroundColor='white' padding={6} { ...props }>
-        <Flex direction='row' justifyContent='space-between'>
-            <Text color='petcode.neutral.700' fontSize='2xl' marginBottom={3}>
+        <InfoFieldRow fontSize='2xl' marginBottom={3}>
+            <Text color='petcode.neutral.700'>
                 { contactInfo.level } Contact Information
             </Text>
-            <Text color='petcode.neutral.400' fontSize='2xl' marginBottom={3}>
+            <Text color='petcode.neutral.400'>
                 Visibility
             </Text>
-        </Flex>
-        {
-            Object.keys(contactInfo.info).map((field, idx) => (
-                <Flex key={ idx } direction='row' alignItems='center' justifyContent='space-between'>
-                    <Box flexBasis='60%'>
-                        {
-                            isEditable.get() ? (
-                                <InfoFieldInput
-                                    value={ contactInfo.info[field].value }
-                                    onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
-                                        (contactInfo.info[field].value = e.target.value)
-                                    ) }
-                                />
-                            ) : (
-                                <InfoFieldText>{ contactInfo.info[field].value }</InfoFieldText>
-                            )
-                        }
-                        <InfoFieldLabel>{ contactInfo.info[field].displayName }</InfoFieldLabel>
-                    </Box>
-                    <Checkbox
-                        checked={ contactInfo.info[field].visible }
-                        cursor={ isEditable.get() ? 'pointer' : 'default' }
-                        onClick={ action(() =>
-                           isEditable.get() && (contactInfo.info[field].visible = !contactInfo.info[field].visible)
-                        ) }
-                    />
-                </Flex>
-            ))
-        }
+        </InfoFieldRow>
+        <InfoFieldRow>
+            <Box flexBasis='60%'>
+                {
+                    isEditable.get() ? (
+                        <InfoFieldInput
+                            value={ contactInfo.name.value }
+                            onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                (contactInfo.name.value = e.target.value)
+                            ) }
+                        />
+                    ) : (
+                        <InfoFieldText>{ contactInfo.name.value }</InfoFieldText>
+                    )
+                }
+                <InfoFieldLabel>Name</InfoFieldLabel>
+            </Box>
+            <Checkbox
+                checked={ contactInfo.name.visible }
+                cursor={ isEditable.get() ? 'pointer' : 'default' }
+                onClick={ action(() =>
+                   isEditable.get() && (contactInfo.name.visible = !contactInfo.name.visible)
+                ) }
+            />
+        </InfoFieldRow>
+        <InfoFieldRow>
+            <Box flexBasis='60%'>
+                {
+                    isEditable.get() ? (
+                        <InfoFieldInput
+                            value={ contactInfo.address.value }
+                            onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                (contactInfo.address.value = e.target.value)
+                            ) }
+                        />
+                    ) : (
+                        <InfoFieldText>{ contactInfo.address.value }</InfoFieldText>
+                    )
+                }
+                <InfoFieldLabel>Address</InfoFieldLabel>
+            </Box>
+            <Checkbox
+                checked={ contactInfo.address.visible }
+                cursor={ isEditable.get() ? 'pointer' : 'default' }
+                onClick={ action(() =>
+                   isEditable.get() && (contactInfo.address.visible = !contactInfo.address.visible)
+                ) }
+            />
+        </InfoFieldRow>
+        <InfoFieldRow>
+            <Box flexBasis='60%'>
+                {
+                    isEditable.get() ? (
+                        <InfoFieldInput
+                            value={ contactInfo.phoneNumber.value }
+                            onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                (contactInfo.phoneNumber.value = e.target.value)
+                            ) }
+                        />
+                    ) : (
+                        <InfoFieldText>{ contactInfo.phoneNumber.value }</InfoFieldText>
+                    )
+                }
+                <InfoFieldLabel>Phone Number</InfoFieldLabel>
+            </Box>
+            <Checkbox
+                checked={ contactInfo.phoneNumber.visible }
+                cursor={ isEditable.get() ? 'pointer' : 'default' }
+                onClick={ action(() =>
+                   isEditable.get() && (contactInfo.phoneNumber.visible = !contactInfo.phoneNumber.visible)
+                ) }
+            />
+        </InfoFieldRow>
+        <InfoFieldRow>
+            <Box flexBasis='60%'>
+                {
+                    isEditable.get() ? (
+                        <InfoFieldInput
+                            value={ contactInfo.email.value }
+                            onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
+                                (contactInfo.email.value = e.target.value)
+                            ) }
+                        />
+                    ) : (
+                        <InfoFieldText>{ contactInfo.email.value }</InfoFieldText>
+                    )
+                }
+                <InfoFieldLabel>Email</InfoFieldLabel>
+            </Box>
+            <Checkbox
+                checked={ contactInfo.email.visible }
+                cursor={ isEditable.get() ? 'pointer' : 'default' }
+                onClick={ action(() =>
+                   isEditable.get() && (contactInfo.email.visible = !contactInfo.email.visible)
+                ) }
+            />
+        </InfoFieldRow>
     </Flex>
 ));
 
@@ -73,21 +130,17 @@ const ContactInfoSection = () => {
     const [contactInfos] = useState(() => observable([
         {
             level: 'Primary',
-            info: {
-                name: { displayName: 'Name', value: 'John Doe', visible: true },
-                address: { displayName: 'Address', value: '123 First Street, Cupertino, CA 94087', visible: true },
-                phoneNumber: { displayName: 'Phone Number', value: '(408) 123 4567', visible: true },
-                email: { displayName: 'Email', value: 'example@gmail.com', visible: true }
-            }
+            name: { value: 'John Doe', visible: true },
+            address: { value: '123 First Street, Cupertino, CA 94087', visible: true },
+            phoneNumber: { value: '(408) 123 4567', visible: true },
+            email: { value: 'example@gmail.com', visible: true }
         },
         {
             level: 'Secondary',
-            info: {
-                name: { displayName: 'Name', value: 'Jane Doe', visible: true },
-                address: { displayName: 'Address', value: '123 Second Street, Cupertino, CA 94087', visible: true },
-                phoneNumber: { displayName: 'Phone Number', value: '(408) 765 4321', visible: true },
-                email: { displayName: 'Email', value: 'anotherexample@gmail.com', visible: true }
-            }
+            name: { value: 'Jane Doe', visible: true },
+            address: { value: '123 Second Street, Cupertino, CA 94087', visible: true },
+            phoneNumber: { value: '(408) 765 4321', visible: true },
+            email: { value: 'anotherexample@gmail.com', visible: true }
         }
     ]));
 

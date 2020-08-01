@@ -1,20 +1,23 @@
 import { Vaccination } from "./Vaccination";
+import { VisibleValue } from './VisibleValue';
 
 export interface Pet {
     pid: string;
     name: string;
     profileUrl: string;
+    color: string;
+    species: string;
     breed: string;
     temperament: string;
-    allergies: string;
-    specialNeeds: string;
-    vetName: string;
-    vetPhoneNumber: string;
+    allergies: VisibleValue<string>;
+    specialNeeds: VisibleValue<string>;
+    vetName: VisibleValue<string>;
+    vetPhoneNumber: VisibleValue<string>;
     vetId: string;
 
     isServiceAnimal: boolean;
-    age: number;
-    vaccinations: Array<Vaccination>
+    birthday: string;
+    vaccinations: Array<Vaccination>;
 }
 
 /*

@@ -24,15 +24,6 @@ import { action, observable } from 'mobx';
 import { useObserver } from 'mobx-react';
 import moment from 'moment';
 
-type Pet = {
-    species: 'Dog' | 'Cat';
-    breed: string;
-    birthday: moment.Moment;
-    color: string;
-    temperament: string;
-    isServiceAnimal: boolean;
-};
-
 const PetInfoCard: React.FC<FlexProps> = props => (
     <Flex
         direction='column'
@@ -102,7 +93,7 @@ const PetInfoSection = () => {
     const [pet] = useState(() => observable({
         species: 'Dog',
         breed: 'Weimaraner',
-        birthday: moment('7/31/2012'),
+        birthday: '2012-07-31',
         color: 'Gray',
         temperament: 'Friendly',
         isServiceAnimal: false
@@ -191,14 +182,14 @@ const PetInfoSection = () => {
                             <PetInfoInput
                                 type='date'
                                 fontSize='3xl'
-                                value={ pet.birthday.format('YYYY-MM-DD') }
+                                value={ pet.birthday }
                                 max={ moment().format('YYYY-MM-DD') }
                                 onChange={
-                                    action((e: React.ChangeEvent<HTMLInputElement>) => (pet.birthday = moment(e.target.value)))
+                                    action((e: React.ChangeEvent<HTMLInputElement>) => (pet.birthday = e.target.value))
                                 }
                             />
                         ): (
-                            <PetInfoCardText>{ moment.duration(moment().diff(pet.birthday)).humanize() } old</PetInfoCardText>
+                            <PetInfoCardText>{ moment.duration(moment().diff(moment(pet.birthday))).humanize() } old</PetInfoCardText>
                         )
                     }
                     <PetInfoCardLabel>Age</PetInfoCardLabel>
