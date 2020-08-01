@@ -4,7 +4,8 @@ import { Box, Flex, FlexProps, Icon, Input, Text } from '@chakra-ui/core';
 
 import ExpandButton from '../../components/Shared/button/ExpandButton';
 import AccountPageLayout from './components/AccountPageLayout';
-import { InfoFieldText, InfoFieldLabel } from './components/InfoField';
+import Checkbox from './components/Checkbox';
+import { InfoFieldText, InfoFieldLabel, InfoFieldInput } from './components/InfoField';
 
 import { action, observable, IObservableValue } from 'mobx';
 import { observer, useObserver } from 'mobx-react';
@@ -43,16 +44,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
                     <Box flexBasis='60%'>
                         {
                             isEditable.get() ? (
-                                <Input
-                                    size='md'
-                                    variant='flushed'
-                                    color='petcode.blue.400'
-                                    fontSize='xl'
-                                    fontFamily='body'
-                                    height='auto'
+                                <InfoFieldInput
                                     value={ contactInfo.info[field].value }
-                                    borderColor='petcode.neutral.400'
-                                    _focus={ { borderColor: 'petcode.blue.400' } }
                                     onChange={ action((e: React.ChangeEvent<HTMLInputElement>) =>
                                         (contactInfo.info[field].value = e.target.value)
                                     ) }
@@ -63,19 +56,13 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(({ contactInfo,
                         }
                         <InfoFieldLabel>{ contactInfo.info[field].displayName }</InfoFieldLabel>
                     </Box>
-                    <Flex
-                        alignItems='center'
-                        justifyContent='center'
-                        rounded='full'
-                        backgroundColor='petcode.yellow.400'
-                        size='32px'
+                    <Checkbox
+                        checked={ contactInfo.info[field].visible }
                         cursor={ isEditable.get() ? 'pointer' : 'default' }
                         onClick={ action(() =>
                            isEditable.get() && (contactInfo.info[field].visible = !contactInfo.info[field].visible)
                         ) }
-                    >
-                        { contactInfo.info[field].visible && <Icon name='checkmark' size='20px' color='petcode.neutral.700'/> }
-                    </Flex>
+                    />
                 </Flex>
             ))
         }

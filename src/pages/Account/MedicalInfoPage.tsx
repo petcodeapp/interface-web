@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Box } from '@chakra-ui/core';
+import { Flex } from '@chakra-ui/core';
 
 import AccountPageLayout from './components/AccountPageLayout';
 
 const MedicalInfoSection = () => (
-    <Box/>
+    <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}/>
 );
 
 const MedicalInfoPage = () => (
