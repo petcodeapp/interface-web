@@ -5,11 +5,10 @@ import QRCode from 'qrcode.react';
 
 import AccountPageLayout from './components/AccountPageLayout';
 import { InfoFieldText, InfoFieldLabel } from './components/InfoField';
-import Checkbox from './components/Checkbox';
+import ReminderItem from './components/ReminderItem';
 
-import { action, observable } from 'mobx';
+import { observable } from 'mobx';
 import { useObserver } from 'mobx-react';
-import moment from 'moment';
 import { withTheme } from 'emotion-theming';
 
 import { Reminder } from '../../Models/Reminder';
@@ -88,27 +87,7 @@ const Dashboard = withTheme(({ theme }) => {
                 </Text>
                 {
                     reminders.map((reminder, idx) => (
-                        <Flex key={ idx } direction='column' fontSize='xl'>
-                            <Flex direction='row' alignItems='center'>
-                                <Checkbox
-                                    checked={ reminder.enabled }
-                                    cursor='pointer'
-                                    size={24}
-                                    onClick={ action(() => reminder.enabled = true) }
-                                />
-                                <Text color='petcode.blue.400' marginLeft={2}>
-                                    { reminder.name }
-                                </Text>
-                            </Flex>
-                            <Text color='petcode.neutral.400' marginLeft={8}>
-                                {
-                                    moment(reminder.date).format('M/D/YY') } @ {
-                                    moment(reminder.date).format('LT') } / {
-                                    reminder.frequency } / {
-                                    reminder.notificationMethod
-                                }
-                            </Text>
-                        </Flex>
+                        <ReminderItem key={ idx } reminder={ reminder }/>
                     ))
                 }
             </Flex>

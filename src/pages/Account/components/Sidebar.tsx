@@ -43,7 +43,7 @@ const Sidebar = withRouter(({ location }) => {
     const auth = useContext(AuthContext);
 
     return (
-        <Flex direction='column' minWidth='250px' paddingY={10}>
+        <Flex direction='column' minWidth='250px' maxHeight='calc(100vh - 57px - 5rem)' paddingY={10}>
             <Box paddingX={10}>
                 <Box
                     rounded='full'
