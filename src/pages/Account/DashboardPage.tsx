@@ -8,7 +8,6 @@ import { InfoFieldText, InfoFieldLabel } from './components/InfoField';
 import ReminderItem from './components/ReminderItem';
 
 import { observable } from 'mobx';
-import { useObserver } from 'mobx-react';
 import { withTheme } from 'emotion-theming';
 
 import { Reminder } from '../../Models/Reminder';
@@ -22,7 +21,7 @@ const Dashboard = withTheme(({ theme }) => {
         { name: 'Example reminder', date: '2020-08-02T09:00:00', frequency: 'Weekly', notificationMethod: 'Email', enabled: true }
     ] as Reminder[]));
 
-    return useObserver(() => (
+    return (
         <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
             <Flex
                 direction='row'
@@ -46,7 +45,7 @@ const Dashboard = withTheme(({ theme }) => {
                 <Image rounded='lg' alt='Dog on yellow background' src='/media/dog-on-yellow-background-full.png'/>
             </Flex>
             <Flex direction='row' flexWrap='wrap' justifyContent='space-between'>
-                <Flex direction='row' rounded='lg' backgroundColor='white' flexBasis='43%' padding={6} marginTop={10}>
+                <Flex direction='row' rounded='lg' backgroundColor='white' flexBasis='43%' padding={6} marginTop={6}>
                     <Flex direction='column' marginRight={4}>
                         <Text color='petcode.neutral.700' fontSize='3xl'>
                             Max's Code
@@ -59,7 +58,7 @@ const Dashboard = withTheme(({ theme }) => {
                         <QRCode value='https://petcodeusa.com' size={200} fgColor={theme.colors.petcode.blue[400]}/>
                     </Box>
                 </Flex>
-                <Flex direction='column' rounded='lg' backgroundColor='white' flexBasis='43%' padding={6} marginTop={10}>
+                <Flex direction='column' rounded='lg' backgroundColor='white' flexBasis='43%' padding={6} marginTop={6}>
                     <Text color='petcode.neutral.700' fontSize='3xl' marginBottom={3}>
                         Account Information
                     </Text>
@@ -81,7 +80,7 @@ const Dashboard = withTheme(({ theme }) => {
                     </Box>
                 </Flex>
             </Flex>
-            <Flex direction='column' rounded='lg' backgroundColor='white' flexBasis='100%' padding={6} marginTop={10}>
+            <Flex direction='column' rounded='lg' backgroundColor='white' flexBasis='100%' padding={6} marginTop={6}>
                 <Text color='petcode.neutral.700' fontSize='3xl' marginBottom={3}>
                     Reminders
                 </Text>
@@ -92,7 +91,7 @@ const Dashboard = withTheme(({ theme }) => {
                 }
             </Flex>
         </Flex>
-    ));
+    );
 });
 
 const DashboardPage = () => (

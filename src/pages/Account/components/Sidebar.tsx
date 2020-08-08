@@ -70,6 +70,7 @@ const Sidebar = withRouter(({ location }) => {
             <SidebarLink selected={ location.pathname == '/contactinfo' } to='/contactinfo' iconName='phone' text='Contact Info'/>
             <SidebarLink selected={ location.pathname == '/petinfo' } to='/petinfo' iconName='heart' text='Pet Info'/>
             <SidebarLink selected={ location.pathname == '/medicalinfo' } to='/medicalinfo' iconName='clipboard-thin' text='Medical Info'/>
+            <SidebarLink selected={ location.pathname == '/reminders' } to='/reminders' iconName='checkmark-clipboard' text='Reminders'/>
             <SidebarLink selected={ location.pathname == '/scanlocations' } to='/scanlocations' iconName='location' text='Scan Locations'/>
             <Box flexGrow={3}/>
             <BaseButton

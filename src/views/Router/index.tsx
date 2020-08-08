@@ -10,6 +10,7 @@ import ForgotPasswordPage from "../../pages/ForgotPassword";
 import DashboardPage from "../../pages/Account/DashboardPage";
 import ContactInfoPage from "../../pages/Account/ContactInfoPage";
 import PetInfoPage from "../../pages/Account/PetInfoPage";
+import RemindersPage from "../../pages/Account/RemindersPage";
 import MedicalInfoPage from "../../pages/Account/MedicalInfoPage";
 import ScanLocationsPage from "../../pages/Account/ScanLocationsPage";
 import { useObserver } from "mobx-react-lite";
@@ -43,6 +44,10 @@ const Routes = () => {
       
       <PrivateRoute path="/petinfo">
         <PetInfoPage />
+      </PrivateRoute>
+
+      <PrivateRoute path="/reminders">
+        <RemindersPage />
       </PrivateRoute>
 
       <PrivateRoute path="/medicalinfo">
