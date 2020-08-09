@@ -3,4 +3,5 @@ export interface ScanLocation {
     longitude: number;
     nearestAddress: string;
     date: string;
+    deviceInfo: string;
 }

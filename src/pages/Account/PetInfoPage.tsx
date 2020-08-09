@@ -68,7 +68,6 @@ const InfoButton: React.FC<LinkProps & RouterLinkProps> = props => (
 const PetInfoSelect: React.FC<SelectProps> = props => (
     <Select
         size='lg'
-        icon='dropdown-arrow'
         color='petcode.neutral.700'
         fontFamily='body'
         fontSize='2xl'

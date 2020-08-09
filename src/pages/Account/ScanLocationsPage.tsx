@@ -1,32 +1,73 @@
 import React, { useState } from 'react';
 
-import { Box, Flex, Text, Icon } from '@chakra-ui/core';
+import {
+    Box,
+    Flex,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverHeader,
+    PopoverBody,
+    PseudoBox,
+    PseudoBoxProps,
+    Text,
+    Icon
+} from '@chakra-ui/core';
 
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, InteractiveMapProps } from 'react-map-gl';
 import { useDimensions, ViewportProvider } from 'react-viewport-utils';
 
 import AccountPageLayout from './components/AccountPageLayout';
 
 import { observable } from 'mobx';
+import { useObserver } from 'mobx-react';
 import moment from 'moment';
 
 import { ScanLocation } from '../../Models/ScanLocation';
 
 const MAPBOX_TOKEN = 'pk.eyJ1Ijoia2FjaGFuZyIsImEiOiJja2N3aTFqZjgwNGk5MnlteWdoZmVkdHloIn0.0m0MAYL8eeZNWyCZOvbP8g';
+const DEFAULT_MAP_ZOOM = 15;
 
 type LocationScanMapProps = {
+    viewport: Partial<InteractiveMapProps>;
     scanLocations: ScanLocation[];
 };
 
-const LocationScanMap: React.FC<LocationScanMapProps> = ({ scanLocations }) => {
-    const [viewport, setViewport] = useState({
-        width: '100%',
-        height: 400,
-        zoom: 15,
-        latitude: 37.336869581091925,
-        longitude: -122.04834927804099
-    });
+const ScanLocationMarker: React.FC<{ scanLocation: ScanLocation }> = ({ scanLocation }) => {
+    return useObserver(() => (
+        <Marker latitude={ scanLocation.latitude } longitude={ scanLocation.longitude }>
+            <Popover usePortal placement='top'>
+                <PopoverTrigger>
+                    <Icon
+                        name='location-fill'
+                        size='30px'
+                        color='petcode.yellow.400'
+                        cursor='pointer'
+                    />
+                </PopoverTrigger>
+                <PopoverContent zIndex={4}>
+                    <PopoverArrow/>
+                    <PopoverCloseButton/>
+                    <PopoverHeader>
+                        <Text>Scanned { moment.duration(moment(scanLocation.date).diff(moment())).humanize(true) }</Text>
+                    </PopoverHeader>
+                    <PopoverBody>
+                        <Text>
+                            <b>Location: </b> { scanLocation.nearestAddress }
+                        </Text>
+                        <Text>
+                            <b>Device Info: </b> { scanLocation.deviceInfo }
+                        </Text>
+                    </PopoverBody>
+                </PopoverContent>
+            </Popover>
+        </Marker>
+    ));
+};
 
+const LocationScanMap: React.FC<LocationScanMapProps> = ({ viewport, scanLocations }) => {
     const [lastWidth, setLastWidth] = useState(0);
     const dimensions = useDimensions({
         deferUpdateUntilIdle: true,
@@ -38,21 +79,19 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({ scanLocations }) => {
         }, 0);
     }
 
-    return (
+    return useObserver(() => (
+        // @ts-ignore
         <ReactMapGL
             { ...viewport }
             mapboxApiAccessToken={ MAPBOX_TOKEN }
             mapStyle='mapbox://styles/kachang/ckdm8ilq82uko1iqfo9ge0be6'
-            // @ts-ignore
-            onViewportChange={ setViewport }
+            onViewportChange={ newViewport => Object.assign(viewport, newViewport) }
         >
             { scanLocations.map((scanLocation, idx) => (
-                <Marker key={ idx } latitude={ scanLocation.latitude } longitude={ scanLocation.longitude }>
-                    <Icon name='location-fill' size='30px' color='petcode.yellow.400'/>
-                </Marker>
+                <ScanLocationMarker key={ idx } scanLocation={ scanLocation }/>
             )) }
         </ReactMapGL>
-    );
+    ));
 };
 
 const LocationScanMapWithProvider: React.FC<LocationScanMapProps> = (props) => (
@@ -61,9 +100,10 @@ const LocationScanMapWithProvider: React.FC<LocationScanMapProps> = (props) => (
     </ViewportProvider>
 );
 
-const ScanLocationCard: React.FC<{ scanLocation: ScanLocation }> = ({ scanLocation }) => (
-    <Flex
-        direction='row'
+const ScanLocationCard: React.FC<PseudoBoxProps & { scanLocation: ScanLocation }> = ({ scanLocation, ...props }) => (
+    <PseudoBox
+        display='flex'
+        flexDirection='row'
         alignItems='center'
         rounded='lg'
         backgroundColor='white'
@@ -72,36 +112,53 @@ const ScanLocationCard: React.FC<{ scanLocation: ScanLocation }> = ({ scanLocati
         paddingX={6}
         paddingY={4}
         marginTop={3}
+        cursor='pointer'
+        _hover={ {
+            backgroundColor: 'petcode.neutral.100'
+        } }
+        { ...props }
     >
         <Text color='petcode.blue.400'>
             { scanLocation.nearestAddress }
         </Text>
         <Box flexGrow={1}/>
         <Text color='petcode.neutral.400' marginRight={2}>
-            { moment(scanLocation.date).format('M/D/YY') }
+            { moment(scanLocation.date).format('M/D/YY - LT') }
         </Text>
         <Icon name='location-fill' size='30px' color='petcode.yellow.400'/>
-    </Flex>
+    </PseudoBox>
 );
 
 const ScanLocationsSection = () => {
-    const [scanLocations] = useState(observable([
-        { latitude: 37.3356424, longitude: -122.0505069, nearestAddress: '21370 Homestead Rd, Cupertino, CA 95014', date:'2020-06-01' },
-        { latitude: 37.3356424, longitude: -122.0505069, nearestAddress: '21370 Homestead Rd, Cupertino, CA 95014', date:'2020-06-01' },
-        { latitude: 37.3356424, longitude: -122.0505069, nearestAddress: '21370 Homestead Rd, Cupertino, CA 95014', date:'2020-06-01' },
-        { latitude: 37.3356424, longitude: -122.0505069, nearestAddress: '21370 Homestead Rd, Cupertino, CA 95014', date:'2020-06-01' },
-        { latitude: 37.3356424, longitude: -122.0505069, nearestAddress: '21370 Homestead Rd, Cupertino, CA 95014', date:'2020-06-01' }
+    const [scanLocations] = useState(() => observable([
+        { latitude: 37.3356424, longitude: -122.0505069, nearestAddress: '21370 Homestead Rd, Cupertino, CA 95014', date: '2020-08-09T14:00', deviceInfo: 'iPhone / Safari' },
+        { latitude: 37.3400556, longitude: -122.0502666, nearestAddress: '1628 South Mary Avenue, Sunnyvale, CA 94087', date: '2020-08-09T13:00', deviceInfo: 'Android / Chrome' }
     ] as ScanLocation[]));
+    const [mapViewport] = useState(() => observable({
+        width: '100%',
+        height: 400,
+        zoom: DEFAULT_MAP_ZOOM,
+        latitude: scanLocations[0].latitude,
+        longitude: scanLocations[0].longitude
+    }));
 
     return (
         <Flex direction='column' flexGrow={1} backgroundColor='petcode.neutral.200' padding={10}>
-            <LocationScanMapWithProvider scanLocations={ scanLocations }/>
+            <LocationScanMapWithProvider scanLocations={ scanLocations } viewport={ mapViewport }/>
             <Text color='petcode.neutral.700' fontSize='3xl' marginTop={3}>
                 Scan Locations
             </Text>
             {
                 scanLocations.map((scanLocation, idx) => (
-                    <ScanLocationCard key={ idx } scanLocation={ scanLocation }/>
+                    <ScanLocationCard
+                        key={ idx }
+                        scanLocation={ scanLocation }
+                        onClick={ () => {
+                            mapViewport.latitude = scanLocation.latitude;
+                            mapViewport.longitude = scanLocation.longitude;
+                            mapViewport.zoom = DEFAULT_MAP_ZOOM;
+                        } }
+                    />
                 ))
             }
         </Flex>

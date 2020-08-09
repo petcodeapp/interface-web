@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { FlexProps, Icon, Text } from '@chakra-ui/core';
+import { FlexProps } from '@chakra-ui/core';
 
 import MotionBox from '../../Motion/Box';
 import MotionFlex from '../../Motion/Flex';
