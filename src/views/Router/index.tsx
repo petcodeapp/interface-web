@@ -41,7 +41,7 @@ const Routes = () => {
       <PrivateRoute path="/contactinfo">
         <ContactInfoPage />
       </PrivateRoute>
-      
+
       <PrivateRoute path="/petinfo">
         <PetInfoPage />
       </PrivateRoute>

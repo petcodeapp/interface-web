@@ -1,5 +1,5 @@
-import firebase from 'firebase';
-import environment from '../environment/environment';
+import firebase from "firebase";
+import environment from "../environment/environment";
 
 firebase.initializeApp(environment.firebaseConfig);
 

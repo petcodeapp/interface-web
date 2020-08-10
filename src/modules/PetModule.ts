@@ -1,5 +1,3 @@
-import {observable} from 'mobx'
+import { observable } from "mobx";
 
-class PetStore {
-    
-}
+class PetStore {}
