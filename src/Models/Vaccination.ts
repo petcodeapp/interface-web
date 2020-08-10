@@ -1,5 +1,5 @@
 export interface Vaccination {
-    name: string;
-    imageUrl: string;
-    date: string;
+  name: string;
+  imageUrl: string;
+  date: string;
 }
