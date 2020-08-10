@@ -44,7 +44,6 @@ class Auth {
       .catch((err) => console.error("Could not sign in. " + err));
   };
 
-  
   @computed get isLoggedIn() {
     return !!this.user;
   }
