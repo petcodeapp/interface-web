@@ -13,7 +13,7 @@ interface InputWithIconProps {
   iconName: string;
   inputGroupProps?: Omit<InputGroupProps, "children">;
   inputProps?: InputProps;
-};
+}
 
 const InputWithIcon: React.FC<InputWithIconProps> = ({
   iconName,
