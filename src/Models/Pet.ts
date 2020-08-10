@@ -1,20 +1,20 @@
 import { Vaccination } from "./Vaccination";
 
 export interface Pet {
-    pid: string;
-    name: string;
-    profileUrl: string;
-    breed: string;
-    temperament: string;
-    allergies: string;
-    specialNeeds: string;
-    vetName: string;
-    vetPhoneNumber: string;
-    vetId: string;
+  pid: string;
+  name: string;
+  profileUrl: string;
+  breed: string;
+  temperament: string;
+  allergies: string;
+  specialNeeds: string;
+  vetName: string;
+  vetPhoneNumber: string;
+  vetId: string;
 
-    isServiceAnimal: boolean;
-    age: number;
-    vaccinations: Array<Vaccination>
+  isServiceAnimal: boolean;
+  age: number;
+  vaccinations: Array<Vaccination>;
 }
 
 /*
