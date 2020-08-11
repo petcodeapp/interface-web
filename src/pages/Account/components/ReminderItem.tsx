@@ -1,6 +1,13 @@
 import React from "react";
 
-import { Flex, Input, InputProps, Select, SelectProps, Text } from "@chakra-ui/core";
+import {
+  Flex,
+  Input,
+  InputProps,
+  Select,
+  SelectProps,
+  Text,
+} from "@chakra-ui/core";
 import Checkbox from "./Checkbox";
 
 import { action } from "mobx";
@@ -53,7 +60,9 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
           checked={reminder.enabled}
           cursor={isEditable ? "pointer" : "default"}
           size={22}
-          onClick={action(() => isEditable && (reminder.enabled = !reminder.enabled))}
+          onClick={action(
+            () => isEditable && (reminder.enabled = !reminder.enabled)
+          )}
         />
         <Text color="petcode.blue.400" marginLeft={2}>
           {reminder.name}
@@ -69,7 +78,10 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
                 (reminder.date = e.target.value)
             )}
           />
-        ) : moment(reminder.date).format("M/D/YY")} @{" "}
+        ) : (
+          moment(reminder.date).format("M/D/YY")
+        )}{" "}
+        @{" "}
         {isEditable ? (
           <ReminderInput
             type="time"
@@ -79,13 +91,16 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
                 (reminder.time = e.target.value)
             )}
           />
-        ) : moment(reminder.time, "HH:mm").format("LT")} /{" "}
+        ) : (
+          moment(reminder.time, "HH:mm").format("LT")
+        )}{" "}
+        /{" "}
         {isEditable ? (
           <ReminderSelect
             value={reminder.frequency}
             onChange={action(
               (e: React.ChangeEvent<HTMLSelectElement>) =>
-                  (reminder.frequency = e.target.value)
+                (reminder.frequency = e.target.value)
             )}
           >
             <option>One-Time</option>
@@ -93,19 +108,24 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
             <option>Weekly</option>
             <option>Monthly</option>
           </ReminderSelect>
-        ) : reminder.frequency} /{" "}
+        ) : (
+          reminder.frequency
+        )}{" "}
+        /{" "}
         {isEditable ? (
           <ReminderSelect
             value={reminder.notificationMethod}
             onChange={action(
               (e: React.ChangeEvent<HTMLSelectElement>) =>
-                  (reminder.notificationMethod = e.target.value)
+                (reminder.notificationMethod = e.target.value)
             )}
           >
             <option>App Notification</option>
             <option>Email</option>
           </ReminderSelect>
-        ) : reminder.notificationMethod}
+        ) : (
+          reminder.notificationMethod
+        )}
       </Text>
     </Flex>
   )

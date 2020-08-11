@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 
-import { Box, Flex, FlexProps, Icon, Stack, Text } from "@chakra-ui/core";
+import {
+  Box,
+  Flex,
+  FlexProps,
+  Icon,
+  Stack,
+  Text,
+  useToast,
+} from "@chakra-ui/core";
 
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 import AccountPageLayout from "./components/AccountPageLayout";
@@ -12,7 +20,7 @@ import {
   InfoFieldInput,
 } from "./components/InfoField";
 
-import { action, observable, IObservableValue } from "mobx";
+import { action, observable } from "mobx";
 import { observer, useObserver } from "mobx-react";
 
 import { ContactInfo } from "../../Models/ContactInfo";
@@ -169,6 +177,7 @@ const ContactInfoSection = () => {
   );
 
   const [isEditable] = useState(() => observable.box(false));
+  const toast = useToast();
 
   return useObserver(() => (
     <Stack
@@ -192,7 +201,18 @@ const ContactInfoSection = () => {
         color="petcode.neutral.700"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => isEditable.set(!isEditable.get()))}
+        onClick={action(() => {
+          if (isEditable.get()) {
+            toast({
+              title: "Contact information saved.",
+              description: "Your contact information was saved successfully.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            });
+          }
+          isEditable.set(!isEditable.get());
+        })}
         expandChildren={
           <Text
             fontSize="xl"

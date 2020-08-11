@@ -15,6 +15,7 @@ import {
   SelectProps,
   SimpleGrid,
   Text,
+  useToast,
 } from "@chakra-ui/core";
 import {
   Link as RouterLink,
@@ -109,6 +110,7 @@ const PetInfoSection = () => {
   );
 
   const [isEditable] = useState(() => observable.box(false));
+  const toast = useToast();
 
   return useObserver(() => (
     <Flex
@@ -274,7 +276,18 @@ const PetInfoSection = () => {
         color="petcode.neutral.700"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => isEditable.set(!isEditable.get()))}
+        onClick={action(() => {
+          if (isEditable.get()) {
+            toast({
+              title: "Pet information saved.",
+              description: "Your pet information was saved successfully.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            });
+          }
+          isEditable.set(!isEditable.get());
+        })}
         expandChildren={
           <Text
             fontSize="xl"
