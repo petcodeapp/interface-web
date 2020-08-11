@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/core";
+import {
+  Box,
+  Flex,
+  Icon,
+  Modal,
+  ModalOverlay,
+  ModalCloseButton,
+  ModalContent,
+  ModalBody,
+  ModalHeader,
+  Stack,
+  Text,
+} from "@chakra-ui/core";
 import {
   InfoFieldRow,
   InfoFieldText,
@@ -9,12 +21,135 @@ import {
 } from "./components/InfoField";
 
 import AccountPageLayout from "./components/AccountPageLayout";
+import BaseButton from "../../components/Shared/button/BaseButton";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 import Checkbox from "./components/Checkbox";
 
-import { action, observable } from "mobx";
-import { useObserver } from "mobx-react";
+import { action, observable, IObservableValue } from "mobx";
+import { useObserver, observer } from "mobx-react";
 import moment from "moment";
+
+import { Vaccination } from "../../Models/Vaccination";
+
+type AddVaccinationModalProps = {
+  isShown: IObservableValue<boolean>;
+  vaccinations: Vaccination[];
+};
+
+const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({ isShown, vaccinations }) => {
+  const [vaccination] = useState(() => observable({
+    name: '',
+    date: ''
+  } as Vaccination));
+
+  return useObserver(() => (
+    <Modal
+      isOpen={isShown.get()}
+      onClose={action(() => isShown.set(false))}
+      isCentered
+    >
+      <ModalOverlay/>
+      <ModalContent rounded="lg">
+        <ModalHeader color='petcode.neutral.700' fontSize='3xl' fontWeight='normal'>
+          <Text>
+            Add Vaccination
+          </Text>
+        </ModalHeader>
+        <ModalCloseButton/>
+        <ModalBody>
+          <InfoFieldInput
+            placeholder="Vaccination Name"
+            value={vaccination.name}
+            onChange={action(
+              (e: React.ChangeEvent<HTMLInputElement>) =>
+                (vaccination.name = e.target.value)
+            )}
+          />
+          <InfoFieldLabel>Vaccination Name</InfoFieldLabel>
+          <InfoFieldInput
+            type="date"
+            value={vaccination.date}
+            max={moment().format("YYYY-MM-DD")}
+            onChange={action(
+              (e: React.ChangeEvent<HTMLInputElement>) =>
+                (vaccination.date = e.target.value)
+            )}
+          />
+          <InfoFieldLabel>Vaccination Date</InfoFieldLabel>
+          <BaseButton
+            variantColor='petcode.blue'
+            color='white'
+            marginTop={3}
+            onClick={action(() => {
+              vaccinations.push({...vaccination});
+              vaccination.name = '';
+              vaccination.date = '';
+              isShown.set(false);
+            })}
+          >
+            <Text>Save</Text>
+          </BaseButton>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  ));
+}
+
+type OverlaysProps = {
+  isEditable: IObservableValue<boolean>;
+  isModalShown: IObservableValue<boolean>;
+};
+
+const Overlays: React.FC<OverlaysProps> = observer(({ isEditable, isModalShown }) => (
+  <Stack
+    alignItems="end"
+    spacing={2}
+    position="fixed"
+    bottom={5}
+    right={5}
+    color="petcode.neutral.700"
+  >
+    <ExpandButton
+      rounded="full"
+      padding={4}
+      backgroundColor="petcode.yellow.400"
+      onClick={action(() => isEditable.set(!isEditable.get()))}
+      expandChildren={
+        <Text
+          fontSize="xl"
+          fontWeight="thin"
+          textTransform="uppercase"
+          marginRight={2}
+        >
+          {isEditable.get() ? "Save" : "Edit"}
+        </Text>
+      }
+    >
+      <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
+    </ExpandButton>
+    <ExpandButton
+      rounded="full"
+      padding={4}
+      backgroundColor="petcode.yellow.400"
+      onClick={action(() => isModalShown.set(true))}
+      expandChildren={
+        <Text
+          fontSize="xl"
+          fontWeight="thin"
+          textTransform="uppercase"
+          whiteSpace="nowrap"
+          marginRight={2}
+        >
+          Add Vaccination
+        </Text>
+      }
+    >
+      <Text fontSize="5xl" lineHeight={0.5}>
+        +
+      </Text>
+    </ExpandButton>
+  </Stack>
+));
 
 const MedicalInfoSection = () => {
   const [pet] = useState(() =>
@@ -34,6 +169,7 @@ const MedicalInfoSection = () => {
   );
 
   const [isEditable] = useState(() => observable.box(false));
+  const [isModalShown] = useState(() => observable.box(false));
 
   return useObserver(() => (
     <Stack
@@ -156,7 +292,7 @@ const MedicalInfoSection = () => {
         <Text color="petcode.neutral.700" fontSize="2xl" marginBottom={3}>
           Vaccination History
         </Text>
-        {pet.vaccinations.map((vaccination, idx) => (
+        {pet.vaccinations.sort((a, b) => b.date.localeCompare(a.date)).map((vaccination, idx) => (
           <Box key={idx}>
             <InfoFieldText>{vaccination.name}</InfoFieldText>
             <InfoFieldLabel>
@@ -165,53 +301,8 @@ const MedicalInfoSection = () => {
           </Box>
         ))}
       </Flex>
-      <Stack
-        alignItems="end"
-        spacing={2}
-        position="fixed"
-        bottom={5}
-        right={5}
-        color="petcode.neutral.700"
-      >
-        <ExpandButton
-          rounded="full"
-          padding={4}
-          backgroundColor="petcode.yellow.400"
-          onClick={action(() => isEditable.set(!isEditable.get()))}
-          expandChildren={
-            <Text
-              fontSize="xl"
-              fontWeight="thin"
-              textTransform="uppercase"
-              marginRight={2}
-            >
-              {isEditable.get() ? "Save" : "Edit"}
-            </Text>
-          }
-        >
-          <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
-        </ExpandButton>
-        <ExpandButton
-          rounded="full"
-          padding={4}
-          backgroundColor="petcode.yellow.400"
-          expandChildren={
-            <Text
-              fontSize="xl"
-              fontWeight="thin"
-              textTransform="uppercase"
-              whiteSpace="nowrap"
-              marginRight={2}
-            >
-              Add Vaccination
-            </Text>
-          }
-        >
-          <Text fontSize="5xl" lineHeight={0.5}>
-            +
-          </Text>
-        </ExpandButton>
-      </Stack>
+      <Overlays isEditable={isEditable} isModalShown={isModalShown}/>
+      <AddVaccinationModal vaccinations={pet.vaccinations} isShown={isModalShown}/>
     </Stack>
   ));
 };
