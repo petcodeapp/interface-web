@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Icon, Text } from "@chakra-ui/core";
+import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/core";
 import {
   InfoFieldRow,
   InfoFieldText,
@@ -36,18 +36,17 @@ const MedicalInfoSection = () => {
   const [isEditable] = useState(() => observable.box(false));
 
   return useObserver(() => (
-    <Flex
-      direction="column"
+    <Stack
       flexGrow={1}
       backgroundColor="petcode.neutral.200"
       padding={10}
+      spacing={5}
     >
       <Flex
         direction="column"
         rounded="lg"
         backgroundColor="white"
         padding={6}
-        marginBottom={10}
       >
         <InfoFieldRow fontSize="2xl" marginBottom={3}>
           <Text color="petcode.neutral.700">General Medical Information</Text>
@@ -166,53 +165,54 @@ const MedicalInfoSection = () => {
           </Box>
         ))}
       </Flex>
-      <ExpandButton
+      <Stack
+        alignItems="end"
+        spacing={2}
         position="fixed"
         bottom={5}
         right={5}
-        rounded="full"
         color="petcode.neutral.700"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        onClick={action(() => isEditable.set(!isEditable.get()))}
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            marginRight={2}
-          >
-            {isEditable.get() ? "Save" : "Edit"}
-          </Text>
-        }
       >
-        <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
-      </ExpandButton>
-      <ExpandButton
-        position="fixed"
-        bottom={90}
-        right={5}
-        rounded="full"
-        color="petcode.neutral.700"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            whiteSpace="nowrap"
-            marginRight={2}
-          >
-            Add Vaccination
+        <ExpandButton
+          rounded="full"
+          padding={4}
+          backgroundColor="petcode.yellow.400"
+          onClick={action(() => isEditable.set(!isEditable.get()))}
+          expandChildren={
+            <Text
+              fontSize="xl"
+              fontWeight="thin"
+              textTransform="uppercase"
+              marginRight={2}
+            >
+              {isEditable.get() ? "Save" : "Edit"}
+            </Text>
+          }
+        >
+          <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
+        </ExpandButton>
+        <ExpandButton
+          rounded="full"
+          padding={4}
+          backgroundColor="petcode.yellow.400"
+          expandChildren={
+            <Text
+              fontSize="xl"
+              fontWeight="thin"
+              textTransform="uppercase"
+              whiteSpace="nowrap"
+              marginRight={2}
+            >
+              Add Vaccination
+            </Text>
+          }
+        >
+          <Text fontSize="5xl" lineHeight={0.5}>
+            +
           </Text>
-        }
-      >
-        <Text fontSize="5xl" lineHeight={0.5}>
-          +
-        </Text>
-      </ExpandButton>
-    </Flex>
+        </ExpandButton>
+      </Stack>
+    </Stack>
   ));
 };
 

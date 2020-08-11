@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   Box,
   Flex,
+  Icon,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -12,8 +13,8 @@ import {
   PopoverBody,
   PseudoBox,
   PseudoBoxProps,
+  Stack,
   Text,
-  Icon,
 } from "@chakra-ui/core";
 
 import ReactMapGL, { Marker, InteractiveMapProps } from "react-map-gl";
@@ -124,7 +125,6 @@ const ScanLocationCard: React.FC<
     fontWeight="thin"
     paddingX={6}
     paddingY={4}
-    marginTop={3}
     cursor="pointer"
     _hover={{
       backgroundColor: "petcode.neutral.100",
@@ -180,20 +180,22 @@ const ScanLocationsSection = () => {
         scanLocations={scanLocations}
         viewport={mapViewport}
       />
-      <Text color="petcode.neutral.700" fontSize="3xl" marginTop={3}>
+      <Text color="petcode.neutral.700" fontSize="3xl" marginY={3}>
         Scan Locations
       </Text>
-      {scanLocations.map((scanLocation, idx) => (
-        <ScanLocationCard
-          key={idx}
-          scanLocation={scanLocation}
-          onClick={() => {
-            mapViewport.latitude = scanLocation.latitude;
-            mapViewport.longitude = scanLocation.longitude;
-            mapViewport.zoom = DEFAULT_MAP_ZOOM;
-          }}
-        />
-      ))}
+      <Stack spacing={3}>
+        {scanLocations.map((scanLocation, idx) => (
+          <ScanLocationCard
+            key={idx}
+            scanLocation={scanLocation}
+            onClick={() => {
+              mapViewport.latitude = scanLocation.latitude;
+              mapViewport.longitude = scanLocation.longitude;
+              mapViewport.zoom = DEFAULT_MAP_ZOOM;
+            }}
+          />
+        ))}
+      </Stack>
     </Flex>
   );
 };

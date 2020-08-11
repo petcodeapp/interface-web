@@ -13,6 +13,7 @@ import {
   PseudoBoxProps,
   Select,
   SelectProps,
+  SimpleGrid,
   Text,
 } from "@chakra-ui/core";
 import {
@@ -33,7 +34,6 @@ const PetInfoCard: React.FC<FlexProps> = (props) => (
     justifyContent="center"
     rounded="lg"
     background="white"
-    flexBasis="42.5%"
     height="100px"
     padding={6}
     marginTop={10}
@@ -150,7 +150,7 @@ const PetInfoSection = () => {
           <BackgroundIcon alignSelf="end" size="100px" name="clipboard" />
         </InfoButton>
       </Flex>
-      <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
+      <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>
         <PetInfoCard>
           {isEditable.get() ? (
             <PetInfoSelect
@@ -265,7 +265,7 @@ const PetInfoSection = () => {
           <PetInfoCardLabel>Service Animal</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="service-animal" />
         </PetInfoCard>
-      </Flex>
+      </SimpleGrid>
       <ExpandButton
         position="fixed"
         bottom={5}

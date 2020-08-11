@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Image, Text } from "@chakra-ui/core";
+import { Box, Flex, Image, Stack, Text } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
 
 import AccountPageLayout from "./components/AccountPageLayout";
@@ -54,11 +54,11 @@ const Dashboard = withTheme(({ theme }) => {
   );
 
   return (
-    <Flex
-      direction="column"
+    <Stack
       flexGrow={1}
       backgroundColor="petcode.neutral.200"
       padding={10}
+      spacing={5}
     >
       <Flex
         direction="row"
@@ -85,14 +85,13 @@ const Dashboard = withTheme(({ theme }) => {
           src="/media/dog-on-yellow-background-full.png"
         />
       </Flex>
-      <Flex direction="row" flexWrap="wrap" justifyContent="space-between">
+      <Stack isInline justifyContent="space-between" spacing={5}>
         <Flex
           direction="row"
           rounded="lg"
           backgroundColor="white"
-          flexBasis="43%"
+          flexBasis="50%"
           padding={6}
-          marginTop={6}
         >
           <Flex direction="column" marginRight={4}>
             <Text color="petcode.neutral.700" fontSize="3xl">
@@ -114,9 +113,8 @@ const Dashboard = withTheme(({ theme }) => {
           direction="column"
           rounded="lg"
           backgroundColor="white"
-          flexBasis="43%"
+          flexBasis="50%"
           padding={6}
-          marginTop={6}
         >
           <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
             Account Information
@@ -138,14 +136,13 @@ const Dashboard = withTheme(({ theme }) => {
             <InfoFieldLabel>Pet Name</InfoFieldLabel>
           </Box>
         </Flex>
-      </Flex>
+      </Stack>
       <Flex
         direction="column"
         rounded="lg"
         backgroundColor="white"
         flexBasis="100%"
         padding={6}
-        marginTop={6}
       >
         <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
           Reminders
@@ -154,7 +151,7 @@ const Dashboard = withTheme(({ theme }) => {
           <ReminderItem key={idx} reminder={reminder} />
         ))}
       </Flex>
-    </Flex>
+    </Stack>
   );
 });
 

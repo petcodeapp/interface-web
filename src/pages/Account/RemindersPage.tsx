@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Flex, Icon, Text } from "@chakra-ui/core";
+import { Flex, Icon, Stack, Text } from "@chakra-ui/core";
 
 import AccountPageLayout from "./components/AccountPageLayout";
 import ReminderItem from "./components/ReminderItem";
@@ -66,51 +66,52 @@ const RemindersSection = () => {
           <ReminderItem key={idx} reminder={reminder} />
         ))}
       </Flex>
-      <ExpandButton
+      <Stack
+        alignItems="end"
+        spacing={2}
         position="fixed"
         bottom={5}
         right={5}
-        rounded="full"
         color="petcode.neutral.700"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            marginRight={2}
-          >
-            Edit
-          </Text>
-        }
       >
-        <Icon name="edit" size="30px" />
-      </ExpandButton>
-      <ExpandButton
-        position="fixed"
-        bottom={90}
-        right={5}
-        rounded="full"
-        color="petcode.neutral.700"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            whiteSpace="nowrap"
-            marginRight={2}
-          >
-            Add Reminder
+        <ExpandButton
+          rounded="full"
+          padding={4}
+          backgroundColor="petcode.yellow.400"
+          expandChildren={
+            <Text
+              fontSize="xl"
+              fontWeight="thin"
+              textTransform="uppercase"
+              marginRight={2}
+            >
+              Edit
+            </Text>
+          }
+        >
+          <Icon name="edit" size="30px" />
+        </ExpandButton>
+        <ExpandButton
+          rounded="full"
+          padding={4}
+          backgroundColor="petcode.yellow.400"
+          expandChildren={
+            <Text
+              fontSize="xl"
+              fontWeight="thin"
+              textTransform="uppercase"
+              whiteSpace="nowrap"
+              marginRight={2}
+            >
+              Add Reminder
+            </Text>
+          }
+        >
+          <Text fontSize="5xl" lineHeight={0.5}>
+            +
           </Text>
-        }
-      >
-        <Text fontSize="5xl" lineHeight={0.5}>
-          +
-        </Text>
-      </ExpandButton>
+        </ExpandButton>
+      </Stack>
     </Flex>
   );
 };
