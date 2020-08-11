@@ -13,17 +13,17 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/core";
+
+import AccountPageLayout from "./components/AccountPageLayout";
+import BaseButton from "../../components/Shared/button/BaseButton";
+import ExpandButton from "../../components/Shared/button/ExpandButton";
+import Checkbox from "./components/Checkbox";
 import {
   InfoFieldRow,
   InfoFieldText,
   InfoFieldLabel,
   InfoFieldInput,
 } from "./components/InfoField";
-
-import AccountPageLayout from "./components/AccountPageLayout";
-import BaseButton from "../../components/Shared/button/BaseButton";
-import ExpandButton from "../../components/Shared/button/ExpandButton";
-import Checkbox from "./components/Checkbox";
 
 import { action, observable, IObservableValue } from "mobx";
 import { useObserver, observer } from "mobx-react";
@@ -37,10 +37,12 @@ type AddVaccinationModalProps = {
 };
 
 const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({ isShown, vaccinations }) => {
-  const [vaccination] = useState(() => observable({
+  const DEFAULT_VALUES = {
     name: '',
     date: ''
-  } as Vaccination));
+  };
+
+  const [vaccination] = useState(() => observable({...DEFAULT_VALUES} as Vaccination));
 
   return useObserver(() => (
     <Modal
@@ -82,8 +84,7 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({ isShown, vacc
             marginTop={3}
             onClick={action(() => {
               vaccinations.push({...vaccination});
-              vaccination.name = '';
-              vaccination.date = '';
+              Object.assign(vaccination, DEFAULT_VALUES);
               isShown.set(false);
             })}
           >

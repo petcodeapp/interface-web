@@ -23,7 +23,8 @@ input::placeholder {
 }
 
 button,
-input {
+input,
+select {
   border: none;
 }
 
