@@ -58,5 +58,8 @@ export default {
       },
     },
   },
-  icons,
+  icons: {
+    ...theme.icons,
+    ...icons,
+  },
 };

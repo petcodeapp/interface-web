@@ -29,7 +29,6 @@ const ToggleButton: React.FC<BaseButtonProps & { toggled: boolean }> = ({
           _hover: {},
           _active: {},
           variant: "solid",
-          border: "none",
           cursor: "default",
         }
       : {})}
@@ -239,7 +238,7 @@ const Comparisons = () => {
       {...getTableProps()}
     >
       <Box>
-        {headerGroups.map((headerGroup: HeaderGroup) => (
+        {headerGroups.map((headerGroup: HeaderGroup<any>) => (
           <Box {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column, idx) => (
               <Box
@@ -257,7 +256,7 @@ const Comparisons = () => {
         ))}
       </Box>
       <Box {...getTableBodyProps()}>
-        {rows.map((row: Row) => {
+        {rows.map((row: Row<any>) => {
           prepareRow(row);
           return (
             <Box

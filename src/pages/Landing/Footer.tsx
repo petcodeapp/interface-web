@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Divider, Flex, Image, Text } from "@chakra-ui/core";
-
-import IconBadge from "../../components/Shared/badge/IconBadge";
+import { Box, Divider, Flex, Icon, Image, Text } from "@chakra-ui/core";
 
 const Footer = () => (
   <Flex
@@ -54,21 +52,18 @@ const Footer = () => (
         </Text>
       </Flex>
       <Flex direction="row" alignItems="center">
-        <IconBadge
-          iconName="instagram"
-          iconSize="20px"
+        <Box
           color="white"
+          rounded="full"
+          padding={4}
           backgroundColor="#125687"
-          iconPadding={4}
           marginRight={3}
-        />
-        <IconBadge
-          iconName="facebook"
-          iconSize="20px"
-          color="white"
-          backgroundColor="#6077A9"
-          iconPadding={4}
-        />
+        >
+          <Icon name="instagram" size="20px" />
+        </Box>
+        <Box color="white" rounded="full" padding={4} backgroundColor="#6077A9">
+          <Icon name="facebook" size="20px" />
+        </Box>
       </Flex>
     </Flex>
     <Divider

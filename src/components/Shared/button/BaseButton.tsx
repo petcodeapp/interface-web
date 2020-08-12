@@ -14,7 +14,6 @@ const BaseButton: React.FunctionComponent<BaseButtonProps> = ({
   <Button
     size="lg"
     variant={variant}
-    border="none"
     rounded="full"
     whileHover={{
       scale: 1.05,
