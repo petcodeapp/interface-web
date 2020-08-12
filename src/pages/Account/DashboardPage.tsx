@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Box, Flex, Image, Stack, Text } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
@@ -11,8 +11,22 @@ import { observable } from "mobx";
 import { withTheme } from "emotion-theming";
 
 import { Reminder } from "../../Models/Reminder";
+import * as firebase from "firebase";
+import { AuthContext } from '../../views/Auth/index';
+import { Redirect } from "react-router-dom";
 
 const Dashboard = withTheme(({ theme }) => {
+
+  const [newUser, setNewUser] = useState(false);
+
+  const auth = React.useContext(AuthContext);
+
+  useEffect(() => {
+    const ref = firebase.firestore().collection(`${firebase.auth().currentUser?.uid}`);
+
+    ref.onSnapshot(s => setNewUser(s.empty))
+  }, [newUser])
+
   const [reminders] = useState(
     observable([
       {
@@ -58,7 +72,7 @@ const Dashboard = withTheme(({ theme }) => {
     ] as Reminder[])
   );
 
-  return (
+  return !newUser ? (
     <Stack
       flexGrow={1}
       backgroundColor="petcode.neutral.200"
@@ -157,6 +171,8 @@ const Dashboard = withTheme(({ theme }) => {
         ))}
       </Flex>
     </Stack>
+  ) : (
+    <Redirect to="/petinfo"/>
   );
 });
 
