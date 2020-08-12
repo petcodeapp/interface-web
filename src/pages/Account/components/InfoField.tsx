@@ -6,6 +6,8 @@ import {
   Input,
   InputProps,
   PseudoBoxProps,
+  Select,
+  SelectProps,
   Text,
 } from "@chakra-ui/core";
 
@@ -28,6 +30,20 @@ export const InfoFieldLabel: React.FC<PseudoBoxProps> = (props) => (
 
 export const InfoFieldInput: React.FC<InputProps> = (props) => (
   <Input
+    size="md"
+    variant="flushed"
+    color="petcode.blue.400"
+    fontSize="xl"
+    fontFamily="body"
+    height="auto"
+    borderColor="petcode.neutral.400"
+    _focus={{ borderColor: "petcode.blue.400" }}
+    {...props}
+  />
+);
+
+export const InfoFieldSelect: React.FC<SelectProps> = (props) => (
+  <Select
     size="md"
     variant="flushed"
     color="petcode.blue.400"

@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 
-import { Box, Flex, FlexProps, Icon, Text } from "@chakra-ui/core";
+import {
+  Box,
+  Flex,
+  FlexProps,
+  Icon,
+  Stack,
+  Text,
+  useToast,
+} from "@chakra-ui/core";
 
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 import AccountPageLayout from "./components/AccountPageLayout";
@@ -12,14 +20,14 @@ import {
   InfoFieldInput,
 } from "./components/InfoField";
 
-import { action, observable, IObservableValue } from "mobx";
+import { action, observable } from "mobx";
 import { observer, useObserver } from "mobx-react";
 
 import { ContactInfo } from "../../Models/ContactInfo";
 
 type ContactInfoCardProps = {
   contactInfo: ContactInfo;
-  isEditable: IObservableValue<boolean>;
+  isEditable: boolean;
 } & FlexProps;
 
 const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
@@ -39,7 +47,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
       </InfoFieldRow>
       <InfoFieldRow>
         <Box flexBasis="60%">
-          {isEditable.get() ? (
+          {isEditable ? (
             <InfoFieldInput
               value={contactInfo.name.value}
               onChange={action(
@@ -54,17 +62,17 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
         </Box>
         <Checkbox
           checked={contactInfo.name.visible}
-          cursor={isEditable.get() ? "pointer" : "default"}
+          cursor={isEditable ? "pointer" : "default"}
           onClick={action(
             () =>
-              isEditable.get() &&
+              isEditable &&
               (contactInfo.name.visible = !contactInfo.name.visible)
           )}
         />
       </InfoFieldRow>
       <InfoFieldRow>
         <Box flexBasis="60%">
-          {isEditable.get() ? (
+          {isEditable ? (
             <InfoFieldInput
               value={contactInfo.address.value}
               onChange={action(
@@ -79,17 +87,17 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
         </Box>
         <Checkbox
           checked={contactInfo.address.visible}
-          cursor={isEditable.get() ? "pointer" : "default"}
+          cursor={isEditable ? "pointer" : "default"}
           onClick={action(
             () =>
-              isEditable.get() &&
+              isEditable &&
               (contactInfo.address.visible = !contactInfo.address.visible)
           )}
         />
       </InfoFieldRow>
       <InfoFieldRow>
         <Box flexBasis="60%">
-          {isEditable.get() ? (
+          {isEditable ? (
             <InfoFieldInput
               value={contactInfo.phoneNumber.value}
               onChange={action(
@@ -104,10 +112,10 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
         </Box>
         <Checkbox
           checked={contactInfo.phoneNumber.visible}
-          cursor={isEditable.get() ? "pointer" : "default"}
+          cursor={isEditable ? "pointer" : "default"}
           onClick={action(
             () =>
-              isEditable.get() &&
+              isEditable &&
               (contactInfo.phoneNumber.visible = !contactInfo.phoneNumber
                 .visible)
           )}
@@ -115,7 +123,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
       </InfoFieldRow>
       <InfoFieldRow>
         <Box flexBasis="60%">
-          {isEditable.get() ? (
+          {isEditable ? (
             <InfoFieldInput
               value={contactInfo.email.value}
               onChange={action(
@@ -130,10 +138,10 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
         </Box>
         <Checkbox
           checked={contactInfo.email.visible}
-          cursor={isEditable.get() ? "pointer" : "default"}
+          cursor={isEditable ? "pointer" : "default"}
           onClick={action(
             () =>
-              isEditable.get() &&
+              isEditable &&
               (contactInfo.email.visible = !contactInfo.email.visible)
           )}
         />
@@ -169,20 +177,20 @@ const ContactInfoSection = () => {
   );
 
   const [isEditable] = useState(() => observable.box(false));
+  const toast = useToast();
 
   return useObserver(() => (
-    <Flex
-      direction="column"
+    <Stack
       flexGrow={1}
       backgroundColor="petcode.neutral.200"
       padding={10}
+      spacing={5}
     >
       {contactInfos.map((contactInfo, idx) => (
         <ContactInfoCard
           key={idx}
-          isEditable={isEditable}
+          isEditable={isEditable.get()}
           contactInfo={contactInfo}
-          marginBottom={contactInfos.length - 1 != idx ? 10 : 0}
         />
       ))}
       <ExpandButton
@@ -193,7 +201,18 @@ const ContactInfoSection = () => {
         color="petcode.neutral.700"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => isEditable.set(!isEditable.get()))}
+        onClick={action(() => {
+          if (isEditable.get()) {
+            toast({
+              title: "Contact information saved.",
+              description: "Your contact information was saved successfully.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            });
+          }
+          isEditable.set(!isEditable.get());
+        })}
         expandChildren={
           <Text
             fontSize="xl"
@@ -207,7 +226,7 @@ const ContactInfoSection = () => {
       >
         <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
       </ExpandButton>
-    </Flex>
+    </Stack>
   ));
 };
 

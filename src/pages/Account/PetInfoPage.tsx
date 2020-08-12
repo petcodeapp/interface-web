@@ -13,7 +13,9 @@ import {
   PseudoBoxProps,
   Select,
   SelectProps,
+  SimpleGrid,
   Text,
+  useToast,
 } from "@chakra-ui/core";
 import {
   Link as RouterLink,
@@ -33,7 +35,6 @@ const PetInfoCard: React.FC<FlexProps> = (props) => (
     justifyContent="center"
     rounded="lg"
     background="white"
-    flexBasis="42.5%"
     height="100px"
     padding={6}
     marginTop={10}
@@ -109,6 +110,7 @@ const PetInfoSection = () => {
   );
 
   const [isEditable] = useState(() => observable.box(false));
+  const toast = useToast();
 
   return useObserver(() => (
     <Flex
@@ -150,15 +152,12 @@ const PetInfoSection = () => {
           <BackgroundIcon alignSelf="end" size="100px" name="clipboard" />
         </InfoButton>
       </Flex>
-      <Flex direction="row" justifyContent="space-between" flexWrap="wrap">
+      <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>
         <PetInfoCard>
           {isEditable.get() ? (
             <PetInfoSelect
               value={pet.species}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLSelectElement>) =>
-                  (pet.species = e.target.value)
-              )}
+              onChange={action((e) => (pet.species = e.target.value))}
             >
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
@@ -250,8 +249,7 @@ const PetInfoSection = () => {
             <PetInfoSelect
               value={pet.isServiceAnimal ? "Yes" : "No"}
               onChange={action(
-                (e: React.ChangeEvent<HTMLSelectElement>) =>
-                  (pet.isServiceAnimal = e.target.value == "Yes")
+                (e) => (pet.isServiceAnimal = e.target.value == "Yes")
               )}
             >
               <option value="Yes">Yes</option>
@@ -265,7 +263,7 @@ const PetInfoSection = () => {
           <PetInfoCardLabel>Service Animal</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="service-animal" />
         </PetInfoCard>
-      </Flex>
+      </SimpleGrid>
       <ExpandButton
         position="fixed"
         bottom={5}
@@ -274,7 +272,18 @@ const PetInfoSection = () => {
         color="petcode.neutral.700"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => isEditable.set(!isEditable.get()))}
+        onClick={action(() => {
+          if (isEditable.get()) {
+            toast({
+              title: "Pet information saved.",
+              description: "Your pet information was saved successfully.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            });
+          }
+          isEditable.set(!isEditable.get());
+        })}
         expandChildren={
           <Text
             fontSize="xl"

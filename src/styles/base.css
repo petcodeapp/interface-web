@@ -6,6 +6,7 @@ body,
   margin: 0;
   height: 100%;
   width: 100%;
+  font-family: Nunito;
 }
 
 p,
@@ -23,7 +24,8 @@ input::placeholder {
 }
 
 button,
-input {
+input,
+select {
   border: none;
 }
 
