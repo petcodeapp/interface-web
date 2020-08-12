@@ -28,81 +28,88 @@ const pageVariants = {
   },
 }
 
+const PageAnim: React.FC = (props) => {
+  return (
+    <motion.div style={{display: "inline"}} initial="initial" exit="out" animate="in" variants={pageVariants}>
+      {props.children}
+    </motion.div>
+  )
+}
 
 const Routes = () => {
   return useObserver(() => (
     <>
       <PublicRoute restricted path="/signup">
-        <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+        <PageAnim>
         <RegistrationPage />
-        </motion.div>
+        </PageAnim>
       </PublicRoute>
 
       <PublicRoute restricted path="/login">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <LoginPage />
-        </motion.div>
+        </PageAnim>
       </PublicRoute>
 
       <PublicRoute restricted path="/forgotpassword">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <ForgotPasswordPage />
-        </motion.div>
+        </PageAnim>
       </PublicRoute>
 
       <PrivateRoute path="/admin">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <AdminPage />
-        </motion.div>
+        </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/dashboard">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <DashboardPage />
-        </motion.div>
+        </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/contactinfo">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <ContactInfoPage />
-        </motion.div>
+        </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/petinfo">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <PetInfoPage />
-        </motion.div>
+        </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/reminders">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <RemindersPage />
-        </motion.div>
+        </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/medicalinfo">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <MedicalInfoPage />
-        </motion.div>
+        </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/scanlocations">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
-        <ScanLocationsPage /></motion.div>
+      <PageAnim>
+        <ScanLocationsPage /></PageAnim>
       </PrivateRoute>
 
       <PublicRoute path="/oldlanding">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <OldLandingpage />
-        </motion.div>
+        </PageAnim>
       </PublicRoute>
 
       <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
       <PublicRoute exact path="/">
-      <motion.div initial="initial" animate="in" exit="out" variants={pageVariants}>
+      <PageAnim>
         <LandingPage />
-        </motion.div>
+        </PageAnim>
       </PublicRoute>
     </>
   ));
