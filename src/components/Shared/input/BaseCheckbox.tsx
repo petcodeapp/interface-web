@@ -2,13 +2,15 @@ import React from "react";
 
 import { Flex, FlexProps, Icon } from "@chakra-ui/core";
 
-type CheckboxProps = {
-  checked?: boolean;
+type BaseCheckboxProps = {
+  isChecked?: boolean;
+  isDisabled?: boolean;
   size?: number;
 } & FlexProps;
 
-const Checkbox: React.FC<CheckboxProps> = ({
-  checked,
+const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
+  isChecked,
+  isDisabled,
   size = 32,
   ...props
 }) => (
@@ -18,9 +20,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
     rounded="full"
     backgroundColor="petcode.yellow.400"
     size={size + "px"}
+    cursor={isDisabled ? "default" : "pointer"}
     {...props}
   >
-    {checked && (
+    {isChecked && (
       <Icon
         name="checkmark"
         size={size - 12 + "px"}
@@ -30,4 +33,4 @@ const Checkbox: React.FC<CheckboxProps> = ({
   </Flex>
 );
 
-export default Checkbox;
+export default BaseCheckbox;

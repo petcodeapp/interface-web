@@ -350,4 +350,10 @@ export default {
     ),
     viewBox: "0 0 13 17",
   },
+  "compact-arrow": {
+    path: (
+      <path stroke="currentColor" fill="transparent" d="M5.375 9.875L1 5.5l4.375-4.375" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    ),
+    viewBox: "0 0 7 11"
+  }
 };

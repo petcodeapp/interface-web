@@ -12,7 +12,7 @@ import {
 
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 import AccountPageLayout from "./components/AccountPageLayout";
-import Checkbox from "./components/Checkbox";
+import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import {
   InfoFieldRow,
   InfoFieldText,
@@ -60,13 +60,12 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           )}
           <InfoFieldLabel>Name</InfoFieldLabel>
         </Box>
-        <Checkbox
-          checked={contactInfo.name.visible}
-          cursor={isEditable ? "pointer" : "default"}
+        <BaseCheckbox
+          isChecked={contactInfo.name.visible}
+          isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable &&
-              (contactInfo.name.visible = !contactInfo.name.visible)
+              isEditable && (contactInfo.name.visible = !contactInfo.name.visible)
           )}
         />
       </InfoFieldRow>
@@ -85,13 +84,12 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           )}
           <InfoFieldLabel>Address</InfoFieldLabel>
         </Box>
-        <Checkbox
-          checked={contactInfo.address.visible}
-          cursor={isEditable ? "pointer" : "default"}
+        <BaseCheckbox
+          isChecked={contactInfo.address.visible}
+          isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable &&
-              (contactInfo.address.visible = !contactInfo.address.visible)
+              isEditable && (contactInfo.address.visible = !contactInfo.address.visible)
           )}
         />
       </InfoFieldRow>
@@ -110,13 +108,12 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           )}
           <InfoFieldLabel>Phone Number</InfoFieldLabel>
         </Box>
-        <Checkbox
-          checked={contactInfo.phoneNumber.visible}
-          cursor={isEditable ? "pointer" : "default"}
+        <BaseCheckbox
+          isChecked={contactInfo.phoneNumber.visible}
+          isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable &&
-              (contactInfo.phoneNumber.visible = !contactInfo.phoneNumber
+              isEditable && (contactInfo.phoneNumber.visible = !contactInfo.phoneNumber
                 .visible)
           )}
         />
@@ -136,13 +133,12 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           )}
           <InfoFieldLabel>Email</InfoFieldLabel>
         </Box>
-        <Checkbox
-          checked={contactInfo.email.visible}
-          cursor={isEditable ? "pointer" : "default"}
+        <BaseCheckbox
+          isChecked={contactInfo.email.visible}
+          isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable &&
-              (contactInfo.email.visible = !contactInfo.email.visible)
+              isEditable && (contactInfo.email.visible = !contactInfo.email.visible)
           )}
         />
       </InfoFieldRow>

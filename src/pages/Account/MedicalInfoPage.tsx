@@ -18,7 +18,7 @@ import {
 import AccountPageLayout from "./components/AccountPageLayout";
 import BaseButton from "../../components/Shared/button/BaseButton";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
-import Checkbox from "./components/Checkbox";
+import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import {
   InfoFieldRow,
   InfoFieldText,
@@ -230,13 +230,12 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Special Needs</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={pet.specialNeeds.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+          <BaseCheckbox
+            isChecked={pet.specialNeeds.visible}
+            isDisabled={!isEditable.get()}
             onClick={action(
               () =>
-                isEditable.get() &&
-                (pet.specialNeeds.visible = !pet.specialNeeds.visible)
+                isEditable.get() && (pet.specialNeeds.visible = !pet.specialNeeds.visible)
             )}
           />
         </InfoFieldRow>
@@ -255,13 +254,12 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Allergies</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={pet.allergies.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+          <BaseCheckbox
+            isChecked={pet.allergies.visible}
+            isDisabled={!isEditable.get()}
             onClick={action(
               () =>
-                isEditable.get() &&
-                (pet.allergies.visible = !pet.allergies.visible)
+                isEditable.get() && (pet.allergies.visible = !pet.allergies.visible)
             )}
           />
         </InfoFieldRow>
@@ -280,9 +278,9 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Veterinarian Name</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={pet.vetName.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+          <BaseCheckbox
+            isChecked={pet.vetName.visible}
+            isDisabled={!isEditable.get()}
             onClick={action(
               () =>
                 isEditable.get() && (pet.vetName.visible = !pet.vetName.visible)
@@ -304,13 +302,12 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Veterinarian Phone Number</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={pet.vetPhoneNumber.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+          <BaseCheckbox
+            isChecked={pet.vetPhoneNumber.visible}
+            isDisabled={!isEditable.get()}
             onClick={action(
               () =>
-                isEditable.get() &&
-                (pet.vetPhoneNumber.visible = !pet.vetPhoneNumber.visible)
+                isEditable.get() && (pet.vetPhoneNumber.visible = !pet.vetPhoneNumber.visible)
             )}
           />
         </InfoFieldRow>
