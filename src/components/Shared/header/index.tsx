@@ -1,8 +1,14 @@
 import React from "react";
 
 import { Box, Flex, FlexProps, Icon, Text } from "@chakra-ui/core";
+import { useObserver } from 'mobx-react-lite';
+import { AuthContext } from '../../../views/Auth/index';
 
-const Header: React.FC<FlexProps> = (props) => (
+const Header: React.FC<FlexProps> = (props) => {
+
+  const auth = React.useContext(AuthContext);
+  
+  return useObserver(() => (
   <Flex
     display={{ xs: "none", md: "flex" }}
     position="fixed"
@@ -21,8 +27,10 @@ const Header: React.FC<FlexProps> = (props) => (
     <Box flexGrow={1} />
     <Text marginRight={8}>Home</Text>
     <Text marginRight={8}>About Us</Text>
-    <Text marginRight={8}>Purchase</Text>
-    <Text display="flex" alignItems="center" marginRight={8}>
+    <Text marginRight={8}>Purchase</Text>{
+      !auth.isLoggedIn && (
+        <>
+<Text display="flex" alignItems="center" marginRight={8}>
       <Icon name="template" size="15px" marginRight={2} />
       Register
     </Text>
@@ -30,7 +38,10 @@ const Header: React.FC<FlexProps> = (props) => (
       <Icon name="user-circle" size="16px" marginRight={2} />
       Sign In
     </Text>
+    </>
+      )
+    }
   </Flex>
-);
+))};
 
 export default Header;
