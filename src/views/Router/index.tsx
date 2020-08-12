@@ -2,6 +2,7 @@ import React from "react";
 import LandingPage from "../../pages/Landing";
 import OldLandingpage from "../../pages/OldLanding";
 import LoginPage from "../../pages/Login";
+import { Route } from "react-router-dom";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import AdminPage from "../../pages/Admin";
@@ -13,6 +14,7 @@ import PetInfoPage from "../../pages/Account/PetInfoPage";
 import RemindersPage from "../../pages/Account/RemindersPage";
 import MedicalInfoPage from "../../pages/Account/MedicalInfoPage";
 import ScanLocationsPage from "../../pages/Account/ScanLocationsPage";
+import ShippingInformation from "../../pages/Checkout/ShippingInformationPage";
 import { useObserver } from "mobx-react-lite";
 
 const Routes = () => {
@@ -57,6 +59,10 @@ const Routes = () => {
       <PrivateRoute path="/scanlocations">
         <ScanLocationsPage />
       </PrivateRoute>
+
+      <Route path="/shippinginfo">
+        <ShippingInformation />
+      </Route>
 
       <PublicRoute path="/oldlanding">
         <OldLandingpage />
