@@ -19,8 +19,6 @@ const Dashboard = withTheme(({ theme }) => {
 
   const [newUser, setNewUser] = useState(false);
 
-  const auth = React.useContext(AuthContext);
-
   useEffect(() => {
     const ref = firebase.firestore().collection(`${firebase.auth().currentUser?.uid}`);
 
