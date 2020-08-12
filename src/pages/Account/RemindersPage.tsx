@@ -25,7 +25,7 @@ import {
 } from "./components/InfoField";
 
 import { action, observable, IObservableValue } from "mobx";
-import { useObserver, observer } from "mobx-react";
+import { useObserver } from "mobx-react";
 
 import { Reminder } from "../../Models/Reminder";
 
@@ -101,10 +101,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldLabel>Reminder Date</InfoFieldLabel>
           <InfoFieldSelect
             value={reminder.frequency}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLSelectElement>) =>
-                (reminder.frequency = e.target.value)
-            )}
+            onChange={action((e) => (reminder.frequency = e.target.value))}
           >
             <option>One-Time</option>
             <option>Daily</option>
@@ -115,8 +112,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldSelect
             value={reminder.notificationMethod}
             onChange={action(
-              (e: React.ChangeEvent<HTMLSelectElement>) =>
-                (reminder.notificationMethod = e.target.value)
+              (e) => (reminder.notificationMethod = e.target.value)
             )}
           >
             <option>App Notification</option>

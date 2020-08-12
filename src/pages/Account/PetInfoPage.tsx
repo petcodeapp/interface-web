@@ -157,10 +157,7 @@ const PetInfoSection = () => {
           {isEditable.get() ? (
             <PetInfoSelect
               value={pet.species}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLSelectElement>) =>
-                  (pet.species = e.target.value)
-              )}
+              onChange={action((e) => (pet.species = e.target.value))}
             >
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
@@ -252,8 +249,7 @@ const PetInfoSection = () => {
             <PetInfoSelect
               value={pet.isServiceAnimal ? "Yes" : "No"}
               onChange={action(
-                (e: React.ChangeEvent<HTMLSelectElement>) =>
-                  (pet.isServiceAnimal = e.target.value == "Yes")
+                (e) => (pet.isServiceAnimal = e.target.value == "Yes")
               )}
             >
               <option value="Yes">Yes</option>
