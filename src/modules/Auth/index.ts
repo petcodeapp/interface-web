@@ -1,14 +1,14 @@
 import { observable, computed } from "mobx";
 import { auth } from "../../firebase/index";
-import firebase from "firebase";
+import firebase, { User } from "firebase";
 
 class Auth {
-  @observable user: any = false;
+  @observable user: User | null = null;
   @observable authPending: boolean = true;
   unWatchAuth: any;
 
   constructor() {
-    this.unWatchAuth = auth.onAuthStateChanged((user) => {
+    this.unWatchAuth = auth.onAuthStateChanged((user: User) => {
       this.user = user;
 
       this.authPending = false;
@@ -20,7 +20,7 @@ class Auth {
       () => {
         console.log("Successfully signed out!");
       },
-      (err) => {
+      (err: any) => {
         console.error("Could not sign out. " + err);
       }
     );
@@ -31,7 +31,7 @@ class Auth {
       () => {
         console.log("Signed in successfully!");
       },
-      (err) => {
+      (err: any) => {
         console.error("Could not sign in. " + err);
       }
     );
@@ -41,7 +41,7 @@ class Auth {
     auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(() => console.log("Successfully signed in with google!"))
-      .catch((err) => console.error("Could not sign in. " + err));
+      .catch((err: any) => console.error("Could not sign in. " + err));
   };
 
   @computed get isLoggedIn() {
