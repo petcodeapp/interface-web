@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import Auth from "../../modules/Auth";
 
-const AuthStore = new Auth();
+export const AuthStore = new Auth();
 
 export const AuthContext = createContext(AuthStore);
 
