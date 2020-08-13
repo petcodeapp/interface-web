@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Flex, Heading, Icon, Select, Stack, Text } from "@chakra-ui/core";
+import { Box, Flex, Heading, Icon, Select, Stack, Text } from "@chakra-ui/core";
 
 import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import BaseButton from "../../components/Shared/button/BaseButton";
@@ -17,29 +17,44 @@ const BillingInformationSection = () => {
 
   return (
     <Flex direction="column" alignItems="center" paddingY={10}>
-      <Heading color="petcode.blue.400" fontSize="5xl" marginY={10}>
+      <Heading
+        color="petcode.blue.400"
+        fontSize="5xl"
+        textAlign="center"
+        marginY={10}
+      >
         Billing Information
       </Heading>
       <Stack width="60%" spacing={3}>
         <Stack isInline spacing={3}>
-          <RoundedInput flexBasis="50%" placeholder="First Name" type="fname" />
-          <RoundedInput flexBasis="50%" placeholder="Last Name" type="lname" />
+          <Box flexBasis="50%">
+            <RoundedInput placeholder="First Name" type="fname" />
+          </Box>
+          <Box flexBasis="50%">
+            <RoundedInput placeholder="Last Name" type="lname" />
+          </Box>
         </Stack>
         <Flex>
           <RoundedInput placeholder="Card Number" />
         </Flex>
         <Stack isInline spacing={3}>
-          <RoundedInput flexBasis="33%" placeholder="MM" />
-          <RoundedInput flexBasis="33%" placeholder="YY" />
-          <RoundedInput flexBasis="33%" placeholder="CVV" />
+          <Box flexBasis="33%">
+            <RoundedInput placeholder="MM" />
+          </Box>
+          <Box flexBasis="33%">
+            <RoundedInput placeholder="YY" />
+          </Box>
+          <Box flexBasis="33%">
+            <RoundedInput placeholder="CVV" />
+          </Box>
         </Stack>
         <Stack isInline spacing={3}>
-          <RoundedInput
-            flexBasis="50%"
-            placeholder="Email Address"
-            type="email"
-          />
-          <RoundedInput flexBasis="50%" placeholder="Phone Number" type="tel" />
+          <Box flexBasis="50%">
+            <RoundedInput placeholder="Email Address" type="email" />
+          </Box>
+          <Box flexBasis="50%">
+            <RoundedInput placeholder="Phone Number" type="tel" />
+          </Box>
         </Stack>
         <Flex alignSelf="start">
           <BaseCheckbox
@@ -62,22 +77,20 @@ const BillingInformationSection = () => {
         {useDifferentAddress && (
           <Stack spacing={3}>
             <Stack isInline spacing={3}>
-              <RoundedInput
-                flexBasis="50%"
-                placeholder="First Name"
-                type="fname"
-              />
-              <RoundedInput
-                flexBasis="50%"
-                placeholder="Last Name"
-                type="lname"
-              />
+              <Box flexBasis="50%">
+                <RoundedInput placeholder="First Name" type="fname" />
+              </Box>
+              <Box flexBasis="50%">
+                <RoundedInput placeholder="Last Name" type="lname" />
+              </Box>
             </Stack>
             <Flex>
               <RoundedInput placeholder="Address" type="address" />
             </Flex>
             <Stack isInline spacing={3}>
-              <RoundedInput flexBasis="50%" placeholder="City" />
+              <Box flexBasis="50%">
+                <RoundedInput placeholder="City" />
+              </Box>
               <Select
                 flexBasis="20%"
                 placeholder="State"
@@ -156,7 +169,9 @@ const BillingInformationSection = () => {
                   <option key={idx}>{stateName}</option>
                 ))}
               </Select>
-              <RoundedInput flexBasis="30%" placeholder="Zip Code" />
+              <Box flexBasis="30%">
+                <RoundedInput placeholder="Zip Code" />
+              </Box>
             </Stack>
           </Stack>
         )}

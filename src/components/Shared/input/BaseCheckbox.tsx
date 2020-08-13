@@ -21,7 +21,8 @@ const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
     rounded="full"
     backgroundColor="petcode.yellow.400"
     _hover={{ backgroundColor: "petcode.yellow.500" }}
-    size={size + "px"}
+    minWidth={size + "px"}
+    minHeight={size + "px"}
     cursor={isDisabled ? "default" : "pointer"}
     {...props}
   >
