@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Flex, Stack, Text } from "@chakra-ui/core";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router";
 
 type ProgressStepProps = {
   name: string;
@@ -30,7 +30,10 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
   </Flex>
 );
 
-const ProgressTracker = withRouter(({ location }) => (
+const ProgressTracker: React.FC<{ step: number } & RouteComponentProps> = ({
+  step,
+  location,
+}) => (
   <Stack
     backgroundColor="petcode.neutral.200"
     color="petcode.neutral.500"
@@ -39,19 +42,10 @@ const ProgressTracker = withRouter(({ location }) => (
     padding={8}
     spacing={20}
   >
-    <ProgressStep
-      name="Shipping"
-      isCurrent={location.pathname == "/shippinginfo"}
-    />
-    <ProgressStep
-      name="Billing"
-      isCurrent={location.pathname == "/billinginfo"}
-    />
-    <ProgressStep
-      name="Review & Confirmation"
-      isCurrent={location.pathname == "/confirminfo"}
-    />
+    <ProgressStep name="Shipping" isCurrent={step == 0} />
+    <ProgressStep name="Billing" isCurrent={step == 1} />
+    <ProgressStep name="Review & Confirmation" isCurrent={step == 2} />
   </Stack>
-));
+);
 
-export default ProgressTracker;
+export default withRouter(ProgressTracker);
