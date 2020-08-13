@@ -16,7 +16,7 @@ const ShippingInformationSection = () => {
   const history = useHistory();
 
   return (
-    <Flex direction="column" alignItems="center" paddingY={10}>
+    <Flex direction="column" alignItems="center" paddingBottom={10}>
       <Heading
         color="petcode.blue.400"
         fontSize="5xl"
