@@ -1,4 +1,4 @@
-import environment from '../environment/environment';
+import environment from "../environment/environment";
 const firebase = require("firebase");
 
 const f = firebase.initializeApp(environment.firebaseConfig);

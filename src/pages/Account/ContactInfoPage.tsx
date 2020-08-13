@@ -65,7 +65,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable && (contactInfo.name.visible = !contactInfo.name.visible)
+              isEditable &&
+              (contactInfo.name.visible = !contactInfo.name.visible)
           )}
         />
       </InfoFieldRow>
@@ -89,7 +90,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable && (contactInfo.address.visible = !contactInfo.address.visible)
+              isEditable &&
+              (contactInfo.address.visible = !contactInfo.address.visible)
           )}
         />
       </InfoFieldRow>
@@ -113,7 +115,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable && (contactInfo.phoneNumber.visible = !contactInfo.phoneNumber
+              isEditable &&
+              (contactInfo.phoneNumber.visible = !contactInfo.phoneNumber
                 .visible)
           )}
         />
@@ -138,7 +141,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
           isDisabled={!isEditable}
           onClick={action(
             () =>
-              isEditable && (contactInfo.email.visible = !contactInfo.email.visible)
+              isEditable &&
+              (contactInfo.email.visible = !contactInfo.email.visible)
           )}
         />
       </InfoFieldRow>

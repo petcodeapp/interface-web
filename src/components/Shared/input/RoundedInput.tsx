@@ -16,4 +16,3 @@ const RoundedInput: React.FC<InputProps> = (props) => (
 );
 
 export default RoundedInput;
-

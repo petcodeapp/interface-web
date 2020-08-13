@@ -9,7 +9,11 @@ type ProgressStepProps = {
   isCurrent: boolean;
 };
 
-const ProgressStep: React.FC<ProgressStepProps> = ({ name, isCurrent, ...props }) => (
+const ProgressStep: React.FC<ProgressStepProps> = ({
+  name,
+  isCurrent,
+  ...props
+}) => (
   <Flex alignItems="center" {...props}>
     <Box
       rounded="full"
@@ -30,14 +34,23 @@ const ProgressTracker = withRouter(({ location }) => (
   <Stack
     backgroundColor="petcode.neutral.200"
     color="petcode.neutral.500"
-    justifyContent="center" 
+    justifyContent="center"
     isInline
     padding={8}
     spacing={20}
   >
-    <ProgressStep name="Shipping" isCurrent={location.pathname == "/shippinginfo"}/>
-    <ProgressStep name="Billing" isCurrent={location.pathname == "/billinginfo"}/>
-    <ProgressStep name="Review & Confirmation" isCurrent={location.pathname == "/confirminfo"}/>
+    <ProgressStep
+      name="Shipping"
+      isCurrent={location.pathname == "/shippinginfo"}
+    />
+    <ProgressStep
+      name="Billing"
+      isCurrent={location.pathname == "/billinginfo"}
+    />
+    <ProgressStep
+      name="Review & Confirmation"
+      isCurrent={location.pathname == "/confirminfo"}
+    />
   </Stack>
 ));
 

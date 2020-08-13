@@ -12,18 +12,19 @@ import { withTheme } from "emotion-theming";
 
 import { Reminder } from "../../Models/Reminder";
 import * as firebase from "firebase";
-import { AuthContext } from '../../views/Auth/index';
+import { AuthContext } from "../../views/Auth/index";
 import { Redirect } from "react-router-dom";
 
 const Dashboard = withTheme(({ theme }) => {
-
   const [newUser, setNewUser] = useState(false);
 
   useEffect(() => {
-    const ref = firebase.firestore().collection(`${firebase.auth().currentUser?.uid}`);
+    const ref = firebase
+      .firestore()
+      .collection(`${firebase.auth().currentUser?.uid}`);
 
-    ref.onSnapshot(s => setNewUser(s.empty))
-  }, [newUser])
+    ref.onSnapshot((s) => setNewUser(s.empty));
+  }, [newUser]);
 
   const [reminders] = useState(
     observable([
@@ -170,7 +171,7 @@ const Dashboard = withTheme(({ theme }) => {
       </Flex>
     </Stack>
   ) : (
-    <Redirect to="/petinfo"/>
+    <Redirect to="/petinfo" />
   );
 });
 

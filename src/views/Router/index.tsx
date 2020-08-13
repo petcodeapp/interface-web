@@ -14,7 +14,8 @@ import PetInfoPage from "../../pages/Account/PetInfoPage";
 import RemindersPage from "../../pages/Account/RemindersPage";
 import MedicalInfoPage from "../../pages/Account/MedicalInfoPage";
 import ScanLocationsPage from "../../pages/Account/ScanLocationsPage";
-import ShippingInformation from "../../pages/Checkout/ShippingInformationPage";
+import ShippingInformationPage from "../../pages/Checkout/ShippingInformationPage";
+import BillingInformationPage from "../../pages/Checkout/BillingInformationPage";
 import { useObserver } from "mobx-react-lite";
 
 const Routes = () => {
@@ -61,7 +62,11 @@ const Routes = () => {
       </PrivateRoute>
 
       <Route path="/shippinginfo">
-        <ShippingInformation />
+        <ShippingInformationPage />
+      </Route>
+
+      <Route path="/billinginfo">
+        <BillingInformationPage />
       </Route>
 
       <PublicRoute path="/oldlanding">

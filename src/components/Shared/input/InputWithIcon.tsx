@@ -27,7 +27,7 @@ const InputWithIcon: React.FC<InputWithIconProps> = ({
         <Icon size="25px" name={iconName} color="petcode.neutral.400" />
       }
     />
-    <RoundedInput paddingLeft={12} {...inputProps}/>
+    <RoundedInput paddingLeft={12} {...inputProps} />
   </InputGroup>
 );
 

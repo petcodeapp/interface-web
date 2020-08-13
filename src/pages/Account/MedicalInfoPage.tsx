@@ -235,7 +235,8 @@ const MedicalInfoSection = () => {
             isDisabled={!isEditable.get()}
             onClick={action(
               () =>
-                isEditable.get() && (pet.specialNeeds.visible = !pet.specialNeeds.visible)
+                isEditable.get() &&
+                (pet.specialNeeds.visible = !pet.specialNeeds.visible)
             )}
           />
         </InfoFieldRow>
@@ -259,7 +260,8 @@ const MedicalInfoSection = () => {
             isDisabled={!isEditable.get()}
             onClick={action(
               () =>
-                isEditable.get() && (pet.allergies.visible = !pet.allergies.visible)
+                isEditable.get() &&
+                (pet.allergies.visible = !pet.allergies.visible)
             )}
           />
         </InfoFieldRow>
@@ -307,7 +309,8 @@ const MedicalInfoSection = () => {
             isDisabled={!isEditable.get()}
             onClick={action(
               () =>
-                isEditable.get() && (pet.vetPhoneNumber.visible = !pet.vetPhoneNumber.visible)
+                isEditable.get() &&
+                (pet.vetPhoneNumber.visible = !pet.vetPhoneNumber.visible)
             )}
           />
         </InfoFieldRow>
