@@ -30,8 +30,7 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
   </Flex>
 );
 
-const ProgressTracker: React.FC<{ step: number } & RouteComponentProps> = ({
-  step,
+const ProgressTracker: React.FC<RouteComponentProps> = ({
   location,
 }) => (
   <Stack
@@ -42,9 +41,9 @@ const ProgressTracker: React.FC<{ step: number } & RouteComponentProps> = ({
     padding={8}
     spacing={20}
   >
-    <ProgressStep name="Shipping" isCurrent={step == 0} />
-    <ProgressStep name="Billing" isCurrent={step == 1} />
-    <ProgressStep name="Review & Confirmation" isCurrent={step == 2} />
+    <ProgressStep name="Shipping" isCurrent={location.hash == "#shipping"} />
+    <ProgressStep name="Billing" isCurrent={location.hash == "#billing"} />
+    <ProgressStep name="Review & Confirmation" isCurrent={location.hash == "#confirmation"} />
   </Stack>
 );
 

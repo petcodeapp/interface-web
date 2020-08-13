@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Flex } from "@chakra-ui/core";
 
@@ -11,11 +11,11 @@ import BillingInformationStep, {
   BillingInformation,
 } from "./components/BillingInformationStep";
 import ConfirmationStep from "./components/ConfirmationStep";
+import { withRouter, RouteComponentProps } from "react-router";
 
 import { observable } from "mobx";
 
-const CheckoutPage = () => {
-  const [step, setStep] = useState(0);
+const CheckoutPage: React.FC<RouteComponentProps> = ({ location, history }) => {
   const [shippingInformation] = useState(() =>
     observable({
       firstName: "",
@@ -46,20 +46,26 @@ const CheckoutPage = () => {
     } as BillingInformation)
   );
 
+  useEffect(() => {
+    if (location.hash == "") {
+      history.push('/checkout#shipping');
+    }
+  }, [location.hash])
+
   return (
     <Flex direction="column" minHeight="calc(100% - 57px)" paddingTop="57px">
       <Header backgroundColor="petcode.neutral.700" />
-      <ProgressTracker step={step} />
-      {step == 0 ? (
+      <ProgressTracker />
+      {location.hash == "" || location.hash == "#shipping" ? (
         <ShippingInformationStep
           shippingInformation={shippingInformation}
-          onNextStep={() => setStep(1)}
+          onNextStep={() => history.push('/checkout#billing')}
         />
-      ) : step == 1 ? (
+      ) : location.hash == "#billing" ? (
         <BillingInformationStep
           shippingInformation={shippingInformation}
           billingInformation={billingInformation}
-          onNextStep={() => setStep(2)}
+          onNextStep={() => history.push('/checkout#confirmation')}
         />
       ) : (
         <ConfirmationStep
@@ -71,4 +77,4 @@ const CheckoutPage = () => {
   );
 };
 
-export default CheckoutPage;
+export default withRouter(CheckoutPage);
