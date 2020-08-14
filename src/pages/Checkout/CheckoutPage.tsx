@@ -48,9 +48,9 @@ const CheckoutPage: React.FC<RouteComponentProps> = ({ location, history }) => {
 
   useEffect(() => {
     if (!["#shipping", "#billing", "#confirmation"].includes(location.hash)) {
-      history.push('/checkout#shipping');
+      history.push("/checkout#shipping");
     }
-  }, [location.hash])
+  }, [location.hash]);
 
   return (
     <Flex direction="column" minHeight="calc(100% - 57px)" paddingTop="57px">
@@ -65,12 +65,12 @@ const CheckoutPage: React.FC<RouteComponentProps> = ({ location, history }) => {
         <BillingInformationStep
           shippingInformation={shippingInformation}
           billingInformation={billingInformation}
-          onNextStep={() => history.push('/checkout#confirmation')}
+          onNextStep={() => history.push("/checkout#confirmation")}
         />
       ) : (
         <ShippingInformationStep
           shippingInformation={shippingInformation}
-          onNextStep={() => history.push('/checkout#billing')}
+          onNextStep={() => history.push("/checkout#billing")}
         />
       )}
     </Flex>

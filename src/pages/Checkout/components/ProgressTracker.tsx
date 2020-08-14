@@ -30,9 +30,7 @@ const ProgressStep: React.FC<ProgressStepProps> = ({
   </Flex>
 );
 
-const ProgressTracker: React.FC<RouteComponentProps> = ({
-  location,
-}) => (
+const ProgressTracker: React.FC<RouteComponentProps> = ({ location }) => (
   <Stack
     backgroundColor="petcode.neutral.200"
     color="petcode.neutral.500"
@@ -43,7 +41,10 @@ const ProgressTracker: React.FC<RouteComponentProps> = ({
   >
     <ProgressStep name="Shipping" isCurrent={location.hash == "#shipping"} />
     <ProgressStep name="Billing" isCurrent={location.hash == "#billing"} />
-    <ProgressStep name="Review & Confirmation" isCurrent={location.hash == "#confirmation"} />
+    <ProgressStep
+      name="Review & Confirmation"
+      isCurrent={location.hash == "#confirmation"}
+    />
   </Stack>
 );
 

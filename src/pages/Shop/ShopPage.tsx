@@ -1,6 +1,14 @@
 import React from "react";
 
-import { Box, Flex, Heading, Stack, StackProps, Text, useTheme } from "@chakra-ui/core";
+import {
+  Box,
+  Flex,
+  Heading,
+  Stack,
+  StackProps,
+  Text,
+  useTheme,
+} from "@chakra-ui/core";
 import StarRatings from "react-star-ratings";
 
 import Header from "../../components/Shared/header";
@@ -10,7 +18,7 @@ const ShopItem: React.FC<StackProps> = ({ ...props }) => {
 
   return (
     <Stack width="250px" spacing={3} {...props}>
-      <Box size="250px" backgroundColor="petcode.neutral.300"/>
+      <Box size="250px" backgroundColor="petcode.neutral.300" />
       <Text color="petcode.neutral.600" fontSize="xl" fontWeight="thin">
         PetCode Tag
       </Text>
@@ -38,15 +46,15 @@ const ShopPage = () => (
         All Products
       </Heading>
       <Stack isInline flexWrap="wrap" spacing={10}>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
-        <ShopItem marginBottom={6}/>
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
+        <ShopItem marginBottom={6} />
       </Stack>
     </Stack>
   </Flex>
