@@ -16,8 +16,10 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-map-gl": "^5.2.6",
     "@types/react-router-dom": "^5.1.5",
+    "@types/yup": "^0.29.5",
     "emotion-theming": "^10.0.27",
     "firebase": "^7.16.0",
+    "formik": "^2.1.5",
     "framer-motion": "^1.11.1",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
@@ -33,7 +35,9 @@
     "react-table": "^7.3.2",
     "react-viewport-utils": "^1.12.1",
     "typescript": "~3.7.2",
-    "use-breakpoint": "^1.1.2"
+    "use-breakpoint": "^1.1.2",
+    "yup": "^0.29.3",
+    "yup-phone": "^1.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

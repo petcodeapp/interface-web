@@ -11,7 +11,7 @@ import RoundedInput from "../../../components/Shared/input/RoundedInput";
 import { action } from "mobx";
 import { useObserver } from "mobx-react";
 
-import { Address } from "../../../Models/Address";
+import { Address } from "./AddressInputs";
 
 export type BillingInformation = Address & {
   firstName: string;
@@ -172,7 +172,7 @@ const BillingInformationStep: React.FC<BillingInformationStepProps> = ({
           />
           <Text color="petcode.yellow.400">Use a Different Address</Text>
         </Flex>
-        {useDifferentAddress && <AddressInputs address={billingInformation} />}
+        {useDifferentAddress && <AddressInputs />}
         <Flex alignSelf="end">
           <Text
             display="flex"
