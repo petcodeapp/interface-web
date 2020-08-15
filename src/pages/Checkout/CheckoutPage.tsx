@@ -20,7 +20,7 @@ const CheckoutPage: React.FC<RouteComponentProps> = ({ location, history }) => {
     observable({
       firstName: "",
       lastName: "",
-      address: "",
+      streetAddress: "",
       city: "",
       state: "",
       zipCode: "",
@@ -37,7 +37,7 @@ const CheckoutPage: React.FC<RouteComponentProps> = ({ location, history }) => {
       MM: "",
       YY: "",
       CVV: "",
-      address: "",
+      streetAddress: "",
       city: "",
       state: "",
       zipCode: "",

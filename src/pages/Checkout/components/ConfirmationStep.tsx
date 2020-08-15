@@ -36,7 +36,7 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
         <Text color="petcode.neutral.500" fontSize="xl" fontWeight="thin">
           {shippingInformation.firstName} {shippingInformation.lastName}
           <br />
-          {shippingInformation.address}
+          {shippingInformation.streetAddress}
           <br />
           {shippingInformation.city}, {shippingInformation.state}{" "}
           {shippingInformation.zipCode}
@@ -51,7 +51,7 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
         <Text color="petcode.neutral.500" fontSize="xl" fontWeight="thin">
           {billingInformation.firstName} {billingInformation.lastName}
           <br />
-          {billingInformation.address}
+          {billingInformation.streetAddress}
           <br />
           {billingInformation.city}, {billingInformation.state}{" "}
           {billingInformation.zipCode}

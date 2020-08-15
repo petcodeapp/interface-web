@@ -1,6 +1,8 @@
 import React from "react";
 
 import { Box, Flex, Heading, Icon, Stack, Text } from "@chakra-ui/core";
+import { Formik, Field } from "formik";
+import { Observer } from "mobx-react";
 
 import AddressInputs from "./AddressInputs";
 import BaseCheckbox from "../../../components/Shared/input/BaseCheckbox";
@@ -9,8 +11,6 @@ import RoundedInput from "../../../components/Shared/input/RoundedInput";
 import UnifiedErrorMessage from "../../../components/Shared/formik/UnifiedErrorMessage";
 
 import { action } from "mobx";
-import { Observer } from "mobx-react";
-import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import "yup-phone";
 
@@ -31,14 +31,13 @@ type ShippingInformationStepProps = {
 
 const ShippingInformationSchema = Yup.object()
   .shape({
-    firstName: Yup.string().required("First name is required."),
-    lastName: Yup.string().required("Last name is required."),
-    emailAddress: Yup.string()
-      .email("Email address is not valid.")
-      .required("Email address is required."),
+    firstName: Yup.string().label("First name").required(),
+    lastName: Yup.string().label("Last name").required(),
+    emailAddress: Yup.string().label("Email address").email().required(),
     phoneNumber: Yup.string()
-      .phone("US", true, "Phone number is not valid.")
-      .required("Phone number is required."),
+      .label("Phone number")
+      .phone("US", true)
+      .required(),
   })
   .shape(AddressSchema);
 
@@ -56,23 +55,12 @@ const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
       Shipping Information
     </Heading>
     <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        address: "",
-        city: "",
-        state: "",
-        zipCode: "",
-        emailAddress: "",
-        phoneNumber: "",
-      }}
+      initialValues={shippingInformation}
       validationSchema={ShippingInformationSchema}
-      onSubmit={action(
-        (values: Omit<ShippingInformation, "sendEmailUpdates">) => {
-          Object.assign(shippingInformation, values);
-          onNextStep();
-        }
-      )}
+      onSubmit={action((values: ShippingInformation) => {
+        Object.assign(shippingInformation, values);
+        onNextStep();
+      })}
     >
       {({ errors, touched, handleSubmit }) => (
         <Observer
@@ -84,6 +72,7 @@ const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
                     placeholder="First Name"
                     type="fname"
                     name="firstName"
+                    autoComplete="fname"
                     as={RoundedInput}
                   />
                 </Box>
@@ -92,6 +81,7 @@ const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
                     placeholder="Last Name"
                     type="lname"
                     name="lastName"
+                    autoComplete="lname"
                     as={RoundedInput}
                   />
                 </Box>
@@ -103,6 +93,7 @@ const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
                     placeholder="Email Address"
                     type="email"
                     name="emailAddress"
+                    autoComplete="email"
                     as={RoundedInput}
                   />
                 </Box>
@@ -111,6 +102,7 @@ const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
                     placeholder="Phone Number"
                     type="tel"
                     name="phoneNumber"
+                    autoComplete="tel"
                     as={RoundedInput}
                   />
                 </Box>

@@ -9,35 +9,44 @@ import { Field } from "formik";
 import * as Yup from "yup";
 
 export interface Address {
-  address: string;
+  streetAddress: string;
   city: string;
   state: string;
   zipCode: string;
 }
 
 export const AddressSchema = {
-  address: Yup.string().required("Address is required."),
-  city: Yup.string().required("City is required."),
-  state: Yup.string().required("State is required."),
+  streetAddress: Yup.string().label("Street address").required(),
+  city: Yup.string().label("City").required(),
+  state: Yup.string().label("State").required(),
   zipCode: Yup.string()
-    .matches(/^[0-9]+$/, "Zip code must be only digits.")
-    .length(5, "Zip code must be five digits long.")
-    .required("Zip code is required."),
+    .label("Zip code")
+    .matches(
+      /^[0-9]+$/,
+      ({ path }) => `${path} expiration year must be only digits`
+    )
+    .length(5)
+    .required(),
 };
 
 const AddressInputs: React.FC<StackProps> = observer(({ ...props }) => (
   <Stack spacing={3} {...props}>
     <Flex>
       <Field
-        placeholder="Address"
-        type="address"
-        name="address"
+        placeholder="Street Address"
+        name="streetAddress"
+        autoComplete="shipping street-address"
         as={RoundedInput}
       />
     </Flex>
     <Stack isInline spacing={3}>
       <Box flexBasis="50%">
-        <Field placeholder="City" name="city" as={RoundedInput} />
+        <Field
+          placeholder="City"
+          name="city"
+          autoComplete="shipping locality"
+          as={RoundedInput}
+        />
       </Box>
       <Field name="state">
         {({ field }: { field: any }) => (
@@ -54,8 +63,9 @@ const AddressInputs: React.FC<StackProps> = observer(({ ...props }) => (
             iconColor="petcode.neutral.500"
             borderColor="petcode.neutral.400"
             focusBorderColor="petcode.neutral.500"
-            {...field}
+            autoComplete="shipping region"
             marginRight={3}
+            {...field}
           >
             {[
               "AK",
@@ -114,13 +124,20 @@ const AddressInputs: React.FC<StackProps> = observer(({ ...props }) => (
               "WV",
               "WY",
             ].map((stateName, idx) => (
-              <option key={idx}>{stateName}</option>
+              <option key={idx} value={stateName}>
+                {stateName}
+              </option>
             ))}
           </Select>
         )}
       </Field>
       <Box flexBasis="30%">
-        <Field placeholder="Zip Code" name="zipCode" as={RoundedInput} />
+        <Field
+          placeholder="Zip Code"
+          name="zipCode"
+          autoComplete="shipping postal-code"
+          as={RoundedInput}
+        />
       </Box>
     </Stack>
   </Stack>
