@@ -17,7 +17,10 @@ import Layout from "../../components/Shared/layout";
 
 import { Product } from "../../Models/Product";
 
-const ShopItem: React.FC<StackProps & { product: Product }> = ({ product, ...props }) => (
+const ShopItem: React.FC<StackProps & { product: Product }> = ({
+  product,
+  ...props
+}) => (
   <Link
     // @ts-ignore
     as={RouterLink}
@@ -32,25 +35,24 @@ const ShopItem: React.FC<StackProps & { product: Product }> = ({ product, ...pro
         <Text color="petcode.neutral.500" fontSize="lg" fontWeight="thin">
           ${product.price.toFixed(2)}
         </Text>
-        <Rating
-          size="lg"
-          rating={product.averageRating}
-        />
+        <Rating size="lg" rating={product.averageRating} />
       </Flex>
     </Stack>
   </Link>
 );
 
 const ShopPage = () => {
-  const products = Array(9).fill(null).map((_, idx) => ({
-    id: String(idx),
-    name: "PetCode Tag",
-    price: 20,
-    imageURL: "",
-    averageRating: 5,
-    description: "",
-    longDescription: ""
-  })) as Product[];
+  const products = Array(9)
+    .fill(null)
+    .map((_, idx) => ({
+      id: String(idx),
+      name: "PetCode Tag",
+      price: 20,
+      imageURL: "",
+      averageRating: 5,
+      description: "",
+      longDescription: "",
+    })) as Product[];
 
   return (
     <Layout>
@@ -60,11 +62,7 @@ const ShopPage = () => {
         </Heading>
         <Stack isInline flexWrap="wrap" spacing={10}>
           {products.map((product, idx) => (
-            <ShopItem
-              key={idx}
-              product={product}
-              marginBottom={6}
-            />
+            <ShopItem key={idx} product={product} marginBottom={6} />
           ))}
         </Stack>
       </Stack>
