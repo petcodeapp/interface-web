@@ -6,6 +6,8 @@ import { Link as RouterLink, LinkProps as RouterLinkProps, RouteComponentProps, 
 import Rating from "../../components/Shared/rating";
 import Layout from "../../components/Shared/layout";
 import BaseButton from "../../components/Shared/button/BaseButton";
+import { Product } from "../../Models/Product";
+import { Review } from "../../Models/Review";
 
 const BackArrow = () => (
   <Link
@@ -30,7 +32,7 @@ const BackArrow = () => (
   </Link>
 );
 
-const ProductDisplay = () => (
+const ProductDisplay: React.FC<{ product: Product }> = ({ product }) => (
   <Stack isInline justifyContent="center" spacing={16} marginY={10}>
     <Stack flexBasis="30%" spacing={6}>
       <Box width="400px" height="300px" backgroundColor="petcode.neutral.300"/>
@@ -43,14 +45,14 @@ const ProductDisplay = () => (
     </Stack>
     <Stack flexBasis="30%" color="petcode.neutral.600" spacing={3}>
       <Text fontSize="5xl">
-        Single Product
+        {product.name}
       </Text>
       <Rating size="2xl" rating={5} />
       <Text fontSize="2xl">
-        $20.00
+        ${product.price.toFixed(2)}
       </Text>
       <Text fontSize="xl" fontWeight="thin">
-        This is a short and clear description of the single product displayed.
+        {product.description}
       </Text>
       <Text fontSize="xl">
         FREE Shipping
@@ -119,10 +121,10 @@ const Feature: React.FC<FlexProps> = ({ children, ...props }) => (
   </Flex>
 );
 
-const Details = () => (
+const Details: React.FC<{ product: Product }> = ({ product }) => (
   <Stack isInline justifyContent="center" backgroundColor="petcode.neutral.200" color="petcode.neutral.600" spacing={16} paddingY={16}>
     <Text fontSize="xl" fontWeight="thin" flexBasis="33%">
-      This is a longer, more in-depth description of the single product displayed, including features.
+      {product.longDescription}
     </Text>
     <Stack spacing={5}>
       <Feature>Free Online Pet Profile</Feature>
@@ -132,17 +134,17 @@ const Details = () => (
   </Stack>
 );
 
-const Reviews = () => (
+const Reviews: React.FC<{ reviews: Review[] }> = ({ reviews }) => (
   <Stack isInline justifyContent="center" alignItems="center" backgroundColor="petcode.neutral.200" color="petcode.neutral.600" spacing={16} paddingY={16}>
     <Stack flexBasis="33%">
       <Text fontSize="2xl" fontWeight="bold">
-        100 Reviews
+        {reviews.length} Reviews
       </Text>
       {Array(5).fill(null).map((_, idx, arr) => (
         <Flex direction="row" alignItems="center">
           <Text fontSize="lg" fontWeight="thin" marginRight={ arr.length - idx != 1 ? 3 : 5}>{arr.length - idx} star{ arr.length - idx != 1 ? "s" : "" }</Text>
           <Box width="225px" height="25px" borderStyle="solid" borderColor="petcode.neutral.500" borderWidth="1px">
-            <Box width="20%" height="100%" backgroundColor="petcode.yellow.400"/>
+            <Box width={`${reviews.filter(review => review.rating == arr.length - idx).length / reviews.length * 100}%`} height="100%" backgroundColor="petcode.yellow.400"/>
           </Box>
         </Flex>
       ))}
@@ -150,11 +152,11 @@ const Reviews = () => (
     <Flex direction="row" flexBasis="33%" alignItems="center" justifyContent="space-between" >
       <Stack fontSize="xl" spacing={1} flexBasis="80%">
         <Text fontWeight="bold">
-          Jane Doe
+          {reviews[0].reviewer}
         </Text>
-        <Rating rating={5} size="2xl"/>
+        <Rating rating={reviews[0].rating} size="2xl"/>
         <Text fontWeight="thin">
-          This is an example of a review. When we sell our product, there will be great reviews that go here.
+          {reviews[0].reviewText}
         </Text>
       </Stack>
       <Icon name="arrow" color="petcode.neutral.400" size="35px"/>
@@ -163,6 +165,20 @@ const Reviews = () => (
 );
 
 const SingleProductPage: React.FC<RouteComponentProps> = ({ location, history }) => {
+  const product = {
+    name: "PetCode Tag",
+    price: 20,
+    imageURL: "",
+    averageRating: 5,
+    description: "This is a short and clear description of the single product displayed.",
+    longDescription: "This is a longer, more in-depth description of the single product displayed, including features."
+  } as Product;
+  const reviews = Array(100).fill(null).map((_, idx) => ({
+    reviewer: "Jane Doe",
+    rating: Math.floor(Math.random() * 3 + 3),
+    reviewText: "This is an example of a review. When we sell our product, there will be great reviews that go here."
+  })) as Review[];
+
   useEffect(() => {
     if (!["", "#details", "#reviews"].includes(location.hash)) {
       history.push(location.pathname);
@@ -173,7 +189,7 @@ const SingleProductPage: React.FC<RouteComponentProps> = ({ location, history })
   return (
     <Layout>
       <BackArrow />
-      <ProductDisplay />
+      <ProductDisplay product={product}/>
       <Stack isInline justifyContent="center" spacing={6}>
         <SectionLink
           selected={detailsShown}
@@ -188,7 +204,7 @@ const SingleProductPage: React.FC<RouteComponentProps> = ({ location, history })
           Reviews
         </SectionLink>
       </Stack>
-      { detailsShown ? <Details /> : <Reviews /> }
+      { detailsShown ? <Details product={product}/> : <Reviews reviews={reviews}/> }
     </Layout>
   );
 };
