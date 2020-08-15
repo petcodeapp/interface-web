@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Flex } from "@chakra-ui/core";
-
-import Header from "../../components/Shared/header";
+import Layout from "../../components/Shared/layout";
 import ProgressTracker from "./components/ProgressTracker";
 import ShippingInformationStep, {
   ShippingInformation,
@@ -53,8 +51,7 @@ const CheckoutPage: React.FC<RouteComponentProps> = ({ location, history }) => {
   }, [location.hash]);
 
   return (
-    <Flex direction="column" minHeight="calc(100% - 57px)" paddingTop="57px">
-      <Header backgroundColor="petcode.neutral.700" />
+    <Layout>
       <ProgressTracker />
       {location.hash == "#confirmation" ? (
         <ConfirmationStep
@@ -73,7 +70,7 @@ const CheckoutPage: React.FC<RouteComponentProps> = ({ location, history }) => {
           onNextStep={() => history.push("/checkout#billing")}
         />
       )}
-    </Flex>
+    </Layout>
   );
 };
 
