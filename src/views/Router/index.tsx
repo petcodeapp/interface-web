@@ -19,13 +19,21 @@ import { motion } from "framer-motion";
 const pageVariants = {
   initial: {
     opacity: 0,
+
   },
   in: {
     opacity: 1,
+    transition: {
+      delayChildren: 0.5
+    }
   },
   out: {
     opacity: 0,
   },
+}
+export const subPageVariants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 }
 }
 
 const PageAnim: React.FC = (props) => {
