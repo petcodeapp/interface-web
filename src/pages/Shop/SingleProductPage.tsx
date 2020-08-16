@@ -231,7 +231,7 @@ const SingleProductPage: React.FC<RouteComponentProps> = ({
   } as Product;
   const reviews = Array(100)
     .fill(null)
-    .map((_, idx) => ({
+    .map(() => ({
       reviewer: "Jane Doe",
       rating: Math.floor(Math.random() * 3 + 3),
       reviewText:
