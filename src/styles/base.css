@@ -33,6 +33,10 @@ a {
   color: inherit;
 }
 
+input {
+  box-sizing: border-box;
+}
+
 a:hover,
 a:visited,
 a:link,

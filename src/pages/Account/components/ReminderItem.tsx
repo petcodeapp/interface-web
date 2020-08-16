@@ -8,7 +8,7 @@ import {
   SelectProps,
   Text,
 } from "@chakra-ui/core";
-import Checkbox from "./Checkbox";
+import BaseCheckbox from "../../../components/Shared/input/BaseCheckbox";
 
 import { action } from "mobx";
 import { observer } from "mobx-react";
@@ -56,10 +56,10 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
   ({ reminder, isEditable = false }) => (
     <Flex direction="column" fontSize="xl">
       <Flex direction="row" alignItems="center">
-        <Checkbox
-          checked={reminder.enabled}
-          cursor={isEditable ? "pointer" : "default"}
-          size={22}
+        <BaseCheckbox
+          size={24}
+          isChecked={reminder.enabled}
+          isDisabled={!isEditable}
           onClick={action(
             () => isEditable && (reminder.enabled = !reminder.enabled)
           )}
