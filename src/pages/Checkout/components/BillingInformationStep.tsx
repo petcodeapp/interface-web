@@ -86,6 +86,7 @@ const BillingInformationStep: React.FC<BillingInformationStepProps> = ({
   useEffect(() => {
     billingInformation.streetAddress =
       shippingInformation.streetAddress;
+    billingInformation.streetAddress = shippingInformation.streetAddress;
     billingInformation.city = shippingInformation.city;
     billingInformation.state = shippingInformation.state;
     billingInformation.zipCode = shippingInformation.zipCode;
