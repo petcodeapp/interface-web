@@ -301,10 +301,12 @@ const PetInfoSection = () => {
   ));
 };
 
-const PetInfoPage = () => (
+const PetInfoPage = () => {
+  
+  return (
   <AccountPageLayout>
     <PetInfoSection />
   </AccountPageLayout>
-);
+)};
 
 export default PetInfoPage;
