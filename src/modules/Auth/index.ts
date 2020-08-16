@@ -6,7 +6,7 @@ class Auth {
   @observable user: User | null = null;
   @observable newUser: boolean = true;
   @observable userData: any = null;
-  @observable pets: any;
+  @observable pets: any = [];
   @observable authPending: boolean = true;
   unWatchAuth: any;
 
@@ -14,7 +14,11 @@ class Auth {
     auth.onAuthStateChanged((user: User) => {
       this.user = user;
 
-      firebase.firestore().collection('users').doc(user.uid).onSnapshot(userData => {
+      firebase.firestore().collection('users').doc(user.uid).onSnapshot({
+        includeMetadataChanges: true,
+
+      }, userData => {
+        console.log(`New Snapshot from MobX store: ${userData}`)
         // this.userData = userData.data()
         if(userData.exists) {
           this.userData = userData.data()
@@ -22,7 +26,7 @@ class Auth {
 
           userData.data()?.pets.forEach((pid: string) => {
             firebase.firestore().collection('pets').doc(pid).onSnapshot(pet => {
-              this.pets.push(pet.data)
+              this.pets = this.pets.concat(pet.data())
             })
           })
         }
