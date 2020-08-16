@@ -17,6 +17,7 @@ import ScanLocationsPage from "../../pages/Account/ScanLocationsPage";
 import CheckoutPage from "../../pages/Checkout/CheckoutPage";
 import ShopPage from "../../pages/Shop/ShopPage";
 import SingleProductPage from "../../pages/Shop/SingleProductPage";
+import PetProfilePage from "../../pages/PetProfile";
 import { useObserver } from "mobx-react-lite";
 
 const Routes = () => {
@@ -72,6 +73,10 @@ const Routes = () => {
 
       <Route path="/products/*">
         <SingleProductPage />
+      </Route>
+
+      <Route path="/profile/*">
+        <PetProfilePage />
       </Route>
 
       <PublicRoute path="/oldlanding">
