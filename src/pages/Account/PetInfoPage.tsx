@@ -13,6 +13,7 @@ import {
   PseudoBoxProps,
   SimpleGrid,
   Text,
+  useTheme,
   useToast,
 } from "@chakra-ui/core";
 import {
@@ -23,8 +24,7 @@ import {
 import AccountPageLayout from "./components/AccountPageLayout";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 import DatePicker from "../../components/Shared/input/DatePicker";
-import Select from "../../components/Shared/input/Select";
-import { Props as SelectProps, OptionTypeBase } from "react-select";
+import Select, { Props as SelectProps, OptionTypeBase } from "react-select";
 
 import { action, observable } from "mobx";
 import { useObserver } from "mobx-react";
@@ -77,11 +77,41 @@ const InfoButton: React.FC<LinkProps & RouterLinkProps> = (props) => (
   />
 );
 
-const PetInfoSelect: React.FC<SelectProps> = (props) => (
-  <Select
-    {...props}
-  />
-);
+const PetInfoSelect: React.FC<SelectProps> = (props) => {
+  const theme = useTheme();
+
+  return (
+    <Select
+      styles={{
+        container: (provided) => ({
+          ...provided,
+          width: '50%'
+        }),
+        control: (provided, state) => ({
+          ...provided,
+          // @ts-ignore
+          '&:hover': { borderColor: theme.colors.petcode.blue[400] },
+          // @ts-ignore
+          borderColor: state.isFocused ? theme.colors.petcode.blue[400] : provided.borderColor,
+          boxShadow: 'none'
+        }),
+        valueContainer: (provided) => ({
+          ...provided,
+          padding: '0.25rem 0 0.5rem 1rem',
+          fontSize: '1.5rem'
+        }),
+        option: (provided, state) => ({
+          ...provided,
+          // @ts-ignore
+          '&:hover': { backgroundColor: theme.colors.petcode.blue[400], color: 'white' },
+          // @ts-ignore
+          backgroundColor: state.isSelected ? theme.colors.petcode.blue[400] : provided.backgroundColor
+        })
+      }}
+      {...props}
+    />
+  );
+};
 
 const PetInfoInput: React.FC<InputProps> = (props) => (
   <Input
@@ -153,7 +183,6 @@ const PetInfoSection = () => {
       <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>
         <PetInfoCard>
           {isEditable.get() ? (
-            <Box width="50%">
               <PetInfoSelect
                 value={{
                   label: pet.species.charAt(0).toUpperCase() + pet.species.slice(1),
@@ -165,7 +194,6 @@ const PetInfoSection = () => {
                   value: option
                 }))}
               />
-            </Box>
           ) : (
             <PetInfoCardText>{pet.species.charAt(0).toUpperCase() + pet.species.slice(1)}</PetInfoCardText>
           )}
@@ -245,7 +273,6 @@ const PetInfoSection = () => {
         </PetInfoCard>
         <PetInfoCard>
           {isEditable.get() ? (
-            <Box width="50%">
               <PetInfoSelect
                 value={{
                   label: pet.isServiceAnimal ? "Yes" : "No",
@@ -257,7 +284,6 @@ const PetInfoSection = () => {
                   value: option
                 }))}
               />
-            </Box>
           ) : (
             <PetInfoCardText>
               {pet.isServiceAnimal ? "Yes" : "No"}
