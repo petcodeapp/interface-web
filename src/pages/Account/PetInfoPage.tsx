@@ -11,8 +11,6 @@ import {
   Link,
   LinkProps,
   PseudoBoxProps,
-  Select,
-  SelectProps,
   SimpleGrid,
   Text,
   useToast,
@@ -25,15 +23,14 @@ import {
 import AccountPageLayout from "./components/AccountPageLayout";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 import DatePicker from "../../components/Shared/input/DatePicker";
+import Select from "../../components/Shared/input/Select";
+import { Props as SelectProps, OptionTypeBase } from "react-select";
 
 import { action, observable } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
 
 import { Pet } from "../../Models/Pet";
-
-import "react-datepicker/dist/react-datepicker.css";
-import "../../styles/datepicker-custom.css";
 
 const PetInfoCard: React.FC<FlexProps> = (props) => (
   <Flex
@@ -82,11 +79,6 @@ const InfoButton: React.FC<LinkProps & RouterLinkProps> = (props) => (
 
 const PetInfoSelect: React.FC<SelectProps> = (props) => (
   <Select
-    size="lg"
-    color="petcode.neutral.700"
-    fontFamily="body"
-    fontSize="2xl"
-    width="50%"
     {...props}
   />
 );
@@ -106,7 +98,7 @@ const PetInfoInput: React.FC<InputProps> = (props) => (
 const PetInfoSection = () => {
   const [pet] = useState(() =>
     observable({
-      species: "Dog",
+      species: "dog",
       breed: "Weimaraner",
       birthday: new Date("2012-07-31"),
       color: "Gray",
@@ -161,15 +153,21 @@ const PetInfoSection = () => {
       <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>
         <PetInfoCard>
           {isEditable.get() ? (
-            <PetInfoSelect
-              value={pet.species}
-              onChange={action((e) => (pet.species = e.target.value))}
-            >
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-            </PetInfoSelect>
+            <Box width="50%">
+              <PetInfoSelect
+                value={{
+                  label: pet.species.charAt(0).toUpperCase() + pet.species.slice(1),
+                  value: pet.species
+                }}
+                onChange={action(option => pet.species = (option as OptionTypeBase).value)}
+                options={["dog", "cat", "other"].map(option => ({
+                  label: option.charAt(0).toUpperCase() + option.slice(1),
+                  value: option
+                }))}
+              />
+            </Box>
           ) : (
-            <PetInfoCardText>{pet.species}</PetInfoCardText>
+            <PetInfoCardText>{pet.species.charAt(0).toUpperCase() + pet.species.slice(1)}</PetInfoCardText>
           )}
           <PetInfoCardLabel>Species</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="dog" />
@@ -247,15 +245,19 @@ const PetInfoSection = () => {
         </PetInfoCard>
         <PetInfoCard>
           {isEditable.get() ? (
-            <PetInfoSelect
-              value={pet.isServiceAnimal ? "Yes" : "No"}
-              onChange={action(
-                (e) => (pet.isServiceAnimal = e.target.value == "Yes")
-              )}
-            >
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </PetInfoSelect>
+            <Box width="50%">
+              <PetInfoSelect
+                value={{
+                  label: pet.isServiceAnimal ? "Yes" : "No",
+                  value: pet.isServiceAnimal ? "yes" : "no"
+                }}
+                onChange={action(option => pet.isServiceAnimal = (option as OptionTypeBase).value == "yes")}
+                options={["yes", "no"].map(option => ({
+                  label: option.charAt(0).toUpperCase() + option.slice(1),
+                  value: option
+                }))}
+              />
+            </Box>
           ) : (
             <PetInfoCardText>
               {pet.isServiceAnimal ? "Yes" : "No"}
