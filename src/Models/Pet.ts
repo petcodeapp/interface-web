@@ -16,7 +16,7 @@ export interface Pet {
   vetId: string;
 
   isServiceAnimal: boolean;
-  birthday: string;
+  birthday: Date;
   vaccinations: Array<Vaccination>;
 }
 

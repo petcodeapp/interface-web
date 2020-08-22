@@ -24,10 +24,16 @@ import {
 
 import AccountPageLayout from "./components/AccountPageLayout";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
+import DatePicker from "../../components/Shared/input/DatePicker";
 
 import { action, observable } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
+
+import { Pet } from "../../Models/Pet";
+
+import "react-datepicker/dist/react-datepicker.css";
+import "../../styles/datepicker-custom.css";
 
 const PetInfoCard: React.FC<FlexProps> = (props) => (
   <Flex
@@ -102,11 +108,11 @@ const PetInfoSection = () => {
     observable({
       species: "Dog",
       breed: "Weimaraner",
-      birthday: "2012-07-31",
+      birthday: new Date("2012-07-31"),
       color: "Gray",
       temperament: "Friendly",
       isServiceAnimal: false,
-    })
+    } as Pet)
   );
 
   const [isEditable] = useState(() => observable.box(false));
@@ -190,15 +196,10 @@ const PetInfoSection = () => {
         </PetInfoCard>
         <PetInfoCard>
           {isEditable.get() ? (
-            <PetInfoInput
-              type="date"
-              fontSize="3xl"
-              value={pet.birthday}
-              max={moment().format("YYYY-MM-DD")}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  (pet.birthday = e.target.value)
-              )}
+            <DatePicker
+              selected={pet.birthday}
+              onChange={action(date => pet.birthday = date as Date)}
+              customInput={<PetInfoInput/>}
             />
           ) : (
             <PetInfoCardText>
