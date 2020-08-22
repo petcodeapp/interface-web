@@ -60,7 +60,7 @@ const BackgroundIcon: React.FC<IconProps> = (props) => (
   <Icon
     color="petcode.neutral.700"
     position="absolute"
-    opacity={0.05}
+    opacity={0.1}
     {...props}
   />
 );
