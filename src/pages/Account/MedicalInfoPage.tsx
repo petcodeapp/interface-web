@@ -31,6 +31,7 @@ import { useObserver } from "mobx-react";
 import moment from "moment";
 
 import { Vaccination } from "../../Models/Vaccination";
+import { AuthContext } from '../../views/Auth/index';
 
 type AddVaccinationModalProps = {
   isShown: IObservableValue<boolean>;
@@ -46,7 +47,7 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
     date: "",
   };
 
-  const [vaccination] = useState(() =>
+  const [vaccination, setVaccination] = useState(() =>
     observable({ ...DEFAULT_VALUES } as Vaccination)
   );
   const toast = useToast();
@@ -112,29 +113,194 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
   ));
 };
 
-type OverlaysProps = {
-  isEditable: IObservableValue<boolean>;
-  isModalShown: IObservableValue<boolean>;
-};
+// type OverlaysProps = {
+//   isEditable: IObservableValue<boolean>;
+//   isModalShown: IObservableValue<boolean>;
+// };
 
-const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
+// const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
+//   const toast = useToast();
+
+
+//   return useObserver(() => (
+    
+//   ));
+// };
+
+const MedicalInfoSection = () => {
+
+  const service = React.useContext(AuthContext)
+
+  const [isEditable] = useState(() => observable.box(false));
+  const [isModalShown] = useState(() => observable.box(false));
+
+  const [specialNeeds, setSpecialNeeds] = useState(service.pets[0]?.specialNeeds.value)
+  const [allergies, setAllergies] = useState(service.pets[0]?.allergies.value)
+  const [vetName, setVetName] = useState(service.pets[0]?.vetName.value)
+  const [vetNumber, setVetNumber] = useState(service.pets[0]?.vetPhoneNumber.value)
+
   const toast = useToast();
 
   return useObserver(() => (
     <Stack
+      flexGrow={1}
+      backgroundColor="petcode.neutral.200"
+      padding={10}
+      spacing={5}
+    >
+      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
+        <InfoFieldRow fontSize="2xl" marginBottom={3}>
+          <Text color="petcode.neutral.700">General Medical Information</Text>
+          <Text color="petcode.neutral.400">Visibility</Text>
+        </InfoFieldRow>
+        <InfoFieldRow>
+          <Box flexBasis="60%">
+            {isEditable.get() ? (
+              <InfoFieldInput
+                value={specialNeeds}
+                onChange={action(
+                  (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setSpecialNeeds(e.target.value)
+                )}
+              />
+            ) : (
+              <InfoFieldText>{specialNeeds}</InfoFieldText>
+            )}
+            <InfoFieldLabel>Special Needs</InfoFieldLabel>
+          </Box>
+          <BaseCheckbox
+            checked={service.pets[0]?.specialNeeds.visible}
+            cursor={isEditable.get() ? "pointer" : "default"}
+            // onClick={action(
+            //   () =>
+            //     isEditable.get() &&
+            //     // (pet.specialNeeds.visible = !pet.specialNeeds.visible)//TODO: Visibility in Mobx
+            // )}
+          />
+        </InfoFieldRow>
+        <InfoFieldRow>
+          <Box flexBasis="60%">
+            {isEditable.get() ? (
+              <InfoFieldInput
+                value={allergies}
+                onChange={action(
+                  (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setAllergies(e.target.value)
+                )}
+              />
+            ) : (
+              <InfoFieldText>{allergies}</InfoFieldText>
+            )}
+            <InfoFieldLabel>Allergies</InfoFieldLabel>
+          </Box>
+          <BaseCheckbox
+            checked={service.pets[0]?.allergies.visible}
+            cursor={isEditable.get() ? "pointer" : "default"}
+            // onClick={action(
+            //   () =>
+            //     isEditable.get() &&
+            //     (service.pets[0]?.allergies.visible = !service.pets[0]?.allergies.visible) // TODO: VISIBILITy
+            // )}
+          />
+        </InfoFieldRow>
+        <InfoFieldRow>
+          <Box flexBasis="60%">
+            {isEditable.get() ? (
+              <InfoFieldInput
+                value={vetName}
+                onChange={action(
+                  (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setVetName(e.target.value)
+                )}
+              />
+            ) : (
+              <InfoFieldText>{vetName}</InfoFieldText>
+            )}
+            <InfoFieldLabel>Veterinarian Name</InfoFieldLabel>
+          </Box>
+          <BaseCheckbox
+            checked={service.pets[0]?.vetName.visible}
+            cursor={isEditable.get() ? "pointer" : "default"}
+            // onClick={action(
+            //   () =>
+            //     isEditable.get() && (service.pets[0]?.vetName.visible = !service.pets[0]?.vetName.visible)
+            // )}
+          />
+        </InfoFieldRow>
+        <InfoFieldRow>
+          <Box flexBasis="60%">
+            {isEditable.get() ? (
+              <InfoFieldInput
+                value={vetNumber}
+                onChange={action(
+                  (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setVetNumber(e.target.value)
+                )}
+              />
+            ) : (
+              <InfoFieldText>{vetNumber}</InfoFieldText>
+            )}
+            <InfoFieldLabel>Veterinarian Phone Number</InfoFieldLabel>
+          </Box>
+          <BaseCheckbox
+            checked={service.pets[0]?.vetPhoneNumber.visible}
+            cursor={isEditable.get() ? "pointer" : "default"}
+            // onClick={action(
+            //   () =>
+            //     isEditable.get() &&
+            //     (service.pets[0]?.vetPhoneNumber.visible = !service.pets[0]?.vetPhoneNumber.visible)
+            // )}
+          />
+        </InfoFieldRow>
+      </Flex>
+      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
+        <Text color="petcode.neutral.700" fontSize="2xl" marginBottom={3}>
+          Vaccination History
+        </Text>
+        {service.pets[0]?.vaccinations
+          // .sort((a: { date: string }, b: {date: string}) => b.date.localeCompare(a.date))
+          .map((vaccination: any, idx: number) => (
+            <Box key={idx}>
+              <InfoFieldText>{vaccination.name}</InfoFieldText>
+              <InfoFieldLabel>
+                {moment(vaccination.date).format("MM/DD/YY")}
+              </InfoFieldLabel>
+            </Box>
+          ))}
+      </Flex>
+      {/* <Overlays isEditable={isEditable} isModalShown={isModalShown} /> */}
+      <Stack
       alignItems="end"
       spacing={2}
       position="fixed"
       bottom={5}
       right={5}
       color="petcode.neutral.700"
-    >
+   
       <ExpandButton
         rounded="full"
         padding={4}
         backgroundColor="petcode.yellow.400"
         onClick={action(() => {
           if (isEditable.get()) {
+            service.setMedicalInfo({
+              specialNeeds: {
+                value: specialNeeds,
+                visible: true
+              },
+              allergies: {
+                value: allergies,
+                visible: true
+              },
+              vetName: {
+                value: vetName,
+                visible: true
+              },
+              vetNumber: {
+                value: vetNumber,
+                visible: true
+              },
+            })
             toast({
               title: "Medical information saved.",
               description: "Your medical information was saved successfully.",
@@ -180,159 +346,8 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
         </Text>
       </ExpandButton>
     </Stack>
-  ));
-};
-
-const MedicalInfoSection = () => {
-  const [pet] = useState(() =>
-    observable({
-      allergies: { value: "Wheat", visible: true },
-      specialNeeds: { value: "Heat Sensitivity", visible: true },
-      vetName: { value: "Dr. Veterinarian", visible: true },
-      vetPhoneNumber: { value: "(408) 123 4567", visible: true },
-      vaccinations: [
-        { name: "Bordetella", date: "2020-07-09" },
-        { name: "Lyme Disease", date: "2020-06-25" },
-        { name: "Influenza", date: "2020-06-20" },
-        { name: "Rabies", date: "2020-06-10" },
-        { name: "DHPP", date: "2020-06-01" },
-      ],
-    })
-  );
-
-  const [isEditable] = useState(() => observable.box(false));
-  const [isModalShown] = useState(() => observable.box(false));
-
-  return useObserver(() => (
-    <Stack
-      flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
-      spacing={5}
-    >
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
-        <InfoFieldRow fontSize="2xl" marginBottom={3}>
-          <Text color="petcode.neutral.700">General Medical Information</Text>
-          <Text color="petcode.neutral.400">Visibility</Text>
-        </InfoFieldRow>
-        <InfoFieldRow>
-          <Box flexBasis="60%">
-            {isEditable.get() ? (
-              <InfoFieldInput
-                value={pet.specialNeeds.value}
-                onChange={action(
-                  (e: React.ChangeEvent<HTMLInputElement>) =>
-                    (pet.specialNeeds.value = e.target.value)
-                )}
-              />
-            ) : (
-              <InfoFieldText>{pet.specialNeeds.value}</InfoFieldText>
-            )}
-            <InfoFieldLabel>Special Needs</InfoFieldLabel>
-          </Box>
-          <BaseCheckbox
-            isChecked={pet.specialNeeds.visible}
-            isDisabled={!isEditable.get()}
-            onClick={action(
-              () =>
-                isEditable.get() &&
-                (pet.specialNeeds.visible = !pet.specialNeeds.visible)
-            )}
-          />
-        </InfoFieldRow>
-        <InfoFieldRow>
-          <Box flexBasis="60%">
-            {isEditable.get() ? (
-              <InfoFieldInput
-                value={pet.allergies.value}
-                onChange={action(
-                  (e: React.ChangeEvent<HTMLInputElement>) =>
-                    (pet.allergies.value = e.target.value)
-                )}
-              />
-            ) : (
-              <InfoFieldText>{pet.allergies.value}</InfoFieldText>
-            )}
-            <InfoFieldLabel>Allergies</InfoFieldLabel>
-          </Box>
-          <BaseCheckbox
-            isChecked={pet.allergies.visible}
-            isDisabled={!isEditable.get()}
-            onClick={action(
-              () =>
-                isEditable.get() &&
-                (pet.allergies.visible = !pet.allergies.visible)
-            )}
-          />
-        </InfoFieldRow>
-        <InfoFieldRow>
-          <Box flexBasis="60%">
-            {isEditable.get() ? (
-              <InfoFieldInput
-                value={pet.vetName.value}
-                onChange={action(
-                  (e: React.ChangeEvent<HTMLInputElement>) =>
-                    (pet.vetName.value = e.target.value)
-                )}
-              />
-            ) : (
-              <InfoFieldText>{pet.vetName.value}</InfoFieldText>
-            )}
-            <InfoFieldLabel>Veterinarian Name</InfoFieldLabel>
-          </Box>
-          <BaseCheckbox
-            isChecked={pet.vetName.visible}
-            isDisabled={!isEditable.get()}
-            onClick={action(
-              () =>
-                isEditable.get() && (pet.vetName.visible = !pet.vetName.visible)
-            )}
-          />
-        </InfoFieldRow>
-        <InfoFieldRow>
-          <Box flexBasis="60%">
-            {isEditable.get() ? (
-              <InfoFieldInput
-                value={pet.vetPhoneNumber.value}
-                onChange={action(
-                  (e: React.ChangeEvent<HTMLInputElement>) =>
-                    (pet.vetPhoneNumber.value = e.target.value)
-                )}
-              />
-            ) : (
-              <InfoFieldText>{pet.vetPhoneNumber.value}</InfoFieldText>
-            )}
-            <InfoFieldLabel>Veterinarian Phone Number</InfoFieldLabel>
-          </Box>
-          <BaseCheckbox
-            isChecked={pet.vetPhoneNumber.visible}
-            isDisabled={!isEditable.get()}
-            onClick={action(
-              () =>
-                isEditable.get() &&
-                (pet.vetPhoneNumber.visible = !pet.vetPhoneNumber.visible)
-            )}
-          />
-        </InfoFieldRow>
-      </Flex>
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
-        <Text color="petcode.neutral.700" fontSize="2xl" marginBottom={3}>
-          Vaccination History
-        </Text>
-        {pet.vaccinations
-          .sort((a, b) => b.date.localeCompare(a.date))
-          .map((vaccination, idx) => (
-            <Box key={idx}>
-              <InfoFieldText>{vaccination.name}</InfoFieldText>
-              <InfoFieldLabel>
-                {moment(vaccination.date).format("MM/DD/YY")}
-              </InfoFieldLabel>
-            </Box>
-          ))}
-      </Flex>
-      <Overlays isEditable={isEditable} isModalShown={isModalShown} />
       <AddVaccinationModal
-        vaccinations={pet.vaccinations}
+        vaccinations={service.pets[0]?.vaccinations}
         isShown={isModalShown}
       />
     </Stack>
