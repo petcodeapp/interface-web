@@ -2,12 +2,13 @@ import React from "react";
 
 import {
   Icon,
-  Input,
   InputGroup,
   InputLeftElement,
   InputGroupProps,
   InputProps,
 } from "@chakra-ui/core";
+
+import RoundedInput from "./RoundedInput";
 
 interface InputWithIconProps {
   iconName: string;
@@ -26,13 +27,7 @@ const InputWithIcon: React.FC<InputWithIconProps> = ({
         <Icon size="25px" name={iconName} color="petcode.neutral.400" />
       }
     />
-    <Input
-      rounded="full"
-      color="petcode.neutral.700"
-      borderColor="petcode.neutral.400"
-      focusBorderColor="petcode.neutral.500"
-      {...inputProps}
-    />
+    <RoundedInput paddingLeft={12} {...inputProps} />
   </InputGroup>
 );
 

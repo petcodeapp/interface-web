@@ -18,7 +18,7 @@ import {
 import AccountPageLayout from "./components/AccountPageLayout";
 import BaseButton from "../../components/Shared/button/BaseButton";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
-import Checkbox from "./components/Checkbox";
+import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import {
   InfoFieldRow,
   InfoFieldText,
@@ -168,7 +168,7 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Special Needs</InfoFieldLabel>
           </Box>
-          <Checkbox
+          <BaseCheckbox
             checked={service.pets[0]?.specialNeeds.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
@@ -193,7 +193,7 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Allergies</InfoFieldLabel>
           </Box>
-          <Checkbox
+          <BaseCheckbox
             checked={service.pets[0]?.allergies.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
@@ -218,7 +218,7 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Veterinarian Name</InfoFieldLabel>
           </Box>
-          <Checkbox
+          <BaseCheckbox
             checked={service.pets[0]?.vetName.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
@@ -242,7 +242,7 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Veterinarian Phone Number</InfoFieldLabel>
           </Box>
-          <Checkbox
+          <BaseCheckbox
             checked={service.pets[0]?.vetPhoneNumber.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
@@ -276,7 +276,7 @@ const MedicalInfoSection = () => {
       bottom={5}
       right={5}
       color="petcode.neutral.700"
-    >
+   
       <ExpandButton
         rounded="full"
         padding={4}
