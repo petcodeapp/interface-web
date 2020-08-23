@@ -18,6 +18,7 @@ import AccountPageLayout from "./components/AccountPageLayout";
 import ReminderItem from "./components/ReminderItem";
 import BaseButton from "../../components/Shared/button/BaseButton";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
+import DatePicker from "../../components/Shared/input/DatePicker";
 import {
   InfoFieldLabel,
   InfoFieldInput,
@@ -40,7 +41,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
 }) => {
   const DEFAULT_VALUES = {
     name: "",
-    date: "",
+    date: new Date(),
     time: "",
     frequency: "One-Time",
     notificationMethod: "Email",
@@ -78,15 +79,13 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             )}
           />
           <InfoFieldLabel>Reminder Name</InfoFieldLabel>
-          <InfoFieldInput
-            type="date"
-            width="auto"
-            display="inline"
-            value={reminder.date}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                (reminder.date = e.target.value)
-            )}
+          <DatePicker
+            selected={reminder.date}
+            onChange={action(date => reminder.date = date as Date)}
+            customInput={<InfoFieldInput
+              display="inline"
+              width="auto"
+            />}
           />
           <InfoFieldInput
             type="time"
@@ -220,7 +219,7 @@ const RemindersSection = () => {
     observable([
       {
         name: "Example reminder",
-        date: "2020-08-02",
+        date: new Date("2020-08-02"),
         time: "09:00",
         frequency: "Weekly",
         notificationMethod: "Email",
@@ -228,7 +227,7 @@ const RemindersSection = () => {
       },
       {
         name: "Example reminder",
-        date: "2020-08-02",
+        date: new Date("2020-08-02"),
         time: "09:00",
         frequency: "Weekly",
         notificationMethod: "Email",
@@ -236,7 +235,7 @@ const RemindersSection = () => {
       },
       {
         name: "Example reminder",
-        date: "2020-08-02",
+        date: new Date("2020-08-02"),
         time: "09:00",
         frequency: "Weekly",
         notificationMethod: "Email",
@@ -244,7 +243,7 @@ const RemindersSection = () => {
       },
       {
         name: "Example reminder",
-        date: "2020-08-02",
+        date: new Date("2020-08-02"),
         time: "09:00",
         frequency: "Weekly",
         notificationMethod: "Email",
@@ -252,7 +251,7 @@ const RemindersSection = () => {
       },
       {
         name: "Example reminder",
-        date: "2020-08-02",
+        date: new Date("2020-08-02"),
         time: "09:00",
         frequency: "Weekly",
         notificationMethod: "Email",

@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/core";
 import BaseCheckbox from "../../../components/Shared/input/BaseCheckbox";
+import DatePicker from "../../../components/Shared/input/DatePicker";
 
 import { action } from "mobx";
 import { observer } from "mobx-react";
@@ -70,13 +71,10 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
       </Flex>
       <Text color="petcode.neutral.400" marginLeft={8}>
         {isEditable ? (
-          <ReminderInput
-            type="date"
-            value={reminder.date}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                (reminder.date = e.target.value)
-            )}
+          <DatePicker
+            selected={reminder.date}
+            onChange={action(date => reminder.date = date as Date)}
+            customInput={<ReminderInput/>}
           />
         ) : (
           moment(reminder.date).format("M/D/YY")

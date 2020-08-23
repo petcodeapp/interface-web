@@ -1,6 +1,6 @@
 export interface Reminder {
   name: string;
-  date: string;
+  date: Date;
   time: string;
   frequency: string;
   notificationMethod: string;
