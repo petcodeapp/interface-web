@@ -2,8 +2,12 @@ import React, { useState } from "react";
 
 import {
   Box,
+  BoxProps,
   Flex,
+  FlexProps,
   Icon,
+  IconButton,
+  Input,
   Modal,
   ModalOverlay,
   ModalCloseButton,
@@ -19,6 +23,7 @@ import AccountPageLayout from "./components/AccountPageLayout";
 import BaseButton from "../../components/Shared/button/BaseButton";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
+import DatePicker from "../../components/Shared/input/DatePicker";
 import {
   InfoFieldRow,
   InfoFieldText,
@@ -43,7 +48,7 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
 }) => {
   const DEFAULT_VALUES = {
     name: "",
-    date: "",
+    date: new Date(),
   };
 
   const [vaccination] = useState(() =>
@@ -77,16 +82,12 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
             )}
           />
           <InfoFieldLabel>Vaccination Name</InfoFieldLabel>
-          <InfoFieldInput
-            type="date"
-            value={vaccination.date}
-            max={moment().format("YYYY-MM-DD")}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                (vaccination.date = e.target.value)
-            )}
+          <DatePicker
+            selected={vaccination.date}
+            onChange={action(date => vaccination.date = date as Date)}
+            customInput={<InfoFieldInput/>}
           />
-          <InfoFieldLabel>Vaccination Date</InfoFieldLabel>
+          <InfoFieldLabel>Expiration Date</InfoFieldLabel>
           <BaseButton
             variantColor="petcode.blue"
             color="white"
@@ -183,6 +184,14 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
   ));
 };
 
+const Card: React.FC<FlexProps> = (props) => (
+  <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}  {...props}/>
+);
+
+const CardHeading: React.FC<BoxProps> = (props) => (
+  <Text fontSize="2xl" color="petcode.neutral.700" {...props}/>
+)
+
 const MedicalInfoSection = () => {
   const [pet] = useState(() =>
     observable({
@@ -191,17 +200,24 @@ const MedicalInfoSection = () => {
       vetName: { value: "Dr. Veterinarian", visible: true },
       vetPhoneNumber: { value: "(408) 123 4567", visible: true },
       vaccinations: [
-        { name: "Bordetella", date: "2020-07-09" },
-        { name: "Lyme Disease", date: "2020-06-25" },
-        { name: "Influenza", date: "2020-06-20" },
-        { name: "Rabies", date: "2020-06-10" },
-        { name: "DHPP", date: "2020-06-01" },
+        { name: "Bordetella", date: new Date("2020-07-09") },
+        { name: "Lyme Disease", date: new Date("2020-06-25") },
+        { name: "Influenza", date: new Date("2020-06-20") },
+        { name: "Rabies", date: new Date("2020-06-10") },
+        { name: "DHPP", date: new Date("2020-06-01") },
       ],
     })
+  );
+  const [vaccinationDocuments] = useState(() =>
+    observable([
+      { name: "Vaccination Document 1", size: 26.5 * 10e3 }
+    ])
   );
 
   const [isEditable] = useState(() => observable.box(false));
   const [isModalShown] = useState(() => observable.box(false));
+
+  const toast = useToast();
 
   return useObserver(() => (
     <Stack
@@ -210,10 +226,10 @@ const MedicalInfoSection = () => {
       padding={10}
       spacing={5}
     >
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
-        <InfoFieldRow fontSize="2xl" marginBottom={3}>
-          <Text color="petcode.neutral.700">General Medical Information</Text>
-          <Text color="petcode.neutral.400">Visibility</Text>
+      <Card>
+        <InfoFieldRow marginBottom={3}>
+          <CardHeading>General Medical Information</CardHeading>
+          <CardHeading color="petcode.neutral.400">Visibility</CardHeading>
         </InfoFieldRow>
         <InfoFieldRow>
           <Box flexBasis="60%">
@@ -314,13 +330,70 @@ const MedicalInfoSection = () => {
             )}
           />
         </InfoFieldRow>
-      </Flex>
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
-        <Text color="petcode.neutral.700" fontSize="2xl" marginBottom={3}>
-          Vaccination History
-        </Text>
+      </Card>
+      <Card>
+        <CardHeading marginBottom={3}>Vaccination Documents</CardHeading>
+        {vaccinationDocuments.length > 0 ? vaccinationDocuments.map((vaccinationDocument, idx) => (
+          <InfoFieldRow key={idx}>
+            <Box>
+              <InfoFieldText>{vaccinationDocument.name}</InfoFieldText>
+              <InfoFieldLabel>
+                {(vaccinationDocument.size / 10e3).toFixed(1)} MB
+              </InfoFieldLabel>
+            </Box>
+            <Stack isInline alignSelf="start">
+              <IconButton aria-label="View" icon="search"/>
+              <IconButton aria-label="Download" icon="download"/>
+              <IconButton
+                color="red.400"
+                aria-label="Delete"
+                icon="delete"
+                onClick={() => vaccinationDocuments.splice(idx, 1)}
+              />
+            </Stack>
+          </InfoFieldRow>
+        )) : <Text color="petcode.neutral.500">No Vaccination Documents have been uploaded.</Text>}
+        <Input 
+          id="vaccination-document-file-upload"
+          type="file"
+          isDisabled={vaccinationDocuments.length >= 3}
+          onChange={action((e: React.ChangeEvent<HTMLInputElement>) => {
+            const file = e.target.files![0];
+            // 500 MB
+            if (file.size / 10e3 > 500) {
+              toast({
+                title: "File too big.",
+                description: "Please only upload files smaller than 500 MB.",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+              });
+            } else {
+              vaccinationDocuments.push(file);
+            }
+          })}
+        />
+        <BaseButton
+          alignSelf="start"
+          isDisabled={vaccinationDocuments.length >= 3}
+          as="label"
+          variantColor="petcode.blue"
+          // @ts-ignore
+          for="vaccination-document-file-upload"
+          marginTop={3}
+        >
+          <Stack isInline alignItems="center">
+            <Icon transform="scale(1, -1);" name="download"/>
+            <Text>Upload</Text>
+          </Stack>
+        </BaseButton>
+      </Card>
+      <Card>
+        <CardHeading marginBottom={3}>
+          Vaccinations
+        </CardHeading>
         {pet.vaccinations
-          .sort((a, b) => b.date.localeCompare(a.date))
+          .sort((a, b) => b.date.valueOf() - a.date.valueOf())
           .map((vaccination, idx) => (
             <Box key={idx}>
               <InfoFieldText>{vaccination.name}</InfoFieldText>
@@ -329,7 +402,7 @@ const MedicalInfoSection = () => {
               </InfoFieldLabel>
             </Box>
           ))}
-      </Flex>
+      </Card>
       <Overlays isEditable={isEditable} isModalShown={isModalShown} />
       <AddVaccinationModal
         vaccinations={pet.vaccinations}

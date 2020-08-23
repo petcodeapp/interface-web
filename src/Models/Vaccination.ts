@@ -1,4 +1,4 @@
 export interface Vaccination {
   name: string;
-  date: string;
+  date: Date;
 }
