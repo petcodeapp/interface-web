@@ -210,7 +210,7 @@ const MedicalInfoSection = () => {
   );
   const [vaccinationDocuments] = useState(() =>
     observable([
-      { name: "Vaccination Document 1", size: 26.5 * 10e3 }
+      { name: "Vaccination Document 1", size: 26.5 * 10e5 }
     ])
   );
 
@@ -338,7 +338,7 @@ const MedicalInfoSection = () => {
             <Box>
               <InfoFieldText>{vaccinationDocument.name}</InfoFieldText>
               <InfoFieldLabel>
-                {(vaccinationDocument.size / 10e3).toFixed(1)} MB
+                {(vaccinationDocument.size / 10e5).toFixed(1)} MB
               </InfoFieldLabel>
             </Box>
             <Stack isInline alignSelf="start">
@@ -359,11 +359,11 @@ const MedicalInfoSection = () => {
           isDisabled={vaccinationDocuments.length >= 3}
           onChange={action((e: React.ChangeEvent<HTMLInputElement>) => {
             const file = e.target.files![0];
-            // 500 MB
-            if (file.size / 10e3 > 500) {
+            // 50 MB
+            if (file.size / 10e5 > 50) {
               toast({
                 title: "File too big.",
-                description: "Please only upload files smaller than 500 MB.",
+                description: "Please only upload files smaller than 50 MB.",
                 status: "error",
                 duration: 5000,
                 isClosable: true,
