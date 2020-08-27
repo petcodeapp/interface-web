@@ -92,7 +92,7 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
             color="white"
             marginTop={3}
             onClick={action(() => {
-              // INSERT VACCINATION TO BACKENF
+              // INSERT VACCINATION TO BACKEND HERE
               setVaccination({ ...DEFAULT_VALUES });
               setShown(false);
               toast({

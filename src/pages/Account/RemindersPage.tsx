@@ -24,21 +24,20 @@ import {
   InfoFieldSelect,
 } from "./components/InfoField";
 
-import { action, observable, IObservableValue } from "mobx";
 import { useObserver } from "mobx-react";
 
 import { Reminder } from "../../Models/Reminder";
 
 type AddReminderModalProps = {
-  isShown: IObservableValue<boolean>;
-  reminders: Reminder[];
+  isShown: boolean;
+  setShown: (a: boolean) => void;
 };
 
 const AddReminderModal: React.FC<AddReminderModalProps> = ({
   isShown,
-  reminders,
+  setShown,
 }) => {
-  const DEFAULT_VALUES = {
+  const DEFAULT_VALUES: Reminder = {
     name: "",
     date: "",
     time: "",
@@ -47,15 +46,15 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
     enabled: true,
   };
 
-  const [reminder] = useState(() =>
-    observable({ ...DEFAULT_VALUES } as Reminder)
+  const [reminder, setReminder] = useState(
+    { ...DEFAULT_VALUES }
   );
   const toast = useToast();
 
   return useObserver(() => (
     <Modal
-      isOpen={isShown.get()}
-      onClose={action(() => isShown.set(false))}
+      isOpen={isShown}
+      onClose={() => setShown(false)}
       isCentered
     >
       <ModalOverlay />
@@ -72,10 +71,10 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldInput
             placeholder="Reminder Name"
             value={reminder.name}
-            onChange={action(
+            onChange={
               (e: React.ChangeEvent<HTMLInputElement>) =>
-                (reminder.name = e.target.value)
-            )}
+                setReminder({ ...reminder, name: e.target.value })
+            }
           />
           <InfoFieldLabel>Reminder Name</InfoFieldLabel>
           <InfoFieldInput
@@ -83,25 +82,25 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             width="auto"
             display="inline"
             value={reminder.date}
-            onChange={action(
+            onChange={
               (e: React.ChangeEvent<HTMLInputElement>) =>
-                (reminder.date = e.target.value)
-            )}
+              setReminder({ ...reminder, date: e.target.value })
+            }
           />
           <InfoFieldInput
             type="time"
             width="auto"
             display="inline"
             value={reminder.time}
-            onChange={action(
+            onChange={
               (e: React.ChangeEvent<HTMLInputElement>) =>
-                (reminder.time = e.target.value)
-            )}
+                setReminder({ ...reminder, time: e.target.value })
+            }
           />
           <InfoFieldLabel>Reminder Date</InfoFieldLabel>
           <InfoFieldSelect
             value={reminder.frequency}
-            onChange={action((e) => (reminder.frequency = e.target.value))}
+            onChange={(e) => setReminder({ ...reminder, frequency: e.target.value })}
           >
             <option>One-Time</option>
             <option>Daily</option>
@@ -111,9 +110,9 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldLabel>Reminder Frequency</InfoFieldLabel>
           <InfoFieldSelect
             value={reminder.notificationMethod}
-            onChange={action(
-              (e) => (reminder.notificationMethod = e.target.value)
-            )}
+            onChange={
+              (e) => setReminder({ ...reminder, notificationMethod: e.target.value })
+            }
           >
             <option>App Notification</option>
             <option>Email</option>
@@ -123,10 +122,10 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             variantColor="petcode.blue"
             color="white"
             marginTop={3}
-            onClick={action(() => {
-              reminders.push({ ...reminder });
-              Object.assign(reminder, DEFAULT_VALUES);
-              isShown.set(false);
+            onClick={() => {
+              // INSERT REMINDER TO BACKEND HERE
+              setReminder({ ...DEFAULT_VALUES });
+              setShown(false);
               toast({
                 title: "Reminder created.",
                 description: "Your reminder was created successfully.",
@@ -134,7 +133,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
                 duration: 5000,
                 isClosable: true,
               });
-            })}
+            }}
           >
             <Text>Save</Text>
           </BaseButton>
@@ -145,11 +144,13 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
 };
 
 type OverlaysProps = {
-  isEditable: IObservableValue<boolean>;
-  isModalShown: IObservableValue<boolean>;
+  isEditable: boolean;
+  setEditable: (a: boolean) => void;
+  isModalShown: boolean;
+  setModalShown: (a: boolean) => void;
 };
 
-const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
+const Overlays: React.FC<OverlaysProps> = ({ isEditable, setEditable, isModalShown, setModalShown }) => {
   const toast = useToast();
 
   return (
@@ -165,8 +166,8 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
         rounded="full"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => {
-          if (isEditable.get()) {
+        onClick={() => {
+          if (isEditable) {
             toast({
               title: "Reminders saved.",
               description: "Your reminders was saved successfully.",
@@ -175,8 +176,8 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
               isClosable: true,
             });
           }
-          isEditable.set(!isEditable.get());
-        })}
+          setEditable(!isEditable);
+        }}
         expandChildren={
           <Text
             fontSize="xl"
@@ -184,17 +185,17 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
             textTransform="uppercase"
             marginRight={2}
           >
-            {isEditable.get() ? "Save" : "Edit"}
+            {isEditable ? "Save" : "Edit"}
           </Text>
         }
       >
-        <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
+        <Icon name={isEditable ? "checkmark" : "edit"} size="30px" />
       </ExpandButton>
       <ExpandButton
         rounded="full"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => isModalShown.set(!isModalShown.get()))}
+        onClick={() => setModalShown(true)}
         expandChildren={
           <Text
             fontSize="xl"
@@ -216,8 +217,8 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
 };
 
 const RemindersSection = () => {
-  const [reminders] = useState(
-    observable([
+  const [reminders, setReminders] = useState(
+    [
       {
         name: "Example reminder",
         date: "2020-08-02",
@@ -258,11 +259,11 @@ const RemindersSection = () => {
         notificationMethod: "Email",
         enabled: true,
       },
-    ] as Reminder[])
+    ] as Reminder[]
   );
 
-  const [isEditable] = useState(() => observable.box(false));
-  const [isModalShown] = useState(() => observable.box(false));
+  const [isEditable, setEditable] = useState(false);
+  const [isModalShown, setModalShown] = useState(false);
 
   return useObserver(() => (
     <Flex
@@ -279,12 +280,21 @@ const RemindersSection = () => {
           <ReminderItem
             key={idx}
             reminder={reminder}
-            isEditable={isEditable.get()}
+            isEditable={isEditable}
+            onChange={(field, value) => setReminders([
+              ...reminders.slice(0, idx),
+              {
+                ...reminder,
+                // @ts-ignore
+                [field]: value
+              },
+              ...reminders.slice(idx + 1)
+            ])}
           />
         ))}
       </Flex>
-      <Overlays isEditable={isEditable} isModalShown={isModalShown} />
-      <AddReminderModal reminders={reminders} isShown={isModalShown} />
+      <Overlays isEditable={isEditable} setEditable={setEditable} isModalShown={isModalShown} setModalShown={setModalShown} />
+      <AddReminderModal isShown={isModalShown} setShown={setModalShown} />
     </Flex>
   ));
 };

@@ -10,8 +10,6 @@ import {
 } from "@chakra-ui/core";
 import BaseCheckbox from "../../../components/Shared/input/BaseCheckbox";
 
-import { action } from "mobx";
-import { observer } from "mobx-react";
 import moment from "moment";
 
 import { Reminder } from "../../../Models/Reminder";
@@ -50,19 +48,20 @@ const ReminderSelect: React.FC<SelectProps> = (props) => (
 type ReminderItemProps = {
   reminder: Reminder;
   isEditable?: boolean;
+  onChange?: (field: string, value: any) => void;
 };
 
-const ReminderItem: React.FC<ReminderItemProps> = observer(
-  ({ reminder, isEditable = false }) => (
+const ReminderItem: React.FC<ReminderItemProps> =
+  ({ reminder, isEditable = false, onChange = () => {} }) => (
     <Flex direction="column" fontSize="xl">
       <Flex direction="row" alignItems="center">
         <BaseCheckbox
           size={24}
           isChecked={reminder.enabled}
           isDisabled={!isEditable}
-          onClick={action(
-            () => isEditable && (reminder.enabled = !reminder.enabled)
-          )}
+          onClick={
+            () => isEditable && onChange("enabled", !reminder.enabled)
+          }
         />
         <Text color="petcode.blue.400" marginLeft={2}>
           {reminder.name}
@@ -73,10 +72,10 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
           <ReminderInput
             type="date"
             value={reminder.date}
-            onChange={action(
+            onChange={
               (e: React.ChangeEvent<HTMLInputElement>) =>
-                (reminder.date = e.target.value)
-            )}
+                onChange("date", e.target.value)
+            }
           />
         ) : (
           moment(reminder.date).format("M/D/YY")
@@ -86,10 +85,10 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
           <ReminderInput
             type="time"
             value={reminder.time}
-            onChange={action(
+            onChange={
               (e: React.ChangeEvent<HTMLInputElement>) =>
-                (reminder.time = e.target.value)
-            )}
+                onChange("time", e.target.value)
+            }
           />
         ) : (
           moment(reminder.time, "HH:mm").format("LT")
@@ -98,10 +97,10 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
         {isEditable ? (
           <ReminderSelect
             value={reminder.frequency}
-            onChange={action(
+            onChange={
               (e: React.ChangeEvent<HTMLSelectElement>) =>
-                (reminder.frequency = e.target.value)
-            )}
+                onChange("frequency", e.target.value)
+            }
           >
             <option>One-Time</option>
             <option>Daily</option>
@@ -115,10 +114,10 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
         {isEditable ? (
           <ReminderSelect
             value={reminder.notificationMethod}
-            onChange={action(
+            onChange={
               (e: React.ChangeEvent<HTMLSelectElement>) =>
-                (reminder.notificationMethod = e.target.value)
-            )}
+                onChange("notificationMethod", e.target.value)
+            }
           >
             <option>App Notification</option>
             <option>Email</option>
@@ -129,6 +128,6 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
       </Text>
     </Flex>
   )
-);
+;
 
 export default ReminderItem;
