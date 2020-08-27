@@ -20,11 +20,10 @@ import {
   InfoFieldInput,
 } from "./components/InfoField";
 
-import { action, observable } from "mobx";
-import { observer, useObserver } from "mobx-react";
+import { action } from "mobx";
+import { useObserver } from "mobx-react";
 
 import { ContactInfo } from "../../Models/ContactInfo";
-import useEffect from "react";
 import { AuthContext } from "../../views/Auth/index";
 
 type ContactInfoCardProps = {
