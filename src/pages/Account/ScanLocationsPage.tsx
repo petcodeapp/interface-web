@@ -22,7 +22,6 @@ import { useDimensions, ViewportProvider } from "react-viewport-utils";
 
 import AccountPageLayout from "./components/AccountPageLayout";
 
-import { observable } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
 
@@ -34,6 +33,7 @@ const DEFAULT_MAP_ZOOM = 15;
 
 type LocationScanMapProps = {
   viewport: Partial<InteractiveMapProps>;
+  setViewport: (viewport: any) => void;
   scanLocations: ScanLocation[];
 };
 
@@ -78,6 +78,7 @@ const ScanLocationMarker: React.FC<{ scanLocation: ScanLocation }> = ({
 
 const LocationScanMap: React.FC<LocationScanMapProps> = ({
   viewport,
+  setViewport,
   scanLocations,
 }) => {
   const [lastWidth, setLastWidth] = useState(0);
@@ -97,7 +98,7 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
       {...viewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
       mapStyle="mapbox://styles/kachang/ckdm8ilq82uko1iqfo9ge0be6"
-      onViewportChange={(newViewport) => Object.assign(viewport, newViewport)}
+      onViewportChange={setViewport}
     >
       {scanLocations.map((scanLocation, idx) => (
         <ScanLocationMarker key={idx} scanLocation={scanLocation} />
@@ -142,7 +143,7 @@ const ScanLocationCard: React.FC<
 
 const ScanLocationsSection = () => {
   const [scanLocations] = useState(() =>
-    observable([
+    [
       {
         latitude: 37.3356424,
         longitude: -122.0505069,
@@ -157,17 +158,15 @@ const ScanLocationsSection = () => {
         date: "2020-08-09T13:00",
         deviceInfo: "Android / Chrome",
       },
-    ] as ScanLocation[])
+    ] as ScanLocation[]
   );
-  const [mapViewport] = useState(() =>
-    observable({
-      width: "100%",
-      height: 400,
-      zoom: DEFAULT_MAP_ZOOM,
-      latitude: scanLocations[0].latitude,
-      longitude: scanLocations[0].longitude,
-    })
-  );
+  const [mapViewport, setMapViewport] = useState({
+    width: "100%",
+    height: 400,
+    zoom: DEFAULT_MAP_ZOOM,
+    latitude: scanLocations[0].latitude,
+    longitude: scanLocations[0].longitude,
+  });
 
   return (
     <Flex
@@ -177,8 +176,9 @@ const ScanLocationsSection = () => {
       padding={10}
     >
       <LocationScanMapWithProvider
-        scanLocations={scanLocations}
         viewport={mapViewport}
+        setViewport={setMapViewport}
+        scanLocations={scanLocations}
       />
       <Text color="petcode.neutral.700" fontSize="3xl" marginY={3}>
         Scan Locations
