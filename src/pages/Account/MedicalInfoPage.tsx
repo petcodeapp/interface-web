@@ -112,18 +112,79 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
   ));
 };
 
-// type OverlaysProps = {
-//   isEditable: IObservableValue<boolean>;
-//   isModalShown: IObservableValue<boolean>;
-// };
+type OverlaysProps = {
+  isEditable: boolean;
+  setEditable: (a: boolean) => void;
+  setModalShown: (a: boolean) => void;
+  onSave: () => void;
+};
 
-// const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
-//   const toast = useToast();
+const Overlays: React.FC<OverlaysProps> = ({ isEditable, setEditable, setModalShown, onSave }) => {
+  const toast = useToast();
 
-//   return useObserver(() => (
-
-//   ));
-// };
+  return (
+    <Stack
+      alignItems="end"
+      spacing={2}
+      position="fixed"
+      bottom={5}
+      right={5}
+      color="petcode.neutral.700"
+    >
+      <ExpandButton
+        rounded="full"
+        padding={4}
+        backgroundColor="petcode.yellow.400"
+        onClick={action(() => {
+          if (isEditable) {
+            onSave();
+            toast({
+              title: "Medical information saved.",
+              description: "Your medical information was saved successfully.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            });
+          }
+          setEditable(!isEditable);
+        })}
+        expandChildren={
+          <Text
+            fontSize="xl"
+            fontWeight="thin"
+            textTransform="uppercase"
+            marginRight={2}
+          >
+            {isEditable ? "Save" : "Edit"}
+          </Text>
+        }
+      >
+        <Icon name={isEditable ? "checkmark" : "edit"} size="30px" />
+      </ExpandButton>
+      <ExpandButton
+        rounded="full"
+        padding={4}
+        backgroundColor="petcode.yellow.400"
+        onClick={action(() => setModalShown(true))}
+        expandChildren={
+          <Text
+            fontSize="xl"
+            fontWeight="thin"
+            textTransform="uppercase"
+            whiteSpace="nowrap"
+            marginRight={2}
+          >
+            Add Vaccination
+          </Text>
+        }
+      >
+        <Text fontSize="5xl" lineHeight={0.5}>
+          +
+        </Text>
+      </ExpandButton>
+    </Stack>
+  )
+}
 
 const MedicalInfoSection = () => {
   const service = React.useContext(AuthContext);
@@ -139,8 +200,6 @@ const MedicalInfoSection = () => {
   const [vetNumber, setVetNumber] = useState(
     service.pets[0]?.vetPhoneNumber.value
   );
-
-  const toast = useToast();
 
   return useObserver(() => (
     <Stack
@@ -266,83 +325,31 @@ const MedicalInfoSection = () => {
           ))}
       </Flex>
       {/* <Overlays isEditable={isEditable} isModalShown={isModalShown} /> */}
-      <Stack
-        alignItems="end"
-        spacing={2}
-        position="fixed"
-        bottom={5}
-        right={5}
-        color="petcode.neutral.700"
-      >
-        <ExpandButton
-          rounded="full"
-          padding={4}
-          backgroundColor="petcode.yellow.400"
-          onClick={action(() => {
-            if (isEditable) {
-              service.setMedicalInfo({
-                specialNeeds: {
-                  value: specialNeeds,
-                  visible: true,
-                },
-                allergies: {
-                  value: allergies,
-                  visible: true,
-                },
-                vetName: {
-                  value: vetName,
-                  visible: true,
-                },
-                vetNumber: {
-                  value: vetNumber,
-                  visible: true,
-                },
-              });
-              toast({
-                title: "Medical information saved.",
-                description: "Your medical information was saved successfully.",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-              });
-            }
-            setEditable(isEditable);
-          })}
-          expandChildren={
-            <Text
-              fontSize="xl"
-              fontWeight="thin"
-              textTransform="uppercase"
-              marginRight={2}
-            >
-              {isEditable ? "Save" : "Edit"}
-            </Text>
-          }
-        >
-          <Icon name={isEditable ? "checkmark" : "edit"} size="30px" />
-        </ExpandButton>
-        <ExpandButton
-          rounded="full"
-          padding={4}
-          backgroundColor="petcode.yellow.400"
-          onClick={action(() => setModalShown(true))}
-          expandChildren={
-            <Text
-              fontSize="xl"
-              fontWeight="thin"
-              textTransform="uppercase"
-              whiteSpace="nowrap"
-              marginRight={2}
-            >
-              Add Vaccination
-            </Text>
-          }
-        >
-          <Text fontSize="5xl" lineHeight={0.5}>
-            +
-          </Text>
-        </ExpandButton>
-      </Stack>
+      <Overlays
+        isEditable={isEditable}
+        setEditable={setEditable}
+        setModalShown={setModalShown}
+        onSave={
+          () => service.setMedicalInfo({
+            specialNeeds: {
+              value: specialNeeds,
+              visible: true,
+            },
+            allergies: {
+              value: allergies,
+              visible: true,
+            },
+            vetName: {
+              value: vetName,
+              visible: true,
+            },
+            vetNumber: {
+              value: vetNumber,
+              visible: true,
+            },
+          })
+        }
+      />
       <AddVaccinationModal
         isShown={isModalShown}
         setShown={setModalShown}
