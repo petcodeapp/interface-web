@@ -142,23 +142,24 @@ const ScanLocationCard: React.FC<
 );
 
 const ScanLocationsSection = () => {
-  const [scanLocations] = useState(() =>
-    [
-      {
-        latitude: 37.3356424,
-        longitude: -122.0505069,
-        nearestAddress: "21370 Homestead Rd, Cupertino, CA 95014",
-        date: "2020-08-09T14:00",
-        deviceInfo: "iPhone / Safari",
-      },
-      {
-        latitude: 37.3400556,
-        longitude: -122.0502666,
-        nearestAddress: "1628 South Mary Avenue, Sunnyvale, CA 94087",
-        date: "2020-08-09T13:00",
-        deviceInfo: "Android / Chrome",
-      },
-    ] as ScanLocation[]
+  const [scanLocations] = useState(
+    () =>
+      [
+        {
+          latitude: 37.3356424,
+          longitude: -122.0505069,
+          nearestAddress: "21370 Homestead Rd, Cupertino, CA 95014",
+          date: "2020-08-09T14:00",
+          deviceInfo: "iPhone / Safari",
+        },
+        {
+          latitude: 37.3400556,
+          longitude: -122.0502666,
+          nearestAddress: "1628 South Mary Avenue, Sunnyvale, CA 94087",
+          date: "2020-08-09T13:00",
+          deviceInfo: "Android / Chrome",
+        },
+      ] as ScanLocation[]
   );
   const [mapViewport, setMapViewport] = useState({
     width: "100%",

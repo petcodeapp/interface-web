@@ -104,7 +104,6 @@ const PetInfoSection = () => {
   const [temperament, setTemperament] = useState("Friendly");
   const [isServiceAnimal, setServiceAnimal] = useState(false);
 
-
   const [isEditable, setEditable] = useState(false);
 
   const toast = useToast();
@@ -169,9 +168,8 @@ const PetInfoSection = () => {
           {isEditable ? (
             <PetInfoInput
               value={breed}
-              onChange={
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setBreed(e.target.value)
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setBreed(e.target.value)
               }
             />
           ) : (
@@ -192,15 +190,13 @@ const PetInfoSection = () => {
               fontSize="3xl"
               value={birthday}
               max={moment().format("YYYY-MM-DD")}
-              onChange={
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setBirthday(e.target.value)
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setBirthday(e.target.value)
               }
             />
           ) : (
             <PetInfoCardText>
-              {moment.duration(moment().diff(moment(birthday))).humanize()}{" "}
-              old
+              {moment.duration(moment().diff(moment(birthday))).humanize()} old
             </PetInfoCardText>
           )}
           <PetInfoCardLabel>Age</PetInfoCardLabel>
@@ -210,9 +206,8 @@ const PetInfoSection = () => {
           {isEditable ? (
             <PetInfoInput
               value={color}
-              onChange={
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setColor(e.target.value)
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setColor(e.target.value)
               }
             />
           ) : (
@@ -225,9 +220,8 @@ const PetInfoSection = () => {
           {isEditable ? (
             <PetInfoInput
               value={temperament}
-              onChange={
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setTemperament(e.target.value)
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setTemperament(e.target.value)
               }
             />
           ) : (
@@ -245,17 +239,13 @@ const PetInfoSection = () => {
           {isEditable ? (
             <PetInfoSelect
               value={isServiceAnimal ? "Yes" : "No"}
-              onChange={
-                (e) => setServiceAnimal(e.target.value == "Yes")
-              }
+              onChange={(e) => setServiceAnimal(e.target.value == "Yes")}
             >
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </PetInfoSelect>
           ) : (
-            <PetInfoCardText>
-              {isServiceAnimal ? "Yes" : "No"}
-            </PetInfoCardText>
+            <PetInfoCardText>{isServiceAnimal ? "Yes" : "No"}</PetInfoCardText>
           )}
           <PetInfoCardLabel>Service Animal</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="service-animal" />

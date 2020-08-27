@@ -46,17 +46,11 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
     enabled: true,
   };
 
-  const [reminder, setReminder] = useState(
-    { ...DEFAULT_VALUES }
-  );
+  const [reminder, setReminder] = useState({ ...DEFAULT_VALUES });
   const toast = useToast();
 
   return useObserver(() => (
-    <Modal
-      isOpen={isShown}
-      onClose={() => setShown(false)}
-      isCentered
-    >
+    <Modal isOpen={isShown} onClose={() => setShown(false)} isCentered>
       <ModalOverlay />
       <ModalContent rounded="lg">
         <ModalHeader
@@ -71,9 +65,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldInput
             placeholder="Reminder Name"
             value={reminder.name}
-            onChange={
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                setReminder({ ...reminder, name: e.target.value })
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setReminder({ ...reminder, name: e.target.value })
             }
           />
           <InfoFieldLabel>Reminder Name</InfoFieldLabel>
@@ -82,8 +75,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             width="auto"
             display="inline"
             value={reminder.date}
-            onChange={
-              (e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setReminder({ ...reminder, date: e.target.value })
             }
           />
@@ -92,15 +84,16 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             width="auto"
             display="inline"
             value={reminder.time}
-            onChange={
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                setReminder({ ...reminder, time: e.target.value })
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setReminder({ ...reminder, time: e.target.value })
             }
           />
           <InfoFieldLabel>Reminder Date</InfoFieldLabel>
           <InfoFieldSelect
             value={reminder.frequency}
-            onChange={(e) => setReminder({ ...reminder, frequency: e.target.value })}
+            onChange={(e) =>
+              setReminder({ ...reminder, frequency: e.target.value })
+            }
           >
             <option>One-Time</option>
             <option>Daily</option>
@@ -110,8 +103,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldLabel>Reminder Frequency</InfoFieldLabel>
           <InfoFieldSelect
             value={reminder.notificationMethod}
-            onChange={
-              (e) => setReminder({ ...reminder, notificationMethod: e.target.value })
+            onChange={(e) =>
+              setReminder({ ...reminder, notificationMethod: e.target.value })
             }
           >
             <option>App Notification</option>
@@ -150,7 +143,12 @@ type OverlaysProps = {
   setModalShown: (a: boolean) => void;
 };
 
-const Overlays: React.FC<OverlaysProps> = ({ isEditable, setEditable, isModalShown, setModalShown }) => {
+const Overlays: React.FC<OverlaysProps> = ({
+  isEditable,
+  setEditable,
+  isModalShown,
+  setModalShown,
+}) => {
   const toast = useToast();
 
   return (
@@ -217,50 +215,48 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, setEditable, isModalSho
 };
 
 const RemindersSection = () => {
-  const [reminders, setReminders] = useState(
-    [
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-    ] as Reminder[]
-  );
+  const [reminders, setReminders] = useState([
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+  ] as Reminder[]);
 
   const [isEditable, setEditable] = useState(false);
   const [isModalShown, setModalShown] = useState(false);
@@ -281,19 +277,26 @@ const RemindersSection = () => {
             key={idx}
             reminder={reminder}
             isEditable={isEditable}
-            onChange={(field, value) => setReminders([
-              ...reminders.slice(0, idx),
-              {
-                ...reminder,
-                // @ts-ignore
-                [field]: value
-              },
-              ...reminders.slice(idx + 1)
-            ])}
+            onChange={(field, value) =>
+              setReminders([
+                ...reminders.slice(0, idx),
+                {
+                  ...reminder,
+                  // @ts-ignore
+                  [field]: value,
+                },
+                ...reminders.slice(idx + 1),
+              ])
+            }
           />
         ))}
       </Flex>
-      <Overlays isEditable={isEditable} setEditable={setEditable} isModalShown={isModalShown} setModalShown={setModalShown} />
+      <Overlays
+        isEditable={isEditable}
+        setEditable={setEditable}
+        isModalShown={isModalShown}
+        setModalShown={setModalShown}
+      />
       <AddReminderModal isShown={isModalShown} setShown={setModalShown} />
     </Flex>
   ));

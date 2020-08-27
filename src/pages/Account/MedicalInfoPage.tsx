@@ -46,17 +46,11 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
     date: "",
   };
 
-  const [vaccination, setVaccination] = useState(
-    { ...DEFAULT_VALUES }
-  );
+  const [vaccination, setVaccination] = useState({ ...DEFAULT_VALUES });
   const toast = useToast();
 
   return useObserver(() => (
-    <Modal
-      isOpen={isShown}
-      onClose={() => setShown(false)}
-      isCentered
-    >
+    <Modal isOpen={isShown} onClose={() => setShown(false)} isCentered>
       <ModalOverlay />
       <ModalContent rounded="lg">
         <ModalHeader
@@ -71,9 +65,8 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
           <InfoFieldInput
             placeholder="Vaccination Name"
             value={vaccination.name}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                setVaccination({ ...vaccination, name: e.target.value })
+            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              setVaccination({ ...vaccination, name: e.target.value })
             )}
           />
           <InfoFieldLabel>Vaccination Name</InfoFieldLabel>
@@ -81,9 +74,8 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
             type="date"
             value={vaccination.date}
             max={moment().format("YYYY-MM-DD")}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                setVaccination({ ...vaccination, date: e.target.value })
+            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              setVaccination({ ...vaccination, date: e.target.value })
             )}
           />
           <InfoFieldLabel>Vaccination Date</InfoFieldLabel>
@@ -119,7 +111,12 @@ type OverlaysProps = {
   onSave: () => void;
 };
 
-const Overlays: React.FC<OverlaysProps> = ({ isEditable, setEditable, setModalShown, onSave }) => {
+const Overlays: React.FC<OverlaysProps> = ({
+  isEditable,
+  setEditable,
+  setModalShown,
+  onSave,
+}) => {
   const toast = useToast();
 
   return (
@@ -183,8 +180,8 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, setEditable, setModalSh
         </Text>
       </ExpandButton>
     </Stack>
-  )
-}
+  );
+};
 
 const MedicalInfoSection = () => {
   const service = React.useContext(AuthContext);
@@ -329,8 +326,8 @@ const MedicalInfoSection = () => {
         isEditable={isEditable}
         setEditable={setEditable}
         setModalShown={setModalShown}
-        onSave={
-          () => service.setMedicalInfo({
+        onSave={() =>
+          service.setMedicalInfo({
             specialNeeds: {
               value: specialNeeds,
               visible: true,
@@ -350,10 +347,7 @@ const MedicalInfoSection = () => {
           })
         }
       />
-      <AddVaccinationModal
-        isShown={isModalShown}
-        setShown={setModalShown}
-      />
+      <AddVaccinationModal isShown={isModalShown} setShown={setModalShown} />
     </Stack>
   ));
 };
