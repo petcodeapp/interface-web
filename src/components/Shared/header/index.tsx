@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Box, BoxProps, Flex, FlexProps, Image, Text } from "@chakra-ui/core";
+import { Box, Flex, FlexProps, Image, Link, LinkProps, Stack } from "@chakra-ui/core";
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../views/Auth/index";
 
 import BaseButton, { BaseButtonProps } from "../button/BaseButton";
 
-const HeaderText: React.FC<BoxProps> = (props) => (
-  <Text
+const HeaderLink: React.FC<LinkProps> = (props) => (
+  <Link
     fontSize="lg"
     textTransform="uppercase"
     fontFamily="Open Sans"
@@ -23,7 +23,8 @@ const Header: React.FC<FlexProps> = (props) => {
   const auth = React.useContext(AuthContext);
 
   return useObserver(() => (
-    <Flex
+    <Stack
+      isInline
       position="fixed"
       alignItems="center"
       top={0}
@@ -32,36 +33,37 @@ const Header: React.FC<FlexProps> = (props) => {
       paddingX={8}
       paddingY={2}
       zIndex={999}
+      spacing={4}
       color="white"
       fontWeight="bold"
       {...props}
     >
       <Image src="/media/petcode-logo-with-qr-code.png" height="40px" />
       <Box flexGrow={1} />
-      <HeaderText marginRight={8}>Home</HeaderText>
-      <HeaderText marginRight={8}>About Us</HeaderText>
-      <HeaderText marginRight={8}>Purchase</HeaderText>
+      <HeaderLink href='/'>Home</HeaderLink>
+      <HeaderLink>About Us</HeaderLink>
+      <HeaderLink href='/products'>Purchase</HeaderLink>
       {!auth.isLoggedIn ? (
-        <>
+        <Stack isInline spacing={4}>
           <HeaderButton>
-            <HeaderText fontWeight="thin" color="petcode.neutral.700">
+            <HeaderLink href="/signup" fontWeight="thin" color="petcode.neutral.700">
               Register
-            </HeaderText>
+            </HeaderLink>
           </HeaderButton>
           <HeaderButton>
-            <HeaderText fontWeight="thin" color="petcode.neutral.700">
+            <HeaderLink href="/login" fontWeight="thin" color="petcode.neutral.700">
               Sign In
-            </HeaderText>
+            </HeaderLink>
           </HeaderButton>
-        </>
+        </Stack>
       ) : (
         <HeaderButton>
-          <HeaderText fontWeight="thin" color="petcode.neutral.700">
+          <HeaderLink href="/dashboard" fontWeight="thin" color="petcode.neutral.700">
             Dashboard
-          </HeaderText>
+          </HeaderLink>
         </HeaderButton>
       )}
-    </Flex>
+    </Stack>
   ));
 };
 
