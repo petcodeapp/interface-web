@@ -10,7 +10,6 @@ import BaseButton from "../../../components/Shared/button/BaseButton";
 import RoundedInput from "../../../components/Shared/input/RoundedInput";
 import UnifiedErrorMessage from "../../../components/Shared/formik/UnifiedErrorMessage";
 
-import { action } from "mobx";
 import * as Yup from "yup";
 import "yup-phone";
 
@@ -26,6 +25,7 @@ export type ShippingInformation = Address & {
 
 type ShippingInformationStepProps = {
   shippingInformation: ShippingInformation;
+  setShippingInformation: (a: ShippingInformation) => void;
   onNextStep: () => any;
 };
 
@@ -43,6 +43,7 @@ const ShippingInformationSchema = Yup.object()
 
 const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
   shippingInformation,
+  setShippingInformation,
   onNextStep,
 }) => (
   <Flex direction="column" alignItems="center" paddingBottom={10}>
@@ -57,10 +58,10 @@ const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
     <Formik
       initialValues={shippingInformation}
       validationSchema={ShippingInformationSchema}
-      onSubmit={action((values: ShippingInformation) => {
-        Object.assign(shippingInformation, values);
+      onSubmit={(values: ShippingInformation) => {
+        setShippingInformation(values);
         onNextStep();
-      })}
+      }}
     >
       {({ errors, touched, handleSubmit }) => (
         <Observer
@@ -112,10 +113,12 @@ const ShippingInformationStep: React.FC<ShippingInformationStepProps> = ({
                 <BaseCheckbox
                   size={24}
                   isChecked={shippingInformation.sendEmailUpdates}
-                  onClick={action(
-                    () =>
-                      (shippingInformation.sendEmailUpdates = !shippingInformation.sendEmailUpdates)
-                  )}
+                  onClick={() =>
+                    setShippingInformation({
+                      ...shippingInformation,
+                      sendEmailUpdates: !shippingInformation.sendEmailUpdates,
+                    })
+                  }
                 />
                 <Text color="petcode.yellow.400">Yes, email me updates.</Text>
                 <Box flexGrow={1} />
