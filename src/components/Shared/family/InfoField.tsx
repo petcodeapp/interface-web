@@ -1,6 +1,8 @@
 import React from "react";
 
 import {
+  Box,
+  BoxProps,
   Flex,
   FlexProps,
   Input,
@@ -20,12 +22,24 @@ export const InfoFieldRow: React.FC<FlexProps> = (props) => (
   />
 );
 
-export const InfoFieldText: React.FC<PseudoBoxProps> = (props) => (
+export const InfoFieldText: React.FC<BoxProps> = (props) => (
   <Text color="petcode.blue.400" fontSize="xl" marginBottom={1} {...props} />
 );
 
 export const InfoFieldLabel: React.FC<PseudoBoxProps> = (props) => (
   <Text color="petcode.neutral.400" fontSize="sm" {...props} />
+);
+
+type InfoFieldProps = {
+  text: string;
+  label: string;
+} & BoxProps;
+
+export const InfoField: React.FC<InfoFieldProps> = ({ text, label, ...props }) => (
+  <Box {...props}>
+    <InfoFieldText>{text}</InfoFieldText>
+    <InfoFieldLabel>{label}</InfoFieldLabel>
+  </Box>
 );
 
 export const InfoFieldInput: React.FC<InputProps> = (props) => (
