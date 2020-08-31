@@ -11,7 +11,11 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/core";
-import { InfoField, InfoFieldText, InfoFieldLabel } from "../../components/Shared/family/InfoField";
+import {
+  InfoField,
+  InfoFieldText,
+  InfoFieldLabel,
+} from "../../components/Shared/family/InfoField";
 
 import BaseButton, {
   BaseButtonProps,
@@ -63,22 +67,10 @@ const ContactInfoStack: React.FC<{ contactInfo: ContactInfo }> = ({
 }) => (
   <Stack>
     <SecondaryHeader>{contactInfo.level} Contact Information</SecondaryHeader>
-    <InfoField
-      text={contactInfo.name.value}
-      label='Name'
-    />
-    <InfoField
-      text={contactInfo.phoneNumber.value}
-      label='Phone Number'
-    />
-    <InfoField
-      text={contactInfo.email.value}
-      label='Email'
-    />
-    <InfoField
-      text={contactInfo.address.value}
-      label='Address'
-    />
+    <InfoField text={contactInfo.name.value} label="Name" />
+    <InfoField text={contactInfo.phoneNumber.value} label="Phone Number" />
+    <InfoField text={contactInfo.email.value} label="Email" />
+    <InfoField text={contactInfo.address.value} label="Address" />
   </Stack>
 );
 
@@ -112,23 +104,23 @@ const PetProfilePage = () => {
     isServiceAnimal: false,
     specialNeeds: {
       value: "Needs to remain cool; heat sensitivity",
-      visible: true
+      visible: true,
     },
     breed: "Weimararner",
     birthday: "08/31/2018",
     vaccinations: [
       {
-        name: "Rabies"
-      }
+        name: "Rabies",
+      },
     ],
     vetName: {
       value: "Dr. Veterinarian",
-      visible: true
+      visible: true,
     },
     vetPhoneNumber: {
       value: "(408) 123 4567",
-      visible: true
-    }
+      visible: true,
+    },
   } as Pet);
 
   return (
@@ -189,18 +181,20 @@ const PetProfilePage = () => {
                 )}
             </Stack>
             <Stack spacing={3}>
-              <SecondaryHeader>Veterinarian Contact Information</SecondaryHeader>
+              <SecondaryHeader>
+                Veterinarian Contact Information
+              </SecondaryHeader>
               <Stack isInline spacing={8}>
                 {pet.vetName.visible && (
                   <InfoField
                     text={pet.vetName.value}
-                    label='Veterinarian Name'
+                    label="Veterinarian Name"
                   />
                 )}
                 {pet.vetPhoneNumber.visible && (
                   <InfoField
                     text={pet.vetPhoneNumber.value}
-                    label='Veterinarian Phone Number'
+                    label="Veterinarian Phone Number"
                   />
                 )}
               </Stack>
@@ -209,42 +203,36 @@ const PetProfilePage = () => {
         </Card>
         <PrimaryHeader>Pet Info</PrimaryHeader>
         <Card>
-          <Flex direction='row' flexWrap='wrap'>
+          <Flex direction="row" flexWrap="wrap">
+            <InfoField flexBasis="25%" text={pet.name} label="Name" />
             <InfoField
-              flexBasis='25%'
-              text={pet.name}
-              label='Name'
-            />
-            <InfoField
-              flexBasis='25%'
+              flexBasis="25%"
               text={pet.temperament}
-              label='Temperament'
+              label="Temperament"
             />
             <InfoField
-              flexBasis='25%'
+              flexBasis="25%"
               text={pet.isServiceAnimal ? "Yes" : "No"}
-              label='Service Animal'
+              label="Service Animal"
             />
             {pet.specialNeeds.visible && (
               <InfoField
-                flexBasis='25%'
+                flexBasis="25%"
                 text={pet.specialNeeds.value}
-                label='Medical Needs'
+                label="Medical Needs"
               />
             )}
+            <InfoField flexBasis="25%" text={pet.breed} label="Breed" />
             <InfoField
-              flexBasis='25%'
-              text={pet.breed}
-              label='Breed'
-            />
-            <InfoField
-              flexBasis='25%'
-              text={`${moment.duration(moment().diff(moment(pet.birthday))).humanize()} old`}
-              label='Breed'
+              flexBasis="25%"
+              text={`${moment
+                .duration(moment().diff(moment(pet.birthday)))
+                .humanize()} old`}
+              label="Breed"
             />
             {pet.vaccinations.map((vaccination, idx) => (
               <Box key={idx}>
-                <InfoFieldText textDecoration='underline'>
+                <InfoFieldText textDecoration="underline">
                   View Certificate
                 </InfoFieldText>
                 <InfoFieldLabel>{vaccination.name}</InfoFieldLabel>

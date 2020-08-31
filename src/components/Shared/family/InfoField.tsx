@@ -35,7 +35,11 @@ type InfoFieldProps = {
   label: string;
 } & BoxProps;
 
-export const InfoField: React.FC<InfoFieldProps> = ({ text, label, ...props }) => (
+export const InfoField: React.FC<InfoFieldProps> = ({
+  text,
+  label,
+  ...props
+}) => (
   <Box {...props}>
     <InfoFieldText>{text}</InfoFieldText>
     <InfoFieldLabel>{label}</InfoFieldLabel>

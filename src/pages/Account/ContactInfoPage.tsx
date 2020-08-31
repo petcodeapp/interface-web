@@ -36,8 +36,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
   contactInfo,
   isEditable,
   ...props
-}) =>{
-  console.log(contactInfo)
+}) => {
+  console.log(contactInfo);
   return useObserver(() => (
     <Flex
       direction="column"
@@ -47,9 +47,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
       {...props}
     >
       <InfoFieldRow fontSize="2xl" marginBottom={3}>
-        <Text color="petcode.neutral.700">
-          Contact Information
-        </Text>
+        <Text color="petcode.neutral.700">Contact Information</Text>
         <Text color="petcode.neutral.400">Visibility</Text>
       </InfoFieldRow>
       <InfoFieldRow>
@@ -154,7 +152,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
         />
       </InfoFieldRow>
     </Flex>
-  ))};
+  ));
+};
 
 const ContactInfoSection = () => {
   const service = React.useContext(AuthContext);
@@ -169,19 +168,20 @@ const ContactInfoSection = () => {
       padding={10}
       spacing={5}
     >
-      
-      {
-        service.pets[0]?.contacts.map((value: any, index: number) => {
-          console.log(JSON.parse(JSON.stringify(service.pets[0]?.contacts[index])))
-          return (
-            <ContactInfoCard
-            contactInfo={JSON.parse(JSON.stringify(service.pets[0]?.contacts[index]))}
+      {service.pets[0]?.contacts.map((value: any, index: number) => {
+        console.log(
+          JSON.parse(JSON.stringify(service.pets[0]?.contacts[index]))
+        );
+        return (
+          <ContactInfoCard
+            contactInfo={JSON.parse(
+              JSON.stringify(service.pets[0]?.contacts[index])
+            )}
             isEditable={isEditable}
             key={index}
-            />
-          )
-        })
-      }
+          />
+        );
+      })}
       <ExpandButton
         position="fixed"
         bottom={5}
