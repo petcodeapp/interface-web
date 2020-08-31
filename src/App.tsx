@@ -6,6 +6,7 @@ import { AuthProvider } from "./views/Auth/index";
 import theme from "./theme";
 
 import "./styles/base.css";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   return (
@@ -13,11 +14,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <ColorModeProvider>
           <AuthProvider>
+            <AnimatePresence>
             <Router>
               <Switch>
                 <Routes />
               </Switch>
             </Router>
+            </AnimatePresence>
           </AuthProvider>
         </ColorModeProvider>
       </ThemeProvider>

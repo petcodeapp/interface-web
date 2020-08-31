@@ -17,65 +17,60 @@ import { Reminder } from "../../Models/Reminder";
 import * as firebase from "firebase";
 import { AuthContext } from "../../views/Auth/index";
 import { Redirect } from "react-router-dom";
+import { auth } from "../../firebase/index";
+import { useObserver } from "mobx-react";
 
-const Dashboard = withTheme(({ theme }) => {
-  const [newUser, setNewUser] = useState(false);
 
-  useEffect(() => {
-    const ref = firebase
-      .firestore()
-      .collection(`${firebase.auth().currentUser?.uid}`);
 
-    ref.onSnapshot((s) => setNewUser(s.empty));
-  }, [newUser]);
+const DashboardPage = withTheme(({ theme }) => {
+  // const [loading, setLoading] = useState(true);
+  // const [newUser, setNewUser] = useState<boolean | null>(null);
+  // const [user, setUser] = useState<any>({});
+  // const [pets, setPets] = useState<any>([]);
 
-  const [reminders] = useState(
-    observable([
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-    ] as Reminder[])
-  );
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const ref = firebase
+  //       .firestore()
+  //       .collection(`users`)
+  //       .doc(`${firebase.auth().currentUser?.uid}`);
 
-  return !newUser ? (
-    <Stack
+  //     ref.onSnapshot((s) => {
+  //       setNewUser(s.exists);
+  //       setUser(s.data());
+
+  //       // console.log(s.exists);
+
+  //       if (s.exists) {
+  //         const d: Array<any> = s.data()?.pets;
+
+  //         // d.forEach(const petRef = firebase.firestore().collection('pets').doc(d).onSnapshot(z => console.log(z))
+  //         d.forEach((x) => {
+  //           firebase
+  //             .firestore()
+  //             .collection("pets")
+  //             .doc(x)
+  //             .onSnapshot((z) => {
+  //               // console.log(z.data());
+  //               setPets(pets.concat(z.data()));
+  //             });
+  //         });
+  //       }
+
+  //       setLoading(false);
+  //     });
+  //   };
+
+  //   fetchData();
+  // }, [newUser, pets]);
+
+  const service = React.useContext(AuthContext);
+
+  
+
+  return useObserver(() => (
+    <AccountPageLayout>
+      <Stack
       flexGrow={1}
       backgroundColor="petcode.neutral.200"
       padding={10}
@@ -93,17 +88,17 @@ const Dashboard = withTheme(({ theme }) => {
       >
         <Flex direction="column" marginLeft={40}>
           <Text color="petcode.neutral.700" fontSize="5xl" fontWeight="bold">
-            Max
+            {service.pets[0]?.name}
           </Text>
           <Text color="petcode.neutral.500" fontSize="2xl" fontWeight="thin">
-            Weimaraner &middot; John Doe
+            {service.pets[0]?.breed} &middot; {service.pets[0]?.contacts[0]?.name.value}
           </Text>
         </Flex>
         <Box flexGrow={1} />
         <Image
           rounded="lg"
           alt="Dog on yellow background"
-          src="/media/dog-on-yellow-background-full.png"
+          src={service.pets[0]?.profileUrl}
         />
       </Flex>
       <Stack isInline justifyContent="space-between" spacing={5}>
@@ -141,11 +136,11 @@ const Dashboard = withTheme(({ theme }) => {
             Account Information
           </Text>
           <Box>
-            <InfoFieldText>John Doe</InfoFieldText>
+            <InfoFieldText>{service.user?.displayName}</InfoFieldText>
             <InfoFieldLabel>Name</InfoFieldLabel>
           </Box>
           <Box>
-            <InfoFieldText>example@gmail.com</InfoFieldText>
+            <InfoFieldText>{service.user?.email}</InfoFieldText>
             <InfoFieldLabel>Email</InfoFieldLabel>
           </Box>
           <Box>
@@ -153,11 +148,12 @@ const Dashboard = withTheme(({ theme }) => {
             <InfoFieldLabel>Password</InfoFieldLabel>
           </Box>
           <Box>
-            <InfoFieldText>Max</InfoFieldText>
+            <InfoFieldText>{service.pets[0]?.name}</InfoFieldText>
             <InfoFieldLabel>Pet Name</InfoFieldLabel>
           </Box>
         </Flex>
       </Stack>
+      {service.pets[0]?.reminders.length>0 && (
       <Flex
         direction="column"
         rounded="lg"
@@ -168,20 +164,13 @@ const Dashboard = withTheme(({ theme }) => {
         <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
           Reminders
         </Text>
-        {reminders.map((reminder, idx) => (
+        {service.pets[0]?.reminders.map((reminder: any, idx: number) => (
           <ReminderItem key={idx} reminder={reminder} />
         ))}
-      </Flex>
+      </Flex>)}
     </Stack>
-  ) : (
-    <Redirect to="/petinfo" />
-  );
-});
-
-const DashboardPage = () => (
-  <AccountPageLayout>
-    <Dashboard />
-  </AccountPageLayout>
-);
+    </AccountPageLayout>
+  ))
+})
 
 export default DashboardPage;

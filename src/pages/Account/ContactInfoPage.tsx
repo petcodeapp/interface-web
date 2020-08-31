@@ -24,14 +24,21 @@ import { action, observable } from "mobx";
 import { observer, useObserver } from "mobx-react";
 
 import { ContactInfo } from "../../Models/ContactInfo";
+import useEffect from "react";
+import { AuthContext } from "../../views/Auth/index";
 
 type ContactInfoCardProps = {
   contactInfo: ContactInfo;
   isEditable: boolean;
 } & FlexProps;
 
-const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
-  ({ contactInfo, isEditable, ...props }) => (
+const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
+  contactInfo,
+  isEditable,
+  ...props
+}) =>{
+  console.log(contactInfo)
+  return useObserver(() => (
     <Flex
       direction="column"
       rounded="lg"
@@ -41,7 +48,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
     >
       <InfoFieldRow fontSize="2xl" marginBottom={3}>
         <Text color="petcode.neutral.700">
-          {contactInfo.level} Contact Information
+          Contact Information
         </Text>
         <Text color="petcode.neutral.400">Visibility</Text>
       </InfoFieldRow>
@@ -147,36 +154,12 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = observer(
         />
       </InfoFieldRow>
     </Flex>
-  )
-);
+  ))};
 
 const ContactInfoSection = () => {
-  const [contactInfos] = useState(() =>
-    observable([
-      {
-        level: "Primary",
-        name: { value: "John Doe", visible: true },
-        address: {
-          value: "123 First Street, Cupertino, CA 94087",
-          visible: true,
-        },
-        phoneNumber: { value: "(408) 123 4567", visible: true },
-        email: { value: "example@gmail.com", visible: true },
-      },
-      {
-        level: "Secondary",
-        name: { value: "Jane Doe", visible: true },
-        address: {
-          value: "123 Second Street, Cupertino, CA 94087",
-          visible: true,
-        },
-        phoneNumber: { value: "(408) 765 4321", visible: true },
-        email: { value: "anotherexample@gmail.com", visible: true },
-      },
-    ])
-  );
+  const service = React.useContext(AuthContext);
 
-  const [isEditable] = useState(() => observable.box(false));
+  const [isEditable, setEditable] = useState(false);
   const toast = useToast();
 
   return useObserver(() => (
@@ -186,13 +169,19 @@ const ContactInfoSection = () => {
       padding={10}
       spacing={5}
     >
-      {contactInfos.map((contactInfo, idx) => (
-        <ContactInfoCard
-          key={idx}
-          isEditable={isEditable.get()}
-          contactInfo={contactInfo}
-        />
-      ))}
+      
+      {
+        service.pets[0]?.contacts.map((value: any, index: number) => {
+          console.log(JSON.parse(JSON.stringify(service.pets[0]?.contacts[index])))
+          return (
+            <ContactInfoCard
+            contactInfo={JSON.parse(JSON.stringify(service.pets[0]?.contacts[index]))}
+            isEditable={isEditable}
+            key={index}
+            />
+          )
+        })
+      }
       <ExpandButton
         position="fixed"
         bottom={5}
@@ -201,8 +190,8 @@ const ContactInfoSection = () => {
         color="petcode.neutral.700"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => {
-          if (isEditable.get()) {
+        onClick={action(async () => {
+          if (isEditable) {
             toast({
               title: "Contact information saved.",
               description: "Your contact information was saved successfully.",
@@ -211,7 +200,7 @@ const ContactInfoSection = () => {
               isClosable: true,
             });
           }
-          isEditable.set(!isEditable.get());
+          setEditable(!isEditable);
         })}
         expandChildren={
           <Text
@@ -220,11 +209,11 @@ const ContactInfoSection = () => {
             textTransform="uppercase"
             marginRight={2}
           >
-            {isEditable.get() ? "Save" : "Edit"}
+            {isEditable ? "Save" : "Edit"}
           </Text>
         }
       >
-        <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
+        <Icon name={isEditable ? "checkmark" : "edit"} size="30px" />
       </ExpandButton>
     </Stack>
   ));

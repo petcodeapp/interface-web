@@ -1,15 +1,39 @@
-import { observable, computed } from "mobx";
+import { observable, computed, action } from "mobx";
 import { auth } from "../../firebase/index";
-import firebase, { User } from "firebase";
+import firebase, { User, firestore } from "firebase";
 
 class Auth {
   @observable user: User | null = null;
+  @observable newUser: boolean = true;
+  @observable userData: any = null;
+  @observable pets: any = [];
   @observable authPending: boolean = true;
+  @observable petIds: Array<string> = [];
   unWatchAuth: any;
 
   constructor() {
-    this.unWatchAuth = auth.onAuthStateChanged((user: User) => {
+    auth.onAuthStateChanged((user: User) => {
       this.user = user;
+
+      firebase.firestore().collection('users').doc(user.uid).onSnapshot({
+        includeMetadataChanges: true,
+
+      }, userData => {
+        console.log(`New Snapshot from MobX store: ${userData}`)
+        console.log(user.uid)
+        // this.userData = userData.data()
+        if(userData.exists) {
+          this.userData = userData.data()
+          this.newUser = false
+
+          userData.data()?.pets.forEach((pid: string) => {
+            this.petIds = this.petIds.concat(pid)
+            firebase.firestore().collection('pets').doc(pid).onSnapshot(pet => {
+              this.pets = this.pets.concat(pet.data())
+            })
+          })
+        }
+      })
 
       this.authPending = false;
     });
@@ -46,6 +70,34 @@ class Auth {
 
   @computed get isLoggedIn() {
     return !!this.user;
+  }
+
+  @action
+  public setMedicalInfo (information: {
+    specialNeeds: {
+      value: string,
+      visible: boolean
+    },
+    allergies: {
+      value: string,
+      visible: boolean
+    },
+    vetName: {
+      value: string,
+      visible: boolean
+    },
+    vetNumber: {
+      value: string,
+      visible: boolean
+    },
+  }) {
+
+    Object.assign(this.pets[0], information)
+
+    firestore().collection("pets").doc(this.petIds[0]).update(information).then(z => console.log())
+
+    console.log(this.pets[0])
+
   }
 }
 
