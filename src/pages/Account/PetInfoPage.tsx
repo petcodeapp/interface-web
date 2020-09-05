@@ -302,11 +302,11 @@ const PetInfoSection = () => {
 };
 
 const PetInfoPage = () => {
-  
   return (
-  <AccountPageLayout>
-    <PetInfoSection />
-  </AccountPageLayout>
-)};
+    <AccountPageLayout>
+      <PetInfoSection />
+    </AccountPageLayout>
+  );
+};
 
 export default PetInfoPage;
