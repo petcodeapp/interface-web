@@ -57,7 +57,7 @@ const Dashboard = withTheme(({ theme }) => {
 
     fetchData();
   }, [newUser, pets]);
-  
+
   return !loading ? (
     newUser ? (
       <Stack
@@ -126,11 +126,15 @@ const Dashboard = withTheme(({ theme }) => {
               Account Information
             </Text>
             <Box>
-              <InfoFieldText>{firebase.auth().currentUser?.displayName}</InfoFieldText>
+              <InfoFieldText>
+                {firebase.auth().currentUser?.displayName}
+              </InfoFieldText>
               <InfoFieldLabel>Name</InfoFieldLabel>
             </Box>
             <Box>
-              <InfoFieldText>{firebase.auth().currentUser?.email}</InfoFieldText>
+              <InfoFieldText>
+                {firebase.auth().currentUser?.email}
+              </InfoFieldText>
               <InfoFieldLabel>Email</InfoFieldLabel>
             </Box>
             <Box>
@@ -143,21 +147,22 @@ const Dashboard = withTheme(({ theme }) => {
             </Box>
           </Flex>
         </Stack>
-        {pets[0]?.reminders.length>0 && (
-        <Flex
-          direction="column"
-          rounded="lg"
-          backgroundColor="white"
-          flexBasis="100%"
-          padding={6}
-        >
-          <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
-            Reminders
-          </Text>
-          {pets[0]?.reminders.map((reminder: any, idx: number) => (
-            <ReminderItem key={idx} reminder={reminder} />
-          ))}
-        </Flex>)}
+        {pets[0]?.reminders.length > 0 && (
+          <Flex
+            direction="column"
+            rounded="lg"
+            backgroundColor="white"
+            flexBasis="100%"
+            padding={6}
+          >
+            <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
+              Reminders
+            </Text>
+            {pets[0]?.reminders.map((reminder: any, idx: number) => (
+              <ReminderItem key={idx} reminder={reminder} />
+            ))}
+          </Flex>
+        )}
       </Stack>
     ) : (
       <Redirect to="/petinfo" />

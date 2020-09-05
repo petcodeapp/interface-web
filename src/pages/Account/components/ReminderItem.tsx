@@ -1,6 +1,7 @@
 import React from "react";
 
 import {
+  Box,
   Flex,
   Input,
   InputProps,
@@ -69,12 +70,12 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
           {reminder.name}
         </Text>
       </Flex>
-      <Text color="petcode.neutral.400" marginLeft={8}>
+      <Flex direction="row" color="petcode.neutral.400" marginLeft={8}>
         {isEditable ? (
           <DatePicker
             selected={reminder.date}
-            onChange={action(date => reminder.date = date as Date)}
-            customInput={<ReminderInput/>}
+            onChange={action((date) => (reminder.date = date as Date))}
+            customInput={<ReminderInput />}
           />
         ) : (
           moment(reminder.date).format("M/D/YY")
@@ -124,7 +125,7 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
         ) : (
           reminder.notificationMethod
         )}
-      </Text>
+      </Flex>
     </Flex>
   )
 );

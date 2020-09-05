@@ -14,19 +14,27 @@ class Auth {
     auth.onAuthStateChanged((user: User) => {
       this.user = user;
 
-      firebase.firestore().collection('users').doc(user.uid).onSnapshot(userData => {
-        // this.userData = userData.data()
-        if(userData.exists) {
-          this.userData = userData.data()
-          this.newUser = false
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(user.uid)
+        .onSnapshot((userData) => {
+          // this.userData = userData.data()
+          if (userData.exists) {
+            this.userData = userData.data();
+            this.newUser = false;
 
-          userData.data()?.pets.forEach((pid: string) => {
-            firebase.firestore().collection('pets').doc(pid).onSnapshot(pet => {
-              this.pets.push(pet.data)
-            })
-          })
-        }
-      })
+            userData.data()?.pets.forEach((pid: string) => {
+              firebase
+                .firestore()
+                .collection("pets")
+                .doc(pid)
+                .onSnapshot((pet) => {
+                  this.pets.push(pet.data);
+                });
+            });
+          }
+        });
 
       this.authPending = false;
     });

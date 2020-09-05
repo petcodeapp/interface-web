@@ -81,11 +81,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldLabel>Reminder Name</InfoFieldLabel>
           <DatePicker
             selected={reminder.date}
-            onChange={action(date => reminder.date = date as Date)}
-            customInput={<InfoFieldInput
-              display="inline"
-              width="auto"
-            />}
+            onChange={action((date) => (reminder.date = date as Date))}
+            customInput={<InfoFieldInput display="inline" width="auto" />}
           />
           <InfoFieldInput
             type="time"

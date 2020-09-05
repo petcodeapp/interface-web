@@ -85,28 +85,37 @@ const PetInfoSelect: React.FC<SelectProps> = (props) => {
       styles={{
         container: (provided) => ({
           ...provided,
-          width: '50%'
+          width: "50%",
         }),
         control: (provided, state) => ({
           ...provided,
           // @ts-ignore
-          '&:hover': { borderColor: theme.colors.petcode.blue[400] },
-          // @ts-ignore
-          borderColor: state.isFocused ? theme.colors.petcode.blue[400] : provided.borderColor,
-          boxShadow: 'none'
+          "&:hover": { borderColor: theme.colors.petcode.blue[400] },
+          borderColor: state.isFocused
+            ? // prettier-ignore
+              // @ts-ignore
+              theme.colors.petcode.blue[400]
+            : provided.borderColor,
+          boxShadow: "none",
         }),
         valueContainer: (provided) => ({
           ...provided,
-          padding: '0.25rem 0 0.5rem 1rem',
-          fontSize: '1.5rem'
+          padding: "0.25rem 0 0.5rem 1rem",
+          fontSize: "1.5rem",
         }),
         option: (provided, state) => ({
           ...provided,
-          // @ts-ignore
-          '&:hover': { backgroundColor: theme.colors.petcode.blue[400], color: 'white' },
-          // @ts-ignore
-          backgroundColor: state.isSelected ? theme.colors.petcode.blue[400] : provided.backgroundColor
-        })
+          "&:hover": {
+            // @ts-ignore
+            backgroundColor: theme.colors.petcode.blue[400],
+            color: "white",
+          },
+          backgroundColor: state.isSelected
+            ? // prettier-ignore
+              // @ts-ignore
+              theme.colors.petcode.blue[400]
+            : provided.backgroundColor,
+        }),
       }}
       {...props}
     />
@@ -183,19 +192,24 @@ const PetInfoSection = () => {
       <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>
         <PetInfoCard>
           {isEditable.get() ? (
-              <PetInfoSelect
-                value={{
-                  label: pet.species.charAt(0).toUpperCase() + pet.species.slice(1),
-                  value: pet.species
-                }}
-                onChange={action(option => pet.species = (option as OptionTypeBase).value)}
-                options={["dog", "cat", "other"].map(option => ({
-                  label: option.charAt(0).toUpperCase() + option.slice(1),
-                  value: option
-                }))}
-              />
+            <PetInfoSelect
+              value={{
+                label:
+                  pet.species.charAt(0).toUpperCase() + pet.species.slice(1),
+                value: pet.species,
+              }}
+              onChange={action(
+                (option) => (pet.species = (option as OptionTypeBase).value)
+              )}
+              options={["dog", "cat", "other"].map((option) => ({
+                label: option.charAt(0).toUpperCase() + option.slice(1),
+                value: option,
+              }))}
+            />
           ) : (
-            <PetInfoCardText>{pet.species.charAt(0).toUpperCase() + pet.species.slice(1)}</PetInfoCardText>
+            <PetInfoCardText>
+              {pet.species.charAt(0).toUpperCase() + pet.species.slice(1)}
+            </PetInfoCardText>
           )}
           <PetInfoCardLabel>Species</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="dog" />
@@ -224,8 +238,8 @@ const PetInfoSection = () => {
           {isEditable.get() ? (
             <DatePicker
               selected={pet.birthday}
-              onChange={action(date => pet.birthday = date as Date)}
-              customInput={<PetInfoInput/>}
+              onChange={action((date) => (pet.birthday = date as Date))}
+              customInput={<PetInfoInput />}
             />
           ) : (
             <PetInfoCardText>
@@ -273,17 +287,21 @@ const PetInfoSection = () => {
         </PetInfoCard>
         <PetInfoCard>
           {isEditable.get() ? (
-              <PetInfoSelect
-                value={{
-                  label: pet.isServiceAnimal ? "Yes" : "No",
-                  value: pet.isServiceAnimal ? "yes" : "no"
-                }}
-                onChange={action(option => pet.isServiceAnimal = (option as OptionTypeBase).value == "yes")}
-                options={["yes", "no"].map(option => ({
-                  label: option.charAt(0).toUpperCase() + option.slice(1),
-                  value: option
-                }))}
-              />
+            <PetInfoSelect
+              value={{
+                label: pet.isServiceAnimal ? "Yes" : "No",
+                value: pet.isServiceAnimal ? "yes" : "no",
+              }}
+              onChange={action(
+                (option) =>
+                  (pet.isServiceAnimal =
+                    (option as OptionTypeBase).value == "yes")
+              )}
+              options={["yes", "no"].map((option) => ({
+                label: option.charAt(0).toUpperCase() + option.slice(1),
+                value: option,
+              }))}
+            />
           ) : (
             <PetInfoCardText>
               {pet.isServiceAnimal ? "Yes" : "No"}
@@ -331,11 +349,11 @@ const PetInfoSection = () => {
 };
 
 const PetInfoPage = () => {
-  
   return (
-  <AccountPageLayout>
-    <PetInfoSection />
-  </AccountPageLayout>
-)};
+    <AccountPageLayout>
+      <PetInfoSection />
+    </AccountPageLayout>
+  );
+};
 
 export default PetInfoPage;

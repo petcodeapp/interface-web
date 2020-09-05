@@ -84,8 +84,8 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
           <InfoFieldLabel>Vaccination Name</InfoFieldLabel>
           <DatePicker
             selected={vaccination.date}
-            onChange={action(date => vaccination.date = date as Date)}
-            customInput={<InfoFieldInput/>}
+            onChange={action((date) => (vaccination.date = date as Date))}
+            customInput={<InfoFieldInput width="100%" />}
           />
           <InfoFieldLabel>Expiration Date</InfoFieldLabel>
           <BaseButton
@@ -185,12 +185,18 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
 };
 
 const Card: React.FC<FlexProps> = (props) => (
-  <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}  {...props}/>
+  <Flex
+    direction="column"
+    rounded="lg"
+    backgroundColor="white"
+    padding={6}
+    {...props}
+  />
 );
 
 const CardHeading: React.FC<BoxProps> = (props) => (
-  <Text fontSize="2xl" color="petcode.neutral.700" {...props}/>
-)
+  <Text fontSize="2xl" color="petcode.neutral.700" {...props} />
+);
 
 const MedicalInfoSection = () => {
   const [pet] = useState(() =>
@@ -209,9 +215,7 @@ const MedicalInfoSection = () => {
     })
   );
   const [vaccinationDocuments] = useState(() =>
-    observable([
-      { name: "Vaccination Document 1", size: 26.5 * 10e5 }
-    ])
+    observable([{ name: "Vaccination Document 1", size: 26.5 * 10e5 }])
   );
 
   const [isEditable] = useState(() => observable.box(false));
@@ -333,27 +337,33 @@ const MedicalInfoSection = () => {
       </Card>
       <Card>
         <CardHeading marginBottom={3}>Vaccination Documents</CardHeading>
-        {vaccinationDocuments.length > 0 ? vaccinationDocuments.map((vaccinationDocument, idx) => (
-          <InfoFieldRow key={idx}>
-            <Box>
-              <InfoFieldText>{vaccinationDocument.name}</InfoFieldText>
-              <InfoFieldLabel>
-                {(vaccinationDocument.size / 10e5).toFixed(1)} MB
-              </InfoFieldLabel>
-            </Box>
-            <Stack isInline alignSelf="start">
-              <IconButton aria-label="View" icon="search"/>
-              <IconButton aria-label="Download" icon="download"/>
-              <IconButton
-                color="red.400"
-                aria-label="Delete"
-                icon="delete"
-                onClick={() => vaccinationDocuments.splice(idx, 1)}
-              />
-            </Stack>
-          </InfoFieldRow>
-        )) : <Text color="petcode.neutral.500">No Vaccination Documents have been uploaded.</Text>}
-        <Input 
+        {vaccinationDocuments.length > 0 ? (
+          vaccinationDocuments.map((vaccinationDocument, idx) => (
+            <InfoFieldRow key={idx}>
+              <Box>
+                <InfoFieldText>{vaccinationDocument.name}</InfoFieldText>
+                <InfoFieldLabel>
+                  {(vaccinationDocument.size / 10e5).toFixed(1)} MB
+                </InfoFieldLabel>
+              </Box>
+              <Stack isInline alignSelf="start">
+                <IconButton aria-label="View" icon="search" />
+                <IconButton aria-label="Download" icon="download" />
+                <IconButton
+                  color="red.400"
+                  aria-label="Delete"
+                  icon="delete"
+                  onClick={() => vaccinationDocuments.splice(idx, 1)}
+                />
+              </Stack>
+            </InfoFieldRow>
+          ))
+        ) : (
+          <Text color="petcode.neutral.500">
+            No Vaccination Documents have been uploaded.
+          </Text>
+        )}
+        <Input
           id="vaccination-document-file-upload"
           type="file"
           isDisabled={vaccinationDocuments.length >= 3}
@@ -383,15 +393,13 @@ const MedicalInfoSection = () => {
           marginTop={3}
         >
           <Stack isInline alignItems="center">
-            <Icon transform="scale(1, -1);" name="download"/>
+            <Icon transform="scale(1, -1);" name="download" />
             <Text>Upload</Text>
           </Stack>
         </BaseButton>
       </Card>
       <Card>
-        <CardHeading marginBottom={3}>
-          Vaccinations
-        </CardHeading>
+        <CardHeading marginBottom={3}>Vaccinations</CardHeading>
         {pet.vaccinations
           .sort((a, b) => b.date.valueOf() - a.date.valueOf())
           .map((vaccination, idx) => (
