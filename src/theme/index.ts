@@ -2,6 +2,8 @@ import { theme } from "@chakra-ui/core";
 
 import icons from "./icons";
 
+import { DefaultTheme, ColorHues } from "@chakra-ui/core";
+
 export default {
   ...theme,
   fonts: {
@@ -63,3 +65,37 @@ export default {
     ...icons,
   },
 };
+
+export interface PetCodeTheme extends DefaultTheme {
+  colors: {
+    transparent: string;
+    current: string;
+    black: string;
+    white: string;
+    whiteAlpha: ColorHues;
+    blackAlpha: ColorHues;
+    gray: ColorHues;
+    red: ColorHues;
+    orange: ColorHues;
+    yellow: ColorHues;
+    green: ColorHues;
+    teal: ColorHues;
+    blue: ColorHues;
+    cyan: ColorHues;
+    purple: ColorHues;
+    pink: ColorHues;
+    linkedin: ColorHues;
+    facebook: ColorHues;
+    messenger: ColorHues;
+    whatsapp: ColorHues;
+    twitter: ColorHues;
+    telegram: ColorHues;
+    petcode: {
+      teal: string;
+      blue: ColorHues;
+      yellow: ColorHues;
+      neutral: ColorHues;
+    }
+  }
+}
+
