@@ -10,14 +10,13 @@ import UnifiedErrorMessage from "../../components/Shared/formik/UnifiedErrorMess
 
 import * as Yup from "yup";
 
-const ContactUsSchema = Yup.object()
-  .shape({
-    firstName: Yup.string().label("First name").required(),
-    lastName: Yup.string().label("Last name").required(),
-    emailAddress: Yup.string().label("Email address").email().required(),
-    tagId: Yup.string().label("Tag ID"),
-    message: Yup.string().label("Message").required()
-  });
+const ContactUsSchema = Yup.object().shape({
+  firstName: Yup.string().label("First name").required(),
+  lastName: Yup.string().label("Last name").required(),
+  emailAddress: Yup.string().label("Email address").email().required(),
+  tagId: Yup.string().label("Tag ID"),
+  message: Yup.string().label("Message").required(),
+});
 
 const ContactUsPage = () => (
   <Layout backgroundColor="petcode.neutral.200">
@@ -31,13 +30,21 @@ const ContactUsPage = () => (
           lastName: "",
           emailAddress: "",
           tagId: "",
-          message: ""
+          message: "",
         }}
         validationSchema={ContactUsSchema}
         onSubmit={console.log}
       >
         {({ errors, touched, handleSubmit }) => (
-          <Stack rounded="lg" width="70%" background="white" paddingY={6} paddingX={6} spacing={3} marginY={6}>
+          <Stack
+            rounded="lg"
+            width="70%"
+            background="white"
+            paddingY={6}
+            paddingX={6}
+            spacing={3}
+            marginY={6}
+          >
             <Stack isInline spacing={3}>
               <Box width="50%">
                 <Field
@@ -109,9 +116,7 @@ const ContactUsPage = () => (
         <Text fontSize="xl" color="petcode.blue.400">
           Company Address
         </Text>
-        <Text color="petcode.neutral.500">
-          Company Address
-        </Text>
+        <Text color="petcode.neutral.500">Company Address</Text>
         <Text fontSize="xl" color="petcode.blue.400">
           Other Inquiries
         </Text>
