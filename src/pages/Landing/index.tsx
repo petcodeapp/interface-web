@@ -23,7 +23,7 @@ const LandingPage: React.FunctionComponent = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.path
+          <path
             d="M581.187 68.5299C1040 -37 1446.77 -2.47391 1617 54.516L1486.92 765.722C1009.97 894.65 568.628 860.882 224 827.383C-68 799 -134.128 858.01 -208 915L-339 121.783C-207.315 165.693 147.112 168.37 581.187 68.5299Z"
             fill={theme.colors.petcode.blue[400]}
           />
