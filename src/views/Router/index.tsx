@@ -18,6 +18,8 @@ import CheckoutPage from "../../pages/Checkout/CheckoutPage";
 import ShopPage from "../../pages/Shop/ShopPage";
 import SingleProductPage from "../../pages/Shop/SingleProductPage";
 import ContactUsPage from "../../pages/ContactUs";
+import PrivacyPolicyPage from "../../pages/Legal/PrivacyPolicyPage";
+import TermsPage from "../../pages/Legal/TermsPage";
 import { useObserver } from "mobx-react-lite";
 import { motion } from "framer-motion";
 
@@ -138,6 +140,18 @@ const Routes = () => {
       <Route path="/contactus">
         <PageAnim>
           <ContactUsPage />
+        </PageAnim>
+      </Route>
+
+      <Route path="/privacypolicy">
+        <PageAnim>
+          <PrivacyPolicyPage />
+        </PageAnim>
+      </Route>
+
+      <Route path="/terms">
+        <PageAnim>
+          <TermsPage />
         </PageAnim>
       </Route>
 
