@@ -1,10 +1,10 @@
 import React from "react";
 
 import { Box, Heading, useTheme } from "@chakra-ui/core";
-
-import Layout from "../../components/Shared/layout";
-
 import { motion } from "framer-motion";
+
+import Image from "../../components/Motion/Image";
+import Layout from "../../components/Shared/layout";
 
 import { PetCodeTheme } from "../../theme";
 
@@ -42,6 +42,17 @@ const LandingPage: React.FunctionComponent = () => {
           />
         </svg>
       </Box>
+      <Image
+        position="relative"
+        width="50%"
+        zIndex={-2}
+        alignSelf="start"
+        src="/media/app-designs.png"
+        alt="App Designs"
+        animate={{ top: [-195, -200] }}
+        // @ts-ignore
+        transition={{ repeat: Infinity, repeatType: "reverse", duration: 2 }}
+      />
     </Layout>
   );
 };
