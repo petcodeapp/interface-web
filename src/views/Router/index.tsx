@@ -17,6 +17,7 @@ import ScanLocationsPage from "../../pages/Account/ScanLocationsPage";
 import CheckoutPage from "../../pages/Checkout/CheckoutPage";
 import ShopPage from "../../pages/Shop/ShopPage";
 import SingleProductPage from "../../pages/Shop/SingleProductPage";
+import ContactUsPage from "../../pages/ContactUs";
 import { useObserver } from "mobx-react-lite";
 import { motion } from "framer-motion";
 
@@ -133,6 +134,12 @@ const Routes = () => {
           <OldLandingpage />
         </PageAnim>
       </PublicRoute>
+
+      <Route path="/contactus">
+        <PageAnim>
+          <ContactUsPage />
+        </PageAnim>
+      </Route>
 
       <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
