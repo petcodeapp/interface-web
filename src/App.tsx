@@ -15,11 +15,11 @@ function App() {
         <ColorModeProvider>
           <AuthProvider>
             <AnimatePresence>
-            <Router>
-              <Switch>
-                <Routes />
-              </Switch>
-            </Router>
+              <Router>
+                <Switch>
+                  <Routes />
+                </Switch>
+              </Router>
             </AnimatePresence>
           </AuthProvider>
         </ColorModeProvider>

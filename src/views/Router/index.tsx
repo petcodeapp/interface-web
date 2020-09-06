@@ -23,91 +23,97 @@ import { motion } from "framer-motion";
 const pageVariants = {
   initial: {
     opacity: 0,
-
   },
   in: {
     opacity: 1,
     transition: {
-      delayChildren: 0.5
-    }
+      delayChildren: 0.5,
+    },
   },
   out: {
     opacity: 0,
   },
-}
+};
 export const subPageVariants = {
   hidden: { opacity: 0 },
-  show: { opacity: 1 }
-}
+  show: { opacity: 1 },
+};
 
 const PageAnim: React.FC = (props) => {
   return (
-    <motion.div style={{display: "inline"}} initial="initial" exit="out" animate="in" variants={pageVariants}>
+    <motion.div
+      style={{ display: "inline" }}
+      initial="initial"
+      exit="out"
+      animate="in"
+      variants={pageVariants}
+    >
       {props.children}
     </motion.div>
-  )
-}
+  );
+};
 
 const Routes = () => {
   return useObserver(() => (
     <>
       <PublicRoute restricted path="/signup">
         <PageAnim>
-        <RegistrationPage />
+          <RegistrationPage />
         </PageAnim>
       </PublicRoute>
 
       <PublicRoute restricted path="/login">
-      <PageAnim>
-        <LoginPage />
+        <PageAnim>
+          <LoginPage />
         </PageAnim>
       </PublicRoute>
 
       <PublicRoute restricted path="/forgotpassword">
-      <PageAnim>
-        <ForgotPasswordPage />
+        <PageAnim>
+          <ForgotPasswordPage />
         </PageAnim>
       </PublicRoute>
 
       <PrivateRoute path="/admin">
-      <PageAnim>
-        <AdminPage />
+        <PageAnim>
+          <AdminPage />
         </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/dashboard">
-      <PageAnim>
-        <DashboardPage />
+        <PageAnim>
+          <DashboardPage />
         </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/contactinfo">
-      <PageAnim>
-        <ContactInfoPage />
+        <PageAnim>
+          <ContactInfoPage />
         </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/petinfo">
-      <PageAnim>
-        <PetInfoPage />
+        <PageAnim>
+          <PetInfoPage />
         </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/reminders">
-      <PageAnim>
-        <RemindersPage />
+        <PageAnim>
+          <RemindersPage />
         </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/medicalinfo">
-      <PageAnim>
-        <MedicalInfoPage />
+        <PageAnim>
+          <MedicalInfoPage />
         </PageAnim>
       </PrivateRoute>
 
       <PrivateRoute path="/scanlocations">
-      <PageAnim>
-        <ScanLocationsPage /></PageAnim>
+        <PageAnim>
+          <ScanLocationsPage />
+        </PageAnim>
       </PrivateRoute>
 
       <Route path="/checkout">
@@ -123,16 +129,16 @@ const Routes = () => {
       </Route>
 
       <PublicRoute path="/oldlanding">
-      <PageAnim>
-        <OldLandingpage />
+        <PageAnim>
+          <OldLandingpage />
         </PageAnim>
       </PublicRoute>
 
       <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
 
       <PublicRoute exact path="/">
-      <PageAnim>
-        <LandingPage />
+        <PageAnim>
+          <LandingPage />
         </PageAnim>
       </PublicRoute>
     </>
