@@ -1,12 +1,16 @@
 import React from "react";
 
-import { Flex, FlexProps } from "@chakra-ui/core";
+import Flex from "../../Motion/Flex";
+import { FlexProps } from "@chakra-ui/core";
+
+import { MotionProps } from "framer-motion";
 
 import Header from "../header";
 
 type LayoutProps = {
   headerProps?: FlexProps;
-} & FlexProps;
+} & FlexProps &
+  MotionProps;
 
 const Layout: React.FC<LayoutProps> = ({
   children,
