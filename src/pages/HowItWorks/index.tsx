@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { Box, Flex, Text, useTheme } from "@chakra-ui/core";
-import { motion } from "framer-motion";
+import { Box, Text, useTheme } from "@chakra-ui/core";
+import { motion, useAnimation } from "framer-motion";
 
 import MotionBox from "../../components/Motion/Box";
+import MotionFlex from "../../components/Motion/Flex";
 import Layout from "../../components/Shared/layout";
+
+import { useInView } from "react-intersection-observer";
 
 import { PetCodeTheme } from "../../theme";
 
 const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
+  const [ref, inView] = useInView();
+  const controls = useAnimation();
+  
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [inView]);
 
   return (
     <Layout>
+      <Box height="1000px"/>
       <Box position="relative" paddingBottom="47%">
-        <Flex
+        <MotionFlex
+          ref={ref}
+          animate={controls}
           direction="row"
           position="absolute"
           top="50%"
@@ -25,8 +39,11 @@ const HowItWorksPage: React.FunctionComponent = () => {
           <MotionBox
             alignSelf="end"
             width="300px"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 }
+            }}
             // @ts-ignore
             transition={{ duration: 2 }}
           >
@@ -43,17 +60,18 @@ const HowItWorksPage: React.FunctionComponent = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <motion.path
-              d="M 0,55
-              H 105
-              L 153 2"
+              d="M 0,55H 105L 153 2"
               stroke={theme.colors.petcode.neutral[400]}
               strokeWidth={2}
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
+              initial="hidden"
+              variants={{
+                hidden: { pathLength: 0 },
+                visible: { pathLength: 1 }
+              }}
               transition={{ duration: 2 }}
             />
           </svg>
-        </Flex>
+        </MotionFlex>
         <svg
           style={{ position: "absolute", left: 0, top: '7.68%', zIndex: -1 }}
           viewBox="0 0 1440 597"
