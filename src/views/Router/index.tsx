@@ -1,5 +1,6 @@
 import React from "react";
 import LandingPage from "../../pages/Landing";
+import HowItWorksPage from "../../pages/HowItWorks";
 import OldLandingpage from "../../pages/OldLanding";
 import LoginPage from "../../pages/Login";
 import { Route } from "react-router-dom";
@@ -139,6 +140,12 @@ const Routes = () => {
       <PublicRoute exact path="/">
         <PageAnim>
           <LandingPage />
+        </PageAnim>
+      </PublicRoute>
+
+      <PublicRoute exact path="/howitworks">
+        <PageAnim>
+          <HowItWorksPage />
         </PageAnim>
       </PublicRoute>
     </>
