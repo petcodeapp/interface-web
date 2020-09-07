@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/core";
 
-import  { AuthStore } from '../../views/Auth/'
+import { AuthStore } from "../../views/Auth/";
 import InputWithIcon from "../../components/Shared/input/InputWithIcon";
 import BaseButton from "../../components/Shared/button/BaseButton";
 import { subPageVariants } from '../../views/Router/index';
@@ -52,52 +52,60 @@ const HeaderTextGroup = () => (
 );
 
 const LoginForm = () => {
-
-  const [ username, setUsername ] = useState("");
-  const [ password, setPassword ] = useState("");
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
-  <Flex
-    direction="column"
-    alignItems="center"
-    width={{ xs: "90%", md: "80%", lg: "70%" }}
-    marginY={3}
-  >
-    <InputWithIcon
-      iconName="user"
-      inputGroupProps={{ marginY: 2 }}
-      inputProps={{ placeholder: "Username", onChange: (e: any) => setUsername(e.target.value), value: username }}
-    />
-    <InputWithIcon
-      iconName="lock-closed"
-      inputGroupProps={{ marginY: 2 }}
-      inputProps={{ type: "password", placeholder: "Password", onChange: (e: any) => setPassword(e.target.value), value: password }}
-    />
-    <Text color="petcode.blue.400" fontSize="lg" alignSelf="flex-end">
-      <Link href="/forgotpassword">Forgot Password?</Link>
-    </Text>
-    <BaseButton
-      variantColor="petcode.blue"
-      width="100%"
-      height="52px"
+    <Flex
+      direction="column"
+      alignItems="center"
+      width={{ xs: "90%", md: "80%", lg: "70%" }}
       marginY={3}
-      onClick={async () => {
-        await AuthStore.signInWithEmail(username, password)
-      }}
     >
-      <Text fontSize="xl" fontWeight="thin" textTransform="uppercase">
-        Sign In
+      <InputWithIcon
+        iconName="user"
+        inputGroupProps={{ marginY: 2 }}
+        inputProps={{
+          placeholder: "Username",
+          onChange: (e: any) => setUsername(e.target.value),
+          value: username,
+        }}
+      />
+      <InputWithIcon
+        iconName="lock-closed"
+        inputGroupProps={{ marginY: 2 }}
+        inputProps={{
+          type: "password",
+          placeholder: "Password",
+          onChange: (e: any) => setPassword(e.target.value),
+          value: password,
+        }}
+      />
+      <Text color="petcode.blue.400" fontSize="lg" alignSelf="flex-end">
+        <Link href="/forgotpassword">Forgot Password?</Link>
       </Text>
-    </BaseButton>
-    <Text color="petcode.neutral.500" fontSize="lg">
-      Don't have an account yet?{" "}
-      <Link color="petcode.blue.400" href="/signup">
-        Sign Up
-      </Link>
-    </Text>
-  </Flex>
-)};
+      <BaseButton
+        variantColor="petcode.blue"
+        width="100%"
+        height="52px"
+        marginY={3}
+        onClick={async () => {
+          await AuthStore.signInWithEmail(username, password);
+        }}
+      >
+        <Text fontSize="xl" fontWeight="thin" textTransform="uppercase">
+          Sign In
+        </Text>
+      </BaseButton>
+      <Text color="petcode.neutral.500" fontSize="lg">
+        Don't have an account yet?{" "}
+        <Link color="petcode.blue.400" href="/signup">
+          Sign Up
+        </Link>
+      </Text>
+    </Flex>
+  );
+};
 
 const RightContainer: React.FunctionComponent = ({ children }) => (
   <Flex

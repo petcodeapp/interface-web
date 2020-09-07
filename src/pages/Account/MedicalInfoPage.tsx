@@ -18,7 +18,7 @@ import {
 import AccountPageLayout from "./components/AccountPageLayout";
 import BaseButton from "../../components/Shared/button/BaseButton";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
-import Checkbox from "./components/Checkbox";
+import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import {
   InfoFieldRow,
   InfoFieldText,
@@ -168,8 +168,8 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Special Needs</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={service.pets[0]?.specialNeeds.visible}
+          <BaseCheckbox
+            isChecked={service.pets[0]?.specialNeeds.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
             //   () =>
@@ -193,8 +193,8 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Allergies</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={service.pets[0]?.allergies.visible}
+          <BaseCheckbox
+            isChecked={service.pets[0]?.allergies.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
             //   () =>
@@ -218,8 +218,8 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Veterinarian Name</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={service.pets[0]?.vetName.visible}
+          <BaseCheckbox
+            isChecked={service.pets[0]?.vetName.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
             //   () =>
@@ -242,8 +242,8 @@ const MedicalInfoSection = () => {
             )}
             <InfoFieldLabel>Veterinarian Phone Number</InfoFieldLabel>
           </Box>
-          <Checkbox
-            checked={service.pets[0]?.vetPhoneNumber.visible}
+          <BaseCheckbox
+            isChecked={service.pets[0]?.vetPhoneNumber.visible}
             cursor={isEditable.get() ? "pointer" : "default"}
             // onClick={action(
             //   () =>

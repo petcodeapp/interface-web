@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { observable, computed, action, observe } from "mobx";
 import { auth } from "../../firebase/index";
 import firebase, { User, firestore } from "firebase";
 import { Reminder } from '../../Models/Reminder';
+=======
+import { observable, computed, action } from "mobx";
+import { auth } from "../../firebase/index";
+import firebase, { User, firestore } from "firebase";
+>>>>>>> master
 
 class Auth {
   @observable user: User | null = null;
@@ -16,7 +22,10 @@ class Auth {
     auth.onAuthStateChanged((user) => {
       this.user = user;
 
+<<<<<<< HEAD
       if(user){
+=======
+>>>>>>> master
       firebase.firestore().collection('users').doc(user.uid).onSnapshot({
         includeMetadataChanges: true,
 
@@ -35,7 +44,10 @@ class Auth {
             this.petIds = this.petIds.concat(pid)
             firebase.firestore().collection('pets').doc(pid).onSnapshot(pet => {
               this.pets = this.pets.concat(pet.data())
+<<<<<<< HEAD
               console.log(pet.data())
+=======
+>>>>>>> master
             })
           })
         }
@@ -281,6 +293,7 @@ public async setReminderInfo(idx: number, reminder: Reminder) {
     console.log(this.pets[0])
 
   }
+<<<<<<< HEAD
 
   @action
   public updatePet(pet: any) {
@@ -302,6 +315,8 @@ public async setReminderInfo(idx: number, reminder: Reminder) {
       vaccinations: this.pets[0].vaccinations
     })
   }
+=======
+>>>>>>> master
 }
 
 export default Auth;
