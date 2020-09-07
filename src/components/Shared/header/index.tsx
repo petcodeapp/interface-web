@@ -1,14 +1,9 @@
 import React from "react";
 
 import { Box, Flex, FlexProps, Icon, Text } from "@chakra-ui/core";
-<<<<<<< HEAD
-import { useObserver } from 'mobx-react-lite';
-import { AuthContext } from '../../../views/Auth/index';
-import { Link } from "react-router-dom";
-=======
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../views/Auth/index";
->>>>>>> master
+import { Link } from "react-router-dom";
 
 const Header: React.FC<FlexProps> = (props) => {
   const auth = React.useContext(AuthContext);
@@ -34,37 +29,20 @@ const Header: React.FC<FlexProps> = (props) => {
       <Text marginRight={8}>Purchase</Text>
       {!auth.isLoggedIn && (
         <>
-<<<<<<< HEAD
-<Text display="flex" alignItems="center" marginRight={8}>
-      <Icon name="template" size="15px" marginRight={2} />
-      Register
-    </Text>
-    <Text display="flex" alignItems="center">
-      <Link to="/login">
-      <Icon name="user-circle" size="16px" marginRight={2} />
-      Sign In
-      </Link>
-      
-    </Text>
-    </>
-      )
-    }
-  </Flex>
-))};
-=======
           <Text display="flex" alignItems="center" marginRight={8}>
             <Icon name="template" size="15px" marginRight={2} />
             Register
           </Text>
           <Text display="flex" alignItems="center">
-            <Icon name="user-circle" size="16px" marginRight={2} />
-            Sign In
+            <Link to="/login">
+              <Icon name="user-circle" size="16px" marginRight={2} />
+              Sign In
+            </Link>
           </Text>
         </>
       )}
     </Flex>
   ));
 };
->>>>>>> master
 
 export default Header;
