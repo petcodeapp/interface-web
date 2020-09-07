@@ -162,7 +162,7 @@ const DashboardPage = withTheme(({ theme }) => {
           Reminders
         </Text>
         {service.pets[0]?.reminders.map((reminder: any, idx: number) => (
-          <ReminderItem key={idx} reminder={reminder} />
+          <ReminderItem index={idx} reminder={reminder} />
         ))}
       </Flex>)}
     </Stack>
