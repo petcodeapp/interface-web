@@ -9,7 +9,8 @@ import Header from "../header";
 
 type LayoutProps = {
   headerProps?: FlexProps;
-} & FlexProps & MotionProps;
+} & FlexProps &
+  MotionProps;
 
 const Layout: React.FC<LayoutProps> = ({
   children,

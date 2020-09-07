@@ -60,7 +60,9 @@ const Sidebar = withRouter(({ location }) => {
           size="89px"
           backgroundSize="cover"
           backgroundPosition="center"
-          backgroundImage={service.pets[0]?.profileUrl || "url(/media/placeholder-dog.png)"}
+          backgroundImage={
+            service.pets[0]?.profileUrl || "url(/media/placeholder-dog.png)"
+          }
           marginBottom={3}
         />
         <Flex direction="row" justifyContent="space-between">
@@ -69,7 +71,7 @@ const Sidebar = withRouter(({ location }) => {
               {service.pets[0]?.name || "Loading"}
             </Text>
             <Text color="petcode.neutral.500" fontSize="xl" fontWeight="thin">
-            {service.userData?.name || "Loading"}
+              {service.userData?.name || "Loading"}
             </Text>
           </Flex>
           <Icon

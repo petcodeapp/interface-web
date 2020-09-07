@@ -28,7 +28,7 @@ import { action, observable, IObservableValue } from "mobx";
 import { useObserver } from "mobx-react";
 
 import { Reminder } from "../../Models/Reminder";
-import { AuthContext } from '../../views/Auth/index';
+import { AuthContext } from "../../views/Auth/index";
 
 type AddReminderModalProps = {
   isShown: IObservableValue<boolean>;
@@ -39,16 +39,14 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
   isShown,
   reminders,
 }) => {
-
-  const service = React.useContext(AuthContext)
+  const service = React.useContext(AuthContext);
 
   const [n, setN] = useState("");
-  const [d, setD] = useState("")
-  const [nM, setNM] = useState("Email")
-  const [f, setF] = useState("One-Time")
-  const [e, setE] = useState(true)
-  const [t, setT] = useState("")
-
+  const [d, setD] = useState("");
+  const [nM, setNM] = useState("Email");
+  const [f, setF] = useState("One-Time");
+  const [e, setE] = useState(true);
+  const [t, setT] = useState("");
 
   const toast = useToast();
 
@@ -72,9 +70,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldInput
             placeholder="Reminder Name"
             value={n}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                setN(e.target.value)
+            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              setN(e.target.value)
             )}
           />
           <InfoFieldLabel>Reminder Name</InfoFieldLabel>
@@ -83,9 +80,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             width="auto"
             display="inline"
             value={d}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                setD(e.target.value)
+            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              setD(e.target.value)
             )}
           />
           <InfoFieldInput
@@ -93,16 +89,12 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             width="auto"
             display="inline"
             value={t}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                setT(e.target.value)
+            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              setT(e.target.value)
             )}
           />
           <InfoFieldLabel>Reminder Date</InfoFieldLabel>
-          <InfoFieldSelect
-            value={f}
-            onChange={e => (setF(e.target.value))}
-          >
+          <InfoFieldSelect value={f} onChange={(e) => setF(e.target.value)}>
             <option>One-Time</option>
             <option>Daily</option>
             <option>Weekly</option>
@@ -111,9 +103,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldLabel>Reminder Frequency</InfoFieldLabel>
           <InfoFieldSelect
             value={nM}
-            onChange={action(
-              (e) => (setNM(e.target.value))
-            )}
+            onChange={action((e) => setNM(e.target.value))}
           >
             <option>App Notification</option>
             <option>Email</option>
@@ -130,8 +120,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
                 enabled: e,
                 notificationMethod: nM,
                 frequency: f,
-                time: t
-              })
+                time: t,
+              });
               isShown.set(false);
               toast({
                 title: "Reminder created.",
@@ -222,7 +212,7 @@ const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
 };
 
 const RemindersSection = () => {
-  const service = React.useContext(AuthContext)
+  const service = React.useContext(AuthContext);
   const [reminders] = useState(
     observable([
       {
@@ -283,14 +273,15 @@ const RemindersSection = () => {
           Reminders
         </Text>
         {service.pets[0].reminders.map((reminder: any, idx: number) => {
-          console.log(idx)
+          console.log(idx);
           return (
-          <ReminderItem
-            index={idx}
-            reminder={reminder}
-            isEditable={isEditable.get()}
-          />
-        )})}
+            <ReminderItem
+              index={idx}
+              reminder={reminder}
+              isEditable={isEditable.get()}
+            />
+          );
+        })}
       </Flex>
       <Overlays isEditable={isEditable} isModalShown={isModalShown} />
       <AddReminderModal reminders={reminders} isShown={isModalShown} />

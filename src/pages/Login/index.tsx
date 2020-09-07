@@ -5,8 +5,8 @@ import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/core";
 import { AuthStore } from "../../views/Auth/";
 import InputWithIcon from "../../components/Shared/input/InputWithIcon";
 import BaseButton from "../../components/Shared/button/BaseButton";
-import { subPageVariants } from '../../views/Router/index';
-import { motion } from 'framer-motion';
+import { subPageVariants } from "../../views/Router/index";
+import { motion } from "framer-motion";
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (
   <Flex
@@ -137,7 +137,7 @@ const LogoWithTagLine = () => (
   </>
 );
 
-const F = motion.custom(Flex)
+const F = motion.custom(Flex);
 
 const LoginPage: React.FC<any> = ({ subPageVariants }) => (
   <F variants={subPageVariants} direction="row" height="100%">
