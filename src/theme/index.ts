@@ -95,7 +95,6 @@ export interface PetCodeTheme extends DefaultTheme {
       blue: ColorHues;
       yellow: ColorHues;
       neutral: ColorHues;
-    }
-  }
+    };
+  };
 }
-

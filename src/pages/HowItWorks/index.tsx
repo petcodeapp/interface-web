@@ -15,7 +15,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
   const [ref, inView] = useInView();
   const controls = useAnimation();
-  
+
   useEffect(() => {
     if (inView) {
       controls.start("visible");
@@ -24,7 +24,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
 
   return (
     <Layout>
-      <Box height="1000px"/>
+      <Box height="1000px" />
       <Box position="relative" paddingBottom="47%">
         <MotionFlex
           ref={ref}
@@ -42,13 +42,14 @@ const HowItWorksPage: React.FunctionComponent = () => {
             initial="hidden"
             variants={{
               hidden: { opacity: 0 },
-              visible: { opacity: 1 }
+              visible: { opacity: 1 },
             }}
             // @ts-ignore
             transition={{ duration: 2 }}
           >
             <Text>
-              Each QR code is unique to that pet. I’m not sure what else to write here 
+              Each QR code is unique to that pet. I’m not sure what else to
+              write here
             </Text>
           </MotionBox>
           <svg
@@ -66,14 +67,14 @@ const HowItWorksPage: React.FunctionComponent = () => {
               initial="hidden"
               variants={{
                 hidden: { pathLength: 0 },
-                visible: { pathLength: 1 }
+                visible: { pathLength: 1 },
               }}
               transition={{ duration: 2 }}
             />
           </svg>
         </MotionFlex>
         <svg
-          style={{ position: "absolute", left: 0, top: '7.68%', zIndex: -1 }}
+          style={{ position: "absolute", left: 0, top: "7.68%", zIndex: -1 }}
           viewBox="0 0 1440 597"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +85,13 @@ const HowItWorksPage: React.FunctionComponent = () => {
           />
         </svg>
         <svg
-          style={{ position: "absolute", left: 0, top: 0, zIndex: -1, opacity: 0.4 }}
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            zIndex: -1,
+            opacity: 0.4,
+          }}
           viewBox="0 0 1440 676"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +100,11 @@ const HowItWorksPage: React.FunctionComponent = () => {
             d="M770 100C370 116 78 40 -18 0L-46 676C60.6667 668 358 643.2 694 608C1030 572.8 1356.67 622.667 1478 652V56C1350 20.8 952.667 70.6667 770 100Z"
             fill={theme.colors.petcode.blue[400]}
             animate={{ scale: [0.995, 1.015] }}
-            transition={{ repeat: Infinity, repeatType: "reverse", duration: 2 }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 2,
+            }}
           />
         </svg>
       </Box>
