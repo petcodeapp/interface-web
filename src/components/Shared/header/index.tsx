@@ -1,44 +1,86 @@
 import React from "react";
 
-import { Box, Flex, FlexProps, Icon, Text } from "@chakra-ui/core";
+import {
+  Box,
+  FlexProps,
+  Image,
+  Link,
+  LinkProps,
+  Stack,
+} from "@chakra-ui/core";
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../views/Auth/index";
+
+import BaseButton, { BaseButtonProps } from "../button/BaseButton";
+
+const HeaderLink: React.FC<LinkProps> = (props) => (
+  <Link
+    fontSize="lg"
+    fontFamily="Open Sans"
+    {...props}
+  />
+);
+
+const HeaderButton: React.FC<BaseButtonProps> = (props) => (
+  <BaseButton size="sm" variantColor="petcode.yellow" paddingY={4} {...props} />
+);
 
 const Header: React.FC<FlexProps> = (props) => {
   const auth = React.useContext(AuthContext);
 
   return useObserver(() => (
-    <Flex
+    <Stack
+      isInline
       position="fixed"
+      alignItems="center"
       top={0}
       background="rgba(0, 0, 0, 0.4)"
       width="calc(100% - 4rem)"
       paddingX={8}
-      paddingY={4}
+      paddingY={2}
       zIndex={999}
+      spacing={4}
       color="white"
-      fontSize="lg"
-      textTransform="uppercase"
       {...props}
     >
-      <Text>PetCode</Text>
+      <Image src="/media/petcode-logo-with-qr-code.png" height="40px" />
       <Box flexGrow={1} />
-      <Text marginRight={8}>Home</Text>
-      <Text marginRight={8}>About Us</Text>
-      <Text marginRight={8}>Purchase</Text>
-      {!auth.isLoggedIn && (
-        <>
-          <Text display="flex" alignItems="center" marginRight={8}>
-            <Icon name="template" size="15px" marginRight={2} />
-            Register
-          </Text>
-          <Text display="flex" alignItems="center">
-            <Icon name="user-circle" size="16px" marginRight={2} />
-            Sign In
-          </Text>
-        </>
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink>About Us</HeaderLink>
+      <HeaderLink href="/products">Purchase</HeaderLink>
+      {!auth.isLoggedIn ? (
+        <Stack isInline spacing={4}>
+          <HeaderButton>
+            <HeaderLink
+              href="/signup"
+              fontWeight="thin"
+              color="petcode.neutral.700"
+            >
+              Register
+            </HeaderLink>
+          </HeaderButton>
+          <HeaderButton>
+            <HeaderLink
+              href="/login"
+              fontWeight="thin"
+              color="petcode.neutral.700"
+            >
+              Sign In
+            </HeaderLink>
+          </HeaderButton>
+        </Stack>
+      ) : (
+        <HeaderButton>
+          <HeaderLink
+            href="/dashboard"
+            fontWeight="thin"
+            color="petcode.neutral.700"
+          >
+            Dashboard
+          </HeaderLink>
+        </HeaderButton>
       )}
-    </Flex>
+    </Stack>
   ));
 };
 
