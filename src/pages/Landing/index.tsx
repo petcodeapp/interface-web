@@ -74,7 +74,7 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Box position="relative" textAlign="center" paddingBottom="68%">
+        <Box position="relative" textAlign="center" paddingBottom="51.84%">
           <Box
             position="absolute"
             top="50%"
@@ -85,13 +85,13 @@ const LandingPage: React.FunctionComponent = () => {
             <Heading>Hello</Heading>
           </Box>
           <svg
-            style={{ position: "absolute", left: 0, top: "6.14%", zIndex: -1 }}
+            style={{ position: "absolute", left: 0, top: "7.68%", zIndex: -1 }}
             viewBox="0 0 1440 915"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M581.187 68.5299C1040 -37 1446.77 -2.47391 1617 54.516L1486.92 765.722C1009.97 894.65 568.628 860.882 224 827.383C-68 799 -134.128 858.01 -208 915L-339 121.783C-207.315 165.693 147.112 168.37 581.187 68.5299Z"
+              d="M865 24.142C497 84.9112 199.667 45.9566 -23 24.142V697.278C-7 683.255 419.5 651.578 790 636.78C1152.15 622.316 1281 662.309 1457 681.008V24.142C1373 2.3274 1104.03 -15.3298 865 24.142Z"
               fill={theme.colors.petcode.blue[400]}
             />
           </svg>
@@ -108,7 +108,7 @@ const LandingPage: React.FunctionComponent = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <motion.path
-              d="M597.025 114.208C1024 -29 1420.13 6.46188 1582 82.5082L1458.31 862.79C1004.76 1034.83 493.69 912.381 160 862.79C-124 820.585 -207.754 744.538 -278 820.585V169.268C-152.778 227.861 174.527 255.915 597.025 114.208Z"
+              d="M757 116.864C357 135.562 65 46.7456 -31 0L-59 790C47.6667 780.651 345 751.669 681 710.533C1017 669.396 1343.67 727.673 1465 761.953V65.4438C1337 24.3077 939.667 82.5838 757 116.864Z"
               fill={theme.colors.petcode.blue[400]}
               animate={{ scale: [0.995, 1.015] }}
               transition={{
