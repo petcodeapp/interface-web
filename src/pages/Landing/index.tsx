@@ -3,7 +3,6 @@ import React from "react";
 import { Box, Heading, Image, Stack, ThemeProvider, Text, useTheme } from "@chakra-ui/core";
 import { motion } from "framer-motion";
 
-import MotionImage from "../../components/Motion/Image";
 import BaseButton from "../../components/Shared/button/BaseButton";
 import Layout from "../../components/Shared/layout";
 import Footer from "./Footer";
@@ -14,10 +13,10 @@ const LandingPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
 
   return (
-    <ThemeProvider theme={{ ...theme, fonts: { ...theme.fonts, body: "Open Sans" } }}>
+    <ThemeProvider theme={{ ...theme, fonts: { ...theme.fonts, heading: "Open Sans", body: "Open Sans" } }}>
       <Layout
-        headerProps={{ backgroundColor: "transparent", color: "petcode.neutral.700" }}
-        paddingTop="200px"
+        headerProps={{ position: "absolute", backgroundColor: "transparent", color: "petcode.neutral.700" }}
+        paddingTop={200}
       >
         <svg
           style={{ position: "absolute", left: 0, top: 0, width: 300 }}
@@ -37,18 +36,17 @@ const LandingPage: React.FunctionComponent = () => {
         </svg>
         <Stack isInline paddingX={10}>
           <Image
-            flexBasis="70%"
             alignSelf="start"
             src="/media/hero-image.png"
             alt="Hero image"
           />
-          <Stack position="relative" top={-30} color="petcode.neutral.600">
-            <Text
+          <Stack position="relative" top={-20} color="petcode.neutral.600">
+            <Heading
               fontSize="5xl"
               fontWeight="bold"
             >
               One Code
-            </Text>
+            </Heading>
             <Text
               fontSize="xl"
             >
@@ -74,16 +72,55 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Box position="relative" textAlign="center" paddingBottom="51.84%">
-          <Box
+        <Box position="relative" paddingBottom="54.86%">
+          <Stack
+            isInline
+            width="100%"
+            boxSizing="border-box"
             position="absolute"
-            top="50%"
-            left="50%"
-            transform="translate(-50%, -50%)"
+            top="20%"
+            left={0}
             color="white"
+            paddingX={16}
           >
-            <Heading>Hello</Heading>
-          </Box>
+            <Stack flexBasis="50%" spacing={6}>
+              <Heading>
+                The Ultimate Pet Management System
+              </Heading>
+              <Stack isInline>
+                <BaseButton
+                  variantColor="whiteAlpha"
+                  color="white"
+                  variant="outline"
+                  size="md"
+                  paddingX={10}
+                >
+                  Safety
+                </BaseButton>
+                <BaseButton
+                  variantColor="whiteAlpha"
+                  color="white"
+                  variant="outline"
+                  size="md"
+                  paddingX={10}
+                >
+                  Health
+                </BaseButton>
+                <BaseButton
+                  variantColor="whiteAlpha"
+                  color="white"
+                  variant="outline"
+                  size="md"
+                  paddingX={10}
+                >
+                  Discovery
+                </BaseButton>
+              </Stack>
+              <Text fontWeight="thin">
+                PetCode’s ingenious products organize all your pet’s info—from medical records, contact info, and nearby networking events—in one, easy-to-use website. It takes the stress out of pet ownership by streamlining the process of updating your pet’s info starting with a 10-minute account set-up. PetCode gives its users instant peace of mind; with PetCode, managing your pet’s life is a walk in the park! 
+              </Text>
+            </Stack>
+          </Stack>
           <svg
             style={{ position: "absolute", left: 0, top: "7.68%", zIndex: -1 }}
             viewBox="0 0 1440 915"
@@ -119,17 +156,7 @@ const LandingPage: React.FunctionComponent = () => {
             />
           </svg>
         </Box>
-        <MotionImage
-          position="relative"
-          width="50%"
-          zIndex={-2}
-          alignSelf="start"
-          src="/media/app-designs.png"
-          alt="App Designs"
-          animate={{ top: [-195, -200] }}
-          // @ts-ignore
-          transition={{ repeat: Infinity, repeatType: "reverse", duration: 2 }}
-        />
+        <Box flexGrow={1}/>
         <Footer/>
       </Layout>
     </ThemeProvider>

@@ -22,7 +22,7 @@ const HeaderLink: React.FC<LinkProps> = (props) => (
 );
 
 const HeaderButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton size="sm" variantColor="petcode.yellow" paddingY={4} {...props} />
+  <BaseButton size="sm" variantColor="petcode.yellow" paddingX={4} {...props} />
 );
 
 const Header: React.FC<FlexProps> = (props) => {
@@ -46,7 +46,7 @@ const Header: React.FC<FlexProps> = (props) => {
       <Image src="/media/petcode-logo-with-qr-code.png" height="40px" />
       <Box flexGrow={1} />
       <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink>About Us</HeaderLink>
+      <HeaderLink>How It Works</HeaderLink>
       <HeaderLink href="/products">Purchase</HeaderLink>
       {!auth.isLoggedIn ? (
         <Stack isInline spacing={4}>

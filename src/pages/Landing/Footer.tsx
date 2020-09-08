@@ -5,6 +5,7 @@ import { Box, Divider, Flex, Icon, Image, Text } from "@chakra-ui/core";
 const Footer = () => (
   <Flex
     direction="column"
+    justifySelf="end"
     backgroundColor="petcode.neutral.700"
     paddingX={{ xs: 6, md: 40 }}
     paddingY={10}
