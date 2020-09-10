@@ -108,8 +108,9 @@ const LandingPage: React.FunctionComponent = () => {
             isInline
             color="white"
             paddingY={10}
-            paddingX={16}
+            paddingX={20}
             backgroundColor={theme.colors.petcode.blue[400]}
+            spacing={10}
           >
             <Stack flexBasis="50%" spacing={6}>
               <Heading>
@@ -147,6 +148,36 @@ const LandingPage: React.FunctionComponent = () => {
               <Text fontWeight="thin">
                 PetCode’s ingenious products organize all your pet’s info—from medical records, contact info, and nearby networking events—in one, easy-to-use website. It takes the stress out of pet ownership by streamlining the process of updating your pet’s info starting with a 10-minute account set-up. PetCode gives its users instant peace of mind; with PetCode, managing your pet’s life is a walk in the park! 
               </Text>
+            </Stack>
+            <Stack spacing={10}>
+              <Stack isInline spacing={6}>
+                <Stack alignItems="center">
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
+                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                </Stack>
+                <Stack alignItems="center">
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
+                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                </Stack>
+                <Stack alignItems="center">
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
+                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                </Stack>
+              </Stack>
+              <Stack isInline marginLeft={12} spacing={6}>
+                <Stack alignItems="center">
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
+                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                </Stack>
+                <Stack alignItems="center">
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
+                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                </Stack>
+                <Stack alignItems="center">
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
+                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                </Stack>
+              </Stack>
             </Stack>
           </Stack>
           <Box position="relative" paddingBottom="8.2%">
