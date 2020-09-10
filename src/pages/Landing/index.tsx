@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Heading, Image, Stack, ThemeProvider, Text, useTheme } from "@chakra-ui/core";
+import { Box, Flex, Heading, Image, Stack, ThemeProvider, Text, useTheme } from "@chakra-ui/core";
 import { motion } from "framer-motion";
 
 import BaseButton from "../../components/Shared/button/BaseButton";
@@ -72,16 +72,44 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Box position="relative" paddingBottom="54.86%">
+        <Flex direction="column">
+          <Box position="relative" paddingBottom="9.44%">
+            <svg
+              style={{ position: "absolute", bottom: 0 }}
+              viewBox="0 0 1440 75"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M33.3533 22.7649C248.968 39.8867 527.214 61.9822 865 18.3403C1104.03 -12.5423 1373 1.27264 1457 18.3403V532.27C1451.29 531.795 1445.62 531.303 1440 530.795V76H0V540.46C-13.1227 542.143 -21.0646 543.673 -23 545V18.3403C-4.71817 19.7416 14.067 21.2334 33.3533 22.7649Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </svg>
+            <svg
+              style={{ position: "absolute", bottom: 0 }}
+              viewBox="0 0 1440 136"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                opacity="0.4"
+                d="M-31 0C65 37.9882 357 110.166 757 94.9704C939.667 67.1124 1337 19.7538 1465 53.1834V619.207C1457.45 617.473 1449.1 615.663 1440 613.802V137H0V637.628C-23.4734 639.418 -43.3016 640.882 -59 642L-31 0Z"
+                fill={theme.colors.petcode.blue[400]}
+                animate={{ scale: [0.995, 1.015] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
+                }}
+              />
+            </svg>
+          </Box>
           <Stack
             isInline
-            width="100%"
-            boxSizing="border-box"
-            position="absolute"
-            top="20%"
-            left={0}
             color="white"
+            paddingY={10}
             paddingX={16}
+            backgroundColor={theme.colors.petcode.blue[400]}
           >
             <Stack flexBasis="50%" spacing={6}>
               <Heading>
@@ -121,41 +149,38 @@ const LandingPage: React.FunctionComponent = () => {
               </Text>
             </Stack>
           </Stack>
-          <svg
-            style={{ position: "absolute", left: 0, top: "7.68%", zIndex: -1 }}
-            viewBox="0 0 1440 915"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M865 24.142C497 84.9112 199.667 45.9566 -23 24.142V697.278C-7 683.255 419.5 651.578 790 636.78C1152.15 622.316 1281 662.309 1457 681.008V24.142C1373 2.3274 1104.03 -15.3298 865 24.142Z"
-              fill={theme.colors.petcode.blue[400]}
-            />
-          </svg>
-          <svg
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              zIndex: -1,
-              opacity: 0.4,
-            }}
-            viewBox="0 0 1440 976"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <motion.path
-              d="M757 116.864C357 135.562 65 46.7456 -31 0L-59 790C47.6667 780.651 345 751.669 681 710.533C1017 669.396 1343.67 727.673 1465 761.953V65.4438C1337 24.3077 939.667 82.5838 757 116.864Z"
-              fill={theme.colors.petcode.blue[400]}
-              animate={{ scale: [0.995, 1.015] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-              }}
-            />
-          </svg>
-        </Box>
+          <Box position="relative" paddingBottom="100%">
+            <svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 489 1440 576"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 5.86201C-7.75309 5.20103 -15.4198 4.55301 -23 3.92187V576C-7 564.082 419.5 537.16 790 524.584C1064.63 515.263 1205.09 532.556 1333.7 548.389C1374.69 553.434 1414.47 558.332 1457 562.172V3.92187C1451.98 2.81368 1446.3 1.71811 1440 0.644775V489H0V5.86201Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </svg>
+            <svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 537 1440 656"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                opacity="0.4"
+                d="M0 11.3675C-11.9113 7.35158 -22.2667 3.53123 -31 0L-59 656C47.6667 648.237 345 624.17 681 590.012C1017 555.853 1343.67 604.245 1465 632.71V54.3432C1457.55 52.3545 1449.18 50.6455 1440 49.1962V536H0V11.3675Z"
+                fill={theme.colors.petcode.blue[400]}
+                animate={{ scale: [0.995, 1.015] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
+                }}
+              />
+            </svg>
+          </Box>
+        </Flex>
         <Box flexGrow={1}/>
         <Footer/>
       </Layout>
