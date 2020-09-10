@@ -1,24 +1,13 @@
 import React from "react";
 
-import {
-  Box,
-  FlexProps,
-  Image,
-  Link,
-  LinkProps,
-  Stack,
-} from "@chakra-ui/core";
+import { Box, FlexProps, Image, Link, LinkProps, Stack } from "@chakra-ui/core";
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../views/Auth/index";
 
 import BaseButton, { BaseButtonProps } from "../button/BaseButton";
 
 const HeaderLink: React.FC<LinkProps> = (props) => (
-  <Link
-    fontSize="lg"
-    fontFamily="Open Sans"
-    {...props}
-  />
+  <Link fontSize="lg" fontFamily="Open Sans" {...props} />
 );
 
 const HeaderButton: React.FC<BaseButtonProps> = (props) => (

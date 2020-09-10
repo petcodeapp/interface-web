@@ -1,6 +1,15 @@
 import React from "react";
 
-import { Box, Flex, Heading, Image, Stack, ThemeProvider, Text, useTheme } from "@chakra-ui/core";
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  Stack,
+  ThemeProvider,
+  Text,
+  useTheme,
+} from "@chakra-ui/core";
 import { motion } from "framer-motion";
 
 import BaseButton from "../../components/Shared/button/BaseButton";
@@ -13,9 +22,18 @@ const LandingPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
 
   return (
-    <ThemeProvider theme={{ ...theme, fonts: { ...theme.fonts, heading: "Open Sans", body: "Open Sans" } }}>
+    <ThemeProvider
+      theme={{
+        ...theme,
+        fonts: { ...theme.fonts, heading: "Open Sans", body: "Open Sans" },
+      }}
+    >
       <Layout
-        headerProps={{ position: "absolute", backgroundColor: "transparent", color: "petcode.neutral.700" }}
+        headerProps={{
+          position: "absolute",
+          backgroundColor: "transparent",
+          color: "petcode.neutral.700",
+        }}
         paddingTop={200}
       >
         <svg
@@ -24,15 +42,21 @@ const LandingPage: React.FunctionComponent = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse cx="-11" cy="-20.5" rx="578" ry="390.5" fill="#51BCDA"/>
+          <ellipse cx="-11" cy="-20.5" rx="578" ry="390.5" fill="#51BCDA" />
         </svg>
         <svg
-          style={{ position: "absolute", left: 75, top: 0, width: 300, opacity: 0.4 }}
+          style={{
+            position: "absolute",
+            left: 75,
+            top: 0,
+            width: 300,
+            opacity: 0.4,
+          }}
           viewBox="0 0 743 318"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse cx="145" cy="-96.5" rx="578" ry="390.5" fill="#51BCDA"/>
+          <ellipse cx="145" cy="-96.5" rx="578" ry="390.5" fill="#51BCDA" />
         </svg>
         <Stack isInline paddingX={10}>
           <Image
@@ -41,15 +65,10 @@ const LandingPage: React.FunctionComponent = () => {
             alt="Hero image"
           />
           <Stack position="relative" top={-20} color="petcode.neutral.600">
-            <Heading
-              fontSize="5xl"
-              fontWeight="bold"
-            >
+            <Heading fontSize="5xl" fontWeight="bold">
               One Code
             </Heading>
-            <Text
-              fontSize="xl"
-            >
+            <Text fontSize="xl">
               An endless suite of features for pet owners.
             </Text>
             <Stack isInline>
@@ -113,9 +132,7 @@ const LandingPage: React.FunctionComponent = () => {
             spacing={10}
           >
             <Stack flexBasis="50%" spacing={6}>
-              <Heading>
-                The Ultimate Pet Management System
-              </Heading>
+              <Heading>The Ultimate Pet Management System</Heading>
               <Stack isInline>
                 <BaseButton
                   variantColor="whiteAlpha"
@@ -146,36 +163,54 @@ const LandingPage: React.FunctionComponent = () => {
                 </BaseButton>
               </Stack>
               <Text fontWeight="thin">
-                PetCode’s ingenious products organize all your pet’s info—from medical records, contact info, and nearby networking events—in one, easy-to-use website. It takes the stress out of pet ownership by streamlining the process of updating your pet’s info starting with a 10-minute account set-up. PetCode gives its users instant peace of mind; with PetCode, managing your pet’s life is a walk in the park! 
+                PetCode’s ingenious products organize all your pet’s info—from
+                medical records, contact info, and nearby networking events—in
+                one, easy-to-use website. It takes the stress out of pet
+                ownership by streamlining the process of updating your pet’s
+                info starting with a 10-minute account set-up. PetCode gives its
+                users instant peace of mind; with PetCode, managing your pet’s
+                life is a walk in the park!
               </Text>
             </Stack>
             <Stack spacing={10}>
               <Stack isInline spacing={6}>
                 <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
-                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
+                  <Text fontSize="xl" fontWeight="bold">
+                    Subtitle
+                  </Text>
                 </Stack>
                 <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
-                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
+                  <Text fontSize="xl" fontWeight="bold">
+                    Subtitle
+                  </Text>
                 </Stack>
                 <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
-                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
+                  <Text fontSize="xl" fontWeight="bold">
+                    Subtitle
+                  </Text>
                 </Stack>
               </Stack>
               <Stack isInline marginLeft={12} spacing={6}>
                 <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
-                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
+                  <Text fontSize="xl" fontWeight="bold">
+                    Subtitle
+                  </Text>
                 </Stack>
                 <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
-                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
+                  <Text fontSize="xl" fontWeight="bold">
+                    Subtitle
+                  </Text>
                 </Stack>
                 <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full"/>
-                  <Text fontSize="xl" fontWeight="bold">Subtitle</Text>
+                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
+                  <Text fontSize="xl" fontWeight="bold">
+                    Subtitle
+                  </Text>
                 </Stack>
               </Stack>
             </Stack>
@@ -212,7 +247,7 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
           </Box>
         </Flex>
-        <Footer/>
+        <Footer />
       </Layout>
     </ThemeProvider>
   );
