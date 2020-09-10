@@ -4,6 +4,7 @@ import {
   Box,
   Flex,
   Heading,
+  Icon,
   Image,
   Stack,
   StackProps,
@@ -21,7 +22,7 @@ import { PetCodeTheme } from "../../theme";
 
 const LongButton: React.FC<BaseButtonProps> = (props) => (
   <BaseButton
-    size="md"
+    size="sm"
     paddingX={10}
     textTransform="uppercase"
     {...props}
@@ -79,7 +80,6 @@ const LandingPage: React.FunctionComponent = () => {
         </svg>
         <Stack isInline paddingX={10}>
           <Image
-            alignSelf="start"
             src="/media/hero-image.png"
             alt="Hero image"
           />
@@ -136,40 +136,40 @@ const LandingPage: React.FunctionComponent = () => {
             isInline
             color="white"
             paddingY={10}
-            paddingX={20}
+            paddingX={32}
             backgroundColor={theme.colors.petcode.blue[400]}
             spacing={10}
           >
-            <Stack flexBasis="50%" spacing={6}>
-              <Heading>The Ultimate Pet Management System</Heading>
+            <Stack flexBasis="50%" spacing={4}>
+              <Heading paddingBottom={4}>The Ultimate Pet Management System</Heading>
               <Stack isInline>
                 <LongButton
                   variantColor="whiteAlpha"
+                  variant="outline"
                   color="white"
                 >
                   Safety
                 </LongButton>
                 <LongButton
                   variantColor="whiteAlpha"
+                  variant="outline"
                   color="white"
                 >
                   Health
                 </LongButton>
                 <LongButton
                   variantColor="whiteAlpha"
+                  variant="outline"
                   color="white"
                 >
                   Discovery
                 </LongButton>
               </Stack>
+              <Text fontWeight="bold" fontSize="xl">
+                So Much More Than Just A Tag
+              </Text>
               <Text fontWeight="thin">
-                PetCode’s ingenious products organize all your pet’s info—from
-                medical records, contact info, and nearby networking events—in
-                one, easy-to-use website. It takes the stress out of pet
-                ownership by streamlining the process of updating your pet’s
-                info starting with a 10-minute account set-up. PetCode gives its
-                users instant peace of mind; with PetCode, managing your pet’s
-                life is a walk in the park!
+                The PetCode system provides pet owners with an endless suite of feautres. PetCode keeps your pet safe and secure, stays on top of your pet’s health, and even allows you to discover events and rewards near you, all from our easy-to-use website and app. Scroll to learn more about each aspect of the PetCode system.
               </Text>
             </Stack>
             <Stack spacing={10}>
@@ -217,6 +217,22 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
           </Box>
         </Flex>
+        <Stack isInline paddingX={32} paddingY={16} spacing={10} justifyContent="space-between">
+          <Image
+            src="/media/safety-image.svg"
+            alt="Safety image"
+          />
+          <Stack flexBasis="50%" color="petcode.neutral.700" textAlign="right" spacing={6}>
+            <Heading fontSize="5xl">Safety</Heading>
+            <Text fontWeight="thin">
+              It’s a scary world out there, one you shouldn’t have to face alone. With PetCode, keeping your pet safer is no longer a struggle; our QR tags can help you find your pet faster, should you lose them. Your safety is our number one priority, which is why we never share your data with any third parties. Let us help you keep your pet safer and make life a more pleasant walk in the park!
+            </Text>
+            <Stack isInline alignSelf="start">
+              <Text>Learn More</Text>
+              <Icon size="30px" name="arrow" />
+            </Stack>
+          </Stack>
+        </Stack>
         <Footer />
       </Layout>
     </ThemeProvider>
