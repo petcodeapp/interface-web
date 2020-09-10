@@ -6,17 +6,36 @@ import {
   Heading,
   Image,
   Stack,
+  StackProps,
   ThemeProvider,
   Text,
   useTheme,
 } from "@chakra-ui/core";
 import { motion } from "framer-motion";
 
-import BaseButton from "../../components/Shared/button/BaseButton";
+import BaseButton, { BaseButtonProps } from "../../components/Shared/button/BaseButton";
 import Layout from "../../components/Shared/layout";
 import Footer from "./Footer";
 
 import { PetCodeTheme } from "../../theme";
+
+const LongButton: React.FC<BaseButtonProps> = (props) => (
+  <BaseButton
+    size="md"
+    paddingX={10}
+    textTransform="uppercase"
+    {...props}
+  />
+);
+
+const Feature: React.FC<StackProps> = (props) => (
+  <Stack alignItems="center" {...props}>
+    <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
+    <Text fontSize="xl" fontWeight="bold">
+      Subtitle
+    </Text>
+  </Stack>
+);
 
 const LandingPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
@@ -72,22 +91,12 @@ const LandingPage: React.FunctionComponent = () => {
               An endless suite of features for pet owners.
             </Text>
             <Stack isInline>
-              <BaseButton
-                variantColor="petcode.yellow"
-                size="md"
-                paddingX={10}
-                textTransform="uppercase"
-              >
+              <LongButton variantColor="petcode.yellow">
                 Watch Video
-              </BaseButton>
-              <BaseButton
-                variantColor="petcode.yellow"
-                size="md"
-                paddingX={10}
-                textTransform="uppercase"
-              >
+              </LongButton>
+              <LongButton variantColor="petcode.yellow">
                 Get Started
-              </BaseButton>
+              </LongButton>
             </Stack>
           </Stack>
         </Stack>
@@ -134,33 +143,24 @@ const LandingPage: React.FunctionComponent = () => {
             <Stack flexBasis="50%" spacing={6}>
               <Heading>The Ultimate Pet Management System</Heading>
               <Stack isInline>
-                <BaseButton
+                <LongButton
                   variantColor="whiteAlpha"
                   color="white"
-                  variant="outline"
-                  size="md"
-                  paddingX={10}
                 >
                   Safety
-                </BaseButton>
-                <BaseButton
+                </LongButton>
+                <LongButton
                   variantColor="whiteAlpha"
                   color="white"
-                  variant="outline"
-                  size="md"
-                  paddingX={10}
                 >
                   Health
-                </BaseButton>
-                <BaseButton
+                </LongButton>
+                <LongButton
                   variantColor="whiteAlpha"
                   color="white"
-                  variant="outline"
-                  size="md"
-                  paddingX={10}
                 >
                   Discovery
-                </BaseButton>
+                </LongButton>
               </Stack>
               <Text fontWeight="thin">
                 PetCode’s ingenious products organize all your pet’s info—from
@@ -174,44 +174,14 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
             <Stack spacing={10}>
               <Stack isInline spacing={6}>
-                <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
-                  <Text fontSize="xl" fontWeight="bold">
-                    Subtitle
-                  </Text>
-                </Stack>
-                <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
-                  <Text fontSize="xl" fontWeight="bold">
-                    Subtitle
-                  </Text>
-                </Stack>
-                <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
-                  <Text fontSize="xl" fontWeight="bold">
-                    Subtitle
-                  </Text>
-                </Stack>
+                <Feature/>
+                <Feature/>
+                <Feature/>
               </Stack>
               <Stack isInline marginLeft={12} spacing={6}>
-                <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
-                  <Text fontSize="xl" fontWeight="bold">
-                    Subtitle
-                  </Text>
-                </Stack>
-                <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
-                  <Text fontSize="xl" fontWeight="bold">
-                    Subtitle
-                  </Text>
-                </Stack>
-                <Stack alignItems="center">
-                  <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
-                  <Text fontSize="xl" fontWeight="bold">
-                    Subtitle
-                  </Text>
-                </Stack>
+                <Feature/>
+                <Feature/>
+                <Feature/>
               </Stack>
             </Stack>
           </Stack>
