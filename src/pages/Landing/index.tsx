@@ -265,10 +265,10 @@ const LandingPage: React.FunctionComponent = () => {
               />
             </svg>
           </Box>
-          <Box position="relative" paddingBottom="8.2%">
+          <Box position="relative" paddingBottom="10.55%">
             <svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 528 1440 713"
+              viewBox="0 528 1440 185"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -279,7 +279,7 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
             <svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 743 1440 895"
+              viewBox="0 743 1440 152"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
