@@ -13,6 +13,7 @@ import {
   useTheme,
 } from "@chakra-ui/core";
 import { motion } from "framer-motion";
+import { IPhoneX } from "react-device-mockups";
 
 import BaseButton, {
   BaseButtonProps,
@@ -22,6 +23,8 @@ import Layout from "../../components/Shared/layout";
 import Footer from "./Footer";
 
 import { PetCodeTheme } from "../../theme";
+
+import "html5-device-mockups/dist/device-mockups.min.css";
 
 const LongButton: React.FC<BaseButtonProps> = (props) => (
   <BaseButton size="sm" paddingX={10} textTransform="uppercase" {...props} />
@@ -336,6 +339,14 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
+            <IPhoneX height={400}>
+              <Image
+                width="100%"
+                height="100%"
+                src="/media/scan-locations-mobile-screen.svg"
+                alt="Scan locations mobile screen"
+              />
+            </IPhoneX>
           </Stack>
           <Box position="relative" paddingBottom="10.55%">
             <svg
