@@ -282,7 +282,7 @@ const LandingPage: React.FunctionComponent = () => {
           <Box position="relative" paddingBottom="16.46%">
             <svg
               style={{ position: "absolute", bottom: 0 }}
-              viewBox="0 0 1440 159"
+              viewBox="0 0 1440 158"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
