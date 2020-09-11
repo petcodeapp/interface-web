@@ -12,6 +12,7 @@ const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
   isChecked,
   isDisabled,
   size = 32,
+  color,
   ...props
 }) => (
   <PseudoBox
@@ -27,11 +28,7 @@ const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
     {...props}
   >
     {isChecked && (
-      <Icon
-        name="checkmark"
-        size={size - 12 + "px"}
-        color="petcode.neutral.700"
-      />
+      <Icon name="checkmark" size={size - 12 + "px"} color={color} />
     )}
   </PseudoBox>
 );

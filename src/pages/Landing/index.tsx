@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -14,19 +14,17 @@ import {
 } from "@chakra-ui/core";
 import { motion } from "framer-motion";
 
-import BaseButton, { BaseButtonProps } from "../../components/Shared/button/BaseButton";
+import BaseButton, {
+  BaseButtonProps,
+} from "../../components/Shared/button/BaseButton";
+import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import Layout from "../../components/Shared/layout";
 import Footer from "./Footer";
 
 import { PetCodeTheme } from "../../theme";
 
 const LongButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton
-    size="sm"
-    paddingX={10}
-    textTransform="uppercase"
-    {...props}
-  />
+  <BaseButton size="sm" paddingX={10} textTransform="uppercase" {...props} />
 );
 
 const Feature: React.FC<StackProps> = (props) => (
@@ -37,6 +35,40 @@ const Feature: React.FC<StackProps> = (props) => (
     </Text>
   </Stack>
 );
+
+const FeatureDropDown: React.FC<{
+  name: string;
+  description: string;
+  initiallyOpen?: boolean;
+}> = ({ name, description, initiallyOpen = false }) => {
+  const theme = useTheme() as PetCodeTheme;
+
+  const [open, setOpen] = useState(initiallyOpen);
+
+  return (
+    <Stack>
+      <Stack isInline alignItems="center">
+        <BaseCheckbox
+          isChecked
+          size={22}
+          color={theme.colors.petcode.blue[400]}
+        />
+        <Text fontSize="xl">{name}</Text>
+        <Icon
+          name="dropdown-arrow"
+          size="20px"
+          paddingTop={3}
+          paddingLeft={ open ? 3 : 0 }
+          paddingBottom={1}
+          onClick={ () => setOpen(!open) }
+          transform={ open ? null : "rotate(-90deg)" }
+          transition="0.2s all"
+        />
+      </Stack>
+      {open && <Text fontWeight="thin">{description}</Text>}
+    </Stack>
+  );
+};
 
 const LandingPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
@@ -79,10 +111,7 @@ const LandingPage: React.FunctionComponent = () => {
           <ellipse cx="145" cy="-96.5" rx="578" ry="390.5" fill="#51BCDA" />
         </svg>
         <Stack isInline paddingX={10}>
-          <Image
-            src="/media/hero-image.png"
-            alt="Hero image"
-          />
+          <Image src="/media/hero-image.png" alt="Hero image" />
           <Stack position="relative" top={-20} color="petcode.neutral.600">
             <Heading fontSize="5xl" fontWeight="bold">
               One Code
@@ -91,12 +120,8 @@ const LandingPage: React.FunctionComponent = () => {
               An endless suite of features for pet owners.
             </Text>
             <Stack isInline>
-              <LongButton variantColor="petcode.yellow">
-                Watch Video
-              </LongButton>
-              <LongButton variantColor="petcode.yellow">
-                Get Started
-              </LongButton>
+              <LongButton variantColor="petcode.yellow">Watch Video</LongButton>
+              <LongButton variantColor="petcode.yellow">Get Started</LongButton>
             </Stack>
           </Stack>
         </Stack>
@@ -141,7 +166,9 @@ const LandingPage: React.FunctionComponent = () => {
             spacing={10}
           >
             <Stack flexBasis="50%" spacing={4}>
-              <Heading paddingBottom={4}>The Ultimate Pet Management System</Heading>
+              <Heading paddingBottom={4}>
+                The Ultimate Pet Management System
+              </Heading>
               <Stack isInline>
                 <LongButton
                   variantColor="whiteAlpha"
@@ -169,19 +196,23 @@ const LandingPage: React.FunctionComponent = () => {
                 So Much More Than Just A Tag
               </Text>
               <Text fontWeight="thin">
-                The PetCode system provides pet owners with an endless suite of feautres. PetCode keeps your pet safe and secure, stays on top of your pet’s health, and even allows you to discover events and rewards near you, all from our easy-to-use website and app. Scroll to learn more about each aspect of the PetCode system.
+                The PetCode system provides pet owners with an endless suite of
+                feautres. PetCode keeps your pet safe and secure, stays on top
+                of your pet’s health, and even allows you to discover events and
+                rewards near you, all from our easy-to-use website and app.
+                Scroll to learn more about each aspect of the PetCode system.
               </Text>
             </Stack>
             <Stack spacing={10}>
               <Stack isInline spacing={6}>
-                <Feature/>
-                <Feature/>
-                <Feature/>
+                <Feature />
+                <Feature />
+                <Feature />
               </Stack>
               <Stack isInline marginLeft={12} spacing={6}>
-                <Feature/>
-                <Feature/>
-                <Feature/>
+                <Feature />
+                <Feature />
+                <Feature />
               </Stack>
             </Stack>
           </Stack>
@@ -217,15 +248,29 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
           </Box>
         </Flex>
-        <Stack isInline paddingX={32} paddingY={16} spacing={10} justifyContent="space-between">
-          <Image
-            src="/media/safety-image.svg"
-            alt="Safety image"
-          />
-          <Stack flexBasis="50%" color="petcode.neutral.700" textAlign="right" spacing={6}>
+        <Stack
+          isInline
+          paddingX={32}
+          paddingY={16}
+          spacing={10}
+          justifyContent="space-between"
+        >
+          <Image src="/media/safety-image.svg" alt="Safety image" />
+          <Stack
+            flexBasis="50%"
+            color="petcode.neutral.700"
+            textAlign="right"
+            spacing={6}
+          >
             <Heading fontSize="5xl">Safety</Heading>
             <Text fontWeight="thin">
-              It’s a scary world out there, one you shouldn’t have to face alone. With PetCode, keeping your pet safer is no longer a struggle; our QR tags can help you find your pet faster, should you lose them. Your safety is our number one priority, which is why we never share your data with any third parties. Let us help you keep your pet safer and make life a more pleasant walk in the park!
+              It’s a scary world out there, one you shouldn’t have to face
+              alone. With PetCode, keeping your pet safer is no longer a
+              struggle; our QR tags can help you find your pet faster, should
+              you lose them. Your safety is our number one priority, which is
+              why we never share your data with any third parties. Let us help
+              you keep your pet safer and make life a more pleasant walk in the
+              park!
             </Text>
             <Stack isInline alignSelf="start">
               <Text>Learn More</Text>
@@ -265,6 +310,33 @@ const LandingPage: React.FunctionComponent = () => {
               />
             </svg>
           </Box>
+          <Stack
+            isInline
+            color="white"
+            paddingY={10}
+            paddingX={32}
+            backgroundColor={theme.colors.petcode.blue[400]}
+            spacing={10}
+          >
+            <Stack spacing={4} flexBasis="50%">
+              <Heading fontSize="5xl" paddingBottom={4}>
+                Health
+              </Heading>
+              <FeatureDropDown
+                initiallyOpen
+                name="Vaccinations"
+                description="Access your pet’s vaccination records and stay up-to-date on upcoming events, anytime, anywhere."
+              />
+              <FeatureDropDown
+                name="Reminders"
+                description="Turn on notifications for PetCode to receive reminders for upcoming and overdue wellness checks."
+              />
+              <FeatureDropDown
+                name="Share Records"
+                description="Easily share records with your pet’s health team through PetCode."
+              />
+            </Stack>
+          </Stack>
           <Box position="relative" paddingBottom="10.55%">
             <svg
               style={{ position: "absolute", top: 0 }}
