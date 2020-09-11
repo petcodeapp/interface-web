@@ -233,6 +233,70 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
+        <Flex direction="column">
+          <Box position="relative" paddingBottom="16.46%">
+            <svg
+              style={{ position: "absolute", bottom: 0 }}
+              viewBox="0 0 1440 159"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1607 36.1487C1436.77 -13.7789 1031.31 -20.7212 572.5 71.7313C138.425 159.199 -217.315 133.549 -349 95.0797L-336.95 159H1578.01L1607 36.1487Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </svg>
+            <svg
+              style={{ position: "absolute", bottom: 0 }}
+              viewBox="0 0 1440 237"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                opacity="0.4"
+                d="M1572 51.4354C1388.5 12.0588 1024.5 -16.4413 575.5 99.5591C144.038 211.028 -162.778 196.788 -288 138.195V213H1546.39L1572 51.4354Z"
+                fill={theme.colors.petcode.blue[400]}
+                animate={{ scale: [0.995, 1.015] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
+                }}
+              />
+            </svg>
+          </Box>
+          <Box position="relative" paddingBottom="8.2%">
+            <svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 528 1440 713"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 112.893C-160.464 112.73 -282.931 98.1003 -349 80.5344L-218 713C-201.819 703.047 -188.522 691.151 -174.54 678.642C-124.687 634.043 -66.1147 581.642 163 581.642C273.07 581.642 396.65 593.44 529.45 606.117C811.691 633.061 1135.58 663.98 1459.92 594.073L1607 26.8998C1564.43 15.5361 1507.15 6.61907 1438 0.95166V528H0V112.893Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </svg>
+            <svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 743 1440 895"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                opacity="0.4"
+                d="M-288 743V759.512C-281.42 752.389 -274.749 746.971 -267.826 743H-288ZM-180.746 743C-169.951 746.018 -158.314 749.623 -145.665 753.541C-81.1042 773.542 9.84814 801.718 150 801.718C249.053 801.718 363.798 815.923 488.855 831.405C776.014 866.955 1117.55 909.235 1448.31 801.718L1457.61 743H-180.746ZM1547 179.139L1572 21.4355C1564.01 19.7202 1555.67 18.0255 1547 16.3626V179.139Z"
+                fill={theme.colors.petcode.blue[400]}
+                animate={{ scale: [0.995, 1.015] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
+                }}
+              />
+            </svg>
+          </Box>
+        </Flex>
         <Footer />
       </Layout>
     </ThemeProvider>
