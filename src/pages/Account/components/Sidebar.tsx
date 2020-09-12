@@ -45,7 +45,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 );
 
 const Sidebar = withRouter(({ location }) => {
-  const auth = useContext(AuthContext);
+  const service = useContext(AuthContext);
 
   return (
     <Flex
@@ -60,16 +60,18 @@ const Sidebar = withRouter(({ location }) => {
           size="89px"
           backgroundSize="cover"
           backgroundPosition="center"
-          backgroundImage="url(/media/placeholder-dog.png)"
+          backgroundImage={
+            service.pets[0]?.profileUrl || "url(/media/placeholder-dog.png)"
+          }
           marginBottom={3}
         />
         <Flex direction="row" justifyContent="space-between">
           <Flex direction="column">
             <Text color="petcode.neutral.700" fontSize="3xl" fontWeight="bold">
-              Max
+              {service.pets[0]?.name || "Loading"}
             </Text>
             <Text color="petcode.neutral.500" fontSize="xl" fontWeight="thin">
-              John Doe
+              {service.userData?.name || "Loading"}
             </Text>
           </Flex>
           <Icon
@@ -134,7 +136,7 @@ const Sidebar = withRouter(({ location }) => {
         variant="outline"
         border="1px solid"
         marginX={10}
-        onClick={auth.signOut}
+        onClick={service.signOut}
       >
         <Text>Sign Out</Text>
       </BaseButton>

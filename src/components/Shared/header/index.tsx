@@ -3,6 +3,7 @@ import React from "react";
 import { Box, Flex, FlexProps, Icon, Text } from "@chakra-ui/core";
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../views/Auth/index";
+import { Link } from "react-router-dom";
 
 const Header: React.FC<FlexProps> = (props) => {
   const auth = React.useContext(AuthContext);
@@ -33,8 +34,10 @@ const Header: React.FC<FlexProps> = (props) => {
             Register
           </Text>
           <Text display="flex" alignItems="center">
-            <Icon name="user-circle" size="16px" marginRight={2} />
-            Sign In
+            <Link to="/login">
+              <Icon name="user-circle" size="16px" marginRight={2} />
+              Sign In
+            </Link>
           </Text>
         </>
       )}
