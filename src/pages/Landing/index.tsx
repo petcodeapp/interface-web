@@ -340,10 +340,10 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <Box flexGrow={1} position="relative" overflowY="visible">
+            <Box height={400} flexGrow={1} position="relative" overflowY="visible">
               <IPhoneX
                 height={400}
-                wrapperProps={{ style: { position: "relative", zIndex: 1 } }}
+                wrapperProps={{ style: { position: "absolute", right: 250, zIndex: 1 } }}
                 screenProps={{ style: { backgroundColor: theme.colors.petcode.blue[400] } }}
               >
                 <Image
