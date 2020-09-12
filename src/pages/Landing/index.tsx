@@ -207,13 +207,13 @@ const LandingPage: React.FunctionComponent = () => {
                 Scroll to learn more about each aspect of the PetCode system.
               </Text>
             </Stack>
-            <Stack spacing={10}>
-              <Stack isInline spacing={6}>
+            <Stack flexGrow={1} spacing={10} alignItems="end">
+              <Stack isInline marginRight={12} spacing={6}>
                 <Feature />
                 <Feature />
                 <Feature />
               </Stack>
-              <Stack isInline marginLeft={12} spacing={6}>
+              <Stack isInline spacing={6}>
                 <Feature />
                 <Feature />
                 <Feature />
@@ -340,7 +340,7 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <Box flexGrow={1} flexBasis="50%" position="relative" overflowY="visible">
+            <Box flexGrow={1} position="relative" overflowY="visible">
               <IPhoneX
                 height={400}
                 wrapperProps={{ style: { position: "relative", zIndex: 1 } }}
