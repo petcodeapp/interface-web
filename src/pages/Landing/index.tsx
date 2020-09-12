@@ -59,6 +59,7 @@ const FeatureDropDown: React.FC<{
         <Text fontSize="xl">{name}</Text>
         <Icon
           name="dropdown-arrow"
+          cursor="pointer"
           size="20px"
           paddingTop={3}
           paddingLeft={ open ? 3 : 0 }
