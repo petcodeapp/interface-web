@@ -5,8 +5,8 @@ import { Flex } from "@chakra-ui/core";
 import Layout from "../../../components/Shared/layout";
 import Sidebar from "./Sidebar";
 
-const AccountPageLayout: React.FC = ({ children }) => (
-  <Layout>
+const AccountPageLayout: React.FC<any> = ({ children, variants }) => (
+  <Layout variants={variants}>
     <Flex direction="row" flexGrow={1}>
       <Sidebar />
       {children}
