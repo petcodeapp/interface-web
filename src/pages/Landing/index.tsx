@@ -317,7 +317,7 @@ const LandingPage: React.FunctionComponent = () => {
             isInline
             color="white"
             paddingY={10}
-            paddingX={32}
+            paddingLeft={32}
             backgroundColor={theme.colors.petcode.blue[400]}
             spacing={10}
           >
@@ -339,14 +339,28 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <IPhoneX height={400}>
+            <Box flexGrow={1} flexBasis="50%" position="relative" overflowY="visible">
+              <IPhoneX
+                height={400}
+                wrapperProps={{ style: { position: "relative", zIndex: 1 } }}
+                screenProps={{ style: { backgroundColor: theme.colors.petcode.blue[400] } }}
+              >
+                <Image
+                  width="100%"
+                  height="100%"
+                  src="/media/scan-locations-mobile-screen.svg"
+                  alt="Scan locations mobile screen"
+                />
+              </IPhoneX>
               <Image
-                width="100%"
-                height="100%"
-                src="/media/scan-locations-mobile-screen.svg"
-                alt="Scan locations mobile screen"
+                position="absolute"
+                top="-25%"
+                right={0}
+                height={450}
+                src="/media/dashboard-web-screen.svg"
+                alt="Dashboard web screen"
               />
-            </IPhoneX>
+            </Box>
           </Stack>
           <Box position="relative" paddingBottom="10.55%">
             <svg
