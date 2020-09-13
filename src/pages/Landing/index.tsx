@@ -85,6 +85,7 @@ const LandingPage: React.FunctionComponent = () => {
       }}
     >
       <Layout
+        position="relative"
         headerProps={{
           position: "absolute",
           backgroundColor: "transparent",
@@ -481,6 +482,24 @@ const LandingPage: React.FunctionComponent = () => {
           </Stack>
         </Stack>
         <Footer />
+        <Image
+          position="absolute"
+          top="50%"
+          right={0}
+          zIndex={-1}
+          transform="translateY(-50%)"
+          src="/media/paw-print-background-right.svg"
+          alt="Paw print background"
+        />
+        <Image
+          position="absolute"
+          top="50%"
+          left={0}
+          zIndex={-1}
+          transform="translateY(-50%)"
+          src="/media/paw-print-background-left.svg"
+          alt="Paw print background"
+        />
       </Layout>
     </ThemeProvider>
   );
