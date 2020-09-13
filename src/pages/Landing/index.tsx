@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import {
   Box,
@@ -76,6 +76,10 @@ const FeatureDropDown: React.FC<{
 
 const LandingPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
+
+  const safetySectionRef = useRef<HTMLDivElement>();
+  const healthSectionRef = useRef<HTMLDivElement>();
+  const discoverySectionRef = useRef<HTMLDivElement>();
 
   return (
     <ThemeProvider
@@ -179,6 +183,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
+                  onClick={() => safetySectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Safety
                 </LongButton>
@@ -186,6 +191,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
+                  onClick={() => healthSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Health
                 </LongButton>
@@ -193,6 +199,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
+                  onClick={() => discoverySectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Discovery
                 </LongButton>
@@ -254,6 +261,7 @@ const LandingPage: React.FunctionComponent = () => {
           </Box>
         </Flex>
         <Stack
+          ref={ref => safetySectionRef.current = ref}
           isInline
           paddingX={32}
           paddingY={16}
@@ -316,6 +324,7 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
           </Box>
           <Stack
+            ref={ref => healthSectionRef.current = ref}
             isInline
             color="white"
             paddingY={10}
@@ -406,6 +415,7 @@ const LandingPage: React.FunctionComponent = () => {
           </Box>
         </Flex>
         <Stack
+          ref={ref => discoverySectionRef.current = ref}
           isInline
           paddingRight={32}
           paddingY={12}
