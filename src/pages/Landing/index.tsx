@@ -27,7 +27,7 @@ import { PetCodeTheme } from "../../theme";
 import "html5-device-mockups/dist/device-mockups.min.css";
 
 const LongButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton size="sm" paddingX={10} textTransform="uppercase" {...props} />
+  <BaseButton size="md" paddingX={10} textTransform="uppercase" {...props} />
 );
 
 const Feature: React.FC<StackProps> = (props) => (
@@ -320,7 +320,7 @@ const LandingPage: React.FunctionComponent = () => {
             paddingY={10}
             paddingLeft={32}
             backgroundColor={theme.colors.petcode.blue[400]}
-            spacing={10}
+            spacing={16}
           >
             <Stack spacing={4} flexBasis="50%">
               <Heading fontSize="5xl" paddingBottom={4}>
@@ -343,7 +343,7 @@ const LandingPage: React.FunctionComponent = () => {
             <Box height={400} flexGrow={1} position="relative" overflowY="visible">
               <IPhoneX
                 height={400}
-                wrapperProps={{ style: { position: "absolute", right: 250, zIndex: 1 } }}
+                wrapperProps={{ style: { position: "relative", left: "5%", zIndex: 1 } }}
                 screenProps={{ style: { backgroundColor: theme.colors.petcode.blue[400] } }}
               >
                 <Image
@@ -395,6 +395,52 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
           </Box>
         </Flex>
+        <Stack
+          isInline
+          paddingRight={32}
+          paddingY={12}
+          spacing={16}
+          justifyContent="space-between"
+        >
+          <Box height={400} flexGrow={1} position="relative" overflowY="visible">
+            <IPhoneX
+              height={400}
+              wrapperProps={{ style: { position: "absolute", left: 500, zIndex: 1 } }}
+              screenProps={{ style: { backgroundColor: theme.colors.petcode.blue[400] } }}
+            >
+              <Image
+                width="100%"
+                height="100%"
+                src="/media/pet-parks-mobile-screen.svg"
+                alt="Pet parks mobile screen"
+              />
+            </IPhoneX>
+            <Image
+              position="relative"
+              top={-70}
+              height={450}
+              src="/media/scan-locations-web-screen.svg"
+              alt="Scan locations web screen"
+            />
+          </Box>
+          <Stack alignItems="end" textAlign="right" spacing={4} color="petcode.neutral.700">
+            <Heading fontSize="5xl">
+              Discovery
+            </Heading>
+            <Stack isInline>
+              <LongButton variant="outline" borderColor="petcode.neutral.700" backgroundColor="transparent">
+                Pet Parks
+              </LongButton>
+              <LongButton variant="outline" borderColor="petcode.neutral.700" backgroundColor="transparent">
+                Pet Perks
+              </LongButton>
+            </Stack>
+            <Text fontWeight="thin">
+              With Discovery, you explore nearby pet parks, all with the tap of a finger. Search for park hours, locations, and pet events near you with the Discovery feature. In addition, PetCode users get exclusive access to a whole world of incredible PetPerks. Save on pet food and toys while also getting premium discounts at pet boutiques and groomers with PetCode. 
+            </Text>
+            <Icon color="petcode.neutral.400" name="arrow-thin" size="40px" alignSelf="start"/>
+          </Stack>
+        </Stack>
         <Footer />
       </Layout>
     </ThemeProvider>
