@@ -365,8 +365,15 @@ export default {
   },
   "arrow-thin": {
     path: (
-      <path stroke="currentColor" fill="transparent" d="M2.09961 1.7915L22.9496 22.384L2.09961 42.9766" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path
+        stroke="currentColor"
+        fill="transparent"
+        d="M2.09961 1.7915L22.9496 22.384L2.09961 42.9766"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     ),
-    viewBox: "0 0 25 45"
-  }
+    viewBox: "0 0 25 45",
+  },
 };

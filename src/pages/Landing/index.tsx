@@ -62,10 +62,10 @@ const FeatureDropDown: React.FC<{
           cursor="pointer"
           size="20px"
           paddingTop={3}
-          paddingLeft={ open ? 3 : 0 }
+          paddingLeft={open ? 3 : 0}
           paddingBottom={1}
-          onClick={ () => setOpen(!open) }
-          transform={ open ? null : "rotate(-90deg)" }
+          onClick={() => setOpen(!open)}
+          transform={open ? null : "rotate(-90deg)"}
           transition="0.2s all"
         />
       </Stack>
@@ -340,11 +340,20 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <Box height={400} flexGrow={1} position="relative" overflowY="visible">
+            <Box
+              height={400}
+              flexGrow={1}
+              position="relative"
+              overflowY="visible"
+            >
               <IPhoneX
                 height={400}
-                wrapperProps={{ style: { position: "relative", left: "5%", zIndex: 1 } }}
-                screenProps={{ style: { backgroundColor: theme.colors.petcode.blue[400] } }}
+                wrapperProps={{
+                  style: { position: "relative", left: "5%", zIndex: 1 },
+                }}
+                screenProps={{
+                  style: { backgroundColor: theme.colors.petcode.blue[400] },
+                }}
               >
                 <Image
                   width="100%"
@@ -402,11 +411,20 @@ const LandingPage: React.FunctionComponent = () => {
           spacing={16}
           justifyContent="space-between"
         >
-          <Box height={400} flexGrow={1} position="relative" overflowY="visible">
+          <Box
+            height={400}
+            flexGrow={1}
+            position="relative"
+            overflowY="visible"
+          >
             <IPhoneX
               height={400}
-              wrapperProps={{ style: { position: "absolute", left: 500, zIndex: 1 } }}
-              screenProps={{ style: { backgroundColor: theme.colors.petcode.blue[400] } }}
+              wrapperProps={{
+                style: { position: "absolute", left: 500, zIndex: 1 },
+              }}
+              screenProps={{
+                style: { backgroundColor: theme.colors.petcode.blue[400] },
+              }}
             >
               <Image
                 width="100%"
@@ -423,22 +441,43 @@ const LandingPage: React.FunctionComponent = () => {
               alt="Scan locations web screen"
             />
           </Box>
-          <Stack alignItems="end" textAlign="right" spacing={4} color="petcode.neutral.700">
-            <Heading fontSize="5xl">
-              Discovery
-            </Heading>
+          <Stack
+            alignItems="end"
+            textAlign="right"
+            spacing={4}
+            color="petcode.neutral.700"
+          >
+            <Heading fontSize="5xl">Discovery</Heading>
             <Stack isInline>
-              <LongButton variant="outline" borderColor="petcode.neutral.700" backgroundColor="transparent">
+              <LongButton
+                variant="outline"
+                borderColor="petcode.neutral.700"
+                backgroundColor="transparent"
+              >
                 Pet Parks
               </LongButton>
-              <LongButton variant="outline" borderColor="petcode.neutral.700" backgroundColor="transparent">
+              <LongButton
+                variant="outline"
+                borderColor="petcode.neutral.700"
+                backgroundColor="transparent"
+              >
                 Pet Perks
               </LongButton>
             </Stack>
             <Text fontWeight="thin">
-              With Discovery, you explore nearby pet parks, all with the tap of a finger. Search for park hours, locations, and pet events near you with the Discovery feature. In addition, PetCode users get exclusive access to a whole world of incredible PetPerks. Save on pet food and toys while also getting premium discounts at pet boutiques and groomers with PetCode. 
+              With Discovery, you explore nearby pet parks, all with the tap of
+              a finger. Search for park hours, locations, and pet events near
+              you with the Discovery feature. In addition, PetCode users get
+              exclusive access to a whole world of incredible PetPerks. Save on
+              pet food and toys while also getting premium discounts at pet
+              boutiques and groomers with PetCode.
             </Text>
-            <Icon color="petcode.neutral.400" name="arrow-thin" size="40px" alignSelf="start"/>
+            <Icon
+              color="petcode.neutral.400"
+              name="arrow-thin"
+              size="40px"
+              alignSelf="start"
+            />
           </Stack>
         </Stack>
         <Footer />
