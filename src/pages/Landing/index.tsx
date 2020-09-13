@@ -493,7 +493,7 @@ const LandingPage: React.FunctionComponent = () => {
         />
         <Image
           position="absolute"
-          top="50%"
+          top="55%"
           left={0}
           zIndex={-1}
           transform="translateY(-50%)"
