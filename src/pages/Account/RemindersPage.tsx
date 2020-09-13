@@ -22,7 +22,7 @@ import {
   InfoFieldLabel,
   InfoFieldInput,
   InfoFieldSelect,
-} from "./components/InfoField";
+} from "../../components/Shared/family/InfoField";
 
 import { action, observable, IObservableValue } from "mobx";
 import { useObserver } from "mobx-react";

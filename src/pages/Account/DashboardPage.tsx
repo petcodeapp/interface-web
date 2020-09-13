@@ -4,7 +4,10 @@ import { Box, Flex, Image, Stack, Text } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
 
 import AccountPageLayout from "./components/AccountPageLayout";
-import { InfoFieldText, InfoFieldLabel } from "./components/InfoField";
+import {
+  InfoFieldText,
+  InfoFieldLabel,
+} from "../../components/Shared/family/InfoField";
 import ReminderItem from "./components/ReminderItem";
 
 import { observable } from "mobx";
@@ -159,7 +162,7 @@ const DashboardPage = withTheme(({ theme }) => {
               Reminders
             </Text>
             {service.pets[0]?.reminders.map((reminder: any, idx: number) => (
-              <ReminderItem index={idx} reminder={reminder} />
+              <ReminderItem key={idx} index={idx} reminder={reminder} />
             ))}
           </Flex>
         )}
