@@ -157,7 +157,7 @@ const LandingPage: React.FunctionComponent = () => {
                 opacity="0.4"
                 d="M-31 0C65 37.9882 357 110.166 757 94.9704C939.667 67.1124 1337 19.7538 1465 53.1834V619.207C1457.45 617.473 1449.1 615.663 1440 613.802V137H0V637.628C-23.4734 639.418 -43.3016 640.882 -59 642L-31 0Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.995, 1.015] }}
+                animate={{ scale: [0.99, 1.01] }}
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -250,7 +250,7 @@ const LandingPage: React.FunctionComponent = () => {
                 opacity="0.4"
                 d="M0 11.3675C-11.9113 7.35158 -22.2667 3.53123 -31 0L-59 656C47.6667 648.237 345 624.17 681 590.012C1017 555.853 1343.67 604.245 1465 632.71V54.3432C1457.55 52.3545 1449.18 50.6455 1440 49.1962V536H0V11.3675Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.995, 1.015] }}
+                animate={{ scale: [0.99, 1.01] }}
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -311,7 +311,7 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
             <svg
               style={{ position: "absolute", bottom: 0 }}
-              viewBox="0 0 1440 237"
+              viewBox="0 12 1440 200"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -319,7 +319,7 @@ const LandingPage: React.FunctionComponent = () => {
                 opacity="0.4"
                 d="M1572 51.4354C1388.5 12.0588 1024.5 -16.4413 575.5 99.5591C144.038 211.028 -162.778 196.788 -288 138.195V213H1546.39L1572 51.4354Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.995, 1.015] }}
+                animate={{ scale: [0.97, 1.03] }}
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -381,10 +381,10 @@ const LandingPage: React.FunctionComponent = () => {
               />
             </Box>
           </Stack>
-          <Box position="relative" paddingBottom="10.55%">
+          <Box position="relative" paddingBottom="9.12%">
             <svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 528 1440 185"
+              viewBox="0 528 1440 110"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -395,7 +395,7 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
             <svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 743 1440 152"
+              viewBox="0 743 1440 130"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -403,7 +403,7 @@ const LandingPage: React.FunctionComponent = () => {
                 opacity="0.4"
                 d="M-288 743V759.512C-281.42 752.389 -274.749 746.971 -267.826 743H-288ZM-180.746 743C-169.951 746.018 -158.314 749.623 -145.665 753.541C-81.1042 773.542 9.84814 801.718 150 801.718C249.053 801.718 363.798 815.923 488.855 831.405C776.014 866.955 1117.55 909.235 1448.31 801.718L1457.61 743H-180.746ZM1547 179.139L1572 21.4355C1564.01 19.7202 1555.67 18.0255 1547 16.3626V179.139Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.995, 1.015] }}
+                animate={{ scale: [0.99, 1.01] }}
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
