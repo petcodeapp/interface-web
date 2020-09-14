@@ -291,7 +291,12 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Flex direction="column" position="relative" overflow="hidden">
+        <Flex
+          ref={ref => healthSectionRef.current = ref}
+          direction="column"
+          position="relative"
+          overflow="hidden"
+        >
           <Box position="relative" paddingBottom="16.46%">
             <svg
               style={{ position: "absolute", bottom: 0 }}
@@ -324,7 +329,6 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
           </Box>
           <Stack
-            ref={ref => healthSectionRef.current = ref}
             isInline
             color="white"
             paddingY={10}
