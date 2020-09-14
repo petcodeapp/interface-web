@@ -291,7 +291,7 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Flex direction="column">
+        <Flex direction="column" position="relative" overflow="hidden">
           <Box position="relative" paddingBottom="16.46%">
             <svg
               style={{ position: "absolute", bottom: 0 }}
@@ -350,16 +350,11 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <Box
-              height={400}
-              flexGrow={1}
-              position="relative"
-              overflowY="visible"
-            >
+            <Box flexGrow={1}>
               <IPhoneX
                 height={400}
                 wrapperProps={{
-                  style: { position: "relative", left: "5%", zIndex: 1 },
+                  style: { position: "relative", zIndex: 1 },
                 }}
                 screenProps={{
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
@@ -374,8 +369,8 @@ const LandingPage: React.FunctionComponent = () => {
               </IPhoneX>
               <Image
                 position="absolute"
-                top="-25%"
-                right={0}
+                top="18%"
+                left="65%"
                 height={450}
                 src="/media/dashboard-web-screen.svg"
                 alt="Dashboard web screen"
