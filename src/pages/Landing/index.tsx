@@ -185,7 +185,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
-                  onClick={() => safetySectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => safetySectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })}
                 >
                   Safety
                 </LongButton>
@@ -193,7 +193,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
-                  onClick={() => healthSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => healthSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })}
                 >
                   Health
                 </LongButton>
@@ -201,7 +201,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
-                  onClick={() => discoverySectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => discoverySectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })}
                 >
                   Discovery
                 </LongButton>
@@ -294,7 +294,6 @@ const LandingPage: React.FunctionComponent = () => {
           </Stack>
         </Stack>
         <Flex
-          ref={ref => healthSectionRef.current = ref}
           direction="column"
           position="relative"
           overflow="hidden"
@@ -331,6 +330,7 @@ const LandingPage: React.FunctionComponent = () => {
             </svg>
           </Box>
           <Stack
+            ref={ref => healthSectionRef.current = ref}
             isInline
             color="white"
             paddingY={10}
