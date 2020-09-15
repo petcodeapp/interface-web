@@ -373,7 +373,8 @@ const LandingPage: React.FunctionComponent = () => {
             <Box flexGrow={1}>
               <MotionBox
                 position="relative"
-                animate={{ top: ["-1%", "1%"] }}
+                zIndex={1}
+                animate={{ y: [-5, 5] }}
                 // @ts-ignore
                 transition={{
                   repeat: Infinity,
@@ -383,9 +384,6 @@ const LandingPage: React.FunctionComponent = () => {
               >
                 <IPhoneX
                   height={400}
-                  wrapperProps={{
-                    style: { position: "relative", zIndex: 1 },
-                  }}
                   screenProps={{
                     style: { backgroundColor: theme.colors.petcode.blue[400] },
                   }}
@@ -400,7 +398,8 @@ const LandingPage: React.FunctionComponent = () => {
               </MotionBox>
               <MotionImage
                 position="absolute"
-                animate={{ top: ["17.5%", "18.5%"] }}
+                top="17%"
+                animate={{ y: [-5, 5] }}
                 // @ts-ignore
                 transition={{
                   repeat: Infinity,
@@ -462,7 +461,8 @@ const LandingPage: React.FunctionComponent = () => {
           >
             <MotionBox
               position="relative"
-              animate={{ top: ["-1%", "1%"] }}
+              zIndex={1}
+              animate={{ y: [-5, 5] }}
               // @ts-ignore
               transition={{
                 repeat: Infinity,
@@ -473,7 +473,7 @@ const LandingPage: React.FunctionComponent = () => {
               <IPhoneX
                 height={400}
                 wrapperProps={{
-                  style: { position: "absolute", left: 500, zIndex: 1 },
+                  style: { position: "absolute", left: 500 },
                 }}
                 screenProps={{
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
@@ -488,8 +488,9 @@ const LandingPage: React.FunctionComponent = () => {
               </IPhoneX>
             </MotionBox>
             <MotionImage
+              top="-17%"
               position="relative"
-              animate={{ top: ["-18%", "-17%"] }}
+              animate={{ y: [-5, 5] }}
               // @ts-ignore
               transition={{
                 repeat: Infinity,
