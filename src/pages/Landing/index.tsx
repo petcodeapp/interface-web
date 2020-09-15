@@ -489,7 +489,7 @@ const LandingPage: React.FunctionComponent = () => {
             </MotionBox>
             <MotionImage
               position="relative"
-              animate={{ top: [-75, -65] }}
+              animate={{ top: ["-18%", "-17%"] }}
               // @ts-ignore
               transition={{
                 repeat: Infinity,
