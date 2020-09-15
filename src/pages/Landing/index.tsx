@@ -311,7 +311,7 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Flex direction="column">
+        <Flex direction="column" overflow="hidden">
           <Box position="relative" paddingBottom="16.46%">
             <svg
               style={{ position: "absolute", bottom: 0 }}
