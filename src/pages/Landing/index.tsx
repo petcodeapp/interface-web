@@ -311,7 +311,7 @@ const LandingPage: React.FunctionComponent = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Flex direction="column" position="relative" overflow="hidden">
+        <Flex direction="column">
           <Box position="relative" paddingBottom="16.46%">
             <svg
               style={{ position: "absolute", bottom: 0 }}
@@ -352,7 +352,7 @@ const LandingPage: React.FunctionComponent = () => {
             backgroundColor={theme.colors.petcode.blue[400]}
             spacing={16}
           >
-            <Stack spacing={4} flexBasis="50%">
+            <Stack spacing={4} flexGrow={1}>
               <Heading fontSize="5xl" paddingBottom={4}>
                 Health
               </Heading>
@@ -370,7 +370,7 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <Box flexGrow={1}>
+            <Box position="relative" flexBasis={550}>
               <MotionBox
                 position="relative"
                 zIndex={1}
@@ -398,7 +398,7 @@ const LandingPage: React.FunctionComponent = () => {
               </MotionBox>
               <MotionImage
                 position="absolute"
-                top="calc(16.46% + 10px)"
+                top="-30%"
                 animate={{ y: [-5, 5] }}
                 // @ts-ignore
                 transition={{
@@ -406,7 +406,7 @@ const LandingPage: React.FunctionComponent = () => {
                   repeatType: "reverse",
                   duration: 2.5,
                 }}
-                left="65%"
+                left={75}
                 height={450}
                 src="/media/dashboard-web-screen.svg"
                 alt="Dashboard web screen"
