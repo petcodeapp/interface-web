@@ -398,7 +398,7 @@ const LandingPage: React.FunctionComponent = () => {
               </MotionBox>
               <MotionImage
                 position="absolute"
-                top="17%"
+                top="calc(16.46% + 10px)"
                 animate={{ y: [-5, 5] }}
                 // @ts-ignore
                 transition={{
@@ -488,7 +488,7 @@ const LandingPage: React.FunctionComponent = () => {
               </IPhoneX>
             </MotionBox>
             <MotionImage
-              top="-17%"
+              top={-75}
               position="relative"
               animate={{ y: [-5, 5] }}
               // @ts-ignore
