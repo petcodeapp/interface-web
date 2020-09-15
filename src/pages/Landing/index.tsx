@@ -185,7 +185,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
-                  onClick={() => safetySectionRef.current?.scrollIntoView({ behavior: "smooth",  })}
+                  onClick={() => safetySectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Safety
                 </LongButton>
@@ -364,7 +364,7 @@ const LandingPage: React.FunctionComponent = () => {
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
-                  duration: 2,
+                  duration: 2.5,
                 }}
               >
                 <IPhoneX
@@ -391,7 +391,7 @@ const LandingPage: React.FunctionComponent = () => {
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
-                  duration: 2,
+                  duration: 2.5,
                 }}
                 left="65%"
                 height={450}
@@ -453,7 +453,7 @@ const LandingPage: React.FunctionComponent = () => {
               transition={{
                 repeat: Infinity,
                 repeatType: "reverse",
-                duration: 2,
+                duration: 2.5,
               }}
             >
               <IPhoneX
@@ -480,7 +480,7 @@ const LandingPage: React.FunctionComponent = () => {
               transition={{
                 repeat: Infinity,
                 repeatType: "reverse",
-                duration: 2,
+                duration: 2.5,
               }}
               height={450}
               src="/media/scan-locations-web-screen.svg"
