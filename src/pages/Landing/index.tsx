@@ -20,6 +20,8 @@ import BaseButton, {
 } from "../../components/Shared/button/BaseButton";
 import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import Layout from "../../components/Shared/layout";
+import MotionImage from "../../components/Motion/Image";
+import MotionBox from "../../components/Motion/Box";
 import Footer from "./Footer";
 
 import { PetCodeTheme } from "../../theme";
@@ -183,7 +185,7 @@ const LandingPage: React.FunctionComponent = () => {
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
-                  onClick={() => safetySectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => safetySectionRef.current?.scrollIntoView({ behavior: "smooth",  })}
                 >
                   Safety
                 </LongButton>
@@ -319,7 +321,7 @@ const LandingPage: React.FunctionComponent = () => {
                 opacity="0.4"
                 d="M1572 51.4354C1388.5 12.0588 1024.5 -16.4413 575.5 99.5591C144.038 211.028 -162.778 196.788 -288 138.195V213H1546.39L1572 51.4354Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.97, 1.03] }}
+                animate={{ scale: [0.99, 1.01] }}
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -355,25 +357,42 @@ const LandingPage: React.FunctionComponent = () => {
               />
             </Stack>
             <Box flexGrow={1}>
-              <IPhoneX
-                height={400}
-                wrapperProps={{
-                  style: { position: "relative", zIndex: 1 },
-                }}
-                screenProps={{
-                  style: { backgroundColor: theme.colors.petcode.blue[400] },
+              <MotionBox
+                position="relative"
+                animate={{ top: ["-1%", "1%"] }}
+                // @ts-ignore
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
                 }}
               >
-                <Image
-                  width="100%"
-                  height="100%"
-                  src="/media/scan-locations-mobile-screen.svg"
-                  alt="Scan locations mobile screen"
-                />
-              </IPhoneX>
-              <Image
+                <IPhoneX
+                  height={400}
+                  wrapperProps={{
+                    style: { position: "relative", zIndex: 1 },
+                  }}
+                  screenProps={{
+                    style: { backgroundColor: theme.colors.petcode.blue[400] },
+                  }}
+                >
+                  <Image
+                    width="100%"
+                    height="100%"
+                    src="/media/scan-locations-mobile-screen.svg"
+                    alt="Scan locations mobile screen"
+                  />
+                </IPhoneX>
+              </MotionBox>
+              <MotionImage
                 position="absolute"
-                top="18%"
+                animate={{ top: ["17.5%", "18.5%"] }}
+                // @ts-ignore
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
+                }}
                 left="65%"
                 height={450}
                 src="/media/dashboard-web-screen.svg"
@@ -427,25 +446,42 @@ const LandingPage: React.FunctionComponent = () => {
             position="relative"
             overflowY="visible"
           >
-            <IPhoneX
-              height={400}
-              wrapperProps={{
-                style: { position: "absolute", left: 500, zIndex: 1 },
-              }}
-              screenProps={{
-                style: { backgroundColor: theme.colors.petcode.blue[400] },
+            <MotionBox
+              position="relative"
+              animate={{ top: ["-1%", "1%"] }}
+              // @ts-ignore
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 2,
               }}
             >
-              <Image
-                width="100%"
-                height="100%"
-                src="/media/pet-parks-mobile-screen.svg"
-                alt="Pet parks mobile screen"
-              />
-            </IPhoneX>
-            <Image
+              <IPhoneX
+                height={400}
+                wrapperProps={{
+                  style: { position: "absolute", left: 500, zIndex: 1 },
+                }}
+                screenProps={{
+                  style: { backgroundColor: theme.colors.petcode.blue[400] },
+                }}
+              >
+                <Image
+                  width="100%"
+                  height="100%"
+                  src="/media/pet-parks-mobile-screen.svg"
+                  alt="Pet parks mobile screen"
+                />
+              </IPhoneX>
+            </MotionBox>
+            <MotionImage
               position="relative"
-              top={-70}
+              animate={{ top: [-75, -65] }}
+              // @ts-ignore
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 2,
+              }}
               height={450}
               src="/media/scan-locations-web-screen.svg"
               alt="Scan locations web screen"
