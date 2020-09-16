@@ -137,7 +137,7 @@ const LandingPage: React.FunctionComponent = () => {
           </Stack>
         </Stack>
         <Flex direction="column">
-          <Box position="relative" paddingBottom="9.44%">
+          <Box position="relative" paddingBottom="10.94%">
             <svg
               style={{ position: "absolute", bottom: 0 }}
               viewBox="0 0 1440 75"
@@ -145,21 +145,21 @@ const LandingPage: React.FunctionComponent = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M33.3533 22.7649C248.968 39.8867 527.214 61.9822 865 18.3403C1104.03 -12.5423 1373 1.27264 1457 18.3403V532.27C1451.29 531.795 1445.62 531.303 1440 530.795V76H0V540.46C-13.1227 542.143 -21.0646 543.673 -23 545V18.3403C-4.71817 19.7416 14.067 21.2334 33.3533 22.7649Z"
+                d="M1440 15.3234C1340.95 -0.21926 1089.74 -10.6964 865 18.3403C527.214 61.9822 248.968 39.8867 33.3533 22.7648L33.353 22.7648C22.0635 21.8683 10.9457 20.9855 0 20.1264V76H1440V15.3234Z"
                 fill={theme.colors.petcode.blue[400]}
               />
             </svg>
             <svg
               style={{ position: "absolute", bottom: 0 }}
-              viewBox="0 0 1440 136"
+              viewBox="0 0 1440 126"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <motion.path
                 opacity="0.4"
-                d="M-31 0C65 37.9882 357 110.166 757 94.9704C939.667 67.1124 1337 19.7538 1465 53.1834V619.207C1457.45 617.473 1449.1 615.663 1440 613.802V137H0V637.628C-23.4734 639.418 -43.3016 640.882 -59 642L-31 0Z"
+                d="M0 126H1440V37.1463C1291.46 14.2022 929.032 57.7343 757 83.9704C393.389 97.7833 119.022 39.3974 0 0.124929V126Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.99, 1.01] }}
+                animate={{ scale: [1, 1.25] }}
                 transition={{
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -248,36 +248,36 @@ const LandingPage: React.FunctionComponent = () => {
               </Stack>
             </Stack>
           </Stack>
-          <Box position="relative" paddingBottom="8.2%">
+          <Box position="relative" paddingBottom="10.07%">
             <svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 489 1440 87"
+              viewBox="0 0 1440 83"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M0 5.86201C-7.75309 5.20103 -15.4198 4.55301 -23 3.92187V576C-7 564.082 419.5 537.16 790 524.584C1064.63 515.263 1205.09 532.556 1333.7 548.389C1374.69 553.434 1414.47 558.332 1457 562.172V3.92187C1451.98 2.81368 1446.3 1.71811 1440 0.644775V489H0V5.86201Z"
+                d="M1440 -3.05176e-05H0V82.0683C95.3623 68.7786 464.317 46.6392 790 35.5844C1064.63 26.2625 1205.09 43.5557 1333.7 59.3885C1369.18 63.7565 1403.76 68.0134 1440 71.5695V-3.05176e-05Z"
                 fill={theme.colors.petcode.blue[400]}
               />
             </svg>
-            <svg
+            <motion.svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 537 1440 119"
+              viewBox="0 0 1440 116"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              animate={{ scaleY: [1, 1.1] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 2,
+              }}
             >
-              <motion.path
+              <path
                 opacity="0.4"
-                d="M0 11.3675C-11.9113 7.35158 -22.2667 3.53123 -31 0L-59 656C47.6667 648.237 345 624.17 681 590.012C1017 555.853 1343.67 604.245 1465 632.71V54.3432C1457.55 52.3545 1449.18 50.6455 1440 49.1962V536H0V11.3675Z"
+                d="M1440 0H0V115.533C136.023 104.934 394.45 83.1432 681 54.0118C996.083 21.9797 1302.96 62.5395 1440 91.187V0Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.99, 1.01] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                }}
               />
-            </svg>
+            </motion.svg>
           </Box>
         </Flex>
         <Stack
@@ -312,7 +312,7 @@ const LandingPage: React.FunctionComponent = () => {
           </Stack>
         </Stack>
         <Flex direction="column" overflow="hidden">
-          <Box position="relative" paddingBottom="16.46%">
+          <Box position="relative" paddingBottom="17.1%">
             <svg
               style={{ position: "absolute", bottom: 0 }}
               viewBox="0 0 1440 158"
@@ -320,34 +320,34 @@ const LandingPage: React.FunctionComponent = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M1607 36.1487C1436.77 -13.7789 1031.31 -20.7212 572.5 71.7313C138.425 159.199 -217.315 133.549 -349 95.0797L-336.95 159H1578.01L1607 36.1487Z"
+                d="M1440 7.81967C1232.66 -11.121 917.682 2.17599 572.5 71.7313C356.208 115.315 159.365 130.813 0 130.634V159H1440V7.81967Z"
                 fill={theme.colors.petcode.blue[400]}
               />
             </svg>
-            <svg
+            <motion.svg
               style={{ position: "absolute", bottom: 0 }}
-              viewBox="0 12 1440 200"
+              viewBox="0 0 1440 197"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              animate={{ scaleY: [1, 1.1] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 2,
+              }}
             >
-              <motion.path
+              <path
                 opacity="0.4"
-                d="M1572 51.4354C1388.5 12.0588 1024.5 -16.4413 575.5 99.5591C144.038 211.028 -162.778 196.788 -288 138.195V213H1546.39L1572 51.4354Z"
+                d="M1440 14.0655C1238.49 -9.55997 934.104 -9.08726 575.5 83.559C345.303 143.031 150.587 166.72 0 166.98V197H1440V14.0655Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.99, 1.01] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                }}
               />
-            </svg>
+            </motion.svg>
           </Box>
           <Stack
             ref={(ref) => (healthSectionRef.current = ref)}
             isInline
             color="white"
-            paddingY={10}
+            paddingTop={10}
             paddingLeft={32}
             backgroundColor={theme.colors.petcode.blue[400]}
             spacing={16}
@@ -413,36 +413,36 @@ const LandingPage: React.FunctionComponent = () => {
               />
             </Box>
           </Stack>
-          <Box position="relative" paddingBottom="9.12%">
+          <Box position="relative" paddingBottom="12.43%">
             <svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 528 1440 110"
+              viewBox="0 70 1440 109"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M0 112.893C-160.464 112.73 -282.931 98.1003 -349 80.5344L-218 713C-201.819 703.047 -188.522 691.151 -174.54 678.642C-124.687 634.043 -66.1147 581.642 163 581.642C273.07 581.642 396.65 593.44 529.45 606.117C811.691 633.061 1135.58 663.98 1459.92 594.073L1607 26.8998C1564.43 15.5361 1507.15 6.61907 1438 0.95166V528H0V112.893Z"
+                d="M0 0V135.886C42.159 128.246 95.0876 123.642 163 123.642C273.07 123.642 396.65 135.44 529.45 148.117C805.912 174.509 1122.33 204.715 1440 140.241V0H0Z"
                 fill={theme.colors.petcode.blue[400]}
               />
             </svg>
-            <svg
+            <motion.svg
               style={{ position: "absolute", top: 0 }}
-              viewBox="0 743 1440 130"
+              viewBox="0 0 1440 128"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              animate={{ scaleY: [1, 1.1] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 2,
+              }}
             >
-              <motion.path
+              <path
                 opacity="0.4"
-                d="M-288 743V759.512C-281.42 752.389 -274.749 746.971 -267.826 743H-288ZM-180.746 743C-169.951 746.018 -158.314 749.623 -145.665 753.541C-81.1042 773.542 9.84814 801.718 150 801.718C249.053 801.718 363.798 815.923 488.855 831.405C776.014 866.955 1117.55 909.235 1448.31 801.718L1457.61 743H-180.746ZM1547 179.139L1572 21.4355C1564.01 19.7202 1555.67 18.0255 1547 16.3626V179.139Z"
+                d="M1440 0H0V62.3521C38.5679 59.8264 87.2821 58.7177 150 58.7177C249.053 58.7177 363.798 72.9229 488.855 88.4047L488.855 88.4048C773.611 123.657 1111.83 165.528 1440 61.3855V0Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [0.99, 1.01] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                }}
               />
-            </svg>
+            </motion.svg>
           </Box>
         </Flex>
         <Stack
