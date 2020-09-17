@@ -28,7 +28,7 @@ import { PetCodeTheme } from "../../theme";
 
 import "html5-device-mockups/dist/device-mockups.min.css";
 
-const LongButton: React.FC<BaseButtonProps> = (props) => (
+const ActionButton: React.FC<BaseButtonProps> = (props) => (
   <BaseButton size="md" paddingX={10} textTransform="uppercase" {...props} />
 );
 
@@ -125,8 +125,8 @@ const LandingPage: React.FunctionComponent = () => {
               An endless suite of features for pet owners.
             </Text>
             <Stack isInline>
-              <LongButton variantColor="petcode.yellow">Watch Video</LongButton>
-              <LongButton variantColor="petcode.yellow">Get Started</LongButton>
+              <ActionButton variantColor="petcode.yellow">Watch Video</ActionButton>
+              <ActionButton variantColor="petcode.yellow">Get Started</ActionButton>
             </Stack>
           </Stack>
         </Stack>
@@ -175,7 +175,7 @@ const LandingPage: React.FunctionComponent = () => {
                 The Ultimate Pet Management System
               </Heading>
               <Stack isInline>
-                <LongButton
+                <ActionButton
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
@@ -188,8 +188,8 @@ const LandingPage: React.FunctionComponent = () => {
                   }
                 >
                   Safety
-                </LongButton>
-                <LongButton
+                </ActionButton>
+                <ActionButton
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
@@ -202,8 +202,8 @@ const LandingPage: React.FunctionComponent = () => {
                   }
                 >
                   Health
-                </LongButton>
-                <LongButton
+                </ActionButton>
+                <ActionButton
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
@@ -216,7 +216,7 @@ const LandingPage: React.FunctionComponent = () => {
                   }
                 >
                   Discovery
-                </LongButton>
+                </ActionButton>
               </Stack>
               <Text fontWeight="bold" fontSize="xl">
                 So Much More Than Just A Tag
@@ -504,20 +504,20 @@ const LandingPage: React.FunctionComponent = () => {
           >
             <Heading fontSize="5xl">Discovery</Heading>
             <Stack isInline>
-              <LongButton
+              <ActionButton
                 variant="outline"
                 borderColor="petcode.neutral.700"
                 backgroundColor="transparent"
               >
                 Pet Parks
-              </LongButton>
-              <LongButton
+              </ActionButton>
+              <ActionButton
                 variant="outline"
                 borderColor="petcode.neutral.700"
                 backgroundColor="transparent"
               >
                 Pet Perks
-              </LongButton>
+              </ActionButton>
             </Stack>
             <Text fontWeight="thin">
               With Discovery, you explore nearby pet parks, all with the tap of
