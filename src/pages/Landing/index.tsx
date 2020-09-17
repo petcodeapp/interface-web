@@ -105,21 +105,15 @@ const LandingPage: React.FunctionComponent = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse cx="-11" cy="-20.5" rx="578" ry="390.5" fill="#51BCDA" />
+          <ellipse cx="-11" cy="-20.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <svg
-          style={{
-            position: "absolute",
-            left: 75,
-            top: 0,
-            width: 300,
-            opacity: 0.4,
-          }}
+          style={{ position: "absolute", left: 75, top: 0, width: 300 }}
           viewBox="0 0 743 318"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse cx="145" cy="-96.5" rx="578" ry="390.5" fill="#51BCDA" />
+          <ellipse opacity="0.4" cx="145" cy="-96.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <Stack isInline paddingX={10}>
           <Image src="/media/hero-image.png" alt="Hero image" />
