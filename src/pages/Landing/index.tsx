@@ -100,7 +100,7 @@ const LandingPage: React.FunctionComponent = () => {
         paddingTop={200}
       >
         <svg
-          style={{ position: "absolute", left: 0, top: 0, width: 300 }}
+          style={{ position: "absolute", left: 0, top: 0, height: 200 }}
           viewBox="0 0 567 370"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ const LandingPage: React.FunctionComponent = () => {
           <ellipse cx="-11" cy="-20.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <svg
-          style={{ position: "absolute", left: 75, top: 0, width: 300 }}
+          style={{ position: "absolute", left: 75, top: 0, height: 150 }}
           viewBox="0 0 743 318"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
