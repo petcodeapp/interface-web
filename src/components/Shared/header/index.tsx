@@ -4,10 +4,18 @@ import { Box, FlexProps, Image, Link, LinkProps, Stack } from "@chakra-ui/core";
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../views/Auth/index";
 
+import { Link as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
+
 import BaseButton, { BaseButtonProps } from "../button/BaseButton";
 
-const HeaderLink: React.FC<LinkProps> = (props) => (
-  <Link fontSize="lg" fontFamily="Open Sans" {...props} />
+const HeaderLink: React.FC<LinkProps & RouterLinkProps> = (props) => (
+  <Link
+    // @ts-ignore
+    as={RouterLink}
+    fontSize="lg"
+    fontFamily="Open Sans"
+    {...props}
+  />
 );
 
 const HeaderButton: React.FC<BaseButtonProps> = (props) => (
@@ -32,16 +40,18 @@ const Header: React.FC<FlexProps> = (props) => {
       color="white"
       {...props}
     >
-      <Image src="/media/petcode-logo-with-qr-code.png" height="40px" />
+      <HeaderLink to="/">
+        <Image src="/media/petcode-logo-with-qr-code.png" height="40px" />
+      </HeaderLink>
       <Box flexGrow={1} />
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink>How It Works</HeaderLink>
-      <HeaderLink href="/products">Purchase</HeaderLink>
+      <HeaderLink to="/">Home</HeaderLink>
+      <HeaderLink to="/howitworks">How It Works</HeaderLink>
+      <HeaderLink to="/products">Purchase</HeaderLink>
       {!auth.isLoggedIn ? (
         <Stack isInline spacing={4}>
           <HeaderButton>
             <HeaderLink
-              href="/signup"
+              to="/signup"
               fontWeight="thin"
               color="petcode.neutral.700"
             >
@@ -50,7 +60,7 @@ const Header: React.FC<FlexProps> = (props) => {
           </HeaderButton>
           <HeaderButton>
             <HeaderLink
-              href="/login"
+              to="/login"
               fontWeight="thin"
               color="petcode.neutral.700"
             >
@@ -61,7 +71,7 @@ const Header: React.FC<FlexProps> = (props) => {
       ) : (
         <HeaderButton>
           <HeaderLink
-            href="/dashboard"
+            to="/dashboard"
             fontWeight="thin"
             color="petcode.neutral.700"
           >
