@@ -41,17 +41,17 @@ const Feature: React.FC<StackProps> = (props) => (
   </Stack>
 );
 
-const FeatureDropDown: React.FC<{
+const FeatureDropDown: React.FC<StackProps & {
   name: string;
   description: string;
   initiallyOpen?: boolean;
-}> = ({ name, description, initiallyOpen = false }) => {
+}> = ({ name, description, initiallyOpen = false, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
 
   const [open, setOpen] = useState(initiallyOpen);
 
   return (
-    <Stack>
+    <Stack {...props}>
       <Stack isInline alignItems="center">
         <BaseCheckbox
           isChecked

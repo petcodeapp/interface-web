@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { Box, Flex, Heading, Image, Stack, Text, ThemeProvider, useTheme } from "@chakra-ui/core";
+import { Box, Flex, Heading, Image, Stack, StackProps, Text, ThemeProvider, useTheme } from "@chakra-ui/core";
 import { motion, useAnimation } from "framer-motion";
 
 import BaseButton, {
@@ -16,6 +16,30 @@ import { PetCodeTheme } from "../../theme";
 
 const ActionButton: React.FC<BaseButtonProps> = (props) => (
   <BaseButton size="md" paddingX={10} textTransform="uppercase" {...props} />
+);
+
+const HowItWorksStep: React.FC<StackProps & {
+  image: string;
+  stepNumber: number;
+  name: string;
+  description: string;
+}> = ({ image, stepNumber, name, description, ...props }) => (
+  <Stack alignItems="center" textAlign="center" spacing={4} maxWidth={300} {...props}>
+    <Image
+      height={150}
+      src={image}
+      alt={`Step ${stepNumber}`}
+    />
+    <Text color="petcode.yellow.400" fontSize="xl">
+      Step {stepNumber}
+    </Text>
+    <Heading color="petcode.neutral.700" fontSize="3xl">
+      {name}
+    </Heading>
+    <Text fontWeight="thin" marginX={3}>
+      {description}
+    </Text>
+  </Stack>
 );
 
 const HowItWorksPage: React.FunctionComponent = () => {
@@ -61,22 +85,66 @@ const HowItWorksPage: React.FunctionComponent = () => {
           <ellipse opacity="0.4" cx="598" cy="-116.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <Flex
-          direction="row"
-          backgroundImage="url(/media/how-it-works-splash.png)"
-          backgroundSize="cover"
+          direction="column"
           position="relative"
           top={-200}
-          height="calc(100vw * 0.5875)"
         >
-          <Box flexBasis="55%" />
-          <Stack color="white">
-            <Box flexGrow={2} />
-            <Heading fontSize="6xl">How It Works</Heading>
-            <Stack isInline>
-              <ActionButton variantColor="petcode.yellow">Watch Video</ActionButton>
-              <ActionButton variantColor="petcode.yellow">Get Started</ActionButton>
+          <Flex
+            direction="row"
+            backgroundImage="url(/media/how-it-works-splash.svg)"
+            backgroundSize="cover"
+            height="calc(100vw * 0.5875)"
+          >
+            <Box flexBasis="55%" />
+            <Stack color="white">
+              <Box flexGrow={2} />
+              <Heading fontSize="6xl">How It Works</Heading>
+              <Stack isInline>
+                <ActionButton variantColor="petcode.yellow">Watch Video</ActionButton>
+                <ActionButton variantColor="petcode.yellow">Get Started</ActionButton>
+              </Stack>
+              <Box flexGrow={3} />
             </Stack>
-            <Box flexGrow={3} />
+          </Flex>
+          <Stack spacing={10} paddingTop={10} alignItems="center">
+            <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4}>
+              Get Started
+            </Heading>
+            <Stack isInline spacing={6}>
+              <HowItWorksStep
+                image="/media/order-petcode-tag-step.svg"
+                stepNumber={1}
+                name="Order Your PetCode QR Tag"
+                description="Head to the “Purchase” page to order a tag"
+              />
+              <HowItWorksStep
+                image="/media/create-petcode-account-step.svg"
+                stepNumber={2}
+                name="Create Your PetCode Account"
+                description="Set up an account with PetCode to begin using the tag"
+              />
+              <HowItWorksStep
+                image="/media/activate-petcode-tag-step.svg"
+                stepNumber={3}
+                name="Activate Your PetCode QR Tag"
+                description="Connect your PetCode account with your new  tag to activate your QR Tag"
+              />
+            </Stack>
+            <Stack isInline spacing={6}>
+              <HowItWorksStep
+                image="/media/upload-information-step.svg"
+                stepNumber={4}
+                name="Upload Information"
+                description="Once set up, add your info to the tag to access the full functionality of PetCode"
+              />
+              <HowItWorksStep
+                maxWidth={400}
+                image="/media/finished-step.svg"
+                stepNumber={5}
+                name="You’re Now Set Up with Your PetCode Tag!"
+                description="Enjoy the full range of features that PetCode’s tag and software give you!"
+              />
+            </Stack>
           </Stack>
         </Flex>
         {/* <Box position="relative" paddingBottom="47%">
