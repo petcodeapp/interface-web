@@ -66,7 +66,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
           position: "absolute",
           backgroundColor: "transparent",
         }}
-        paddingTop={200}
+        paddingTop={0}
       >
         <svg
           style={{ position: "absolute", zIndex: 1, right: 0, top: 0, height: 140 }}
@@ -86,8 +86,6 @@ const HowItWorksPage: React.FunctionComponent = () => {
         </svg>
         <Flex
           direction="column"
-          position="relative"
-          top={-200}
         >
           <Flex
             direction="row"
@@ -106,7 +104,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               <Box flexGrow={3} />
             </Stack>
           </Flex>
-          <Stack spacing={10} paddingTop={10} alignItems="center">
+          <Stack spacing={10} paddingY={10} alignItems="center">
             <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4}>
               Get Started
             </Heading>
@@ -146,90 +144,135 @@ const HowItWorksPage: React.FunctionComponent = () => {
               />
             </Stack>
           </Stack>
-        </Flex>
-        {/* <Box position="relative" paddingBottom="47%">
-          <MotionFlex
-            ref={ref}
-            animate={controls}
-            direction="row"
-            position="absolute"
-            top="50%"
-            left="50%"
-            transform="translate(-50%, -50%)"
-            color="white"
-          >
-            <MotionBox
-              alignSelf="end"
-              width="300px"
-              initial="hidden"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { opacity: 1 },
-              }}
-              // @ts-ignore
-              transition={{ duration: 2 }}
-            >
-              <Text>
-                Each QR code is unique to that pet. I’m not sure what else to
-                write here
-              </Text>
-            </MotionBox>
-            <svg
-              style={{ marginBottom: 23 }}
-              width="155"
-              height="55"
-              viewBox="0 0 155 55"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <motion.path
-                d="M 0,55H 105L 153 2"
-                stroke={theme.colors.petcode.neutral[400]}
-                strokeWidth={2}
-                initial="hidden"
-                variants={{
-                  hidden: { pathLength: 0 },
-                  visible: { pathLength: 1 },
+          <Flex direction="column">
+            <Box position="relative" paddingBottom="9.625%">
+              <svg
+                style={{ position: "absolute", bottom: 0 }}
+                viewBox="0 0 1440 76"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1440 16.1984C1340.95 0.65578 1089.74 -9.82133 865 19.2153C527.214 62.8572 248.968 40.7618 33.3533 23.6399L33.353 23.6399C22.0635 22.7434 10.9457 21.8605 0 21.0014V76.875H1440V16.1984Z"
+                  fill={theme.colors.petcode.blue[400]}
+                />
+              </svg>
+              <motion.svg
+                style={{ position: "absolute", bottom: 0 }}
+                viewBox="0 0 1440 126"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                animate={{ scaleY: [1, 1.1] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
                 }}
-                transition={{ duration: 2 }}
-              />
-            </svg>
-          </MotionFlex>
-          <svg
-            style={{ position: "absolute", left: 0, top: "7.68%", zIndex: -1 }}
-            viewBox="0 0 1440 597"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M878 20.9999C510 72.9999 212.667 39.6666 -10 20.9999V597C6 585 466 597 818 561C1178.23 524.158 1294 545 1470 561V20.9999C1386 2.33328 1117.03 -12.776 878 20.9999Z"
-              fill={theme.colors.petcode.blue[400]}
-            />
-          </svg>
-          <svg
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              zIndex: -1,
-              opacity: 0.4,
-            }}
-            viewBox="0 0 1440 676"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <motion.path
-              d="M770 100C370 116 78 40 -18 0L-46 676C60.6667 668 358 643.2 694 608C1030 572.8 1356.67 622.667 1478 652V56C1350 20.8 952.667 70.6667 770 100Z"
-              fill={theme.colors.petcode.blue[400]}
-              animate={{ scale: [0.995, 1.015] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-              }}
-            />
-          </svg>
-            </Box> */ }
+              >
+                <path
+                  opacity="0.4"
+                  d="M0 125.875H1440V37.0214C1291.46 14.0773 929.032 57.6094 757 83.8455C393.389 97.6584 119.022 39.2724 0 0V125.875Z"
+                  fill={theme.colors.petcode.blue[400]}
+                />
+              </motion.svg>
+            </Box>
+            <motion.div
+              ref={ref}
+              animate={controls}
+            >
+              <Stack
+                backgroundColor="petcode.blue.400"
+                color="white"
+                isInline
+                paddingX={32}
+                paddingY={12}
+                spacing={16}
+                justifyContent="space-between"
+              >
+                <Stack spacing={6} flexBasis="50%">
+                  <Heading fontSize="6xl">The QR Tag</Heading>
+                  <Text fontWeight="thin">
+                    Got a new phone? Moved recently? PetCode’s durable QR tags allow you to easily update your pet’s contact info with the tap of finger—you’ll never need to buy another pet tag again. Anyone can scan our smart QR tags to see your pet’s info in a flash. Lost your pet? Our tags can reunite you with your furry friend in a flash.
+                  </Text>
+                  <ActionButton
+                    alignSelf="start"
+                    variantColor="white"
+                    color="petcode.blue.400"
+                  >
+                    Buy Now
+                  </ActionButton>
+                </Stack>
+                {/*<MotionBox
+                  alignSelf="end"
+                  width="300px"
+                  initial="hidden"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1 },
+                  }}
+                  // @ts-ignore
+                  transition={{ duration: 2 }}
+                >
+                  <Text>
+                    Each QR code is unique to that pet. I’m not sure what else to
+                    write here
+                  </Text>
+                </MotionBox>
+                <svg
+                  style={{ marginBottom: 23 }}
+                  width="155"
+                  height="55"
+                  viewBox="0 0 155 55"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <motion.path
+                    d="M 0,55H 105L 153 2"
+                    stroke={theme.colors.petcode.neutral[400]}
+                    strokeWidth={2}
+                    initial="hidden"
+                    variants={{
+                      hidden: { pathLength: 0 },
+                      visible: { pathLength: 1 },
+                    }}
+                    transition={{ duration: 2 }}
+                  />
+                  </svg>*/}
+              </Stack>
+            </motion.div>
+            <Box position="relative" paddingBottom="9.55%">
+              <svg
+                style={{ position: "absolute", top: 0 }}
+                viewBox="0 1 1440 82"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1440 0.875H0V82.9433C95.3623 69.6537 464.317 47.5142 790 36.4594C1064.63 27.1375 1205.09 44.4307 1333.7 60.2636C1369.18 64.6316 1403.76 68.8884 1440 72.4446V0.875Z"
+                  fill={theme.colors.petcode.blue[400]}
+                />
+              </svg>
+              <motion.svg
+                style={{ position: "absolute", top: 0 }}
+                viewBox="0 0 1440 125"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                animate={{ scaleY: [1, 1.1] }}
+                transition={{
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  duration: 2,
+                }}
+              >
+                <path
+                  opacity="0.4"
+                  d="M1440 0.875H0V124.684C253.483 87.1289 356.86 73.675 681 54.8868C997.167 36.5609 1303.08 65.1192 1440 92.2188V0.875Z"
+                  fill={theme.colors.petcode.blue[400]}
+                />
+              </motion.svg>
+            </Box>
+          </Flex>
+        </Flex>
       </Layout>
     </ThemeProvider>
   );
