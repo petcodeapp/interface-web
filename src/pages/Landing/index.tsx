@@ -346,7 +346,7 @@ const LandingPage: React.FunctionComponent = () => {
             backgroundColor={theme.colors.petcode.blue[400]}
             spacing={16}
           >
-            <Stack spacing={4} flexGrow={1}>
+            <Stack flexGrow={1}>
               <Heading fontSize="5xl" paddingBottom={4}>
                 Health
               </Heading>

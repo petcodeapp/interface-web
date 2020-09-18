@@ -85,151 +85,148 @@ const HowItWorksPage: React.FunctionComponent = () => {
           <ellipse opacity="0.4" cx="598" cy="-116.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <Flex
-          direction="column"
+          direction="row"
+          backgroundImage="url(/media/how-it-works-splash.svg)"
+          backgroundSize="cover"
+          height="calc(100vw * 0.5875)"
         >
-          <Flex
-            direction="row"
-            backgroundImage="url(/media/how-it-works-splash.svg)"
-            backgroundSize="cover"
-            height="calc(100vw * 0.5875)"
-          >
-            <Box flexBasis="55%" />
-            <Stack color="white">
-              <Box flexGrow={2} />
-              <Heading fontSize="6xl">How It Works</Heading>
-              <Stack isInline>
-                <ActionButton variantColor="petcode.yellow">Watch Video</ActionButton>
-                <ActionButton variantColor="petcode.yellow">Get Started</ActionButton>
-              </Stack>
-              <Box flexGrow={3} />
+          <Box flexBasis="55%" />
+          <Stack color="white">
+            <Box flexGrow={2} />
+            <Heading fontSize="6xl">How It Works</Heading>
+            <Stack isInline>
+              <ActionButton variantColor="petcode.yellow">Watch Video</ActionButton>
+              <ActionButton variantColor="petcode.yellow">Get Started</ActionButton>
             </Stack>
-          </Flex>
-          <Stack spacing={10} paddingY={10} alignItems="center">
-            <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4}>
-              Get Started
-            </Heading>
-            <Stack isInline spacing={6}>
-              <HowItWorksStep
-                image="/media/order-petcode-tag-step.svg"
-                stepNumber={1}
-                name="Order Your PetCode QR Tag"
-                description="Head to the “Purchase” page to order a tag"
-              />
-              <HowItWorksStep
-                image="/media/create-petcode-account-step.svg"
-                stepNumber={2}
-                name="Create Your PetCode Account"
-                description="Set up an account with PetCode to begin using the tag"
-              />
-              <HowItWorksStep
-                image="/media/activate-petcode-tag-step.svg"
-                stepNumber={3}
-                name="Activate Your PetCode QR Tag"
-                description="Connect your PetCode account with your new  tag to activate your QR Tag"
-              />
-            </Stack>
-            <Stack isInline spacing={6}>
-              <HowItWorksStep
-                image="/media/upload-information-step.svg"
-                stepNumber={4}
-                name="Upload Information"
-                description="Once set up, add your info to the tag to access the full functionality of PetCode"
-              />
-              <HowItWorksStep
-                maxWidth={400}
-                image="/media/finished-step.svg"
-                stepNumber={5}
-                name="You’re Now Set Up with Your PetCode Tag!"
-                description="Enjoy the full range of features that PetCode’s tag and software give you!"
-              />
-            </Stack>
+            <Box flexGrow={3} />
           </Stack>
-          <Flex direction="column">
-            <Box position="relative" paddingBottom="9.625%">
-              <svg
-                style={{ position: "absolute", bottom: 0 }}
-                viewBox="0 0 1440 76"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1440 16.1984C1340.95 0.65578 1089.74 -9.82133 865 19.2153C527.214 62.8572 248.968 40.7618 33.3533 23.6399L33.353 23.6399C22.0635 22.7434 10.9457 21.8605 0 21.0014V76.875H1440V16.1984Z"
-                  fill={theme.colors.petcode.blue[400]}
-                />
-              </svg>
-              <motion.svg
-                style={{ position: "absolute", bottom: 0 }}
-                viewBox="0 0 1440 126"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                animate={{ scaleY: [1, 1.1] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                }}
-              >
-                <path
-                  opacity="0.4"
-                  d="M0 125.875H1440V37.0214C1291.46 14.0773 929.032 57.6094 757 83.8455C393.389 97.6584 119.022 39.2724 0 0V125.875Z"
-                  fill={theme.colors.petcode.blue[400]}
-                />
-              </motion.svg>
-            </Box>
-            <motion.div
-              ref={ref}
-              animate={controls}
+        </Flex>
+        <Stack spacing={10} paddingY={10} alignItems="center">
+          <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4}>
+            Get Started
+          </Heading>
+          <Stack isInline spacing={6}>
+            <HowItWorksStep
+              image="/media/order-petcode-tag-step.svg"
+              stepNumber={1}
+              name="Order Your PetCode QR Tag"
+              description="Head to the “Purchase” page to order a tag"
+            />
+            <HowItWorksStep
+              image="/media/create-petcode-account-step.svg"
+              stepNumber={2}
+              name="Create Your PetCode Account"
+              description="Set up an account with PetCode to begin using the tag"
+            />
+            <HowItWorksStep
+              image="/media/activate-petcode-tag-step.svg"
+              stepNumber={3}
+              name="Activate Your PetCode QR Tag"
+              description="Connect your PetCode account with your new  tag to activate your QR Tag"
+            />
+          </Stack>
+          <Stack isInline spacing={6}>
+            <HowItWorksStep
+              image="/media/upload-information-step.svg"
+              stepNumber={4}
+              name="Upload Information"
+              description="Once set up, add your info to the tag to access the full functionality of PetCode"
+            />
+            <HowItWorksStep
+              maxWidth={400}
+              image="/media/finished-step.svg"
+              stepNumber={5}
+              name="You’re Now Set Up with Your PetCode Tag!"
+              description="Enjoy the full range of features that PetCode’s tag and software give you!"
+            />
+          </Stack>
+        </Stack>
+        <Flex direction="column">
+          <Box position="relative" paddingBottom="9.625%">
+            <svg
+              style={{ position: "absolute", bottom: 0 }}
+              viewBox="0 0 1440 76"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <Stack
-                backgroundColor="petcode.blue.400"
-                color="white"
-                isInline
-                paddingX={32}
-                paddingY={12}
-                spacing={16}
-                justifyContent="space-between"
+              <path
+                d="M1440 16.1984C1340.95 0.65578 1089.74 -9.82133 865 19.2153C527.214 62.8572 248.968 40.7618 33.3533 23.6399L33.353 23.6399C22.0635 22.7434 10.9457 21.8605 0 21.0014V76.875H1440V16.1984Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </svg>
+            <motion.svg
+              style={{ position: "absolute", bottom: 0 }}
+              viewBox="0 0 1440 126"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              animate={{ scaleY: [1, 1.1] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 2,
+              }}
+            >
+              <path
+                opacity="0.4"
+                d="M0 125.875H1440V37.0214C1291.46 14.0773 929.032 57.6094 757 83.8455C393.389 97.6584 119.022 39.2724 0 0V125.875Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </motion.svg>
+          </Box>
+          <Stack
+            backgroundColor="petcode.blue.400"
+            color="white"
+            isInline
+            paddingLeft={32}
+            paddingY={12}
+            justifyContent="-between"
+          >
+            <Stack flexBasis="50%" spacing={6}>
+              <Heading fontSize="6xl">The QR Tag</Heading>
+              <Text fontWeight="thin">
+                Got a new phone? Moved recently? PetCode’s durable QR tags allow you to easily update your pet’s contact info with the tap of finger—you’ll never need to buy another pet tag again. Anyone can scan our smart QR tags to see your pet’s info in a flash. Lost your pet? Our tags can reunite you with your furry friend in a flash.
+              </Text>
+              <ActionButton
+                alignSelf="start"
+                variantColor="white"
+                color="petcode.blue.400"
               >
-                <Stack spacing={6} flexBasis="50%">
-                  <Heading fontSize="6xl">The QR Tag</Heading>
-                  <Text fontWeight="thin">
-                    Got a new phone? Moved recently? PetCode’s durable QR tags allow you to easily update your pet’s contact info with the tap of finger—you’ll never need to buy another pet tag again. Anyone can scan our smart QR tags to see your pet’s info in a flash. Lost your pet? Our tags can reunite you with your furry friend in a flash.
-                  </Text>
-                  <ActionButton
-                    alignSelf="start"
-                    variantColor="white"
-                    color="petcode.blue.400"
-                  >
-                    Buy Now
-                  </ActionButton>
-                </Stack>
-                {/*<MotionBox
-                  alignSelf="end"
-                  width="300px"
-                  initial="hidden"
-                  variants={{
-                    hidden: { opacity: 0 },
-                    visible: { opacity: 1 },
-                  }}
-                  // @ts-ignore
-                  transition={{ duration: 2 }}
-                >
-                  <Text>
-                    Each QR code is unique to that pet. I’m not sure what else to
-                    write here
-                  </Text>
-                </MotionBox>
+                Buy Now
+              </ActionButton>
+            </Stack>
+            <Box position="relative" height={375}>
+              <Image
+                src="/media/tag-front.png"
+                alt="Tag front"
+                width={250}
+                height={250}
+              />
+              <MotionBox
+                ref={ref}
+                animate={controls}
+                position="absolute"
+                top={125}
+                left={150}
+              >
+                <Image
+                  src="/media/tag-back.png"
+                  alt="Tag back"
+                  width={250}
+                  height={250}
+                />
                 <svg
-                  style={{ marginBottom: 23 }}
-                  width="155"
-                  height="55"
-                  viewBox="0 0 155 55"
+                  style={{ position: "absolute", right: 157.5, top: 160 }}
+                  width="171"
+                  height="73"
+                  viewBox="0 0 171 73"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  <circle cx="159" cy="12" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
                   <motion.path
-                    d="M 0,55H 105L 153 2"
+                    d="M153 20L105 71H0"
                     stroke={theme.colors.petcode.neutral[400]}
-                    strokeWidth={2}
+                    strokeWidth="3"
                     initial="hidden"
                     variants={{
                       hidden: { pathLength: 0 },
@@ -237,41 +234,62 @@ const HowItWorksPage: React.FunctionComponent = () => {
                     }}
                     transition={{ duration: 2 }}
                   />
-                  </svg>*/}
-              </Stack>
-            </motion.div>
-            <Box position="relative" paddingBottom="9.55%">
-              <svg
-                style={{ position: "absolute", top: 0 }}
-                viewBox="0 1 1440 82"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1440 0.875H0V82.9433C95.3623 69.6537 464.317 47.5142 790 36.4594C1064.63 27.1375 1205.09 44.4307 1333.7 60.2636C1369.18 64.6316 1403.76 68.8884 1440 72.4446V0.875Z"
-                  fill={theme.colors.petcode.blue[400]}
-                />
-              </svg>
-              <motion.svg
-                style={{ position: "absolute", top: 0 }}
-                viewBox="0 0 1440 125"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                animate={{ scaleY: [1, 1.1] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                }}
-              >
-                <path
-                  opacity="0.4"
-                  d="M1440 0.875H0V124.684C253.483 87.1289 356.86 73.675 681 54.8868C997.167 36.5609 1303.08 65.1192 1440 92.2188V0.875Z"
-                  fill={theme.colors.petcode.blue[400]}
-                />
-              </motion.svg>
+                </svg>
+                <svg
+                  style={{ position: "absolute", right: 60, bottom: 225 }}
+                  width="98"
+                  height="92"
+                  viewBox="0 0 98 92"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="80" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
+                  <motion.path
+                    d="M18.0001 72L69.0001 2.00001L97.5 2"
+                    stroke={theme.colors.petcode.neutral[400]}
+                    strokeWidth="3"
+                    initial="hidden"
+                    variants={{
+                      hidden: { pathLength: 0 },
+                      visible: { pathLength: 1 },
+                    }}
+                    transition={{ duration: 2 }}
+                  />
+                </svg>
+              </MotionBox>
             </Box>
-          </Flex>
+          </Stack>
+          <Box position="relative" paddingBottom="9.55%">
+            <svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 1 1440 82"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1440 0.875H0V82.9433C95.3623 69.6537 464.317 47.5142 790 36.4594C1064.63 27.1375 1205.09 44.4307 1333.7 60.2636C1369.18 64.6316 1403.76 68.8884 1440 72.4446V0.875Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </svg>
+            <motion.svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 0 1440 125"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              animate={{ scaleY: [1, 1.1] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 2,
+              }}
+            >
+              <path
+                opacity="0.4"
+                d="M1440 0.875H0V124.684C253.483 87.1289 356.86 73.675 681 54.8868C997.167 36.5609 1303.08 65.1192 1440 92.2188V0.875Z"
+                fill={theme.colors.petcode.blue[400]}
+              />
+            </motion.svg>
+          </Box>
         </Flex>
       </Layout>
     </ThemeProvider>
