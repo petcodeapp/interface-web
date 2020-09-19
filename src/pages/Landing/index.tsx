@@ -84,7 +84,7 @@ const LandingPage: React.FunctionComponent = () => {
   const discoverySectionRef = useRef<HTMLDivElement>();
 
   const bounce = { y: [-5, 5] };
-  const wave = { scaleY: [1, 1.25] };
+  const wave = { scaleY: [1, 1.1] };
 
   const transition: Transition = {
     repeat: Infinity,
