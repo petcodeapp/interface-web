@@ -12,7 +12,7 @@ import {
   Text,
   useTheme,
 } from "@chakra-ui/core";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
 import BaseButton, {
@@ -83,6 +83,15 @@ const LandingPage: React.FunctionComponent = () => {
   const healthSectionRef = useRef<HTMLDivElement>();
   const discoverySectionRef = useRef<HTMLDivElement>();
 
+  const bounce = { y: [-5, 5] };
+  const wave = { scaleY: [1, 1.25] };
+
+  const transition: Transition = {
+    repeat: Infinity,
+    repeatType: "reverse",
+    duration: 2,
+  };
+
   return (
     <ThemeProvider
       theme={{
@@ -143,24 +152,20 @@ const LandingPage: React.FunctionComponent = () => {
                 fill={theme.colors.petcode.blue[400]}
               />
             </svg>
-            <svg
+            <motion.svg
               style={{ position: "absolute", bottom: 0 }}
               viewBox="0 0 1440 126"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              animate={wave}
+              transition={transition}
             >
-              <motion.path
+              <path
                 opacity="0.4"
                 d="M0 126H1440V37.1463C1291.46 14.2022 929.032 57.7343 757 83.9704C393.389 97.7833 119.022 39.3974 0 0.124929V126Z"
                 fill={theme.colors.petcode.blue[400]}
-                animate={{ scale: [1, 1.25] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2,
-                }}
               />
-            </svg>
+            </motion.svg>
           </Box>
           <Stack
             isInline
@@ -259,12 +264,8 @@ const LandingPage: React.FunctionComponent = () => {
               viewBox="0 0 1440 116"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={{ scaleY: [1, 1.1] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-              }}
+              animate={wave}
+              transition={transition}
             >
               <path
                 opacity="0.4"
@@ -323,12 +324,8 @@ const LandingPage: React.FunctionComponent = () => {
               viewBox="0 0 1440 197"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={{ scaleY: [1, 1.1] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-              }}
+              animate={wave}
+              transition={transition}
             >
               <path
                 opacity="0.4"
@@ -368,13 +365,9 @@ const LandingPage: React.FunctionComponent = () => {
               <MotionBox
                 position="relative"
                 zIndex={1}
-                animate={{ y: [-5, 5] }}
+                animate={bounce}
                 // @ts-ignore
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2.5,
-                }}
+                transition={transition}
               >
                 <IPhoneX
                   height={400}
@@ -393,13 +386,9 @@ const LandingPage: React.FunctionComponent = () => {
               <MotionImage
                 position="absolute"
                 top="-30%"
-                animate={{ y: [-5, 5] }}
+                animate={bounce}
                 // @ts-ignore
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 2.5,
-                }}
+                transition={transition}
                 left={75}
                 height={450}
                 src="/media/dashboard-web-screen.svg"
@@ -424,12 +413,8 @@ const LandingPage: React.FunctionComponent = () => {
               viewBox="0 0 1440 128"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={{ scaleY: [1, 1.1] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-              }}
+              animate={wave}
+              transition={transition}
             >
               <path
                 opacity="0.4"
@@ -456,13 +441,9 @@ const LandingPage: React.FunctionComponent = () => {
             <MotionBox
               position="relative"
               zIndex={1}
-              animate={{ y: [-5, 5] }}
+              animate={bounce}
               // @ts-ignore
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2.5,
-              }}
+              transition={transition}
             >
               <IPhoneX
                 height={400}
@@ -484,13 +465,9 @@ const LandingPage: React.FunctionComponent = () => {
             <MotionImage
               top={-75}
               position="relative"
-              animate={{ y: [-5, 5] }}
+              animate={bounce}
               // @ts-ignore
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2.5,
-              }}
+              transition={transition}
               height={450}
               src="/media/scan-locations-web-screen.svg"
               alt="Scan locations web screen"
