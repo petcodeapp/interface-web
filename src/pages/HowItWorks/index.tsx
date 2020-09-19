@@ -214,48 +214,99 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   width={250}
                   height={250}
                 />
-                <svg
-                  style={{ position: "absolute", right: 157.5, top: 160 }}
-                  width="171"
-                  height="73"
-                  viewBox="0 0 171 73"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <Flex
+                  direction="row"
+                  position="absolute"
+                  right={157.5}
+                  top={160}
+                  width={171 + 224.833 + 8}
                 >
-                  <circle cx="159" cy="12" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
-                  <motion.path
-                    d="M153 20L105 71H0"
-                    stroke={theme.colors.petcode.neutral[400]}
-                    strokeWidth="3"
+                  <Box flexGrow={1} />
+                  <MotionBox
+                    alignSelf="end"
                     initial="hidden"
                     variants={{
-                      hidden: { pathLength: 0 },
-                      visible: { pathLength: 1 },
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1 },
                     }}
+                    // @ts-ignore
                     transition={{ duration: 2 }}
-                  />
-                </svg>
-                <svg
-                  style={{ position: "absolute", right: 60, bottom: 225 }}
-                  width="98"
-                  height="92"
-                  viewBox="0 0 98 92"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <Text
+                      marginRight={2}
+                      transform="translateY(33%)"
+                      color={theme.colors.petcode.neutral[300]}
+                    >
+                      QR code syncs with pet profile
+                    </Text>
+                  </MotionBox>
+                  <svg
+                    width="171"
+                    height="73"
+                    viewBox="0 0 171 73"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="159" cy="12" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
+                    <motion.path
+                      d="M153 20L105 71H0"
+                      stroke={theme.colors.petcode.neutral[400]}
+                      strokeWidth="3"
+                      initial="hidden"
+                      variants={{
+                        hidden: { pathLength: 0 },
+                        visible: { pathLength: 1 },
+                      }}
+                      transition={{ duration: 2 }}
+                    />
+                  </svg>
+                </Flex>
+                <Flex
+                  direction="row"
+                  position="absolute"
+                  left={90}
+                  bottom={225}
+                  width={98 + 172.45 + 8}
                 >
-                  <circle cx="12" cy="80" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
-                  <motion.path
-                    d="M18.0001 72L69.0001 2.00001L97.5 2"
-                    stroke={theme.colors.petcode.neutral[400]}
-                    strokeWidth="3"
+                  <svg
+                    width="98"
+                    height="92"
+                    viewBox="0 0 98 92"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="12" cy="80" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
+                    <motion.path
+                      d="M18.0001 72L69.0001 2.00001L97.5 2"
+                      stroke={theme.colors.petcode.neutral[400]}
+                      strokeWidth="3"
+                      initial="hidden"
+                      variants={{
+                        hidden: { pathLength: 0 },
+                        visible: { pathLength: 1 },
+                      }}
+                      transition={{ duration: 2 }}
+                    />
+                  </svg>
+                  <MotionBox
+                    alignSelf="start"
                     initial="hidden"
                     variants={{
-                      hidden: { pathLength: 0 },
-                      visible: { pathLength: 1 },
+                      hidden: { opacity: 0 },
+                      visible: { opacity: 1 },
                     }}
+                    // @ts-ignore
                     transition={{ duration: 2 }}
-                  />
-                </svg>
+                  >
+                    <Text
+                      marginLeft={2}
+                      transform="translateY(-50%)"
+                      color={theme.colors.petcode.neutral[300]}
+                    >
+                      Made of durable epoxy
+                    </Text>
+                  </MotionBox>
+                </Flex>
               </MotionBox>
             </Box>
           </Stack>
