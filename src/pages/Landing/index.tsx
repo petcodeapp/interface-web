@@ -41,11 +41,13 @@ const Feature: React.FC<StackProps> = (props) => (
   </Stack>
 );
 
-const FeatureDropDown: React.FC<StackProps & {
-  name: string;
-  description: string;
-  initiallyOpen?: boolean;
-}> = ({ name, description, initiallyOpen = false, ...props }) => {
+const FeatureDropDown: React.FC<
+  StackProps & {
+    name: string;
+    description: string;
+    initiallyOpen?: boolean;
+  }
+> = ({ name, description, initiallyOpen = false, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
 
   const [open, setOpen] = useState(initiallyOpen);
@@ -114,7 +116,13 @@ const LandingPage: React.FunctionComponent = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse cx="-11" cy="-20.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
+          <ellipse
+            cx="-11"
+            cy="-20.5"
+            rx="578"
+            ry="390.5"
+            fill={theme.colors.petcode.blue[400]}
+          />
         </svg>
         <svg
           style={{ position: "absolute", left: 75, top: 0, height: 150 }}
@@ -122,7 +130,14 @@ const LandingPage: React.FunctionComponent = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse opacity="0.4" cx="145" cy="-96.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
+          <ellipse
+            opacity="0.4"
+            cx="145"
+            cy="-96.5"
+            rx="578"
+            ry="390.5"
+            fill={theme.colors.petcode.blue[400]}
+          />
         </svg>
         <Stack isInline paddingX={10}>
           <Image src="/media/hero-image.png" alt="Hero image" />
@@ -134,8 +149,12 @@ const LandingPage: React.FunctionComponent = () => {
               An endless suite of features for pet owners.
             </Text>
             <Stack isInline>
-              <ActionButton variantColor="petcode.yellow">Watch Video</ActionButton>
-              <ActionButton variantColor="petcode.yellow">Get Started</ActionButton>
+              <ActionButton variantColor="petcode.yellow">
+                Watch Video
+              </ActionButton>
+              <ActionButton variantColor="petcode.yellow">
+                Get Started
+              </ActionButton>
             </Stack>
           </Stack>
         </Stack>

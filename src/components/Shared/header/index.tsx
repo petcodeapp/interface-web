@@ -4,7 +4,10 @@ import { Box, FlexProps, Image, Link, LinkProps, Stack } from "@chakra-ui/core";
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../views/Auth/index";
 
-import { Link as RouterLink, LinkProps as RouterLinkProps } from "react-router-dom";
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+} from "react-router-dom";
 
 import BaseButton, { BaseButtonProps } from "../button/BaseButton";
 

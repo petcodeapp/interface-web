@@ -1,6 +1,17 @@
 import React, { useEffect } from "react";
 
-import { Box, Flex, Heading, Icon, Image, Stack, StackProps, Text, ThemeProvider, useTheme } from "@chakra-ui/core";
+import {
+  Box,
+  Flex,
+  Heading,
+  Icon,
+  Image,
+  Stack,
+  StackProps,
+  Text,
+  ThemeProvider,
+  useTheme,
+} from "@chakra-ui/core";
 import { motion, useAnimation, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
@@ -22,18 +33,22 @@ const ActionButton: React.FC<BaseButtonProps> = (props) => (
   <BaseButton size="md" paddingX={10} textTransform="uppercase" {...props} />
 );
 
-const HowItWorksStep: React.FC<StackProps & {
-  image: string;
-  stepNumber: number;
-  name: string;
-  description: string;
-}> = ({ image, stepNumber, name, description, ...props }) => (
-  <Stack alignItems="center" textAlign="center" spacing={4} maxWidth={300} {...props}>
-    <Image
-      height={150}
-      src={image}
-      alt={`Step ${stepNumber}`}
-    />
+const HowItWorksStep: React.FC<
+  StackProps & {
+    image: string;
+    stepNumber: number;
+    name: string;
+    description: string;
+  }
+> = ({ image, stepNumber, name, description, ...props }) => (
+  <Stack
+    alignItems="center"
+    textAlign="center"
+    spacing={4}
+    maxWidth={300}
+    {...props}
+  >
+    <Image height={150} src={image} alt={`Step ${stepNumber}`} />
     <Text color="petcode.yellow.400" fontSize="xl">
       Step {stepNumber}
     </Text>
@@ -82,20 +97,45 @@ const HowItWorksPage: React.FunctionComponent = () => {
         paddingTop={0}
       >
         <svg
-          style={{ position: "absolute", zIndex: 1, right: 0, top: 0, height: 140 }}
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            right: 0,
+            top: 0,
+            height: 140,
+          }}
           viewBox="0 0 873 230"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse cx="578" cy="-160.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
+          <ellipse
+            cx="578"
+            cy="-160.5"
+            rx="578"
+            ry="390.5"
+            fill={theme.colors.petcode.blue[400]}
+          />
         </svg>
         <svg
-          style={{ position: "absolute", zIndex: 1, right: 0, top: 0, height: 200 }}
+          style={{
+            position: "absolute",
+            zIndex: 1,
+            right: 0,
+            top: 0,
+            height: 200,
+          }}
           viewBox="0 0 984 298"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse opacity="0.4" cx="598" cy="-116.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
+          <ellipse
+            opacity="0.4"
+            cx="598"
+            cy="-116.5"
+            rx="578"
+            ry="390.5"
+            fill={theme.colors.petcode.blue[400]}
+          />
         </svg>
         <Flex
           direction="row"
@@ -108,8 +148,12 @@ const HowItWorksPage: React.FunctionComponent = () => {
             <Box flexGrow={2} />
             <Heading fontSize="6xl">How It Works</Heading>
             <Stack isInline>
-              <ActionButton variantColor="petcode.yellow">Watch Video</ActionButton>
-              <ActionButton variantColor="petcode.yellow">Get Started</ActionButton>
+              <ActionButton variantColor="petcode.yellow">
+                Watch Video
+              </ActionButton>
+              <ActionButton variantColor="petcode.yellow">
+                Get Started
+              </ActionButton>
             </Stack>
             <Box flexGrow={3} />
           </Stack>
@@ -193,7 +237,12 @@ const HowItWorksPage: React.FunctionComponent = () => {
             <Stack flexBasis="50%" spacing={6}>
               <Heading fontSize="6xl">The QR Tag</Heading>
               <Text fontWeight="thin">
-                Got a new phone? Moved recently? PetCode’s durable QR tags allow you to easily update your pet’s contact info with the tap of finger—you’ll never need to buy another pet tag again. Anyone can scan our smart QR tags to see your pet’s info in a flash. Lost your pet? Our tags can reunite you with your furry friend in a flash.
+                Got a new phone? Moved recently? PetCode’s durable QR tags allow
+                you to easily update your pet’s contact info with the tap of
+                finger—you’ll never need to buy another pet tag again. Anyone
+                can scan our smart QR tags to see your pet’s info in a flash.
+                Lost your pet? Our tags can reunite you with your furry friend
+                in a flash.
               </Text>
               <ActionButton
                 alignSelf="start"
@@ -256,7 +305,13 @@ const HowItWorksPage: React.FunctionComponent = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle cx="159" cy="12" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
+                    <circle
+                      cx="159"
+                      cy="12"
+                      r="10.5"
+                      stroke={theme.colors.petcode.neutral[400]}
+                      stroke-width="3"
+                    />
                     <motion.path
                       d="M153 20L105 71H0"
                       stroke={theme.colors.petcode.neutral[400]}
@@ -284,7 +339,13 @@ const HowItWorksPage: React.FunctionComponent = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <circle cx="12" cy="80" r="10.5" stroke={theme.colors.petcode.neutral[400]} stroke-width="3"/>
+                    <circle
+                      cx="12"
+                      cy="80"
+                      r="10.5"
+                      stroke={theme.colors.petcode.neutral[400]}
+                      stroke-width="3"
+                    />
                     <motion.path
                       d="M18.0001 72L69.0001 2.00001L97.5 2"
                       stroke={theme.colors.petcode.neutral[400]}
@@ -396,17 +457,20 @@ const HowItWorksPage: React.FunctionComponent = () => {
               alt="Scan locations web screen"
             />
           </Box>
-          <Stack
-            textAlign="left"
-            spacing={4}
-            color="petcode.neutral.700"
-          >
+          <Stack textAlign="left" spacing={4} color="petcode.neutral.700">
             <Heading fontSize="5xl">The Pet Portal</Heading>
             <Text fontSize="xl" color="petcode.yellow.400">
               A place your pet’s data can call home
             </Text>
             <Text fontWeight="thin">
-              All your pet’s info—from contact and medical info to name, age, and breed—in one place. Your PetPortal syncs with the PetCode QR tag and is easily accessible through our app, giving you access to the full suite of features whenever, wherever. PetCode’s app and QR tags help keep you and your pet safe, healthy, and happy. Your PetPortal opens doors to a whole world of features just waiting for you and your pet to explore. Get started with PetCode today to unlock all the features we have to offer!
+              All your pet’s info—from contact and medical info to name, age,
+              and breed—in one place. Your PetPortal syncs with the PetCode QR
+              tag and is easily accessible through our app, giving you access to
+              the full suite of features whenever, wherever. PetCode’s app and
+              QR tags help keep you and your pet safe, healthy, and happy. Your
+              PetPortal opens doors to a whole world of features just waiting
+              for you and your pet to explore. Get started with PetCode today to
+              unlock all the features we have to offer!
             </Text>
             <Flex direction="row" justifyContent="space-between">
               <Icon
@@ -415,9 +479,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 size="40px"
                 alignSelf="start"
               />
-              <ActionButton variantColor="petcode.blue">
-                Buy Now
-              </ActionButton>
+              <ActionButton variantColor="petcode.blue">Buy Now</ActionButton>
             </Flex>
           </Stack>
         </Stack>
