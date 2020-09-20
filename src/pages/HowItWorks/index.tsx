@@ -1,17 +1,21 @@
 import React, { useEffect } from "react";
 
-import { Box, Flex, Heading, Image, Stack, StackProps, Text, ThemeProvider, useTheme } from "@chakra-ui/core";
+import { Box, Flex, Heading, Icon, Image, Stack, StackProps, Text, ThemeProvider, useTheme } from "@chakra-ui/core";
 import { motion, useAnimation, Transition } from "framer-motion";
+import { IPhoneX } from "react-device-mockups";
 
 import BaseButton, {
   BaseButtonProps,
 } from "../../components/Shared/button/BaseButton";
+import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
 import Layout from "../../components/Shared/layout";
 
 import { useInView } from "react-intersection-observer";
 
 import { PetCodeTheme } from "../../theme";
+
+import "html5-device-mockups/dist/device-mockups.min.css";
 
 const ActionButton: React.FC<BaseButtonProps> = (props) => (
   <BaseButton size="md" paddingX={10} textTransform="uppercase" {...props} />
@@ -342,6 +346,80 @@ const HowItWorksPage: React.FunctionComponent = () => {
             </motion.svg>
           </Box>
         </Flex>
+        <Stack
+          isInline
+          paddingRight={32}
+          paddingY={16}
+          spacing={16}
+          justifyContent="space-between"
+        >
+          <Box
+            height={400}
+            flexGrow={1}
+            position="relative"
+            overflowY="visible"
+          >
+            <MotionBox
+              position="relative"
+              zIndex={1}
+              animate={bounce}
+              // @ts-ignore
+              transition={transition}
+            >
+              <IPhoneX
+                height={400}
+                wrapperProps={{
+                  style: { position: "absolute", left: 375 },
+                }}
+                screenProps={{
+                  style: { backgroundColor: theme.colors.petcode.blue[400] },
+                }}
+              >
+                <Image
+                  width="100%"
+                  height="100%"
+                  src="/media/pet-parks-mobile-screen.svg"
+                  alt="Pet parks mobile screen"
+                />
+              </IPhoneX>
+            </MotionBox>
+            <MotionImage
+              top={-75}
+              left={-125}
+              position="relative"
+              animate={bounce}
+              // @ts-ignore
+              transition={transition}
+              height={450}
+              src="/media/reminders-web-screen.svg"
+              alt="Scan locations web screen"
+            />
+          </Box>
+          <Stack
+            textAlign="left"
+            spacing={4}
+            color="petcode.neutral.700"
+          >
+            <Heading fontSize="5xl">The Pet Portal</Heading>
+            <Text fontSize="xl" color="petcode.yellow.400">
+              A place your pet’s data can call home
+            </Text>
+            <Text fontWeight="thin">
+              All your pet’s info—from contact and medical info to name, age, and breed—in one place. Your PetPortal syncs with the PetCode QR tag and is easily accessible through our app, giving you access to the full suite of features whenever, wherever. PetCode’s app and QR tags help keep you and your pet safe, healthy, and happy. Your PetPortal opens doors to a whole world of features just waiting for you and your pet to explore. Get started with PetCode today to unlock all the features we have to offer!
+            </Text>
+            <Flex direction="row" justifyContent="space-between">
+              <Icon
+                color="petcode.neutral.400"
+                name="arrow-thin"
+                size="40px"
+                alignSelf="start"
+              />
+              <ActionButton variantColor="petcode.blue">
+                Buy Now
+              </ActionButton>
+            </Flex>
+          </Stack>
+        </Stack>
       </Layout>
     </ThemeProvider>
   );
