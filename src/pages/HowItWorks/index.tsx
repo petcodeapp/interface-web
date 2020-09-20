@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 
 import { Box, Flex, Heading, Image, Stack, StackProps, Text, ThemeProvider, useTheme } from "@chakra-ui/core";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, Transition } from "framer-motion";
 
 import BaseButton, {
   BaseButtonProps,
 } from "../../components/Shared/button/BaseButton";
 import MotionBox from "../../components/Motion/Box";
-import MotionFlex from "../../components/Motion/Flex";
 import Layout from "../../components/Shared/layout";
 
 import { useInView } from "react-intersection-observer";
@@ -52,6 +51,15 @@ const HowItWorksPage: React.FunctionComponent = () => {
       controls.start("visible");
     }
   }, [inView]);
+
+  const bounce = { y: [-5, 5] };
+  const wave = { scaleY: [1, 1.1] };
+
+  const transition: Transition = {
+    repeat: Infinity,
+    repeatType: "reverse",
+    duration: 2,
+  };
 
   return (
     <ThemeProvider
@@ -159,12 +167,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
               viewBox="0 0 1440 126"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={{ scaleY: [1, 1.1] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-              }}
+              animate={wave}
+              transition={transition}
             >
               <path
                 opacity="0.4"
@@ -327,12 +331,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
               viewBox="0 0 1440 125"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={{ scaleY: [1, 1.1] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "reverse",
-                duration: 2,
-              }}
+              animate={wave}
+              transition={transition}
             >
               <path
                 opacity="0.4"
