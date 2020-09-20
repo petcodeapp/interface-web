@@ -10,6 +10,7 @@ import BaseButton, {
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
 import Layout from "../../components/Shared/layout";
+import Footer from "../../components/Shared/footer";
 
 import { useInView } from "react-intersection-observer";
 
@@ -420,6 +421,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
             </Flex>
           </Stack>
         </Stack>
+        <Footer />
       </Layout>
     </ThemeProvider>
   );

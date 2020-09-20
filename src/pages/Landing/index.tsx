@@ -22,7 +22,7 @@ import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
 import Layout from "../../components/Shared/layout";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
-import Footer from "./Footer";
+import Footer from "../../components/Shared/footer";
 
 import { PetCodeTheme } from "../../theme";
 
