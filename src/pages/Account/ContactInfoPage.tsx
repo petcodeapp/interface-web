@@ -177,11 +177,6 @@ const ContactInfoSection = () => {
           return (
             <ContactInfoCard
             contactInfo={contactInfo[index]}
-            setContactInfo={(property, visible) => {
-              const arr = [...contactInfo[index]]
-              
-            }}
-            
             isEditable={isEditable}
             key={index}
             />
