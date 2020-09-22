@@ -30,7 +30,6 @@
 		"babel-plugin-transform-decorators-legacy": "^1.3.5",
 		"babel-preset-react-app": "^9.1.2",
 		"emotion-theming": "^10.0.27",
-		"husky": "^4.2.5",
 		"eslint": "5.16.0",
 		"eslint-config-airbnb": "17.1.1",
 		"eslint-config-prettier": "^6.11.0",
@@ -43,6 +42,7 @@
 		"eslint-plugin-react-hooks": "1.7.0",
 		"firebase": "^7.16.0",
 		"framer-motion": "^1.11.1",
+		"husky": "^4.3.0",
 		"loader-runner": "^4.0.0",
 		"mobx": "^5.15.4",
 		"mobx-react": "^6.2.2",
@@ -78,7 +78,9 @@
 		"format": "prettier --single-quote --write 'src/**/*'",
 		"format:check": "prettier --single-quote --check 'src/**/*'",
 		"lint": "eslint \"src/**/*.{js,ts,tsx}\" --quiet --fix ",
-		"lint:check": "eslint \"src/**/*.{js,ts,tsx}\" --quiet"
+		"lint:check": "eslint \"src/**/*.{js,ts,tsx}\" --quiet",
+		"check": "yarn run format:check && yarn run lint:check",
+		"check:fix": "yarn run format && yarn run lint"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -104,5 +106,10 @@
 		"@types/react-table": "^7.0.19",
 		"@typescript-eslint/eslint-plugin": "2.19.2",
 		"@typescript-eslint/parser": "2.19.2"
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "yarn lint:check && yarn format:check"
+		}
 	}
 }
