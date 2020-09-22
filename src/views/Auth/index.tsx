@@ -1,14 +1,12 @@
-import React, { createContext } from "react";
-import Auth from "../../modules/Auth";
+import React, { createContext } from 'react'
+import Auth from '../../modules/Auth'
 
-export const AuthStore = new Auth();
+export const AuthStore = new Auth()
 
 // AuthStore.init()
 
-export const AuthContext = createContext(AuthStore);
+export const AuthContext = createContext(AuthStore)
 
-export const AuthProvider: React.FunctionComponent = ({ children }) => {
-  return (
-    <AuthContext.Provider value={AuthStore}>{children}</AuthContext.Provider>
-  );
-};
+export const AuthProvider: React.FunctionComponent = ({ children }) => (
+		<AuthContext.Provider value={AuthStore}>{children}</AuthContext.Provider>
+	)
