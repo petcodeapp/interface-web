@@ -160,6 +160,7 @@ const ContactInfoSection = () => {
   const service = React.useContext(AuthContext);
 
   const [isEditable, setEditable] = useState(false);
+  const [contactInfo, setContactInfo] = useState(service.pets[0].contacts)
   const toast = useToast();
 
   return useObserver(() => (
@@ -175,7 +176,12 @@ const ContactInfoSection = () => {
           console.log(JSON.parse(JSON.stringify(service.pets[0]?.contacts[index])))
           return (
             <ContactInfoCard
-            contactInfo={JSON.parse(JSON.stringify(service.pets[0]?.contacts[index]))}
+            contactInfo={contactInfo[index]}
+            setContactInfo={(property, visible) => {
+              const arr = [...contactInfo[index]]
+              
+            }}
+            
             isEditable={isEditable}
             key={index}
             />
