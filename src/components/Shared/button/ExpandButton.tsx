@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import { FlexProps } from '@chakra-ui/core'
 
-
 import { action, observable } from 'mobx'
 import { useObserver } from 'mobx-react'
 
