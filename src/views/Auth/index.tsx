@@ -8,5 +8,5 @@ export const AuthStore = new Auth()
 export const AuthContext = createContext(AuthStore)
 
 export const AuthProvider: React.FunctionComponent = ({ children }) => (
-		<AuthContext.Provider value={AuthStore}>{children}</AuthContext.Provider>
-	)
+	<AuthContext.Provider value={AuthStore}>{children}</AuthContext.Provider>
+)
