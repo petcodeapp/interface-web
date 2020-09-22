@@ -3,9 +3,7 @@ import { ThemeProvider, ColorModeProvider } from "@chakra-ui/core";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Routes from "./views/Router";
 import { AuthProvider } from "./views/Auth/index";
-import theme from "./theme";
-
-import "./styles/base.css";
+import theme from "./theme";  
 import { AnimatePresence } from "framer-motion";
 
 function App() {
