@@ -25,6 +25,8 @@ yarn-error.log*
 old
 
 public/app.js
+public/app.min.js
+public/app.min.js.LICENSE.txt
 
 */**/environment.ts
 .DS_Store
