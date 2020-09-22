@@ -90,7 +90,6 @@ const RegistrationForm: React.FC<any> = (props: any) => {
       onClick={async () => {
         await service.createNewUser(email, password, tagNumber)
         console.log("signed up.")
-        await props.open()
         toast({
           title: "Account created.",
           description: "We've created your account for you.",
