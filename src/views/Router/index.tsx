@@ -30,6 +30,7 @@ const pageVariants = {
   out: {
     opacity: 0,
   },
+  
 }
 export const subPageVariants = {
   hidden: { opacity: 0 },
@@ -55,7 +56,7 @@ const Routes = () => {
 
       <PublicRoute restricted path="/login">
       <PageAnim>
-        <LoginPage />
+        <LoginPage variants={subPageVariants} />
         </PageAnim>
       </PublicRoute>
 
@@ -64,12 +65,6 @@ const Routes = () => {
         <ForgotPasswordPage />
         </PageAnim>
       </PublicRoute>
-
-      <PrivateRoute path="/admin">
-      <PageAnim>
-        <AdminPage />
-        </PageAnim>
-      </PrivateRoute>
 
       <PrivateRoute path="/dashboard">
       <PageAnim>
@@ -91,7 +86,7 @@ const Routes = () => {
 
       <PrivateRoute path="/reminders">
       <PageAnim>
-        <RemindersPage />
+        <RemindersPage variants={subPageVariants} />
         </PageAnim>
       </PrivateRoute>
 
