@@ -17,12 +17,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
 		justifyContent="center"
 		rounded="full"
 		backgroundColor="petcode.yellow.400"
-		size={`${size  }px`}
+		size={`${size}px`}
 		{...props}>
 		{checked && (
 			<Icon
 				name="checkmark"
-				size={`${size - 12  }px`}
+				size={`${size - 12}px`}
 				color="petcode.neutral.700"
 			/>
 		)}
