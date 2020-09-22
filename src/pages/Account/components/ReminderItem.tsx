@@ -87,7 +87,6 @@ const ReminderItem: React.FC<ReminderItemProps> = ({ reminder, isEditable = fals
   return useObserver(
   () => (
     <Flex direction="column" fontSize="xl">
-
       <Flex direction="row" alignItems="center">
         <Checkbox
           checked={enabled}
