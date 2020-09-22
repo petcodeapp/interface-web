@@ -12,7 +12,7 @@ module.exports = {
 			},
 			{
 				test: /\.tsx?$/,
-				use: 'ts-loader',
+				loader: "babel-loader",
 				exclude: /node_modules/,
 			},
 		],
