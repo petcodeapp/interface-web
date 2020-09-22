@@ -29,7 +29,6 @@ import {
 	InfoFieldInput,
 } from './components/InfoField'
 
-
 import { Vaccination } from '../../Models/Vaccination'
 import { AuthContext } from '../../views/Auth/index'
 
