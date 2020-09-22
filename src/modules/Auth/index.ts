@@ -1,15 +1,16 @@
-import { observable, computed, action, observe } from "mobx";
-import { auth } from "../../firebase/index";
+import { observable, computed, action, observe, decorate } from "mobx";
+import { auth } from '../../firebase/index';
 import firebase, { User, firestore } from "firebase";
 import { Reminder } from '../../Models/Reminder';
+import { act } from "react-dom/test-utils";
 
 class Auth {
-  @observable user: User | null = null;
-  @observable newUser: boolean = true;
-  @observable userData: any = null;
-  @observable pets: any = [];
-  @observable authPending: boolean = true;
-  @observable petIds: Array<string> = [];
+   user: User | null = null;
+   newUser: boolean = true;
+   userData: any = null;
+   pets: any = [];
+   authPending: boolean = true;
+   petIds: Array<string> = [];
   unWatchAuth: any;
 
   constructor() {
@@ -68,7 +69,7 @@ class Auth {
     );
   };
 
-  @action
+  
   public addNewReminder = (reminder: Reminder) => {
     const { stringify, parse } = JSON
 
@@ -229,7 +230,7 @@ class Auth {
     })
   }
 
-  @action
+  
 public async setReminderInfo(idx: number, reminder: Reminder) {
   const { stringify, parse } = JSON
   console.log("invoked")
@@ -250,11 +251,11 @@ public async setReminderInfo(idx: number, reminder: Reminder) {
   })
 }
 
-  @computed get isLoggedIn() {
+   get isLoggedIn() {
     return !!this.user;
   }
 
-  @action
+  
   public setMedicalInfo (information: {
     specialNeeds: {
       value: string,
@@ -282,7 +283,7 @@ public async setReminderInfo(idx: number, reminder: Reminder) {
 
   }
 
-  @action
+  
   public updatePet(pet: any) {
     Object.assign(this.pets[0], pet)
 
@@ -291,7 +292,7 @@ public async setReminderInfo(idx: number, reminder: Reminder) {
     console.log(this.pets[0])
   }
 
-  @action
+  
   public addVaccination(vaccination: {
     name: string,
     date: string
@@ -303,5 +304,21 @@ public async setReminderInfo(idx: number, reminder: Reminder) {
     })
   }
 }
+
+decorate(Auth, {
+  addVaccination: action,
+  updatePet: action,
+  setMedicalInfo: action,
+  isLoggedIn: computed,
+  setReminderInfo: action,
+  createNewUser: action,
+  addNewReminder: action,
+  user: observable,
+  newUser: observable,
+  petIds: observable,
+  pets: observable,
+  authPending: observable,
+  userData: observable
+})
 
 export default Auth;
