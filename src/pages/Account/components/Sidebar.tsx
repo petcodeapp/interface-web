@@ -27,16 +27,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
     fontWeight="thin"
     paddingX={10}
     marginY={3}
-    {...(selected
-      ? {
-          color: "petcode.blue.400",
-          borderLeft: "3px solid",
-          borderColor: "petcode.blue.400",
-        }
-      : {
-          color: "petcode.neutral.500",
-          marginLeft: "3px",
-        })}
+    color={selected ? "petcode.blue.400" : "petcode.neutral.500"}
     {...props}
   >
     <Icon name={iconName} size="19px" marginRight={3} />
@@ -50,9 +41,13 @@ const Sidebar = withRouter(({ location }) => {
   return (
     <Flex
       direction="column"
+      backgroundColor="white"
       minWidth="250px"
+      boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
+      rounded="lg"
       maxHeight="calc(100vh - 57px - 5rem)"
       paddingY={10}
+      zIndex={1}
     >
       <Box paddingX={10}>
         <Box

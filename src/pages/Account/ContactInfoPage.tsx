@@ -164,9 +164,9 @@ const ContactInfoSection = () => {
   return useObserver(() => (
     <Stack
       flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
+      paddingX={10}
       spacing={5}
+      zIndex={1}
     >
       {service.pets[0]?.contacts.map((value: any, index: number) => {
         console.log(

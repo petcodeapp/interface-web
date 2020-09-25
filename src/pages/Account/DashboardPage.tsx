@@ -65,9 +65,9 @@ const DashboardPage = withTheme(({ theme }) => {
     <AccountPageLayout>
       <Stack
         flexGrow={1}
-        backgroundColor="petcode.neutral.200"
-        padding={10}
+        paddingX={10}
         spacing={5}
+        zIndex={1}
       >
         <Flex
           direction="row"
@@ -77,7 +77,7 @@ const DashboardPage = withTheme(({ theme }) => {
           backgroundImage="url(/media/paw-icon.png)"
           backgroundRepeat="no-repeat"
           backgroundPosition="0% 50%"
-          width="100%"
+          boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
         >
           <Flex direction="column" marginLeft={40}>
             <Text color="petcode.neutral.700" fontSize="5xl" fontWeight="bold">
@@ -102,6 +102,7 @@ const DashboardPage = withTheme(({ theme }) => {
             backgroundColor="white"
             flexBasis="50%"
             padding={6}
+            boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           >
             <Flex direction="column" marginRight={4}>
               <Text color="petcode.neutral.700" fontSize="3xl">
@@ -125,6 +126,7 @@ const DashboardPage = withTheme(({ theme }) => {
             backgroundColor="white"
             flexBasis="50%"
             padding={6}
+            boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           >
             <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
               Account Information

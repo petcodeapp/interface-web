@@ -116,8 +116,8 @@ const PetInfoSection = () => {
     <Flex
       direction="column"
       flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
+      paddingX={10}
+      zIndex={1}
     >
       <Flex direction="row" alignItems="center" color="petcode.neutral.700">
         <Box

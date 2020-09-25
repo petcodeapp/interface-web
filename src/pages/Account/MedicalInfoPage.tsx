@@ -146,9 +146,9 @@ const MedicalInfoSection = () => {
   return useObserver(() => (
     <Stack
       flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
+      paddingX={10}
       spacing={5}
+      zIndex={1}
     >
       <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
         <InfoFieldRow fontSize="2xl" marginBottom={3}>
