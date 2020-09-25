@@ -9,7 +9,7 @@ export default {
   fonts: {
     ...theme.fonts,
     heading: '"Lilita One", sans-serif',
-    body: "Nunito, sans-serif",
+    body: '"Open Sans", sans-serif',
   },
   fontSizes: {
     ...theme.fontSizes,
