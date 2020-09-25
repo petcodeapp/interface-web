@@ -5,10 +5,7 @@ import { Heading, Stack, Text } from "@chakra-ui/core";
 import Layout from "../../components/Shared/layout";
 
 const PrivacyPolicyPage = () => (
-  <Layout
-    backgroundImage="url(/media/paw-print-background.jpg)"
-    backgroundSize="cover"
-  >
+  <Layout>
     <Stack alignItems="center" spacing={10}>
       <Heading color="petcode.blue.400" marginTop={10}>
         Privacy Policy
