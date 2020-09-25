@@ -531,7 +531,7 @@ const LandingPage: React.FunctionComponent = () => {
         right={0}
         zIndex={-1}
         transform="translateY(-50%)"
-        src="/media/paw-print-background-right.svg"
+        src="/media/paw-print-background-rtl-up.svg"
         alt="Paw print background"
       />
       <Image
@@ -540,7 +540,7 @@ const LandingPage: React.FunctionComponent = () => {
         left={0}
         zIndex={-1}
         transform="translateY(-50%)"
-        src="/media/paw-print-background-left.svg"
+        src="/media/paw-print-background-ltr-down.svg"
         alt="Paw print background"
       />
     </Layout>

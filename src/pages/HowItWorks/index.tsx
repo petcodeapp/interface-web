@@ -9,7 +9,6 @@ import {
   Stack,
   StackProps,
   Text,
-  ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
 import { motion, useAnimation, Transition } from "framer-motion";

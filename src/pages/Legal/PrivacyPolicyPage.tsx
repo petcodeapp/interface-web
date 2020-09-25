@@ -2,10 +2,10 @@ import React from "react";
 
 import { Heading, Stack, Text } from "@chakra-ui/core";
 
-import Layout from "../../components/Shared/layout";
+import LegalPageLayout from "./components/LegalPageLayout";
 
 const PrivacyPolicyPage = () => (
-  <Layout>
+  <LegalPageLayout>
     <Stack alignItems="center" spacing={10}>
       <Heading color="petcode.blue.400" marginTop={10}>
         Privacy Policy
@@ -38,7 +38,7 @@ const PrivacyPolicyPage = () => (
         qui labitur theophrastus.
       </Text>
     </Stack>
-  </Layout>
+  </LegalPageLayout>
 );
 
 export default PrivacyPolicyPage;
