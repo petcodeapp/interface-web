@@ -145,75 +145,36 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
 };
 
 type OverlaysProps = {
-  isEditable: IObservableValue<boolean>;
   isModalShown: IObservableValue<boolean>;
 };
 
-const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
-  const toast = useToast();
-
-  return (
-    <Stack
-      alignItems="end"
-      spacing={2}
-      position="fixed"
-      bottom={5}
-      right={5}
-      color="petcode.neutral.700"
-    >
-      <ExpandButton
-        rounded="full"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        onClick={action(() => {
-          if (isEditable.get()) {
-            toast({
-              title: "Reminders saved.",
-              description: "Your reminders was saved successfully.",
-              status: "success",
-              duration: 5000,
-              isClosable: true,
-            });
-          }
-          isEditable.set(!isEditable.get());
-        })}
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            marginRight={2}
-          >
-            {isEditable.get() ? "Save" : "Edit"}
-          </Text>
-        }
+const Overlays: React.FC<OverlaysProps> = ({ isModalShown }) => (
+  <ExpandButton
+    position="fixed"
+    bottom={5}
+    right={5}
+    color="petcode.neutral.700"
+    rounded="full"
+    padding={4}
+    backgroundColor="petcode.yellow.400"
+    onClick={action(() => isModalShown.set(!isModalShown.get()))}
+    expandChildren={
+      <Text
+        fontSize="xl"
+        fontWeight="thin"
+        textTransform="uppercase"
+        whiteSpace="nowrap"
+        marginRight={2}
       >
-        <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
-      </ExpandButton>
-      <ExpandButton
-        rounded="full"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        onClick={action(() => isModalShown.set(!isModalShown.get()))}
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            whiteSpace="nowrap"
-            marginRight={2}
-          >
-            Add Reminder
-          </Text>
-        }
-      >
-        <Text fontSize="5xl" lineHeight={0.5}>
-          +
-        </Text>
-      </ExpandButton>
-    </Stack>
-  );
-};
+        Add Reminder
+      </Text>
+    }
+  >
+    <Text fontSize="5xl" lineHeight={0.5}>
+      +
+    </Text>
+  </ExpandButton>
+);
 
 const RemindersSection = () => {
   const [reminders] = useState(
@@ -261,7 +222,6 @@ const RemindersSection = () => {
     ] as Reminder[])
   );
 
-  const [isEditable] = useState(() => observable.box(false));
   const [isModalShown] = useState(() => observable.box(false));
 
   return useObserver(() => (
@@ -285,11 +245,10 @@ const RemindersSection = () => {
           <ReminderItem
             key={idx}
             reminder={reminder}
-            isEditable={isEditable.get()}
           />
         ))}
       </Flex>
-      <Overlays isEditable={isEditable} isModalShown={isModalShown} />
+      <Overlays isModalShown={isModalShown} />
       <AddReminderModal reminders={reminders} isShown={isModalShown} />
     </Flex>
   ));
