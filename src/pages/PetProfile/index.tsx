@@ -10,6 +10,7 @@ import {
   HeadingProps,
   Stack,
   Text,
+  useTheme,
 } from "@chakra-ui/core";
 import {
   InfoField,
@@ -26,6 +27,8 @@ import moment from "moment";
 
 import { ContactInfo } from "../../Models/ContactInfo";
 import { Pet } from "../../Models/Pet";
+
+import { PetCodeTheme } from "../../theme";
 
 const PrimaryHeader: React.FC<HeadingProps> = (props) => (
   <Heading
@@ -54,7 +57,7 @@ const Card: React.FC<FlexProps> = (props) => (
 
 const ActionButton: React.FC<BaseButtonProps> = (props) => (
   <BaseButton
-    size="md"
+    size="sm"
     variantColor="petcode.yellow"
     paddingX={6}
     alignSelf="end"
@@ -123,31 +126,65 @@ const PetProfilePage = () => {
     },
   } as Pet);
 
+  const theme = useTheme() as PetCodeTheme;
+
   return (
-    <Layout>
+    <Layout
+      position="relative"
+      backgroundColor="petcode.neutral.100"
+      headerProps={{
+        position: "absolute",
+        backgroundColor: "transparent",
+        color: "petcode.neutral.700",
+      }}
+      paddingTop="12.85%"
+    >
+      <svg
+        style={{ position: "absolute", top: 0 }}
+        viewBox="0 0 1440 181"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M990 149C556.4 235.4 149.333 123.667 0 57V0H1440V123.5C1297.6 102.7 1144 118.314 990 149Z"
+          fill={theme.colors.petcode.blue[400]}
+        />
+      </svg>
+      <svg
+        style={{ position: "absolute", top: 0 }}
+        viewBox="0 0 1440 185"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          opacity={0.3}
+          d="M720 179C380.8 201.4 118 143 0 114V0H1440V170.5C1330 132.5 1144 151 720 179Z"
+          fill={theme.colors.petcode.blue[400]}
+        />
+      </svg>
       <Stack
         flexGrow={1}
-        backgroundColor="petcode.neutral.200"
         alignItems="center"
         padding={6}
         spacing={8}
       >
         <PrimaryHeader>Help Me Get Home!</PrimaryHeader>
         <Card>
-          <Stack>
-            <SecondaryHeader>My Name is</SecondaryHeader>
-            <Text fontSize="5xl" color="petcode.blue.400">
+          <Stack justifyContent="center">
+            <Text fontSize="5xl" color="petcode.neutral.700" lineHeight="none">
               Max
             </Text>
-            <Box flexGrow={1} />
+            <Text color="petcode.neutral.600">
+              Weimaraner &middot; 2 years old
+            </Text>
             <Stack isInline>
               <ActionButton>
-                <Text textTransform="uppercase" fontWeight="thin">
+                <Text textTransform="uppercase" fontWeight="bold" letterSpacing="0.05em">
                   Contact Owner
                 </Text>
               </ActionButton>
               <ActionButton>
-                <Text textTransform="uppercase" fontWeight="thin">
+                <Text textTransform="uppercase" fontWeight="bold" letterSpacing="0.05em">
                   Pet Info
                 </Text>
               </ActionButton>
