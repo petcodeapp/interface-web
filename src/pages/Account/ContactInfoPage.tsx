@@ -18,7 +18,7 @@ import {
   InfoFieldText,
   InfoFieldLabel,
   InfoFieldInput,
-} from "./components/InfoField";
+} from "../../components/Shared/family/InfoField";
 
 import { action } from "mobx";
 import { useObserver } from "mobx-react";

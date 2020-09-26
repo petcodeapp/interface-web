@@ -1,16 +1,18 @@
 import React from "react";
 
-import { Flex, Image, useTheme } from "@chakra-ui/core";
+import { Image, useTheme } from "@chakra-ui/core";
 
+import MotionFlex from "../../../components/Motion/Flex";
 import Sidebar from "./Sidebar";
 
 import { PetCodeTheme } from "../../../theme";
 
-const AccountPageLayout: React.FC = ({ children }) => {
+const AccountPageLayout: React.FC<any> = ({ children, variants }) => {
   const theme = useTheme() as PetCodeTheme;
 
   return (
-    <Flex
+    <MotionFlex
+      variants={variants}
       minHeight="calc(100% - 3rem)"
       direction="row"
       backgroundColor="petcode.neutral.100"
@@ -55,7 +57,7 @@ const AccountPageLayout: React.FC = ({ children }) => {
         maxHeight="100vh"
         src="/media/paw-print-background-rtl-down.svg"
       />
-    </Flex>
+    </MotionFlex>
   );
 };
 

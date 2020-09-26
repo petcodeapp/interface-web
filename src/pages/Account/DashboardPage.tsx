@@ -4,7 +4,10 @@ import { Box, Flex, Icon, Image, Stack, Text, useTheme } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
 
 import AccountPageLayout from "./components/AccountPageLayout";
-import { InfoFieldText, InfoFieldLabel } from "./components/InfoField";
+import {
+  InfoFieldText,
+  InfoFieldLabel,
+} from "../../components/Shared/family/InfoField";
 import ReminderItem from "./components/ReminderItem";
 
 import { AuthContext } from "../../views/Auth/index";

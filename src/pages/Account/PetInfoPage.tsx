@@ -27,6 +27,7 @@ import ExpandButton from "../../components/Shared/button/ExpandButton";
 
 import { useObserver } from "mobx-react";
 import moment from "moment";
+import { AuthContext } from "../../views/Auth/index";
 
 const PetInfoCard: React.FC<FlexProps> = (props) => (
   <Flex
@@ -98,16 +99,21 @@ const PetInfoInput: React.FC<InputProps> = (props) => (
 );
 
 const PetInfoSection = () => {
-  const [species, setSpecies] = useState("Dog");
-  const [breed, setBreed] = useState("Weimaraner");
-  const [birthday, setBirthday] = useState("2012-07-31");
-  const [color, setColor] = useState("Gray");
-  const [temperament, setTemperament] = useState("Friendly");
-  const [isServiceAnimal, setServiceAnimal] = useState(false);
+  const service = React.useContext(AuthContext);
+  const pet = service.pets[0];
 
-  const [isEditable, setEditable] = useState(false);
+  console.log(pet);
 
   const toast = useToast();
+
+  const [species, setSpecies] = useState(pet.species);
+  const [breed, setBreed] = useState(pet.breed);
+  const [birthday, setBirthday] = useState(pet.birthday);
+  const [color, setColor] = useState(pet.color);
+  const [temperament, setTemperament] = useState(pet.temperament);
+  const [isServiceAnimal, setServiceAnimal] = useState(pet.isServiceAnimal);
+
+  const [isEditable, setEditable] = useState(false);
 
   return useObserver(() => (
     <Flex direction="column" flexGrow={1} paddingX={10} zIndex={1}>
@@ -118,7 +124,7 @@ const PetInfoSection = () => {
           minWidth="150px"
           backgroundSize="cover"
           backgroundPosition="center"
-          backgroundImage="url(/media/placeholder-dog.png)"
+          backgroundImage={`url(${pet.profileUrl})`}
         />
         <Flex alignItems="center" marginLeft={4}>
           <BackgroundIcon

@@ -34,7 +34,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 );
 
 const Sidebar = withRouter(({ location }) => {
-  const auth = useContext(AuthContext);
+  const service = useContext(AuthContext);
 
   return (
     <Stack
@@ -128,7 +128,7 @@ const Sidebar = withRouter(({ location }) => {
           variantColor="petcode.neutral"
           variant="outline"
           border="1px solid"
-          onClick={auth.signOut}
+          onClick={service.signOut}
         >
           <Text>Sign Out</Text>
         </BaseButton>

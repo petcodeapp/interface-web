@@ -17,6 +17,8 @@ import {
 import moment from "moment";
 
 import { Reminder } from "../../../Models/Reminder";
+import { useObserver } from "mobx-react-lite";
+import { AuthContext } from "../../../views/Auth/index";
 
 const ReminderInput: React.FC<InputProps> = (props) => (
   <Input

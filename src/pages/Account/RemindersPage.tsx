@@ -22,11 +22,12 @@ import {
   InfoFieldLabel,
   InfoFieldInput,
   InfoFieldSelect,
-} from "./components/InfoField";
+} from "../../components/Shared/family/InfoField";
 
 import { useObserver } from "mobx-react";
 
 import { Reminder } from "../../Models/Reminder";
+import { AuthContext } from "../../views/Auth/index";
 
 type AddReminderModalProps = {
   isShown: boolean;
@@ -37,19 +38,18 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
   isShown,
   setShown,
 }) => {
-  const DEFAULT_VALUES: Reminder = {
-    name: "",
-    date: "",
-    time: "",
-    frequency: "One-Time",
-    notificationMethod: "Email",
-    enabled: true,
-  };
+  const service = React.useContext(AuthContext);
 
-  const [reminder, setReminder] = useState({ ...DEFAULT_VALUES });
+  const [n, setN] = useState("");
+  const [d, setD] = useState("");
+  const [nM, setNM] = useState("Email");
+  const [f, setF] = useState("One-Time");
+  const [e, setE] = useState(true);
+  const [t, setT] = useState("");
+
   const toast = useToast();
 
-  return useObserver(() => (
+  return (
     <Modal isOpen={isShown} onClose={() => setShown(false)} isCentered>
       <ModalOverlay />
       <ModalContent rounded="lg">
@@ -64,9 +64,9 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
         <ModalBody>
           <InfoFieldInput
             placeholder="Reminder Name"
-            value={reminder.name}
+            value={n}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setReminder({ ...reminder, name: e.target.value })
+              setN(e.target.value)
             }
           />
           <InfoFieldLabel>Reminder Name</InfoFieldLabel>
@@ -74,27 +74,22 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             type="date"
             width="auto"
             display="inline"
-            value={reminder.date}
+            value={d}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setReminder({ ...reminder, date: e.target.value })
+              setD(e.target.value)
             }
           />
           <InfoFieldInput
             type="time"
             width="auto"
             display="inline"
-            value={reminder.time}
+            value={t}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setReminder({ ...reminder, time: e.target.value })
+              setT(e.target.value)
             }
           />
           <InfoFieldLabel>Reminder Date</InfoFieldLabel>
-          <InfoFieldSelect
-            value={reminder.frequency}
-            onChange={(e) =>
-              setReminder({ ...reminder, frequency: e.target.value })
-            }
-          >
+          <InfoFieldSelect value={f} onChange={(e) => setF(e.target.value)}>
             <option>One-Time</option>
             <option>Daily</option>
             <option>Weekly</option>
@@ -102,10 +97,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           </InfoFieldSelect>
           <InfoFieldLabel>Reminder Frequency</InfoFieldLabel>
           <InfoFieldSelect
-            value={reminder.notificationMethod}
-            onChange={(e) =>
-              setReminder({ ...reminder, notificationMethod: e.target.value })
-            }
+            value={nM}
+            onChange={(e) => setNM(e.target.value)}
           >
             <option>App Notification</option>
             <option>Email</option>
@@ -116,8 +109,14 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             color="white"
             marginTop={3}
             onClick={() => {
-              // INSERT REMINDER TO BACKEND HERE
-              setReminder({ ...DEFAULT_VALUES });
+              service.addNewReminder({
+                name: n,
+                date: d,
+                enabled: e,
+                notificationMethod: nM,
+                frequency: f,
+                time: t,
+              });
               setShown(false);
               toast({
                 title: "Reminder created.",
@@ -133,7 +132,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
         </ModalBody>
       </ModalContent>
     </Modal>
-  ));
+  );
 };
 
 type OverlaysProps = {
@@ -168,48 +167,51 @@ const Overlays: React.FC<OverlaysProps> = ({ setModalShown }) => (
 );
 
 const RemindersSection = () => {
-  const [reminders, setReminders] = useState([
-    {
-      name: "Example reminder",
-      date: "2020-08-02",
-      time: "09:00",
-      frequency: "Weekly",
-      notificationMethod: "Email",
-      enabled: true,
-    },
-    {
-      name: "Example reminder",
-      date: "2020-08-02",
-      time: "09:00",
-      frequency: "Weekly",
-      notificationMethod: "Email",
-      enabled: true,
-    },
-    {
-      name: "Example reminder",
-      date: "2020-08-02",
-      time: "09:00",
-      frequency: "Weekly",
-      notificationMethod: "Email",
-      enabled: true,
-    },
-    {
-      name: "Example reminder",
-      date: "2020-08-02",
-      time: "09:00",
-      frequency: "Weekly",
-      notificationMethod: "Email",
-      enabled: true,
-    },
-    {
-      name: "Example reminder",
-      date: "2020-08-02",
-      time: "09:00",
-      frequency: "Weekly",
-      notificationMethod: "Email",
-      enabled: true,
-    },
-  ] as Reminder[]);
+  const service = React.useContext(AuthContext);
+  const [reminders, setReminders] = useState(
+    [
+      {
+        name: "Example reminder",
+        date: "2020-08-02",
+        time: "09:00",
+        frequency: "Weekly",
+        notificationMethod: "Email",
+        enabled: true,
+      },
+      {
+        name: "Example reminder",
+        date: "2020-08-02",
+        time: "09:00",
+        frequency: "Weekly",
+        notificationMethod: "Email",
+        enabled: true,
+      },
+      {
+        name: "Example reminder",
+        date: "2020-08-02",
+        time: "09:00",
+        frequency: "Weekly",
+        notificationMethod: "Email",
+        enabled: true,
+      },
+      {
+        name: "Example reminder",
+        date: "2020-08-02",
+        time: "09:00",
+        frequency: "Weekly",
+        notificationMethod: "Email",
+        enabled: true,
+      },
+      {
+        name: "Example reminder",
+        date: "2020-08-02",
+        time: "09:00",
+        frequency: "Weekly",
+        notificationMethod: "Email",
+        enabled: true,
+      },
+    ] as Reminder[]
+  );
 
   const [isModalShown, setModalShown] = useState(false);
 
@@ -247,8 +249,8 @@ const RemindersSection = () => {
   );
 };
 
-const RemindersPage = () => (
-  <AccountPageLayout>
+const RemindersPage: React.FC<any> = ({ variants }) => (
+  <AccountPageLayout variants={variants}>
     <RemindersSection />
   </AccountPageLayout>
 );
