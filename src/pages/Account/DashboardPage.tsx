@@ -125,7 +125,7 @@ const DashboardPage = () => {
           <Box
             height="100%"
             flexGrow={1}
-            backgroundImage="url(/media/placeholder-dog.png)"
+            backgroundImage={`url(${service.pets[0]?.profileUrl})`}
             backgroundSize="cover"
             backgroundPosition="50% 50%"
             roundedRight="lg"
