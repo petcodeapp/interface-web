@@ -3,6 +3,7 @@ import React from "react";
 import {
   Box,
   Flex,
+  FlexProps,
   Input,
   InputProps,
   Select,
@@ -49,11 +50,20 @@ type ReminderItemProps = {
   reminder: Reminder;
   isEditable?: boolean;
   onChange?: (field: string, value: any) => void;
-};
+} & Omit<FlexProps, "onChange">;
 
 const ReminderItem: React.FC<ReminderItemProps> =
-  ({ reminder, isEditable = false, onChange = () => {} }) => (
-    <Flex direction="row" fontSize="xl">
+  ({ reminder, isEditable = false, onChange = () => {}, ...props }) => (
+    <Flex
+      direction="row"
+      rounded="lg"
+      backgroundColor="white"
+      paddingX={6}
+      paddingY={3}
+      boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
+      fontSize="xl"
+      {...props}
+    >
       <Box>
         <Text color="petcode.blue.400">
           {reminder.name}

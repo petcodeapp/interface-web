@@ -216,43 +216,36 @@ const RemindersSection = () => {
   const [isModalShown, setModalShown] = useState(false);
 
   return (
-    <Flex
-      direction="column"
+    <Stack
       flexGrow={1}
       paddingX={10}
       zIndex={1}
+      spacing={6}
     >
-      <Flex
-        direction="column"
-        rounded="lg"
-        backgroundColor="white"
-        padding={6}
-        boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
-      >
-        <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
-          Reminders
-        </Text>
-        {reminders.map((reminder, idx) => (
-          <ReminderItem
-            key={idx}
-            reminder={reminder}
-            onChange={(field, value) =>
-              setReminders([
-                ...reminders.slice(0, idx),
-                {
-                  ...reminder,
-                  // @ts-ignore
-                  [field]: value,
-                },
-                ...reminders.slice(idx + 1),
-              ])
-            }
-          />
-        ))}
-      </Flex>
+      <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
+        Reminders
+      </Text>
+      {reminders.map((reminder, idx) => (
+        <ReminderItem
+          marginLeft={3}
+          key={idx}
+          reminder={reminder}
+          onChange={(field, value) =>
+            setReminders([
+              ...reminders.slice(0, idx),
+              {
+                ...reminder,
+                // @ts-ignore
+                [field]: value,
+              },
+              ...reminders.slice(idx + 1),
+            ])
+          }
+        />
+      ))}
       <Overlays setModalShown={setModalShown} />
       <AddReminderModal isShown={isModalShown} setShown={setModalShown} />
-    </Flex>
+    </Stack>
   );
 };
 
