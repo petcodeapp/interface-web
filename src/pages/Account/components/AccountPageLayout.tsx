@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Flex, useTheme } from "@chakra-ui/core";
+import { Flex, Image, useTheme } from "@chakra-ui/core";
 
 import Sidebar from "./Sidebar";
 
@@ -41,6 +41,20 @@ const AccountPageLayout: React.FC = ({ children }) => {
       </svg>
       <Sidebar />
       {children}
+      <Image
+        position="absolute"
+        left={0}
+        bottom={0}
+        maxHeight="100vh"
+        src="/media/paw-print-background-rtl-down.svg"
+      />
+      <Image
+        position="absolute"
+        right={0}
+        top={0}
+        maxHeight="100vh"
+        src="/media/paw-print-background-rtl-down.svg"
+      />
     </Flex>
   );
 };
