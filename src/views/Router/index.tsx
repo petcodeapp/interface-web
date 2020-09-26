@@ -20,6 +20,7 @@ import ShopPage from "../../pages/Shop/ShopPage";
 import SingleProductPage from "../../pages/Shop/SingleProductPage";
 import ContactUsPage from "../../pages/ContactUs";
 import PrivacyPolicyPage from "../../pages/Legal/PrivacyPolicyPage";
+import PetProfilePage from "../../pages/PetProfile";
 import TermsPage from "../../pages/Legal/TermsPage";
 import { useObserver } from "mobx-react-lite";
 import { motion } from "framer-motion";
@@ -130,6 +131,10 @@ const Routes = () => {
 
       <Route path="/products/*">
         <SingleProductPage />
+      </Route>
+
+      <Route path="/profile/*">
+        <PetProfilePage />
       </Route>
 
       <PublicRoute path="/oldlanding">
