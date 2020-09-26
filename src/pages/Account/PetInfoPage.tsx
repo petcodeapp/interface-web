@@ -38,6 +38,7 @@ const PetInfoCard: React.FC<FlexProps> = (props) => (
     height="100px"
     padding={6}
     marginTop={10}
+    boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
     {...props}
   />
 );

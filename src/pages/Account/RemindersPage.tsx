@@ -271,7 +271,13 @@ const RemindersSection = () => {
       paddingX={10}
       zIndex={1}
     >
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
+      <Flex
+        direction="column"
+        rounded="lg"
+        backgroundColor="white"
+        padding={6}
+        boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
+      >
         <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
           Reminders
         </Text>

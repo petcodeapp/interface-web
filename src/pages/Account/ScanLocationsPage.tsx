@@ -96,7 +96,7 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/kachang/ckdm8ilq82uko1iqfo9ge0be6"
+      mapStyle="mapbox://styles/mapbox/streets-v11"
       onViewportChange={(newViewport) => Object.assign(viewport, newViewport)}
     >
       {scanLocations.map((scanLocation, idx) => (
@@ -127,8 +127,9 @@ const ScanLocationCard: React.FC<
     paddingY={4}
     cursor="pointer"
     _hover={{
-      backgroundColor: "petcode.neutral.100",
+      backgroundColor: "petcode.neutral.200",
     }}
+    boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
     {...props}
   >
     <Text color="petcode.blue.400">{scanLocation.nearestAddress}</Text>
@@ -166,6 +167,7 @@ const ScanLocationsSection = () => {
       zoom: DEFAULT_MAP_ZOOM,
       latitude: scanLocations[0].latitude,
       longitude: scanLocations[0].longitude,
+      style: { marginLeft: '0.75rem' },
     })
   );
 
@@ -188,6 +190,7 @@ const ScanLocationsSection = () => {
           <ScanLocationCard
             key={idx}
             scanLocation={scanLocation}
+            marginLeft={3}
             onClick={() => {
               mapViewport.latitude = scanLocation.latitude;
               mapViewport.longitude = scanLocation.longitude;

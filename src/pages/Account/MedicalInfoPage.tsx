@@ -150,7 +150,13 @@ const MedicalInfoSection = () => {
       spacing={5}
       zIndex={1}
     >
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
+      <Flex
+        direction="column"
+        rounded="lg"
+        backgroundColor="white"
+        padding={6}
+        boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
+      >
         <InfoFieldRow fontSize="2xl" marginBottom={3}>
           <Text color="petcode.neutral.700">General Medical Information</Text>
           <Text color="petcode.neutral.400">Visibility</Text>
@@ -251,7 +257,13 @@ const MedicalInfoSection = () => {
           />
         </InfoFieldRow>
       </Flex>
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
+      <Flex
+        direction="column"
+        rounded="lg"
+        backgroundColor="white"
+        padding={6}
+        boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
+      >
         <Text color="petcode.neutral.700" fontSize="2xl" marginBottom={3}>
           Vaccination History
         </Text>

@@ -44,6 +44,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
       rounded="lg"
       backgroundColor="white"
       padding={6}
+      boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
       {...props}
     >
       <InfoFieldRow fontSize="2xl" marginBottom={3}>
