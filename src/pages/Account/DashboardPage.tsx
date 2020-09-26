@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { Box, Flex, Image, Stack, Text } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
@@ -7,14 +7,9 @@ import AccountPageLayout from "./components/AccountPageLayout";
 import { InfoFieldText, InfoFieldLabel } from "./components/InfoField";
 import ReminderItem from "./components/ReminderItem";
 
-import { observable } from "mobx";
 import { withTheme } from "emotion-theming";
 
-import { Reminder } from "../../Models/Reminder";
-import * as firebase from "firebase";
 import { AuthContext } from "../../views/Auth/index";
-import { Redirect } from "react-router-dom";
-import { auth } from "../../firebase/index";
 import { useObserver } from "mobx-react";
 
 const DashboardPage = withTheme(({ theme }) => {

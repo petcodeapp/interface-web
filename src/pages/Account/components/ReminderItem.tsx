@@ -10,8 +10,6 @@ import {
   Text,
 } from "@chakra-ui/core";
 
-import { action } from "mobx";
-import { observer } from "mobx-react";
 import moment from "moment";
 
 import { Reminder } from "../../../Models/Reminder";
@@ -50,10 +48,11 @@ const ReminderSelect: React.FC<SelectProps> = (props) => (
 type ReminderItemProps = {
   reminder: Reminder;
   isEditable?: boolean;
+  onChange?: (field: string, value: any) => void;
 };
 
-const ReminderItem: React.FC<ReminderItemProps> = observer(
-  ({ reminder, isEditable = false }) => (
+const ReminderItem: React.FC<ReminderItemProps> =
+  ({ reminder, isEditable = false, onChange = () => {} }) => (
     <Flex direction="row" fontSize="xl">
       <Box>
         <Text color="petcode.blue.400">
@@ -63,10 +62,7 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
           Recurring : {isEditable ? (
             <ReminderSelect
               value={reminder.frequency}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLSelectElement>) =>
-                  (reminder.frequency = e.target.value)
-              )}
+              onChange={e => onChange("frequency", e.target.value)}
             >
               <option>One-Time</option>
               <option>Daily</option>
@@ -85,10 +81,7 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
             <ReminderInput
               type="date"
               value={reminder.date}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  (reminder.date = e.target.value)
-              )}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange("date", e.target.value)}
             />
           ) : (
             moment(reminder.date).format("M/D")
@@ -101,10 +94,7 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
               color="petcode.yellow.400"
               fontSize="md"
               value={reminder.time}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  (reminder.time = e.target.value)
-              )}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange("time", e.target.value)}
             />
           ) : (
             moment(reminder.time, "HH:mm").format("LT")
@@ -112,7 +102,6 @@ const ReminderItem: React.FC<ReminderItemProps> = observer(
         </Text>
       </Flex>
     </Flex>
-  )
 );
 
 export default ReminderItem;

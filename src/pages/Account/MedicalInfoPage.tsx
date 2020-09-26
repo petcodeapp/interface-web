@@ -26,38 +26,31 @@ import {
   InfoFieldInput,
 } from "./components/InfoField";
 
-import { action, observable, IObservableValue } from "mobx";
+import { action } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
 
-import { Vaccination } from "../../Models/Vaccination";
 import { AuthContext } from "../../views/Auth/index";
 
 type AddVaccinationModalProps = {
-  isShown: IObservableValue<boolean>;
-  vaccinations: Vaccination[];
+  isShown: boolean;
+  setShown: (a: boolean) => void;
 };
 
 const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
   isShown,
-  vaccinations,
+  setShown,
 }) => {
   const DEFAULT_VALUES = {
     name: "",
     date: "",
   };
 
-  const [vaccination, setVaccination] = useState(() =>
-    observable({ ...DEFAULT_VALUES } as Vaccination)
-  );
+  const [vaccination, setVaccination] = useState({ ...DEFAULT_VALUES });
   const toast = useToast();
 
   return useObserver(() => (
-    <Modal
-      isOpen={isShown.get()}
-      onClose={action(() => isShown.set(false))}
-      isCentered
-    >
+    <Modal isOpen={isShown} onClose={() => setShown(false)} isCentered>
       <ModalOverlay />
       <ModalContent rounded="lg">
         <ModalHeader
@@ -72,9 +65,8 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
           <InfoFieldInput
             placeholder="Vaccination Name"
             value={vaccination.name}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                (vaccination.name = e.target.value)
+            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              setVaccination({ ...vaccination, name: e.target.value })
             )}
           />
           <InfoFieldLabel>Vaccination Name</InfoFieldLabel>
@@ -82,9 +74,8 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
             type="date"
             value={vaccination.date}
             max={moment().format("YYYY-MM-DD")}
-            onChange={action(
-              (e: React.ChangeEvent<HTMLInputElement>) =>
-                (vaccination.date = e.target.value)
+            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              setVaccination({ ...vaccination, date: e.target.value })
             )}
           />
           <InfoFieldLabel>Vaccination Date</InfoFieldLabel>
@@ -93,9 +84,9 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
             color="white"
             marginTop={3}
             onClick={action(() => {
-              vaccinations.push({ ...vaccination });
-              Object.assign(vaccination, DEFAULT_VALUES);
-              isShown.set(false);
+              // INSERT VACCINATION TO BACKEND HERE
+              setVaccination({ ...DEFAULT_VALUES });
+              setShown(false);
               toast({
                 title: "Vaccination added.",
                 description: "Your vaccination was added successfully.",
@@ -113,24 +104,90 @@ const AddVaccinationModal: React.FC<AddVaccinationModalProps> = ({
   ));
 };
 
-// type OverlaysProps = {
-//   isEditable: IObservableValue<boolean>;
-//   isModalShown: IObservableValue<boolean>;
-// };
+type OverlaysProps = {
+  isEditable: boolean;
+  setEditable: (a: boolean) => void;
+  setModalShown: (a: boolean) => void;
+  onSave: () => void;
+};
 
-// const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
-//   const toast = useToast();
+const Overlays: React.FC<OverlaysProps> = ({
+  isEditable,
+  setEditable,
+  setModalShown,
+  onSave,
+}) => {
+  const toast = useToast();
 
-//   return useObserver(() => (
-
-//   ));
-// };
+  return (
+    <Stack
+      alignItems="end"
+      spacing={2}
+      position="fixed"
+      bottom={5}
+      right={5}
+      color="petcode.neutral.700"
+    >
+      <ExpandButton
+        rounded="full"
+        padding={4}
+        backgroundColor="petcode.yellow.400"
+        onClick={action(() => {
+          if (isEditable) {
+            onSave();
+            toast({
+              title: "Medical information saved.",
+              description: "Your medical information was saved successfully.",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            });
+          }
+          setEditable(!isEditable);
+        })}
+        expandChildren={
+          <Text
+            fontSize="xl"
+            fontWeight="thin"
+            textTransform="uppercase"
+            marginRight={2}
+          >
+            {isEditable ? "Save" : "Edit"}
+          </Text>
+        }
+      >
+        <Icon name={isEditable ? "checkmark" : "edit"} size="30px" />
+      </ExpandButton>
+      <ExpandButton
+        rounded="full"
+        padding={4}
+        backgroundColor="petcode.yellow.400"
+        onClick={action(() => setModalShown(true))}
+        expandChildren={
+          <Text
+            fontSize="xl"
+            fontWeight="thin"
+            textTransform="uppercase"
+            whiteSpace="nowrap"
+            marginRight={2}
+          >
+            Add Vaccination
+          </Text>
+        }
+      >
+        <Text fontSize="5xl" lineHeight={0.5}>
+          +
+        </Text>
+      </ExpandButton>
+    </Stack>
+  );
+};
 
 const MedicalInfoSection = () => {
   const service = React.useContext(AuthContext);
 
-  const [isEditable] = useState(() => observable.box(false));
-  const [isModalShown] = useState(() => observable.box(false));
+  const [isEditable, setEditable] = useState(false);
+  const [isModalShown, setModalShown] = useState(false);
 
   const [specialNeeds, setSpecialNeeds] = useState(
     service.pets[0]?.specialNeeds.value
@@ -140,8 +197,6 @@ const MedicalInfoSection = () => {
   const [vetNumber, setVetNumber] = useState(
     service.pets[0]?.vetPhoneNumber.value
   );
-
-  const toast = useToast();
 
   return useObserver(() => (
     <Stack
@@ -163,7 +218,7 @@ const MedicalInfoSection = () => {
         </InfoFieldRow>
         <InfoFieldRow>
           <Box flexBasis="60%">
-            {isEditable.get() ? (
+            {isEditable ? (
               <InfoFieldInput
                 value={specialNeeds}
                 onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
@@ -177,7 +232,7 @@ const MedicalInfoSection = () => {
           </Box>
           <BaseCheckbox
             isChecked={service.pets[0]?.specialNeeds.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+            cursor={isEditable ? "pointer" : "default"}
             // onClick={action(
             //   () =>
             //     isEditable.get() &&
@@ -187,7 +242,7 @@ const MedicalInfoSection = () => {
         </InfoFieldRow>
         <InfoFieldRow>
           <Box flexBasis="60%">
-            {isEditable.get() ? (
+            {isEditable ? (
               <InfoFieldInput
                 value={allergies}
                 onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
@@ -201,7 +256,7 @@ const MedicalInfoSection = () => {
           </Box>
           <BaseCheckbox
             isChecked={service.pets[0]?.allergies.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+            cursor={isEditable ? "pointer" : "default"}
             // onClick={action(
             //   () =>
             //     isEditable.get() &&
@@ -211,7 +266,7 @@ const MedicalInfoSection = () => {
         </InfoFieldRow>
         <InfoFieldRow>
           <Box flexBasis="60%">
-            {isEditable.get() ? (
+            {isEditable ? (
               <InfoFieldInput
                 value={vetName}
                 onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
@@ -225,7 +280,7 @@ const MedicalInfoSection = () => {
           </Box>
           <BaseCheckbox
             isChecked={service.pets[0]?.vetName.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+            cursor={isEditable ? "pointer" : "default"}
             // onClick={action(
             //   () =>
             //     isEditable.get() && (service.pets[0]?.vetName.visible = !service.pets[0]?.vetName.visible)
@@ -234,7 +289,7 @@ const MedicalInfoSection = () => {
         </InfoFieldRow>
         <InfoFieldRow>
           <Box flexBasis="60%">
-            {isEditable.get() ? (
+            {isEditable ? (
               <InfoFieldInput
                 value={vetNumber}
                 onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
@@ -248,7 +303,7 @@ const MedicalInfoSection = () => {
           </Box>
           <BaseCheckbox
             isChecked={service.pets[0]?.vetPhoneNumber.visible}
-            cursor={isEditable.get() ? "pointer" : "default"}
+            cursor={isEditable ? "pointer" : "default"}
             // onClick={action(
             //   () =>
             //     isEditable.get() &&
@@ -279,87 +334,32 @@ const MedicalInfoSection = () => {
           ))}
       </Flex>
       {/* <Overlays isEditable={isEditable} isModalShown={isModalShown} /> */}
-      <Stack
-        alignItems="end"
-        spacing={2}
-        position="fixed"
-        bottom={5}
-        right={5}
-        color="petcode.neutral.700"
-      >
-        <ExpandButton
-          rounded="full"
-          padding={4}
-          backgroundColor="petcode.yellow.400"
-          onClick={action(() => {
-            if (isEditable.get()) {
-              service.setMedicalInfo({
-                specialNeeds: {
-                  value: specialNeeds,
-                  visible: true,
-                },
-                allergies: {
-                  value: allergies,
-                  visible: true,
-                },
-                vetName: {
-                  value: vetName,
-                  visible: true,
-                },
-                vetNumber: {
-                  value: vetNumber,
-                  visible: true,
-                },
-              });
-              toast({
-                title: "Medical information saved.",
-                description: "Your medical information was saved successfully.",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-              });
-            }
-            isEditable.set(!isEditable.get());
-          })}
-          expandChildren={
-            <Text
-              fontSize="xl"
-              fontWeight="thin"
-              textTransform="uppercase"
-              marginRight={2}
-            >
-              {isEditable.get() ? "Save" : "Edit"}
-            </Text>
-          }
-        >
-          <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
-        </ExpandButton>
-        <ExpandButton
-          rounded="full"
-          padding={4}
-          backgroundColor="petcode.yellow.400"
-          onClick={action(() => isModalShown.set(true))}
-          expandChildren={
-            <Text
-              fontSize="xl"
-              fontWeight="thin"
-              textTransform="uppercase"
-              whiteSpace="nowrap"
-              marginRight={2}
-            >
-              Add Vaccination
-            </Text>
-          }
-        >
-          <Text fontSize="5xl" lineHeight={0.5}>
-            +
-          </Text>
-        </ExpandButton>
-      </Stack>
-      <AddVaccinationModal
-        vaccinations={service.pets[0]?.vaccinations}
-        isShown={isModalShown}
+      <Overlays
+        isEditable={isEditable}
+        setEditable={setEditable}
+        setModalShown={setModalShown}
+        onSave={() =>
+          service.setMedicalInfo({
+            specialNeeds: {
+              value: specialNeeds,
+              visible: true,
+            },
+            allergies: {
+              value: allergies,
+              visible: true,
+            },
+            vetName: {
+              value: vetName,
+              visible: true,
+            },
+            vetNumber: {
+              value: vetNumber,
+              visible: true,
+            },
+          })
+        }
       />
+      <AddVaccinationModal isShown={isModalShown} setShown={setModalShown} />
     </Stack>
   ));
 };

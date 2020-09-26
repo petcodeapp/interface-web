@@ -25,7 +25,6 @@ import {
 import AccountPageLayout from "./components/AccountPageLayout";
 import ExpandButton from "../../components/Shared/button/ExpandButton";
 
-import { action, observable } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
 
@@ -99,18 +98,15 @@ const PetInfoInput: React.FC<InputProps> = (props) => (
 );
 
 const PetInfoSection = () => {
-  const [pet] = useState(() =>
-    observable({
-      species: "Dog",
-      breed: "Weimaraner",
-      birthday: "2012-07-31",
-      color: "Gray",
-      temperament: "Friendly",
-      isServiceAnimal: false,
-    })
-  );
+  const [species, setSpecies] = useState("Dog");
+  const [breed, setBreed] = useState("Weimaraner");
+  const [birthday, setBirthday] = useState("2012-07-31");
+  const [color, setColor] = useState("Gray");
+  const [temperament, setTemperament] = useState("Friendly");
+  const [isServiceAnimal, setServiceAnimal] = useState(false);
 
-  const [isEditable] = useState(() => observable.box(false));
+  const [isEditable, setEditable] = useState(false);
+
   const toast = useToast();
 
   return useObserver(() => (
@@ -155,31 +151,30 @@ const PetInfoSection = () => {
       </Flex>
       <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>
         <PetInfoCard>
-          {isEditable.get() ? (
+          {isEditable ? (
             <PetInfoSelect
-              value={pet.species}
-              onChange={action((e) => (pet.species = e.target.value))}
+              value={species}
+              onChange={(e) => setSpecies(e.target.value)}
             >
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
             </PetInfoSelect>
           ) : (
-            <PetInfoCardText>{pet.species}</PetInfoCardText>
+            <PetInfoCardText>{species}</PetInfoCardText>
           )}
           <PetInfoCardLabel>Species</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="dog" />
         </PetInfoCard>
         <PetInfoCard>
-          {isEditable.get() ? (
+          {isEditable ? (
             <PetInfoInput
-              value={pet.breed}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  (pet.breed = e.target.value)
-              )}
+              value={breed}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setBreed(e.target.value)
+              }
             />
           ) : (
-            <PetInfoCardText>{pet.breed}</PetInfoCardText>
+            <PetInfoCardText>{breed}</PetInfoCardText>
           )}
           <PetInfoCardLabel>Breed</PetInfoCardLabel>
           <BackgroundIcon
@@ -190,52 +185,48 @@ const PetInfoSection = () => {
           />
         </PetInfoCard>
         <PetInfoCard>
-          {isEditable.get() ? (
+          {isEditable ? (
             <PetInfoInput
               type="date"
               fontSize="3xl"
-              value={pet.birthday}
+              value={birthday}
               max={moment().format("YYYY-MM-DD")}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  (pet.birthday = e.target.value)
-              )}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setBirthday(e.target.value)
+              }
             />
           ) : (
             <PetInfoCardText>
-              {moment.duration(moment().diff(moment(pet.birthday))).humanize()}{" "}
-              old
+              {moment.duration(moment().diff(moment(birthday))).humanize()} old
             </PetInfoCardText>
           )}
           <PetInfoCardLabel>Age</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="clock" />
         </PetInfoCard>
         <PetInfoCard>
-          {isEditable.get() ? (
+          {isEditable ? (
             <PetInfoInput
-              value={pet.color}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  (pet.color = e.target.value)
-              )}
+              value={color}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setColor(e.target.value)
+              }
             />
           ) : (
-            <PetInfoCardText>{pet.color}</PetInfoCardText>
+            <PetInfoCardText>{color}</PetInfoCardText>
           )}
           <PetInfoCardLabel>Color</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="100px" name="colors" />
         </PetInfoCard>
         <PetInfoCard>
-          {isEditable.get() ? (
+          {isEditable ? (
             <PetInfoInput
-              value={pet.temperament}
-              onChange={action(
-                (e: React.ChangeEvent<HTMLInputElement>) =>
-                  (pet.temperament = e.target.value)
-              )}
+              value={temperament}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setTemperament(e.target.value)
+              }
             />
           ) : (
-            <PetInfoCardText>{pet.temperament}</PetInfoCardText>
+            <PetInfoCardText>{temperament}</PetInfoCardText>
           )}
           <PetInfoCardLabel>Temperament</PetInfoCardLabel>
           <BackgroundIcon
@@ -246,20 +237,16 @@ const PetInfoSection = () => {
           />
         </PetInfoCard>
         <PetInfoCard>
-          {isEditable.get() ? (
+          {isEditable ? (
             <PetInfoSelect
-              value={pet.isServiceAnimal ? "Yes" : "No"}
-              onChange={action(
-                (e) => (pet.isServiceAnimal = e.target.value == "Yes")
-              )}
+              value={isServiceAnimal ? "Yes" : "No"}
+              onChange={(e) => setServiceAnimal(e.target.value == "Yes")}
             >
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </PetInfoSelect>
           ) : (
-            <PetInfoCardText>
-              {pet.isServiceAnimal ? "Yes" : "No"}
-            </PetInfoCardText>
+            <PetInfoCardText>{isServiceAnimal ? "Yes" : "No"}</PetInfoCardText>
           )}
           <PetInfoCardLabel>Service Animal</PetInfoCardLabel>
           <BackgroundIcon alignSelf="end" size="120px" name="service-animal" />
@@ -273,8 +260,8 @@ const PetInfoSection = () => {
         color="petcode.neutral.700"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(() => {
-          if (isEditable.get()) {
+        onClick={() => {
+          if (isEditable) {
             toast({
               title: "Pet information saved.",
               description: "Your pet information was saved successfully.",
@@ -283,8 +270,8 @@ const PetInfoSection = () => {
               isClosable: true,
             });
           }
-          isEditable.set(!isEditable.get());
-        })}
+          setEditable(!isEditable);
+        }}
         expandChildren={
           <Text
             fontSize="xl"
@@ -292,11 +279,11 @@ const PetInfoSection = () => {
             textTransform="uppercase"
             marginRight={2}
           >
-            {isEditable.get() ? "Save" : "Edit"}
+            {isEditable ? "Save" : "Edit"}
           </Text>
         }
       >
-        <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
+        <Icon name={isEditable ? "checkmark" : "edit"} size="30px" />
       </ExpandButton>
     </Flex>
   ));

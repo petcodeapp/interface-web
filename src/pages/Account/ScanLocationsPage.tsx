@@ -21,7 +21,6 @@ import ReactMapGL, { Marker, InteractiveMapProps } from "react-map-gl";
 
 import AccountPageLayout from "./components/AccountPageLayout";
 
-import { observable } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
 
@@ -33,6 +32,7 @@ const DEFAULT_MAP_ZOOM = 15;
 
 type LocationScanMapProps = {
   viewport: Partial<InteractiveMapProps>;
+  setViewport: (viewport: any) => void;
   scanLocations: ScanLocation[];
 };
 
@@ -77,6 +77,7 @@ const ScanLocationMarker: React.FC<{ scanLocation: ScanLocation }> = ({
 
 const LocationScanMap: React.FC<LocationScanMapProps> = ({
   viewport,
+  setViewport,
   scanLocations,
 }) => {
   return useObserver(() => (
@@ -85,7 +86,9 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
       {...viewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
       mapStyle="mapbox://styles/mapbox/streets-v11"
-      onViewportChange={(newViewport) => Object.assign(viewport, newViewport, {
+      onViewportChange={(newViewport) => setViewport({
+        ...viewport,
+        ...newViewport,
         width: "100%"
       })}
     >
@@ -126,34 +129,32 @@ const ScanLocationCard: React.FC<
 );
 
 const ScanLocationsSection = () => {
-  const [scanLocations] = useState(() =>
-    observable([
-      {
-        latitude: 37.3356424,
-        longitude: -122.0505069,
-        nearestAddress: "21370 Homestead Rd, Cupertino, CA 95014",
-        date: "2020-08-09T14:00",
-        deviceInfo: "iPhone / Safari",
-      },
-      {
-        latitude: 37.3400556,
-        longitude: -122.0502666,
-        nearestAddress: "1628 South Mary Avenue, Sunnyvale, CA 94087",
-        date: "2020-08-09T13:00",
-        deviceInfo: "Android / Chrome",
-      },
-    ] as ScanLocation[])
+  const [scanLocations] = useState(
+    () =>
+      [
+        {
+          latitude: 37.3356424,
+          longitude: -122.0505069,
+          nearestAddress: "21370 Homestead Rd, Cupertino, CA 95014",
+          date: "2020-08-09T14:00",
+          deviceInfo: "iPhone / Safari",
+        },
+        {
+          latitude: 37.3400556,
+          longitude: -122.0502666,
+          nearestAddress: "1628 South Mary Avenue, Sunnyvale, CA 94087",
+          date: "2020-08-09T13:00",
+          deviceInfo: "Android / Chrome",
+        },
+      ] as ScanLocation[]
   );
-  const [mapViewport] = useState(() =>
-    observable({
-      width: "100%",
-      height: 400,
-      zoom: DEFAULT_MAP_ZOOM,
-      latitude: scanLocations[0].latitude,
-      longitude: scanLocations[0].longitude,
-      style: { marginLeft: '0.75rem' },
-    })
-  );
+  const [mapViewport, setMapViewport] = useState({
+    width: "100%",
+    height: 400,
+    zoom: DEFAULT_MAP_ZOOM,
+    latitude: scanLocations[0].latitude,
+    longitude: scanLocations[0].longitude,
+  });
 
   return (
     <Flex
@@ -165,6 +166,7 @@ const ScanLocationsSection = () => {
       <LocationScanMap
         scanLocations={scanLocations}
         viewport={mapViewport}
+        setViewport={setMapViewport}
       />
       <Text color="petcode.neutral.700" fontSize="3xl" marginY={3}>
         Scan Locations
