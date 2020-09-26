@@ -146,9 +146,10 @@ const DashboardPage = withTheme(({ theme }) => {
             backgroundColor="white"
             flexBasis="100%"
             padding={6}
+            boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           >
             <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
-              Reminders
+              Upcoming Reminders
             </Text>
             {service.pets[0]?.reminders.map((reminder: any, idx: number) => (
               <ReminderItem key={idx} reminder={reminder} />
