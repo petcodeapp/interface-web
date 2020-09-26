@@ -50,6 +50,7 @@ const Card: React.FC<FlexProps> = (props) => (
     width="75%"
     backgroundColor="white"
     justifyContent="space-between"
+    boxSizing="border-box"
     padding={6}
     {...props}
   />
@@ -135,7 +136,6 @@ const PetProfilePage = () => {
       headerProps={{
         position: "absolute",
         backgroundColor: "transparent",
-        color: "petcode.neutral.700",
       }}
       paddingTop="12.85%"
     >
@@ -169,8 +169,8 @@ const PetProfilePage = () => {
         spacing={8}
       >
         <PrimaryHeader>Help Me Get Home!</PrimaryHeader>
-        <Card>
-          <Stack justifyContent="center">
+        <Card paddingLeft={6} padding={0} overflow="hidden">
+          <Stack justifyContent="center" flexBasis="60%" paddingY={6}>
             <Text fontSize="5xl" color="petcode.neutral.700" lineHeight="none">
               Max
             </Text>
@@ -190,13 +190,39 @@ const PetProfilePage = () => {
               </ActionButton>
             </Stack>
           </Stack>
+          <Box position="relative">
+            <svg
+              style={{ position: "absolute", left: 0 }}
+              height="195px"
+              viewBox="0 0 91 253"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M46.2 128.488C85 75 90.5333 27.6613 91 0H0V253C0.933333 224.664 7.4 181.976 46.2 128.488Z" fill="white"/>
+            </svg>
+            <svg
+              style={{ position: "absolute", left: -10 }}
+              height="195px"
+              viewBox="0 0 131 248"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                opacity="0.3"
+                d="M131 0H0.5V247.5H33C32.8333 220 32 155 67 116C102 77 128 21 131 0Z"
+                fill="white"
+              />
+            </svg>
+          </Box>
           <Box
-            rounded="full"
-            size="135px"
-            backgroundSize="cover"
-            backgroundPosition="center"
+            height="100%"
+            flexGrow={1}
             backgroundImage="url(/media/placeholder-dog.png)"
-            marginBottom={3}
+            backgroundSize="cover"
+            backgroundPosition="50% 50%"
+            roundedRight="lg"
           />
         </Card>
         <PrimaryHeader>Contact Information</PrimaryHeader>
@@ -214,27 +240,34 @@ const PetProfilePage = () => {
                 ))
                 .reduce(
                   // @ts-ignore
-                  (acc, cur) => [acc, <Divider orientation="vertical" />, cur]
+                  (acc, cur) => [acc, <Divider
+                    alignSelf="stretch"
+                    orientation="vertical"
+                    color="petcode.neutral.300"
+                    borderLeftWidth={2}
+                  />, cur]
                 )}
             </Stack>
-            <Stack spacing={3}>
-              <SecondaryHeader>
-                Veterinarian Contact Information
-              </SecondaryHeader>
-              <Stack isInline spacing={8}>
-                {pet.vetName.visible && (
-                  <InfoField
-                    text={pet.vetName.value}
-                    label="Veterinarian Name"
-                  />
-                )}
-                {pet.vetPhoneNumber.visible && (
-                  <InfoField
-                    text={pet.vetPhoneNumber.value}
-                    label="Veterinarian Phone Number"
-                  />
-                )}
-              </Stack>
+          </Stack>
+        </Card>
+        <Card>
+          <Stack spacing={3}>
+            <SecondaryHeader>
+              Veterinarian Contact Information
+            </SecondaryHeader>
+            <Stack isInline spacing={8}>
+              {pet.vetName.visible && (
+                <InfoField
+                  text={pet.vetName.value}
+                  label="Veterinarian Name"
+                />
+              )}
+              {pet.vetPhoneNumber.visible && (
+                <InfoField
+                  text={pet.vetPhoneNumber.value}
+                  label="Veterinarian Phone Number"
+                />
+              )}
             </Stack>
           </Stack>
         </Card>
