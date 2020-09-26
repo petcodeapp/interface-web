@@ -230,17 +230,22 @@ const RemindersSection = () => {
           marginLeft={3}
           key={idx}
           reminder={reminder}
-          onChange={(field, value) =>
+          isEditable
+          onSave={(newReminder) => {
+            // EDIT REMINDER
             setReminders([
               ...reminders.slice(0, idx),
-              {
-                ...reminder,
-                // @ts-ignore
-                [field]: value,
-              },
+              newReminder,
               ...reminders.slice(idx + 1),
             ])
-          }
+          }}
+          onDelete={() => {
+            // DELETE REMINDER
+            setReminders([
+              ...reminders.slice(0, idx),
+              ...reminders.slice(idx + 1),
+            ])
+          }}
         />
       ))}
       <Overlays setModalShown={setModalShown} />

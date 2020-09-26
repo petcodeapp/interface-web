@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Box,
+  Divider,
   Flex,
   FlexProps,
+  Icon,
   Input,
   InputProps,
   Select,
   SelectProps,
+  Stack,
   Text,
 } from "@chakra-ui/core";
 
@@ -49,11 +52,16 @@ const ReminderSelect: React.FC<SelectProps> = (props) => (
 type ReminderItemProps = {
   reminder: Reminder;
   isEditable?: boolean;
-  onChange?: (field: string, value: any) => void;
-} & Omit<FlexProps, "onChange">;
+  onSave?: (reminder: Reminder) => void;
+  onDelete?: () => void;
+} & FlexProps;
 
 const ReminderItem: React.FC<ReminderItemProps> =
-  ({ reminder, isEditable = false, onChange = () => {}, ...props }) => (
+  ({ reminder, isEditable = false, onSave = () => {}, onDelete = () => {}, ...props }) => {
+  const [editedReminder, setEditedReminder] = useState(reminder);
+  const [isBeingEdited, setIsBeingEdited] = useState(false);
+
+  return (
     <Flex
       direction="row"
       rounded="lg"
@@ -69,10 +77,10 @@ const ReminderItem: React.FC<ReminderItemProps> =
           {reminder.name}
         </Text>
         <Text color="petcode.neutral.400">
-          Recurring : {isEditable ? (
+          Recurring : {isBeingEdited ? (
             <ReminderSelect
-              value={reminder.frequency}
-              onChange={e => onChange("frequency", e.target.value)}
+              value={editedReminder.frequency}
+              onChange={e => setEditedReminder({ ...editedReminder, frequency: e.target.value })}
             >
               <option>One-Time</option>
               <option>Daily</option>
@@ -87,31 +95,81 @@ const ReminderItem: React.FC<ReminderItemProps> =
       <Box flexGrow={1} />
       <Flex direction="column" justifyContent="space-between" alignItems="end">
         <Text color="petcode.blue.400">
-          {isEditable ? (
+          {isBeingEdited ? (
             <ReminderInput
               type="date"
-              value={reminder.date}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange("date", e.target.value)}
+              value={editedReminder.date}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEditedReminder({ ...editedReminder, date: e.target.value })
+              }
             />
           ) : (
             moment(reminder.date).format("M/D")
           )}
         </Text>
         <Text color="petcode.yellow.400" fontSize="md">
-          {isEditable ? (
+          {isBeingEdited ? (
             <ReminderInput
               type="time"
               color="petcode.yellow.400"
               fontSize="md"
-              value={reminder.time}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange("time", e.target.value)}
+              value={editedReminder.time}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEditedReminder({ ...editedReminder, time: e.target.value })
+              }
             />
           ) : (
             moment(reminder.time, "HH:mm").format("LT")
           )}
         </Text>
       </Flex>
+      {isEditable && (
+        <Stack
+          isInline
+          alignItems="center"
+          spacing={4}
+        >
+          <Divider
+            alignSelf="stretch"
+            orientation="vertical"
+            color="petcode.neutral.300"
+            borderLeftWidth={2}
+            marginX={4}
+            marginY={0}
+          />
+          {!isBeingEdited ? (
+            <Icon
+              name="edit"
+              color="petcode.neutral.600"
+              cursor="pointer"
+              onClick={() => {
+                setIsBeingEdited(true);
+              }}
+              size="28px"
+            />
+          ) : (
+            <Icon
+              name="checkmark"
+              color="green.400"
+              cursor="pointer"
+              onClick={() => {
+                setIsBeingEdited(false);
+                onSave(editedReminder);
+              }}
+              size="28px"
+            />
+          )}
+          <Icon
+            name="delete"
+            color="red.400"
+            cursor="pointer"
+            size="28px"
+            onClick={onDelete}
+          />
+        </Stack>
+      )}
     </Flex>
-);
+  );
+};
 
 export default ReminderItem;
