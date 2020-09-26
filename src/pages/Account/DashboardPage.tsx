@@ -86,7 +86,8 @@ const DashboardPage = () => {
               {service.pets[0]?.name}
             </Text>
             <Text color="petcode.neutral.500" fontSize="2xl" fontWeight="thin">
-              {service.pets[0]?.breed} &middot; {service.pets[0]?.contacts[0]?.name.value}
+              {service.pets[0]?.breed} &middot;{" "}
+              {service.pets[0]?.contacts[0]?.name.value}
             </Text>
           </Stack>
           <Box position="relative">
