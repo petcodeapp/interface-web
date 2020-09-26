@@ -36,7 +36,6 @@
     "react-scripts": "3.4.1",
     "react-star-ratings": "https://github.com/pschyma/react-star-ratings",
     "react-table": "^7.3.2",
-    "react-viewport-utils": "^1.12.1",
     "typescript": "~3.7.2",
     "use-breakpoint": "^1.1.2",
     "yup": "^0.29.3",

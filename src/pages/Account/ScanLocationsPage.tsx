@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/core";
 
 import ReactMapGL, { Marker, InteractiveMapProps } from "react-map-gl";
-import { useDimensions, ViewportProvider } from "react-viewport-utils";
 
 import AccountPageLayout from "./components/AccountPageLayout";
 
@@ -80,24 +79,15 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
   viewport,
   scanLocations,
 }) => {
-  const [lastWidth, setLastWidth] = useState(0);
-  const dimensions = useDimensions({
-    deferUpdateUntilIdle: true,
-    disableScrollUpdates: true,
-  });
-  if (lastWidth !== dimensions.width) {
-    setTimeout(() => {
-      setLastWidth(dimensions.width);
-    }, 0);
-  }
-
   return useObserver(() => (
     // @ts-ignore
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
       mapStyle="mapbox://styles/mapbox/streets-v11"
-      onViewportChange={(newViewport) => Object.assign(viewport, newViewport)}
+      onViewportChange={(newViewport) => Object.assign(viewport, newViewport, {
+        width: "100%"
+      })}
     >
       {scanLocations.map((scanLocation, idx) => (
         <ScanLocationMarker key={idx} scanLocation={scanLocation} />
@@ -105,12 +95,6 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
     </ReactMapGL>
   ));
 };
-
-const LocationScanMapWithProvider: React.FC<LocationScanMapProps> = (props) => (
-  <ViewportProvider>
-    <LocationScanMap {...props} />
-  </ViewportProvider>
-);
 
 const ScanLocationCard: React.FC<
   PseudoBoxProps & { scanLocation: ScanLocation }
@@ -178,7 +162,7 @@ const ScanLocationsSection = () => {
       paddingX={10}
       zIndex={1}
     >
-      <LocationScanMapWithProvider
+      <LocationScanMap
         scanLocations={scanLocations}
         viewport={mapViewport}
       />
