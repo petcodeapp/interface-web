@@ -162,12 +162,7 @@ const ContactInfoSection = () => {
   const toast = useToast();
 
   return useObserver(() => (
-    <Stack
-      flexGrow={1}
-      paddingX={10}
-      spacing={5}
-      zIndex={1}
-    >
+    <Stack flexGrow={1} paddingX={10} spacing={5} zIndex={1}>
       {service.pets[0]?.contacts.map((value: any, index: number) => {
         console.log(
           JSON.parse(JSON.stringify(service.pets[0]?.contacts[index]))

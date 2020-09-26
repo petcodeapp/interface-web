@@ -140,9 +140,7 @@ type OverlaysProps = {
   setModalShown: (a: boolean) => void;
 };
 
-const Overlays: React.FC<OverlaysProps> = ({
-  setModalShown,
-}) => (
+const Overlays: React.FC<OverlaysProps> = ({ setModalShown }) => (
   <ExpandButton
     rounded="full"
     bottom={5}
@@ -216,12 +214,7 @@ const RemindersSection = () => {
   const [isModalShown, setModalShown] = useState(false);
 
   return (
-    <Stack
-      flexGrow={1}
-      paddingX={10}
-      zIndex={1}
-      spacing={6}
-    >
+    <Stack flexGrow={1} paddingX={10} zIndex={1} spacing={6}>
       <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
         Reminders
       </Text>
@@ -237,14 +230,14 @@ const RemindersSection = () => {
               ...reminders.slice(0, idx),
               newReminder,
               ...reminders.slice(idx + 1),
-            ])
+            ]);
           }}
           onDelete={() => {
             // DELETE REMINDER
             setReminders([
               ...reminders.slice(0, idx),
               ...reminders.slice(idx + 1),
-            ])
+            ]);
           }}
         />
       ))}

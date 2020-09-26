@@ -199,12 +199,7 @@ const MedicalInfoSection = () => {
   );
 
   return useObserver(() => (
-    <Stack
-      flexGrow={1}
-      paddingX={10}
-      spacing={5}
-      zIndex={1}
-    >
+    <Stack flexGrow={1} paddingX={10} spacing={5} zIndex={1}>
       <Flex
         direction="column"
         rounded="lg"

@@ -95,10 +95,15 @@ const LandingPage: React.FunctionComponent = () => {
   };
 
   return (
-    <ThemeProvider theme={{ ...theme, fonts: {
-      ...theme.fonts,
-      heading: '"Open Sans", sans-serif'
-    } }}>
+    <ThemeProvider
+      theme={{
+        ...theme,
+        fonts: {
+          ...theme.fonts,
+          heading: '"Open Sans", sans-serif',
+        },
+      }}
+    >
       <Layout
         position="relative"
         headerProps={{
@@ -550,7 +555,7 @@ const LandingPage: React.FunctionComponent = () => {
         />
       </Layout>
     </ThemeProvider>
-  );  
-};  
+  );
+};
 
 export default LandingPage;

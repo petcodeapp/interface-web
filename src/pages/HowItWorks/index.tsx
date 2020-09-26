@@ -82,10 +82,15 @@ const HowItWorksPage: React.FunctionComponent = () => {
   };
 
   return (
-    <ThemeProvider theme={{ ...theme, fonts: {
-      ...theme.fonts,
-      heading: '"Open Sans", sans-serif'
-    } }}>
+    <ThemeProvider
+      theme={{
+        ...theme,
+        fonts: {
+          ...theme.fonts,
+          heading: '"Open Sans", sans-serif',
+        },
+      }}
+    >
       <Layout
         position="relative"
         headerProps={{
@@ -484,7 +489,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
         <Footer />
       </Layout>
     </ThemeProvider>
-  );  
-};  
+  );
+};
 
 export default HowItWorksPage;

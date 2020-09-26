@@ -56,8 +56,13 @@ type ReminderItemProps = {
   onDelete?: () => void;
 } & FlexProps;
 
-const ReminderItem: React.FC<ReminderItemProps> =
-  ({ reminder, isEditable = false, onSave = () => {}, onDelete = () => {}, ...props }) => {
+const ReminderItem: React.FC<ReminderItemProps> = ({
+  reminder,
+  isEditable = false,
+  onSave = () => {},
+  onDelete = () => {},
+  ...props
+}) => {
   const [editedReminder, setEditedReminder] = useState(reminder);
   const [isBeingEdited, setIsBeingEdited] = useState(false);
 
@@ -73,14 +78,18 @@ const ReminderItem: React.FC<ReminderItemProps> =
       {...props}
     >
       <Box>
-        <Text color="petcode.blue.400">
-          {reminder.name}
-        </Text>
+        <Text color="petcode.blue.400">{reminder.name}</Text>
         <Text color="petcode.neutral.400">
-          Recurring : {isBeingEdited ? (
+          Recurring :{" "}
+          {isBeingEdited ? (
             <ReminderSelect
               value={editedReminder.frequency}
-              onChange={e => setEditedReminder({ ...editedReminder, frequency: e.target.value })}
+              onChange={(e) =>
+                setEditedReminder({
+                  ...editedReminder,
+                  frequency: e.target.value,
+                })
+              }
             >
               <option>One-Time</option>
               <option>Daily</option>
@@ -124,11 +133,7 @@ const ReminderItem: React.FC<ReminderItemProps> =
         </Text>
       </Flex>
       {isEditable && (
-        <Stack
-          isInline
-          alignItems="center"
-          spacing={4}
-        >
+        <Stack isInline alignItems="center" spacing={4}>
           <Divider
             alignSelf="stretch"
             orientation="vertical"

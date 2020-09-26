@@ -110,12 +110,7 @@ const PetInfoSection = () => {
   const toast = useToast();
 
   return useObserver(() => (
-    <Flex
-      direction="column"
-      flexGrow={1}
-      paddingX={10}
-      zIndex={1}
-    >
+    <Flex direction="column" flexGrow={1} paddingX={10} zIndex={1}>
       <Flex direction="row" alignItems="center" color="petcode.neutral.700">
         <Box
           rounded="full"

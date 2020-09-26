@@ -86,11 +86,13 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
       {...viewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
       mapStyle="mapbox://styles/mapbox/streets-v11"
-      onViewportChange={(newViewport) => setViewport({
-        ...viewport,
-        ...newViewport,
-        width: "100%"
-      })}
+      onViewportChange={(newViewport) =>
+        setViewport({
+          ...viewport,
+          ...newViewport,
+          width: "100%",
+        })
+      }
     >
       {scanLocations.map((scanLocation, idx) => (
         <ScanLocationMarker key={idx} scanLocation={scanLocation} />
@@ -157,12 +159,7 @@ const ScanLocationsSection = () => {
   });
 
   return (
-    <Flex
-      direction="column"
-      flexGrow={1}
-      paddingX={10}
-      zIndex={1}
-    >
+    <Flex direction="column" flexGrow={1} paddingX={10} zIndex={1}>
       <LocationScanMap
         scanLocations={scanLocations}
         viewport={mapViewport}
