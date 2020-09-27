@@ -172,7 +172,7 @@ const PetProfilePage = () => {
             />
           </svg>
         </>
-      ) :  (
+      ) : (
         <>
           <svg
             style={{ position: "absolute", top: 0, height: 250 }}
@@ -236,7 +236,9 @@ const PetProfilePage = () => {
             height={54}
           />
         )}
-        {parseInt(breakpoint) > 1 && <PrimaryHeader>Help Me Get Home!</PrimaryHeader>}
+        {parseInt(breakpoint) > 1 && (
+          <PrimaryHeader>Help Me Get Home!</PrimaryHeader>
+        )}
         <Card paddingLeft={6} padding={0} overflow="hidden">
           <Stack justifyContent="center" flexBasis="60%" paddingY={6}>
             <Text fontSize="5xl" color="petcode.neutral.700" lineHeight="none">
@@ -248,58 +250,73 @@ const PetProfilePage = () => {
             {parseInt(breakpoint) > 0 && (
               <Stack isInline>
                 <ActionButton>
-                  <Text textTransform="uppercase" fontWeight="bold" letterSpacing="0.05em">
+                  <Text
+                    textTransform="uppercase"
+                    fontWeight="bold"
+                    letterSpacing="0.05em"
+                  >
                     Contact Owner
                   </Text>
                 </ActionButton>
                 <ActionButton>
-                  <Text textTransform="uppercase" fontWeight="bold" letterSpacing="0.05em">
+                  <Text
+                    textTransform="uppercase"
+                    fontWeight="bold"
+                    letterSpacing="0.05em"
+                  >
                     Pet Info
                   </Text>
                 </ActionButton>
               </Stack>
             )}
           </Stack>
-          {parseInt(breakpoint) > 0 && <Box position="relative">
-            <svg
-              style={{ position: "absolute", left: 0 }}
-              height="195px"
-              viewBox="0 0 91 253"
-              preserveAspectRatio="none"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M46.2 128.488C85 75 90.5333 27.6613 91 0H0V253C0.933333 224.664 7.4 181.976 46.2 128.488Z" fill="white"/>
-            </svg>
-            <svg
-              style={{ position: "absolute", left: -10 }}
-              height="195px"
-              viewBox="0 0 131 248"
-              preserveAspectRatio="none"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                opacity="0.3"
-                d="M131 0H0.5V247.5H33C32.8333 220 32 155 67 116C102 77 128 21 131 0Z"
-                fill="white"
-              />
-            </svg>
-          </Box>}
+          {parseInt(breakpoint) > 0 && (
+            <Box position="relative">
+              <svg
+                style={{ position: "absolute", left: 0 }}
+                height="195px"
+                viewBox="0 0 91 253"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M46.2 128.488C85 75 90.5333 27.6613 91 0H0V253C0.933333 224.664 7.4 181.976 46.2 128.488Z"
+                  fill="white"
+                />
+              </svg>
+              <svg
+                style={{ position: "absolute", left: -10 }}
+                height="195px"
+                viewBox="0 0 131 248"
+                preserveAspectRatio="none"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  opacity="0.3"
+                  d="M131 0H0.5V247.5H33C32.8333 220 32 155 67 116C102 77 128 21 131 0Z"
+                  fill="white"
+                />
+              </svg>
+            </Box>
+          )}
           <Box
             backgroundSize="cover"
             backgroundPosition="center"
             backgroundImage="url(/media/placeholder-dog.png)"
-            {...(parseInt(breakpoint) > 0 ? {
-              height: "100%",
-              flexGrow: 1,
-              roundedRight: "lg"
-            } : {
-              margin: 6,
-              size: "100px",
-              minWidth: "100px",
-              rounded: "full"
-            })}
+            {...(parseInt(breakpoint) > 0
+              ? {
+                  height: "100%",
+                  flexGrow: 1,
+                  roundedRight: "lg",
+                }
+              : {
+                  margin: 6,
+                  size: "100px",
+                  minWidth: "100px",
+                  rounded: "full",
+                })}
           />
         </Card>
         <PrimaryHeader>Contact Information</PrimaryHeader>
@@ -317,13 +334,17 @@ const PetProfilePage = () => {
                 ))
                 .reduce(
                   // @ts-ignore
-                  (acc, cur) => [acc, <Divider
-                    alignSelf="stretch"
-                    orientation="vertical"
-                    color="petcode.neutral.300"
-                    marginLeft={10}
-                    borderLeftWidth={2}
-                  />, cur]
+                  (acc, cur) => [
+                    acc,
+                    <Divider
+                      alignSelf="stretch"
+                      orientation="vertical"
+                      color="petcode.neutral.300"
+                      marginLeft={10}
+                      borderLeftWidth={2}
+                    />,
+                    cur,
+                  ]
                 )}
             </Stack>
           </Card>
@@ -336,15 +357,10 @@ const PetProfilePage = () => {
         )}
         <Card>
           <Stack spacing={3}>
-            <SecondaryHeader>
-              Veterinarian Contact Information
-            </SecondaryHeader>
-            <Stack isInline={(parseInt(breakpoint) > 1)} spacing={{ md: 8 }}>
+            <SecondaryHeader>Veterinarian Contact Information</SecondaryHeader>
+            <Stack isInline={parseInt(breakpoint) > 1} spacing={{ md: 8 }}>
               {pet.vetName.visible && (
-                <InfoField
-                  text={pet.vetName.value}
-                  label="Veterinarian Name"
-                />
+                <InfoField text={pet.vetName.value} label="Veterinarian Name" />
               )}
               {pet.vetPhoneNumber.visible && (
                 <InfoField
@@ -366,10 +382,7 @@ const PetProfilePage = () => {
                 .humanize()} old`}
               label="Age"
             />
-            <InfoField
-              text={pet.temperament}
-              label="Temperament"
-            />
+            <InfoField text={pet.temperament} label="Temperament" />
             <InfoField
               text={pet.isServiceAnimal ? "Yes" : "No"}
               label="Service Animal"
@@ -383,10 +396,7 @@ const PetProfilePage = () => {
               </Box>
             ))}
             {pet.specialNeeds.visible && (
-              <InfoField
-                text={pet.specialNeeds.value}
-                label="Medical Needs"
-              />
+              <InfoField text={pet.specialNeeds.value} label="Medical Needs" />
             )}
           </SimpleGrid>
         </Card>
