@@ -64,31 +64,33 @@ const DashboardPage = () => {
     <AccountPageLayout>
       <Stack flexGrow={1} paddingX={10} spacing={5} zIndex={1}>
         <Flex
+          position="relative"
           rounded="lg"
           direction="row"
           boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           overflow="hidden"
         >
+          <Icon
+            position="absolute"
+            left={16}
+            top="50%"
+            color="petcode.neutral.700"
+            opacity={0.05}
+            size="100px"
+            transform="translateY(-50%) matrix(-0.98, 0.2, 0.2, 0.98, 0, 0);"
+            name="paw"
+          />
           <Stack
-            position="relative"
             flexBasis="50%"
             backgroundColor="petcode.yellow.400"
             roundedLeft="lg"
             padding={10}
+            paddingLeft={32}
           >
-            <Icon
-              position="absolute"
-              left={16}
-              color="petcode.neutral.700"
-              opacity={0.05}
-              size="100px"
-              transform="matrix(-0.98, 0.2, 0.2, 0.98, 0, 0)"
-              name="paw"
-            />
             <Text color="petcode.neutral.700" fontSize="5xl" lineHeight="none">
               {service.pets[0]?.name}
             </Text>
-            <Text color="petcode.neutral.500" fontSize="2xl" fontWeight="thin">
+            <Text color="petcode.neutral.600" fontSize="2xl" fontWeight="thin">
               {service.pets[0]?.breed} &middot;{" "}
               {service.pets[0]?.contacts[0]?.name.value}
             </Text>
@@ -127,7 +129,7 @@ const DashboardPage = () => {
             flexGrow={1}
             backgroundImage={`url(${service.pets[0]?.profileUrl})`}
             backgroundSize="cover"
-            backgroundPosition="50% 50%"
+            backgroundPosition="center"
             roundedRight="lg"
           />
         </Flex>
@@ -189,7 +191,6 @@ const DashboardPage = () => {
           <Stack
             rounded="lg"
             backgroundColor="white"
-            flexBasis="100%"
             padding={6}
             boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           >

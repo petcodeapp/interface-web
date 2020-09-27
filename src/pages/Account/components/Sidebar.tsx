@@ -42,8 +42,8 @@ const Sidebar = withRouter(({ location }) => {
       minWidth="180px"
       boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
       rounded="lg"
-      maxHeight="calc(100vh - 57px - 5rem)"
       padding={10}
+      maxHeight="calc(846px - 5rem)"
       zIndex={1}
       spacing={6}
     >
