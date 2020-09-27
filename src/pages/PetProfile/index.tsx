@@ -229,11 +229,13 @@ const PetProfilePage = () => {
         padding={6}
         spacing={8}
       >
-        <Image
-          src="/media/petcode-logo-with-qr-code-altered.png"
-          alt="Petcode logo with QR code"
-          height={54}
-        />
+        {!(parseInt(breakpoint) > 1) && (
+          <Image
+            src="/media/petcode-logo-with-qr-code-altered.png"
+            alt="Petcode logo with QR code"
+            height={54}
+          />
+        )}
         {parseInt(breakpoint) > 1 && <PrimaryHeader>Help Me Get Home!</PrimaryHeader>}
         <Card paddingLeft={6} padding={0} overflow="hidden">
           <Stack justifyContent="center" flexBasis="60%" paddingY={6}>
