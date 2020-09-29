@@ -9,6 +9,7 @@ import {
   Stack,
   StackProps,
   Text,
+  ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
 import { motion, Transition } from "framer-motion";
@@ -26,10 +27,9 @@ import Footer from "../../components/Shared/footer";
 import { PetCodeTheme } from "../../theme";
 
 import "html5-device-mockups/dist/device-mockups.min.css";
-import { ThemeProvider } from "emotion-theming";
 
 const ActionButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton size="md" paddingX={10} textTransform="uppercase" {...props} />
+  <BaseButton size="md" paddingX={8} textTransform="uppercase" {...props} />
 );
 
 const Feature: React.FC<StackProps> = (props) => (
@@ -109,12 +109,11 @@ const LandingPage: React.FunctionComponent = () => {
         headerProps={{
           position: "absolute",
           backgroundColor: "transparent",
-          color: "petcode.neutral.700",
         }}
-        paddingTop={200}
+        paddingTop={0}
       >
         <svg
-          style={{ position: "absolute", left: 0, top: 0, height: 200 }}
+          style={{ position: "absolute", left: 0, top: 0, height: 370, zIndex: 1 }}
           viewBox="0 0 567 370"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +127,7 @@ const LandingPage: React.FunctionComponent = () => {
           />
         </svg>
         <svg
-          style={{ position: "absolute", left: 75, top: 0, height: 150 }}
+          style={{ position: "absolute", top: 0, height: 318, zIndex: 1 }}
           viewBox="0 0 743 318"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -142,16 +141,25 @@ const LandingPage: React.FunctionComponent = () => {
             fill={theme.colors.petcode.blue[400]}
           />
         </svg>
-        <Stack isInline paddingX={10}>
-          <Image src="/media/hero-image.png" alt="Hero image" />
-          <Stack position="relative" top={-20} color="petcode.neutral.600">
-            <Heading fontSize="5xl" fontWeight="bold">
+        <Flex
+          display="flex"
+          flexDirection="column"
+          boxSizing="border-box"
+          paddingTop={24}
+          paddingRight={32}
+          backgroundImage="url(/media/landing-splash.png)"
+          backgroundSize="cover"
+          minHeight="calc(100vw * 0.70486111111)"
+        >
+          <Box flexGrow={5}/>
+          <Stack maxW="24rem" alignSelf="end" color="white" spacing={5}>
+            <Heading fontSize="6xl" fontWeight="bold" lineHeight="none">
               One Code
             </Heading>
-            <Text fontSize="xl">
+            <Text fontSize="2xl">
               An endless suite of features for pet owners.
             </Text>
-            <Stack isInline>
+            <Stack isInline spacing={4}>
               <ActionButton variantColor="petcode.yellow">
                 Watch Video
               </ActionButton>
@@ -160,9 +168,10 @@ const LandingPage: React.FunctionComponent = () => {
               </ActionButton>
             </Stack>
           </Stack>
-        </Stack>
+          <Box flexGrow={11}/>
+        </Flex>
         <Flex direction="column">
-          <Box position="relative" paddingBottom="10.94%">
+          <Box position="relative">
             <svg
               style={{ position: "absolute", bottom: 0 }}
               viewBox="0 0 1440 75"

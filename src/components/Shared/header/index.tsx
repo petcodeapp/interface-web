@@ -15,14 +15,14 @@ const HeaderLink: React.FC<LinkProps & RouterLinkProps> = (props) => (
   <Link
     // @ts-ignore
     as={RouterLink}
-    fontSize="lg"
-    fontFamily="Open Sans"
+    fontSize="2xl"
+    fontFamily="body"
     {...props}
   />
 );
 
 const HeaderButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton size="sm" variantColor="petcode.yellow" paddingX={4} {...props} />
+  <BaseButton size="md" variantColor="petcode.yellow" paddingX={8} {...props} />
 );
 
 const Header: React.FC<FlexProps> = (props) => {
@@ -35,28 +35,29 @@ const Header: React.FC<FlexProps> = (props) => {
       alignItems="center"
       top={0}
       background="rgba(0, 0, 0, 0.4)"
-      width="calc(100% - 4rem)"
-      paddingX={8}
+      width="100vw"
+      boxSizing="border-box"
+      paddingLeft={8}
+      paddingRight={16}
       paddingY={2}
       zIndex={999}
-      spacing={4}
+      spacing={8}
       color="white"
       {...props}
     >
       <HeaderLink to="/">
-        <Image src="/media/petcode-logo-with-qr-code.png" height="40px" />
+        <Image src="/media/petcode-logo-with-qr-code.png" height="4.75rem" />
       </HeaderLink>
       <Box flexGrow={1} />
       <HeaderLink to="/">Home</HeaderLink>
       <HeaderLink to="/howitworks">How It Works</HeaderLink>
       <HeaderLink to="/products">Purchase</HeaderLink>
       {!auth.isLoggedIn ? (
-        <Stack isInline spacing={4}>
+        <Stack isInline spacing={8}>
           <HeaderButton>
             <HeaderLink
               to="/signup"
-              fontWeight="thin"
-              color="petcode.neutral.700"
+              fontWeight="normal"
             >
               Register
             </HeaderLink>
@@ -64,8 +65,7 @@ const Header: React.FC<FlexProps> = (props) => {
           <HeaderButton>
             <HeaderLink
               to="/login"
-              fontWeight="thin"
-              color="petcode.neutral.700"
+              fontWeight="normal"
             >
               Sign In
             </HeaderLink>
@@ -75,8 +75,7 @@ const Header: React.FC<FlexProps> = (props) => {
         <HeaderButton>
           <HeaderLink
             to="/dashboard"
-            fontWeight="thin"
-            color="petcode.neutral.700"
+            fontWeight="normal"
           >
             Dashboard
           </HeaderLink>

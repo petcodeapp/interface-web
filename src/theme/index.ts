@@ -13,9 +13,10 @@ export default {
   },
   fontSizes: {
     ...theme.fontSizes,
-    "7xl": "84px",
-    "8xl": "108px",
-    "9xl": "136px",
+    "5xl": "3.75rem",
+    "7xl": "5.25rem",
+    "8xl": "6.75px",
+    "9xl": "8.5px",
   },
   fontWeights: {
     ...theme.fontWeights,

@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({
 }) => (
   <Flex
     direction="column"
-    minHeight="calc(100% - 57px)"
+    minHeight="calc(100% - 6.25rem)"
     paddingTop="57px"
     {...props}
   >
