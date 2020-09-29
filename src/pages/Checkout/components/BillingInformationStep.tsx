@@ -5,10 +5,10 @@ import { Formik, Field } from "formik";
 
 import AddressInputs from "./AddressInputs";
 import { ShippingInformation } from "./ShippingInformationStep";
-import BaseCheckbox from "../../../components/Shared/input/BaseCheckbox";
-import BaseButton from "../../../components/Shared/button/BaseButton";
-import RoundedInput from "../../../components/Shared/input/RoundedInput";
-import UnifiedErrorMessage from "../../../components/Shared/formik/UnifiedErrorMessage";
+import BaseButton from "../../../components/Shared/atoms/button";
+import BaseCheckbox from "../../../components/Shared/atoms/checkbox";
+import RoundedInput from "../../../components/Shared/atoms/roundedinput";
+import UnifiedErrorMessage from "../../../components/Shared/molecules/UnifiedErrorMessage";
 
 import * as Yup from "yup";
 import "yup-phone";

@@ -16,15 +16,15 @@ import {
 } from "@chakra-ui/core";
 
 import AccountPageLayout from "./components/AccountPageLayout";
-import BaseButton from "../../components/Shared/button/BaseButton";
-import ExpandButton from "../../components/Shared/button/ExpandButton";
-import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
+import BaseButton from "../../components/Shared/atoms/button";
+import BaseCheckbox from "../../components/Shared/atoms/checkbox";
+import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
+import Row from "../../components/Shared/atoms/row";
 import {
-  InfoFieldRow,
   InfoFieldText,
   InfoFieldLabel,
   InfoFieldInput,
-} from "../../components/Shared/family/InfoField";
+} from "../../components/Shared/molecules/InfoField";
 
 import { action } from "mobx";
 import { useObserver } from "mobx-react";
@@ -207,11 +207,11 @@ const MedicalInfoSection = () => {
         padding={6}
         boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
       >
-        <InfoFieldRow fontSize="2xl" marginBottom={3}>
+        <Row fontSize="2xl" marginBottom={3}>
           <Text color="petcode.neutral.700">General Medical Information</Text>
           <Text color="petcode.neutral.400">Visibility</Text>
-        </InfoFieldRow>
-        <InfoFieldRow>
+        </Row>
+        <Row>
           <Box flexBasis="60%">
             {isEditable ? (
               <InfoFieldInput
@@ -234,8 +234,8 @@ const MedicalInfoSection = () => {
             //     // (pet.specialNeeds.visible = !pet.specialNeeds.visible)//TODO: Visibility in Mobx
             // )}
           />
-        </InfoFieldRow>
-        <InfoFieldRow>
+        </Row>
+        <Row>
           <Box flexBasis="60%">
             {isEditable ? (
               <InfoFieldInput
@@ -258,8 +258,8 @@ const MedicalInfoSection = () => {
             //     (service.pets[0]?.allergies.visible = !service.pets[0]?.allergies.visible) // TODO: VISIBILITy
             // )}
           />
-        </InfoFieldRow>
-        <InfoFieldRow>
+        </Row>
+        <Row>
           <Box flexBasis="60%">
             {isEditable ? (
               <InfoFieldInput
@@ -281,8 +281,8 @@ const MedicalInfoSection = () => {
             //     isEditable.get() && (service.pets[0]?.vetName.visible = !service.pets[0]?.vetName.visible)
             // )}
           />
-        </InfoFieldRow>
-        <InfoFieldRow>
+        </Row>
+        <Row>
           <Box flexBasis="60%">
             {isEditable ? (
               <InfoFieldInput
@@ -305,7 +305,7 @@ const MedicalInfoSection = () => {
             //     (service.pets[0]?.vetPhoneNumber.visible = !service.pets[0]?.vetPhoneNumber.visible)
             // )}
           />
-        </InfoFieldRow>
+        </Row>
       </Flex>
       <Flex
         direction="column"

@@ -3,10 +3,10 @@ import React from "react";
 import { Box, Heading, Stack, Text, Textarea } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
-import Layout from "../../components/Shared/layout";
-import BaseButton from "../../components/Shared/button/BaseButton";
-import RoundedInput from "../../components/Shared/input/RoundedInput";
-import UnifiedErrorMessage from "../../components/Shared/formik/UnifiedErrorMessage";
+import Layout from "../../components/Shared/layouts";
+import BaseButton from "../../components/Shared/atoms/button";
+import RoundedInput from "../../components/Shared/atoms/roundedinput";
+import UnifiedErrorMessage from "../../components/Shared/molecules/UnifiedErrorMessage";
 
 import * as Yup from "yup";
 

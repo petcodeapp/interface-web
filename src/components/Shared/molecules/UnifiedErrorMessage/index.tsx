@@ -4,7 +4,7 @@ import { Text } from "@chakra-ui/core";
 
 import { FormikTouched, FormikErrors } from "formik";
 
-type UnifiedErrorMessageProps = {
+export type UnifiedErrorMessageProps = {
   touched: FormikTouched<any>;
   errors: FormikErrors<any>;
   children?: (msg: string) => React.ReactElement;

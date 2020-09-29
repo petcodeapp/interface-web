@@ -17,12 +17,12 @@ import { IPhoneX } from "react-device-mockups";
 
 import BaseButton, {
   BaseButtonProps,
-} from "../../components/Shared/button/BaseButton";
-import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
-import Layout from "../../components/Shared/layout";
+} from "../../components/Shared/atoms/button";
+import BaseCheckbox from "../../components/Shared/atoms/checkbox";
+import Layout from "../../components/Shared/layouts";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
-import Footer from "../../components/Shared/footer";
+import Footer from "../../components/Shared/organisms/Footer";
 
 import { PetCodeTheme } from "../../theme";
 

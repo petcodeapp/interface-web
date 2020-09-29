@@ -16,15 +16,14 @@ import {
 } from "@chakra-ui/core";
 import { useBreakpoint } from "@chakra-ui/media-query";
 
-import {
-  InfoField,
+import InfoField, {
   InfoFieldText,
   InfoFieldLabel,
-} from "../../components/Shared/family/InfoField";
+} from "../../components/Shared/molecules/InfoField";
 import BaseButton, {
   BaseButtonProps,
-} from "../../components/Shared/button/BaseButton";
-import Layout from "../../components/Shared/layout";
+} from "../../components/Shared/atoms/button";
+import Layout from "../../components/Shared/layouts";
 
 import moment from "moment";
 

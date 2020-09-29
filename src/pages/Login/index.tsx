@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/core";
 
 import { AuthStore } from "../../views/Auth/";
-import InputWithIcon from "../../components/Shared/input/InputWithIcon";
-import BaseButton from "../../components/Shared/button/BaseButton";
-import { subPageVariants } from "../../views/Router/index";
+import InputWithIcon from "../../components/Shared/molecules/InputWithIcon";
+import BaseButton from "../../components/Shared/atoms/button";
 import { motion } from "framer-motion";
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (

@@ -1,20 +1,19 @@
 import React from "react";
 
 import {
-  Icon,
   InputGroup,
   InputLeftElement,
-  InputGroupProps,
+  Icon,
   InputProps,
+  InputGroupProps,
 } from "@chakra-ui/core";
+import RoundedInput from "../../atoms/roundedinput";
 
-import RoundedInput from "./RoundedInput";
-
-interface InputWithIconProps {
+export type InputWithIconProps = {
   iconName: string;
   inputGroupProps?: Omit<InputGroupProps, "children">;
   inputProps?: InputProps;
-}
+};
 
 const InputWithIcon: React.FC<InputWithIconProps> = ({
   iconName,

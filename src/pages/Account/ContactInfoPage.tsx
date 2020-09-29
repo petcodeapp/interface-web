@@ -10,15 +10,15 @@ import {
   useToast,
 } from "@chakra-ui/core";
 
-import ExpandButton from "../../components/Shared/button/ExpandButton";
+import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
 import AccountPageLayout from "./components/AccountPageLayout";
-import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
+import Row from "../../components/Shared/atoms/row";
 import {
-  InfoFieldRow,
   InfoFieldText,
   InfoFieldLabel,
   InfoFieldInput,
-} from "../../components/Shared/family/InfoField";
+} from "../../components/Shared/molecules/InfoField";
+import BaseCheckbox from "../../components/Shared/atoms/checkbox";
 
 import { action } from "mobx";
 import { useObserver } from "mobx-react";
@@ -46,11 +46,11 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
       boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
       {...props}
     >
-      <InfoFieldRow fontSize="2xl" marginBottom={3}>
+      <Row fontSize="2xl" marginBottom={3}>
         <Text color="petcode.neutral.700">Contact Information</Text>
         <Text color="petcode.neutral.400">Visibility</Text>
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -74,8 +74,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
               (contactInfo.name.visible = !contactInfo.name.visible)
           )}
         />
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -99,8 +99,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
               (contactInfo.address.visible = !contactInfo.address.visible)
           )}
         />
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -125,8 +125,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
                 .visible)
           )}
         />
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -150,7 +150,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
               (contactInfo.email.visible = !contactInfo.email.visible)
           )}
         />
-      </InfoFieldRow>
+      </Row>
     </Flex>
   ));
 };

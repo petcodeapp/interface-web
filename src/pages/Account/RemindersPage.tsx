@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import {
-  Flex,
-  Icon,
   Modal,
   ModalOverlay,
   ModalCloseButton,
@@ -15,16 +13,14 @@ import {
 } from "@chakra-ui/core";
 
 import AccountPageLayout from "./components/AccountPageLayout";
-import ReminderItem from "./components/ReminderItem";
-import BaseButton from "../../components/Shared/button/BaseButton";
-import ExpandButton from "../../components/Shared/button/ExpandButton";
+import ReminderItem from "../../components/Shared/molecules/ReminderItem";
+import BaseButton from "../../components/Shared/atoms/button";
+import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
 import {
   InfoFieldLabel,
   InfoFieldInput,
   InfoFieldSelect,
-} from "../../components/Shared/family/InfoField";
-
-import { useObserver } from "mobx-react";
+} from "../../components/Shared/molecules/InfoField";
 
 import { Reminder } from "../../Models/Reminder";
 import { AuthContext } from "../../views/Auth/index";

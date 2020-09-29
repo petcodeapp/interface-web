@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 
-import { Box, Flex, Icon, Image, Link, Stack, Text } from "@chakra-ui/core";
-import { Link as RouterLink, LinkProps, withRouter } from "react-router-dom";
+import { Box, Flex, Icon, Image, Stack, Text } from "@chakra-ui/core";
+import { withRouter } from "react-router-dom";
 
-import BaseButton from "../../../components/Shared/button/BaseButton";
+import BaseButton from "../../../components/Shared/atoms/button";
+import Link, { LinkProps } from "../../../components/Shared/atoms/link";
 
 import { AuthContext } from "../../../views/Auth";
 
@@ -20,8 +21,6 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
   ...props
 }) => (
   <Link
-    // @ts-ignore
-    as={RouterLink}
     display="flex"
     flexDirection="row"
     fontWeight="thin"

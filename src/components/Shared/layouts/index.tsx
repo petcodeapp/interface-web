@@ -5,7 +5,7 @@ import { FlexProps } from "@chakra-ui/core";
 
 import { MotionProps } from "framer-motion";
 
-import Header from "../header";
+import Header from "../organisms/Header";
 
 type LayoutProps = {
   headerProps?: FlexProps;
@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({
   <Flex
     direction="column"
     minHeight="calc(100% - 6.25rem)"
-    paddingTop="57px"
+    paddingTop="6.25rem"
     {...props}
   >
     <Header backgroundColor="petcode.neutral.700" {...headerProps} />

@@ -13,7 +13,7 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 
 import Rating from "../../components/Shared/rating";
-import Layout from "../../components/Shared/layout";
+import Layout from "../../components/Shared/layouts";
 
 import { Product } from "../../Models/Product";
 

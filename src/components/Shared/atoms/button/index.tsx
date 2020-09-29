@@ -2,7 +2,8 @@ import React from "react";
 
 import { ButtonProps } from "@chakra-ui/core";
 import { MotionProps } from "framer-motion";
-import Button from "../../Motion/Button";
+
+import Button from "../../../Motion/Button";
 
 export type BaseButtonProps = ButtonProps & MotionProps;
 
@@ -17,7 +18,6 @@ const BaseButton: React.FunctionComponent<BaseButtonProps> = ({
     rounded="full"
     whileHover={{
       scale: 1.05,
-      cursor: "pointer",
     }}
     transition={{
       duration: "0.2",
@@ -26,6 +26,14 @@ const BaseButton: React.FunctionComponent<BaseButtonProps> = ({
   >
     {children}
   </Button>
+);
+
+export const ActionButton: React.FC<BaseButtonProps> = (props) => (
+  <BaseButton size="md" paddingX={8} textTransform="uppercase" {...props} />
+);
+
+export const HeaderButton: React.FC<BaseButtonProps> = (props) => (
+  <ActionButton variantColor="petcode.yellow" textTransform="none" {...props} />
 );
 
 export default BaseButton;

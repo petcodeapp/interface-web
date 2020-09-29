@@ -4,7 +4,7 @@ import { Divider, Flex, Heading, Icon, Stack, Text } from "@chakra-ui/core";
 
 import { ShippingInformation } from "./ShippingInformationStep";
 import { BillingInformation } from "./BillingInformationStep";
-import BaseButton from "../../../components/Shared/button/BaseButton";
+import BaseButton from "../../../components/Shared/atoms/button";
 
 type ConfirmationStepProps = {
   shippingInformation: ShippingInformation;

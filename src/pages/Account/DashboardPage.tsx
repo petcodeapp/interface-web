@@ -1,14 +1,14 @@
 import React from "react";
 
-import { Box, Flex, Icon, Image, Stack, Text, useTheme } from "@chakra-ui/core";
+import { Box, Flex, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
 
 import AccountPageLayout from "./components/AccountPageLayout";
 import {
   InfoFieldText,
   InfoFieldLabel,
-} from "../../components/Shared/family/InfoField";
-import ReminderItem from "./components/ReminderItem";
+} from "../../components/Shared/molecules/InfoField";
+import ReminderItem from "../../components/Shared/molecules/ReminderItem";
 
 import { AuthContext } from "../../views/Auth/index";
 import { useObserver } from "mobx-react";

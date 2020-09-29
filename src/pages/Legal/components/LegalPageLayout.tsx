@@ -2,7 +2,7 @@ import React from "react";
 
 import { Image, useTheme } from "@chakra-ui/core";
 
-import Layout from "../../../components/Shared/layout";
+import Layout from "../../../components/Shared/layouts";
 
 import { PetCodeTheme } from "../../../theme";
 

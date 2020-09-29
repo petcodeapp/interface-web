@@ -1,8 +1,8 @@
 import React from "react";
 
-import { PseudoBox, PseudoBoxProps, Icon } from "@chakra-ui/core";
+import { Icon, PseudoBox, PseudoBoxProps } from "@chakra-ui/core";
 
-type BaseCheckboxProps = {
+export type BaseCheckboxProps = {
   isChecked?: boolean;
   isDisabled?: boolean;
   size?: number;

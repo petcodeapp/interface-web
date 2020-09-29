@@ -17,11 +17,11 @@ import { IPhoneX } from "react-device-mockups";
 
 import BaseButton, {
   BaseButtonProps,
-} from "../../components/Shared/button/BaseButton";
+} from "../../components/Shared/atoms/button";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
-import Layout from "../../components/Shared/layout";
-import Footer from "../../components/Shared/footer";
+import Layout from "../../components/Shared/layouts";
+import Footer from "../../components/Shared/organisms/Footer";
 
 import { useInView } from "react-intersection-observer";
 

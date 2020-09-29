@@ -19,8 +19,8 @@ import {
 } from "react-router-dom";
 
 import Rating from "../../components/Shared/rating";
-import Layout from "../../components/Shared/layout";
-import BaseButton from "../../components/Shared/button/BaseButton";
+import Layout from "../../components/Shared/layouts";
+import BaseButton from "../../components/Shared/atoms/button";
 import { Product } from "../../Models/Product";
 import { Review } from "../../Models/Review";
 

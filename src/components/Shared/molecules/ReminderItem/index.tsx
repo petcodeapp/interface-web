@@ -16,39 +16,16 @@ import {
 
 import moment from "moment";
 
-import { Reminder } from "../../../Models/Reminder";
-import { useObserver } from "mobx-react-lite";
-import { AuthContext } from "../../../views/Auth/index";
+import { Reminder } from "../../../../Models/Reminder";
 
-const ReminderInput: React.FC<InputProps> = (props) => (
-  <Input
-    size="sm"
-    variant="flushed"
-    color="petcode.blue.400"
-    fontSize="xl"
-    fontFamily="body"
-    height="auto"
-    width="auto"
-    display="inline"
-    borderColor="petcode.neutral.400"
-    _focus={{ borderColor: "petcode.blue.400" }}
-    {...props}
-  />
+import { ReminderInputStyle, ReminderSelectStyle } from "./styles";
+
+export const ReminderInput: React.FC<InputProps> = (props) => (
+  <Input {...ReminderInputStyle} {...props} />
 );
 
-const ReminderSelect: React.FC<SelectProps> = (props) => (
-  <Select
-    variant="flushed"
-    size="sm"
-    color="petcode.blue.400"
-    fontFamily="body"
-    fontSize="xl"
-    borderColor="petcode.neutral.400"
-    paddingLeft={3}
-    _focus={{ borderColor: "petcode.blue.400" }}
-    rootProps={{ width: "auto", display: "inline-block" }}
-    {...props}
-  />
+export const ReminderSelect: React.FC<SelectProps> = (props) => (
+  <Select {...ReminderSelectStyle} {...props} />
 );
 
 type ReminderItemProps = {

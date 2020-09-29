@@ -5,10 +5,10 @@ import { Formik, Field } from "formik";
 import { Observer } from "mobx-react";
 
 import AddressInputs from "./AddressInputs";
-import BaseCheckbox from "../../../components/Shared/input/BaseCheckbox";
-import BaseButton from "../../../components/Shared/button/BaseButton";
-import RoundedInput from "../../../components/Shared/input/RoundedInput";
-import UnifiedErrorMessage from "../../../components/Shared/formik/UnifiedErrorMessage";
+import BaseCheckbox from "../../../components/Shared/atoms/checkbox";
+import BaseButton from "../../../components/Shared/atoms/button";
+import RoundedInput from "../../../components/Shared/atoms/roundedinput";
+import UnifiedErrorMessage from "../../../components/Shared/molecules/UnifiedErrorMessage";
 
 import * as Yup from "yup";
 import "yup-phone";
