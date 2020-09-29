@@ -115,9 +115,8 @@ const LandingPage: React.FunctionComponent = () => {
         <svg
           style={{
             position: "absolute",
-            left: 0,
             top: 0,
-            height: 370,
+            height: "23.125rem",
             zIndex: 1,
           }}
           viewBox="0 0 567 370"
@@ -133,7 +132,12 @@ const LandingPage: React.FunctionComponent = () => {
           />
         </svg>
         <svg
-          style={{ position: "absolute", top: 0, height: 318, zIndex: 1 }}
+          style={{
+            position: "absolute",
+            top: 0,
+            height: "19.875rem",
+            zIndex: 1,
+          }}
           viewBox="0 0 743 318"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
