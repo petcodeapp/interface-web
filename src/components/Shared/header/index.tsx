@@ -55,28 +55,19 @@ const Header: React.FC<FlexProps> = (props) => {
       {!auth.isLoggedIn ? (
         <Stack isInline spacing={8}>
           <HeaderButton>
-            <HeaderLink
-              to="/signup"
-              fontWeight="normal"
-            >
+            <HeaderLink to="/signup" fontWeight="normal">
               Register
             </HeaderLink>
           </HeaderButton>
           <HeaderButton>
-            <HeaderLink
-              to="/login"
-              fontWeight="normal"
-            >
+            <HeaderLink to="/login" fontWeight="normal">
               Sign In
             </HeaderLink>
           </HeaderButton>
         </Stack>
       ) : (
         <HeaderButton>
-          <HeaderLink
-            to="/dashboard"
-            fontWeight="normal"
-          >
+          <HeaderLink to="/dashboard" fontWeight="normal">
             Dashboard
           </HeaderLink>
         </HeaderButton>

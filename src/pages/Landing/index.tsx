@@ -113,7 +113,13 @@ const LandingPage: React.FunctionComponent = () => {
         paddingTop={0}
       >
         <svg
-          style={{ position: "absolute", left: 0, top: 0, height: 370, zIndex: 1 }}
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            height: 370,
+            zIndex: 1,
+          }}
           viewBox="0 0 567 370"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +157,7 @@ const LandingPage: React.FunctionComponent = () => {
           backgroundSize="cover"
           minHeight="calc(100vw * 0.70486111111)"
         >
-          <Box flexGrow={5}/>
+          <Box flexGrow={5} />
           <Stack maxW="24rem" alignSelf="end" color="white" spacing={5}>
             <Heading fontSize="6xl" fontWeight="bold" lineHeight="none">
               One Code
@@ -168,7 +174,7 @@ const LandingPage: React.FunctionComponent = () => {
               </ActionButton>
             </Stack>
           </Stack>
-          <Box flexGrow={11}/>
+          <Box flexGrow={11} />
         </Flex>
         <Flex direction="column">
           <Box position="relative">
