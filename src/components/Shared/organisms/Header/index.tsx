@@ -1,10 +1,20 @@
 import React from "react";
 
-import { Box, FlexProps, Image, Stack, Text } from "@chakra-ui/core";
+import { Box, FlexProps, Image, Stack } from "@chakra-ui/core";
 import { useObserver } from "mobx-react-lite";
 import { AuthContext } from "../../../../views/Auth/index";
-import { HeaderButton } from "../../atoms/button";
+import BaseButton, { BaseButtonProps } from "../../atoms/button";
 import Link from "../../atoms/link";
+
+import { ActionButtonStyle } from "../../ions/button";
+
+const HeaderButtonStyle = {
+  ...ActionButtonStyle,
+  variantColor: "petcode.yellow",
+  fontSize: "2xl",
+  fontWeight: "normal",
+  textTransform: "none",
+} as BaseButtonProps;
 
 const Header: React.FC<FlexProps> = (props) => {
   const auth = React.useContext(AuthContext);
@@ -31,40 +41,22 @@ const Header: React.FC<FlexProps> = (props) => {
         <Image src="/media/petcode-logo-with-qr-code.png" height="4.75rem" />
       </Link>
       <Box flexGrow={1} />
-      <Link to="/">
-        <Text>Home</Text>
-      </Link>
-      <Link to="/howitworks">
-        <Text>How It Works</Text>
-      </Link>
-      <Link to="/products">
-        <Text>Purchase</Text>
-      </Link>
+      <Link to="/">Home</Link>
+      <Link to="/howitworks">How It Works</Link>
+      <Link to="/products">Purchase</Link>
       {!auth.isLoggedIn ? (
         <Stack isInline spacing={8}>
-          <HeaderButton>
-            <Link to="/signup">
-              <Text fontSize="2xl" fontWeight="normal">
-                Register
-              </Text>
-            </Link>
-          </HeaderButton>
-          <HeaderButton>
-            <Link to="/login">
-              <Text fontSize="2xl" fontWeight="normal">
-                Sign In
-              </Text>
-            </Link>
-          </HeaderButton>
+          <BaseButton {...HeaderButtonStyle}>
+            <Link to="/signup">Register</Link>
+          </BaseButton>
+          <BaseButton {...HeaderButtonStyle}>
+            <Link to="/login">Sign In</Link>
+          </BaseButton>
         </Stack>
       ) : (
-        <HeaderButton>
-          <Link to="/dashboard">
-            <Text fontSize="2xl" fontWeight="normal">
-              Dashboard
-            </Text>
-          </Link>
-        </HeaderButton>
+        <BaseButton {...HeaderButtonStyle}>
+          <Link to="/dashboard">Dashboard</Link>
+        </BaseButton>
       )}
     </Stack>
   ));

@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import {
   Box,
   Flex,
+  FlexProps,
   Heading,
   Icon,
   Image,
@@ -12,55 +13,55 @@ import {
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
-import { motion, Transition } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  Transition,
+  MotionProps,
+} from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
-import BaseButton, {
-  BaseButtonProps,
-} from "../../components/Shared/atoms/button";
+import BaseButton from "../../components/Shared/atoms/button";
 import BaseCheckbox from "../../components/Shared/atoms/checkbox";
 import Layout from "../../components/Shared/layouts";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
+import MotionFlex from "../../components/Motion/Flex";
 import Footer from "../../components/Shared/organisms/Footer";
 
 import { PetCodeTheme } from "../../theme";
 
-import "html5-device-mockups/dist/device-mockups.min.css";
-
-const ActionButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton size="md" paddingX={8} textTransform="uppercase" {...props} />
-);
+import { ActionButtonStyle } from "../../components/Shared/ions/button";
 
 const Feature: React.FC<StackProps> = (props) => (
-  <Stack alignItems="center" {...props}>
-    <Box size="90px" backgroundColor="#C4C4C4" rounded="full" />
-    <Text fontSize="xl" fontWeight="bold">
-      Subtitle
-    </Text>
+  <Stack alignItems="center" spacing={5} {...props}>
+    <Box size="6.5rem" backgroundColor="#C4C4C4" rounded="full" />
+    <Text fontSize="2xl">Subtitle</Text>
   </Stack>
 );
 
 const FeatureDropDown: React.FC<
-  StackProps & {
-    name: string;
-    description: string;
-    initiallyOpen?: boolean;
-  }
-> = ({ name, description, initiallyOpen = false, ...props }) => {
+  FlexProps &
+    MotionProps & {
+      name: string;
+      description: string;
+      open: boolean;
+      onClick?: () => void;
+    }
+> = ({ name, description, open, onClick = () => {}, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
 
-  const [open, setOpen] = useState(initiallyOpen);
-
   return (
-    <Stack {...props}>
-      <Stack isInline alignItems="center">
+    <MotionFlex direction="column" {...props}>
+      <Stack isInline alignItems="center" marginBottom={2}>
         <BaseCheckbox
           isChecked
-          size={22}
+          size={20}
           color={theme.colors.petcode.blue[400]}
+          isDisabled
+          _hover={{}}
         />
-        <Text fontSize="xl">{name}</Text>
+        <Text fontSize="2xl">{name}</Text>
         <Icon
           name="dropdown-arrow"
           cursor="pointer"
@@ -68,13 +69,25 @@ const FeatureDropDown: React.FC<
           paddingTop={3}
           paddingLeft={open ? 3 : 0}
           paddingBottom={1}
-          onClick={() => setOpen(!open)}
+          onClick={onClick}
           transform={open ? null : "rotate(-90deg)"}
           transition="0.2s all"
         />
       </Stack>
-      {open && <Text fontWeight="thin">{description}</Text>}
-    </Stack>
+      <AnimatePresence>
+        {open && (
+          <MotionBox
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Text marginLeft={6} fontSize="xl" fontWeight="thin">
+              {description}
+            </Text>
+          </MotionBox>
+        )}
+      </AnimatePresence>
+    </MotionFlex>
   );
 };
 
@@ -93,6 +106,8 @@ const LandingPage: React.FunctionComponent = () => {
     repeatType: "reverse",
     duration: 2,
   };
+
+  const [featureShown, setFeatureShown] = useState("vaccinations");
 
   return (
     <ThemeProvider
@@ -156,7 +171,7 @@ const LandingPage: React.FunctionComponent = () => {
           flexDirection="column"
           boxSizing="border-box"
           paddingTop={24}
-          paddingRight={32}
+          paddingRight={40}
           backgroundImage="url(/media/landing-splash.png)"
           backgroundSize="cover"
           minHeight="calc(100vw * 0.70486111111)"
@@ -170,12 +185,12 @@ const LandingPage: React.FunctionComponent = () => {
               An endless suite of features for pet owners.
             </Text>
             <Stack isInline spacing={4}>
-              <ActionButton variantColor="petcode.yellow">
+              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
                 Watch Video
-              </ActionButton>
-              <ActionButton variantColor="petcode.yellow">
+              </BaseButton>
+              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
                 Get Started
-              </ActionButton>
+              </BaseButton>
             </Stack>
           </Stack>
           <Box flexGrow={11} />
@@ -208,23 +223,27 @@ const LandingPage: React.FunctionComponent = () => {
               />
             </motion.svg>
           </Box>
-          <Stack
-            isInline
+          <Flex
+            direction="row"
+            alignItems="center"
             color="white"
-            paddingY={10}
-            paddingX={32}
+            justifyContent="space-between"
+            paddingY={16}
+            paddingLeft={40}
+            paddingRight={20}
             backgroundColor={theme.colors.petcode.blue[400]}
-            spacing={10}
           >
-            <Stack flexBasis="50%" spacing={4}>
-              <Heading paddingBottom={4}>
+            <Stack spacing={8} maxWidth="39.625rem">
+              <Heading fontSize="5xl">
                 The Ultimate Pet Management System
               </Heading>
               <Stack isInline>
-                <ActionButton
+                <BaseButton
+                  {...ActionButtonStyle}
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
+                  fontWeight="thin"
                   onClick={() =>
                     safetySectionRef.current?.scrollIntoView({
                       behavior: "smooth",
@@ -234,11 +253,13 @@ const LandingPage: React.FunctionComponent = () => {
                   }
                 >
                   Safety
-                </ActionButton>
-                <ActionButton
+                </BaseButton>
+                <BaseButton
+                  {...ActionButtonStyle}
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
+                  fontWeight="thin"
                   onClick={() =>
                     healthSectionRef.current?.scrollIntoView({
                       behavior: "smooth",
@@ -248,11 +269,13 @@ const LandingPage: React.FunctionComponent = () => {
                   }
                 >
                   Health
-                </ActionButton>
-                <ActionButton
+                </BaseButton>
+                <BaseButton
+                  {...ActionButtonStyle}
                   variantColor="whiteAlpha"
                   variant="outline"
                   color="white"
+                  fontWeight="thin"
                   onClick={() =>
                     discoverySectionRef.current?.scrollIntoView({
                       behavior: "smooth",
@@ -262,33 +285,32 @@ const LandingPage: React.FunctionComponent = () => {
                   }
                 >
                   Discovery
-                </ActionButton>
+                </BaseButton>
               </Stack>
-              <Text fontWeight="bold" fontSize="xl">
-                So Much More Than Just A Tag
+              <Text fontWeight="bold" fontSize="2xl">
+                More Than Just A Tag
               </Text>
-              <Text fontWeight="thin">
-                The PetCode system provides pet owners with an endless suite of
-                feautres. PetCode keeps your pet safe and secure, stays on top
-                of your pet’s health, and even allows you to discover events and
-                rewards near you, all from our easy-to-use website and app.
-                Scroll to learn more about each aspect of the PetCode system.
+              <Text fontWeight="thin" fontSize="xl">
+                Discover the endless suite of features from PetCode. Keep your
+                pet safe, manage their health, and discover nearby pet
+                opportunities, all from our easy-to-use app. Managing your pet’s
+                life has never been easier. Learn more about us below.
               </Text>
             </Stack>
             <Stack flexGrow={1} spacing={10} alignItems="end">
-              <Stack isInline marginRight={12} spacing={6}>
+              <Stack isInline marginRight={16} spacing={10}>
                 <Feature />
                 <Feature />
                 <Feature />
               </Stack>
-              <Stack isInline spacing={6}>
+              <Stack isInline spacing={10}>
                 <Feature />
                 <Feature />
                 <Feature />
               </Stack>
             </Stack>
-          </Stack>
-          <Box position="relative" paddingBottom="10.07%">
+          </Flex>
+          <Box position="relative" paddingBottom={`${(116 / 1440) * 100}%`}>
             <svg
               style={{ position: "absolute", top: 0 }}
               viewBox="0 0 1440 83"
@@ -316,23 +338,29 @@ const LandingPage: React.FunctionComponent = () => {
             </motion.svg>
           </Box>
         </Flex>
-        <Stack
+        <Flex
           ref={(ref) => (safetySectionRef.current = ref)}
-          isInline
-          paddingX={32}
-          paddingY={16}
-          spacing={10}
+          direction="row"
+          alignItems="center"
           justifyContent="space-between"
+          paddingLeft={48}
+          paddingRight={32}
+          paddingTop={20}
+          paddingBottom={8}
         >
-          <Image src="/media/safety-image.svg" alt="Safety image" />
+          <Image
+            src="/media/safety-image.svg"
+            width="19.625rem"
+            alt="Safety image"
+          />
           <Stack
-            flexBasis="50%"
+            maxWidth="40.3125rem"
             color="petcode.neutral.700"
             textAlign="right"
-            spacing={6}
+            spacing={8}
           >
             <Heading fontSize="5xl">Safety</Heading>
-            <Text fontWeight="thin">
+            <Text fontSize="xl" fontWeight="thin">
               It’s a scary world out there, one you shouldn’t have to face
               alone. With PetCode, keeping your pet safer is no longer a
               struggle; our QR tags can help you find your pet faster, should
@@ -341,14 +369,17 @@ const LandingPage: React.FunctionComponent = () => {
               you keep your pet safer and make life a more pleasant walk in the
               park!
             </Text>
-            <Stack isInline alignSelf="start">
-              <Text>Learn More</Text>
-              <Icon size="30px" name="arrow" />
+            <Stack isInline alignItems="center" alignSelf="start" spacing={4}>
+              <Text fontSize="xl">Learn More</Text>
+              <Icon size="36px" name="arrow" />
             </Stack>
           </Stack>
-        </Stack>
+        </Flex>
         <Flex direction="column" overflow="hidden">
-          <Box position="relative" paddingBottom="17.1%">
+          <Box
+            position="relative"
+            paddingBottom={`${((197 * 1.1) / 1440) * 100}%`}
+          >
             <svg
               style={{ position: "absolute", bottom: 0 }}
               viewBox="0 0 1440 158"
@@ -379,30 +410,34 @@ const LandingPage: React.FunctionComponent = () => {
             ref={(ref) => (healthSectionRef.current = ref)}
             isInline
             color="white"
-            paddingTop={10}
-            paddingLeft={32}
+            paddingTop={16}
+            paddingLeft={40}
             backgroundColor={theme.colors.petcode.blue[400]}
-            spacing={16}
           >
-            <Stack flexGrow={1}>
+            <Stack width="37.875rem">
               <Heading fontSize="5xl" paddingBottom={4}>
                 Health
               </Heading>
               <FeatureDropDown
-                initiallyOpen
+                open={featureShown == "vaccinations"}
+                onClick={() => setFeatureShown("vaccinations")}
                 name="Vaccinations"
                 description="Access your pet’s vaccination records and stay up-to-date on upcoming events, anytime, anywhere."
               />
               <FeatureDropDown
+                open={featureShown == "reminders"}
+                onClick={() => setFeatureShown("reminders")}
                 name="Reminders"
                 description="Turn on notifications for PetCode to receive reminders for upcoming and overdue wellness checks."
               />
               <FeatureDropDown
+                open={featureShown == "share-records"}
+                onClick={() => setFeatureShown("share-records")}
                 name="Share Records"
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <Box position="relative" flexBasis={550}>
+            <Box position="relative" flexBasis="44.75rem">
               <MotionBox
                 position="relative"
                 zIndex={1}
@@ -411,33 +446,55 @@ const LandingPage: React.FunctionComponent = () => {
                 transition={transition}
               >
                 <IPhoneX
-                  height={400}
+                  height={500}
                   screenProps={{
-                    style: { backgroundColor: theme.colors.petcode.blue[400] },
+                    style: {
+                      backgroundColor: theme.colors.petcode.blue[400],
+                      overflow: "hidden",
+                    },
                   }}
                 >
-                  <Image
-                    width="100%"
-                    height="100%"
-                    src="/media/scan-locations-mobile-screen.svg"
-                    alt="Scan locations mobile screen"
-                  />
+                  <AnimatePresence>
+                    <MotionImage
+                      position="absolute"
+                      top={0}
+                      width="100%"
+                      height="100%"
+                      key={featureShown}
+                      src={
+                        featureShown == "vaccinations"
+                          ? "/media/scan-locations-mobile-screen.svg"
+                          : featureShown == "reminders"
+                          ? "/media/reminders-mobile-screen.svg"
+                          : "/media/pet-parks-mobile-screen.svg"
+                      }
+                      alt={`${featureShown} mobile screen`}
+                      initial={{ x: "100%", opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: "-100%", opacity: 0 }}
+                      // @ts-ignore
+                      transition={{ duration: 0.5 }}
+                    />
+                  </AnimatePresence>
                 </IPhoneX>
               </MotionBox>
               <MotionImage
                 position="absolute"
-                top="-30%"
+                top="-25%"
                 animate={bounce}
                 // @ts-ignore
                 transition={transition}
-                left={75}
-                height={450}
+                left="6.5rem"
+                height="33.4375rem"
                 src="/media/dashboard-web-screen.svg"
                 alt="Dashboard web screen"
               />
             </Box>
           </Stack>
-          <Box position="relative" paddingBottom="12.43%">
+          <Box
+            position="relative"
+            paddingBottom={`${((128 * 1.1) / 1440) * 100}%`}
+          >
             <svg
               style={{ position: "absolute", top: 0 }}
               viewBox="0 70 1440 109"
@@ -469,7 +526,8 @@ const LandingPage: React.FunctionComponent = () => {
           ref={(ref) => (discoverySectionRef.current = ref)}
           isInline
           paddingRight={32}
-          paddingY={12}
+          paddingTop={20}
+          paddingBottom={48}
           spacing={16}
           justifyContent="space-between"
         >
@@ -487,9 +545,9 @@ const LandingPage: React.FunctionComponent = () => {
               transition={transition}
             >
               <IPhoneX
-                height={400}
+                height={475}
                 wrapperProps={{
-                  style: { position: "absolute", left: 500 },
+                  style: { position: "absolute", left: "32.5rem" },
                 }}
                 screenProps={{
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
@@ -504,12 +562,12 @@ const LandingPage: React.FunctionComponent = () => {
               </IPhoneX>
             </MotionBox>
             <MotionImage
-              top={-75}
+              top="-4rem"
               position="relative"
               animate={bounce}
               // @ts-ignore
               transition={transition}
-              height={450}
+              width="45.3125rem"
               src="/media/scan-locations-web-screen.svg"
               alt="Scan locations web screen"
             />
@@ -522,28 +580,32 @@ const LandingPage: React.FunctionComponent = () => {
           >
             <Heading fontSize="5xl">Discovery</Heading>
             <Stack isInline>
-              <ActionButton
+              <BaseButton
+                {...ActionButtonStyle}
                 variant="outline"
                 borderColor="petcode.neutral.700"
                 backgroundColor="transparent"
+                fontWeight="thin"
               >
                 Pet Parks
-              </ActionButton>
-              <ActionButton
+              </BaseButton>
+              <BaseButton
+                {...ActionButtonStyle}
                 variant="outline"
                 borderColor="petcode.neutral.700"
                 backgroundColor="transparent"
+                fontWeight="thin"
               >
                 Pet Perks
-              </ActionButton>
+              </BaseButton>
             </Stack>
-            <Text fontWeight="thin">
-              With Discovery, you explore nearby pet parks, all with the tap of
-              a finger. Search for park hours, locations, and pet events near
-              you with the Discovery feature. In addition, PetCode users get
-              exclusive access to a whole world of incredible PetPerks. Save on
-              pet food and toys while also getting premium discounts at pet
-              boutiques and groomers with PetCode.
+            <Text fontSize="xl" fontWeight="thin">
+              With PetCode’s Discovery aspect, you can explore nearby pet
+              opportunities, all with the tap of a finger. Search for exciting
+              events, find open pet parks, and so much more with Discovery.
+              Looking for savings? PetCode users get exclusive access to a whole
+              world of incredible PetPerks. Get premium discounts on everything
+              from cat food, dog toys, and grooming services at pet boutiques.
             </Text>
             <Icon
               color="petcode.neutral.400"

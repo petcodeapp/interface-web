@@ -28,12 +28,4 @@ const BaseButton: React.FunctionComponent<BaseButtonProps> = ({
   </Button>
 );
 
-export const ActionButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton size="md" paddingX={8} textTransform="uppercase" {...props} />
-);
-
-export const HeaderButton: React.FC<BaseButtonProps> = (props) => (
-  <ActionButton variantColor="petcode.yellow" textTransform="none" {...props} />
-);
-
 export default BaseButton;

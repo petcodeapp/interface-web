@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { FlexProps } from "@chakra-ui/core";
-import { MotionProps } from "framer-motion";
+import { AnimatePresence, MotionProps } from "framer-motion";
 
 import MotionFlex from "../../../Motion/Flex";
 import MotionBox from "../../../Motion/Box";
@@ -16,26 +16,30 @@ export const ExpandButton: React.FC<ExpandButtonProps> = ({
   expandChildren,
   ...props
 }) => {
-  const variants = {
-    open: { opacity: 1, width: "100%" },
-    closed: { opacity: 0, width: 0 },
-  };
-
   const [hovered, setHovered] = useState(false);
 
   return (
     <MotionFlex
       flexDirection="row"
       alignItems="center"
+      cursor="pointer"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       whileTap={{ scale: 1.05 }}
       transition={{ duration: "0.2" }}
       {...props}
     >
-      <MotionBox animate={hovered ? "open" : "closed"} variants={variants}>
-        {expandChildren}
-      </MotionBox>
+      <AnimatePresence>
+        {hovered && (
+          <MotionBox
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {expandChildren}
+          </MotionBox>
+        )}
+      </AnimatePresence>
       {children}
     </MotionFlex>
   );

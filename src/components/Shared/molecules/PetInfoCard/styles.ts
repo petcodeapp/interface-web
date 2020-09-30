@@ -6,6 +6,7 @@ export const PetInfoInputStyle = {
   size: "lg",
   color: "petcode.neutral.700",
   fontSize: "4xl",
+  width: 1 / 2,
 } as InputProps;
 
 export const PetInfoSelectStyle = {
@@ -13,6 +14,7 @@ export const PetInfoSelectStyle = {
   size: "lg",
   color: "petcode.neutral.700",
   fontSize: "2xl",
+  width: 1 / 2,
 } as SelectProps;
 
 export const PetInfoCardTextStyle = {
