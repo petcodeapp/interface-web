@@ -167,7 +167,6 @@ const LandingPage: React.FunctionComponent = () => {
           />
         </svg>
         <Flex
-          display="flex"
           flexDirection="column"
           boxSizing="border-box"
           paddingTop={24}
@@ -529,12 +528,7 @@ const LandingPage: React.FunctionComponent = () => {
           spacing={16}
           justifyContent="space-between"
         >
-          <Box
-            height={400}
-            flexGrow={1}
-            position="relative"
-            overflowY="visible"
-          >
+          <Box height={400} position="relative" overflowY="visible">
             <MotionBox
               position="relative"
               zIndex={1}

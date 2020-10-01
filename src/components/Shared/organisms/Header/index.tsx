@@ -10,10 +10,13 @@ import { ActionButtonStyle } from "../../ions/button";
 
 const HeaderButtonStyle = {
   ...ActionButtonStyle,
+  height: "2.75rem",
   variantColor: "petcode.yellow",
   fontSize: "2xl",
   fontWeight: "normal",
   textTransform: "none",
+  letterSpacing: "auto",
+  paddingX: 8,
 } as BaseButtonProps;
 
 const Header: React.FC<FlexProps> = (props) => {

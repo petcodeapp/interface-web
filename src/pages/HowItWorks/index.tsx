@@ -29,9 +29,7 @@ import { PetCodeTheme } from "../../theme";
 
 import "html5-device-mockups/dist/device-mockups.min.css";
 
-const ActionButton: React.FC<BaseButtonProps> = (props) => (
-  <BaseButton size="md" paddingX={10} textTransform="uppercase" {...props} />
-);
+import { ActionButtonStyle } from "../../components/Shared/ions/button";
 
 const HowItWorksStep: React.FC<
   StackProps & {
@@ -39,23 +37,35 @@ const HowItWorksStep: React.FC<
     stepNumber: number;
     name: string;
     description: string;
+    imageHeight: number | string;
+    imageBoxHeight?: number | string;
   }
-> = ({ image, stepNumber, name, description, ...props }) => (
+> = ({
+  image,
+  stepNumber,
+  name,
+  description,
+  imageHeight,
+  imageBoxHeight = "12.25rem",
+  ...props
+}) => (
   <Stack
     alignItems="center"
     textAlign="center"
-    spacing={4}
-    maxWidth={300}
+    spacing={2}
+    maxWidth={345}
     {...props}
   >
-    <Image height={150} src={image} alt={`Step ${stepNumber}`} />
-    <Text color="petcode.yellow.400" fontSize="xl">
+    <Box minHeight={imageBoxHeight}>
+      <Image height={imageHeight} src={image} alt={`Step ${stepNumber}`} />
+    </Box>
+    <Text color="petcode.yellow.400" fontSize="2xl">
       Step {stepNumber}
     </Text>
-    <Heading color="petcode.neutral.700" fontSize="3xl">
+    <Heading color="petcode.neutral.700" fontSize="4xl">
       {name}
     </Heading>
-    <Text fontWeight="thin" marginX={3}>
+    <Text color="black" fontWeight="thin" fontSize="lg" marginX={3}>
       {description}
     </Text>
   </Stack>
@@ -105,7 +115,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
             zIndex: 1,
             right: 0,
             top: 0,
-            height: 140,
+            height: "14.375rem",
           }}
           viewBox="0 0 873 230"
           fill="none"
@@ -125,7 +135,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
             zIndex: 1,
             right: 0,
             top: 0,
-            height: 200,
+            height: "18.625rem",
           }}
           viewBox="0 0 984 298"
           fill="none"
@@ -141,68 +151,77 @@ const HowItWorksPage: React.FunctionComponent = () => {
           />
         </svg>
         <Flex
-          direction="row"
+          flexDirection="column"
+          boxSizing="border-box"
+          paddingTop="18.625rem"
+          paddingRight={40}
           backgroundImage="url(/media/how-it-works-splash.svg)"
           backgroundSize="cover"
           height="calc(100vw * 0.5875)"
         >
-          <Box flexBasis="55%" />
-          <Stack color="white">
-            <Box flexGrow={2} />
+          <Box flexGrow={1} />
+          <Stack alignSelf="end" color="white" spacing={5}>
             <Heading fontSize="6xl">How It Works</Heading>
-            <Stack isInline>
-              <ActionButton variantColor="petcode.yellow">
+            <Stack isInline spacing={4}>
+              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
                 Watch Video
-              </ActionButton>
-              <ActionButton variantColor="petcode.yellow">
+              </BaseButton>
+              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
                 Get Started
-              </ActionButton>
+              </BaseButton>
             </Stack>
-            <Box flexGrow={3} />
           </Stack>
+          <Box flexGrow={7} />
         </Flex>
-        <Stack spacing={10} paddingY={10} alignItems="center">
+        <Stack spacing={12} paddingY={12} alignItems="center">
           <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4}>
             Get Started
           </Heading>
-          <Stack isInline spacing={6}>
+          <Stack isInline spacing={12}>
             <HowItWorksStep
               image="/media/order-petcode-tag-step.svg"
               stepNumber={1}
               name="Order Your PetCode QR Tag"
               description="Head to the “Purchase” page to order a tag"
+              imageHeight="11.5625rem"
             />
             <HowItWorksStep
               image="/media/create-petcode-account-step.svg"
               stepNumber={2}
               name="Create Your PetCode Account"
               description="Set up an account with PetCode to begin using the tag"
+              imageHeight="10.9375rem"
             />
             <HowItWorksStep
               image="/media/activate-petcode-tag-step.svg"
               stepNumber={3}
               name="Activate Your PetCode QR Tag"
               description="Connect your PetCode account with your new  tag to activate your QR Tag"
+              imageHeight="12.25rem"
             />
           </Stack>
-          <Stack isInline spacing={6}>
+          <Stack isInline spacing={12}>
             <HowItWorksStep
               image="/media/upload-information-step.svg"
               stepNumber={4}
               name="Upload Information"
               description="Once set up, add your info to the tag to access the full functionality of PetCode"
+              imageHeight="13.875rem"
+              imageBoxHeight="13.875rem"
             />
             <HowItWorksStep
-              maxWidth={400}
+              maxWidth={420}
               image="/media/finished-step.svg"
               stepNumber={5}
               name="You’re Now Set Up with Your PetCode Tag!"
               description="Enjoy the full range of features that PetCode’s tag and software give you!"
+              imageHeight="13.5rem"
+              imageBoxHeight="13.875rem"
             />
           </Stack>
         </Stack>
         <Flex direction="column">
-          <Box position="relative" paddingBottom="9.625%">
+          <Box position="relative" paddingBottom={`${(126 / 1440) * 100}%`}>
             <svg
               style={{ position: "absolute", bottom: 0 }}
               viewBox="0 0 1440 76"
@@ -234,12 +253,11 @@ const HowItWorksPage: React.FunctionComponent = () => {
             color="white"
             isInline
             paddingLeft={32}
-            paddingY={12}
-            justifyContent="-between"
+            paddingBottom={12}
           >
-            <Stack flexBasis="50%" spacing={6}>
+            <Stack paddingTop={20} maxW="40.4375rem" spacing={3}>
               <Heading fontSize="6xl">The QR Tag</Heading>
-              <Text fontWeight="thin">
+              <Text fontSize="xl" fontWeight="thin" paddingBottom={4}>
                 Got a new phone? Moved recently? PetCode’s durable QR tags allow
                 you to easily update your pet’s contact info with the tap of
                 finger—you’ll never need to buy another pet tag again. Anyone
@@ -247,13 +265,14 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 Lost your pet? Our tags can reunite you with your furry friend
                 in a flash.
               </Text>
-              <ActionButton
+              <BaseButton
+                {...ActionButtonStyle}
                 alignSelf="start"
                 variantColor="white"
                 color="petcode.blue.400"
               >
                 Buy Now
-              </ActionButton>
+              </BaseButton>
             </Stack>
             <Box position="relative" height={375}>
               <Image
@@ -383,7 +402,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               </MotionBox>
             </Box>
           </Stack>
-          <Box position="relative" paddingBottom="9.55%">
+          <Box position="relative" paddingBottom={`${(125 / 1440) * 100}%`}>
             <svg
               style={{ position: "absolute", top: 0 }}
               viewBox="0 1 1440 82"
@@ -413,14 +432,14 @@ const HowItWorksPage: React.FunctionComponent = () => {
         </Flex>
         <Stack
           isInline
-          paddingRight={32}
-          paddingY={16}
-          spacing={16}
+          paddingRight={40}
+          paddingTop={24}
+          paddingBottom={16}
           justifyContent="space-between"
         >
           <Box
-            height={400}
-            flexGrow={1}
+            height={500}
+            flexGrow={-1}
             position="relative"
             overflowY="visible"
           >
@@ -432,9 +451,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
               transition={transition}
             >
               <IPhoneX
-                height={400}
+                height={500}
                 wrapperProps={{
-                  style: { position: "absolute", left: 375 },
+                  style: { position: "absolute", left: "23.4375rem" },
                 }}
                 screenProps={{
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
@@ -443,29 +462,34 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 <Image
                   width="100%"
                   height="100%"
-                  src="/media/pet-parks-mobile-screen.svg"
+                  src="/media/reminders-mobile-screen.svg"
                   alt="Pet parks mobile screen"
                 />
               </IPhoneX>
             </MotionBox>
             <MotionImage
-              top={-75}
-              left={-125}
-              position="relative"
+              top="-3.6875rem"
+              left="-12.5rem"
+              position="absolute"
               animate={bounce}
               // @ts-ignore
               transition={transition}
-              height={450}
+              height="33.3125rem"
               src="/media/reminders-web-screen.svg"
               alt="Scan locations web screen"
             />
           </Box>
-          <Stack textAlign="left" spacing={4} color="petcode.neutral.700">
-            <Heading fontSize="5xl">The Pet Portal</Heading>
-            <Text fontSize="xl" color="petcode.yellow.400">
+          <Stack
+            textAlign="left"
+            maxW="29.125rem"
+            spacing={4}
+            color="petcode.neutral.700"
+          >
+            <Heading fontSize="6xl">The Pet Portal</Heading>
+            <Text fontSize="2xl" color="petcode.yellow.400">
               A place your pet’s data can call home
             </Text>
-            <Text fontWeight="thin">
+            <Text fontSize="xl" fontWeight="thin" paddingBottom={3}>
               All your pet’s info—from contact and medical info to name, age,
               and breed—in one place. Your PetPortal syncs with the PetCode QR
               tag and is easily accessible through our app, giving you access to
@@ -482,7 +506,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 size="40px"
                 alignSelf="start"
               />
-              <ActionButton variantColor="petcode.blue">Buy Now</ActionButton>
+              <BaseButton {...ActionButtonStyle} variantColor="petcode.blue">
+                Buy Now
+              </BaseButton>
             </Flex>
           </Stack>
         </Stack>
