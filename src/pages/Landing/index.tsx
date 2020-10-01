@@ -374,7 +374,6 @@ const LandingPage: React.FunctionComponent = () => {
             <Box position="relative" flexBasis="44.75rem">
               <MotionBox
                 position="relative"
-                overflow="hidden"
                 zIndex={1}
                 animate={bounce}
                 // @ts-ignore
@@ -385,11 +384,14 @@ const LandingPage: React.FunctionComponent = () => {
                   screenProps={{
                     style: {
                       backgroundColor: theme.colors.petcode.blue[400],
+                      overflow: "hidden",
                     },
                   }}
                 >
                   <AnimatePresence>
                     <MotionImage
+                      position="absolute"
+                      top={0}
                       width="100%"
                       height="100%"
                       key={featureShown}
