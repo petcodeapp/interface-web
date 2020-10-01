@@ -7,7 +7,6 @@ import {
   Icon,
   Image,
   Stack,
-  StackProps,
   Text,
   ThemeProvider,
   useTheme,
@@ -21,6 +20,7 @@ import MotionBox from "../../components/Motion/Box";
 import Layout from "../../components/Shared/layouts";
 import Footer from "../../components/Shared/organisms/Footer";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
+import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";
 
 import { useInView } from "react-intersection-observer";
 
@@ -119,16 +119,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
           height="calc(100vw * 0.5875)"
         >
           <Box flexGrow={1} />
-          <Stack alignSelf="end" color="white" spacing={5}>
+          <Stack alignSelf="end" color="white" spacing={8}>
             <Heading fontSize="6xl">How It Works</Heading>
-            <Stack isInline spacing={4}>
-              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
-                Watch Video
-              </BaseButton>
-              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
-                Get Started
-              </BaseButton>
-            </Stack>
+            <EnterYourEmailInput />
           </Stack>
           <Box flexGrow={7} />
         </Flex>
@@ -275,6 +268,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                       marginRight={2}
                       transform="translateY(33%)"
                       color={theme.colors.petcode.neutral[300]}
+                      fontSize="md"
                     >
                       QR code syncs with pet profile
                     </Text>
@@ -353,6 +347,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                       marginLeft={2}
                       transform="translateY(-50%)"
                       color={theme.colors.petcode.neutral[300]}
+                      fontSize="md"
                     >
                       Made of durable epoxy
                     </Text>

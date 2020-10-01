@@ -21,6 +21,7 @@ import MotionBox from "../../components/Motion/Box";
 import Footer from "../../components/Shared/organisms/Footer";
 import Feature from "../../components/Shared/molecules/Feature";
 import FeatureDropDown from "../../components/Shared/molecules/FeatureDropdown";
+import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";
 
 import { PetCodeTheme } from "../../theme";
 
@@ -118,14 +119,7 @@ const LandingPage: React.FunctionComponent = () => {
             <Text fontSize="2xl">
               An endless suite of features for pet owners.
             </Text>
-            <Stack isInline spacing={4}>
-              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
-                Watch Video
-              </BaseButton>
-              <BaseButton {...ActionButtonStyle} variantColor="petcode.yellow">
-                Get Started
-              </BaseButton>
-            </Stack>
+            <EnterYourEmailInput />
           </Stack>
           <Box flexGrow={11} />
         </Flex>
@@ -171,7 +165,7 @@ const LandingPage: React.FunctionComponent = () => {
               <Heading fontSize="5xl">
                 The Ultimate Pet Management System
               </Heading>
-              <Stack isInline>
+              <Stack isInline spacing={4}>
                 <BaseButton
                   {...ActionButtonStyle}
                   variantColor="whiteAlpha"
