@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Flex, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
 
-import AccountPageLayout from "./components/AccountPageLayout";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 import {
   InfoFieldText,
   InfoFieldLabel,

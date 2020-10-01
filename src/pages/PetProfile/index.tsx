@@ -23,7 +23,7 @@ import InfoField, {
 import BaseButton, {
   BaseButtonProps,
 } from "../../components/Shared/atoms/button";
-import Layout from "../../components/Shared/layouts";
+import Layout from "../../components/Shared/layouts/LandingPageLayout";
 
 import moment from "moment";
 

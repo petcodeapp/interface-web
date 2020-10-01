@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/core";
 
 import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
-import AccountPageLayout from "./components/AccountPageLayout";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 import Row from "../../components/Shared/atoms/row";
 import {
   InfoFieldText,

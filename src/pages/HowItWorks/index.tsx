@@ -17,7 +17,7 @@ import { IPhoneX } from "react-device-mockups";
 import BaseButton from "../../components/Shared/atoms/button";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
-import Layout from "../../components/Shared/layouts";
+import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import Footer from "../../components/Shared/organisms/Footer";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
 import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";

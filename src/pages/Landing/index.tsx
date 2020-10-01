@@ -15,7 +15,7 @@ import { AnimatePresence, motion, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
 import BaseButton from "../../components/Shared/atoms/button";
-import Layout from "../../components/Shared/layouts";
+import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
 import Footer from "../../components/Shared/organisms/Footer";

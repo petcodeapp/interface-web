@@ -15,7 +15,7 @@ import {
   useToast,
 } from "@chakra-ui/core";
 
-import AccountPageLayout from "./components/AccountPageLayout";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 import BaseButton from "../../components/Shared/atoms/button";
 import BaseCheckbox from "../../components/Shared/atoms/checkbox";
 import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";

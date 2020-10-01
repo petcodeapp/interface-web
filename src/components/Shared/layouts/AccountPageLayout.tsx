@@ -2,8 +2,8 @@ import React from "react";
 
 import { Image, useTheme } from "@chakra-ui/core";
 
-import MotionFlex from "../../../components/Motion/Flex";
-import Sidebar from "./Sidebar";
+import MotionFlex from "../../Motion/Flex";
+import Sidebar from "../organisms/DashboardSidebar";
 
 import { PetCodeTheme } from "../../../theme";
 

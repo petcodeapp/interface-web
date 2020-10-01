@@ -19,7 +19,7 @@ import {
 
 import ReactMapGL, { Marker, InteractiveMapProps } from "react-map-gl";
 
-import AccountPageLayout from "./components/AccountPageLayout";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 
 import { useObserver } from "mobx-react";
 import moment from "moment";
