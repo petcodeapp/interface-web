@@ -3,93 +3,28 @@ import React, { useState, useRef } from "react";
 import {
   Box,
   Flex,
-  FlexProps,
   Heading,
   Icon,
   Image,
   Stack,
-  StackProps,
   Text,
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
-import {
-  AnimatePresence,
-  motion,
-  Transition,
-  MotionProps,
-} from "framer-motion";
+import { AnimatePresence, motion, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
 import BaseButton from "../../components/Shared/atoms/button";
-import BaseCheckbox from "../../components/Shared/atoms/checkbox";
 import Layout from "../../components/Shared/layouts";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
-import MotionFlex from "../../components/Motion/Flex";
 import Footer from "../../components/Shared/organisms/Footer";
+import Feature from "../../components/Shared/molecules/Feature";
+import FeatureDropDown from "../../components/Shared/molecules/FeatureDropdown";
 
 import { PetCodeTheme } from "../../theme";
 
 import { ActionButtonStyle } from "../../components/Shared/ions/button";
-
-const Feature: React.FC<StackProps> = (props) => (
-  <Stack alignItems="center" spacing={5} {...props}>
-    <Box size="6.5rem" backgroundColor="#C4C4C4" rounded="full" />
-    <Text fontSize="2xl">Subtitle</Text>
-  </Stack>
-);
-
-const FeatureDropDown: React.FC<
-  FlexProps &
-    MotionProps & {
-      name: string;
-      description: string;
-      open: boolean;
-      onClick?: () => void;
-    }
-> = ({ name, description, open, onClick = () => {}, ...props }) => {
-  const theme = useTheme() as PetCodeTheme;
-
-  return (
-    <MotionFlex direction="column" {...props}>
-      <Stack isInline alignItems="center" marginBottom={2}>
-        <BaseCheckbox
-          isChecked
-          size={20}
-          color={theme.colors.petcode.blue[400]}
-          isDisabled
-          _hover={{}}
-        />
-        <Text fontSize="2xl">{name}</Text>
-        <Icon
-          name="dropdown-arrow"
-          cursor="pointer"
-          size="20px"
-          paddingTop={3}
-          paddingLeft={open ? 3 : 0}
-          paddingBottom={1}
-          onClick={onClick}
-          transform={open ? null : "rotate(-90deg)"}
-          transition="0.2s all"
-        />
-      </Stack>
-      <AnimatePresence>
-        {open && (
-          <MotionBox
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <Text marginLeft={6} fontSize="xl" fontWeight="thin">
-              {description}
-            </Text>
-          </MotionBox>
-        )}
-      </AnimatePresence>
-    </MotionFlex>
-  );
-};
 
 const LandingPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;

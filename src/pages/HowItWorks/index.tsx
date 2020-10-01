@@ -15,13 +15,12 @@ import {
 import { motion, useAnimation, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
-import BaseButton, {
-  BaseButtonProps,
-} from "../../components/Shared/atoms/button";
+import BaseButton from "../../components/Shared/atoms/button";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
 import Layout from "../../components/Shared/layouts";
 import Footer from "../../components/Shared/organisms/Footer";
+import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
 
 import { useInView } from "react-intersection-observer";
 
@@ -30,46 +29,6 @@ import { PetCodeTheme } from "../../theme";
 import "html5-device-mockups/dist/device-mockups.min.css";
 
 import { ActionButtonStyle } from "../../components/Shared/ions/button";
-
-const HowItWorksStep: React.FC<
-  StackProps & {
-    image: string;
-    stepNumber: number;
-    name: string;
-    description: string;
-    imageHeight: number | string;
-    imageBoxHeight?: number | string;
-  }
-> = ({
-  image,
-  stepNumber,
-  name,
-  description,
-  imageHeight,
-  imageBoxHeight = "12.25rem",
-  ...props
-}) => (
-  <Stack
-    alignItems="center"
-    textAlign="center"
-    spacing={2}
-    maxWidth={345}
-    {...props}
-  >
-    <Box minHeight={imageBoxHeight}>
-      <Image height={imageHeight} src={image} alt={`Step ${stepNumber}`} />
-    </Box>
-    <Text color="petcode.yellow.400" fontSize="2xl">
-      Step {stepNumber}
-    </Text>
-    <Heading color="petcode.neutral.700" fontSize="4xl">
-      {name}
-    </Heading>
-    <Text color="black" fontWeight="thin" fontSize="lg" marginX={3}>
-      {description}
-    </Text>
-  </Stack>
-);
 
 const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
