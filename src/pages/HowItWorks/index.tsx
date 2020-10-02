@@ -20,7 +20,7 @@ import MotionBox from "../../components/Motion/Box";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import Footer from "../../components/Shared/organisms/Footer";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
-import EnterYourEmailInput from "../../components/Shared/atoms/EnterYourEmailInput";
+import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";
 
 import { useInView } from "react-intersection-observer";
 

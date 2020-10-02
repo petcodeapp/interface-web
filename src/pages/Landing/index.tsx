@@ -21,7 +21,7 @@ import MotionBox from "../../components/Motion/Box";
 import Footer from "../../components/Shared/organisms/Footer";
 import Feature from "../../components/Shared/molecules/Feature";
 import FeatureDropDown from "../../components/Shared/molecules/FeatureDropdown";
-import EnterYourEmailInput from "../../components/Shared/atoms/EnterYourEmailInput";
+import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";
 
 import { PetCodeTheme } from "../../theme";
 
@@ -67,40 +67,27 @@ const LandingPage: React.FunctionComponent = () => {
           style={{
             position: "absolute",
             top: 0,
-            height: "23.125rem",
             zIndex: 1,
           }}
-          viewBox="0 0 567 370"
+          height="17.8125rem"
+          viewBox="0 0 612 285"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse
-            cx="-11"
-            cy="-20.5"
-            rx="578"
-            ry="390.5"
-            fill={theme.colors.petcode.blue[400]}
-          />
+          <ellipse cx="34" cy="-105.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <svg
           style={{
             position: "absolute",
             top: 0,
-            height: "19.875rem",
             zIndex: 1,
           }}
-          viewBox="0 0 743 318"
+          height="14.5625rem"
+          viewBox="0 0 788 233"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse
-            opacity="0.4"
-            cx="145"
-            cy="-96.5"
-            rx="578"
-            ry="390.5"
-            fill={theme.colors.petcode.blue[400]}
-          />
+          <ellipse opacity="0.4" cx="190" cy="-181.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <Flex
           flexDirection="column"
@@ -109,19 +96,24 @@ const LandingPage: React.FunctionComponent = () => {
           paddingRight={40}
           backgroundImage="url(/media/landing-splash.png)"
           backgroundSize="cover"
-          minHeight="calc(100vw * 0.70486111111)"
+          minHeight="calc(100vw * 0.72083333333)"
         >
-          <Box flexGrow={5} />
-          <Stack maxW="24rem" alignSelf="end" color="white" spacing={5}>
-            <Heading fontSize="6xl" fontWeight="bold" lineHeight="none">
-              One Code
-            </Heading>
-            <Text fontSize="2xl">
-              An endless suite of features for pet owners.
+          <Box flexGrow={3} />
+          <Stack maxW="28.375rem" alignSelf="end" color="white" spacing={5}>
+            <Box fontWeight="bold">
+              <Heading fontSize="2.8125rem">
+                One Code
+              </Heading>
+              <Text fontSize="3xl">
+                An endless suite of features for pet owners.
+              </Text>
+            </Box>
+            <Text>
+              PetCode is a new pet management platform that allows pet owners to keep track of all aspects of their pet’s life. No matter your situation, PetCode can help you and your pet live happier, worry free lives. 
             </Text>
             <EnterYourEmailInput />
           </Stack>
-          <Box flexGrow={11} />
+          <Box flexGrow={5} />
         </Flex>
         <Flex direction="column">
           <Box position="relative">

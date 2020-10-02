@@ -10,13 +10,13 @@ import { ActionButtonStyle } from "../../ions/button";
 
 const HeaderButtonStyle = {
   ...ActionButtonStyle,
-  height: "2.75rem",
   variantColor: "petcode.yellow",
-  fontSize: "2xl",
-  fontWeight: "normal",
+  fontSize: "xl",
   textTransform: "none",
   letterSpacing: "auto",
+  height: "3.25rem",
   paddingX: 8,
+  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2);",
 } as BaseButtonProps;
 
 const Header: React.FC<FlexProps> = (props) => {
@@ -32,7 +32,7 @@ const Header: React.FC<FlexProps> = (props) => {
       width="calc(100vw - 1rem)"
       boxSizing="border-box"
       paddingLeft={8}
-      paddingRight={20}
+      paddingRight={10}
       paddingY={4}
       zIndex={999}
       spacing={8}
@@ -46,16 +46,13 @@ const Header: React.FC<FlexProps> = (props) => {
       <Box flexGrow={1} />
       <Link to="/">Home</Link>
       <Link to="/howitworks">How It Works</Link>
-      <Link to="/products">Purchase</Link>
       {!auth.isLoggedIn ? (
-        <Stack isInline spacing={8}>
-          <BaseButton {...HeaderButtonStyle}>
-            <Link to="/signup">Register</Link>
-          </BaseButton>
-          <BaseButton {...HeaderButtonStyle}>
-            <Link to="/login">Sign In</Link>
-          </BaseButton>
-        </Stack>
+        <BaseButton
+          {...HeaderButtonStyle}
+          background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+        >
+          Get Started
+        </BaseButton>
       ) : (
         <BaseButton {...HeaderButtonStyle}>
           <Link to="/dashboard">Dashboard</Link>
