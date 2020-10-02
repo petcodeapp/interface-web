@@ -134,7 +134,7 @@ const LandingPage: React.FunctionComponent = () => {
                 An endless suite of features for pet owners.
               </Text>
             </Box>
-            <Text>
+            <Text fontSize="lg">
               PetCode is a new pet management platform that allows pet owners to keep track of all aspects of their pet’s life. No matter your situation, PetCode can help you and your pet live happier, worry free lives. 
             </Text>
             <EnterYourEmailInput />
@@ -175,7 +175,7 @@ const LandingPage: React.FunctionComponent = () => {
             justifyContent="space-between"
             paddingY={16}
             paddingLeft={40}
-            paddingRight={20}
+            paddingRight={10}
             backgroundColor={theme.colors.petcode.blue[400]}
           >
             <Stack spacing={8} maxWidth="39.625rem">
@@ -242,16 +242,16 @@ const LandingPage: React.FunctionComponent = () => {
                 life has never been easier. Learn more about us below.
               </Text>
             </Stack>
-            <Stack flexGrow={1} spacing={10} alignItems="end">
-              <Stack isInline marginRight={16} spacing={10}>
-                <Feature />
-                <Feature />
-                <Feature />
-              </Stack>
+            <Stack spacing={10}>
               <Stack isInline spacing={10}>
-                <Feature />
-                <Feature />
-                <Feature />
+                <Feature image="/media/personal-pet-profile-feature.png" name="Personal Pet Profile" />
+                <Feature image="/media/scan-locations-feature.png" name="Scan Locations" />
+                <Feature image="/media/no-monthly-fees-feature.png" name="No Monthly Fees" />
+              </Stack>
+              <Stack isInline marginLeft={16} spacing={10}>
+                <Feature image="/media/durable-qr-pet-tags-feature.png" name="Durable QR Pet Tags" />
+                <Feature image="/media/vaccination-storage-feature.png" name="Vaccination Storage" />
+                <Feature image="/media/discovery-feature.png" name="Discovery Feature" />
               </Stack>
             </Stack>
           </Flex>
