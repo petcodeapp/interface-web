@@ -90,16 +90,42 @@ const LandingPage: React.FunctionComponent = () => {
           <ellipse opacity="0.4" cx="190" cy="-181.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
         <Flex
-          flexDirection="column"
+          flexDirection="row"
+          justifyContent="space-between"
           boxSizing="border-box"
-          paddingTop={24}
-          paddingRight={40}
+          paddingTop="20.5625rem"
+          paddingX={24}
           backgroundImage="url(/media/landing-splash.png)"
           backgroundSize="cover"
           minHeight="calc(100vw * 0.72083333333)"
         >
-          <Box flexGrow={3} />
-          <Stack maxW="28.375rem" alignSelf="end" color="white" spacing={5}>
+          <Box position="relative" top="-1rem" height="28.125rem">
+            <Image
+              src="/media/dashboard-web-screen.svg"
+              alt="Dashboard web screen"
+              height="28.125rem"
+            />
+            <IPhoneX
+              height={354}
+              wrapperProps={{
+                style: { position: "absolute", bottom: 0, left: "27rem" }
+              }}
+            >
+              <Image
+                src="/media/dashboard-mobile-screen.svg"
+                alt="Dashboard mobile screen"
+                width="100%"
+              />
+            </IPhoneX>
+            <Image
+              position="absolute"
+              bottom={0}
+              width="8.625rem"
+              src="/media/tag-front.png"
+              alt="Petcode tag front"
+            />
+          </Box>
+          <Stack maxW="28.375rem" color="white" spacing={5}>
             <Box fontWeight="bold">
               <Heading fontSize="2.8125rem">
                 One Code
@@ -113,7 +139,6 @@ const LandingPage: React.FunctionComponent = () => {
             </Text>
             <EnterYourEmailInput />
           </Stack>
-          <Box flexGrow={5} />
         </Flex>
         <Flex direction="column">
           <Box position="relative">
