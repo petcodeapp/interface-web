@@ -387,7 +387,6 @@ const LandingPage: React.FunctionComponent = () => {
                       position="absolute"
                       top={0}
                       width="100%"
-                      height="100%"
                       key={featureShown}
                       src={
                         featureShown == "vaccinations"
