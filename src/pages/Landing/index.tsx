@@ -21,7 +21,7 @@ import MotionBox from "../../components/Motion/Box";
 import Footer from "../../components/Shared/organisms/Footer";
 import Feature from "../../components/Shared/molecules/Feature";
 import FeatureDropDown from "../../components/Shared/molecules/FeatureDropdown";
-import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";
+import EnterYourEmailInput from "../../components/Shared/atoms/EnterYourEmailInput";
 
 import { PetCodeTheme } from "../../theme";
 

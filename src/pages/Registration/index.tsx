@@ -17,7 +17,7 @@ import {
   useToast,
 } from "@chakra-ui/core";
 
-import InputWithIcon from "../../components/Shared/molecules/InputWithIcon";
+import InputWithIcon from "../../components/Shared/atoms/InputWithIcon";
 import BaseButton from "../../components/Shared/atoms/button";
 import { AuthContext } from "../../views/Auth/index";
 import Button from "../../components/Motion/Button";

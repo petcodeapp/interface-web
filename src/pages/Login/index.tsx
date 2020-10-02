@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/core";
 
 import { AuthStore } from "../../views/Auth/";
-import InputWithIcon from "../../components/Shared/molecules/InputWithIcon";
+import InputWithIcon from "../../components/Shared/atoms/InputWithIcon";
 import BaseButton from "../../components/Shared/atoms/button";
 import { motion } from "framer-motion";
 

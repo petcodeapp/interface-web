@@ -10,7 +10,7 @@ import {
   IconProps,
 } from "@chakra-ui/core";
 
-import BackgroundIcon from "../../atoms/backgroundicon";
+import BackgroundIcon from "../../atoms/BackgroundIcon";
 
 import {
   PetInfoInputStyle,

@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { Box, Flex, Icon, SimpleGrid, Text, useToast } from "@chakra-ui/core";
 
 import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
-import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
-import BackgroundIcon from "../../components/Shared/atoms/backgroundicon";
+import { ExpandButton } from "../../components/Shared/atoms/ExpandButton";
+import BackgroundIcon from "../../components/Shared/atoms/BackgroundIcon";
 import PetInfoCard, {
   PetInfoInput,
   PetInfoSelect,

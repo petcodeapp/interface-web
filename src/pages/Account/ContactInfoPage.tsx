@@ -10,7 +10,7 @@ import {
   useToast,
 } from "@chakra-ui/core";
 
-import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
+import { ExpandButton } from "../../components/Shared/atoms/ExpandButton";
 import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 import Row from "../../components/Shared/atoms/row";
 import {

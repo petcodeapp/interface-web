@@ -18,7 +18,7 @@ import {
 import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 import BaseButton from "../../components/Shared/atoms/button";
 import BaseCheckbox from "../../components/Shared/atoms/checkbox";
-import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
+import { ExpandButton } from "../../components/Shared/atoms/ExpandButton";
 import Row from "../../components/Shared/atoms/row";
 import {
   InfoFieldText,

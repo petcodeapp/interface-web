@@ -7,7 +7,7 @@ import {
   InputProps,
   InputGroupProps,
 } from "@chakra-ui/core";
-import RoundedInput from "../../atoms/roundedinput";
+import RoundedInput from "../RoundedInput";
 
 export type InputWithIconProps = {
   iconName: string;

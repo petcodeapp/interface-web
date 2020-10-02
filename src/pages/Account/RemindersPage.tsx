@@ -15,7 +15,7 @@ import {
 import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 import ReminderItem from "../../components/Shared/molecules/ReminderItem";
 import BaseButton from "../../components/Shared/atoms/button";
-import { ExpandButton } from "../../components/Shared/molecules/ExpandButton";
+import { ExpandButton } from "../../components/Shared/atoms/ExpandButton";
 import {
   InfoFieldLabel,
   InfoFieldInput,

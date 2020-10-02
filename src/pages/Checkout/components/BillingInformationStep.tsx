@@ -7,7 +7,7 @@ import AddressInputs from "./AddressInputs";
 import { ShippingInformation } from "./ShippingInformationStep";
 import BaseButton from "../../../components/Shared/atoms/button";
 import BaseCheckbox from "../../../components/Shared/atoms/checkbox";
-import RoundedInput from "../../../components/Shared/atoms/roundedinput";
+import RoundedInput from "../../../components/Shared/atoms/RoundedInput";
 import UnifiedErrorMessage from "../../../components/Shared/molecules/UnifiedErrorMessage";
 
 import * as Yup from "yup";
