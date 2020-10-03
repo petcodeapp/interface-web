@@ -9,6 +9,7 @@ export type HowItWorksStepProps = {
   description: string;
   imageHeight: number | string;
   imageBoxHeight?: number | string;
+  headerWidth?: number | string;
 } & StackProps;
 
 const HowItWorksStep: React.FC<HowItWorksStepProps> = ({
@@ -17,14 +18,15 @@ const HowItWorksStep: React.FC<HowItWorksStepProps> = ({
   name,
   description,
   imageHeight,
-  imageBoxHeight = "12.25rem",
+  imageBoxHeight = "11.125rem",
+  headerWidth = "100%",
   ...props
 }) => (
   <Stack
     alignItems="center"
     textAlign="center"
     spacing={2}
-    maxWidth={345}
+    maxWidth="21.5625rem"
     {...props}
   >
     <Box minHeight={imageBoxHeight}>
@@ -33,7 +35,7 @@ const HowItWorksStep: React.FC<HowItWorksStepProps> = ({
     <Text color="petcode.yellow.400" fontSize="2xl">
       Step {stepNumber}
     </Text>
-    <Heading color="petcode.neutral.700" fontSize="4xl">
+    <Heading color="petcode.neutral.700" fontSize="4xl" maxWidth={headerWidth}>
       {name}
     </Heading>
     <Text color="black" fontWeight="thin" fontSize="lg" marginX={3}>

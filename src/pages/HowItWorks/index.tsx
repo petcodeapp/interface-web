@@ -28,6 +28,7 @@ import { PetCodeTheme } from "../../theme";
 import "html5-device-mockups/dist/device-mockups.min.css";
 
 import { ActionButtonStyle } from "../../components/Shared/ions/button";
+import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
 
 const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
@@ -132,42 +133,24 @@ const HowItWorksPage: React.FunctionComponent = () => {
             <HowItWorksStep
               image="/media/order-petcode-tag-step.svg"
               stepNumber={1}
-              name="Order Your PetCode QR Tag"
-              description="Head to the “Purchase” page to order a tag"
-              imageHeight="11.5625rem"
+              name="Sign Up with PetCode"
+              description="Set up and create your beta account with PetCode"
+              imageHeight="10.25rem"
+            />
+            <HowItWorksStep
+              image="/media/upload-information-step.svg"
+              stepNumber={2}
+              name="Upload Information"
+              description="Once set up, add your info to the tag to access the full functionality of PetCode"
+              imageHeight="10.6875rem"
             />
             <HowItWorksStep
               image="/media/create-petcode-account-step.svg"
-              stepNumber={2}
-              name="Create Your PetCode Account"
-              description="Set up an account with PetCode to begin using the tag"
-              imageHeight="10.9375rem"
-            />
-            <HowItWorksStep
-              image="/media/activate-petcode-tag-step.svg"
               stepNumber={3}
-              name="Activate Your PetCode QR Tag"
-              description="Connect your PetCode account with your new  tag to activate your QR Tag"
-              imageHeight="12.25rem"
-            />
-          </Stack>
-          <Stack isInline spacing={12}>
-            <HowItWorksStep
-              image="/media/upload-information-step.svg"
-              stepNumber={4}
-              name="Upload Information"
-              description="Once set up, add your info to the tag to access the full functionality of PetCode"
-              imageHeight="13.875rem"
-              imageBoxHeight="13.875rem"
-            />
-            <HowItWorksStep
-              maxWidth={420}
-              image="/media/finished-step.svg"
-              stepNumber={5}
-              name="You’re Now Set Up with Your PetCode Tag!"
-              description="Enjoy the full range of features that PetCode’s tag and software give you!"
-              imageHeight="13.5rem"
-              imageBoxHeight="13.875rem"
+              headerWidth="15rem"
+              name="You’re All Set!"
+              description="That’s it! You’re ready to enjoy all of PetCode’s benefits"
+              imageHeight="9.6875rem"
             />
           </Stack>
         </Stack>
@@ -218,11 +201,12 @@ const HowItWorksPage: React.FunctionComponent = () => {
               </Text>
               <BaseButton
                 {...ActionButtonStyle}
+                paddingX={10}
                 alignSelf="start"
                 variantColor="white"
                 color="petcode.blue.400"
               >
-                Buy Now
+                Get Started
               </BaseButton>
             </Stack>
             <Box position="relative" height={375}>
@@ -442,16 +426,20 @@ const HowItWorksPage: React.FunctionComponent = () => {
             <Text fontSize="2xl" color="petcode.yellow.400">
               A place your pet’s data can call home
             </Text>
-            <Text fontSize="xl" fontWeight="thin" paddingBottom={3}>
-              All your pet’s info—from contact and medical info to name, age,
-              and breed—in one place. Your PetPortal syncs with the PetCode QR
-              tag and is easily accessible through our app, giving you access to
-              the full suite of features whenever, wherever. PetCode’s app and
-              QR tags help keep you and your pet safe, healthy, and happy. Your
-              PetPortal opens doors to a whole world of features just waiting
-              for you and your pet to explore. Get started with PetCode today to
-              unlock all the features we have to offer!
+            <Text fontSize="xl" fontWeight="thin">
+              All your pet’s info—from contact and medical info to name, age, and breed—in one place. Your PetPortal syncs with the PetCode QR tag and is easily accessible through our app, giving you access to the full suite of features whenever, wherever. Get started with PetCode today to unlock all the features we have to offer!
             </Text>
+            <Stack spacing={3} marginLeft={6} paddingBottom={8}>
+              <FeaturePoint>
+                Keeps your pet safe
+              </FeaturePoint>
+              <FeaturePoint>
+                Tracks medical records
+              </FeaturePoint>
+              <FeaturePoint>
+                Provides fun oppertunities and events
+              </FeaturePoint>
+            </Stack>
             <Flex direction="row" justifyContent="space-between">
               <Icon
                 color="petcode.neutral.400"
@@ -459,8 +447,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 size="40px"
                 alignSelf="start"
               />
-              <BaseButton {...ActionButtonStyle} variantColor="petcode.blue">
-                Buy Now
+              <BaseButton {...ActionButtonStyle} paddingX={10} variantColor="petcode.blue">
+                Get Started
               </BaseButton>
             </Flex>
           </Stack>
