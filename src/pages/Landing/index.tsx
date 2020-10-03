@@ -6,6 +6,9 @@ import {
   Heading,
   Icon,
   Image,
+  Input,
+  InputGroup,
+  InputRightElement,
   Stack,
   Text,
   ThemeProvider,
@@ -18,10 +21,10 @@ import BaseButton from "../../components/Shared/atoms/button";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
-import Footer from "../../components/Shared/organisms/Footer";
 import Feature from "../../components/Shared/molecules/Feature";
 import FeatureDropDown from "../../components/Shared/molecules/FeatureDropdown";
-import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";
+import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
+import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
 
 import { PetCodeTheme } from "../../theme";
 
@@ -61,6 +64,9 @@ const LandingPage: React.FunctionComponent = () => {
           position: "absolute",
           backgroundColor: "transparent",
         }}
+        footerProps={{
+          wavesArePadded: false,
+        }}
         paddingTop={0}
       >
         <svg
@@ -89,6 +95,24 @@ const LandingPage: React.FunctionComponent = () => {
         >
           <ellipse opacity="0.4" cx="190" cy="-181.5" rx="578" ry="390.5" fill={theme.colors.petcode.blue[400]} />
         </svg>
+        <Image
+          position="absolute"
+          top="50%"
+          right={0}
+          zIndex={-1}
+          transform="translateY(-50%)"
+          src="/media/paw-print-background-rtl-up.svg"
+          alt="Paw print background"
+        />
+        <Image
+          position="absolute"
+          top="55%"
+          left={0}
+          zIndex={-1}
+          transform="translateY(-50%)"
+          src="/media/paw-print-background-ltr-down.svg"
+          alt="Paw print background"
+        />
         <Flex
           flexDirection="row"
           justifyContent="space-between"
@@ -137,7 +161,7 @@ const LandingPage: React.FunctionComponent = () => {
             <Text fontSize="lg">
               PetCode is a new pet management platform that allows pet owners to keep track of all aspects of their pet’s life. No matter your situation, PetCode can help you and your pet live happier, worry free lives. 
             </Text>
-            <EnterYourEmailInput />
+            <ExclusiveUpdatesInput />
           </Stack>
         </Flex>
         <Flex direction="column">
@@ -232,9 +256,6 @@ const LandingPage: React.FunctionComponent = () => {
                   Discovery
                 </BaseButton>
               </Stack>
-              <Text fontWeight="bold" fontSize="2xl">
-                More Than Just A Tag
-              </Text>
               <Text fontWeight="thin" fontSize="xl">
                 Discover the endless suite of features from PetCode. Keep your
                 pet safe, manage their health, and discover nearby pet
@@ -301,21 +322,25 @@ const LandingPage: React.FunctionComponent = () => {
           <Stack
             maxWidth="40.3125rem"
             color="petcode.neutral.700"
-            textAlign="right"
-            spacing={8}
+            spacing={4}
           >
-            <Heading fontSize="5xl">Safety</Heading>
+            <Heading fontSize="5xl" textAlign="right" paddingBottom={2}>Safety</Heading>
             <Text fontSize="xl" fontWeight="thin">
-              It’s a scary world out there, one you shouldn’t have to face
-              alone. With PetCode, keeping your pet safer is no longer a
-              struggle; our QR tags can help you find your pet faster, should
-              you lose them. Your safety is our number one priority, which is
-              why we never share your data with any third parties. Let us help
-              you keep your pet safer and make life a more pleasant walk in the
-              park!
+              It’s a scary world out there, but with PetCode, keeping your pet safer is no longer a struggle. Stay safe with PetCode’s products and services.
             </Text>
+            <Stack spacing={3} marginLeft={6}>
+              <FeaturePoint>
+                Up-to-date contact info
+              </FeaturePoint>
+              <FeaturePoint>
+                Tracks where and when your pet’s tag is scanned
+              </FeaturePoint>
+              <FeaturePoint>
+                Generates “lost pet” posters
+              </FeaturePoint>
+            </Stack>
             <Stack isInline alignItems="center" alignSelf="start" spacing={4}>
-              <Text fontSize="xl">Learn More</Text>
+              <Text fontSize="xl">Sign Up Now</Text>
               <Icon size="36px" name="arrow" />
             </Stack>
           </Stack>
@@ -359,7 +384,7 @@ const LandingPage: React.FunctionComponent = () => {
             paddingLeft={40}
             backgroundColor={theme.colors.petcode.blue[400]}
           >
-            <Stack width="37.875rem">
+            <Stack width="35.875rem">
               <Heading fontSize="5xl" paddingBottom={4}>
                 Health
               </Heading>
@@ -466,16 +491,14 @@ const LandingPage: React.FunctionComponent = () => {
             </motion.svg>
           </Box>
         </Flex>
-        <Stack
+        <Flex
           ref={(ref) => (discoverySectionRef.current = ref)}
-          isInline
-          paddingRight={32}
+          direction="row"
+          paddingRight={24}
           paddingTop={20}
-          paddingBottom={48}
-          spacing={16}
-          justifyContent="space-between"
+          paddingBottom={8}
         >
-          <Box height={400} position="relative" overflowY="visible">
+          <Box height="29rem" width="48.375rem" position="relative" overflowY="visible">
             <MotionBox
               position="relative"
               zIndex={1}
@@ -511,9 +534,15 @@ const LandingPage: React.FunctionComponent = () => {
               alt="Scan locations web screen"
             />
           </Box>
+          <Icon
+            color="petcode.neutral.400"
+            name="arrow-thin"
+            size="40px"
+            alignSelf="end"
+          />
+          <Box flexGrow={1} />
           <Stack
-            alignItems="end"
-            textAlign="right"
+            maxWidth="25.625rem"
             spacing={4}
             color="petcode.neutral.700"
           >
@@ -539,40 +568,77 @@ const LandingPage: React.FunctionComponent = () => {
               </BaseButton>
             </Stack>
             <Text fontSize="xl" fontWeight="thin">
-              With PetCode’s Discovery aspect, you can explore nearby pet
-              opportunities, all with the tap of a finger. Search for exciting
-              events, find open pet parks, and so much more with Discovery.
-              Looking for savings? PetCode users get exclusive access to a whole
-              world of incredible PetPerks. Get premium discounts on everything
-              from cat food, dog toys, and grooming services at pet boutiques.
+              With PetCode’s Discovery feature, you can explore nearby pet opportunities, all with the tap of a finger.
             </Text>
-            <Icon
-              color="petcode.neutral.400"
-              name="arrow-thin"
-              size="40px"
-              alignSelf="start"
-            />
+            <Stack spacing={3} marginLeft={6}>
+              <FeaturePoint>
+                Search for exciting events
+              </FeaturePoint>
+              <FeaturePoint>
+                Find open pet parks
+              </FeaturePoint>
+              <FeaturePoint>
+                Get premium discounts
+              </FeaturePoint>
+            </Stack>
           </Stack>
-        </Stack>
-        <Footer />
-        <Image
-          position="absolute"
-          top="50%"
-          right={0}
-          zIndex={-1}
-          transform="translateY(-50%)"
-          src="/media/paw-print-background-rtl-up.svg"
-          alt="Paw print background"
-        />
-        <Image
-          position="absolute"
-          top="55%"
-          left={0}
-          zIndex={-1}
-          transform="translateY(-50%)"
-          src="/media/paw-print-background-ltr-down.svg"
-          alt="Paw print background"
-        />
+        </Flex>
+        <Flex
+          direction="column"
+          color="white"
+        >
+          <svg
+            viewBox="0 0 1438 82"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M1441 82V0.424805C1241.31 46.0334 878.931 73.426 587.897 42.617C263.328 8.25806 106.807 23.952 -2 50.3344V82H1441Z" fill={theme.colors.petcode.neutral[200]}/>
+          </svg>
+          <Flex
+            direction="row"
+            paddingTop={2}
+            paddingBottom={`calc(${87 / 1440 * 100}% + 5.3125rem)`}
+            paddingX={40}
+            backgroundColor="petcode.neutral.200"
+            justifyContent="space-between"
+          >
+            <Stack spacing={4} color="petcode.neutral.700">
+              <Text fontSize="3xl">
+                Sign up for updates and more!
+              </Text>
+              <Stack spacing={3} marginLeft={6}>
+                <FeaturePoint checkBoxProps={{ backgroundColor: "petcode.blue.400" }}>
+                  Exclusive updates
+                </FeaturePoint>
+                <FeaturePoint checkBoxProps={{ backgroundColor: "petcode.blue.400" }}>
+                  Hands-on opportunities with the system
+                </FeaturePoint>
+                <FeaturePoint checkBoxProps={{ backgroundColor: "petcode.blue.400" }}>
+                  Discounts
+                </FeaturePoint>
+              </Stack>
+            </Stack>
+            <InputGroup width="24.75rem" alignSelf="center">
+              <Input
+                type="email"
+                rounded="1.25rem"
+                height="3.625rem"
+                fontWeight="thin"
+                variant="filled"
+                fontSize="xl"
+                fontFamily="body"
+                placeholder="Enter Your Email"
+                _placeholder={{ color: "petcode.neutral.600" }}
+                backgroundColor="white"
+              />
+              <InputRightElement alignSelf="center" top="auto" right="0.5rem" cursor="pointer">
+                <svg width="40" height="39" viewBox="0 0 40 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M31.1737 18.9891H5.58887M21.224 9.08527L31.1737 18.9891L21.224 9.08527ZM31.1737 18.9891L21.224 28.8929L31.1737 18.9891Z" stroke="#4A5568" stroke-width="2.47595" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </InputRightElement>
+            </InputGroup>
+          </Flex>
+        </Flex>
       </Layout>
     </ThemeProvider>
   );

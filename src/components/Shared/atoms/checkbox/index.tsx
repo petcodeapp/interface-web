@@ -11,7 +11,7 @@ export type BaseCheckboxProps = {
 const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
   isChecked,
   isDisabled,
-  size = 32,
+  size = 100,
   color,
   ...props
 }) => (
@@ -21,14 +21,16 @@ const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
     justifyContent="center"
     rounded="full"
     backgroundColor="petcode.yellow.400"
-    _hover={{ backgroundColor: "petcode.yellow.500" }}
-    minWidth={size + "px"}
-    minHeight={size + "px"}
+    _hover={isDisabled ? {} : { backgroundColor: "petcode.yellow.500" }}
+    size={size}
     cursor={isDisabled ? "default" : "pointer"}
+    padding="6px"
+    boxSizing="border-box"
+    
     {...props}
   >
     {isChecked && (
-      <Icon name="checkmark" size={size - 12 + "px"} color={color} />
+      <Icon name="checkmark" size="100%" color={color} />
     )}
   </PseudoBox>
 );

@@ -18,9 +18,8 @@ import BaseButton from "../../components/Shared/atoms/button";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
-import Footer from "../../components/Shared/organisms/Footer";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
-import EnterYourEmailInput from "../../components/Shared/molecules/EnterYourEmailInput";
+import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
 
 import { useInView } from "react-intersection-observer";
 
@@ -121,7 +120,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
           <Box flexGrow={1} />
           <Stack alignSelf="end" color="white" spacing={8}>
             <Heading fontSize="6xl">How It Works</Heading>
-            <EnterYourEmailInput />
+            <ExclusiveUpdatesInput />
           </Stack>
           <Box flexGrow={7} />
         </Flex>
@@ -466,7 +465,6 @@ const HowItWorksPage: React.FunctionComponent = () => {
             </Flex>
           </Stack>
         </Stack>
-        <Footer />
       </Layout>
     </ThemeProvider>
   );

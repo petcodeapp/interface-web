@@ -6,15 +6,18 @@ import { FlexProps } from "@chakra-ui/core";
 import { MotionProps } from "framer-motion";
 
 import Header from "../organisms/Header";
+import Footer, { FooterProps } from "../organisms/Footer";
 
 type LayoutProps = {
   headerProps?: FlexProps;
+  footerProps?: FooterProps;
 } & FlexProps &
   MotionProps;
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   headerProps = {},
+  footerProps = {},
   ...props
 }) => (
   <Flex
@@ -25,6 +28,7 @@ const Layout: React.FC<LayoutProps> = ({
   >
     <Header backgroundColor="petcode.neutral.700" {...headerProps} />
     {children}
+    <Footer {...footerProps} />
   </Flex>
 );
 
