@@ -427,18 +427,16 @@ const HowItWorksPage: React.FunctionComponent = () => {
               A place your pet’s data can call home
             </Text>
             <Text fontSize="xl" fontWeight="thin">
-              All your pet’s info—from contact and medical info to name, age, and breed—in one place. Your PetPortal syncs with the PetCode QR tag and is easily accessible through our app, giving you access to the full suite of features whenever, wherever. Get started with PetCode today to unlock all the features we have to offer!
+              All your pet’s info—from contact and medical info to name, age,
+              and breed—in one place. Your PetPortal syncs with the PetCode QR
+              tag and is easily accessible through our app, giving you access to
+              the full suite of features whenever, wherever. Get started with
+              PetCode today to unlock all the features we have to offer!
             </Text>
             <Stack spacing={3} marginLeft={6} paddingBottom={8}>
-              <FeaturePoint>
-                Keeps your pet safe
-              </FeaturePoint>
-              <FeaturePoint>
-                Tracks medical records
-              </FeaturePoint>
-              <FeaturePoint>
-                Provides fun oppertunities and events
-              </FeaturePoint>
+              <FeaturePoint>Keeps your pet safe</FeaturePoint>
+              <FeaturePoint>Tracks medical records</FeaturePoint>
+              <FeaturePoint>Provides fun oppertunities and events</FeaturePoint>
             </Stack>
             <Flex direction="row" justifyContent="space-between">
               <Icon
@@ -447,7 +445,11 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 size="40px"
                 alignSelf="start"
               />
-              <BaseButton {...ActionButtonStyle} paddingX={10} variantColor="petcode.blue">
+              <BaseButton
+                {...ActionButtonStyle}
+                paddingX={10}
+                variantColor="petcode.blue"
+              >
                 Get Started
               </BaseButton>
             </Flex>

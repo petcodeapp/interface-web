@@ -6,10 +6,22 @@ import BaseCheckbox, { BaseCheckboxProps } from "../../atoms/checkbox";
 
 export type FeaturePointProps = {
   checkBoxProps?: BaseCheckboxProps;
-} & StackProps; 
+} & StackProps;
 
-const FeaturePoint: React.FC<FeaturePointProps> = ({ children, checkBoxProps = {},  ...props }) => (
-  <Stack isInline spacing={2} alignItems="center" fontSize="xl" color="petcode.neutral.600" fontWeight="thin" {...props}>
+const FeaturePoint: React.FC<FeaturePointProps> = ({
+  children,
+  checkBoxProps = {},
+  ...props
+}) => (
+  <Stack
+    isInline
+    spacing={2}
+    alignItems="center"
+    fontSize="xl"
+    color="petcode.neutral.600"
+    fontWeight="thin"
+    {...props}
+  >
     <BaseCheckbox
       isChecked
       size={22.5}
@@ -17,9 +29,7 @@ const FeaturePoint: React.FC<FeaturePointProps> = ({ children, checkBoxProps = {
       isDisabled
       {...checkBoxProps}
     />
-    <Text>
-      {children}
-    </Text>
+    <Text>{children}</Text>
   </Stack>
 );
 

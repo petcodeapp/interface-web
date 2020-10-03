@@ -26,12 +26,9 @@ const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
     cursor={isDisabled ? "default" : "pointer"}
     padding="6px"
     boxSizing="border-box"
-    
     {...props}
   >
-    {isChecked && (
-      <Icon name="checkmark" size="100%" color={color} />
-    )}
+    {isChecked && <Icon name="checkmark" size="100%" color={color} />}
   </PseudoBox>
 );
 

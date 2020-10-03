@@ -29,7 +29,9 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
     {...props}
   >
     <Icon name={iconName} size="1.25rem" marginRight={3} />
-    <Text fontSize="xl" fontWeight="thin">{text}</Text>
+    <Text fontSize="xl" fontWeight="thin">
+      {text}
+    </Text>
   </Link>
 );
 
