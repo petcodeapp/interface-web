@@ -28,7 +28,6 @@ import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
 import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
 
 import { PetCodeTheme } from "../../theme";
-
 import { ActionButtonStyle } from "../../components/Shared/ions/button";
 
 const LandingPage: React.FunctionComponent = () => {
@@ -136,7 +135,7 @@ const LandingPage: React.FunctionComponent = () => {
           backgroundSize="cover"
           minHeight="calc(100vw * 0.72083333333)"
         >
-          <Flex
+          <MotionFlex
             position="relative"
             top="-1rem"
             height="28.125rem"
@@ -144,6 +143,9 @@ const LandingPage: React.FunctionComponent = () => {
             flexGrow={1}
             justifyContent="end"
             alignItems="end"
+            animate={bounce}
+            // @ts-ignore
+            transition={transition}
           >
             <Image
               position="absolute"
@@ -170,7 +172,7 @@ const LandingPage: React.FunctionComponent = () => {
               src="/media/tag-front.png"
               alt="Petcode tag front"
             />
-          </Flex>
+          </MotionFlex>
           <Stack maxW="28.375rem" color="white" spacing={5}>
             <Box fontWeight="bold">
               <Heading fontSize="2.8125rem">One Code</Heading>

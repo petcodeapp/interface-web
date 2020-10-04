@@ -10,6 +10,7 @@ import {
   Text,
   useTheme,
 } from "@chakra-ui/core";
+import { motion, Transition } from "framer-motion";
 
 import { PetCodeTheme } from "../../../../theme";
 
@@ -27,24 +28,34 @@ export type FooterProps = {
 const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
 
+  const wave = { scaleY: [1, 1.1] };
+
+  const transition: Transition = {
+    repeat: Infinity,
+    repeatType: "reverse",
+    duration: 2,
+  };
+
   return (
     <Flex direction="column" {...props}>
       <Box
         position="relative"
         paddingBottom={wavesArePadded ? `${(87 / 1440) * 100}%` : null}
       >
-        <svg
+        <motion.svg
           style={{ position: "absolute", bottom: 0 }}
           viewBox="0 0 1440 87"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          animate={wave}
+          transition={transition}
         >
           <path
             d="m-1,17.5235c97.0032,-5.33048 328.339,-15.59158 477.657,-13.99244c55.019,0.58922 136.37,9.68914 231.1,20.28554c226.635,25.3514 529.843,59.2685 732.243,5.7003l0,281.8471l-1,0l0,-222.364l-1440,0l0,-71.4765z"
             fill={theme.colors.petcode.blue[400]}
             opacity={0.4}
           />
-        </svg>
+        </motion.svg>
         <svg
           style={{ position: "absolute", bottom: 0 }}
           viewBox="0 0 1440 87"

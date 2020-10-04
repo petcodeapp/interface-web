@@ -21,15 +21,14 @@ import MotionFlex from "../../components/Motion/Flex";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
 import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
+import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
 
 import { useInView } from "react-intersection-observer";
 
 import { PetCodeTheme } from "../../theme";
+import { ActionButtonStyle } from "../../components/Shared/ions/button";
 
 import "html5-device-mockups/dist/device-mockups.min.css";
-
-import { ActionButtonStyle } from "../../components/Shared/ions/button";
-import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
 
 const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
