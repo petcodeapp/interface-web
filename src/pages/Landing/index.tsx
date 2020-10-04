@@ -558,14 +558,14 @@ const LandingPage: React.FunctionComponent = () => {
                 alt="Pet parks mobile screen"
               />
             </IPhoneX>
-            <Icon
-              color="petcode.neutral.400"
-              name="arrow-thin"
-              size="40px"
-              alignSelf="end"
-              marginX={8}
-            />
           </MotionFlex>
+          <Icon
+            color="petcode.neutral.400"
+            name="arrow-thin"
+            size="40px"
+            alignSelf="end"
+            marginX={8}
+          />
           <Stack maxWidth="25.625rem" spacing={4} color="petcode.neutral.700">
             <Heading fontSize="5xl">Discovery</Heading>
             <Stack isInline>

@@ -17,6 +17,7 @@ import { IPhoneX } from "react-device-mockups";
 import BaseButton from "../../components/Shared/atoms/button";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
+import MotionFlex from "../../components/Motion/Flex";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
 import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
@@ -182,14 +183,14 @@ const HowItWorksPage: React.FunctionComponent = () => {
               />
             </motion.svg>
           </Box>
-          <Stack
+          <Flex
+            direction="row"
             backgroundColor="petcode.blue.400"
             color="white"
-            isInline
-            paddingLeft={32}
+            paddingLeft={40}
             paddingBottom={12}
           >
-            <Stack paddingTop={20} maxW="40.4375rem" spacing={3}>
+            <Stack paddingTop={20} maxW="40.4375rem" spacing={3} marginRight={8}>
               <Heading fontSize="6xl">The QR Tag</Heading>
               <Text fontSize="xl" fontWeight="thin" paddingBottom={4}>
                 Got a new phone? Moved recently? PetCode’s durable QR tags allow
@@ -209,32 +210,30 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 Get Started
               </BaseButton>
             </Stack>
-            <Box position="relative" height={375}>
+            <Box position="relative" height="23.4375rem">
               <Image
                 src="/media/tag-front.png"
                 alt="Tag front"
-                width={250}
-                height={250}
+                size="15.625rem"
               />
               <MotionBox
                 ref={ref}
                 animate={controls}
                 position="absolute"
-                top={125}
-                left={150}
+                top="7.8125rem"
+                left="11.5625rem"
               >
                 <Image
                   src="/media/tag-back.png"
                   alt="Tag back"
-                  width={250}
-                  height={250}
+                  size="15.625rem"
                 />
                 <Flex
                   direction="row"
                   position="absolute"
-                  right={157.5}
-                  top={160}
-                  width={171 + 224.833 + 8}
+                  right="10.3125rem"
+                  top="10.78125rem"
+                  width="25.2395625rem"
                 >
                   <Box flexGrow={1} />
                   <MotionBox
@@ -257,8 +256,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
                     </Text>
                   </MotionBox>
                   <svg
-                    width="171"
-                    height="73"
+                    width="10.6875rem"
+                    height="4.5625rem"
                     viewBox="0 0 171 73"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -286,13 +285,13 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 <Flex
                   direction="row"
                   position="absolute"
-                  left={90}
-                  bottom={225}
-                  width={98 + 172.45 + 8}
+                  left="5rem"
+                  bottom="14.6875rem"
+                  width="17.403125rem"
                 >
                   <svg
-                    width="98"
-                    height="92"
+                    width="6.125rem"
+                    height="5.75rem"
                     viewBox="0 0 98 92"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -338,7 +337,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 </Flex>
               </MotionBox>
             </Box>
-          </Stack>
+          </Flex>
           <Box position="relative" paddingBottom={`${(125 / 1440) * 100}%`}>
             <svg
               style={{ position: "absolute", top: 0 }}
@@ -367,57 +366,47 @@ const HowItWorksPage: React.FunctionComponent = () => {
             </motion.svg>
           </Box>
         </Flex>
-        <Stack
-          isInline
+        <Flex
+          direction="row"
           paddingRight={40}
           paddingTop={24}
           paddingBottom={16}
-          justifyContent="space-between"
+          justifyContent="center"
         >
-          <Box
-            height={500}
-            flexGrow={-1}
+          <MotionFlex
+            flexGrow={1}
             position="relative"
+            alignItems="end"
+            justifyContent="end"
             overflowY="visible"
+            marginRight={16}
+            animate={bounce}
+            // @ts-ignore
+            transition={transition}
           >
-            <MotionBox
-              position="relative"
-              zIndex={1}
-              animate={bounce}
-              // @ts-ignore
-              transition={transition}
-            >
-              <IPhoneX
-                height={500}
-                wrapperProps={{
-                  style: { position: "absolute", left: "23.4375rem" },
-                }}
-                screenProps={{
-                  style: { backgroundColor: theme.colors.petcode.blue[400] },
-                }}
-              >
-                <Image
-                  width="100%"
-                  height="100%"
-                  src="/media/reminders-mobile-screen.svg"
-                  alt="Pet parks mobile screen"
-                />
-              </IPhoneX>
-            </MotionBox>
             <MotionImage
-              top="-3.6875rem"
-              left="-12.5rem"
+              top="-8.5%"
+              right="6.5rem"
               position="absolute"
-              animate={bounce}
-              // @ts-ignore
-              transition={transition}
               height="33.3125rem"
               src="/media/reminders-web-screen.svg"
               alt="Scan locations web screen"
             />
-          </Box>
+            <IPhoneX
+              height="30rem"
+              screenProps={{
+                style: { backgroundColor: theme.colors.petcode.blue[400] },
+              }}
+            >
+              <Image
+                width="100%"
+                height="100%"
+                src="/media/reminders-mobile-screen.svg"
+                alt="Pet parks mobile screen"
+              />
+            </IPhoneX>
+          </MotionFlex>
           <Stack
-            textAlign="left"
             maxW="29.125rem"
             spacing={4}
             color="petcode.neutral.700"
@@ -454,7 +443,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               </BaseButton>
             </Flex>
           </Stack>
-        </Stack>
+        </Flex>
       </Layout>
     </ThemeProvider>
   );
