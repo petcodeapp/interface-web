@@ -12011,9 +12011,9 @@ react-dev-utils@^9.0.0:
     text-table "0.2.0"
 
 react-device-mockups@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/react-device-mockups/-/react-device-mockups-0.1.6.tgz#cceb1f0eabda6934d87abd259ccfdf03f683ea55"
-  integrity sha512-dLU2mQO/nyzCIi9B4LR9Lkutkvxf/5ANlqTvIsGemUKjVBpY2oNp/RZ87a/ggDmu/Q0RDeTwtgrlqG0TAwXb9A==
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/react-device-mockups/-/react-device-mockups-0.1.7.tgz#36b1fbbda4f5cfd5bffa6d3e66b00e0f4454ca62"
+  integrity sha512-yVr8H3Hkj2IDEfAbTfC8SztSc5LpBWyROlH0woUSeQytI8kb1MCYJcAnlW7FMWyOFI0RAU5rpliOJUANcyXq+A==
 
 react-docgen-typescript-loader@^3.7.2:
   version "3.7.2"

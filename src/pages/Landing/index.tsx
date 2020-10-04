@@ -143,7 +143,7 @@ const LandingPage: React.FunctionComponent = () => {
               height="28.125rem"
             />
             <IPhoneX
-              height={354}
+              height="22.125rem"
               wrapperProps={{
                 style: { position: "absolute", bottom: 0, left: "27rem" },
               }}
@@ -216,7 +216,7 @@ const LandingPage: React.FunctionComponent = () => {
             paddingRight={10}
             backgroundColor={theme.colors.petcode.blue[400]}
           >
-            <Stack spacing={8} maxWidth="39.625rem">
+            <Stack spacing={8} maxWidth="39.625rem" marginRight={16}>
               <Heading fontSize="5xl">
                 The Ultimate Pet Management System
               </Heading>
@@ -348,8 +348,9 @@ const LandingPage: React.FunctionComponent = () => {
         >
           <Image
             src="/media/safety-image.svg"
-            width="19.625rem"
+            minWidth="19.625rem"
             alt="Safety image"
+            marginRight={40}
           />
           <Stack maxWidth="40.3125rem" color="petcode.neutral.700" spacing={4}>
             <Heading fontSize="5xl" textAlign="right" paddingBottom={2}>
@@ -404,15 +405,15 @@ const LandingPage: React.FunctionComponent = () => {
               />
             </motion.svg>
           </Box>
-          <Stack
+          <Flex
+            direction="row"
             ref={(ref) => (healthSectionRef.current = ref)}
-            isInline
             color="white"
             paddingTop={16}
             paddingLeft={40}
             backgroundColor={theme.colors.petcode.blue[400]}
           >
-            <Stack width="35.875rem">
+            <Stack width="35.875rem" marginRight={8}>
               <Heading fontSize="5xl" paddingBottom={4}>
                 Health
               </Heading>
@@ -435,7 +436,7 @@ const LandingPage: React.FunctionComponent = () => {
                 description="Easily share records with your pet’s health team through PetCode."
               />
             </Stack>
-            <Box position="relative" flexBasis="44.75rem">
+            <Box position="relative" flexGrow={1}>
               <MotionBox
                 position="relative"
                 zIndex={1}
@@ -444,7 +445,7 @@ const LandingPage: React.FunctionComponent = () => {
                 transition={transition}
               >
                 <IPhoneX
-                  height={500}
+                  height="31.25rem"
                   screenProps={{
                     style: {
                       backgroundColor: theme.colors.petcode.blue[400],
@@ -487,7 +488,7 @@ const LandingPage: React.FunctionComponent = () => {
                 alt="Dashboard web screen"
               />
             </Box>
-          </Stack>
+          </Flex>
           <Box
             position="relative"
             paddingBottom={`${((128 * 1.1) / 1440) * 100}%`}
@@ -526,12 +527,18 @@ const LandingPage: React.FunctionComponent = () => {
           paddingTop={20}
           paddingBottom={8}
         >
-          <Box
-            height="29rem"
-            width="48.375rem"
-            position="relative"
-            overflowY="visible"
-          >
+          <Flex position="relative" justifyContent="end" flexGrow={1}>
+            <MotionImage
+              top="-15%"
+              position="absolute"
+              right="10rem"
+              animate={bounce}
+              // @ts-ignore
+              transition={transition}
+              width="45.3125rem"
+              src="/media/scan-locations-web-screen.svg"
+              alt="Scan locations web screen"
+            />
             <MotionBox
               position="relative"
               zIndex={1}
@@ -540,10 +547,7 @@ const LandingPage: React.FunctionComponent = () => {
               transition={transition}
             >
               <IPhoneX
-                height={475}
-                wrapperProps={{
-                  style: { position: "absolute", left: "32.5rem" },
-                }}
+                height="29.6875rem"
                 screenProps={{
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
                 }}
@@ -556,24 +560,14 @@ const LandingPage: React.FunctionComponent = () => {
                 />
               </IPhoneX>
             </MotionBox>
-            <MotionImage
-              top="-4rem"
-              position="relative"
-              animate={bounce}
-              // @ts-ignore
-              transition={transition}
-              width="45.3125rem"
-              src="/media/scan-locations-web-screen.svg"
-              alt="Scan locations web screen"
+            <Icon
+              color="petcode.neutral.400"
+              name="arrow-thin"
+              size="40px"
+              alignSelf="end"
+              marginX={8}
             />
-          </Box>
-          <Icon
-            color="petcode.neutral.400"
-            name="arrow-thin"
-            size="40px"
-            alignSelf="end"
-          />
-          <Box flexGrow={1} />
+          </Flex>
           <Stack maxWidth="25.625rem" spacing={4} color="petcode.neutral.700">
             <Heading fontSize="5xl">Discovery</Heading>
             <Stack isInline>
