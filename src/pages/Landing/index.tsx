@@ -136,7 +136,15 @@ const LandingPage: React.FunctionComponent = () => {
           backgroundSize="cover"
           minHeight="calc(100vw * 0.72083333333)"
         >
-          <Flex position="relative" top="-1rem" height="28.125rem" marginRight={20} flexGrow={1} justifyContent="end" alignItems="end">
+          <Flex
+            position="relative"
+            top="-1rem"
+            height="28.125rem"
+            marginRight={20}
+            flexGrow={1}
+            justifyContent="end"
+            alignItems="end"
+          >
             <Image
               position="absolute"
               right="7.5rem"
