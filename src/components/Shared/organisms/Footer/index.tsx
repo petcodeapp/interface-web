@@ -11,6 +11,7 @@ import {
   useTheme,
 } from "@chakra-ui/core";
 import { motion, Transition } from "framer-motion";
+import Link from "../../atoms/link";
 
 import { PetCodeTheme } from "../../../../theme";
 
@@ -76,6 +77,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
         paddingTop={6}
         paddingBottom={16}
         backgroundColor="petcode.blue.400"
+        fontSize="sm"
       >
         <Flex direction="column" justifyContent="space-between">
           <Image
@@ -87,14 +89,14 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
           <Text fontSize="sm">© 2020 PetCode</Text>
         </Flex>
         <Stack spacing={2}>
-          <Text fontSize="sm">Home</Text>
-          <Text fontSize="sm">How It Works</Text>
-          <Text fontSize="sm">Contact Us</Text>
+          <Link to="/">Home</Link>
+          <Link to="/howitoworks">How It Works</Link>
+          <Link to="#">Contact Us</Link>
         </Stack>
         <Stack spacing={2}>
-          <Text fontSize="sm">FAQs</Text>
-          <Text fontSize="sm">Terms and Conditions</Text>
-          <Text fontSize="sm">Privacy Policy</Text>
+          <Link to="#">FAQs</Link>
+          <Link to="/terms">Terms and Conditions</Link>
+          <Link to="/privacypolicy">Privacy Policy</Link>
         </Stack>
         <Stack isInline spacing={8} alignSelf="center">
           <IconButton

@@ -2,9 +2,9 @@ import React from "react";
 
 import { Image, useTheme } from "@chakra-ui/core";
 
-import Layout from "../../../components/Shared/layouts/LandingPageLayout";
+import Layout from "../LandingPageLayout";
 
-import { PetCodeTheme } from "../../../theme";
+import { PetCodeTheme } from "../../../../theme";
 
 const LegalPageLayout: React.FC = ({ children }) => {
   const theme = useTheme() as PetCodeTheme;
@@ -15,29 +15,31 @@ const LegalPageLayout: React.FC = ({ children }) => {
         position: "absolute",
         backgroundColor: "transparent",
       }}
-      paddingTop={100}
-      minHeight="calc(100% - 100px)"
+      footerProps={{
+        marginTop: 40
+      }}
+      paddingTop="11rem"
+      minHeight="calc(100% - 11rem)"
     >
       <svg
-        style={{ position: "absolute", left: 0, top: 0, height: 210 }}
-        viewBox="0 0 1352 268"
+        style={{ position: "absolute", left: 0, top: 0, height: "11rem" }}
+        viewBox="0 0 1440 176"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M706 112C231.86 40.9299 79.3333 201.333 0 268V0H1352C1292.67 36 1173 182 706 112Z"
+          d="M705.451 112C354.227 70.9999 162.104 119 -1 176V0H1567C1507.63 36 1320.15 183.757 705.451 112Z"
           fill={theme.colors.petcode.blue[400]}
         />
       </svg>
       <svg
-        style={{ position: "absolute", left: 0, top: 0 }}
-        width="100%"
-        viewBox="0 0 1440 364"
+        style={{ position: "absolute", left: 0, top: 0, height: "14.125rem" }}
+        viewBox="0 0 1440 226"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M679 106C282.983 48.7242 97.0681 260 -1 364V0H1440V63C1305.24 85 1038.54 158 679 106Z"
+          d="M679 106C335 65 145 157 -1 226V0H1440V105C1353 129 1177.11 165.368 679 106Z"
           fill={theme.colors.petcode.blue[400]}
           opacity={0.4}
         />

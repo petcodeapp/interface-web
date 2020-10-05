@@ -2,17 +2,17 @@ import React from "react";
 
 import { Heading, Stack, Text } from "@chakra-ui/core";
 
-import LegalPageLayout from "./components/LegalPageLayout";
+import LegalPageLayout from "../../components/Shared/layouts/LegalPageLayout";
 
 const TermsPage = () => (
   <LegalPageLayout>
     <Stack alignItems="center" spacing={10}>
-      <Heading color="petcode.blue.400" marginTop={10}>
+      <Heading fontSize="3.125rem" color="petcode.blue.400">
         Terms and Conditions
       </Heading>
       <Text
-        width="80%"
-        fontSize="xl"
+        paddingX={40}
+        fontSize="2xl"
         fontWeight="thin"
         color="petcode.neutral.600"
         whiteSpace="pre-line"

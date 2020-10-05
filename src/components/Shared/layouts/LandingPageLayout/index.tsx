@@ -1,12 +1,12 @@
 import React from "react";
 
-import Flex from "../../Motion/Flex";
+import Flex from "../../../Motion/Flex";
 import { FlexProps } from "@chakra-ui/core";
 
 import { MotionProps } from "framer-motion";
 
-import Header from "../organisms/Header";
-import Footer, { FooterProps } from "../organisms/Footer";
+import Header from "../../organisms/Header";
+import Footer, { FooterProps } from "../../organisms/Footer";
 
 type LayoutProps = {
   headerProps?: FlexProps;

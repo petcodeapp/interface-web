@@ -2,16 +2,16 @@ import React from "react";
 
 import { Heading, Stack, Text } from "@chakra-ui/core";
 
-import LegalPageLayout from "./components/LegalPageLayout";
+import LegalPageLayout from "../../components/Shared/layouts/LegalPageLayout";
 
 const PrivacyPolicyPage = () => (
   <LegalPageLayout>
     <Stack alignItems="center" spacing={10}>
-      <Heading color="petcode.blue.400" marginTop={10}>
+      <Heading fontSize="3.125rem" color="petcode.blue.400">
         Privacy Policy
       </Heading>
       <Text
-        width="80%"
+        paddingX={40}
         fontSize="xl"
         color="petcode.neutral.600"
         whiteSpace="pre-line"

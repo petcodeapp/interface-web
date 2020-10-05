@@ -2,10 +2,10 @@ import React from "react";
 
 import { Image, useTheme } from "@chakra-ui/core";
 
-import MotionFlex from "../../Motion/Flex";
-import Sidebar from "../organisms/DashboardSidebar";
+import MotionFlex from "../../../Motion/Flex";
+import Sidebar from "../../organisms/DashboardSidebar";
 
-import { PetCodeTheme } from "../../../theme";
+import { PetCodeTheme } from "../../../../theme";
 
 const AccountPageLayout: React.FC<any> = ({ children, variants }) => {
   const theme = useTheme() as PetCodeTheme;

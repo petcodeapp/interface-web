@@ -542,7 +542,7 @@ const LandingPage: React.FunctionComponent = () => {
             <Image
               top="-15%"
               position="absolute"
-              right="10rem"
+              right="5rem"
               width="45.3125rem"
               src="/media/scan-locations-web-screen.svg"
               alt="Scan locations web screen"
