@@ -116,7 +116,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
           paddingRight={40}
           backgroundImage="url(/media/how-it-works-splash.svg)"
           backgroundSize="cover"
-          height="calc(100vw * 0.5875)"
+          height="max(calc(100vw * 0.5875), 600px)"
         >
           <Box flexGrow={1} />
           <Stack alignSelf="end" color="white" spacing={8}>
@@ -184,158 +184,165 @@ const HowItWorksPage: React.FunctionComponent = () => {
           </Box>
           <Flex
             direction="row"
+            justifyContent="center"
             backgroundColor="petcode.blue.400"
-            color="white"
-            paddingLeft={40}
-            paddingBottom={12}
           >
-            <Stack paddingTop={20} maxW="40.4375rem" spacing={3} marginRight={8}>
-              <Heading fontSize="6xl">The QR Tag</Heading>
-              <Text fontSize="xl" fontWeight="thin" paddingBottom={4}>
-                Got a new phone? Moved recently? PetCode’s durable QR tags allow
-                you to easily update your pet’s contact info with the tap of
-                finger—you’ll never need to buy another pet tag again. Anyone
-                can scan our smart QR tags to see your pet’s info in a flash.
-                Lost your pet? Our tags can reunite you with your furry friend
-                in a flash.
-              </Text>
-              <BaseButton
-                {...ActionButtonStyle}
-                paddingX={10}
-                alignSelf="start"
-                variantColor="white"
-                color="petcode.blue.400"
-              >
-                Get Started
-              </BaseButton>
-            </Stack>
-            <Box position="relative" height="23.4375rem">
-              <Image
-                src="/media/tag-front.png"
-                alt="Tag front"
-                size="15.625rem"
-              />
-              <MotionBox
-                ref={ref}
-                animate={controls}
-                position="absolute"
-                top="7.8125rem"
-                left="11.5625rem"
-              >
+            <Flex
+              direction="row"
+              color="white"
+              paddingLeft={40}
+              paddingBottom={12}
+              maxWidth="90rem"
+              flexGrow={1}
+            >
+              <Stack paddingTop={20} maxW="40.4375rem" spacing={3} marginRight={8}>
+                <Heading fontSize="6xl">The QR Tag</Heading>
+                <Text fontSize="xl" fontWeight="thin" paddingBottom={4}>
+                  Got a new phone? Moved recently? PetCode’s durable QR tags allow
+                  you to easily update your pet’s contact info with the tap of
+                  finger—you’ll never need to buy another pet tag again. Anyone
+                  can scan our smart QR tags to see your pet’s info in a flash.
+                  Lost your pet? Our tags can reunite you with your furry friend
+                  in a flash.
+                </Text>
+                <BaseButton
+                  {...ActionButtonStyle}
+                  paddingX={10}
+                  alignSelf="start"
+                  variantColor="white"
+                  color="petcode.blue.400"
+                >
+                  Get Started
+                </BaseButton>
+              </Stack>
+              <Box position="relative" height="23.4375rem">
                 <Image
-                  src="/media/tag-back.png"
-                  alt="Tag back"
+                  src="/media/tag-front.png"
+                  alt="Tag front"
                   size="15.625rem"
                 />
-                <Flex
-                  direction="row"
+                <MotionBox
+                  ref={ref}
+                  animate={controls}
                   position="absolute"
-                  right="10.3125rem"
-                  top="10.78125rem"
-                  width="25.2395625rem"
+                  top="7.8125rem"
+                  left="11.5625rem"
                 >
-                  <Box flexGrow={1} />
-                  <MotionBox
-                    alignSelf="end"
-                    initial="hidden"
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: { opacity: 1 },
-                    }}
-                    // @ts-ignore
-                    transition={{ duration: 2 }}
+                  <Image
+                    src="/media/tag-back.png"
+                    alt="Tag back"
+                    size="15.625rem"
+                  />
+                  <Flex
+                    direction="row"
+                    position="absolute"
+                    right="10.3125rem"
+                    top="10.78125rem"
+                    width="25.2395625rem"
                   >
-                    <Text
-                      marginRight={2}
-                      transform="translateY(33%)"
-                      color={theme.colors.petcode.neutral[300]}
-                      fontSize="md"
-                    >
-                      QR code syncs with pet profile
-                    </Text>
-                  </MotionBox>
-                  <svg
-                    width="10.6875rem"
-                    height="4.5625rem"
-                    viewBox="0 0 171 73"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="159"
-                      cy="12"
-                      r="10.5"
-                      stroke={theme.colors.petcode.neutral[400]}
-                      stroke-width="3"
-                    />
-                    <motion.path
-                      d="M153 20L105 71H0"
-                      stroke={theme.colors.petcode.neutral[400]}
-                      strokeWidth="3"
+                    <Box flexGrow={1} />
+                    <MotionBox
+                      alignSelf="end"
                       initial="hidden"
                       variants={{
-                        hidden: { pathLength: 0 },
-                        visible: { pathLength: 1 },
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
                       }}
+                      // @ts-ignore
                       transition={{ duration: 2 }}
-                    />
-                  </svg>
-                </Flex>
-                <Flex
-                  direction="row"
-                  position="absolute"
-                  left="5rem"
-                  bottom="14.6875rem"
-                  width="17.403125rem"
-                >
-                  <svg
-                    width="6.125rem"
-                    height="5.75rem"
-                    viewBox="0 0 98 92"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <Text
+                        marginRight={2}
+                        transform="translateY(33%)"
+                        color="petcode.neutral.300"
+                        fontSize="md"
+                      >
+                        QR code syncs with pet profile
+                      </Text>
+                    </MotionBox>
+                    <svg
+                      width="10.6875rem"
+                      height="4.5625rem"
+                      viewBox="0 0 171 73"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="159"
+                        cy="12"
+                        r="10.5"
+                        stroke={theme.colors.petcode.neutral[400]}
+                        stroke-width="3"
+                      />
+                      <motion.path
+                        d="M153 20L105 71H0"
+                        stroke={theme.colors.petcode.neutral[400]}
+                        strokeWidth="3"
+                        initial="hidden"
+                        variants={{
+                          hidden: { pathLength: 0 },
+                          visible: { pathLength: 1 },
+                        }}
+                        transition={{ duration: 2 }}
+                      />
+                    </svg>
+                  </Flex>
+                  <Flex
+                    direction="row"
+                    position="absolute"
+                    left="5rem"
+                    bottom="14.6875rem"
+                    width="17.403125rem"
                   >
-                    <circle
-                      cx="12"
-                      cy="80"
-                      r="10.5"
-                      stroke={theme.colors.petcode.neutral[400]}
-                      stroke-width="3"
-                    />
-                    <motion.path
-                      d="M18.0001 72L69.0001 2.00001L97.5 2"
-                      stroke={theme.colors.petcode.neutral[400]}
-                      strokeWidth="3"
+                    <svg
+                      width="6.125rem"
+                      height="5.75rem"
+                      viewBox="0 0 98 92"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="12"
+                        cy="80"
+                        r="10.5"
+                        stroke={theme.colors.petcode.neutral[400]}
+                        stroke-width="3"
+                      />
+                      <motion.path
+                        d="M18.0001 72L69.0001 2.00001L97.5 2"
+                        stroke={theme.colors.petcode.neutral[400]}
+                        strokeWidth="3"
+                        initial="hidden"
+                        variants={{
+                          hidden: { pathLength: 0 },
+                          visible: { pathLength: 1 },
+                        }}
+                        transition={{ duration: 2 }}
+                      />
+                    </svg>
+                    <MotionBox
+                      alignSelf="start"
                       initial="hidden"
                       variants={{
-                        hidden: { pathLength: 0 },
-                        visible: { pathLength: 1 },
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
                       }}
+                      // @ts-ignore
                       transition={{ duration: 2 }}
-                    />
-                  </svg>
-                  <MotionBox
-                    alignSelf="start"
-                    initial="hidden"
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: { opacity: 1 },
-                    }}
-                    // @ts-ignore
-                    transition={{ duration: 2 }}
-                  >
-                    <Text
-                      marginLeft={2}
-                      transform="translateY(-50%)"
-                      color={theme.colors.petcode.neutral[300]}
-                      fontSize="md"
                     >
-                      Made of durable epoxy
-                    </Text>
-                  </MotionBox>
-                </Flex>
-              </MotionBox>
-            </Box>
+                      <Text
+                        marginLeft={2}
+                        transform="translateY(-50%)"
+                        color="petcode.neutral.300"
+                        fontSize="md"
+                      >
+                        Made of durable epoxy
+                      </Text>
+                    </MotionBox>
+                  </Flex>
+                </MotionBox>
+              </Box>
+            </Flex>
           </Flex>
           <Box position="relative" paddingBottom={`${(125 / 1440) * 100}%`}>
             <svg
@@ -367,81 +374,88 @@ const HowItWorksPage: React.FunctionComponent = () => {
         </Flex>
         <Flex
           direction="row"
-          paddingRight={40}
-          paddingTop={24}
-          paddingBottom={16}
           justifyContent="center"
         >
-          <MotionFlex
+          <Flex
+            direction="row"
+            paddingRight={40}
+            paddingTop={24}
+            paddingBottom={16}
+            justifyContent="center"
+            maxWidth="90rem"
             flexGrow={1}
-            position="relative"
-            alignItems="end"
-            justifyContent="end"
-            overflowY="visible"
-            marginRight={16}
-            animate={bounce}
-            // @ts-ignore
-            transition={transition}
           >
-            <MotionImage
-              top="-8.5%"
-              right="6.5rem"
-              position="absolute"
-              height="33.3125rem"
-              src="/media/reminders-web-screen.svg"
-              alt="Scan locations web screen"
-            />
-            <IPhoneX
-              height="30rem"
-              screenProps={{
-                style: { backgroundColor: theme.colors.petcode.blue[400] },
-              }}
+            <MotionFlex
+              flexGrow={1}
+              position="relative"
+              alignItems="end"
+              justifyContent="end"
+              overflowY="visible"
+              marginRight={16}
+              animate={bounce}
+              // @ts-ignore
+              transition={transition}
             >
-              <Image
-                width="100%"
-                height="100%"
-                src="/media/reminders-mobile-screen.svg"
-                alt="Pet parks mobile screen"
+              <MotionImage
+                top="-8.5%"
+                right="6.5rem"
+                position="absolute"
+                height="33.3125rem"
+                src="/media/reminders-web-screen.svg"
+                alt="Scan locations web screen"
               />
-            </IPhoneX>
-          </MotionFlex>
-          <Stack
-            maxW="29.125rem"
-            spacing={4}
-            color="petcode.neutral.700"
-          >
-            <Heading fontSize="6xl">The Pet Portal</Heading>
-            <Text fontSize="2xl" color="petcode.yellow.400">
-              A place your pet’s data can call home
-            </Text>
-            <Text fontSize="xl" fontWeight="thin">
-              All your pet’s info—from contact and medical info to name, age,
-              and breed—in one place. Your PetPortal syncs with the PetCode QR
-              tag and is easily accessible through our app, giving you access to
-              the full suite of features whenever, wherever. Get started with
-              PetCode today to unlock all the features we have to offer!
-            </Text>
-            <Stack spacing={3} marginLeft={6} paddingBottom={8}>
-              <FeaturePoint>Keeps your pet safe</FeaturePoint>
-              <FeaturePoint>Tracks medical records</FeaturePoint>
-              <FeaturePoint>Provides fun oppertunities and events</FeaturePoint>
-            </Stack>
-            <Flex direction="row" justifyContent="space-between">
-              <Icon
-                color="petcode.neutral.400"
-                name="arrow-thin"
-                size="40px"
-                alignSelf="start"
-              />
-              <BaseButton
-                {...ActionButtonStyle}
-                paddingX={10}
-                variantColor="petcode.blue"
+              <IPhoneX
+                height="30rem"
+                screenProps={{
+                  style: { backgroundColor: theme.colors.petcode.blue[400] },
+                }}
               >
-                Get Started
-              </BaseButton>
-            </Flex>
-          </Stack>
+                <Image
+                  width="100%"
+                  height="100%"
+                  src="/media/reminders-mobile-screen.svg"
+                  alt="Pet parks mobile screen"
+                />
+              </IPhoneX>
+            </MotionFlex>
+            <Stack
+              maxW="29.125rem"
+              spacing={4}
+              color="petcode.neutral.700"
+            >
+              <Heading fontSize="6xl">The Pet Portal</Heading>
+              <Text fontSize="2xl" color="petcode.yellow.400">
+                A place your pet’s data can call home
+              </Text>
+              <Text fontSize="xl" fontWeight="thin">
+                All your pet’s info—from contact and medical info to name, age,
+                and breed—in one place. Your PetPortal syncs with the PetCode QR
+                tag and is easily accessible through our app, giving you access to
+                the full suite of features whenever, wherever. Get started with
+                PetCode today to unlock all the features we have to offer!
+              </Text>
+              <Stack spacing={3} marginLeft={6} paddingBottom={8}>
+                <FeaturePoint>Keeps your pet safe</FeaturePoint>
+                <FeaturePoint>Tracks medical records</FeaturePoint>
+                <FeaturePoint>Provides fun oppertunities and events</FeaturePoint>
+              </Stack>
+              <Flex direction="row" justifyContent="space-between">
+                <Icon
+                  color="petcode.neutral.400"
+                  name="arrow-thin"
+                  size="40px"
+                  alignSelf="start"
+                />
+                <BaseButton
+                  {...ActionButtonStyle}
+                  paddingX={10}
+                  variantColor="petcode.blue"
+                >
+                  Get Started
+                </BaseButton>
+              </Flex>
+            </Stack>
+          </Flex>
         </Flex>
       </Layout>
     </ThemeProvider>

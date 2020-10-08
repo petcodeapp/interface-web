@@ -59,7 +59,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
         </motion.svg>
         <svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="0 0 1440 87"
+          viewBox="0 0 1440 86"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -71,65 +71,72 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
       </Box>
       <Flex
         direction="row"
-        justifyContent="space-between"
-        paddingX={40}
-        color="white"
-        paddingTop={6}
-        paddingBottom={16}
+        justifyContent="center"
         backgroundColor="petcode.blue.400"
-        fontSize="sm"
       >
-        <Flex direction="column" justifyContent="space-between">
-          <Image
-            src="/media/petcode-logo-with-qr-code.png"
-            alt="Petcode logo with QR code"
-            width="10.25rem"
-            marginBottom={16}
-          />
-          <Text fontSize="sm">© 2020 PetCode</Text>
+        <Flex
+          direction="row"
+          justifyContent="space-between"
+          paddingX={40}
+          color="white"
+          paddingTop={6}
+          paddingBottom={16}
+          fontSize="sm"
+          maxWidth="90rem"
+          flexGrow={1}
+        >
+          <Flex direction="column" justifyContent="space-between">
+            <Image
+              src="/media/petcode-logo-with-qr-code.png"
+              alt="Petcode logo with QR code"
+              width="10.25rem"
+              marginBottom={16}
+            />
+            <Text fontSize="sm">© 2020 PetCode</Text>
+          </Flex>
+          <Stack spacing={2}>
+            <Link to="/">Home</Link>
+            <Link to="/howitoworks">How It Works</Link>
+            <Link to="#">Contact Us</Link>
+          </Stack>
+          <Stack spacing={2}>
+            <Link to="#">FAQs</Link>
+            <Link to="/terms">Terms and Conditions</Link>
+            <Link to="/privacypolicy">Privacy Policy</Link>
+          </Stack>
+          <Stack isInline spacing={8} alignSelf="center">
+            <IconButton
+              {...SocialMediaButtonStyle}
+              aria-label="Linkedin"
+              // @ts-ignore
+              icon="linkedin"
+            />
+            <IconButton
+              {...SocialMediaButtonStyle}
+              aria-label="Instagram"
+              // @ts-ignore
+              icon="instagram"
+            />
+            <IconButton
+              {...SocialMediaButtonStyle}
+              aria-label="Facebook"
+              // @ts-ignore
+              icon="facebook"
+            />
+            <IconButton
+              {...SocialMediaButtonStyle}
+              aria-label="Youtube"
+              // @ts-ignore
+              icon="youtube"
+            />
+            <IconButton
+              {...SocialMediaButtonStyle}
+              aria-label="Pinterest"
+              // @ts-ignore
+              icon="pinterest"
+            />
+          </Stack>
         </Flex>
-        <Stack spacing={2}>
-          <Link to="/">Home</Link>
-          <Link to="/howitoworks">How It Works</Link>
-          <Link to="#">Contact Us</Link>
-        </Stack>
-        <Stack spacing={2}>
-          <Link to="#">FAQs</Link>
-          <Link to="/terms">Terms and Conditions</Link>
-          <Link to="/privacypolicy">Privacy Policy</Link>
-        </Stack>
-        <Stack isInline spacing={8} alignSelf="center">
-          <IconButton
-            {...SocialMediaButtonStyle}
-            aria-label="Linkedin"
-            // @ts-ignore
-            icon="linkedin"
-          />
-          <IconButton
-            {...SocialMediaButtonStyle}
-            aria-label="Instagram"
-            // @ts-ignore
-            icon="instagram"
-          />
-          <IconButton
-            {...SocialMediaButtonStyle}
-            aria-label="Facebook"
-            // @ts-ignore
-            icon="facebook"
-          />
-          <IconButton
-            {...SocialMediaButtonStyle}
-            aria-label="Youtube"
-            // @ts-ignore
-            icon="youtube"
-          />
-          <IconButton
-            {...SocialMediaButtonStyle}
-            aria-label="Pinterest"
-            // @ts-ignore
-            icon="pinterest"
-          />
-        </Stack>
       </Flex>
     </Flex>
   );
