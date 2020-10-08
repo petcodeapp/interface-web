@@ -114,9 +114,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
           boxSizing="border-box"
           paddingTop="18.625rem"
           paddingRight={40}
-          backgroundImage="url(/media/how-it-works-splash.svg)"
+          backgroundImage="url(/media/how-it-works-splash.png)"
           backgroundSize="cover"
-          height="max(calc(100vw * 0.5875), 600px)"
+          height="max(min(calc(100vw * 0.5875), 843px), 600px)"
         >
           <Box flexGrow={1} />
           <Stack alignSelf="end" color="white" spacing={8}>
@@ -125,6 +125,19 @@ const HowItWorksPage: React.FunctionComponent = () => {
           </Stack>
           <Box flexGrow={7} />
         </Flex>
+        <Box position="relative">
+          <svg
+            style={{ position: "absolute", bottom: 0 }}
+            viewBox="0 0 1440 70"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="white"
+              d="m943.849,36c-519.408,56.7529 -845.0064,0 -992.3011,-36l79.4616,116l1455.5005,-10l0,-70c-31.01,0 -166.67,-41.08235 -542.661,0z"
+            />
+          </svg>
+        </Box>
         <Stack spacing={12} paddingY={12} alignItems="center">
           <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4}>
             Get Started
