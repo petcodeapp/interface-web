@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       position="fixed"
       top={0}
       background="rgba(0, 0, 0, 0.4)"
-      width="calc(100vw - 1rem)"
+      width="100%"
       boxSizing="border-box"
       paddingLeft={8}
       paddingRight={10}

@@ -17,7 +17,7 @@ const FeaturePoint: React.FC<FeaturePointProps> = ({
     isInline
     spacing={2}
     alignItems="center"
-    fontSize="xl"
+    fontSize={{ base: "2xl", md: "xl" }}
     color="petcode.neutral.600"
     fontWeight="thin"
     {...props}

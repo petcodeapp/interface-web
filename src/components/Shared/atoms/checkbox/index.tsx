@@ -11,7 +11,7 @@ export type BaseCheckboxProps = {
 const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
   isChecked,
   isDisabled,
-  size = 100,
+  size = "1.625rem",
   color,
   ...props
 }) => (
@@ -23,6 +23,7 @@ const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
     backgroundColor="petcode.yellow.400"
     _hover={isDisabled ? {} : { backgroundColor: "petcode.yellow.500" }}
     size={size}
+    minWidth={size}
     cursor={isDisabled ? "default" : "pointer"}
     padding="6px"
     boxSizing="border-box"

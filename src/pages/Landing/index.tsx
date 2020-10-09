@@ -76,12 +76,12 @@ const LandingPage: React.FC = () => {
             position: "absolute",
             top: 0,
           }}
-          height={breakpoint > 0 ? "17.8125rem" : "26rem"}
-          viewBox={breakpoint > 0 ? "0 0 612 285" : "0 0 203 230"}
+          height={breakpoint > 1 ? "17.8125rem" : "26rem"}
+          viewBox={breakpoint > 1 ? "0 0 612 285" : "0 0 203 230"}
           xmlns="http://www.w3.org/2000/svg"
           fill={theme.colors.petcode.blue[400]}
         >
-          {breakpoint > 0 ? (
+          {breakpoint > 1 ? (
             <ellipse cx="34" cy="-105.5" rx="578" ry="390.5" />
           ) : (
             <path d="M-1 229.817V0H202.415C187.138 111.352 105.681 201.609 -1 229.817Z" />
@@ -92,13 +92,13 @@ const LandingPage: React.FC = () => {
             position: "absolute",
             top: 0,
           }}
-          height={breakpoint > 0 ? "14.5625rem" : "26rem"}
-          viewBox={breakpoint > 0 ? "0 0 788 233" : "0 0 262 230"}
+          height={breakpoint > 1 ? "14.5625rem" : "26rem"}
+          viewBox={breakpoint > 1 ? "0 0 788 233" : "0 0 262 230"}
           fill={theme.colors.petcode.blue[400]}
           opacity="0.4"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {breakpoint > 0 ? (
+          {breakpoint > 1 ? (
             <ellipse
               cx="190"
               cy="-181.5"
@@ -136,18 +136,18 @@ const LandingPage: React.FC = () => {
           backgroundImage="url(/media/landing-splash.png)"
           backgroundSize="cover"
           height={{
-            base: "auto",
             md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",
           }}
           paddingBottom={{ base: `calc(${(126 / 1440) * 100}% + 3rem)`, md: 0 }}
         >
           <Flex
-            flexDirection={{ base: "column", md: "row" }}
+            direction={{ base: "column", md: "row" }}
             alignItems={{ base: "center", md: "stretch" }}
             maxWidth="90rem"
             boxSizing="border-box"
             paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingRight={{ base: 0, md: 12 }}
+            paddingX={{ base: 16 }}
+            paddingRight={{ md: 12 }}
             flexGrow={1}
           >
             <MotionFlex
@@ -155,8 +155,8 @@ const LandingPage: React.FC = () => {
               top="-1rem"
               height={{ base: "19.464rem", sm: "28.125rem" }}
               width={{ base: "29.354rem", sm: "41.9375rem" }}
-              marginRight={{ base: 0, md: 32 }}
-              flexGrow={{ base: 0, md: 1 }}
+              marginRight={{ md: 32 }}
+              flexGrow={{ md: 1 }}
               justifyContent="end"
               alignItems="end"
               animate={bounce}
@@ -193,7 +193,7 @@ const LandingPage: React.FC = () => {
               />
             </MotionFlex>
             <Stack
-              maxWidth={{ base: "29.3rem", sm: "41.9375rem", md: "28.375rem" }}
+              maxWidth={{ sm: "41.9375rem", md: "28.375rem" }}
               marginTop={{ base: 8, md: 0 }}
               color="white"
               spacing={5}
@@ -221,7 +221,7 @@ const LandingPage: React.FC = () => {
           <Box position="relative">
             <svg
               style={{ position: "absolute", bottom: 0 }}
-              viewBox="0 0 1440 75"
+              viewBox="0 0 1440 74"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -250,16 +250,17 @@ const LandingPage: React.FC = () => {
             justifyContent="center"
             backgroundColor="petcode.blue.400"
           >
-            <Flex
-              direction="row"
+            <Stack
+              direction={breakpoint > 2 ? "row" : "column"}
               alignItems="center"
               color="white"
-              paddingY={16}
-              paddingLeft={40}
+              paddingY={{ base: 8, lg: 16 }}
+              paddingLeft={{ base: 16, xl: 40 }}
               paddingRight={10}
+              spacing={16}
             >
-              <Stack spacing={8} maxWidth="39.625rem" marginRight={16}>
-                <Heading fontSize="3.125rem">
+              <Stack spacing={8} maxWidth="39.625rem">
+                <Heading fontSize={{ base: "2.8rem", md: "3.125rem" }}>
                   The Ultimate Pet Management System
                 </Heading>
                 <Stack isInline spacing={4}>
@@ -312,7 +313,7 @@ const LandingPage: React.FC = () => {
                     Discovery
                   </BaseButton>
                 </Stack>
-                <Text fontWeight="thin" fontSize="xl">
+                <Text fontWeight="thin" fontSize={{ base: "2xl", md: "xl" }}>
                   Discover the endless suite of features from PetCode. Keep your
                   pet safe, manage their health, and discover nearby pet
                   opportunities, all from our easy-to-use app. Managing your
@@ -334,7 +335,7 @@ const LandingPage: React.FC = () => {
                     name="No Monthly Fees"
                   />
                 </Stack>
-                <Stack isInline marginLeft={16} spacing={10}>
+                <Stack isInline marginLeft={{ xl: 16 }} spacing={10}>
                   <Feature
                     image="/media/durable-qr-pet-tags-feature.png"
                     name="Durable QR Pet Tags"
@@ -349,7 +350,7 @@ const LandingPage: React.FC = () => {
                   />
                 </Stack>
               </Stack>
-            </Flex>
+            </Stack>
           </Flex>
           <Box position="relative" paddingBottom={`${(116 / 1440) * 100}%`}>
             <svg
@@ -380,47 +381,53 @@ const LandingPage: React.FC = () => {
           </Box>
         </Flex>
         <Flex direction="row" justifyContent="center">
-          <Flex
+          <Stack
+            direction={breakpoint > 1 ? "row" : "column"}
             ref={(ref) => (safetySectionRef.current = ref)}
-            direction="row"
             alignItems="center"
-            paddingLeft={48}
-            paddingRight={32}
-            paddingTop={20}
+            paddingLeft={{ base: 16, md: 48 }}
+            paddingRight={{ base: 16, md: 32 }}
+            paddingTop={16}
             paddingBottom={8}
+            spacing={{ base: 16, md: 40 }}
           >
             <Image
               src="/media/safety-image.svg"
-              minWidth="19.625rem"
+              maxWidth={{ base: "11.485rem", md: "19.625rem" }}
               alt="Safety image"
-              marginRight={40}
             />
             <Stack
               maxWidth="40.3125rem"
               color="petcode.neutral.700"
               spacing={4}
             >
-              <Heading fontSize="5xl" textAlign="right" paddingBottom={2}>
+              <Heading fontSize="5xl" textAlign={{ md: "right" }} paddingBottom={2}>
                 Safety
               </Heading>
-              <Text fontSize="xl" fontWeight="thin">
+              <Text fontSize={{ base: "3xl", sm: "2xl", md: "xl" }} fontWeight="thin">
                 It’s a scary world out there, but with PetCode, keeping your pet
                 safer is no longer a struggle. Stay safe with PetCode’s products
                 and services.
               </Text>
-              <Stack spacing={3} marginLeft={6} paddingBottom={4}>
+              <Stack spacing={3} marginLeft={{ md: 6 }} paddingBottom={4}>
                 <FeaturePoint>Up-to-date contact info</FeaturePoint>
                 <FeaturePoint>
                   Tracks where and when your pet’s tag is scanned
                 </FeaturePoint>
                 <FeaturePoint>Generates “lost pet” posters</FeaturePoint>
               </Stack>
-              <Stack isInline alignItems="center" alignSelf="start" spacing={4}>
-                <Text fontSize="xl">Sign Up Now</Text>
-                <Icon size="36px" name="arrow" />
-              </Stack>
+              {breakpoint > 1 ? (
+                <Stack isInline alignItems="center" alignSelf="start" spacing={4}>
+                  <Text fontSize="xl">Sign Up Now</Text>
+                  <Icon size="36px" name="arrow" />
+                </Stack>
+              ) : (
+                <BaseButton {...ActionButtonStyle} height="3.25rem" fontSize="xl" textTransform="none" color="white" alignSelf="center" background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;">
+                  Get Started
+                </BaseButton>
+              )}
             </Stack>
-          </Flex>
+          </Stack>
         </Flex>
         <Flex direction="column" overflow="hidden">
           <Box
@@ -429,7 +436,7 @@ const LandingPage: React.FC = () => {
           >
             <svg
               style={{ position: "absolute", bottom: 0 }}
-              viewBox="0 0 1440 158"
+              viewBox="0 0 1440 157"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
