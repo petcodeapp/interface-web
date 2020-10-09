@@ -3,6 +3,7 @@ import React from "react";
 import {
   Input,
   InputGroup,
+  InputGroupProps,
   InputProps,
   InputRightElement,
   useTheme,
@@ -13,16 +14,17 @@ import { PetCodeTheme } from "../../../../theme";
 export type EnterYourEmailInputProps = {
   inputProps?: InputProps;
   iconProps?: React.SVGProps<SVGSVGElement>;
-};
+} & Omit<InputGroupProps, "children">;
 
 const EnterYourEmailInput: React.FC<EnterYourEmailInputProps> = ({
   inputProps = {},
   iconProps = {},
+  ...props
 }) => {
   const theme = useTheme() as PetCodeTheme;
 
   return (
-    <InputGroup maxWidth="24.75rem">
+    <InputGroup maxWidth="24.75rem" {...props}>
       <Input
         type="email"
         rounded="1.25rem"

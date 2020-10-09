@@ -75,7 +75,6 @@ const LandingPage: React.FC = () => {
           style={{
             position: "absolute",
             top: 0,
-            zIndex: 1,
           }}
           height={breakpoint > 0 ? "17.8125rem" : "26rem"}
           viewBox={breakpoint > 0 ? "0 0 612 285" : "0 0 203 230"}
@@ -99,7 +98,6 @@ const LandingPage: React.FC = () => {
           style={{
             position: "absolute",
             top: 0,
-            zIndex: 1,
           }}
           height={breakpoint > 0 ? "14.5625rem" : "26rem"}
           viewBox={breakpoint > 0 ? "0 0 788 233" : "0 0 262 230"}
@@ -124,6 +122,7 @@ const LandingPage: React.FC = () => {
         <Image
           position="absolute"
           top="50%"
+          width="50vw"
           right={0}
           zIndex={-1}
           transform="translateY(-50%)"
@@ -133,6 +132,7 @@ const LandingPage: React.FC = () => {
         <Image
           position="absolute"
           top="55%"
+          width="50vw"
           left={0}
           zIndex={-1}
           transform="translateY(-50%)"
@@ -144,22 +144,25 @@ const LandingPage: React.FC = () => {
           justifyContent="center"
           backgroundImage="url(/media/landing-splash.png)"
           backgroundSize="cover"
-          height="max(min(calc(100vw * 0.72083333333), 1035px), 850px)"
+          height={{ base: "auto", md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)" }}
+          paddingBottom={{ base: `calc(${126 / 1440 * 100}% + 3rem)`, md: 0 }}
         >
           <Flex
-            flexDirection="row"
+            flexDirection={{ base: "column", md: "row" }}
+            alignItems={{ base: "center", md: "stretch" }}
             maxWidth="90rem"
             boxSizing="border-box"
-            paddingTop="20.5625rem"
-            paddingRight={12}
+            paddingTop={{ base: "12rem", md: "20.5625rem" }}
+            paddingRight={{ base: 0, md: 12 }}
             flexGrow={1}
           >
             <MotionFlex
               position="relative"
               top="-1rem"
-              height="28.125rem"
-              marginRight={32}
-              flexGrow={1}
+              height={{ base: "19.464rem", sm: "28.125rem" }}
+              width={{ base: "29.354rem", sm: "41.9375rem" }}
+              marginRight={{ base: 0, md: 32 }}
+              flexGrow={{ base: 0, md: 1 }}
               justifyContent="end"
               alignItems="end"
               animate={bounce}
@@ -168,15 +171,15 @@ const LandingPage: React.FC = () => {
             >
               <Image
                 position="absolute"
-                right="7.5rem"
+                right={{ base: "5.5rem", sm: "7.5rem" }}
                 src="/media/dashboard-web-screen.svg"
                 alt="Dashboard web screen"
-                height="28.125rem"
+                height={{ base: "19.464rem", sm: "28.125rem" }}
               />
               <IPhoneX
-                height="22.125rem"
+                height={breakpoint > 0 ? "22.125rem" : "15.326rem"}
                 wrapperProps={{
-                  style: { position: "absolute", right: "5rem" },
+                  style: { position: "absolute", right: breakpoint > 0 ? "5rem" : "3rem" },
                 }}
               >
                 <Image
@@ -187,25 +190,25 @@ const LandingPage: React.FC = () => {
               </IPhoneX>
               <Image
                 zIndex={1}
-                width="8.625rem"
+                width={{ base: "6rem", sm: "8.625rem" }}
                 src="/media/tag-front.png"
                 alt="Petcode tag front"
               />
             </MotionFlex>
-            <Stack maxW="28.375rem" color="white" spacing={5}>
+            <Stack maxWidth={{ base: "29.3rem", sm: "41.9375rem", md: "28.375rem" }} marginTop={{ base: 8, md: 0 }} color="white" spacing={5}>
               <Box fontWeight="bold">
-                <Heading fontSize="2.8125rem">One Code</Heading>
+                <Heading fontSize="2.8125rem">One Code.</Heading>
                 <Text fontSize="3xl">
                   An endless suite of features for pet owners.
                 </Text>
               </Box>
-              <Text fontSize="lg" maxWidth="25rem">
+              <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }} maxWidth={{ base: "auto", md: "25rem" }}>
                 PetCode is a new pet management platform that allows pet owners to
                 keep track of all aspects of their pet’s life. No matter your
                 situation, PetCode can help you and your pet live happier, worry
                 free lives.
               </Text>
-              <ExclusiveUpdatesInput />
+              <ExclusiveUpdatesInput maxWidth="auto" />
             </Stack>
           </Flex>
         </Flex>

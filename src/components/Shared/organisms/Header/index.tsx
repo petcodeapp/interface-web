@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     }
   }, [breakpoint]);
   useEffect(() => {
-    if (open) {
+    if (breakpoint < 1 && open) {
       disableBodyScroll(menuRef.current as HTMLDivElement);
     } else {
       enableBodyScroll(menuRef.current as HTMLDivElement);
