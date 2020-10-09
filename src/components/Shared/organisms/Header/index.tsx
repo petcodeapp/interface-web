@@ -32,7 +32,6 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = parseInt(useBreakpoint() as string);
-  console.log(theme.breakpoints);
 
   return useObserver(() => (
     <Stack
@@ -59,7 +58,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       <Stack
         alignItems="center"
         spacing={8}
-        {...(breakpoint < 1 ? {
+        {...(breakpoint < 2 ? {
           color: "petcode.neutral.700",
           position: "absolute",
           top: 0,
@@ -89,11 +88,11 @@ const Header: React.FC<HeaderProps> = (props) => {
           }
         }}
       >
-        {breakpoint < 1 && (
+        <Show below="md">
           <Link to="/">
             <Image src="/media/petcode-logo-with-qr-code-altered.png" height="4.75rem" />
           </Link>
-        )}
+        </Show>
         <Link to="/">Home</Link>
         <Link to="/howitworks">How It Works</Link>
         {!auth.isLoggedIn ? (
