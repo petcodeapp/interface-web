@@ -132,7 +132,7 @@ const PetProfilePage = () => {
   } as Pet);
 
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = useBreakpoint() as string;
+  const breakpoint = parseInt(useBreakpoint() as string);
 
   return (
     <Layout
@@ -141,11 +141,11 @@ const PetProfilePage = () => {
       headerProps={{
         position: "absolute",
         backgroundColor: "transparent",
-        display: parseInt(breakpoint) > 0 ? "flex" : "none",
+        display: breakpoint > 0 ? "flex" : "none",
       }}
       paddingTop={{ md: "12.85%" }}
     >
-      {parseInt(breakpoint) > 0 ? (
+      {breakpoint > 0 ? (
         <>
           <svg
             style={{ position: "absolute", top: 0 }}
@@ -228,7 +228,7 @@ const PetProfilePage = () => {
         padding={6}
         spacing={8}
       >
-        {parseInt(breakpoint) > 0 ? (
+        {breakpoint > 0 ? (
           <PrimaryHeader>Help Me Get Home!</PrimaryHeader>
         ) : (
           <Image
@@ -245,7 +245,7 @@ const PetProfilePage = () => {
             <Text color="petcode.neutral.600">
               Weimaraner &middot; 2 years old
             </Text>
-            {parseInt(breakpoint) > 0 && (
+            {breakpoint > 0 && (
               <Stack isInline>
                 <ActionButton>
                   <Text
@@ -268,7 +268,7 @@ const PetProfilePage = () => {
               </Stack>
             )}
           </Stack>
-          {parseInt(breakpoint) > 0 && (
+          {breakpoint > 0 && (
             <Box position="relative">
               <svg
                 style={{ position: "absolute", left: 0 }}
@@ -303,7 +303,7 @@ const PetProfilePage = () => {
             backgroundSize="cover"
             backgroundPosition="center"
             backgroundImage="url(/media/placeholder-dog.png)"
-            {...(parseInt(breakpoint) > 0
+            {...(breakpoint > 0
               ? {
                   height: "100%",
                   flexGrow: 1,
@@ -318,7 +318,7 @@ const PetProfilePage = () => {
           />
         </Card>
         <PrimaryHeader>Contact Information</PrimaryHeader>
-        {parseInt(breakpoint) > 1 ? (
+        {breakpoint > 1 ? (
           <Card>
             <Stack
               width="100%"
@@ -356,7 +356,7 @@ const PetProfilePage = () => {
         <Card>
           <Stack spacing={3}>
             <SecondaryHeader>Veterinarian Contact Information</SecondaryHeader>
-            <Stack isInline={parseInt(breakpoint) > 1} spacing={{ md: 8 }}>
+            <Stack isInline={breakpoint > 1} spacing={{ md: 8 }}>
               {pet.vetName.visible && (
                 <InfoField text={pet.vetName.value} label="Veterinarian Name" />
               )}

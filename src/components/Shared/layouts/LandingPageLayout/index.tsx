@@ -5,11 +5,11 @@ import { FlexProps } from "@chakra-ui/core";
 
 import { MotionProps } from "framer-motion";
 
-import Header from "../../organisms/Header";
+import Header, { HeaderProps } from "../../organisms/Header";
 import Footer, { FooterProps } from "../../organisms/Footer";
 
 type LayoutProps = {
-  headerProps?: FlexProps;
+  headerProps?: HeaderProps;
   footerProps?: FooterProps;
 } & FlexProps &
   MotionProps;
