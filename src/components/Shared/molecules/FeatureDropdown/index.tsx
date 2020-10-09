@@ -36,7 +36,7 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
           isDisabled
           _hover={{}}
         />
-        <Text fontSize="2xl">{name}</Text>
+        <Text fontSize={{ base: "3xl", md: "2xl" }}>{name}</Text>
         <Icon
           name="dropdown-arrow"
           cursor="pointer"
@@ -56,7 +56,11 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Text marginLeft={6} fontSize="xl" fontWeight="thin">
+            <Text
+              marginLeft={6}
+              fontSize={{ base: "2xl", md: "xl" }}
+              fontWeight="thin"
+            >
               {description}
             </Text>
           </MotionBox>

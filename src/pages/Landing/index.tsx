@@ -14,7 +14,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
-import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
+import { useBreakpoint, Hide } from "@chakra-ui/media-query";
 import { AnimatePresence, motion, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
@@ -146,8 +146,8 @@ const LandingPage: React.FC = () => {
             maxWidth="90rem"
             boxSizing="border-box"
             paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingX={{ base: 16 }}
-            paddingRight={{ md: 12 }}
+            paddingLeft={{ base: 16, sm: 0 }}
+            paddingRight={{ base: 16, sm: 0, md: 12 }}
             flexGrow={1}
           >
             <MotionFlex
@@ -193,7 +193,7 @@ const LandingPage: React.FC = () => {
               />
             </MotionFlex>
             <Stack
-              maxWidth={{ sm: "41.9375rem", md: "28.375rem" }}
+              maxWidth={{ sm: "40rem", md: "28.375rem" }}
               marginTop={{ base: 8, md: 0 }}
               color="white"
               spacing={5}
@@ -385,7 +385,7 @@ const LandingPage: React.FC = () => {
             direction={breakpoint > 1 ? "row" : "column"}
             ref={(ref) => (safetySectionRef.current = ref)}
             alignItems="center"
-            paddingLeft={{ base: 16, md: 48 }}
+            paddingLeft={{ base: 16, md: 32, lg: 48 }}
             paddingRight={{ base: 16, md: 32 }}
             paddingTop={16}
             paddingBottom={8}
@@ -402,10 +402,14 @@ const LandingPage: React.FC = () => {
               color="petcode.neutral.700"
               spacing={4}
             >
-              <Heading fontSize="5xl" textAlign={{ md: "right" }} paddingBottom={2}>
+              <Heading
+                fontSize="5xl"
+                textAlign={{ md: "right" }}
+                paddingBottom={2}
+              >
                 Safety
               </Heading>
-              <Text fontSize={{ base: "3xl", sm: "2xl", md: "xl" }} fontWeight="thin">
+              <Text fontSize={{ base: "2xl", md: "xl" }} fontWeight="thin">
                 It’s a scary world out there, but with PetCode, keeping your pet
                 safer is no longer a struggle. Stay safe with PetCode’s products
                 and services.
@@ -418,12 +422,25 @@ const LandingPage: React.FC = () => {
                 <FeaturePoint>Generates “lost pet” posters</FeaturePoint>
               </Stack>
               {breakpoint > 1 ? (
-                <Stack isInline alignItems="center" alignSelf="start" spacing={4}>
+                <Stack
+                  isInline
+                  alignItems="center"
+                  alignSelf="start"
+                  spacing={4}
+                >
                   <Text fontSize="xl">Sign Up Now</Text>
                   <Icon size="36px" name="arrow" />
                 </Stack>
               ) : (
-                <BaseButton {...ActionButtonStyle} height="3.25rem" fontSize="xl" textTransform="none" color="white" alignSelf="center" background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;">
+                <BaseButton
+                  {...ActionButtonStyle}
+                  height="3.25rem"
+                  fontSize="xl"
+                  textTransform="none"
+                  color="white"
+                  alignSelf="center"
+                  background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+                >
                   Get Started
                 </BaseButton>
               )}
@@ -466,16 +483,20 @@ const LandingPage: React.FC = () => {
             justifyContent="center"
             backgroundColor="petcode.blue.400"
           >
-            <Flex
-              direction="row"
+            <Stack
+              direction={breakpoint > 2 ? "row" : "column-reverse"}
+              alignItems={{ base: "center", md: "start", lg: "stretch" }}
               ref={(ref) => (healthSectionRef.current = ref)}
               color="white"
-              paddingTop={16}
-              paddingLeft={40}
+              paddingTop={{ base: 16, md: 24, lg: 16 }}
+              paddingBottom={{ base: 16, lg: 0 }}
+              paddingRight={{ base: 16, md: 40, lg: 0 }}
+              paddingLeft={{ base: 16, md: 40 }}
               maxWidth="90rem"
               flexGrow={1}
+              spacing={16}
             >
-              <Stack width="35.875rem" marginRight={8}>
+              <Stack maxWidth={{ sm: "45rem", lg: "35.875rem" }}>
                 <Heading fontSize="5xl" paddingBottom={4}>
                   Health
                 </Heading>
@@ -500,22 +521,22 @@ const LandingPage: React.FC = () => {
               </Stack>
               <MotionBox
                 position="relative"
-                flexGrow={1}
+                flexGrow={{ lg: 1 }}
                 animate={bounce}
                 // @ts-ignore
                 transition={transition}
-                width="39.9375rem"
+                width={{ base: "27.729rem", md: "51.1875rem" }}
               >
                 <Image
                   position="absolute"
                   top="-25%"
-                  left="6.5rem"
-                  height="33.4375rem"
+                  left={{ base: "3rem", md: "6.5rem" }}
+                  width={{ base: "24.729rem", md: "44.6875rem" }}
                   src="/media/dashboard-web-screen.svg"
                   alt="Dashboard web screen"
                 />
                 <IPhoneX
-                  height="31.25rem"
+                  height={breakpoint > 1 ? "31.25rem" : "17.607rem"}
                   screenProps={{
                     style: {
                       backgroundColor: theme.colors.petcode.blue[400],
@@ -546,7 +567,7 @@ const LandingPage: React.FC = () => {
                   </AnimatePresence>
                 </IPhoneX>
               </MotionBox>
-            </Flex>
+            </Stack>
           </Flex>
           <Box
             position="relative"
@@ -582,8 +603,10 @@ const LandingPage: React.FC = () => {
         <Flex direction="row" justifyContent="center">
           <Flex
             ref={(ref) => (discoverySectionRef.current = ref)}
-            direction="row"
-            paddingRight={24}
+            direction={{ base: "column", lg: "row" }}
+            alignItems={{ base: "center", md: "start", lg: "stretch" }}
+            paddingRight={{ base: 16, md: 40, lg: 24 }}
+            paddingLeft={{ base: 16, md: 40, lg: 0 }}
             paddingTop={20}
             paddingBottom={8}
             maxWidth="90rem"
@@ -592,21 +615,22 @@ const LandingPage: React.FC = () => {
             <MotionFlex
               position="relative"
               justifyContent="end"
-              flexGrow={1}
+              flexGrow={{ lg: 1 }}
               animate={bounce}
               // @ts-ignore
               transition={transition}
+              width={{ base: "27.785rem", md: "50.3125rem" }}
             >
               <Image
                 top="-15%"
                 position="absolute"
-                right="5rem"
-                width="45.3125rem"
+                right={{ base: "2.5rem", md: "5rem" }}
+                width={{ base: "25.285rem", md: "45.3125rem" }}
                 src="/media/scan-locations-web-screen.svg"
                 alt="Scan locations web screen"
               />
               <IPhoneX
-                height="29rem"
+                height={breakpoint > 1 ? "29rem" : "17.363rem"}
                 screenProps={{
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
                 }}
@@ -619,14 +643,20 @@ const LandingPage: React.FC = () => {
                 />
               </IPhoneX>
             </MotionFlex>
-            <Icon
-              color="petcode.neutral.400"
-              name="arrow-thin"
-              size="40px"
-              alignSelf="end"
-              marginX={8}
-            />
-            <Stack maxWidth="25.625rem" spacing={4} color="petcode.neutral.700">
+            <Hide below="lg">
+              <Icon
+                color="petcode.neutral.400"
+                name="arrow-thin"
+                size="40px"
+                alignSelf="end"
+                marginX={8}
+              />
+            </Hide>
+            <Stack
+              maxWidth={{ sm: "45rem", lg: "25.625rem" }}
+              spacing={4}
+              color="petcode.neutral.700"
+            >
               <Heading fontSize="5xl">Discovery</Heading>
               <Stack isInline>
                 <BaseButton
@@ -648,11 +678,11 @@ const LandingPage: React.FC = () => {
                   Pet Perks
                 </BaseButton>
               </Stack>
-              <Text fontSize="xl" fontWeight="thin">
+              <Text fontSize={{ base: "2xl", md: "xl" }} fontWeight="thin">
                 With PetCode’s Discovery feature, you can explore nearby pet
                 opportunities, all with the tap of a finger.
               </Text>
-              <Stack spacing={3} marginLeft={6}>
+              <Stack spacing={3} marginLeft={{ lg: 6 }}>
                 <FeaturePoint>Search for exciting events</FeaturePoint>
                 <FeaturePoint>Find open pet parks</FeaturePoint>
                 <FeaturePoint>Get premium discounts</FeaturePoint>
