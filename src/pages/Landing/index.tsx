@@ -14,6 +14,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
+import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
 import { AnimatePresence, motion, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
@@ -32,6 +33,7 @@ import { ActionButtonStyle } from "../../components/Shared/ions/button";
 
 const LandingPage: React.FC = () => {
   const theme = useTheme() as PetCodeTheme;
+  const breakpoint = parseInt(useBreakpoint() as string);
 
   const safetySectionRef = useRef<HTMLDivElement>();
   const healthSectionRef = useRef<HTMLDivElement>();
@@ -75,18 +77,23 @@ const LandingPage: React.FC = () => {
             top: 0,
             zIndex: 1,
           }}
-          height="17.8125rem"
-          viewBox="0 0 612 285"
-          fill="none"
+          height={breakpoint > 0 ? "17.8125rem" : "26rem"}
+          viewBox={breakpoint > 0 ? "0 0 612 285" : "0 0 203 230"}
           xmlns="http://www.w3.org/2000/svg"
+          fill={theme.colors.petcode.blue[400]}
         >
-          <ellipse
-            cx="34"
-            cy="-105.5"
-            rx="578"
-            ry="390.5"
-            fill={theme.colors.petcode.blue[400]}
-          />
+          {breakpoint > 0 ? (
+            <ellipse
+              cx="34"
+              cy="-105.5"
+              rx="578"
+              ry="390.5"
+            />
+          ) : (
+            <path
+              d="M-1 229.817V0H202.415C187.138 111.352 105.681 201.609 -1 229.817Z"
+            />
+          )}
         </svg>
         <svg
           style={{
@@ -94,19 +101,25 @@ const LandingPage: React.FC = () => {
             top: 0,
             zIndex: 1,
           }}
-          height="14.5625rem"
-          viewBox="0 0 788 233"
-          fill="none"
+          height={breakpoint > 0 ? "14.5625rem" : "26rem"}
+          viewBox={breakpoint > 0 ? "0 0 788 233" : "0 0 262 230"}
+          fill={theme.colors.petcode.blue[400]}
+          opacity="0.4"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse
-            opacity="0.4"
-            cx="190"
-            cy="-181.5"
-            rx="578"
-            ry="390.5"
-            fill={theme.colors.petcode.blue[400]}
-          />
+          {breakpoint > 0 ? (
+            <ellipse
+              cx="190"
+              cy="-181.5"
+              rx="578"
+              ry="390.5"
+              fill={theme.colors.petcode.blue[400]}
+            />
+          ) : (
+            <path
+              d="M-1 188V0H261.392C224.323 109.324 120.85 188 -1 188Z"
+            />
+          )}
         </svg>
         <Image
           position="absolute"

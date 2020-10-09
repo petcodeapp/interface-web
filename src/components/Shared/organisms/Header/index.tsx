@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       {...props}
     >
       <Link to="/">
-        <Image src="/media/petcode-logo-with-qr-code.png" height="4.75rem" />
+        <Image src="/media/petcode-logo-with-qr-code.png" height={{ base: "3.5rem", sm: "4.75rem" }} />
       </Link>
       <Box flexGrow={1} />
       <Stack
