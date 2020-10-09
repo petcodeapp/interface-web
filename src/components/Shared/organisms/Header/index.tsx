@@ -30,20 +30,20 @@ export type HeaderProps = StackProps & MotionProps;
 const Header: React.FC<HeaderProps> = (props) => {
   const auth = React.useContext(AuthContext);
   const [open, toggleOpen] = useCycle(false, true);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLElement>();
 
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = parseInt(useBreakpoint() as string);
   useEffect(() => {
-    if (breakpoint > 1 && open) {
+    if ((breakpoint >= 1 && !open) || (breakpoint < 1 && open)) {
       toggleOpen();
     }
   }, [breakpoint]);
   useEffect(() => {
     if (open) {
-      disableBodyScroll(menuRef);
+      disableBodyScroll(menuRef.current as HTMLDivElement);
     } else {
-      enableBodyScroll(menuRef);
+      enableBodyScroll(menuRef.current as HTMLDivElement);
     }
     return () => clearAllBodyScrollLocks();
   }, [open]);
@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     <Stack
       isInline
       initial="closed"
-      animate={open || breakpoint >= 1 ? "open" : "closed"}
+      animate={open ? "open" : "closed"}
       position="fixed"
       top={0}
       background="rgba(0, 0, 0, 0.4)"
@@ -106,6 +106,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             }
           }
         }}
+        // @ts-ignore
         ref={ref => menuRef.current = ref}
       >
         <Show below="sm">
