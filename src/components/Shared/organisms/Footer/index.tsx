@@ -10,6 +10,7 @@ import {
   Text,
   useTheme,
 } from "@chakra-ui/core";
+import { useBreakpoint } from "@chakra-ui/media-query";
 import { motion, Transition } from "framer-motion";
 import Link from "../../atoms/link";
 
@@ -28,6 +29,7 @@ export type FooterProps = {
 
 const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
+  const breakpoint = parseInt(useBreakpoint() as string);
 
   const wave = { scaleY: [1, 1.1] };
 
@@ -41,15 +43,13 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
     <Flex direction="column" {...props}>
       <Box
         position="relative"
-        paddingBottom={wavesArePadded ? `${(87 / 1440) * 100}%` : null}
+        paddingBottom={wavesArePadded ? `${(86 / 1440) * 100}%` : null}
       >
         <motion.svg
           style={{ position: "absolute", bottom: 0 }}
           viewBox="0 0 1440 86"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          animate={wave}
-          transition={transition}
         >
           <path
             d="m-1,17.5235c97.0032,-5.33048 328.339,-15.59158 477.657,-13.99244c55.019,0.58922 136.37,9.68914 231.1,20.28554c226.635,25.3514 529.843,59.2685 732.243,5.7003l0,281.8471l-1,0l0,-222.364l-1440,0l0,-71.4765z"
@@ -77,64 +77,66 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
         <Flex
           direction="row"
           justifyContent="space-between"
-          paddingX={40}
+          paddingX={{ base: 8, md: 32, lg: 40 }}
           color="white"
           paddingTop={6}
           paddingBottom={16}
-          fontSize="sm"
+          fontSize={{ base: "xl", md: "md", lg: "sm" }}
           maxWidth="90rem"
           flexGrow={1}
         >
-          <Flex direction="column" justifyContent="space-between">
+          <Flex direction="column" flexGrow={1} justifyContent="space-between">
             <Image
               src="/media/petcode-logo-with-qr-code.png"
               alt="Petcode logo with QR code"
               width="10.25rem"
               marginBottom={16}
             />
-            <Text fontSize="sm">© 2020 PetCode</Text>
+            <Text>© 2020 PetCode</Text>
           </Flex>
-          <Stack spacing={2}>
-            <Link to="/">Home</Link>
-            <Link to="/howitoworks">How It Works</Link>
-            <Link to="#">Contact Us</Link>
-          </Stack>
-          <Stack spacing={2}>
-            <Link to="#">FAQs</Link>
-            <Link to="/terms">Terms and Conditions</Link>
-            <Link to="/privacypolicy">Privacy Policy</Link>
-          </Stack>
-          <Stack isInline spacing={8} alignSelf="center">
-            <IconButton
-              {...SocialMediaButtonStyle}
-              aria-label="Linkedin"
-              // @ts-ignore
-              icon="linkedin"
-            />
-            <IconButton
-              {...SocialMediaButtonStyle}
-              aria-label="Instagram"
-              // @ts-ignore
-              icon="instagram"
-            />
-            <IconButton
-              {...SocialMediaButtonStyle}
-              aria-label="Facebook"
-              // @ts-ignore
-              icon="facebook"
-            />
-            <IconButton
-              {...SocialMediaButtonStyle}
-              aria-label="Youtube"
-              // @ts-ignore
-              icon="youtube"
-            />
-            <IconButton
-              {...SocialMediaButtonStyle}
-              aria-label="Pinterest"
-              // @ts-ignore
-              icon="pinterest"
-            />
+          <Stack direction={breakpoint > 1 ? "row" : "column"} flexGrow={3} justifyContent="space-between" spacing={{ base: 4, md: 0 }}>
+            <Stack spacing={{ base: 4, md: 2 }}>
+              <Link to="/">Home</Link>
+              <Link to="/howitoworks">How It Works</Link>
+              <Link to="#">Contact Us</Link>
+            </Stack>
+            <Stack spacing={{ base: 4, md: 2 }}>
+              <Link to="#">FAQs</Link>
+              <Link to="/terms">Terms and Conditions</Link>
+              <Link to="/privacypolicy">Privacy Policy</Link>
+            </Stack>
+            <Stack isInline spacing={8} alignSelf="center">
+              <IconButton
+                {...SocialMediaButtonStyle}
+                aria-label="Linkedin"
+                // @ts-ignore
+                icon="linkedin"
+              />
+              <IconButton
+                {...SocialMediaButtonStyle}
+                aria-label="Instagram"
+                // @ts-ignore
+                icon="instagram"
+              />
+              <IconButton
+                {...SocialMediaButtonStyle}
+                aria-label="Facebook"
+                // @ts-ignore
+                icon="facebook"
+              />
+              <IconButton
+                {...SocialMediaButtonStyle}
+                aria-label="Youtube"
+                // @ts-ignore
+                icon="youtube"
+              />
+              <IconButton
+                {...SocialMediaButtonStyle}
+                aria-label="Pinterest"
+                // @ts-ignore
+                icon="pinterest"
+              />
+            </Stack> 
           </Stack>
         </Flex>
       </Flex>

@@ -6,9 +6,6 @@ import {
   Heading,
   Icon,
   Image,
-  Input,
-  InputGroup,
-  InputRightElement,
   Stack,
   Text,
   ThemeProvider,
@@ -146,8 +143,8 @@ const LandingPage: React.FC = () => {
             maxWidth="90rem"
             boxSizing="border-box"
             paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingLeft={{ base: 16, sm: 0 }}
-            paddingRight={{ base: 16, sm: 0, md: 12 }}
+            paddingLeft={{ base: 0 }}
+            paddingRight={{ base: 0, md: 12 }}
             flexGrow={1}
           >
             <MotionFlex
@@ -195,6 +192,7 @@ const LandingPage: React.FC = () => {
             <Stack
               maxWidth={{ sm: "40rem", md: "28.375rem" }}
               marginTop={{ base: 8, md: 0 }}
+              paddingX={{ base: 16, md: 0 }}
               color="white"
               spacing={5}
             >
@@ -213,7 +211,7 @@ const LandingPage: React.FC = () => {
                 situation, PetCode can help you and your pet live happier, worry
                 free lives.
               </Text>
-              <ExclusiveUpdatesInput maxWidth="auto" />
+              <ExclusiveUpdatesInput maxWidth={{ base: "auto", md: "24.75rem" }} />
             </Stack>
           </Flex>
         </Flex>
@@ -490,13 +488,12 @@ const LandingPage: React.FC = () => {
               color="white"
               paddingTop={{ base: 16, md: 24, lg: 16 }}
               paddingBottom={{ base: 16, lg: 0 }}
-              paddingRight={{ base: 16, md: 40, lg: 0 }}
-              paddingLeft={{ base: 16, md: 40 }}
+              paddingLeft={{ base: 0, lg: 40 }}
               maxWidth="90rem"
               flexGrow={1}
               spacing={16}
             >
-              <Stack maxWidth={{ sm: "45rem", lg: "35.875rem" }}>
+              <Stack paddingX={{ base: 16, md: 40, lg: 0 }} maxWidth={{ sm: "45rem", lg: "35.875rem" }}>
                 <Heading fontSize="5xl" paddingBottom={4}>
                   Health
                 </Heading>
@@ -525,7 +522,8 @@ const LandingPage: React.FC = () => {
                 animate={bounce}
                 // @ts-ignore
                 transition={transition}
-                width={{ base: "27.729rem", md: "51.1875rem" }}
+                alignSelf={{ md: "center", lg: "auto" }}
+                width={{ base: "27.729rem", md: "51.1875rem", lg: "auto" }}
               >
                 <Image
                   position="absolute"
@@ -605,8 +603,7 @@ const LandingPage: React.FC = () => {
             ref={(ref) => (discoverySectionRef.current = ref)}
             direction={{ base: "column", lg: "row" }}
             alignItems={{ base: "center", md: "start", lg: "stretch" }}
-            paddingRight={{ base: 16, md: 40, lg: 24 }}
-            paddingLeft={{ base: 16, md: 40, lg: 0 }}
+            paddingRight={{ base: 0, lg: 24 }}
             paddingTop={20}
             paddingBottom={8}
             maxWidth="90rem"
@@ -619,7 +616,8 @@ const LandingPage: React.FC = () => {
               animate={bounce}
               // @ts-ignore
               transition={transition}
-              width={{ base: "27.785rem", md: "50.3125rem" }}
+              alignSelf={{ md: "center", lg: "auto" }}
+              width={{ base: "27.785rem", md: "50.3125rem", lg: "auto" }}
             >
               <Image
                 top="-15%"
@@ -654,6 +652,7 @@ const LandingPage: React.FC = () => {
             </Hide>
             <Stack
               maxWidth={{ sm: "45rem", lg: "25.625rem" }}
+              paddingX={{ base: 16, md: 40, lg: 0 }}
               spacing={4}
               color="petcode.neutral.700"
             >
@@ -706,18 +705,19 @@ const LandingPage: React.FC = () => {
             justifyContent="center"
             backgroundColor="petcode.neutral.200"
           >
-            <Flex
-              direction="row"
+            <Stack
+              direction={breakpoint > 1 ? "row" : "column"}
               paddingTop={2}
               paddingBottom={`calc(${(87 / 1440) * 100}% + 5.3125rem)`}
-              paddingX={40}
+              paddingX={{ base: 20, md: 32, lg: 40 }}
               justifyContent="space-between"
               maxWidth="90rem"
               flexGrow={1}
+              spacing={8}
             >
               <Stack spacing={4} color="petcode.neutral.700">
-                <Text fontSize="3xl">Sign up for updates and more!</Text>
-                <Stack spacing={3} marginLeft={6}>
+                <Text fontSize={{ base: "4xl", md: "3xl" }} fontWeight={{ base: "bold", md: "normal" }}>Sign up for updates and more!</Text>
+                <Stack spacing={3} marginLeft={{ md: 6 }}>
                   <FeaturePoint
                     checkBoxProps={{ backgroundColor: "petcode.blue.400" }}
                   >
@@ -735,43 +735,8 @@ const LandingPage: React.FC = () => {
                   </FeaturePoint>
                 </Stack>
               </Stack>
-              <InputGroup width="24.75rem" alignSelf="center">
-                <Input
-                  type="email"
-                  rounded="1.25rem"
-                  height="3.625rem"
-                  fontWeight="thin"
-                  variant="filled"
-                  fontSize="xl"
-                  fontFamily="body"
-                  placeholder="Enter Your Email"
-                  _placeholder={{ color: "petcode.neutral.600" }}
-                  backgroundColor="white"
-                />
-                <InputRightElement
-                  alignSelf="center"
-                  top="auto"
-                  right="0.5rem"
-                  cursor="pointer"
-                >
-                  <svg
-                    width="40"
-                    height="39"
-                    viewBox="0 0 40 39"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M31.1737 18.9891H5.58887M21.224 9.08527L31.1737 18.9891L21.224 9.08527ZM31.1737 18.9891L21.224 28.8929L31.1737 18.9891Z"
-                      stroke="#4A5568"
-                      stroke-width="2.47595"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </InputRightElement>
-              </InputGroup>
-            </Flex>
+              <ExclusiveUpdatesInput alignSelf={{ md: "center" }} width={{ base: "100%", md: "24.75rem" }} maxWidth="auto" />
+            </Stack>
           </Flex>
         </Flex>
       </Layout>

@@ -87,12 +87,13 @@ const Header: React.FC<HeaderProps> = (props) => {
               top: 0,
               left: 0,
               background: "white",
-              width: "100vw",
+              width: "100%",
               height: "100vh",
               fontSize: "2.5rem",
               alignItems: "start",
               paddingLeft: 16,
               paddingTop: 8,
+              boxSizing: "border-box",
             }
           : {
               isInline: true,
