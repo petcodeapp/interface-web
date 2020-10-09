@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import { Box, Image, StackProps, useTheme } from "@chakra-ui/core";
 import BaseButton, { BaseButtonProps } from "../../atoms/button";
@@ -9,6 +9,7 @@ import { Stack } from "../../../Motion";
 
 import { AuthContext } from "../../../../views/Auth/index";
 import { useObserver } from "mobx-react-lite";
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 import { PetCodeTheme } from "../../../../theme";
 import { ActionButtonStyle } from "../../ions/button";
@@ -16,11 +17,11 @@ import { ActionButtonStyle } from "../../ions/button";
 const HeaderButtonStyle = {
   ...ActionButtonStyle,
   variantColor: "petcode.yellow",
-  fontSize: "xl",
+  fontSize: { base: "2xl", sm: "xl" },
   textTransform: "none",
   letterSpacing: "auto",
-  height: "3.25rem",
-  paddingX: 8,
+  height: { base: "4rem", sm: "3.25rem" },
+  paddingX: { base: 12, sm: 8 },
   boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2);",
 } as BaseButtonProps;
 
@@ -29,15 +30,29 @@ export type HeaderProps = StackProps & MotionProps;
 const Header: React.FC<HeaderProps> = (props) => {
   const auth = React.useContext(AuthContext);
   const [open, toggleOpen] = useCycle(false, true);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = parseInt(useBreakpoint() as string);
+  useEffect(() => {
+    if (breakpoint > 1 && open) {
+      toggleOpen();
+    }
+  }, [breakpoint]);
+  useEffect(() => {
+    if (open) {
+      disableBodyScroll(menuRef);
+    } else {
+      enableBodyScroll(menuRef);
+    }
+    return () => clearAllBodyScrollLocks();
+  }, [open]);
 
   return useObserver(() => (
     <Stack
       isInline
       initial="closed"
-      animate={open ? "open" : "closed"}
+      animate={open || breakpoint >= 1 ? "open" : "closed"}
       position="fixed"
       top={0}
       background="rgba(0, 0, 0, 0.4)"
@@ -45,7 +60,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       boxSizing="border-box"
       paddingLeft={8}
       paddingRight={10}
-      paddingY={4}
+      paddingY={{ base: 8, sm: 4 }}
       zIndex={999}
       color="white"
       fontSize="2xl"
@@ -57,8 +72,8 @@ const Header: React.FC<HeaderProps> = (props) => {
       <Box flexGrow={1} />
       <Stack
         alignItems="center"
-        spacing={8}
-        {...(breakpoint < 2 ? {
+        spacing={{ base: 12, sm: 8 }}
+        {...(breakpoint < 1 ? {
           color: "petcode.neutral.700",
           position: "absolute",
           top: 0,
@@ -66,6 +81,10 @@ const Header: React.FC<HeaderProps> = (props) => {
           background: "white",
           width: "100vw",
           height: "100vh",
+          fontSize: "2.5rem",
+          alignItems: "start",
+          paddingLeft: 16,
+          paddingTop: 8,
         } : {
           isInline: true,
         })}
@@ -87,9 +106,10 @@ const Header: React.FC<HeaderProps> = (props) => {
             }
           }
         }}
+        ref={ref => menuRef.current = ref}
       >
-        <Show below="md">
-          <Link to="/">
+        <Show below="sm">
+          <Link to="/" paddingBottom={8}>
             <Image src="/media/petcode-logo-with-qr-code-altered.png" height="4.75rem" />
           </Link>
         </Show>
@@ -103,12 +123,14 @@ const Header: React.FC<HeaderProps> = (props) => {
             Get Started
           </BaseButton>
         ) : (
-          <BaseButton {...HeaderButtonStyle}>
+          <BaseButton
+            {...HeaderButtonStyle}
+          >
             <Link to="/dashboard">Dashboard</Link>
           </BaseButton>
         )}
       </Stack>
-      <Show below="md">
+      <Show below="sm">
         <motion.svg
           style={{ cursor: "pointer", zIndex: 1000 }}
           onClick={() => toggleOpen()}
