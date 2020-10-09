@@ -82,16 +82,9 @@ const LandingPage: React.FC = () => {
           fill={theme.colors.petcode.blue[400]}
         >
           {breakpoint > 0 ? (
-            <ellipse
-              cx="34"
-              cy="-105.5"
-              rx="578"
-              ry="390.5"
-            />
+            <ellipse cx="34" cy="-105.5" rx="578" ry="390.5" />
           ) : (
-            <path
-              d="M-1 229.817V0H202.415C187.138 111.352 105.681 201.609 -1 229.817Z"
-            />
+            <path d="M-1 229.817V0H202.415C187.138 111.352 105.681 201.609 -1 229.817Z" />
           )}
         </svg>
         <svg
@@ -114,9 +107,7 @@ const LandingPage: React.FC = () => {
               fill={theme.colors.petcode.blue[400]}
             />
           ) : (
-            <path
-              d="M-1 188V0H261.392C224.323 109.324 120.85 188 -1 188Z"
-            />
+            <path d="M-1 188V0H261.392C224.323 109.324 120.85 188 -1 188Z" />
           )}
         </svg>
         <Image
@@ -144,8 +135,11 @@ const LandingPage: React.FC = () => {
           justifyContent="center"
           backgroundImage="url(/media/landing-splash.png)"
           backgroundSize="cover"
-          height={{ base: "auto", md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)" }}
-          paddingBottom={{ base: `calc(${126 / 1440 * 100}% + 3rem)`, md: 0 }}
+          height={{
+            base: "auto",
+            md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",
+          }}
+          paddingBottom={{ base: `calc(${(126 / 1440) * 100}% + 3rem)`, md: 0 }}
         >
           <Flex
             flexDirection={{ base: "column", md: "row" }}
@@ -179,7 +173,10 @@ const LandingPage: React.FC = () => {
               <IPhoneX
                 height={breakpoint > 0 ? "22.125rem" : "15.326rem"}
                 wrapperProps={{
-                  style: { position: "absolute", right: breakpoint > 0 ? "5rem" : "3rem" },
+                  style: {
+                    position: "absolute",
+                    right: breakpoint > 0 ? "5rem" : "3rem",
+                  },
                 }}
               >
                 <Image
@@ -195,16 +192,24 @@ const LandingPage: React.FC = () => {
                 alt="Petcode tag front"
               />
             </MotionFlex>
-            <Stack maxWidth={{ base: "29.3rem", sm: "41.9375rem", md: "28.375rem" }} marginTop={{ base: 8, md: 0 }} color="white" spacing={5}>
+            <Stack
+              maxWidth={{ base: "29.3rem", sm: "41.9375rem", md: "28.375rem" }}
+              marginTop={{ base: 8, md: 0 }}
+              color="white"
+              spacing={5}
+            >
               <Box fontWeight="bold">
                 <Heading fontSize="2.8125rem">One Code.</Heading>
                 <Text fontSize="3xl">
                   An endless suite of features for pet owners.
                 </Text>
               </Box>
-              <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }} maxWidth={{ base: "auto", md: "25rem" }}>
-                PetCode is a new pet management platform that allows pet owners to
-                keep track of all aspects of their pet’s life. No matter your
+              <Text
+                fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
+                maxWidth={{ base: "auto", md: "25rem" }}
+              >
+                PetCode is a new pet management platform that allows pet owners
+                to keep track of all aspects of their pet’s life. No matter your
                 situation, PetCode can help you and your pet live happier, worry
                 free lives.
               </Text>
@@ -310,8 +315,8 @@ const LandingPage: React.FC = () => {
                 <Text fontWeight="thin" fontSize="xl">
                   Discover the endless suite of features from PetCode. Keep your
                   pet safe, manage their health, and discover nearby pet
-                  opportunities, all from our easy-to-use app. Managing your pet’s
-                  life has never been easier. Learn more about us below.
+                  opportunities, all from our easy-to-use app. Managing your
+                  pet’s life has never been easier. Learn more about us below.
                 </Text>
               </Stack>
               <Stack spacing={10}>
@@ -374,10 +379,7 @@ const LandingPage: React.FC = () => {
             </motion.svg>
           </Box>
         </Flex>
-        <Flex
-          direction="row"
-          justifyContent="center"
-        >
+        <Flex direction="row" justifyContent="center">
           <Flex
             ref={(ref) => (safetySectionRef.current = ref)}
             direction="row"
@@ -393,7 +395,11 @@ const LandingPage: React.FC = () => {
               alt="Safety image"
               marginRight={40}
             />
-            <Stack maxWidth="40.3125rem" color="petcode.neutral.700" spacing={4}>
+            <Stack
+              maxWidth="40.3125rem"
+              color="petcode.neutral.700"
+              spacing={4}
+            >
               <Heading fontSize="5xl" textAlign="right" paddingBottom={2}>
                 Safety
               </Heading>
@@ -564,10 +570,7 @@ const LandingPage: React.FC = () => {
             </motion.svg>
           </Box>
         </Flex>
-        <Flex
-          direction="row"
-          justifyContent="center"
-        >
+        <Flex direction="row" justifyContent="center">
           <Flex
             ref={(ref) => (discoverySectionRef.current = ref)}
             direction="row"

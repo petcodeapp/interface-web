@@ -9,7 +9,11 @@ import { Stack } from "../../../Motion";
 
 import { AuthContext } from "../../../../views/Auth/index";
 import { useObserver } from "mobx-react-lite";
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
 
 import { PetCodeTheme } from "../../../../theme";
 import { ActionButtonStyle } from "../../ions/button";
@@ -67,51 +71,59 @@ const Header: React.FC<HeaderProps> = (props) => {
       {...props}
     >
       <Link to="/">
-        <Image src="/media/petcode-logo-with-qr-code.png" height={{ base: "3.5rem", sm: "4.75rem" }} />
+        <Image
+          src="/media/petcode-logo-with-qr-code.png"
+          height={{ base: "3.5rem", sm: "4.75rem" }}
+        />
       </Link>
       <Box flexGrow={1} />
       <Stack
         alignItems="center"
         spacing={{ base: 12, sm: 8 }}
-        {...(breakpoint < 1 ? {
-          color: "petcode.neutral.700",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          background: "white",
-          width: "100vw",
-          height: "100vh",
-          fontSize: "2.5rem",
-          alignItems: "start",
-          paddingLeft: 16,
-          paddingTop: 8,
-        } : {
-          isInline: true,
-        })}
+        {...(breakpoint < 1
+          ? {
+              color: "petcode.neutral.700",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              background: "white",
+              width: "100vw",
+              height: "100vh",
+              fontSize: "2.5rem",
+              alignItems: "start",
+              paddingLeft: 16,
+              paddingTop: 8,
+            }
+          : {
+              isInline: true,
+            })}
         variants={{
           open: (height = 1000) => ({
             clipPath: `circle(${height * 2 + 200}px at right top)`,
             transition: {
               type: "spring",
               stiffness: 20,
-              restDelta: 2
-            }
+              restDelta: 2,
+            },
           }),
           closed: {
             clipPath: "circle(0px at right top)",
             transition: {
               type: "spring",
               stiffness: 400,
-              damping: 40
-            }
-          }
+              damping: 40,
+            },
+          },
         }}
         // @ts-ignore
-        ref={ref => menuRef.current = ref}
+        ref={(ref) => (menuRef.current = ref)}
       >
         <Show below="sm">
           <Link to="/" paddingBottom={8}>
-            <Image src="/media/petcode-logo-with-qr-code-altered.png" height="4.75rem" />
+            <Image
+              src="/media/petcode-logo-with-qr-code-altered.png"
+              height="4.75rem"
+            />
           </Link>
         </Show>
         <Link to="/">Home</Link>
@@ -124,9 +136,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             Get Started
           </BaseButton>
         ) : (
-          <BaseButton
-            {...HeaderButtonStyle}
-          >
+          <BaseButton {...HeaderButtonStyle}>
             <Link to="/dashboard">Dashboard</Link>
           </BaseButton>
         )}
@@ -135,11 +145,14 @@ const Header: React.FC<HeaderProps> = (props) => {
         <motion.svg
           style={{ cursor: "pointer", zIndex: 1000 }}
           onClick={() => toggleOpen()}
-          variants={{ 
+          variants={{
             open: { stroke: theme.colors.petcode.neutral[700] },
-            closed: { stroke: "white", transition: {
-              delay: 0.25
-            } }
+            closed: {
+              stroke: "white",
+              transition: {
+                delay: 0.25,
+              },
+            },
           }}
           width="36"
           height="36"

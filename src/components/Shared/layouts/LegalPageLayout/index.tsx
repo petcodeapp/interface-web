@@ -16,7 +16,7 @@ const LegalPageLayout: React.FC = ({ children }) => {
         backgroundColor: "transparent",
       }}
       footerProps={{
-        marginTop: 40
+        marginTop: 40,
       }}
       paddingTop="11rem"
       minHeight="calc(100% - 11rem)"

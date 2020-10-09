@@ -208,15 +208,20 @@ const HowItWorksPage: React.FunctionComponent = () => {
               maxWidth="90rem"
               flexGrow={1}
             >
-              <Stack paddingTop={20} maxW="40.4375rem" spacing={3} marginRight={8}>
+              <Stack
+                paddingTop={20}
+                maxW="40.4375rem"
+                spacing={3}
+                marginRight={8}
+              >
                 <Heading fontSize="6xl">The QR Tag</Heading>
                 <Text fontSize="xl" fontWeight="thin" paddingBottom={4}>
-                  Got a new phone? Moved recently? PetCode’s durable QR tags allow
-                  you to easily update your pet’s contact info with the tap of
-                  finger—you’ll never need to buy another pet tag again. Anyone
-                  can scan our smart QR tags to see your pet’s info in a flash.
-                  Lost your pet? Our tags can reunite you with your furry friend
-                  in a flash.
+                  Got a new phone? Moved recently? PetCode’s durable QR tags
+                  allow you to easily update your pet’s contact info with the
+                  tap of finger—you’ll never need to buy another pet tag again.
+                  Anyone can scan our smart QR tags to see your pet’s info in a
+                  flash. Lost your pet? Our tags can reunite you with your furry
+                  friend in a flash.
                 </Text>
                 <BaseButton
                   {...ActionButtonStyle}
@@ -385,10 +390,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
             </motion.svg>
           </Box>
         </Flex>
-        <Flex
-          direction="row"
-          justifyContent="center"
-        >
+        <Flex direction="row" justifyContent="center">
           <Flex
             direction="row"
             paddingRight={40}
@@ -431,11 +433,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 />
               </IPhoneX>
             </MotionFlex>
-            <Stack
-              maxW="29.125rem"
-              spacing={4}
-              color="petcode.neutral.700"
-            >
+            <Stack maxW="29.125rem" spacing={4} color="petcode.neutral.700">
               <Heading fontSize="6xl">The Pet Portal</Heading>
               <Text fontSize="2xl" color="petcode.yellow.400">
                 A place your pet’s data can call home
@@ -443,14 +441,16 @@ const HowItWorksPage: React.FunctionComponent = () => {
               <Text fontSize="xl" fontWeight="thin">
                 All your pet’s info—from contact and medical info to name, age,
                 and breed—in one place. Your PetPortal syncs with the PetCode QR
-                tag and is easily accessible through our app, giving you access to
-                the full suite of features whenever, wherever. Get started with
-                PetCode today to unlock all the features we have to offer!
+                tag and is easily accessible through our app, giving you access
+                to the full suite of features whenever, wherever. Get started
+                with PetCode today to unlock all the features we have to offer!
               </Text>
               <Stack spacing={3} marginLeft={6} paddingBottom={8}>
                 <FeaturePoint>Keeps your pet safe</FeaturePoint>
                 <FeaturePoint>Tracks medical records</FeaturePoint>
-                <FeaturePoint>Provides fun oppertunities and events</FeaturePoint>
+                <FeaturePoint>
+                  Provides fun oppertunities and events
+                </FeaturePoint>
               </Stack>
               <Flex direction="row" justifyContent="space-between">
                 <Icon
