@@ -154,7 +154,7 @@ const LandingPage: React.FC = () => {
               position="relative"
               top="-1rem"
               height={{ base: "19.464rem", sm: "28.125rem" }}
-              width={{ base: "29.354rem", sm: "41.9375rem" }}
+              width={{ base: "29.354rem", sm: "42.9375rem" }}
               marginRight={{ md: 32 }}
               flexGrow={{ md: 1 }}
               justifyContent="end"
@@ -165,10 +165,10 @@ const LandingPage: React.FC = () => {
             >
               <Image
                 position="absolute"
-                right={{ base: "5.5rem", sm: "7.5rem" }}
+                right={{ base: "5.5rem", sm: "8.5rem" }}
                 src="/media/dashboard-web-screen.svg"
                 alt="Dashboard web screen"
-                height={{ base: "19.464rem", sm: "28.125rem" }}
+                width={{ base: "23.854rem", sm: "34.4375rem" }}
               />
               <IPhoneX
                 height={breakpoint > 0 ? "22.125rem" : "15.326rem"}
@@ -393,7 +393,8 @@ const LandingPage: React.FC = () => {
           >
             <Image
               src="/media/safety-image.svg"
-              maxWidth={{ base: "11.485rem", md: "19.625rem" }}
+              minWidth={{ md: "19.625rem" }}
+              maxWidth={{ base: "11.485rem", md: undefined }}
               alt="Safety image"
             />
             <Stack
@@ -503,6 +504,7 @@ const LandingPage: React.FC = () => {
                 animate={bounce}
                 // @ts-ignore
                 transition={transition}
+                width="39.9375rem"
               >
                 <Image
                   position="absolute"
