@@ -8,7 +8,7 @@ import { MotionProps } from "framer-motion";
 import Header, { HeaderProps } from "../../organisms/Header";
 import Footer, { FooterProps } from "../../organisms/Footer";
 
-type LayoutProps = {
+export type LayoutProps = {
   headerProps?: HeaderProps;
   footerProps?: FooterProps;
 } & FlexProps &

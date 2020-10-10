@@ -108,10 +108,10 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
             <Stack spacing={{ base: 4, md: 2 }}>
               <Link to="/">Home</Link>
               <Link to="/howitoworks">How It Works</Link>
-              <Link to="#">Contact Us</Link>
+              <Link to="/contactus">Contact Us</Link>
             </Stack>
             <Stack spacing={{ base: 4, md: 2 }}>
-              <Link to="#">FAQs</Link>
+              <Link to="/faqs">FAQs</Link>
               <Link to="/terms">Terms and Conditions</Link>
               <Link to="/privacypolicy">Privacy Policy</Link>
             </Stack>

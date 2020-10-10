@@ -15,9 +15,7 @@ function App() {
         <AuthProvider>
           <AnimatePresence>
             <Router>
-              <Switch>
-                <Routes />
-              </Switch>
+              <Routes />
             </Router>
           </AnimatePresence>
         </AuthProvider>

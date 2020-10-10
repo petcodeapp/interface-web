@@ -254,8 +254,8 @@ const LandingPage: React.FC = () => {
               alignItems="center"
               color="white"
               paddingY={{ base: 8, lg: 16 }}
-              paddingLeft={{ base: 16, xl: 40 }}
-              paddingRight={10}
+              paddingLeft={{ base: 12, xl: 40 }}
+              paddingRight={12}
               spacing={16}
             >
               <Stack spacing={8} maxWidth="39.625rem">

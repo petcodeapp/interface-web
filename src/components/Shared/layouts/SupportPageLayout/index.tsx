@@ -2,11 +2,11 @@ import React from "react";
 
 import { Image, useTheme } from "@chakra-ui/core";
 
-import Layout from "../LandingPageLayout";
+import Layout, { LayoutProps } from "../LandingPageLayout";
 
 import { PetCodeTheme } from "../../../../theme";
 
-const LegalPageLayout: React.FC = ({ children }) => {
+const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
 
   return (
@@ -15,14 +15,13 @@ const LegalPageLayout: React.FC = ({ children }) => {
         position: "absolute",
         backgroundColor: "transparent",
       }}
-      footerProps={{
-        marginTop: 40,
-      }}
       paddingTop="11rem"
       minHeight="calc(100% - 11rem)"
+      {...props}
     >
       <svg
-        style={{ position: "absolute", left: 0, top: 0, height: "11rem" }}
+        style={{ position: "absolute", left: 0, top: 0 }}
+        width="100%"
         viewBox="0 0 1440 176"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +32,8 @@ const LegalPageLayout: React.FC = ({ children }) => {
         />
       </svg>
       <svg
-        style={{ position: "absolute", left: 0, top: 0, height: "14.125rem" }}
+        style={{ position: "absolute", left: 0, top: 0 }}
+        width="100%"
         viewBox="0 0 1440 226"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -45,12 +45,12 @@ const LegalPageLayout: React.FC = ({ children }) => {
         />
       </svg>
       {children}
-      <Image
+      {/*<Image
         position="absolute"
         bottom={0}
         right={0}
         src="/media/paw-print-background-ltr-up.svg"
-      />
+      />*/}
     </Layout>
   );
 };

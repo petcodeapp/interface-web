@@ -2,10 +2,10 @@ import React from "react";
 
 import { Heading, Stack, Text } from "@chakra-ui/core";
 
-import LegalPageLayout from "../../components/Shared/layouts/LegalPageLayout";
+import SupportPageLayout from "../../components/Shared/layouts/SupportPageLayout";
 
 const TermsPage = () => (
-  <LegalPageLayout>
+  <SupportPageLayout>
     <Stack alignItems="center" spacing={10}>
       <Heading fontSize="3.125rem" color="petcode.blue.400">
         Terms and Conditions
@@ -39,7 +39,7 @@ const TermsPage = () => (
         qui labitur theophrastus.
       </Text>
     </Stack>
-  </LegalPageLayout>
+  </SupportPageLayout>
 );
 
 export default TermsPage;
