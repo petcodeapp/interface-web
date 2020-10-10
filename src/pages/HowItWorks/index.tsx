@@ -111,15 +111,32 @@ const HowItWorksPage: React.FunctionComponent = () => {
           flexDirection="column"
           boxSizing="border-box"
           paddingTop="18.625rem"
-          paddingRight={40}
-          backgroundImage="url(/media/how-it-works-splash.png)"
+          paddingRight={{ base: 16, md: 40 }}
+          paddingLeft={{ base: 16, md: 0 }}
+          backgroundImage={`url(/media/how-it-works-splash${
+            breakpoint > 1 ? "" : "-mobile"
+          }.png)`}
           backgroundSize="cover"
           height="max(min(calc(100vw * 0.5875), 843px), 600px)"
         >
           <Box flexGrow={1} />
-          <Stack alignSelf="end" color="white" spacing={8}>
-            <Heading fontSize="6xl">How It Works</Heading>
-            <ExclusiveUpdatesInput />
+          <Stack
+            alignSelf={{ base: "center", md: "end" }}
+            color="white"
+            spacing={5}
+            maxWidth={{ sm: "40rem", md: "26rem" }}
+          >
+            <Heading fontSize={{ base: "3.476rem", md: "2.8125rem" }}>
+              How It Works
+            </Heading>
+            <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
+              The PetCode system offers a seamless connection between software
+              and a physical QR code tag, allowing you to easily and
+              effieciently manage your pet.
+            </Text>
+            <ExclusiveUpdatesInput
+              maxWidth={{ base: "auto", sm: "24.75rem" }}
+            />
           </Stack>
           <Box flexGrow={7} />
         </Flex>
