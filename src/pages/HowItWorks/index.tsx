@@ -424,7 +424,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
           <Stack
             direction={breakpoint > 2 ? "row" : "column"}
             alignItems={{ base: "center", lg: "stretch" }}
-            paddingRight={{ lg: 40 }}
+            paddingRight={{ lg: 24, xl: 40 }}
             paddingTop={24}
             paddingBottom={16}
             justifyContent="center"
@@ -441,7 +441,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               animate={bounce}
               // @ts-ignore
               transition={transition}
-              width={{ base: "29.269rem", md: "56.8125rem" }}
+              width={{ base: "29.269rem", md: "56.8125rem", lg: "auto" }}
             >
               <MotionImage
                 top={{ base: "-15%", md: "-8.5%" }}
