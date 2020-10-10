@@ -143,8 +143,7 @@ const LandingPage: React.FC = () => {
             maxWidth="90rem"
             boxSizing="border-box"
             paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingLeft={{ base: 0 }}
-            paddingRight={{ base: 0, md: 12 }}
+            paddingRight={{ md: 12 }}
             flexGrow={1}
           >
             <MotionFlex
@@ -434,8 +433,6 @@ const LandingPage: React.FC = () => {
               ) : (
                 <BaseButton
                   {...ActionButtonStyle}
-                  height="3.25rem"
-                  fontSize="xl"
                   textTransform="none"
                   color="white"
                   alignSelf="center"
@@ -490,7 +487,7 @@ const LandingPage: React.FC = () => {
               color="white"
               paddingTop={{ base: 16, md: 24, lg: 16 }}
               paddingBottom={{ base: 16, lg: 0 }}
-              paddingLeft={{ base: 0, lg: 40 }}
+              paddingLeft={{ lg: 40 }}
               maxWidth="90rem"
               flexGrow={1}
               spacing={16}
@@ -608,7 +605,7 @@ const LandingPage: React.FC = () => {
             ref={(ref) => (discoverySectionRef.current = ref)}
             direction={{ base: "column", lg: "row" }}
             alignItems={{ base: "center", md: "start", lg: "stretch" }}
-            paddingRight={{ base: 0, lg: 24 }}
+            paddingRight={{ lg: 24 }}
             paddingTop={20}
             paddingBottom={8}
             maxWidth="90rem"

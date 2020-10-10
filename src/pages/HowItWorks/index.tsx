@@ -11,7 +11,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
-import { useBreakpoint } from "@chakra-ui/media-query";
+import { useBreakpoint, Hide } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
@@ -155,9 +155,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
         </Box>
         <Stack spacing={12} paddingY={12} alignItems="center">
           <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4}>
-            Get Started
+            Getting Started
           </Heading>
-          <Stack isInline spacing={12}>
+          <Stack isInline={breakpoint > 1} spacing={12}>
             <HowItWorksStep
               image="/media/order-petcode-tag-step.svg"
               stepNumber={1}
@@ -186,7 +186,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
           <Box position="relative" paddingBottom={`${(126 / 1440) * 100}%`}>
             <svg
               style={{ position: "absolute", bottom: 0 }}
-              viewBox="0 0 1440 76"
+              viewBox="0 0 1440 75"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -216,21 +216,27 @@ const HowItWorksPage: React.FunctionComponent = () => {
             backgroundColor="petcode.blue.400"
           >
             <Flex
-              direction="row"
+              direction={{ base: "column-reverse", lg: "row" }}
               color="white"
-              paddingLeft={40}
+              paddingLeft={{ lg: 8, xl: 40 }}
+              alignItems={{ base: "center", lg: "stretch" }}
               paddingBottom={12}
               maxWidth="90rem"
               flexGrow={1}
             >
               <Stack
-                paddingTop={20}
+                paddingTop={{ base: 8, lg: 20 }}
+                paddingX={{ base: 16, lg: 0 }}
                 maxW="40.4375rem"
                 spacing={3}
-                marginRight={8}
+                marginRight={{ lg: 8 }}
               >
                 <Heading fontSize="6xl">The QR Tag</Heading>
-                <Text fontSize="xl" fontWeight="thin" paddingBottom={4}>
+                <Text
+                  fontSize={{ base: "2xl", lg: "xl" }}
+                  fontWeight="thin"
+                  paddingBottom={4}
+                >
                   Got a new phone? Moved recently? PetCode’s durable QR tags
                   allow you to easily update your pet’s contact info with the
                   tap of finger—you’ll never need to buy another pet tag again.
@@ -240,15 +246,20 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 </Text>
                 <BaseButton
                   {...ActionButtonStyle}
-                  paddingX={10}
-                  alignSelf="start"
+                  paddingX={{ base: 16, lg: 8 }}
+                  alignSelf={{ base: "center", lg: "start" }}
                   variantColor="white"
                   color="petcode.blue.400"
                 >
                   Get Started
                 </BaseButton>
               </Stack>
-              <Box position="relative" height="23.4375rem">
+              <Box
+                position="relative"
+                height={{ base: "20.4375rem", lg: "23.4375rem" }}
+                width="27.1875rem"
+                paddingTop={{ base: 12, lg: 0 }}
+              >
                 <Image
                   src="/media/tag-front.png"
                   alt="Tag front"
@@ -266,113 +277,117 @@ const HowItWorksPage: React.FunctionComponent = () => {
                     alt="Tag back"
                     size="15.625rem"
                   />
-                  <Flex
-                    direction="row"
-                    position="absolute"
-                    right="10.3125rem"
-                    top="10.78125rem"
-                    width="25.2395625rem"
-                  >
-                    <Box flexGrow={1} />
-                    <MotionBox
-                      alignSelf="end"
-                      initial="hidden"
-                      variants={{
-                        hidden: { opacity: 0 },
-                        visible: { opacity: 1 },
-                      }}
-                      // @ts-ignore
-                      transition={{ duration: 2 }}
+                  <Hide below="lg">
+                    <Flex
+                      direction="row"
+                      position="absolute"
+                      right="10.3125rem"
+                      top="10.78125rem"
+                      width="25.2395625rem"
                     >
-                      <Text
-                        marginRight={2}
-                        transform="translateY(33%)"
-                        color="petcode.neutral.300"
-                        fontSize="md"
-                      >
-                        QR code syncs with pet profile
-                      </Text>
-                    </MotionBox>
-                    <svg
-                      width="10.6875rem"
-                      height="4.5625rem"
-                      viewBox="0 0 171 73"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="159"
-                        cy="12"
-                        r="10.5"
-                        stroke={theme.colors.petcode.neutral[400]}
-                        stroke-width="3"
-                      />
-                      <motion.path
-                        d="M153 20L105 71H0"
-                        stroke={theme.colors.petcode.neutral[400]}
-                        strokeWidth="3"
+                      <Box flexGrow={1} />
+                      <MotionBox
+                        alignSelf="end"
                         initial="hidden"
                         variants={{
-                          hidden: { pathLength: 0 },
-                          visible: { pathLength: 1 },
+                          hidden: { opacity: 0 },
+                          visible: { opacity: 1 },
                         }}
+                        // @ts-ignore
                         transition={{ duration: 2 }}
-                      />
-                    </svg>
-                  </Flex>
-                  <Flex
-                    direction="row"
-                    position="absolute"
-                    left="5rem"
-                    bottom="14.6875rem"
-                    width="17.403125rem"
-                  >
-                    <svg
-                      width="6.125rem"
-                      height="5.75rem"
-                      viewBox="0 0 98 92"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <Text
+                          marginRight={2}
+                          transform="translateY(33%)"
+                          color="petcode.neutral.300"
+                          fontSize="md"
+                        >
+                          QR code syncs with pet profile
+                        </Text>
+                      </MotionBox>
+                      <svg
+                        width="10.6875rem"
+                        height="4.5625rem"
+                        viewBox="0 0 171 73"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="159"
+                          cy="12"
+                          r="10.5"
+                          stroke={theme.colors.petcode.neutral[400]}
+                          stroke-width="3"
+                        />
+                        <motion.path
+                          d="M153 20L105 71H0"
+                          stroke={theme.colors.petcode.neutral[400]}
+                          strokeWidth="3"
+                          initial="hidden"
+                          variants={{
+                            hidden: { pathLength: 0 },
+                            visible: { pathLength: 1 },
+                          }}
+                          transition={{ duration: 2 }}
+                        />
+                      </svg>
+                    </Flex>
+                  </Hide>
+                  <Hide below="xl">
+                    <Flex
+                      direction="row"
+                      position="absolute"
+                      left="5rem"
+                      bottom="14.6875rem"
+                      width="17.403125rem"
                     >
-                      <circle
-                        cx="12"
-                        cy="80"
-                        r="10.5"
-                        stroke={theme.colors.petcode.neutral[400]}
-                        stroke-width="3"
-                      />
-                      <motion.path
-                        d="M18.0001 72L69.0001 2.00001L97.5 2"
-                        stroke={theme.colors.petcode.neutral[400]}
-                        strokeWidth="3"
+                      <svg
+                        width="6.125rem"
+                        height="5.75rem"
+                        viewBox="0 0 98 92"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <circle
+                          cx="12"
+                          cy="80"
+                          r="10.5"
+                          stroke={theme.colors.petcode.neutral[400]}
+                          stroke-width="3"
+                        />
+                        <motion.path
+                          d="M18.0001 72L69.0001 2.00001L97.5 2"
+                          stroke={theme.colors.petcode.neutral[400]}
+                          strokeWidth="3"
+                          initial="hidden"
+                          variants={{
+                            hidden: { pathLength: 0 },
+                            visible: { pathLength: 1 },
+                          }}
+                          transition={{ duration: 2 }}
+                        />
+                      </svg>
+                      <MotionBox
+                        alignSelf="start"
                         initial="hidden"
                         variants={{
-                          hidden: { pathLength: 0 },
-                          visible: { pathLength: 1 },
+                          hidden: { opacity: 0 },
+                          visible: { opacity: 1 },
                         }}
+                        // @ts-ignore
                         transition={{ duration: 2 }}
-                      />
-                    </svg>
-                    <MotionBox
-                      alignSelf="start"
-                      initial="hidden"
-                      variants={{
-                        hidden: { opacity: 0 },
-                        visible: { opacity: 1 },
-                      }}
-                      // @ts-ignore
-                      transition={{ duration: 2 }}
-                    >
-                      <Text
-                        marginLeft={2}
-                        transform="translateY(-50%)"
-                        color="petcode.neutral.300"
-                        fontSize="md"
                       >
-                        Made of durable epoxy
-                      </Text>
-                    </MotionBox>
-                  </Flex>
+                        <Text
+                          marginLeft={2}
+                          transform="translateY(-50%)"
+                          color="petcode.neutral.300"
+                          fontSize="md"
+                        >
+                          Made of durable epoxy
+                        </Text>
+                      </MotionBox>
+                    </Flex>
+                  </Hide>
                 </MotionBox>
               </Box>
             </Flex>
@@ -406,13 +421,15 @@ const HowItWorksPage: React.FunctionComponent = () => {
           </Box>
         </Flex>
         <Flex direction="row" justifyContent="center">
-          <Flex
-            direction="row"
-            paddingRight={40}
+          <Stack
+            direction={breakpoint > 2 ? "row" : "column"}
+            alignItems={{ base: "center", lg: "stretch" }}
+            paddingRight={{ lg: 40 }}
             paddingTop={24}
             paddingBottom={16}
             justifyContent="center"
             maxWidth="90rem"
+            spacing={16}
             flexGrow={1}
           >
             <MotionFlex
@@ -421,21 +438,21 @@ const HowItWorksPage: React.FunctionComponent = () => {
               alignItems="end"
               justifyContent="end"
               overflowY="visible"
-              marginRight={16}
               animate={bounce}
               // @ts-ignore
               transition={transition}
+              width={{ base: "29.269rem", md: "56.8125rem" }}
             >
               <MotionImage
-                top="-8.5%"
-                right="6.5rem"
+                top={{ base: "-15%", md: "-8.5%" }}
+                right={{ base: "2.5rem", md: "6.5rem" }}
                 position="absolute"
-                height="33.3125rem"
+                width={{ base: "26.769rem", md: "50.3125rem" }}
                 src="/media/reminders-web-screen.svg"
                 alt="Scan locations web screen"
               />
               <IPhoneX
-                height="30rem"
+                height={breakpoint > 1 ? "30rem" : "16.553rem"}
                 screenProps={{
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
                 }}
@@ -448,42 +465,56 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 />
               </IPhoneX>
             </MotionFlex>
-            <Stack maxW="29.125rem" spacing={4} color="petcode.neutral.700">
+            <Stack
+              maxWidth={{ sm: "45rem", lg: "29.125rem" }}
+              paddingX={{ base: 16, md: 0 }}
+              spacing={4}
+              color="petcode.neutral.700"
+            >
               <Heading fontSize="6xl">The Pet Portal</Heading>
-              <Text fontSize="2xl" color="petcode.yellow.400">
+              <Text
+                fontSize={{ base: "4xl", sm: "3xl", md: "2xl" }}
+                color="petcode.yellow.400"
+              >
                 A place your pet’s data can call home
               </Text>
-              <Text fontSize="xl" fontWeight="thin">
+              <Text fontSize={{ base: "2xl", lg: "xl" }} fontWeight="thin">
                 All your pet’s info—from contact and medical info to name, age,
                 and breed—in one place. Your PetPortal syncs with the PetCode QR
                 tag and is easily accessible through our app, giving you access
                 to the full suite of features whenever, wherever. Get started
                 with PetCode today to unlock all the features we have to offer!
               </Text>
-              <Stack spacing={3} marginLeft={6} paddingBottom={8}>
+              <Stack spacing={3} marginLeft={{ lg: 6 }} paddingBottom={8}>
                 <FeaturePoint>Keeps your pet safe</FeaturePoint>
                 <FeaturePoint>Tracks medical records</FeaturePoint>
                 <FeaturePoint>
                   Provides fun oppertunities and events
                 </FeaturePoint>
               </Stack>
-              <Flex direction="row" justifyContent="space-between">
-                <Icon
-                  color="petcode.neutral.400"
-                  name="arrow-thin"
-                  size="40px"
-                  alignSelf="start"
-                />
+              <Flex
+                direction="row"
+                justifyContent="space-between"
+                alignSelf={{ base: "center", md: "stretch" }}
+              >
+                <Hide below="md">
+                  <Icon
+                    color="petcode.neutral.400"
+                    name="arrow-thin"
+                    size="40px"
+                    alignSelf="start"
+                  />
+                </Hide>
                 <BaseButton
                   {...ActionButtonStyle}
-                  paddingX={10}
+                  paddingX={{ base: 16, lg: 8 }}
                   variantColor="petcode.blue"
                 >
                   Get Started
                 </BaseButton>
               </Flex>
             </Stack>
-          </Flex>
+          </Stack>
         </Flex>
       </Layout>
     </ThemeProvider>

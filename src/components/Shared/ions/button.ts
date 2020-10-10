@@ -1,9 +1,11 @@
 import { BaseButtonProps } from "../atoms/button";
 
+// @ts-ignore
 export const ActionButtonStyle = {
   size: "md",
-  height: "2.25rem",
-  paddingX: 8,
+  height: { base: "3.25rem", lg: "2.25rem" },
+  fontSize: { base: "xl", lg: "lg" },
+  paddingX: { base: 10, lg: 8 },
   fontFamily: "body",
   textTransform: "uppercase",
   letterSpacing: "0.07em",
