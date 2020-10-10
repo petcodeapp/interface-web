@@ -85,7 +85,12 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
           maxWidth="90rem"
           flexGrow={1}
         >
-          <Flex direction="column" flexGrow={1} justifyContent="space-between">
+          <Flex
+            direction="column"
+            flexGrow={1}
+            marginRight={4}
+            justifyContent="space-between"
+          >
             <Image
               src="/media/petcode-logo-with-qr-code.png"
               alt="Petcode logo with QR code"
@@ -94,7 +99,12 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
             />
             <Text>© 2020 PetCode</Text>
           </Flex>
-          <Stack direction={breakpoint > 1 ? "row" : "column"} flexGrow={3} justifyContent="space-between" spacing={{ base: 4, md: 0 }}>
+          <Stack
+            direction={breakpoint > 1 ? "row" : "column"}
+            flexGrow={3}
+            justifyContent="space-between"
+            spacing={{ base: 4, md: 0 }}
+          >
             <Stack spacing={{ base: 4, md: 2 }}>
               <Link to="/">Home</Link>
               <Link to="/howitoworks">How It Works</Link>
@@ -136,7 +146,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
                 // @ts-ignore
                 icon="pinterest"
               />
-            </Stack> 
+            </Stack>
           </Stack>
         </Flex>
       </Flex>

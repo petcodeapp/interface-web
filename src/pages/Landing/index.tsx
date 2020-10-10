@@ -211,7 +211,9 @@ const LandingPage: React.FC = () => {
                 situation, PetCode can help you and your pet live happier, worry
                 free lives.
               </Text>
-              <ExclusiveUpdatesInput maxWidth={{ base: "auto", md: "24.75rem" }} />
+              <ExclusiveUpdatesInput
+                maxWidth={{ base: "auto", md: "24.75rem" }}
+              />
             </Stack>
           </Flex>
         </Flex>
@@ -493,7 +495,10 @@ const LandingPage: React.FC = () => {
               flexGrow={1}
               spacing={16}
             >
-              <Stack paddingX={{ base: 16, md: 40, lg: 0 }} maxWidth={{ sm: "45rem", lg: "35.875rem" }}>
+              <Stack
+                paddingX={{ base: 16, md: 40, lg: 0 }}
+                maxWidth={{ sm: "45rem", lg: "35.875rem" }}
+              >
                 <Heading fontSize="5xl" paddingBottom={4}>
                   Health
                 </Heading>
@@ -707,7 +712,7 @@ const LandingPage: React.FC = () => {
           >
             <Stack
               direction={breakpoint > 1 ? "row" : "column"}
-              paddingTop={2}
+              paddingTop={{ base: 4, md: 2 }}
               paddingBottom={`calc(${(87 / 1440) * 100}% + 5.3125rem)`}
               paddingX={{ base: 20, md: 32, lg: 40 }}
               justifyContent="space-between"
@@ -716,7 +721,12 @@ const LandingPage: React.FC = () => {
               spacing={8}
             >
               <Stack spacing={4} color="petcode.neutral.700">
-                <Text fontSize={{ base: "4xl", md: "3xl" }} fontWeight={{ base: "bold", md: "normal" }}>Sign up for updates and more!</Text>
+                <Text
+                  fontSize={{ base: "4xl", md: "3xl" }}
+                  fontWeight={{ base: "bold", md: "normal" }}
+                >
+                  Sign up for updates and more!
+                </Text>
                 <Stack spacing={3} marginLeft={{ md: 6 }}>
                   <FeaturePoint
                     checkBoxProps={{ backgroundColor: "petcode.blue.400" }}
@@ -735,7 +745,11 @@ const LandingPage: React.FC = () => {
                   </FeaturePoint>
                 </Stack>
               </Stack>
-              <ExclusiveUpdatesInput alignSelf={{ md: "center" }} width={{ base: "100%", md: "24.75rem" }} maxWidth="auto" />
+              <ExclusiveUpdatesInput
+                alignSelf={{ md: "center" }}
+                width={{ base: "100%", md: "24.75rem" }}
+                maxWidth="auto"
+              />
             </Stack>
           </Flex>
         </Flex>

@@ -11,6 +11,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
+import { useBreakpoint } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
@@ -32,6 +33,7 @@ import "html5-device-mockups/dist/device-mockups.min.css";
 
 const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
+  const breakpoint = parseInt(useBreakpoint() as string);
   const [ref, inView] = useInView();
   const controls = useAnimation();
 
@@ -74,19 +76,17 @@ const HowItWorksPage: React.FunctionComponent = () => {
             zIndex: 1,
             right: 0,
             top: 0,
-            height: "14.375rem",
           }}
-          viewBox="0 0 873 230"
-          fill="none"
+          height={breakpoint > 1 ? "14.375rem" : "6rem"}
+          viewBox={breakpoint > 1 ? "0 0 873 230" : "0 0 228 60"}
+          fill={theme.colors.petcode.blue[400]}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse
-            cx="578"
-            cy="-160.5"
-            rx="578"
-            ry="390.5"
-            fill={theme.colors.petcode.blue[400]}
-          />
+          {breakpoint > 1 ? (
+            <ellipse cx="578" cy="-160.5" rx="578" ry="390.5" />
+          ) : (
+            <ellipse cx="151.378" cy="-42.239" rx="150.622" ry="101.761" />
+          )}
         </svg>
         <svg
           style={{
@@ -94,20 +94,18 @@ const HowItWorksPage: React.FunctionComponent = () => {
             zIndex: 1,
             right: 0,
             top: 0,
-            height: "18.625rem",
           }}
-          viewBox="0 0 984 298"
-          fill="none"
+          height={breakpoint > 1 ? "18.625rem" : "7.8rem"}
+          viewBox={breakpoint > 1 ? "0 0 984 298" : "0 0 257 78"}
+          fill={theme.colors.petcode.blue[400]}
+          opacity="0.4"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse
-            opacity="0.4"
-            cx="598"
-            cy="-116.5"
-            rx="578"
-            ry="390.5"
-            fill={theme.colors.petcode.blue[400]}
-          />
+          {breakpoint > 1 ? (
+            <ellipse cx="598" cy="-116.5" rx="578" ry="390.5" />
+          ) : (
+            <ellipse cx="156.664" cy="-30.7729" rx="150.622" ry="101.761" />
+          )}
         </svg>
         <Flex
           flexDirection="column"
