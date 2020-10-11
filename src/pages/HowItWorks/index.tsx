@@ -246,7 +246,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 </Text>
                 <BaseButton
                   {...ActionButtonStyle}
+                  height={{ base: "3.25rem", lg: "2.25rem" }}
                   paddingX={{ base: 16, lg: 8 }}
+                  fontSize={{ base: "xl", lg: "lg" }}
                   alignSelf={{ base: "center", lg: "start" }}
                   variantColor="white"
                   color="petcode.blue.400"
@@ -507,6 +509,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 </Hide>
                 <BaseButton
                   {...ActionButtonStyle}
+                  height={{ base: "3.25rem", lg: "2.25rem" }}
+                  fontSize={{ base: "xl", lg: "lg" }}
                   paddingX={{ base: 16, lg: 8 }}
                   variantColor="petcode.blue"
                 >
