@@ -433,6 +433,8 @@ const LandingPage: React.FC = () => {
               ) : (
                 <BaseButton
                   {...ActionButtonStyle}
+                  height={{ base: "3.25rem", lg: "2.25rem" }}
+                  fontSize={{ base: "xl", lg: "lg" }}
                   textTransform="none"
                   color="white"
                   alignSelf="center"
