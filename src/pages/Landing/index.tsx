@@ -452,7 +452,7 @@ const LandingPage: React.FC = () => {
         <Flex direction="column" overflow="hidden">
           <Box
             position="relative"
-            paddingBottom={`${((197 * 1.1) / 1440) * 100}%`}
+            paddingBottom={`${((197 * 1.2) / 1440) * 100}%`}
           >
             <svg
               style={{ position: "absolute", bottom: 0 }}
