@@ -15,6 +15,7 @@ import { useBreakpoint, Hide } from "@chakra-ui/media-query";
 import { AnimatePresence, motion, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
+import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import MotionImage from "../../components/Motion/Image";
@@ -440,7 +441,9 @@ const LandingPage: React.FC = () => {
                   alignSelf="center"
                   background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
                 >
-                  Get Started
+                  <Link to="/getstarted">
+                    Get Started
+                  </Link>
                 </BaseButton>
               )}
             </Stack>

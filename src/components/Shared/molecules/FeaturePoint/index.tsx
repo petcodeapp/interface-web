@@ -24,7 +24,7 @@ const FeaturePoint: React.FC<FeaturePointProps> = ({
   >
     <BaseCheckbox
       isChecked
-      size={22.5}
+      size="1.40625rem"
       color="white"
       isDisabled
       {...checkBoxProps}

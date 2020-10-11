@@ -31,7 +31,6 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
       <Stack isInline alignItems="center" marginBottom={2} spacing={3}>
         <BaseCheckbox
           isChecked
-          size={26}
           color={theme.colors.petcode.blue[400]}
           isDisabled
           _hover={{}}

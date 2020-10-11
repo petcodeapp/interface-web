@@ -15,6 +15,7 @@ import { useBreakpoint, Hide } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
+import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
 import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
@@ -253,7 +254,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   variantColor="white"
                   color="petcode.blue.400"
                 >
-                  Get Started
+                  <Link to="/getstarted">
+                    Get Started
+                  </Link>
                 </BaseButton>
               </Stack>
               <Box
@@ -514,7 +517,9 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   paddingX={{ base: 16, lg: 8 }}
                   variantColor="petcode.blue"
                 >
-                  Get Started
+                  <Link to="/getstarted">
+                    Get Started
+                  </Link>
                 </BaseButton>
               </Flex>
             </Stack>

@@ -5,7 +5,6 @@ import { Icon, PseudoBox, PseudoBoxProps } from "@chakra-ui/core";
 export type BaseCheckboxProps = {
   isChecked?: boolean;
   isDisabled?: boolean;
-  size?: number;
 } & PseudoBoxProps;
 
 const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
@@ -25,7 +24,7 @@ const BaseCheckbox: React.FC<BaseCheckboxProps> = ({
     size={size}
     minWidth={size}
     cursor={isDisabled ? "default" : "pointer"}
-    padding="6px"
+    padding="0.375rem"
     boxSizing="border-box"
     {...props}
   >
