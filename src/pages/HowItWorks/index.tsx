@@ -254,9 +254,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   variantColor="white"
                   color="petcode.blue.400"
                 >
-                  <Link to="/getstarted">
-                    Get Started
-                  </Link>
+                  <Link to="/getstarted">Get Started</Link>
                 </BaseButton>
               </Stack>
               <Box
@@ -517,9 +515,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   paddingX={{ base: 16, lg: 8 }}
                   variantColor="petcode.blue"
                 >
-                  <Link to="/getstarted">
-                    Get Started
-                  </Link>
+                  <Link to="/getstarted">Get Started</Link>
                 </BaseButton>
               </Flex>
             </Stack>

@@ -147,7 +147,11 @@ const Header: React.FC<HeaderProps> = (props) => {
         )}
         <Show below="sm">
           <Box flexGrow={1} />
-          <SocialMediaButtons alignSelf="center" buttonsAreFilled buttonSize="lg" />
+          <SocialMediaButtons
+            alignSelf="center"
+            buttonsAreFilled
+            buttonSize="lg"
+          />
         </Show>
       </Stack>
       <Show below="sm">

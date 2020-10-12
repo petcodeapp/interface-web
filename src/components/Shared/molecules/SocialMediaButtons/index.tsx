@@ -1,6 +1,11 @@
 import React from "react";
 
-import { IconButton, IconButtonProps, Stack, StackProps } from "@chakra-ui/core";
+import {
+  IconButton,
+  IconButtonProps,
+  Stack,
+  StackProps,
+} from "@chakra-ui/core";
 import Link from "../../atoms/ExternalLink";
 
 export type SocialMediaButtonsProps = {
@@ -8,7 +13,11 @@ export type SocialMediaButtonsProps = {
   buttonSize?: "xs" | "sm" | "md" | "lg";
 } & StackProps;
 
-const SocialMediaButtons: React.FC<SocialMediaButtonsProps> = ({ buttonsAreFilled = false, buttonSize = "md", ...props }) => {
+const SocialMediaButtons: React.FC<SocialMediaButtonsProps> = ({
+  buttonsAreFilled = false,
+  buttonSize = "md",
+  ...props
+}) => {
   const SocialMediaButtonStyle = {
     size: buttonSize,
     isRound: true,
@@ -60,6 +69,6 @@ const SocialMediaButtons: React.FC<SocialMediaButtonsProps> = ({ buttonsAreFille
       </Link>
     </Stack>
   );
-}
+};
 
 export default SocialMediaButtons;

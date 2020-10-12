@@ -17,7 +17,11 @@ const ComingSoonPage = () => (
         </Text>
       </Stack>
       <Box flexGrow={1} />
-      <Image src="/media/coming-soon-dog.png" maxWidth="100vw" marginBottom={`${(33 / 1440) * 100}%`}/>
+      <Image
+        src="/media/coming-soon-dog.png"
+        maxWidth="100vw"
+        marginBottom={`${(33 / 1440) * 100}%`}
+      />
     </Flex>
   </SupportPageLayout>
 );
