@@ -14,7 +14,7 @@ import {
   Text,
   useTheme,
 } from "@chakra-ui/core";
-import { useBreakpoint } from "@chakra-ui/media-query";
+import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
 
 import InfoField, {
   InfoFieldText,
@@ -245,7 +245,7 @@ const PetProfilePage = () => {
             <Text color="petcode.neutral.600">
               Weimaraner &middot; 2 years old
             </Text>
-            {breakpoint > 0 && (
+            <Show below="md">
               <Stack isInline>
                 <ActionButton>
                   <Text
@@ -266,9 +266,9 @@ const PetProfilePage = () => {
                   </Text>
                 </ActionButton>
               </Stack>
-            )}
+            </Show>
           </Stack>
-          {breakpoint > 0 && (
+          <Hide below="sm">
             <Box position="relative">
               <svg
                 style={{ position: "absolute", left: 0 }}
@@ -298,7 +298,7 @@ const PetProfilePage = () => {
                 />
               </svg>
             </Box>
-          )}
+          </Hide>
           <Box
             backgroundSize="cover"
             backgroundPosition="center"
@@ -318,7 +318,7 @@ const PetProfilePage = () => {
           />
         </Card>
         <PrimaryHeader>Contact Information</PrimaryHeader>
-        {breakpoint > 1 ? (
+        <Hide below="md">
           <Card>
             <Stack
               width="100%"
@@ -346,13 +346,14 @@ const PetProfilePage = () => {
                 )}
             </Stack>
           </Card>
-        ) : (
-          contactInfos.map((contactInfo, idx) => (
+        </Hide>
+        <Show below="md">
+          {contactInfos.map((contactInfo, idx) => (
             <Card key={idx}>
               <ContactInfoStack key={idx} contactInfo={contactInfo} />
             </Card>
-          ))
-        )}
+          ))}
+        </Show>
         <Card>
           <Stack spacing={3}>
             <SecondaryHeader>Veterinarian Contact Information</SecondaryHeader>
