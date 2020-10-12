@@ -166,10 +166,6 @@ const Routes = () => {
       <PublicRoute path="/about"></PublicRoute>
       */}
 
-      <Route path="/profile/*">
-        <PetProfilePage />
-      </Route>
-
       <PublicRoute exact path="/">
         <PageAnim>
           <LandingPage />
