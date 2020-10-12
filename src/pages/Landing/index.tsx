@@ -37,8 +37,8 @@ const LandingPage: React.FC = () => {
   const healthSectionRef = useRef<HTMLDivElement>();
   const discoverySectionRef = useRef<HTMLDivElement>();
 
-  const bounce = { y: [-5, 5] };
-  const wave = { scaleY: [1, 1.1] };
+  const waveBounce = { y: [-3, 3] };
+  const displayBounce = { y: [-5, 5] };
 
   const transition: Transition = {
     repeat: Infinity,
@@ -156,7 +156,7 @@ const LandingPage: React.FC = () => {
               flexGrow={{ md: 1 }}
               justifyContent="end"
               alignItems="end"
-              animate={bounce}
+              animate={displayBounce}
               // @ts-ignore
               transition={transition}
             >
@@ -235,7 +235,7 @@ const LandingPage: React.FC = () => {
               viewBox="0 0 1440 126"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={wave}
+              animate={waveBounce}
               transition={transition}
             >
               <path
@@ -369,7 +369,7 @@ const LandingPage: React.FC = () => {
               viewBox="0 0 1440 116"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={wave}
+              animate={waveBounce}
               transition={transition}
             >
               <path
@@ -470,7 +470,7 @@ const LandingPage: React.FC = () => {
               viewBox="0 0 1440 197"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={wave}
+              animate={waveBounce}
               transition={transition}
             >
               <path
@@ -526,7 +526,7 @@ const LandingPage: React.FC = () => {
               <MotionBox
                 position="relative"
                 flexGrow={{ lg: 1 }}
-                animate={bounce}
+                animate={displayBounce}
                 // @ts-ignore
                 transition={transition}
                 alignSelf={{ md: "center", lg: "auto" }}
@@ -594,7 +594,7 @@ const LandingPage: React.FC = () => {
               viewBox="0 0 1440 128"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={wave}
+              animate={waveBounce}
               transition={transition}
             >
               <path
@@ -620,7 +620,7 @@ const LandingPage: React.FC = () => {
               position="relative"
               justifyContent="end"
               flexGrow={{ lg: 1 }}
-              animate={bounce}
+              animate={displayBounce}
               // @ts-ignore
               transition={transition}
               alignSelf={{ md: "center", lg: "auto" }}

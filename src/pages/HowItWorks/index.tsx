@@ -44,8 +44,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
     }
   }, [inView]);
 
-  const bounce = { y: [-5, 5] };
-  const wave = { scaleY: [1, 1.1] };
+  const waveBounce = { y: [-3, 3] };
+  const displayBounce = { y: [-5, 5] };
 
   const transition: Transition = {
     repeat: Infinity,
@@ -201,7 +201,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               viewBox="0 0 1440 126"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={wave}
+              animate={waveBounce}
               transition={transition}
             >
               <path
@@ -414,7 +414,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               viewBox="0 0 1440 125"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              animate={wave}
+              animate={waveBounce}
               transition={transition}
             >
               <path
@@ -443,7 +443,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               alignItems="end"
               justifyContent="end"
               overflowY="visible"
-              animate={bounce}
+              animate={displayBounce}
               // @ts-ignore
               transition={transition}
               width={{ base: "29.269rem", md: "56.8125rem", lg: "auto" }}
