@@ -5,12 +5,11 @@ import { Formik, Field } from "formik";
 
 import AddressInputs from "./AddressInputs";
 import { ShippingInformation } from "./ShippingInformationStep";
-import BaseCheckbox from "../../../components/Shared/input/BaseCheckbox";
-import BaseButton from "../../../components/Shared/button/BaseButton";
-import RoundedInput from "../../../components/Shared/input/RoundedInput";
-import UnifiedErrorMessage from "../../../components/Shared/formik/UnifiedErrorMessage";
+import BaseButton from "../../../components/Shared/atoms/button";
+import BaseCheckbox from "../../../components/Shared/atoms/checkbox";
+import RoundedInput from "../../../components/Shared/atoms/RoundedInput";
+import UnifiedErrorMessage from "../../../components/Shared/molecules/UnifiedErrorMessage";
 
-import { action } from "mobx";
 import * as Yup from "yup";
 import "yup-phone";
 
@@ -30,6 +29,7 @@ export type BillingInformation = Address & {
 type BillingInformationStepProps = {
   shippingInformation: ShippingInformation;
   billingInformation: BillingInformation;
+  setBillingInformation: (a: BillingInformation) => void;
   onNextStep: () => any;
 };
 
@@ -80,6 +80,7 @@ const BillingInformationSchema = Yup.object()
 const BillingInformationStep: React.FC<BillingInformationStepProps> = ({
   shippingInformation,
   billingInformation,
+  setBillingInformation,
   onNextStep,
 }) => {
   const [useDifferentAddress, setUseDifferentAddress] = useState(false);
@@ -103,10 +104,10 @@ const BillingInformationStep: React.FC<BillingInformationStepProps> = ({
       <Formik
         initialValues={billingInformation}
         validationSchema={BillingInformationSchema}
-        onSubmit={action((values: BillingInformation) => {
-          Object.assign(billingInformation, values);
+        onSubmit={(values: BillingInformation) => {
+          setBillingInformation(values);
           onNextStep();
-        })}
+        }}
       >
         {({ errors, touched, handleSubmit }) => (
           <Stack width="60%" spacing={3}>

@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 
 import {
   Flex,
@@ -17,9 +17,8 @@ import {
   useToast,
 } from "@chakra-ui/core";
 
-import InputWithIcon from "../../components/Shared/input/InputWithIcon";
-import BaseButton from "../../components/Shared/button/BaseButton";
-import { type } from "os";
+import InputWithIcon from "../../components/Shared/molecules/InputWithIcon";
+import BaseButton from "../../components/Shared/atoms/button";
 import { AuthContext } from "../../views/Auth/index";
 import Button from "../../components/Motion/Button";
 

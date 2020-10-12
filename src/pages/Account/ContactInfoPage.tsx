@@ -10,21 +10,20 @@ import {
   useToast,
 } from "@chakra-ui/core";
 
-import ExpandButton from "../../components/Shared/button/ExpandButton";
-import AccountPageLayout from "./components/AccountPageLayout";
-import BaseCheckbox from "../../components/Shared/input/BaseCheckbox";
+import { ExpandButton } from "../../components/Shared/atoms/ExpandButton";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
+import Row from "../../components/Shared/atoms/row";
 import {
-  InfoFieldRow,
   InfoFieldText,
   InfoFieldLabel,
   InfoFieldInput,
-} from "../../components/Shared/family/InfoField";
+} from "../../components/Shared/molecules/InfoField";
+import BaseCheckbox from "../../components/Shared/atoms/checkbox";
 
-import { action, observable } from "mobx";
-import { observer, useObserver } from "mobx-react";
+import { action } from "mobx";
+import { useObserver } from "mobx-react";
 
 import { ContactInfo } from "../../Models/ContactInfo";
-import useEffect from "react";
 import { AuthContext } from "../../views/Auth/index";
 
 type ContactInfoCardProps = {
@@ -44,13 +43,14 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
       rounded="lg"
       backgroundColor="white"
       padding={6}
+      boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
       {...props}
     >
-      <InfoFieldRow fontSize="2xl" marginBottom={3}>
+      <Row fontSize="2xl" marginBottom={3}>
         <Text color="petcode.neutral.700">Contact Information</Text>
         <Text color="petcode.neutral.400">Visibility</Text>
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -74,8 +74,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
               (contactInfo.name.visible = !contactInfo.name.visible)
           )}
         />
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -99,8 +99,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
               (contactInfo.address.visible = !contactInfo.address.visible)
           )}
         />
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -125,8 +125,8 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
                 .visible)
           )}
         />
-      </InfoFieldRow>
-      <InfoFieldRow>
+      </Row>
+      <Row>
         <Box flexBasis="60%">
           {isEditable ? (
             <InfoFieldInput
@@ -150,7 +150,7 @@ const ContactInfoCard: React.FC<ContactInfoCardProps> = ({
               (contactInfo.email.visible = !contactInfo.email.visible)
           )}
         />
-      </InfoFieldRow>
+      </Row>
     </Flex>
   ));
 };
@@ -162,12 +162,7 @@ const ContactInfoSection = () => {
   const toast = useToast();
 
   return useObserver(() => (
-    <Stack
-      flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
-      spacing={5}
-    >
+    <Stack flexGrow={1} paddingX={10} spacing={5} zIndex={1}>
       {service.pets[0]?.contacts.map((value: any, index: number) => {
         console.log(
           JSON.parse(JSON.stringify(service.pets[0]?.contacts[index]))

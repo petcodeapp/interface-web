@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Flex, Select, Stack, StackProps } from "@chakra-ui/core";
 
-import RoundedInput from "../../../components/Shared/input/RoundedInput";
+import RoundedInput from "../../../components/Shared/atoms/RoundedInput";
 
 import { observer } from "mobx-react";
 import { Field } from "formik";

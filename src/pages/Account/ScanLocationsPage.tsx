@@ -18,11 +18,9 @@ import {
 } from "@chakra-ui/core";
 
 import ReactMapGL, { Marker, InteractiveMapProps } from "react-map-gl";
-import { useDimensions, ViewportProvider } from "react-viewport-utils";
 
-import AccountPageLayout from "./components/AccountPageLayout";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 
-import { observable } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
 
@@ -34,6 +32,7 @@ const DEFAULT_MAP_ZOOM = 15;
 
 type LocationScanMapProps = {
   viewport: Partial<InteractiveMapProps>;
+  setViewport: (viewport: any) => void;
   scanLocations: ScanLocation[];
 };
 
@@ -78,26 +77,22 @@ const ScanLocationMarker: React.FC<{ scanLocation: ScanLocation }> = ({
 
 const LocationScanMap: React.FC<LocationScanMapProps> = ({
   viewport,
+  setViewport,
   scanLocations,
 }) => {
-  const [lastWidth, setLastWidth] = useState(0);
-  const dimensions = useDimensions({
-    deferUpdateUntilIdle: true,
-    disableScrollUpdates: true,
-  });
-  if (lastWidth !== dimensions.width) {
-    setTimeout(() => {
-      setLastWidth(dimensions.width);
-    }, 0);
-  }
-
   return useObserver(() => (
     // @ts-ignore
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
-      mapStyle="mapbox://styles/kachang/ckdm8ilq82uko1iqfo9ge0be6"
-      onViewportChange={(newViewport) => Object.assign(viewport, newViewport)}
+      mapStyle="mapbox://styles/mapbox/streets-v11"
+      onViewportChange={(newViewport) =>
+        setViewport({
+          ...viewport,
+          ...newViewport,
+          width: "100%",
+        })
+      }
     >
       {scanLocations.map((scanLocation, idx) => (
         <ScanLocationMarker key={idx} scanLocation={scanLocation} />
@@ -105,12 +100,6 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
     </ReactMapGL>
   ));
 };
-
-const LocationScanMapWithProvider: React.FC<LocationScanMapProps> = (props) => (
-  <ViewportProvider>
-    <LocationScanMap {...props} />
-  </ViewportProvider>
-);
 
 const ScanLocationCard: React.FC<
   PseudoBoxProps & { scanLocation: ScanLocation }
@@ -127,8 +116,9 @@ const ScanLocationCard: React.FC<
     paddingY={4}
     cursor="pointer"
     _hover={{
-      backgroundColor: "petcode.neutral.100",
+      backgroundColor: "petcode.neutral.200",
     }}
+    boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
     {...props}
   >
     <Text color="petcode.blue.400">{scanLocation.nearestAddress}</Text>
@@ -141,44 +131,39 @@ const ScanLocationCard: React.FC<
 );
 
 const ScanLocationsSection = () => {
-  const [scanLocations] = useState(() =>
-    observable([
-      {
-        latitude: 37.3356424,
-        longitude: -122.0505069,
-        nearestAddress: "21370 Homestead Rd, Cupertino, CA 95014",
-        date: "2020-08-09T14:00",
-        deviceInfo: "iPhone / Safari",
-      },
-      {
-        latitude: 37.3400556,
-        longitude: -122.0502666,
-        nearestAddress: "1628 South Mary Avenue, Sunnyvale, CA 94087",
-        date: "2020-08-09T13:00",
-        deviceInfo: "Android / Chrome",
-      },
-    ] as ScanLocation[])
+  const [scanLocations] = useState(
+    () =>
+      [
+        {
+          latitude: 37.3356424,
+          longitude: -122.0505069,
+          nearestAddress: "21370 Homestead Rd, Cupertino, CA 95014",
+          date: "2020-08-09T14:00",
+          deviceInfo: "iPhone / Safari",
+        },
+        {
+          latitude: 37.3400556,
+          longitude: -122.0502666,
+          nearestAddress: "1628 South Mary Avenue, Sunnyvale, CA 94087",
+          date: "2020-08-09T13:00",
+          deviceInfo: "Android / Chrome",
+        },
+      ] as ScanLocation[]
   );
-  const [mapViewport] = useState(() =>
-    observable({
-      width: "100%",
-      height: 400,
-      zoom: DEFAULT_MAP_ZOOM,
-      latitude: scanLocations[0].latitude,
-      longitude: scanLocations[0].longitude,
-    })
-  );
+  const [mapViewport, setMapViewport] = useState({
+    width: "100%",
+    height: 400,
+    zoom: DEFAULT_MAP_ZOOM,
+    latitude: scanLocations[0].latitude,
+    longitude: scanLocations[0].longitude,
+  });
 
   return (
-    <Flex
-      direction="column"
-      flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
-    >
-      <LocationScanMapWithProvider
+    <Flex direction="column" flexGrow={1} paddingX={10} zIndex={1}>
+      <LocationScanMap
         scanLocations={scanLocations}
         viewport={mapViewport}
+        setViewport={setMapViewport}
       />
       <Text color="petcode.neutral.700" fontSize="3xl" marginY={3}>
         Scan Locations
@@ -188,6 +173,7 @@ const ScanLocationsSection = () => {
           <ScanLocationCard
             key={idx}
             scanLocation={scanLocation}
+            marginLeft={3}
             onClick={() => {
               mapViewport.latitude = scanLocation.latitude;
               mapViewport.longitude = scanLocation.longitude;

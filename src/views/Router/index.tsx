@@ -1,8 +1,9 @@
 import React from "react";
 import LandingPage from "../../pages/Landing";
+import HowItWorksPage from "../../pages/HowItWorks";
 import OldLandingpage from "../../pages/OldLanding";
 import LoginPage from "../../pages/Login";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import AdminPage from "../../pages/Admin";
@@ -17,6 +18,11 @@ import ScanLocationsPage from "../../pages/Account/ScanLocationsPage";
 import CheckoutPage from "../../pages/Checkout/CheckoutPage";
 import ShopPage from "../../pages/Shop/ShopPage";
 import SingleProductPage from "../../pages/Shop/SingleProductPage";
+import ContactUsPage from "../../pages/ContactUs";
+import PrivacyPolicyPage from "../../pages/Legal/PrivacyPolicyPage";
+import PetProfilePage from "../../pages/PetProfile";
+import TermsPage from "../../pages/Legal/TermsPage";
+import ComingSoonPage from "../../pages/ComingSoon";
 import { useObserver } from "mobx-react-lite";
 import { motion } from "framer-motion";
 
@@ -55,7 +61,8 @@ const PageAnim: React.FC = (props) => {
 
 const Routes = () => {
   return useObserver(() => (
-    <>
+    <Switch>
+      {/*
       <PublicRoute restricted path="/signup">
         <PageAnim>
           <RegistrationPage />
@@ -128,20 +135,55 @@ const Routes = () => {
         <SingleProductPage />
       </Route>
 
+      <Route path="/profile/*">
+        <PetProfilePage />
+      </Route>
+
       <PublicRoute path="/oldlanding">
         <PageAnim>
           <OldLandingpage />
         </PageAnim>
       </PublicRoute>
 
-      <PublicRoute path="/about">{/* TODO: Create about page */}</PublicRoute>
+      <Route path="/contactus">
+        <PageAnim>
+          <ContactUsPage />
+        </PageAnim>
+      </Route>
+
+      <Route path="/privacypolicy">
+        <PageAnim>
+          <PrivacyPolicyPage />
+        </PageAnim>
+      </Route>
+
+      <Route path="/terms">
+        <PageAnim>
+          <TermsPage />
+        </PageAnim>
+      </Route>
+
+      <PublicRoute path="/about"></PublicRoute>
+      */}
 
       <PublicRoute exact path="/">
         <PageAnim>
           <LandingPage />
         </PageAnim>
       </PublicRoute>
-    </>
+
+      <PublicRoute exact path="/howitworks">
+        <PageAnim>
+          <HowItWorksPage />
+        </PageAnim>
+      </PublicRoute>
+
+      <PublicRoute>
+        <PageAnim>
+          <ComingSoonPage />
+        </PageAnim>
+      </PublicRoute>
+    </Switch>
   ));
 };
 

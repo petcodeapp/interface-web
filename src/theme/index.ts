@@ -2,18 +2,32 @@ import { theme } from "@chakra-ui/core";
 
 import icons from "./icons";
 
+import { ColorHues, DefaultTheme } from "@chakra-ui/core";
+
+const breakpoints = ["0em", "30em", "48em", "62em", "80em"];
+// @ts-ignore
+breakpoints.sm = "30em";
+// @ts-ignore
+breakpoints.md = "48em";
+// @ts-ignore
+breakpoints.lg = "62em";
+// @ts-ignore
+breakpoints.xl = "80em";
+
 export default {
   ...theme,
+  breakpoints,
   fonts: {
     ...theme.fonts,
     heading: '"Lilita One", sans-serif',
-    body: "Nunito, sans-serif",
+    body: '"Open Sans", sans-serif',
   },
   fontSizes: {
     ...theme.fontSizes,
-    "7xl": "84px",
-    "8xl": "108px",
-    "9xl": "136px",
+    "5xl": "3.75rem",
+    "7xl": "5.25rem",
+    "8xl": "6.75rem",
+    "9xl": "8.5rem",
   },
   fontWeights: {
     ...theme.fontWeights,
@@ -63,3 +77,36 @@ export default {
     ...icons,
   },
 };
+
+export interface PetCodeTheme extends DefaultTheme {
+  colors: {
+    transparent: string;
+    current: string;
+    black: string;
+    white: string;
+    whiteAlpha: ColorHues;
+    blackAlpha: ColorHues;
+    gray: ColorHues;
+    red: ColorHues;
+    orange: ColorHues;
+    yellow: ColorHues;
+    green: ColorHues;
+    teal: ColorHues;
+    blue: ColorHues;
+    cyan: ColorHues;
+    purple: ColorHues;
+    pink: ColorHues;
+    linkedin: ColorHues;
+    facebook: ColorHues;
+    messenger: ColorHues;
+    whatsapp: ColorHues;
+    twitter: ColorHues;
+    telegram: ColorHues;
+    petcode: {
+      teal: string;
+      blue: ColorHues;
+      yellow: ColorHues;
+      neutral: ColorHues;
+    };
+  };
+}

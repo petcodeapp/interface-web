@@ -1,69 +1,22 @@
 import React, { useState } from "react";
 
-import {
-  Box,
-  Flex,
-  FlexProps,
-  Input,
-  InputProps,
-  Icon,
-  IconProps,
-  Link,
-  LinkProps,
-  PseudoBoxProps,
-  Select,
-  SelectProps,
-  SimpleGrid,
-  Text,
-  useToast,
-} from "@chakra-ui/core";
-import {
-  Link as RouterLink,
-  LinkProps as RouterLinkProps,
-} from "react-router-dom";
+import { Box, Flex, Icon, SimpleGrid, Text, useToast } from "@chakra-ui/core";
 
-import AccountPageLayout from "./components/AccountPageLayout";
-import ExpandButton from "../../components/Shared/button/ExpandButton";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
+import { ExpandButton } from "../../components/Shared/atoms/ExpandButton";
+import BackgroundIcon from "../../components/Shared/atoms/BackgroundIcon";
+import PetInfoCard, {
+  PetInfoInput,
+  PetInfoSelect,
+} from "../../components/Shared/molecules/PetInfoCard";
+import Link, { LinkProps } from "../../components/Shared/atoms/link";
 
-import { action, observable } from "mobx";
 import { useObserver } from "mobx-react";
 import moment from "moment";
 import { AuthContext } from "../../views/Auth/index";
 
-const PetInfoCard: React.FC<FlexProps> = (props) => (
-  <Flex
-    direction="column"
-    justifyContent="center"
-    rounded="lg"
-    background="white"
-    height="100px"
-    padding={6}
-    marginTop={10}
-    {...props}
-  />
-);
-
-const PetInfoCardText: React.FC<PseudoBoxProps> = (props) => (
-  <Text color="petcode.neutral.700" fontSize="4xl" {...props} />
-);
-
-const PetInfoCardLabel: React.FC<PseudoBoxProps> = (props) => (
-  <Text color="petcode.blue.400" fontSize="lg" marginTop={1} {...props} />
-);
-
-const BackgroundIcon: React.FC<IconProps> = (props) => (
-  <Icon
-    color="petcode.neutral.700"
-    position="absolute"
-    opacity={0.05}
-    {...props}
-  />
-);
-
-const InfoButton: React.FC<LinkProps & RouterLinkProps> = (props) => (
+const InfoButton: React.FC<LinkProps> = (props) => (
   <Link
-    // @ts-ignore
-    as={RouterLink}
     display="flex"
     flexDirection="column"
     justifyContent="center"
@@ -75,36 +28,12 @@ const InfoButton: React.FC<LinkProps & RouterLinkProps> = (props) => (
   />
 );
 
-const PetInfoSelect: React.FC<SelectProps> = (props) => (
-  <Select
-    size="lg"
-    color="petcode.neutral.700"
-    fontFamily="body"
-    fontSize="2xl"
-    width="50%"
-    {...props}
-  />
-);
-
-const PetInfoInput: React.FC<InputProps> = (props) => (
-  <Input
-    size="lg"
-    variant="flushed"
-    color="petcode.neutral.700"
-    fontFamily="body"
-    fontSize="4xl"
-    width="50%"
-    {...props}
-  />
-);
-
 const PetInfoSection = () => {
   const service = React.useContext(AuthContext);
   const pet = service.pets[0];
 
   console.log(pet);
 
-  const [isEditable] = useState(() => observable.box(false));
   const toast = useToast();
 
   const [species, setSpecies] = useState(pet.species);
@@ -114,13 +43,10 @@ const PetInfoSection = () => {
   const [temperament, setTemperament] = useState(pet.temperament);
   const [isServiceAnimal, setServiceAnimal] = useState(pet.isServiceAnimal);
 
+  const [isBeingEdited, setIsBeingEdited] = useState(false);
+
   return useObserver(() => (
-    <Flex
-      direction="column"
-      flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
-    >
+    <Flex direction="column" flexGrow={1} paddingX={10} zIndex={1}>
       <Flex direction="row" alignItems="center" color="petcode.neutral.700">
         <Box
           rounded="full"
@@ -155,109 +81,114 @@ const PetInfoSection = () => {
         </InfoButton>
       </Flex>
       <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>
-        <PetInfoCard>
-          {isEditable.get() ? (
+        <PetInfoCard
+          isBeingEdited={isBeingEdited}
+          inputChild={
             <PetInfoSelect
               value={species}
-              onChange={(e) => {
-                setSpecies(e.target.value);
-              }}
+              onChange={(e) => setSpecies(e.target.value)}
             >
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
             </PetInfoSelect>
-          ) : (
-            <PetInfoCardText>{species}</PetInfoCardText>
-          )}
-          <PetInfoCardLabel>Species</PetInfoCardLabel>
-          <BackgroundIcon alignSelf="end" size="120px" name="dog" />
-        </PetInfoCard>
-        <PetInfoCard>
-          {isEditable.get() ? (
+          }
+          value={species}
+          label="Species"
+          iconProps={{
+            name: "dog",
+          }}
+        />
+        <PetInfoCard
+          isBeingEdited={isBeingEdited}
+          inputChild={
             <PetInfoInput
               value={breed}
-              onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setBreed(e.target.value)
-              )}
+              }
             />
-          ) : (
-            <PetInfoCardText>{breed}</PetInfoCardText>
-          )}
-          <PetInfoCardLabel>Breed</PetInfoCardLabel>
-          <BackgroundIcon
-            alignSelf="end"
-            size="100px"
-            transform="rotate(12.84deg)"
-            name="paw"
-          />
-        </PetInfoCard>
-        <PetInfoCard>
-          {isEditable.get() ? (
+          }
+          value={breed}
+          label="Breed"
+          iconProps={{
+            name: "paw",
+            size: "100px",
+            transform: "rotate(12.84deg)",
+          }}
+        />
+        <PetInfoCard
+          isBeingEdited={isBeingEdited}
+          inputChild={
             <PetInfoInput
               type="date"
               fontSize="3xl"
               value={birthday}
               max={moment().format("YYYY-MM-DD")}
-              onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setBirthday(e.target.value)
-              )}
+              }
             />
-          ) : (
-            <PetInfoCardText>
-              {moment.duration(moment().diff(moment(birthday))).humanize()} old
-            </PetInfoCardText>
-          )}
-          <PetInfoCardLabel>Age</PetInfoCardLabel>
-          <BackgroundIcon alignSelf="end" size="120px" name="clock" />
-        </PetInfoCard>
-        <PetInfoCard>
-          {isEditable.get() ? (
+          }
+          value={`${moment
+            .duration(moment().diff(moment(birthday)))
+            .humanize()} old`}
+          label="Age"
+          iconProps={{
+            name: "clock",
+          }}
+        />
+        <PetInfoCard
+          isBeingEdited={isBeingEdited}
+          inputChild={
             <PetInfoInput
               value={color}
-              onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setColor(e.target.value)
-              )}
+              }
             />
-          ) : (
-            <PetInfoCardText>{pet.color}</PetInfoCardText>
-          )}
-          <PetInfoCardLabel>Color</PetInfoCardLabel>
-          <BackgroundIcon alignSelf="end" size="100px" name="colors" />
-        </PetInfoCard>
-        <PetInfoCard>
-          {isEditable.get() ? (
+          }
+          value={color}
+          label="Color"
+          iconProps={{
+            name: "colors",
+            size: "100px",
+          }}
+        />
+        <PetInfoCard
+          isBeingEdited={isBeingEdited}
+          inputChild={
             <PetInfoInput
               value={temperament}
-              onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setTemperament(e.target.value)
-              )}
+              }
             />
-          ) : (
-            <PetInfoCardText>{temperament}</PetInfoCardText>
-          )}
-          <PetInfoCardLabel>Temperament</PetInfoCardLabel>
-          <BackgroundIcon
-            alignSelf="end"
-            size="100px"
-            transform="rotate(12.84deg)"
-            name="paw"
-          />
-        </PetInfoCard>
-        <PetInfoCard>
-          {isEditable.get() ? (
+          }
+          value={temperament}
+          label="Temperament"
+          iconProps={{
+            name: "paw",
+            size: "100px",
+            transform: "rotate(12.84deg)",
+          }}
+        />
+        <PetInfoCard
+          isBeingEdited={isBeingEdited}
+          inputChild={
             <PetInfoSelect
               value={isServiceAnimal ? "Yes" : "No"}
-              onChange={action((e) => setServiceAnimal(e.target.value))}
+              onChange={(e) => setServiceAnimal(e.target.value == "Yes")}
             >
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </PetInfoSelect>
-          ) : (
-            <PetInfoCardText>{isServiceAnimal ? "Yes" : "No"}</PetInfoCardText>
-          )}
-          <PetInfoCardLabel>Service Animal</PetInfoCardLabel>
-          <BackgroundIcon alignSelf="end" size="120px" name="service-animal" />
-        </PetInfoCard>
+          }
+          value={isServiceAnimal ? "Yes" : "No"}
+          label="Service Animal"
+          iconProps={{
+            name: "service-animal",
+          }}
+        />
       </SimpleGrid>
       <ExpandButton
         position="fixed"
@@ -267,16 +198,8 @@ const PetInfoSection = () => {
         color="petcode.neutral.700"
         padding={4}
         backgroundColor="petcode.yellow.400"
-        onClick={action(async () => {
-          await service.updatePet({
-            breed: breed,
-            species: species,
-            birthday: birthday,
-            color: color,
-            temperament: temperament,
-            isServiceAnimal: isServiceAnimal,
-          });
-          if (isEditable.get()) {
+        onClick={() => {
+          if (isBeingEdited) {
             toast({
               title: "Pet information saved.",
               description: "Your pet information was saved successfully.",
@@ -285,8 +208,8 @@ const PetInfoSection = () => {
               isClosable: true,
             });
           }
-          isEditable.set(!isEditable.get());
-        })}
+          setIsBeingEdited(!isBeingEdited);
+        }}
         expandChildren={
           <Text
             fontSize="xl"
@@ -294,11 +217,11 @@ const PetInfoSection = () => {
             textTransform="uppercase"
             marginRight={2}
           >
-            {isEditable.get() ? "Save" : "Edit"}
+            {isBeingEdited ? "Save" : "Edit"}
           </Text>
         }
       >
-        <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
+        <Icon name={isBeingEdited ? "checkmark" : "edit"} size="30px" />
       </ExpandButton>
     </Flex>
   ));

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import {
-  Flex,
-  Icon,
   Modal,
   ModalOverlay,
   ModalCloseButton,
@@ -14,30 +12,27 @@ import {
   useToast,
 } from "@chakra-ui/core";
 
-import AccountPageLayout from "./components/AccountPageLayout";
-import ReminderItem from "./components/ReminderItem";
-import BaseButton from "../../components/Shared/button/BaseButton";
-import ExpandButton from "../../components/Shared/button/ExpandButton";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
+import ReminderItem from "../../components/Shared/molecules/ReminderItem";
+import BaseButton from "../../components/Shared/atoms/button";
+import { ExpandButton } from "../../components/Shared/atoms/ExpandButton";
 import {
   InfoFieldLabel,
   InfoFieldInput,
   InfoFieldSelect,
-} from "../../components/Shared/family/InfoField";
-
-import { action, observable, IObservableValue } from "mobx";
-import { useObserver } from "mobx-react";
+} from "../../components/Shared/molecules/InfoField";
 
 import { Reminder } from "../../Models/Reminder";
 import { AuthContext } from "../../views/Auth/index";
 
 type AddReminderModalProps = {
-  isShown: IObservableValue<boolean>;
-  reminders: Reminder[];
+  isShown: boolean;
+  setShown: (a: boolean) => void;
 };
 
 const AddReminderModal: React.FC<AddReminderModalProps> = ({
   isShown,
-  reminders,
+  setShown,
 }) => {
   const service = React.useContext(AuthContext);
 
@@ -50,12 +45,8 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
 
   const toast = useToast();
 
-  return useObserver(() => (
-    <Modal
-      isOpen={isShown.get()}
-      onClose={action(() => isShown.set(false))}
-      isCentered
-    >
+  return (
+    <Modal isOpen={isShown} onClose={() => setShown(false)} isCentered>
       <ModalOverlay />
       <ModalContent rounded="lg">
         <ModalHeader
@@ -70,9 +61,9 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
           <InfoFieldInput
             placeholder="Reminder Name"
             value={n}
-            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setN(e.target.value)
-            )}
+            }
           />
           <InfoFieldLabel>Reminder Name</InfoFieldLabel>
           <InfoFieldInput
@@ -80,18 +71,18 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             width="auto"
             display="inline"
             value={d}
-            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setD(e.target.value)
-            )}
+            }
           />
           <InfoFieldInput
             type="time"
             width="auto"
             display="inline"
             value={t}
-            onChange={action((e: React.ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setT(e.target.value)
-            )}
+            }
           />
           <InfoFieldLabel>Reminder Date</InfoFieldLabel>
           <InfoFieldSelect value={f} onChange={(e) => setF(e.target.value)}>
@@ -101,10 +92,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             <option>Monthly</option>
           </InfoFieldSelect>
           <InfoFieldLabel>Reminder Frequency</InfoFieldLabel>
-          <InfoFieldSelect
-            value={nM}
-            onChange={action((e) => setNM(e.target.value))}
-          >
+          <InfoFieldSelect value={nM} onChange={(e) => setNM(e.target.value)}>
             <option>App Notification</option>
             <option>Email</option>
           </InfoFieldSelect>
@@ -113,7 +101,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
             variantColor="petcode.blue"
             color="white"
             marginTop={3}
-            onClick={action(() => {
+            onClick={() => {
               service.addNewReminder({
                 name: n,
                 date: d,
@@ -122,7 +110,7 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
                 frequency: f,
                 time: t,
               });
-              isShown.set(false);
+              setShown(false);
               toast({
                 title: "Reminder created.",
                 description: "Your reminder was created successfully.",
@@ -130,163 +118,126 @@ const AddReminderModal: React.FC<AddReminderModalProps> = ({
                 duration: 5000,
                 isClosable: true,
               });
-            })}
+            }}
           >
             <Text>Save</Text>
           </BaseButton>
         </ModalBody>
       </ModalContent>
     </Modal>
-  ));
+  );
 };
 
 type OverlaysProps = {
-  isEditable: IObservableValue<boolean>;
-  isModalShown: IObservableValue<boolean>;
+  setModalShown: (a: boolean) => void;
 };
 
-const Overlays: React.FC<OverlaysProps> = ({ isEditable, isModalShown }) => {
-  const toast = useToast();
-
-  return (
-    <Stack
-      alignItems="end"
-      spacing={2}
-      position="fixed"
-      bottom={5}
-      right={5}
-      color="petcode.neutral.700"
-    >
-      <ExpandButton
-        rounded="full"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        onClick={action(() => {
-          if (isEditable.get()) {
-            toast({
-              title: "Reminders saved.",
-              description: "Your reminders was saved successfully.",
-              status: "success",
-              duration: 5000,
-              isClosable: true,
-            });
-          }
-          isEditable.set(!isEditable.get());
-        })}
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            marginRight={2}
-          >
-            {isEditable.get() ? "Save" : "Edit"}
-          </Text>
-        }
+const Overlays: React.FC<OverlaysProps> = ({ setModalShown }) => (
+  <ExpandButton
+    rounded="full"
+    bottom={5}
+    right={5}
+    position="fixed"
+    padding={4}
+    backgroundColor="petcode.yellow.400"
+    onClick={() => setModalShown(true)}
+    expandChildren={
+      <Text
+        fontSize="xl"
+        fontWeight="thin"
+        textTransform="uppercase"
+        whiteSpace="nowrap"
+        marginRight={2}
       >
-        <Icon name={isEditable.get() ? "checkmark" : "edit"} size="30px" />
-      </ExpandButton>
-      <ExpandButton
-        rounded="full"
-        padding={4}
-        backgroundColor="petcode.yellow.400"
-        onClick={action(() => isModalShown.set(!isModalShown.get()))}
-        expandChildren={
-          <Text
-            fontSize="xl"
-            fontWeight="thin"
-            textTransform="uppercase"
-            whiteSpace="nowrap"
-            marginRight={2}
-          >
-            Add Reminder
-          </Text>
-        }
-      >
-        <Text fontSize="5xl" lineHeight={0.5}>
-          +
-        </Text>
-      </ExpandButton>
-    </Stack>
-  );
-};
+        Add Reminder
+      </Text>
+    }
+  >
+    <Text fontSize="5xl" lineHeight={0.5}>
+      +
+    </Text>
+  </ExpandButton>
+);
 
 const RemindersSection = () => {
   const service = React.useContext(AuthContext);
-  const [reminders] = useState(
-    observable([
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-      {
-        name: "Example reminder",
-        date: "2020-08-02",
-        time: "09:00",
-        frequency: "Weekly",
-        notificationMethod: "Email",
-        enabled: true,
-      },
-    ] as Reminder[])
+  const [reminders, setReminders] = useState([
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+    {
+      name: "Example reminder",
+      date: "2020-08-02",
+      time: "09:00",
+      frequency: "Weekly",
+      notificationMethod: "Email",
+      enabled: true,
+    },
+  ] as Reminder[]);
+
+  const [isModalShown, setModalShown] = useState(false);
+
+  return (
+    <Stack flexGrow={1} paddingX={10} zIndex={1} spacing={6}>
+      <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
+        Reminders
+      </Text>
+      {reminders.map((reminder, idx) => (
+        <ReminderItem
+          marginLeft={3}
+          key={idx}
+          reminder={reminder}
+          isEditable
+          onSave={(newReminder) => {
+            // EDIT REMINDER
+            setReminders([
+              ...reminders.slice(0, idx),
+              newReminder,
+              ...reminders.slice(idx + 1),
+            ]);
+          }}
+          onDelete={() => {
+            // DELETE REMINDER
+            setReminders([
+              ...reminders.slice(0, idx),
+              ...reminders.slice(idx + 1),
+            ]);
+          }}
+        />
+      ))}
+      <Overlays setModalShown={setModalShown} />
+      <AddReminderModal isShown={isModalShown} setShown={setModalShown} />
+    </Stack>
   );
-
-  const [isEditable] = useState(() => observable.box(false));
-  const [isModalShown] = useState(() => observable.box(false));
-
-  return useObserver(() => (
-    <Flex
-      direction="column"
-      flexGrow={1}
-      backgroundColor="petcode.neutral.200"
-      padding={10}
-    >
-      <Flex direction="column" rounded="lg" backgroundColor="white" padding={6}>
-        <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
-          Reminders
-        </Text>
-        {service.pets[0].reminders.map((reminder: any, idx: number) => {
-          console.log(idx);
-          return (
-            <ReminderItem
-              index={idx}
-              reminder={reminder}
-              isEditable={isEditable.get()}
-            />
-          );
-        })}
-      </Flex>
-      <Overlays isEditable={isEditable} isModalShown={isModalShown} />
-      <AddReminderModal reminders={reminders} isShown={isModalShown} />
-    </Flex>
-  ));
 };
 
 const RemindersPage: React.FC<any> = ({ variants }) => (

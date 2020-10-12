@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { Box, Flex, Image, Stack, Text } from "@chakra-ui/core";
+import { Box, Flex, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
 import QRCode from "qrcode.react";
 
-import AccountPageLayout from "./components/AccountPageLayout";
+import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 import {
   InfoFieldText,
   InfoFieldLabel,
-} from "../../components/Shared/family/InfoField";
-import ReminderItem from "./components/ReminderItem";
+} from "../../components/Shared/molecules/InfoField";
+import ReminderItem from "../../components/Shared/molecules/ReminderItem";
 
-import { observable } from "mobx";
-import { withTheme } from "emotion-theming";
-
-import { Reminder } from "../../Models/Reminder";
-import * as firebase from "firebase";
 import { AuthContext } from "../../views/Auth/index";
-import { Redirect } from "react-router-dom";
-import { auth } from "../../firebase/index";
 import { useObserver } from "mobx-react";
 
-const DashboardPage = withTheme(({ theme }) => {
+import { PetCodeTheme } from "../../theme";
+
+const DashboardPage = () => {
   // const [loading, setLoading] = useState(true);
   // const [newUser, setNewUser] = useState<boolean | null>(null);
   // const [user, setUser] = useState<any>({});
@@ -62,40 +57,80 @@ const DashboardPage = withTheme(({ theme }) => {
   //   fetchData();
   // }, [newUser, pets]);
 
+  const theme = useTheme() as PetCodeTheme;
   const service = React.useContext(AuthContext);
 
   return useObserver(() => (
     <AccountPageLayout>
-      <Stack
-        flexGrow={1}
-        backgroundColor="petcode.neutral.200"
-        padding={10}
-        spacing={5}
-      >
+      <Stack flexGrow={1} paddingX={10} spacing={5} zIndex={1}>
         <Flex
-          direction="row"
-          alignItems="center"
+          position="relative"
           rounded="lg"
-          backgroundColor="#F3C66B"
-          backgroundImage="url(/media/paw-icon.png)"
-          backgroundRepeat="no-repeat"
-          backgroundPosition="0% 50%"
-          width="100%"
+          direction="row"
+          boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
+          overflow="hidden"
         >
-          <Flex direction="column" marginLeft={40}>
-            <Text color="petcode.neutral.700" fontSize="5xl" fontWeight="bold">
+          <Icon
+            position="absolute"
+            left={16}
+            top="50%"
+            color="petcode.neutral.700"
+            opacity={0.05}
+            size="100px"
+            transform="translateY(-50%) matrix(-0.98, 0.2, 0.2, 0.98, 0, 0);"
+            name="paw"
+          />
+          <Stack
+            flexBasis="50%"
+            backgroundColor="petcode.yellow.400"
+            roundedLeft="lg"
+            padding={10}
+            paddingLeft={32}
+          >
+            <Text color="petcode.neutral.700" fontSize="5xl" lineHeight="none">
               {service.pets[0]?.name}
             </Text>
-            <Text color="petcode.neutral.500" fontSize="2xl" fontWeight="thin">
+            <Text color="petcode.neutral.600" fontSize="2xl" fontWeight="thin">
               {service.pets[0]?.breed} &middot;{" "}
               {service.pets[0]?.contacts[0]?.name.value}
             </Text>
-          </Flex>
-          <Box flexGrow={1} />
-          <Image
-            rounded="lg"
-            alt="Dog on yellow background"
-            src={service.pets[0]?.profileUrl}
+          </Stack>
+          <Box position="relative">
+            <svg
+              style={{ position: "absolute", left: 0 }}
+              width="63px"
+              viewBox="0 0 91 253"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M46.2 128.488C85 75 90.5333 27.6613 91 0H0V253C0.933333 224.664 7.4 181.976 46.2 128.488Z"
+                fill={theme.colors.petcode.yellow[400]}
+              />
+            </svg>
+            <svg
+              style={{ position: "absolute", left: -7.5 }}
+              width="90px"
+              viewBox="0 0 131 248"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                opacity="0.3"
+                d="M131 0H0.5V247.5H33C32.8333 220 32 155 67 116C102 77 128 21 131 0Z"
+                fill={theme.colors.petcode.yellow[400]}
+              />
+            </svg>
+          </Box>
+          <Box
+            height="100%"
+            flexGrow={1}
+            backgroundImage={`url(${service.pets[0]?.profileUrl})`}
+            backgroundSize="cover"
+            backgroundPosition="center"
+            roundedRight="lg"
           />
         </Flex>
         <Stack isInline justifyContent="space-between" spacing={5}>
@@ -105,6 +140,7 @@ const DashboardPage = withTheme(({ theme }) => {
             backgroundColor="white"
             flexBasis="50%"
             padding={6}
+            boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           >
             <Flex direction="column" marginRight={4}>
               <Text color="petcode.neutral.700" fontSize="3xl">
@@ -128,6 +164,7 @@ const DashboardPage = withTheme(({ theme }) => {
             backgroundColor="white"
             flexBasis="50%"
             padding={6}
+            boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           >
             <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
               Account Information
@@ -151,24 +188,23 @@ const DashboardPage = withTheme(({ theme }) => {
           </Flex>
         </Stack>
         {service.pets[0]?.reminders.length > 0 && (
-          <Flex
-            direction="column"
+          <Stack
             rounded="lg"
             backgroundColor="white"
-            flexBasis="100%"
             padding={6}
+            boxShadow="0px 4px 20px rgba(0, 0, 0, 0.05)"
           >
             <Text color="petcode.neutral.700" fontSize="3xl" marginBottom={3}>
-              Reminders
+              Upcoming Reminders
             </Text>
             {service.pets[0]?.reminders.map((reminder: any, idx: number) => (
-              <ReminderItem key={idx} index={idx} reminder={reminder} />
+              <ReminderItem key={idx} reminder={reminder} />
             ))}
-          </Flex>
+          </Stack>
         )}
       </Stack>
     </AccountPageLayout>
   ));
-});
+};
 
 export default DashboardPage;
