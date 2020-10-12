@@ -6,6 +6,7 @@ import Link from "../../atoms/link";
 import { motion, MotionProps, useCycle } from "framer-motion";
 import { useBreakpoint, Show } from "@chakra-ui/media-query";
 import { Stack } from "../../../Motion";
+import SocialMediaButtons from "../../molecules/SocialMediaButtons";
 
 import { AuthContext } from "../../../../views/Auth/index";
 import { useObserver } from "mobx-react-lite";
@@ -94,8 +95,8 @@ const Header: React.FC<HeaderProps> = (props) => {
               height: "100vh",
               fontSize: "2.5rem",
               alignItems: "start",
-              paddingLeft: 16,
-              paddingTop: 8,
+              paddingX: 16,
+              paddingY: 8,
               boxSizing: "border-box",
             }
           : {
@@ -144,6 +145,10 @@ const Header: React.FC<HeaderProps> = (props) => {
             <Link to="/dashboard">Dashboard</Link>
           </BaseButton>
         )}
+        <Show below="sm">
+          <Box flexGrow={1} />
+          <SocialMediaButtons alignSelf="center" buttonsAreFilled buttonSize="lg" />
+        </Show>
       </Stack>
       <Show below="sm">
         <motion.svg

@@ -13,15 +13,9 @@ import {
 import { useBreakpoint } from "@chakra-ui/media-query";
 import { motion, Transition } from "framer-motion";
 import Link from "../../atoms/link";
+import SocialMediaButtons from "../../molecules/SocialMediaButtons";
 
 import { PetCodeTheme } from "../../../../theme";
-
-const SocialMediaButtonStyle = {
-  size: "md",
-  isRound: true,
-  backgroundColor: "white",
-  color: "petcode.blue.400",
-};
 
 export type FooterProps = {
   wavesArePadded?: boolean;
@@ -117,38 +111,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
               <Link to="/terms">Terms and Conditions</Link>
               <Link to="/privacypolicy">Privacy Policy</Link>
             </Stack>
-            <Stack isInline spacing={8} alignSelf="center">
-              <IconButton
-                {...SocialMediaButtonStyle}
-                aria-label="Linkedin"
-                // @ts-ignore
-                icon="linkedin"
-              />
-              <IconButton
-                {...SocialMediaButtonStyle}
-                aria-label="Instagram"
-                // @ts-ignore
-                icon="instagram"
-              />
-              <IconButton
-                {...SocialMediaButtonStyle}
-                aria-label="Facebook"
-                // @ts-ignore
-                icon="facebook"
-              />
-              <IconButton
-                {...SocialMediaButtonStyle}
-                aria-label="Youtube"
-                // @ts-ignore
-                icon="youtube"
-              />
-              <IconButton
-                {...SocialMediaButtonStyle}
-                aria-label="Pinterest"
-                // @ts-ignore
-                icon="pinterest"
-              />
-            </Stack>
+            <SocialMediaButtons alignSelf="center" />
           </Stack>
         </Flex>
       </Flex>
