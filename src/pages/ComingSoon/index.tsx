@@ -20,8 +20,8 @@ const ComingSoonPage = () => (
       <Box flexGrow={1} />
       <IntegratedProgressiveImage
         slug="coming-soon-dog.png"
-        maxWidth="100vw"
-        marginBottom={`${(33 / 1440) * 100}%`}
+        maxWidth="100%"
+        marginBottom={`${(20 / 1440) * 100}%`}
       />
     </Flex>
   </SupportPageLayout>

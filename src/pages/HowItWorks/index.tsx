@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Icon,
-  Image,
   Stack,
   Text,
   ThemeProvider,
@@ -17,7 +16,6 @@ import { IPhoneX } from "react-device-mockups";
 
 import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
-import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
 import MotionFlex from "../../components/Motion/Flex";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
