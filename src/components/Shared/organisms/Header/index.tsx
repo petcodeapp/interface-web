@@ -7,6 +7,7 @@ import { motion, MotionProps, useCycle } from "framer-motion";
 import { useBreakpoint, Show } from "@chakra-ui/media-query";
 import { Stack } from "../../../Motion";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
+import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
 
 import { AuthContext } from "../../../../views/Auth/index";
 import { useObserver } from "mobx-react-lite";
@@ -75,8 +76,8 @@ const Header: React.FC<HeaderProps> = (props) => {
       {...props}
     >
       <Link to="/">
-        <Image
-          src="/media/petcode-logo-with-qr-code.png"
+        <IntegratedProgressiveImage
+          slug="petcode-logo-with-qr-code.png"
           height={{ base: "3.5rem", sm: "4.75rem" }}
         />
       </Link>
@@ -125,8 +126,8 @@ const Header: React.FC<HeaderProps> = (props) => {
       >
         <Show below="sm">
           <Link to="/" paddingBottom={8}>
-            <Image
-              src="/media/petcode-logo-with-qr-code-altered.png"
+            <IntegratedProgressiveImage
+              slug="petcode-logo-with-qr-code-altered.png"
               height="4.75rem"
             />
           </Link>

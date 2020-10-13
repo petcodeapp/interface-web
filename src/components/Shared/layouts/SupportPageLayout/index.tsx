@@ -45,11 +45,11 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
         />
       </svg>
       {children}
-      {/*<Image
+      {/*<IntegratedProgressiveImage
         position="absolute"
         bottom={0}
         right={0}
-        src="/media/paw-print-background-ltr-up.svg"
+        slug="paw-print-background-ltr-up.svg"
       />*/}
     </Layout>
   );

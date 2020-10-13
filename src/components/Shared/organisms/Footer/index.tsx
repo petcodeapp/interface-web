@@ -14,6 +14,7 @@ import { useBreakpoint } from "@chakra-ui/media-query";
 import { motion, Transition } from "framer-motion";
 import Link from "../../atoms/link";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
+import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
 
 import { PetCodeTheme } from "../../../../theme";
 
@@ -87,8 +88,8 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
             marginRight={4}
             justifyContent="space-between"
           >
-            <Image
-              src="/media/petcode-logo-with-qr-code.png"
+            <IntegratedProgressiveImage
+              slug="petcode-logo-with-qr-code.png"
               alt="Petcode logo with QR code"
               width="10.25rem"
               marginBottom={16}

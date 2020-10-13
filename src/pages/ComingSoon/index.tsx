@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Box, Flex, Image, Stack, Text } from "@chakra-ui/core";
+import { Box, Flex, Stack, Text } from "@chakra-ui/core";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
 import SupportPageLayout from "../../components/Shared/layouts/SupportPageLayout";
 
@@ -17,8 +18,8 @@ const ComingSoonPage = () => (
         </Text>
       </Stack>
       <Box flexGrow={1} />
-      <Image
-        src="/media/coming-soon-dog.png"
+      <IntegratedProgressiveImage
+        slug="coming-soon-dog.png"
         maxWidth="100vw"
         marginBottom={`${(33 / 1440) * 100}%`}
       />

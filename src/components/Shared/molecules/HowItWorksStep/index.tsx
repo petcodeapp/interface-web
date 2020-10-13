@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Box, Heading, Image, Stack, StackProps, Text } from "@chakra-ui/core";
+import { Box, Heading, Stack, StackProps, Text } from "@chakra-ui/core";
+import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
 
 export type HowItWorksStepProps = {
-  image: string;
+  imageSlug: string;
   stepNumber: number;
   name: string;
   description: string;
@@ -13,7 +14,7 @@ export type HowItWorksStepProps = {
 } & StackProps;
 
 const HowItWorksStep: React.FC<HowItWorksStepProps> = ({
-  image,
+  imageSlug,
   stepNumber,
   name,
   description,
@@ -30,7 +31,11 @@ const HowItWorksStep: React.FC<HowItWorksStepProps> = ({
     {...props}
   >
     <Box minHeight={imageBoxHeight}>
-      <Image height={imageHeight} src={image} alt={`Step ${stepNumber}`} />
+      <IntegratedProgressiveImage
+        height={imageHeight}
+        slug={imageSlug}
+        alt={`Step ${stepNumber}`}
+      />
     </Box>
     <Text color="petcode.yellow.400" fontSize={{ base: "3xl", md: "2xl" }}>
       Step {stepNumber}

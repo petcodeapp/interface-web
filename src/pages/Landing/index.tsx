@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   Icon,
-  Image,
   Stack,
   Text,
   ThemeProvider,
@@ -18,16 +17,17 @@ import { IPhoneX } from "react-device-mockups";
 import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
-import MotionImage from "../../components/Motion/Image";
 import MotionBox from "../../components/Motion/Box";
 import MotionFlex from "../../components/Motion/Flex";
 import Feature from "../../components/Shared/molecules/Feature";
 import FeatureDropDown from "../../components/Shared/molecules/FeatureDropdown";
 import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
 import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
 import { PetCodeTheme } from "../../theme";
 import { ActionButtonStyle } from "../../components/Shared/ions/button";
+import ProgressiveImage from "react-progressive-image";
 
 const LandingPage: React.FC = () => {
   const theme = useTheme() as PetCodeTheme;
@@ -73,6 +73,7 @@ const LandingPage: React.FC = () => {
           style={{
             position: "absolute",
             top: 0,
+            zIndex: 1,
           }}
           height={breakpoint > 1 ? "17.8125rem" : "26rem"}
           viewBox={breakpoint > 1 ? "0 0 612 285" : "0 0 203 230"}
@@ -89,6 +90,7 @@ const LandingPage: React.FC = () => {
           style={{
             position: "absolute",
             top: 0,
+            zIndex: 1,
           }}
           height={breakpoint > 1 ? "14.5625rem" : "26rem"}
           viewBox={breakpoint > 1 ? "0 0 788 233" : "0 0 262 230"}
@@ -108,115 +110,124 @@ const LandingPage: React.FC = () => {
             <path d="M-1 188V0H261.392C224.323 109.324 120.85 188 -1 188Z" />
           )}
         </svg>
-        <Image
+        <IntegratedProgressiveImage
           position="absolute"
           top="50%"
           width="50vw"
           right={0}
           zIndex={-1}
           transform="translateY(-50%)"
-          src="/media/paw-print-background-rtl-up.svg"
+          slug="paw-print-background-rtl-up.svg"
           alt="Paw print background"
         />
-        <Image
+        <IntegratedProgressiveImage
           position="absolute"
           top="55%"
           width="50vw"
           left={0}
           zIndex={-1}
           transform="translateY(-50%)"
-          src="/media/paw-print-background-ltr-down.svg"
+          slug="paw-print-background-ltr-down.svg"
           alt="Paw print background"
         />
-        <Flex
-          direction="row"
-          justifyContent="center"
-          backgroundImage="url(/media/landing-splash.png)"
-          backgroundSize="cover"
-          height={{
-            md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",
-          }}
-          paddingBottom={{ base: `calc(${(126 / 1440) * 100}% + 3rem)`, md: 0 }}
-        >
-          <Flex
-            direction={{ base: "column", md: "row" }}
-            alignItems={{ base: "center", md: "stretch" }}
-            maxWidth="90rem"
-            boxSizing="border-box"
-            paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingRight={{ md: 12 }}
-            flexGrow={1}
-          >
-            <MotionFlex
+        <IntegratedProgressiveImage delay={1000} slug="landing-splash.png">
+          {(src: string, loading: boolean) => (
+            <Flex
               position="relative"
-              top="-1rem"
-              height={{ base: "19.464rem", sm: "28.125rem" }}
-              width={{ base: "29.354rem", sm: "42.9375rem" }}
-              marginRight={{ md: 32 }}
-              flexGrow={{ md: 1 }}
-              justifyContent="end"
-              alignItems="end"
-              animate={displayBounce}
-              // @ts-ignore
-              transition={transition}
+              direction="row"
+              justifyContent="center"
+              backgroundImage={`url(${src})`}
+              style={{ filter: loading ? "blur(5px)" : "blur(0)" }}
+              backgroundSize="cover"
+              height={{
+                md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",
+              }}
+              paddingBottom={{
+                base: `calc(${(126 / 1440) * 100}% + 3rem)`,
+                md: 0,
+              }}
             >
-              <Image
-                position="absolute"
-                right={{ base: "5.5rem", sm: "8.5rem" }}
-                src="/media/dashboard-web-screen.svg"
-                alt="Dashboard web screen"
-                width={{ base: "23.854rem", sm: "34.4375rem" }}
-              />
-              <IPhoneX
-                height={breakpoint > 0 ? "22.125rem" : "15.326rem"}
-                wrapperProps={{
-                  style: {
-                    position: "absolute",
-                    right: breakpoint > 0 ? "5rem" : "3rem",
-                  },
-                }}
+              <Flex
+                direction={{ base: "column", md: "row" }}
+                alignItems={{ base: "center", md: "stretch" }}
+                maxWidth="90rem"
+                boxSizing="border-box"
+                paddingTop={{ base: "12rem", md: "20.5625rem" }}
+                paddingRight={{ md: 12 }}
+                flexGrow={1}
               >
-                <Image
-                  src="/media/dashboard-mobile-screen.svg"
-                  alt="Dashboard mobile screen"
-                  width="100%"
-                />
-              </IPhoneX>
-              <Image
-                zIndex={1}
-                width={{ base: "6rem", sm: "8.625rem" }}
-                src="/media/tag-front.png"
-                alt="Petcode tag front"
-              />
-            </MotionFlex>
-            <Stack
-              maxWidth={{ sm: "40rem", md: "28.375rem" }}
-              marginTop={{ base: 8, md: 0 }}
-              paddingX={{ base: 16, md: 0 }}
-              color="white"
-              spacing={5}
-            >
-              <Box fontWeight="bold">
-                <Heading fontSize="2.8125rem">One Code.</Heading>
-                <Text fontSize="3xl">
-                  An endless suite of features for pet owners.
-                </Text>
-              </Box>
-              <Text
-                fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
-                maxWidth={{ base: "auto", md: "25rem" }}
-              >
-                PetCode is a new pet management platform that allows pet owners
-                to keep track of all aspects of their pet’s life. No matter your
-                situation, PetCode can help you and your pet live happier, worry
-                free lives.
-              </Text>
-              <ExclusiveUpdatesInput
-                maxWidth={{ base: "auto", md: "24.75rem" }}
-              />
-            </Stack>
-          </Flex>
-        </Flex>
+                <MotionFlex
+                  position="relative"
+                  top="-1rem"
+                  height={{ base: "19.464rem", sm: "28.125rem" }}
+                  width={{ base: "29.354rem", sm: "42.9375rem" }}
+                  marginRight={{ md: 32 }}
+                  flexGrow={{ md: 1 }}
+                  justifyContent="end"
+                  alignItems="end"
+                  animate={displayBounce}
+                  // @ts-ignore
+                  transition={transition}
+                >
+                  <IntegratedProgressiveImage
+                    position="absolute"
+                    right={{ base: "5.5rem", sm: "8.5rem" }}
+                    slug="dashboard-web-screen.svg"
+                    alt="Dashboard web screen"
+                    width={{ base: "23.854rem", sm: "34.4375rem" }}
+                  />
+                  <IPhoneX
+                    height={breakpoint > 0 ? "22.125rem" : "15.326rem"}
+                    wrapperProps={{
+                      style: {
+                        position: "absolute",
+                        right: breakpoint > 0 ? "5rem" : "3rem",
+                      },
+                    }}
+                  >
+                    <IntegratedProgressiveImage
+                      slug="dashboard-mobile-screen.svg"
+                      alt="Dashboard mobile screen"
+                      width="100%"
+                    />
+                  </IPhoneX>
+                  <IntegratedProgressiveImage
+                    zIndex={1}
+                    width={{ base: "6rem", sm: "8.625rem" }}
+                    slug="tag-front.png"
+                    alt="Petcode tag front"
+                  />
+                </MotionFlex>
+                <Stack
+                  maxWidth={{ sm: "40rem", md: "28.375rem" }}
+                  marginTop={{ base: 8, md: 0 }}
+                  paddingX={{ base: 16, md: 0 }}
+                  color="white"
+                  spacing={5}
+                >
+                  <Box fontWeight="bold">
+                    <Heading fontSize="2.8125rem">One Code.</Heading>
+                    <Text fontSize="3xl">
+                      An endless suite of features for pet owners.
+                    </Text>
+                  </Box>
+                  <Text
+                    fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
+                    maxWidth={{ base: "auto", md: "25rem" }}
+                  >
+                    PetCode is a new pet management platform that allows pet
+                    owners to keep track of all aspects of their pet’s life. No
+                    matter your situation, PetCode can help you and your pet
+                    live happier, worry free lives.
+                  </Text>
+                  <ExclusiveUpdatesInput
+                    maxWidth={{ base: "auto", md: "24.75rem" }}
+                  />
+                </Stack>
+              </Flex>
+            </Flex>
+          )}
+        </IntegratedProgressiveImage>
         <Flex direction="column">
           <Box position="relative">
             <svg
@@ -323,29 +334,29 @@ const LandingPage: React.FC = () => {
               <Stack spacing={10}>
                 <Stack isInline spacing={10}>
                   <Feature
-                    image="/media/personal-pet-profile-feature.png"
+                    imageSlug="personal-pet-profile-feature.png"
                     name="Personal Pet Profile"
                   />
                   <Feature
-                    image="/media/scan-locations-feature.png"
+                    imageSlug="scan-locations-feature.png"
                     name="Scan Locations"
                   />
                   <Feature
-                    image="/media/no-monthly-fees-feature.png"
+                    imageSlug="no-monthly-fees-feature.png"
                     name="No Monthly Fees"
                   />
                 </Stack>
                 <Stack isInline marginLeft={{ xl: 16 }} spacing={10}>
                   <Feature
-                    image="/media/durable-qr-pet-tags-feature.png"
+                    imageSlug="durable-qr-pet-tags-feature.png"
                     name="Durable QR Pet Tags"
                   />
                   <Feature
-                    image="/media/vaccination-storage-feature.png"
+                    imageSlug="vaccination-storage-feature.png"
                     name="Vaccination Storage"
                   />
                   <Feature
-                    image="/media/discovery-feature.png"
+                    imageSlug="discovery-feature.png"
                     name="Discovery Feature"
                   />
                 </Stack>
@@ -391,8 +402,8 @@ const LandingPage: React.FC = () => {
             paddingBottom={8}
             spacing={{ base: 16, md: 40 }}
           >
-            <Image
-              src="/media/safety-image.svg"
+            <IntegratedProgressiveImage
+              slug="safety-image.svg"
               minWidth={{ md: "19.625rem" }}
               maxWidth={{ base: "11.485rem", md: undefined }}
               alt="Safety image"
@@ -530,12 +541,12 @@ const LandingPage: React.FC = () => {
                 alignSelf={{ md: "center", lg: "auto" }}
                 width={{ base: "27.729rem", md: "51.1875rem", lg: "auto" }}
               >
-                <Image
+                <IntegratedProgressiveImage
                   position="absolute"
                   top="-25%"
                   left={{ base: "3rem", md: "6.5rem" }}
                   width={{ base: "24.729rem", md: "44.6875rem" }}
-                  src="/media/dashboard-web-screen.svg"
+                  slug="dashboard-web-screen.svg"
                   alt="Dashboard web screen"
                 />
                 <IPhoneX
@@ -548,17 +559,17 @@ const LandingPage: React.FC = () => {
                   }}
                 >
                   <AnimatePresence>
-                    <MotionImage
+                    <IntegratedProgressiveImage
                       position="absolute"
                       top={0}
                       width="100%"
                       key={featureShown}
-                      src={
+                      slug={
                         featureShown == "vaccinations"
-                          ? "/media/vaccinations-mobile-screen.svg"
+                          ? "vaccinations-mobile-screen.svg"
                           : featureShown == "reminders"
-                          ? "/media/reminders-mobile-screen.svg"
-                          : "/media/medical-mobile-screen.svg"
+                          ? "reminders-mobile-screen.svg"
+                          : "medical-mobile-screen.svg"
                       }
                       alt={`${featureShown} mobile screen`}
                       initial={{ x: "100%", opacity: 0 }}
@@ -624,12 +635,12 @@ const LandingPage: React.FC = () => {
               alignSelf={{ md: "center", lg: "auto" }}
               width={{ base: "27.785rem", md: "50.3125rem", lg: "auto" }}
             >
-              <Image
+              <IntegratedProgressiveImage
                 top="-15%"
                 position="absolute"
                 right={{ base: "2.5rem", md: "5rem" }}
                 width={{ base: "25.285rem", md: "45.3125rem" }}
-                src="/media/scan-locations-web-screen.svg"
+                slug="scan-locations-web-screen.svg"
                 alt="Scan locations web screen"
               />
               <IPhoneX
@@ -638,10 +649,10 @@ const LandingPage: React.FC = () => {
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
                 }}
               >
-                <Image
+                <IntegratedProgressiveImage
                   width="100%"
                   height="100%"
-                  src="/media/pet-parks-mobile-screen.svg"
+                  slug="pet-parks-mobile-screen.svg"
                   alt="Pet parks mobile screen"
                 />
               </IPhoneX>

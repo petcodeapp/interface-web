@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 
-import { Box, Flex, Icon, Image, Stack, Text } from "@chakra-ui/core";
+import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/core";
 import { withRouter } from "react-router-dom";
+import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
 
 import BaseButton from "../../atoms/button";
 import Link, { LinkProps } from "../../atoms/link";
@@ -51,19 +52,24 @@ const Sidebar = withRouter(({ location }) => {
       spacing={3}
       boxSizing="border-box"
     >
-      <Image
-        src="/media/petcode-logo-with-qr-code-altered.png"
+      <IntegratedProgressiveImage
+        slug="petcode-logo-with-qr-code-altered.png"
         alt="Petcode logo with QR code altered"
         width="11.375rem"
         paddingBottom={6}
       />
-      <Box
-        rounded="full"
-        size="5.5625rem"
-        backgroundSize="cover"
-        backgroundPosition="center"
-        backgroundImage="url(/media/placeholder-dog.png)"
-      />
+      <IntegratedProgressiveImage slug="placeholder-dog.png">
+        {(src: string, loading: boolean) => (
+          <Box
+            rounded="full"
+            size="5.5625rem"
+            backgroundSize="cover"
+            backgroundPosition="center"
+            backgroundImage={`url(${src})`}
+            style={{ filter: loading ? "blur(5px)" : "blur(0)" }}
+          />
+        )}
+      </IntegratedProgressiveImage>
       <Flex direction="row" justifyContent="space-between">
         <Flex direction="column">
           <Text color="petcode.neutral.700" fontSize="3xl">

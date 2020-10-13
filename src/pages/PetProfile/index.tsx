@@ -24,6 +24,7 @@ import BaseButton, {
   BaseButtonProps,
 } from "../../components/Shared/atoms/button";
 import Layout from "../../components/Shared/layouts/LandingPageLayout";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
 import moment from "moment";
 
@@ -231,8 +232,8 @@ const PetProfilePage = () => {
         {breakpoint > 0 ? (
           <PrimaryHeader>Help Me Get Home!</PrimaryHeader>
         ) : (
-          <Image
-            src="/media/petcode-logo-with-qr-code-altered.png"
+          <IntegratedProgressiveImage
+            slug="petcode-logo-with-qr-code-altered.png"
             alt="Petcode logo with QR code"
             height={54}
           />
@@ -302,7 +303,7 @@ const PetProfilePage = () => {
           <Box
             backgroundSize="cover"
             backgroundPosition="center"
-            backgroundImage="url(/media/placeholder-dog.png)"
+            backgroundImage="url(placeholder-dog.png)"
             {...(breakpoint > 0
               ? {
                   height: "100%",

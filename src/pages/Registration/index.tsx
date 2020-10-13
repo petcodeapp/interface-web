@@ -21,6 +21,7 @@ import InputWithIcon from "../../components/Shared/molecules/InputWithIcon";
 import BaseButton from "../../components/Shared/atoms/button";
 import { AuthContext } from "../../views/Auth/index";
 import Button from "../../components/Motion/Button";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (
   <Flex
@@ -150,9 +151,9 @@ const RegistrationPage = () => {
           direction="column"
           flexBasis="553px"
         >
-          <Image
+          <IntegratedProgressiveImage
             alt="Dog with tongue out"
-            src="/media/dog-with-tongue-out.png"
+            slug="dog-with-tongue-out.png"
           />
         </Flex>
       </Flex>

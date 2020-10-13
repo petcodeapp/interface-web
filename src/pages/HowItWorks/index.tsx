@@ -24,6 +24,7 @@ import Layout from "../../components/Shared/layouts/LandingPageLayout";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
 import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
 import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
 import { useInView } from "react-intersection-observer";
 
@@ -108,39 +109,46 @@ const HowItWorksPage: React.FunctionComponent = () => {
             <ellipse cx="156.664" cy="-30.7729" rx="150.622" ry="101.761" />
           )}
         </svg>
-        <Flex
-          flexDirection="column"
-          boxSizing="border-box"
-          paddingTop="18.625rem"
-          paddingRight={{ base: 16, md: 40 }}
-          paddingLeft={{ base: 16, md: 0 }}
-          backgroundImage={`url(/media/how-it-works-splash${
-            breakpoint > 1 ? "" : "-mobile"
-          }.png)`}
-          backgroundSize="cover"
-          height="max(min(calc(100vw * 0.5875), 843px), 600px)"
+        <IntegratedProgressiveImage
+          delay={500}
+          slug={`how-it-works-splash${breakpoint > 1 ? "" : "-mobile"}.png`}
         >
-          <Box flexGrow={1} />
-          <Stack
-            alignSelf={{ base: "center", md: "end" }}
-            color="white"
-            spacing={5}
-            maxWidth={{ sm: "40rem", md: "26rem" }}
-          >
-            <Heading fontSize={{ base: "3.476rem", md: "2.8125rem" }}>
-              How It Works
-            </Heading>
-            <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
-              The PetCode system offers a seamless connection between software
-              and a physical QR code tag, allowing you to easily and
-              effieciently manage your pet.
-            </Text>
-            <ExclusiveUpdatesInput
-              maxWidth={{ base: "auto", sm: "24.75rem" }}
-            />
-          </Stack>
-          <Box flexGrow={7} />
-        </Flex>
+          {(src: string, loading: boolean) => (
+            <Flex
+              position="relative"
+              flexDirection="column"
+              boxSizing="border-box"
+              paddingTop="18.625rem"
+              backgroundImage={`url(${src})`}
+              style={{ filter: loading ? "blur(5px)" : "blur(0)" }}
+              backgroundSize="cover"
+              paddingRight={{ base: 16, md: 40 }}
+              paddingLeft={{ base: 16, md: 0 }}
+              height="max(min(calc(100vw * 0.5875), 843px), 600px)"
+            >
+              <Box flexGrow={1} />
+              <Stack
+                alignSelf={{ base: "center", md: "end" }}
+                color="white"
+                spacing={5}
+                maxWidth={{ sm: "40rem", md: "26rem" }}
+              >
+                <Heading fontSize={{ base: "3.476rem", md: "2.8125rem" }}>
+                  How It Works
+                </Heading>
+                <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
+                  The PetCode system offers a seamless connection between
+                  software and a physical QR code tag, allowing you to easily
+                  and effieciently manage your pet.
+                </Text>
+                <ExclusiveUpdatesInput
+                  maxWidth={{ base: "auto", sm: "24.75rem" }}
+                />
+              </Stack>
+              <Box flexGrow={7} />
+            </Flex>
+          )}
+        </IntegratedProgressiveImage>
         <Box position="relative">
           <svg
             style={{ position: "absolute", bottom: 0 }}
@@ -160,21 +168,21 @@ const HowItWorksPage: React.FunctionComponent = () => {
           </Heading>
           <Stack isInline={breakpoint > 1} spacing={12}>
             <HowItWorksStep
-              image="/media/order-petcode-tag-step.svg"
+              imageSlug="order-petcode-tag-step.svg"
               stepNumber={1}
               name="Sign Up with PetCode"
               description="Set up and create your beta account with PetCode"
               imageHeight="10.25rem"
             />
             <HowItWorksStep
-              image="/media/upload-information-step.svg"
+              imageSlug="upload-information-step.svg"
               stepNumber={2}
               name="Upload Information"
               description="Once set up, add your info to the tag to access the full functionality of PetCode"
               imageHeight="10.6875rem"
             />
             <HowItWorksStep
-              image="/media/create-petcode-account-step.svg"
+              imageSlug="create-petcode-account-step.svg"
               stepNumber={3}
               headerWidth="15rem"
               name="You’re All Set!"
@@ -263,8 +271,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 width="27.1875rem"
                 paddingTop={{ base: 12, lg: 0 }}
               >
-                <Image
-                  src="/media/tag-front.png"
+                <IntegratedProgressiveImage
+                  slug="tag-front.png"
                   alt="Tag front"
                   size="15.625rem"
                 />
@@ -275,8 +283,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   top="7.8125rem"
                   left="11.5625rem"
                 >
-                  <Image
-                    src="/media/tag-back.png"
+                  <IntegratedProgressiveImage
+                    slug="tag-back.png"
                     alt="Tag back"
                     size="15.625rem"
                   />
@@ -446,12 +454,12 @@ const HowItWorksPage: React.FunctionComponent = () => {
               transition={transition}
               width={{ base: "29.269rem", md: "56.8125rem", lg: "auto" }}
             >
-              <MotionImage
+              <IntegratedProgressiveImage
                 top={{ base: "-15%", md: "-8.5%" }}
                 right={{ base: "2.5rem", md: "6.5rem" }}
                 position="absolute"
                 width={{ base: "26.769rem", md: "50.3125rem" }}
-                src="/media/reminders-web-screen.svg"
+                slug="reminders-web-screen.svg"
                 alt="Scan locations web screen"
               />
               <IPhoneX
@@ -460,10 +468,10 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   style: { backgroundColor: theme.colors.petcode.blue[400] },
                 }}
               >
-                <Image
+                <IntegratedProgressiveImage
                   width="100%"
                   height="100%"
-                  src="/media/reminders-mobile-screen.svg"
+                  slug="reminders-mobile-screen.svg"
                   alt="Pet parks mobile screen"
                 />
               </IPhoneX>

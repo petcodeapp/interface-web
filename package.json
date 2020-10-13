@@ -36,6 +36,7 @@
     "react-dom": "^16.13.1",
     "react-intersection-observer": "^8.27.1",
     "react-map-gl": "^5.2.7",
+    "react-progressive-image": "^0.6.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-star-ratings": "https://github.com/pschyma/react-star-ratings",
