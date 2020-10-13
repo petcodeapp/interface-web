@@ -15,7 +15,7 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
     <Layout
       headerProps={{
         position: "absolute",
-        backgroundColor: breakpoint > 1 ? "transparent" : "petcode.blue.400",
+        backgroundColor: "transparent",
       }}
       paddingTop={{
         base: `calc(${(52 / 306) * 100}% + 6.25rem)`,
@@ -23,39 +23,33 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
       }}
       {...props}
     >
-      <Box position="absolute" top={{ base: "6.25rem", md: 0 }} width="100%">
-        <svg
-          style={{ position: "absolute", top: 0 }}
-          width="100%"
-          viewBox={breakpoint > 1 ? "0 0 1440 176" : "0 1 306 77"}
-          fill={theme.colors.petcode.blue[400]}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d={
-              breakpoint > 1
-                ? "M705.451 112C354.227 70.9999 162.104 119 -1 176V0H1567C1507.63 36 1320.15 183.757 705.451 112Z"
-                : "M313 0.327637H-76V78.257C-31.9698 40.9295 19.8939 9.49593 114.707 36.3456C221.166 66.493 280.156 37.4736 313 6.57093V0.327637Z"
-            }
-          />
-        </svg>
-        <svg
-          style={{ position: "absolute", top: 0 }}
-          width="100%"
-          viewBox={breakpoint > 1 ? "0 0 1440 226" : "0 0 306 111"}
-          fill={theme.colors.petcode.blue[400]}
-          opacity={0.4}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d={
-              breakpoint > 1
-                ? "M679 106C335 65 145 157 -1 226V0H1440V105C1353 129 1177.11 165.368 679 106Z"
-                : "M-76 0.327148V111C-75.5834 110.523 -75.1655 110.043 -74.7463 109.562C-35.4982 64.5505 15.6852 5.85031 107.567 32.4161C242.033 71.2943 289.514 47.478 313 31.7612V0.327148H-76Z"
-            }
-          />
-        </svg>
-      </Box>
+      <svg
+        style={{ position: "absolute", top: 0 }}
+        viewBox={breakpoint > 1 ? "0 0 1440 226" : "0 0 306 148"}
+        fill={theme.colors.petcode.blue[400]}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d={
+            breakpoint > 1
+              ? "M-1 57V226C0.543137 225.271 2.09119 224.539 3.64427 223.805C149.034 155.07 338.636 65.4333 679 106C1177.11 165.368 1353 129 1440 105V57H-1Z"
+              : "M-76 37.3271V148C-75.5834 147.523 -75.1655 147.043 -74.7463 146.562C-35.4982 101.55 15.6852 42.8503 107.567 69.4161C242.033 108.294 289.514 84.478 313 68.7612V37.3271H-76Z"
+          }
+          opacity="0.4"
+        />
+        <rect
+          width={breakpoint > 1 ? "1440" : "306"}
+          height={breakpoint > 1 ? "57" : "38"}
+          fill="#51BCDA"
+        />
+        <path
+          d={
+            breakpoint > 1
+              ? "M1440 57H-1V176C162.104 119 354.227 70.9999 705.451 112C1099.81 158.036 1318.33 113.723 1440 66.5334V57Z"
+              : "M313 37.3276H-76V115.257C-31.9698 77.9295 19.8939 46.4959 114.707 73.3456C221.166 103.493 280.156 74.4736 313 43.5709V37.3276Z"
+          }
+        />
+      </svg>
       {children}
       {/*<IntegratedProgressiveImage
         position="absolute"

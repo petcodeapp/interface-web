@@ -81,7 +81,11 @@ const ReminderItem: React.FC<ReminderItemProps> = ({
         </Text>
       </Box>
       <Box flexGrow={1} />
-      <Flex direction="column" justifyContent="space-between" alignItems="flex-end">
+      <Flex
+        direction="column"
+        justifyContent="space-between"
+        alignItems="flex-end"
+      >
         <Text color="petcode.blue.400">
           {isBeingEdited ? (
             <ReminderInput

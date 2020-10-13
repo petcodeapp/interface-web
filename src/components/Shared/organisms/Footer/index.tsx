@@ -1,13 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  Flex,
-  FlexProps,
-  Stack,
-  Text,
-  useTheme,
-} from "@chakra-ui/core";
+import { Box, Flex, FlexProps, Stack, Text, useTheme } from "@chakra-ui/core";
 import { useBreakpoint } from "@chakra-ui/media-query";
 import { motion, Transition } from "framer-motion";
 import Link from "../../atoms/link";
