@@ -66,7 +66,7 @@ const ActionButton: React.FC<BaseButtonProps> = (props) => (
     size="sm"
     variantColor="petcode.yellow"
     paddingX={6}
-    alignSelf="end"
+    alignSelf="flex-end"
     {...props}
   />
 );

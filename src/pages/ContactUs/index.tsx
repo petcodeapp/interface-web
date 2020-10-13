@@ -99,7 +99,7 @@ const ContactUsPage = () => (
             />
             <UnifiedErrorMessage touched={touched} errors={errors} />
             <BaseButton
-              alignSelf="end"
+              alignSelf="flex-end"
               size="md"
               variantColor="petcode.yellow"
               paddingX={10}

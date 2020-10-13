@@ -93,7 +93,7 @@ const ConfirmationStep: React.FC<ConfirmationStepProps> = ({
         </Flex>
       </Stack>
     </Stack>
-    <Stack width="50%" isInline spacing={3} justifyContent="end">
+    <Stack width="50%" isInline spacing={3} justifyContent="flex-end">
       <Text display="flex" color="petcode.blue.400" alignItems="center">
         <Icon size="10px" name="compact-arrow" marginRight={1} />
         Back to Cart

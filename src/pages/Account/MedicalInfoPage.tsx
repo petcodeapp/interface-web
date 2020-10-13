@@ -121,7 +121,7 @@ const Overlays: React.FC<OverlaysProps> = ({
 
   return (
     <Stack
-      alignItems="end"
+      alignItems="flex-end"
       spacing={2}
       position="fixed"
       bottom={5}

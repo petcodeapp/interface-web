@@ -126,7 +126,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
             >
               <Box flexGrow={1} />
               <Stack
-                alignSelf={{ base: "center", md: "end" }}
+                alignSelf={{ base: "center", md: "flex-end" }}
                 color="white"
                 spacing={5}
                 maxWidth={{ sm: "40rem", md: "26rem" }}
@@ -296,7 +296,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                     >
                       <Box flexGrow={1} />
                       <MotionBox
-                        alignSelf="end"
+                        alignSelf="flex-end"
                         initial="hidden"
                         variants={{
                           hidden: { opacity: 0 },
@@ -444,8 +444,8 @@ const HowItWorksPage: React.FunctionComponent = () => {
             <MotionFlex
               flexGrow={1}
               position="relative"
-              alignItems="end"
-              justifyContent="end"
+              alignItems="flex-end"
+              justifyContent="flex-end"
               overflowY="visible"
               animate={displayBounce}
               // @ts-ignore

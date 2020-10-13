@@ -153,8 +153,8 @@ const LandingPage: React.FC = () => {
                   width={{ base: "29.354rem", sm: "42.9375rem" }}
                   marginRight={{ md: 32 }}
                   flexGrow={{ md: 1 }}
-                  justifyContent="end"
-                  alignItems="end"
+                  alignItems="flex-end"
+                  justifyContent="flex-end"
                   animate={displayBounce}
                   // @ts-ignore
                   transition={transition}
@@ -172,6 +172,7 @@ const LandingPage: React.FC = () => {
                       style: {
                         position: "absolute",
                         right: breakpoint > 0 ? "5rem" : "3rem",
+                        bottom: 0,
                       },
                     }}
                   >
@@ -617,7 +618,7 @@ const LandingPage: React.FC = () => {
           >
             <MotionFlex
               position="relative"
-              justifyContent="end"
+              justifyContent="flex-end"
               flexGrow={{ lg: 1 }}
               animate={displayBounce}
               // @ts-ignore
@@ -652,7 +653,7 @@ const LandingPage: React.FC = () => {
                 color="petcode.neutral.400"
                 name="arrow-thin"
                 size="40px"
-                alignSelf="end"
+                alignSelf="flex-end"
                 marginX={8}
               />
             </Hide>

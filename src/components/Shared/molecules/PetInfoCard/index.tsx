@@ -53,7 +53,7 @@ const PetInfoCard: React.FC<PetInfoCardProps> = ({
       <Text {...PetInfoCardTextStyle}>{value}</Text>
     )}
     <Text {...PetInfoCardLabelStyle}>Species</Text>
-    <BackgroundIcon alignSelf="end" size="120px" {...iconProps} />
+    <BackgroundIcon alignSelf="flex-end" size="120px" {...iconProps} />
   </Flex>
 );
 

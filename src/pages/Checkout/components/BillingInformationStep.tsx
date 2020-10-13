@@ -205,7 +205,7 @@ const BillingInformationStep: React.FC<BillingInformationStepProps> = ({
             </Flex>
             {useDifferentAddress && <AddressInputs />}
             <UnifiedErrorMessage touched={touched} errors={errors} />
-            <Flex alignSelf="end">
+            <Flex alignSelf="flex-end">
               <Text
                 display="flex"
                 color="petcode.blue.400"

@@ -90,7 +90,7 @@ const ProductDisplay: React.FC<{ product: Product }> = ({ product }) => (
         size="md"
         variantColor="petcode.yellow"
         paddingX={10}
-        alignSelf="end"
+        alignSelf="flex-end"
       >
         <Text textTransform="uppercase" fontWeight="thin">
           Add to Cart
