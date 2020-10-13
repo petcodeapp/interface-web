@@ -120,7 +120,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               boxSizing="border-box"
               paddingTop="18.625rem"
               backgroundImage={`url(${src})`}
-              style={{ filter: loading ? "blur(5px)" : "blur(0)" }}
+              style={{ filter: loading ? "blur(5px)" : "" }}
               backgroundSize="cover"
               paddingRight={{ base: 16, md: 40 }}
               paddingLeft={{ base: 16, md: 0 }}

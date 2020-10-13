@@ -27,7 +27,6 @@ import IntegratedProgressiveImage from "../../components/Shared/atoms/Integrated
 
 import { PetCodeTheme } from "../../theme";
 import { ActionButtonStyle } from "../../components/Shared/ions/button";
-import ProgressiveImage from "react-progressive-image";
 
 const LandingPage: React.FC = () => {
   const theme = useTheme() as PetCodeTheme;
@@ -73,7 +72,6 @@ const LandingPage: React.FC = () => {
           style={{
             position: "absolute",
             top: 0,
-            zIndex: 1,
           }}
           height={breakpoint > 1 ? "17.8125rem" : "26rem"}
           viewBox={breakpoint > 1 ? "0 0 612 285" : "0 0 203 230"}
@@ -90,7 +88,6 @@ const LandingPage: React.FC = () => {
           style={{
             position: "absolute",
             top: 0,
-            zIndex: 1,
           }}
           height={breakpoint > 1 ? "14.5625rem" : "26rem"}
           viewBox={breakpoint > 1 ? "0 0 788 233" : "0 0 262 230"}
@@ -99,13 +96,7 @@ const LandingPage: React.FC = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           {breakpoint > 1 ? (
-            <ellipse
-              cx="190"
-              cy="-181.5"
-              rx="578"
-              ry="390.5"
-              fill={theme.colors.petcode.blue[400]}
-            />
+            <ellipse cx="190" cy="-181.5" rx="578" ry="390.5"/>
           ) : (
             <path d="M-1 188V0H261.392C224.323 109.324 120.85 188 -1 188Z" />
           )}
@@ -130,22 +121,18 @@ const LandingPage: React.FC = () => {
           slug="paw-print-background-ltr-down.svg"
           alt="Paw print background"
         />
-        <IntegratedProgressiveImage delay={1000} slug="landing-splash.png">
+        <IntegratedProgressiveImage delay={500} slug="landing-splash.png">
           {(src: string, loading: boolean) => (
             <Flex
-              position="relative"
               direction="row"
               justifyContent="center"
               backgroundImage={`url(${src})`}
-              style={{ filter: loading ? "blur(5px)" : "blur(0)" }}
+              style={{ filter: loading ? "blur(5px)" : "" }}
               backgroundSize="cover"
               height={{
                 md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",
               }}
-              paddingBottom={{
-                base: `calc(${(126 / 1440) * 100}% + 3rem)`,
-                md: 0,
-              }}
+              paddingBottom={{ base: `calc(${(126 / 1440) * 100}% + 3rem)`, md: 0 }}
             >
               <Flex
                 direction={{ base: "column", md: "row" }}
