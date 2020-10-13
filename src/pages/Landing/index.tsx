@@ -159,6 +159,7 @@ const LandingPage: React.FC = () => {
                   transition={transition}
                 >
                   <IntegratedProgressiveImage
+                    rounded="lg"
                     position="absolute"
                     right={{ base: "5.5rem", sm: "8.5rem" }}
                     slug="dashboard-web-screen.svg"
@@ -533,14 +534,29 @@ const LandingPage: React.FC = () => {
                 alignSelf={{ md: "center", lg: "auto" }}
                 width={{ base: "27.729rem", md: "51.1875rem", lg: "auto" }}
               >
-                <IntegratedProgressiveImage
-                  position="absolute"
-                  top="-25%"
-                  left={{ base: "3rem", md: "6.5rem" }}
-                  width={{ base: "24.729rem", md: "44.6875rem" }}
-                  slug="dashboard-web-screen.svg"
-                  alt="Dashboard web screen"
-                />
+                <AnimatePresence>
+                  <IntegratedProgressiveImage
+                    position="absolute"
+                    transform="translateY(-25%)"
+                    rounded="lg"
+                    left={{ base: "3rem", md: "6.5rem" }}
+                    width={{ base: "24.729rem", md: "44.6875rem" }}
+                    key={featureShown}
+                    slug={
+                      featureShown == "vaccinations"
+                        ? "dashboard-web-screen.svg"
+                        : featureShown == "reminders"
+                        ? "reminders-web-screen.svg"
+                        : "medical-info-web-screen.svg"
+                    }
+                    alt={`${featureShown} web screen`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    // @ts-ignore
+                    transition={{ duration: 0.5 }}
+                  />
+                </AnimatePresence>
                 <IPhoneX
                   height={breakpoint > 1 ? "31.25rem" : "17.607rem"}
                   screenProps={{
@@ -612,7 +628,7 @@ const LandingPage: React.FC = () => {
             direction={{ base: "column", lg: "row" }}
             alignItems={{ base: "center", md: "start", lg: "stretch" }}
             paddingRight={{ lg: 24 }}
-            paddingTop={20}
+            paddingTop={40}
             paddingBottom={8}
             maxWidth="90rem"
             flexGrow={1}
@@ -628,7 +644,8 @@ const LandingPage: React.FC = () => {
               width={{ base: "27.785rem", md: "50.3125rem", lg: "auto" }}
             >
               <IntegratedProgressiveImage
-                top="-15%"
+                transform="translateY(-25%)"
+                rounded="lg"
                 position="absolute"
                 right={{ base: "2.5rem", md: "5rem" }}
                 width={{ base: "25.285rem", md: "45.3125rem" }}
@@ -650,13 +667,11 @@ const LandingPage: React.FC = () => {
               </IPhoneX>
             </MotionFlex>
             <Hide below="lg">
-              <Link to="#">
+              <Link to="#" alignSelf="flex-end" marginX={8}>
                 <Icon
                   color="petcode.neutral.400"
                   name="arrow-thin"
                   size="40px"
-                  alignSelf="flex-end"
-                  marginX={8}
                 />
               </Link>
             </Hide>

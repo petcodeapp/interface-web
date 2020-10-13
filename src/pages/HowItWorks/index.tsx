@@ -441,21 +441,21 @@ const HowItWorksPage: React.FunctionComponent = () => {
             flexGrow={1}
           >
             <MotionFlex
-              flexGrow={1}
               position="relative"
-              alignItems="flex-end"
               justifyContent="flex-end"
-              overflowY="visible"
+              alignSelf={{ lg: "flex-end" }}
+              flexGrow={{ lg: 1 }}
               animate={displayBounce}
               // @ts-ignore
               transition={transition}
-              width={{ base: "29.269rem", md: "56.8125rem", lg: "auto" }}
+              width={{ base: "27.269rem", md: "49rem", lg: "auto" }}              
             >
               <IntegratedProgressiveImage
-                top={{ base: "-15%", md: "-8.5%" }}
-                right={{ base: "2.5rem", md: "6.5rem" }}
+                transform="translateY(-20%)"
+                rounded="lg"
+                right={{ base: "2.5rem", md: "5rem" }}
                 position="absolute"
-                width={{ base: "26.769rem", md: "50.3125rem" }}
+                width={{ base: "24.729rem", md: "44rem" }}
                 slug="reminders-web-screen.svg"
                 alt="Scan locations web screen"
               />

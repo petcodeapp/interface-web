@@ -108,6 +108,7 @@ const MobileMenu: React.FC = () => {
             paddingBottom={8}
             boxSizing="border-box"
             flexGrow={1}
+            zIndex={1}
           >
             <Link to="/">Home</Link>
             <Link to="/howitworks">How It Works</Link>
