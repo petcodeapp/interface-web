@@ -14,11 +14,16 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
   return (
     <Layout
       headerProps={{
+        position: "absolute",
         backgroundColor: breakpoint > 1 ? "transparent" : "petcode.blue.400",
+      }}
+      paddingTop={{
+        base: `calc(${(52 / 306) * 100}% + 6.25rem)`,
+        md: `${(226 / 1440) * 100}%`,
       }}
       {...props}
     >
-      <Box position={{ base: "relative", md: "absolute" }} top={0} width="100%">
+      <Box position="absolute" top={{ base: "6.25rem", md: 0 }} width="100%">
         <svg
           style={{ position: "absolute", top: 0 }}
           width="100%"
@@ -51,7 +56,6 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
           />
         </svg>
       </Box>
-      <Box paddingTop={{ base: `${(111 / 306) * 100}%`, md: 16 }} />
       {children}
       {/*<IntegratedProgressiveImage
         position="absolute"
