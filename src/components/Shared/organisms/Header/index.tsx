@@ -116,7 +116,7 @@ const MobileMenu: React.FC = () => {
                 {...HeaderButtonStyle}
                 background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
               >
-                Get Started
+                <Link to="/getstarted">Get Started</Link>
               </BaseButton>
             ) : (
               <BaseButton {...HeaderButtonStyle}>
@@ -184,7 +184,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               {...HeaderButtonStyle}
               background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
             >
-              Get Started
+              <Link to="/getstarted">Get Started</Link>
             </BaseButton>
           ) : (
             <BaseButton {...HeaderButtonStyle}>

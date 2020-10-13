@@ -506,12 +506,14 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 alignSelf={{ base: "center", md: "stretch" }}
               >
                 <Hide below="md">
-                  <Icon
-                    color="petcode.neutral.400"
-                    name="arrow-thin"
-                    size="40px"
-                    alignSelf="start"
-                  />
+                  <Link to="#">
+                    <Icon
+                      color="petcode.neutral.400"
+                      name="arrow-thin"
+                      size="40px"
+                      alignSelf="start"
+                    />
+                  </Link>
                 </Hide>
                 <BaseButton
                   {...ActionButtonStyle}

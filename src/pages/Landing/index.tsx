@@ -423,15 +423,17 @@ const LandingPage: React.FC = () => {
                 <FeaturePoint>Generates “lost pet” posters</FeaturePoint>
               </Stack>
               {breakpoint > 1 ? (
-                <Stack
-                  isInline
-                  alignItems="center"
-                  alignSelf="start"
-                  spacing={4}
-                >
-                  <Text fontSize="xl">Sign Up Now</Text>
-                  <Icon size="36px" name="arrow" />
-                </Stack>
+                <Link to="/signup">
+                  <Stack
+                    isInline
+                    alignItems="center"
+                    alignSelf="start"
+                    spacing={4}
+                  >
+                    <Text fontSize="xl">Sign Up Now</Text>
+                    <Icon size="36px" name="arrow" />
+                  </Stack>
+                </Link>
               ) : (
                 <BaseButton
                   {...ActionButtonStyle}
@@ -648,13 +650,15 @@ const LandingPage: React.FC = () => {
               </IPhoneX>
             </MotionFlex>
             <Hide below="lg">
-              <Icon
-                color="petcode.neutral.400"
-                name="arrow-thin"
-                size="40px"
-                alignSelf="flex-end"
-                marginX={8}
-              />
+              <Link to="#">
+                <Icon
+                  color="petcode.neutral.400"
+                  name="arrow-thin"
+                  size="40px"
+                  alignSelf="flex-end"
+                  marginX={8}
+                />
+              </Link>
             </Hide>
             <Stack
               maxWidth={{ sm: "45rem", lg: "25.625rem" }}
