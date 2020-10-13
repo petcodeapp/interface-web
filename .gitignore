@@ -26,3 +26,4 @@ old
 
 */**/environment.ts
 .DS_Store
+.vercel
