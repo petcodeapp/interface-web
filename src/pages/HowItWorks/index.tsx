@@ -136,7 +136,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
                   The PetCode system offers a seamless connection between
                   software and a physical QR code tag, allowing you to easily
-                  and effieciently manage your pet.
+                  and efficiently manage your pet.
                 </Text>
                 <ExclusiveUpdatesInput
                   maxWidth={{ base: "auto", sm: "24.75rem" }}
@@ -497,7 +497,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 <FeaturePoint>Keeps your pet safe</FeaturePoint>
                 <FeaturePoint>Tracks medical records</FeaturePoint>
                 <FeaturePoint>
-                  Provides fun oppertunities and events
+                  Provides fun opportunities and events
                 </FeaturePoint>
               </Stack>
               <Flex

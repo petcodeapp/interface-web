@@ -1,4 +1,5 @@
 import React from "react";
+import RoundedInput from '../../atoms/RoundedInput/index';
 
 import {
   InputGroup,
@@ -7,7 +8,7 @@ import {
   InputProps,
   InputGroupProps,
 } from "@chakra-ui/core";
-import RoundedInput from "../../atoms/RoundedInput";
+
 
 export type InputWithIconProps = {
   iconName: string;
