@@ -96,7 +96,7 @@ const LandingPage: React.FC = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           {breakpoint > 1 ? (
-            <ellipse cx="190" cy="-181.5" rx="578" ry="390.5"/>
+            <ellipse cx="190" cy="-181.5" rx="578" ry="390.5" />
           ) : (
             <path d="M-1 188V0H261.392C224.323 109.324 120.85 188 -1 188Z" />
           )}
@@ -132,7 +132,10 @@ const LandingPage: React.FC = () => {
               height={{
                 md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",
               }}
-              paddingBottom={{ base: `calc(${(126 / 1440) * 100}% + 3rem)`, md: 0 }}
+              paddingBottom={{
+                base: `calc(${(126 / 1440) * 100}% + 3rem)`,
+                md: 0,
+              }}
             >
               <Flex
                 direction={{ base: "column", md: "row" }}
