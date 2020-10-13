@@ -16,7 +16,7 @@ import { IPhoneX } from "react-device-mockups";
 
 import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
-import Layout from "../../components/Shared/layouts/LandingPageLayout";
+import Layout from "../../components/Shared/layouts/Layout";
 import MotionBox from "../../components/Motion/Box";
 import MotionFlex from "../../components/Motion/Flex";
 import Feature from "../../components/Shared/molecules/Feature";
@@ -66,7 +66,6 @@ const LandingPage: React.FC = () => {
         footerProps={{
           wavesArePadded: false,
         }}
-        paddingTop={0}
       >
         <svg
           style={{

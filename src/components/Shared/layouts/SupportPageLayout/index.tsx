@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Box, useTheme } from "@chakra-ui/core";
+import { useTheme } from "@chakra-ui/core";
 import { useBreakpoint } from "@chakra-ui/media-query";
 
-import Layout, { LayoutProps } from "../LandingPageLayout";
+import Layout, { LayoutProps } from "../Layout";
 
 import { PetCodeTheme } from "../../../../theme";
 
@@ -17,10 +17,7 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
         position: "absolute",
         backgroundColor: "transparent",
       }}
-      paddingTop={{
-        base: `calc(${(52 / 306) * 100}% + 6.25rem)`,
-        md: `${(226 / 1440) * 100}%`,
-      }}
+      paddingTop="12.5rem"
       {...props}
     >
       <svg

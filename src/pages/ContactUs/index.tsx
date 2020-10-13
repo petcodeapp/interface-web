@@ -3,7 +3,7 @@ import React from "react";
 import { Box, Heading, Stack, Text, Textarea } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
-import Layout from "../../components/Shared/layouts/LandingPageLayout";
+import Layout from "../../components/Shared/layouts/Layout";
 import BaseButton from "../../components/Shared/atoms/button";
 import RoundedInput from "../../components/Shared/atoms/RoundedInput";
 import UnifiedErrorMessage from "../../components/Shared/molecules/UnifiedErrorMessage";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Layout from "../../components/Shared/layouts/LandingPageLayout";
+import Layout from "../../components/Shared/layouts/Layout";
 import ProgressTracker from "./components/ProgressTracker";
 import ShippingInformationStep, {
   ShippingInformation,

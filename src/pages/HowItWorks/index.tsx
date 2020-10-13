@@ -18,7 +18,7 @@ import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
 import MotionBox from "../../components/Motion/Box";
 import MotionFlex from "../../components/Motion/Flex";
-import Layout from "../../components/Shared/layouts/LandingPageLayout";
+import Layout from "../../components/Shared/layouts/Layout";
 import HowItWorksStep from "../../components/Shared/molecules/HowItWorksStep";
 import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
 import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
@@ -68,7 +68,6 @@ const HowItWorksPage: React.FunctionComponent = () => {
           position: "absolute",
           backgroundColor: "transparent",
         }}
-        paddingTop={0}
       >
         <svg
           style={{

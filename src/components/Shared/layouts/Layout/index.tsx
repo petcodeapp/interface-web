@@ -22,11 +22,11 @@ const Layout: React.FC<LayoutProps> = ({
 }) => (
   <Flex
     direction="column"
-    minHeight="calc(100% - 6.25rem)"
-    paddingTop="6.25rem"
+    minHeight="100vh"
+    boxSizing="border-box"
     {...props}
   >
-    <Header backgroundColor="petcode.neutral.700" {...headerProps} />
+    <Header {...headerProps} />
     {children}
     <Footer {...footerProps} />
   </Flex>
