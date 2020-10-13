@@ -4,8 +4,6 @@ import {
   Box,
   Flex,
   FlexProps,
-  IconButton,
-  Image,
   Stack,
   Text,
   useTheme,
@@ -38,7 +36,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
     <Flex direction="column" {...props}>
       <Box
         position="relative"
-        paddingBottom={wavesArePadded ? `${(86 / 1440) * 100}%` : null}
+        paddingBottom={wavesArePadded ? `${(85 / 1440) * 100}%` : null}
       >
         <motion.svg
           style={{ position: "absolute", bottom: 0 }}
@@ -56,7 +54,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
         </motion.svg>
         <svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="0 0 1440 86"
+          viewBox="0 0 1440 85"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
