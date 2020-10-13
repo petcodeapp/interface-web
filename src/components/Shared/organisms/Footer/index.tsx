@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Box, Flex, FlexProps, Stack, Text, useTheme } from "@chakra-ui/core";
-import { useBreakpoint } from "@chakra-ui/media-query";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 import { motion, Transition } from "framer-motion";
 import Link from "../../atoms/link";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
@@ -15,7 +15,7 @@ export type FooterProps = {
 
 const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
 
   const waveBounce = { y: [0, 6] };
 

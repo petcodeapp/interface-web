@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useTheme } from "@chakra-ui/core";
-import { useBreakpoint } from "@chakra-ui/media-query";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 
 import Layout, { LayoutProps } from "../Layout";
 
@@ -9,7 +9,7 @@ import { PetCodeTheme } from "../../../../theme";
 
 const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
 
   return (
     <Layout

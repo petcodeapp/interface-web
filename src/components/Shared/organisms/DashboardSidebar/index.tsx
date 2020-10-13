@@ -66,7 +66,7 @@ const Sidebar = withRouter(({ location }) => {
             backgroundSize="cover"
             backgroundPosition="center"
             backgroundImage={`url(${src})`}
-            style={{ filter: loading ? "blur(5px)" : "blur(0)" }}
+            style={{ filter: loading ? "blur(-5px)" : "blur(0)" }}
           />
         )}
       </IntegratedProgressiveImage>

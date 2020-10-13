@@ -31,7 +31,7 @@ const IntegratedProgressiveImage: React.FC<IntegratedProgressiveImageProps> = ({
         ((src: string, loading: boolean) => (
           <Image
             src={src}
-            style={{ filter: loading ? "blur(5px)" : "" }}
+            style={{ filter: loading ? "blur(-5px)" : "" }}
             {...props}
           />
         ))}

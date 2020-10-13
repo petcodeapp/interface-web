@@ -8,13 +8,12 @@ import {
   FlexProps,
   Heading,
   HeadingProps,
-  Image,
   SimpleGrid,
   Stack,
   Text,
   useTheme,
 } from "@chakra-ui/core";
-import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
+import { useBreakpointValue, Show, Hide } from "@chakra-ui/media-query";
 
 import InfoField, {
   InfoFieldText,
@@ -133,7 +132,7 @@ const PetProfilePage = () => {
   } as Pet);
 
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
 
   return (
     <Layout

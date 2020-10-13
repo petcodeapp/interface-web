@@ -10,7 +10,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
-import { useBreakpoint, Hide } from "@chakra-ui/media-query";
+import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { AnimatePresence, motion, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
@@ -30,7 +30,7 @@ import { ActionButtonStyle } from "../../components/Shared/ions/button";
 
 const LandingPage: React.FC = () => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
 
   const safetySectionRef = useRef<HTMLDivElement>();
   const healthSectionRef = useRef<HTMLDivElement>();
@@ -126,7 +126,7 @@ const LandingPage: React.FC = () => {
               direction="row"
               justifyContent="center"
               backgroundImage={`url(${src})`}
-              style={{ filter: loading ? "blur(5px)" : "" }}
+              style={{ filter: loading ? "blur(-5px)" : "" }}
               backgroundSize="cover"
               height={{
                 md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",

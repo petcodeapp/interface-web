@@ -10,7 +10,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "@chakra-ui/core";
-import { useBreakpoint, Hide } from "@chakra-ui/media-query";
+import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
@@ -33,7 +33,7 @@ import "html5-device-mockups/dist/device-mockups.min.css";
 
 const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
   const [ref, inView] = useInView();
   const controls = useAnimation();
 
@@ -117,7 +117,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
               boxSizing="border-box"
               paddingTop="18.625rem"
               backgroundImage={`url(${src})`}
-              style={{ filter: loading ? "blur(5px)" : "" }}
+              style={{ filter: loading ? "blur(-5px)" : "" }}
               backgroundSize="cover"
               paddingRight={{ base: 16, md: 40 }}
               paddingLeft={{ base: 16, md: 0 }}
