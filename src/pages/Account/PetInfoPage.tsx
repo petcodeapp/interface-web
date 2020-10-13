@@ -71,13 +71,13 @@ const PetInfoSection = () => {
           <Text position="relative" fontSize="3xl" zIndex={2}>
             Contact Information
           </Text>
-          <BackgroundIcon alignSelf="end" size="100px" name="phone" />
+          <BackgroundIcon alignSelf="flex-end" size="100px" name="phone" />
         </InfoButton>
         <InfoButton to="/medicalinfo">
           <Text position="relative" fontSize="3xl" zIndex={2}>
             Medical Information
           </Text>
-          <BackgroundIcon alignSelf="end" size="100px" name="clipboard" />
+          <BackgroundIcon alignSelf="flex-end" size="100px" name="clipboard" />
         </InfoButton>
       </Flex>
       <SimpleGrid columns={{ xs: 1, md: 2 }} spacingX={5}>

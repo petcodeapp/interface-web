@@ -5,6 +5,7 @@ import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/core";
 import { AuthStore } from "../../views/Auth/";
 import InputWithIcon from "../../components/Shared/molecules/InputWithIcon";
 import BaseButton from "../../components/Shared/atoms/button";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 import { motion } from "framer-motion";
 
 const LeftContainer: React.FunctionComponent = ({ children }) => (
@@ -114,7 +115,7 @@ const RightContainer: React.FunctionComponent = ({ children }) => (
     flexShrink={1}
     alignItems="center"
     justifyContent="center"
-    backgroundImage="url(/media/dogs-on-yellow-wall.png)"
+    backgroundImage="url(dogs-on-yellow-wall.png)"
     backgroundPosition="center"
   >
     {children}
@@ -123,7 +124,7 @@ const RightContainer: React.FunctionComponent = ({ children }) => (
 
 const LogoWithTagLine = () => (
   <>
-    <Image alt="PetCode Logo" src="/media/petcode-logo.png" />
+    <IntegratedProgressiveImage alt="PetCode Logo" slug="petcode-logo.png" />
     <Heading
       color="petcode.neutral.700"
       fontSize={{ lg: "3xl", xl: "4xl" }}

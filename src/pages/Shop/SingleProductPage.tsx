@@ -19,7 +19,7 @@ import {
 } from "react-router-dom";
 
 import Rating from "../../components/Shared/rating";
-import Layout from "../../components/Shared/layouts/LandingPageLayout";
+import Layout from "../../components/Shared/layouts/Layout";
 import BaseButton from "../../components/Shared/atoms/button";
 import { Product } from "../../Models/Product";
 import { Review } from "../../Models/Review";
@@ -90,7 +90,7 @@ const ProductDisplay: React.FC<{ product: Product }> = ({ product }) => (
         size="md"
         variantColor="petcode.yellow"
         paddingX={10}
-        alignSelf="end"
+        alignSelf="flex-end"
       >
         <Text textTransform="uppercase" fontWeight="thin">
           Add to Cart

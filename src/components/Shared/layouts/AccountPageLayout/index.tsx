@@ -4,6 +4,7 @@ import { Image, useTheme } from "@chakra-ui/core";
 
 import MotionFlex from "../../../Motion/Flex";
 import Sidebar from "../../organisms/DashboardSidebar";
+import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
 
 import { PetCodeTheme } from "../../../../theme";
 
@@ -43,19 +44,19 @@ const AccountPageLayout: React.FC<any> = ({ children, variants }) => {
       </svg>
       <Sidebar />
       {children}
-      <Image
+      <IntegratedProgressiveImage
         position="absolute"
         left={0}
         bottom={0}
         maxHeight="100vh"
-        src="/media/paw-print-background-rtl-down.svg"
+        slug="paw-print-background-rtl-down.svg"
       />
-      <Image
+      <IntegratedProgressiveImage
         position="absolute"
         right={0}
         top={0}
         maxHeight="100vh"
-        src="/media/paw-print-background-rtl-down.svg"
+        slug="paw-print-background-rtl-down.svg"
       />
     </MotionFlex>
   );

@@ -6,13 +6,15 @@ import { ColorHues, DefaultTheme } from "@chakra-ui/core";
 
 const breakpoints = ["0em", "30em", "48em", "62em", "80em"];
 // @ts-ignore
-breakpoints.sm = "30em";
+breakpoints.base = breakpoints[0];
 // @ts-ignore
-breakpoints.md = "48em";
+breakpoints.sm = breakpoints[1];
 // @ts-ignore
-breakpoints.lg = "62em";
+breakpoints.md = breakpoints[2];
 // @ts-ignore
-breakpoints.xl = "80em";
+breakpoints.lg = breakpoints[3];
+// @ts-ignore
+breakpoints.xl = breakpoints[4];
 
 export default {
   ...theme,

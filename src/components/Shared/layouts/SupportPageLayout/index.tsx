@@ -1,13 +1,15 @@
 import React from "react";
 
-import { Image, useTheme } from "@chakra-ui/core";
+import { useTheme } from "@chakra-ui/core";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 
-import Layout, { LayoutProps } from "../LandingPageLayout";
+import Layout, { LayoutProps } from "../Layout";
 
 import { PetCodeTheme } from "../../../../theme";
 
 const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
 
   return (
     <Layout
@@ -15,41 +17,42 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
         position: "absolute",
         backgroundColor: "transparent",
       }}
-      paddingTop="11rem"
-      minHeight="calc(100% - 11rem)"
+      paddingTop="12.5rem"
       {...props}
     >
       <svg
-        style={{ position: "absolute", left: 0, top: 0 }}
-        width="100%"
-        viewBox="0 0 1440 176"
-        fill="none"
+        style={{ position: "absolute", top: 0 }}
+        viewBox={breakpoint > 1 ? "0 0 1440 226" : "0 0 306 148"}
+        fill={theme.colors.petcode.blue[400]}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M705.451 112C354.227 70.9999 162.104 119 -1 176V0H1567C1507.63 36 1320.15 183.757 705.451 112Z"
-          fill={theme.colors.petcode.blue[400]}
+          d={
+            breakpoint > 1
+              ? "M-1 57V226C0.543137 225.271 2.09119 224.539 3.64427 223.805C149.034 155.07 338.636 65.4333 679 106C1177.11 165.368 1353 129 1440 105V57H-1Z"
+              : "M-76 37.3271V148C-75.5834 147.523 -75.1655 147.043 -74.7463 146.562C-35.4982 101.55 15.6852 42.8503 107.567 69.4161C242.033 108.294 289.514 84.478 313 68.7612V37.3271H-76Z"
+          }
+          opacity="0.4"
         />
-      </svg>
-      <svg
-        style={{ position: "absolute", left: 0, top: 0 }}
-        width="100%"
-        viewBox="0 0 1440 226"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        <rect
+          width={breakpoint > 1 ? "1440" : "306"}
+          height={breakpoint > 1 ? "57" : "38"}
+          fill="#51BCDA"
+        />
         <path
-          d="M679 106C335 65 145 157 -1 226V0H1440V105C1353 129 1177.11 165.368 679 106Z"
-          fill={theme.colors.petcode.blue[400]}
-          opacity={0.4}
+          d={
+            breakpoint > 1
+              ? "M1440 57H-1V176C162.104 119 354.227 70.9999 705.451 112C1099.81 158.036 1318.33 113.723 1440 66.5334V57Z"
+              : "M313 37.3276H-76V115.257C-31.9698 77.9295 19.8939 46.4959 114.707 73.3456C221.166 103.493 280.156 74.4736 313 43.5709V37.3276Z"
+          }
         />
       </svg>
       {children}
-      {/*<Image
+      {/*<IntegratedProgressiveImage
         position="absolute"
         bottom={0}
         right={0}
-        src="/media/paw-print-background-ltr-up.svg"
+        slug="paw-print-background-ltr-up.svg"
       />*/}
     </Layout>
   );

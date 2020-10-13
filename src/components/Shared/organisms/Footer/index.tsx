@@ -1,19 +1,11 @@
 import React from "react";
 
-import {
-  Box,
-  Flex,
-  FlexProps,
-  IconButton,
-  Image,
-  Stack,
-  Text,
-  useTheme,
-} from "@chakra-ui/core";
-import { useBreakpoint } from "@chakra-ui/media-query";
+import { Box, Flex, FlexProps, Stack, Text, useTheme } from "@chakra-ui/core";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 import { motion, Transition } from "framer-motion";
 import Link from "../../atoms/link";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
+import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
 
 import { PetCodeTheme } from "../../../../theme";
 
@@ -23,7 +15,7 @@ export type FooterProps = {
 
 const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
 
   const waveBounce = { y: [0, 6] };
 
@@ -37,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
     <Flex direction="column" {...props}>
       <Box
         position="relative"
-        paddingBottom={wavesArePadded ? `${(86 / 1440) * 100}%` : null}
+        paddingBottom={wavesArePadded ? `${(85 / 1440) * 100}%` : null}
       >
         <motion.svg
           style={{ position: "absolute", bottom: 0 }}
@@ -55,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
         </motion.svg>
         <svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="0 0 1440 86"
+          viewBox="0 0 1440 85"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -87,8 +79,8 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
             marginRight={4}
             justifyContent="space-between"
           >
-            <Image
-              src="/media/petcode-logo-with-qr-code.png"
+            <IntegratedProgressiveImage
+              slug="petcode-logo-with-qr-code.png"
               alt="Petcode logo with QR code"
               width="10.25rem"
               marginBottom={16}

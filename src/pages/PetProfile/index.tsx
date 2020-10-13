@@ -8,13 +8,12 @@ import {
   FlexProps,
   Heading,
   HeadingProps,
-  Image,
   SimpleGrid,
   Stack,
   Text,
   useTheme,
 } from "@chakra-ui/core";
-import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
+import { useBreakpointValue, Show, Hide } from "@chakra-ui/media-query";
 
 import InfoField, {
   InfoFieldText,
@@ -23,7 +22,8 @@ import InfoField, {
 import BaseButton, {
   BaseButtonProps,
 } from "../../components/Shared/atoms/button";
-import Layout from "../../components/Shared/layouts/LandingPageLayout";
+import Layout from "../../components/Shared/layouts/Layout";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
 import moment from "moment";
 
@@ -65,7 +65,7 @@ const ActionButton: React.FC<BaseButtonProps> = (props) => (
     size="sm"
     variantColor="petcode.yellow"
     paddingX={6}
-    alignSelf="end"
+    alignSelf="flex-end"
     {...props}
   />
 );
@@ -132,7 +132,7 @@ const PetProfilePage = () => {
   } as Pet);
 
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
 
   return (
     <Layout
@@ -231,8 +231,8 @@ const PetProfilePage = () => {
         {breakpoint > 0 ? (
           <PrimaryHeader>Help Me Get Home!</PrimaryHeader>
         ) : (
-          <Image
-            src="/media/petcode-logo-with-qr-code-altered.png"
+          <IntegratedProgressiveImage
+            slug="petcode-logo-with-qr-code-altered.png"
             alt="Petcode logo with QR code"
             height={54}
           />
@@ -302,7 +302,7 @@ const PetProfilePage = () => {
           <Box
             backgroundSize="cover"
             backgroundPosition="center"
-            backgroundImage="url(/media/placeholder-dog.png)"
+            backgroundImage="url(placeholder-dog.png)"
             {...(breakpoint > 0
               ? {
                   height: "100%",

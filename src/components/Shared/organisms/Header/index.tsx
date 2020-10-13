@@ -1,20 +1,17 @@
 import React, { useEffect, useRef } from "react";
 
-import { Box, Image, StackProps, useTheme } from "@chakra-ui/core";
+import { Box, StackProps, useTheme } from "@chakra-ui/core";
 import BaseButton, { BaseButtonProps } from "../../atoms/button";
 import Link from "../../atoms/link";
-import { motion, MotionProps, useCycle } from "framer-motion";
-import { useBreakpoint, Show } from "@chakra-ui/media-query";
-import { Stack } from "../../../Motion";
+import { AnimatePresence, motion, MotionProps, useCycle } from "framer-motion";
+import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
+import { Flex, Stack } from "../../../Motion";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
+import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
 
 import { AuthContext } from "../../../../views/Auth/index";
 import { useObserver } from "mobx-react-lite";
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 import { PetCodeTheme } from "../../../../theme";
 import { ActionButtonStyle } from "../../ions/button";
@@ -32,29 +29,127 @@ const HeaderButtonStyle = {
 
 export type HeaderProps = StackProps & MotionProps;
 
+const MobileMenu: React.FC = () => {
+  const auth = React.useContext(AuthContext);
+  const menuRef = useRef<HTMLElement>();
+
+  const theme = useTheme() as PetCodeTheme;
+
+  useEffect(() => {
+    setTimeout(() => disableBodyScroll(menuRef.current as HTMLDivElement), 100);
+    return () => clearAllBodyScrollLocks();
+  });
+
+  return useObserver(() => (
+    <IntegratedProgressiveImage slug="mobile-menu-paw-print-background.svg">
+      {(src: string) => (
+        <Flex
+          direction="column"
+          animate={{
+            clipPath: `circle(${2200}px at right top)`,
+            transition: {
+              type: "spring",
+              stiffness: 20,
+              restDelta: 2,
+            },
+          }}
+          exit={{
+            clipPath: "circle(0px at right top)",
+            transition: {
+              type: "spring",
+              stiffness: 400,
+              damping: 40,
+            },
+          }}
+          // @ts-ignore
+          ref={(ref) => (menuRef.current = ref)}
+          position="absolute"
+          top={0}
+          left={0}
+          width="100%"
+          height="100vh"
+          backgroundColor="white"
+          backgroundImage={`url(${src})`}
+          backgroundSize="cover"
+        >
+          <Box backgroundColor="petcode.blue.400" paddingX={6} paddingTop={6}>
+            <Link to="/" paddingBottom={8}>
+              <IntegratedProgressiveImage
+                slug="petcode-logo-with-qr-code.png"
+                height="4.75rem"
+              />
+            </Link>
+          </Box>
+          <Box position="relative" paddingBottom={`${(50 / 306) * 100}%`}>
+            <svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 10 306 101"
+              xmlns="http://www.w3.org/2000/svg"
+              fill={theme.colors.petcode.blue[400]}
+              opacity="0.4"
+            >
+              <path d="M-76 0.327148V111C-75.5834 110.523 -75.1655 110.043 -74.7463 109.562C-35.4982 64.5505 15.6852 5.85031 107.567 32.4161C242.033 71.2943 289.514 47.478 313 31.7612V0.327148H-76Z" />
+            </svg>
+            <svg
+              style={{ position: "absolute", top: 0 }}
+              viewBox="0 11 306 67"
+              xmlns="http://www.w3.org/2000/svg"
+              fill={theme.colors.petcode.blue[400]}
+            >
+              <path d="M313 0.327637H-76V78.257C-31.9698 40.9295 19.8939 9.49593 114.707 36.3456C221.166 66.493 280.156 37.4736 313 6.57093V0.327637Z" />
+            </svg>
+          </Box>
+          <Stack
+            spacing={12}
+            color="petcode.neutral.700"
+            fontSize="2.5rem"
+            alignItems="start"
+            paddingX={16}
+            paddingBottom={8}
+            boxSizing="border-box"
+            flexGrow={1}
+            zIndex={1}
+          >
+            <Link to="/">Home</Link>
+            <Link to="/howitworks">How It Works</Link>
+            {!auth.isLoggedIn ? (
+              <BaseButton
+                {...HeaderButtonStyle}
+                background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+              >
+                <Link to="/getstarted">Get Started</Link>
+              </BaseButton>
+            ) : (
+              <BaseButton {...HeaderButtonStyle}>
+                <Link to="/dashboard">Dashboard</Link>
+              </BaseButton>
+            )}
+            <Show below="sm">
+              <Box flexGrow={1} />
+              <SocialMediaButtons
+                alignSelf="center"
+                buttonsAreFilled
+                buttonSize="lg"
+              />
+            </Show>
+          </Stack>
+        </Flex>
+      )}
+    </IntegratedProgressiveImage>
+  ));
+};
+
 const Header: React.FC<HeaderProps> = (props) => {
   const auth = React.useContext(AuthContext);
   const [open, toggleOpen] = useCycle(false, true);
-  const menuRef = useRef<HTMLElement>();
 
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = parseInt(useBreakpoint() as string);
   useEffect(() => {
-    if ((breakpoint >= 1 && !open) || (breakpoint < 1 && open)) {
+    if (breakpoint >= 1 && open) {
       toggleOpen();
     }
   }, [breakpoint]);
-  useEffect(() => {
-    if (breakpoint < 1 && open) {
-      setTimeout(
-        () => disableBodyScroll(menuRef.current as HTMLDivElement),
-        100
-      );
-    } else {
-      enableBodyScroll(menuRef.current as HTMLDivElement);
-    }
-    return () => clearAllBodyScrollLocks();
-  }, [open]);
 
   return useObserver(() => (
     <Stack
@@ -75,85 +170,31 @@ const Header: React.FC<HeaderProps> = (props) => {
       {...props}
     >
       <Link to="/">
-        <Image
-          src="/media/petcode-logo-with-qr-code.png"
+        <IntegratedProgressiveImage
+          slug="petcode-logo-with-qr-code.png"
           height={{ base: "3.5rem", sm: "4.75rem" }}
         />
       </Link>
       <Box flexGrow={1} />
-      <Stack
-        alignItems="center"
-        spacing={{ base: 12, sm: 8 }}
-        {...(breakpoint < 1
-          ? {
-              color: "petcode.neutral.700",
-              position: "absolute",
-              top: 0,
-              left: 0,
-              background: "white",
-              width: "100%",
-              height: "100vh",
-              fontSize: "2.5rem",
-              alignItems: "start",
-              paddingX: 16,
-              paddingY: 8,
-              boxSizing: "border-box",
-            }
-          : {
-              isInline: true,
-            })}
-        variants={{
-          open: (height = 1000) => ({
-            clipPath: `circle(${height * 2 + 200}px at right top)`,
-            transition: {
-              type: "spring",
-              stiffness: 20,
-              restDelta: 2,
-            },
-          }),
-          closed: {
-            clipPath: "circle(0px at right top)",
-            transition: {
-              type: "spring",
-              stiffness: 400,
-              damping: 40,
-            },
-          },
-        }}
-        // @ts-ignore
-        ref={(ref) => (menuRef.current = ref)}
-      >
-        <Show below="sm">
-          <Link to="/" paddingBottom={8}>
-            <Image
-              src="/media/petcode-logo-with-qr-code-altered.png"
-              height="4.75rem"
-            />
-          </Link>
-        </Show>
-        <Link to="/">Home</Link>
-        <Link to="/howitworks">How It Works</Link>
-        {!auth.isLoggedIn ? (
-          <BaseButton
-            {...HeaderButtonStyle}
-            background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
-          >
-            Get Started
-          </BaseButton>
-        ) : (
-          <BaseButton {...HeaderButtonStyle}>
-            <Link to="/dashboard">Dashboard</Link>
-          </BaseButton>
-        )}
-        <Show below="sm">
-          <Box flexGrow={1} />
-          <SocialMediaButtons
-            alignSelf="center"
-            buttonsAreFilled
-            buttonSize="lg"
-          />
-        </Show>
-      </Stack>
+      <Hide below="sm">
+        <Stack alignItems="center" spacing={8} isInline>
+          <Link to="/">Home</Link>
+          <Link to="/howitworks">How It Works</Link>
+          {!auth.isLoggedIn ? (
+            <BaseButton
+              {...HeaderButtonStyle}
+              background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+            >
+              <Link to="/getstarted">Get Started</Link>
+            </BaseButton>
+          ) : (
+            <BaseButton {...HeaderButtonStyle}>
+              <Link to="/dashboard">Dashboard</Link>
+            </BaseButton>
+          )}
+        </Stack>
+      </Hide>
+      <AnimatePresence>{open && <MobileMenu />}</AnimatePresence>
       <Show below="sm">
         <motion.svg
           style={{ cursor: "pointer", zIndex: 1000 }}
