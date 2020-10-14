@@ -162,7 +162,7 @@ const LandingPage: React.FC = () => {
                     rounded="lg"
                     position="absolute"
                     right={{ base: "5.5rem", sm: "8.5rem" }}
-                    slug="dashboard-web-screen.svg"
+                    slug="dashboard-web-screen.png"
                     alt="Dashboard web screen"
                     width={{ base: "23.854rem", sm: "34.4375rem" }}
                   />
@@ -177,7 +177,7 @@ const LandingPage: React.FC = () => {
                     }}
                   >
                     <IntegratedProgressiveImage
-                      slug="dashboard-mobile-screen.svg"
+                      slug="dashboard-mobile-screen.png"
                       alt="Dashboard mobile screen"
                       width="100%"
                     />
@@ -544,10 +544,10 @@ const LandingPage: React.FC = () => {
                     key={featureShown}
                     slug={
                       featureShown == "vaccinations"
-                        ? "dashboard-web-screen.svg"
+                        ? "dashboard-web-screen.png"
                         : featureShown == "reminders"
-                        ? "reminders-web-screen.svg"
-                        : "medical-info-web-screen.svg"
+                        ? "reminders-web-screen.png"
+                        : "medical-info-web-screen.png"
                     }
                     alt={`${featureShown} web screen`}
                     initial={{ opacity: 0 }}
@@ -574,10 +574,10 @@ const LandingPage: React.FC = () => {
                       key={featureShown}
                       slug={
                         featureShown == "vaccinations"
-                          ? "vaccinations-mobile-screen.svg"
+                          ? "vaccinations-mobile-screen.png"
                           : featureShown == "reminders"
-                          ? "reminders-mobile-screen.svg"
-                          : "medical-mobile-screen.svg"
+                          ? "reminders-mobile-screen.png"
+                          : "medical-info-mobile-screen.png"
                       }
                       alt={`${featureShown} mobile screen`}
                       initial={{ x: "100%", opacity: 0 }}
@@ -649,7 +649,7 @@ const LandingPage: React.FC = () => {
                 position="absolute"
                 right={{ base: "2.5rem", md: "5rem" }}
                 width={{ base: "25.285rem", md: "45.3125rem" }}
-                slug="scan-locations-web-screen.svg"
+                slug="scan-locations-web-screen.png"
                 alt="Scan locations web screen"
               />
               <IPhoneX
@@ -661,7 +661,7 @@ const LandingPage: React.FC = () => {
                 <IntegratedProgressiveImage
                   width="100%"
                   height="100%"
-                  slug="pet-parks-mobile-screen.svg"
+                  slug="pet-parks-mobile-screen.png"
                   alt="Pet parks mobile screen"
                 />
               </IPhoneX>

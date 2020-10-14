@@ -13,6 +13,7 @@ import {
 import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
+import Observer from "@researchgate/react-intersection-observer";
 
 import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
@@ -24,8 +25,6 @@ import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUp
 import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
 import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
-import { useInView } from "react-intersection-observer";
-
 import { PetCodeTheme } from "../../theme";
 import { ActionButtonStyle } from "../../components/Shared/ions/button";
 
@@ -34,14 +33,7 @@ import "html5-device-mockups/dist/device-mockups.min.css";
 const HowItWorksPage: React.FunctionComponent = () => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
-  const [ref, inView] = useInView();
   const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [inView]);
 
   const waveBounce = { y: [-3, 3] };
   const displayBounce = { y: [-5, 5] };
@@ -221,6 +213,11 @@ const HowItWorksPage: React.FunctionComponent = () => {
             justifyContent="center"
             backgroundColor="petcode.blue.400"
           >
+            <Observer onChange={({ isIntersecting }) => {
+              if (isIntersecting) {
+                controls.start("visible");
+              }
+            }}>
             <Flex
               direction={{ base: "column-reverse", lg: "row" }}
               color="white"
@@ -274,7 +271,6 @@ const HowItWorksPage: React.FunctionComponent = () => {
                   size="15.625rem"
                 />
                 <MotionBox
-                  ref={ref}
                   animate={controls}
                   position="absolute"
                   top="7.8125rem"
@@ -399,6 +395,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 </MotionBox>
               </Box>
             </Flex>
+            </Observer>
           </Flex>
           <Box position="relative" paddingBottom={`${(125 / 1440) * 100}%`}>
             <svg
@@ -456,7 +453,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 right={{ base: "2.5rem", md: "5rem" }}
                 position="absolute"
                 width={{ base: "24.729rem", md: "44rem" }}
-                slug="reminders-web-screen.svg"
+                slug="reminders-web-screen.png"
                 alt="Scan locations web screen"
               />
               <IPhoneX
@@ -468,7 +465,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 <IntegratedProgressiveImage
                   width="100%"
                   height="100%"
-                  slug="reminders-mobile-screen.svg"
+                  slug="reminders-mobile-screen.png"
                   alt="Pet parks mobile screen"
                 />
               </IPhoneX>
