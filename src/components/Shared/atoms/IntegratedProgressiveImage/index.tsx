@@ -4,7 +4,7 @@ import { ImageProps } from "@chakra-ui/core";
 import { Image } from "../../../Motion";
 import ProgressiveImage, {
   ProgressiveImageProps,
-} from "react-progressive-image";
+} from "react-progressive-graceful-image";
 import { MotionProps } from "framer-motion";
 
 export type IntegratedProgressiveImageProps = {
@@ -18,6 +18,10 @@ const IntegratedProgressiveImage: React.FC<IntegratedProgressiveImageProps> = ({
   delay,
   onError,
   children,
+  noLazyLoad,
+  noRetry = true,
+  rootMargin,
+  threshold,
   ...props
 }) => {
   return (
@@ -26,6 +30,10 @@ const IntegratedProgressiveImage: React.FC<IntegratedProgressiveImageProps> = ({
       src={`https://petcode.sirv.com/${slug}`}
       delay={delay}
       onError={onError}
+      noLazyLoad={noLazyLoad}
+      noRetry={noRetry}
+      rootMargin={rootMargin}
+      threshold={threshold}
     >
       {children ||
         ((src: string, loading: boolean) => (
