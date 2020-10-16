@@ -15,7 +15,13 @@ export type FooterProps = {
 
 const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
+  const breakpoint = useBreakpointValue({
+    base: 0,
+    sm: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+  }) as number;
 
   const waveBounce = { y: [0, 6] };
 

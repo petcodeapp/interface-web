@@ -3,11 +3,11 @@ import React from "react";
 import { FlexProps, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
 import { AnimatePresence, MotionProps } from "framer-motion";
 
-import BaseCheckbox from "../../atoms/checkbox";
-import MotionBox from "../../../Motion/Box";
-import MotionFlex from "../../../Motion/Flex";
+import BaseCheckbox from "../Shared/atoms/checkbox";
+import MotionBox from "../Motion/Box";
+import MotionFlex from "../Motion/Flex";
 
-import { PetCodeTheme } from "../../../../theme";
+import { PetCodeTheme } from "../../theme";
 
 export type FeatureDropDownProps = {
   name: string;

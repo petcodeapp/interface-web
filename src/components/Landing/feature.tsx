@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Stack, StackProps, Text } from "@chakra-ui/core";
-import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
+import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveImage";
 
 export type FeatureProps = {
   imageSlug: string;

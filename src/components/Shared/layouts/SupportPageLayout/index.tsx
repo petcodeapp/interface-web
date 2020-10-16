@@ -9,7 +9,13 @@ import { PetCodeTheme } from "../../../../theme";
 
 const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = useBreakpointValue({ base: 0, sm: 1, md: 2, lg: 3, xl: 4 }) as number;
+  const breakpoint = useBreakpointValue({
+    base: 0,
+    sm: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+  }) as number;
 
   return (
     <Layout
