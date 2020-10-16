@@ -40,7 +40,11 @@ const SafetySection = forwardRef((_, ref) => {
           alt="Safety image"
           flexGrow={1}
         />
-        <Stack maxWidth={{ md: "40.3125rem" }} color="petcode.neutral.700" spacing={4}>
+        <Stack
+          maxWidth={{ md: "40.3125rem" }}
+          color="petcode.neutral.700"
+          spacing={4}
+        >
           <Heading fontSize="5xl" textAlign={{ md: "right" }} paddingBottom={2}>
             Safety
           </Heading>

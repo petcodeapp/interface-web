@@ -85,7 +85,11 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           maxWidth="90rem"
           spacing={16}
         >
-          <Stack spacing={8} maxWidth={{ lg: "39.625rem" }} paddingX={{ md: 24, lg: 0 }}>
+          <Stack
+            spacing={8}
+            maxWidth={{ lg: "39.625rem" }}
+            paddingX={{ md: 24, lg: 0 }}
+          >
             <Heading fontSize={{ base: "2.8rem", md: "3.125rem" }}>
               The Ultimate Pet Management System
             </Heading>

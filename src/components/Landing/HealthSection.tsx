@@ -81,10 +81,7 @@ const HealthSection = forwardRef((_, ref) => {
           flexGrow={1}
           spacing={16}
         >
-          <Stack
-            paddingX={{ md: 24, lg: 0 }}
-            maxWidth={{ lg: "35.875rem" }}
-          >
+          <Stack paddingX={{ md: 24, lg: 0 }} maxWidth={{ lg: "35.875rem" }}>
             <Heading fontSize="5xl" paddingBottom={4}>
               Health
             </Heading>
@@ -114,7 +111,6 @@ const HealthSection = forwardRef((_, ref) => {
             transition={transition}
             alignSelf={{ md: "center", lg: "auto" }}
             width={{ base: "27.729rem", md: "51.1875rem" }}
-            
           >
             <AnimatePresence>
               <IntegratedProgressiveImage
