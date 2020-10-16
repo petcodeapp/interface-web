@@ -6,7 +6,7 @@ import { Transition, AnimatePresence, motion } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
 import MotionBox from "../Motion/Box";
-import FeatureDropDown from "./feature-dropdown";
+import FeatureDropDown from "./FeatureDropdown";
 import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveImage";
 
 import { PetCodeTheme } from "../../theme";
@@ -71,16 +71,19 @@ const HealthSection = forwardRef((_, ref) => {
           alignItems={{ base: "center", md: "start", lg: "stretch" }}
           ref={ref}
           color="white"
-          paddingTop={{ base: 16, md: 24, lg: 16 }}
+          paddingTop={{ base: 16, md: 32, lg: 16 }}
           paddingBottom={{ base: 16, lg: 0 }}
-          paddingLeft={{ lg: 40 }}
+          paddingLeft={16}
+          paddingRight={16}
+          boxSizing="border-box"
+          width="100%"
           maxWidth="90rem"
           flexGrow={1}
           spacing={16}
         >
           <Stack
-            paddingX={{ base: 16, md: 40, lg: 0 }}
-            maxWidth={{ sm: "45rem", lg: "35.875rem" }}
+            paddingX={{ md: 24, lg: 0 }}
+            maxWidth={{ lg: "35.875rem" }}
           >
             <Heading fontSize="5xl" paddingBottom={4}>
               Health
@@ -106,12 +109,12 @@ const HealthSection = forwardRef((_, ref) => {
           </Stack>
           <MotionBox
             position="relative"
-            flexGrow={{ lg: 1 }}
             animate={displayBounce}
             // @ts-ignore
             transition={transition}
             alignSelf={{ md: "center", lg: "auto" }}
-            width={{ base: "27.729rem", md: "51.1875rem", lg: "auto" }}
+            width={{ base: "27.729rem", md: "51.1875rem" }}
+            
           >
             <AnimatePresence>
               <IntegratedProgressiveImage

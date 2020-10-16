@@ -5,14 +5,14 @@ import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
-import Link from "../../components/Shared/atoms/link";
-import BaseButton from "../../components/Shared/atoms/button";
-import MotionFlex from "../../components/Motion/Flex";
-import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
-import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
+import Link from "../Shared/atoms/link";
+import BaseButton from "../Shared/atoms/button";
+import MotionFlex from "../Motion/Flex";
+import FeaturePoint from "../Shared/molecules/FeaturePoint";
+import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveImage";
 
 import { PetCodeTheme } from "../../theme";
-import { ActionButtonStyle } from "../../components/Shared/ions/button";
+import { ActionButtonStyle } from "../Shared/ions/button";
 
 const DiscoverySection = forwardRef((_, ref) => {
   const theme = useTheme() as PetCodeTheme;
@@ -37,22 +37,24 @@ const DiscoverySection = forwardRef((_, ref) => {
       <Flex
         ref={ref}
         direction={{ base: "column", lg: "row" }}
-        alignItems={{ base: "center", md: "start", lg: "stretch" }}
-        paddingRight={{ lg: 24 }}
+        alignItems={{ base: "center", lg: "stretch" }}
+        paddingRight={16}
+        paddingLeft={16}
         paddingTop={40}
         paddingBottom={8}
+        width="100%"
         maxWidth="90rem"
         flexGrow={1}
+        boxSizing="border-box"
       >
         <MotionFlex
           position="relative"
           justifyContent="flex-end"
-          flexGrow={{ lg: 1 }}
           animate={displayBounce}
           // @ts-ignore
           transition={transition}
           alignSelf={{ md: "center", lg: "auto" }}
-          width={{ base: "27.785rem", md: "50.3125rem", lg: "auto" }}
+          width={{ base: "27.785rem", md: "50.3125rem" }}
         >
           <IntegratedProgressiveImage
             transform="translateY(-25%)"
@@ -83,8 +85,8 @@ const DiscoverySection = forwardRef((_, ref) => {
           </Link>
         </Hide>
         <Stack
-          maxWidth={{ sm: "45rem", lg: "25.625rem" }}
-          paddingX={{ base: 16, md: 40, lg: 0 }}
+          maxWidth={{ lg: "25.625rem" }}
+          paddingX={{ md: 24, lg: 0 }}
           spacing={4}
           color="petcode.neutral.700"
         >

@@ -232,7 +232,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
                 paddingLeft={{ lg: 8, xl: 40 }}
                 alignItems={{ base: "center", lg: "stretch" }}
                 paddingBottom={12}
-                maxWidth="90rem"
+                maxWidth={{ base: "100vw", lg: "90rem" }}
                 flexGrow={1}
               >
                 <Stack
@@ -441,7 +441,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
             paddingTop={24}
             paddingBottom={16}
             justifyContent="center"
-            maxWidth="90rem"
+            maxWidth={{ base: "100vw", lg: "90rem" }}
             spacing={16}
             flexGrow={1}
           >

@@ -25,19 +25,22 @@ const SafetySection = forwardRef((_, ref) => {
         direction={breakpoint > 1 ? "row" : "column"}
         ref={ref}
         alignItems="center"
-        paddingLeft={{ base: 16, md: 32, lg: 48 }}
-        paddingRight={{ base: 16, md: 32 }}
+        paddingX={16}
         paddingTop={16}
+        flexGrow={1}
+        width="100%"
+        maxWidth="90rem"
+        boxSizing="border-box"
         paddingBottom={8}
         spacing={{ base: 16, md: 40 }}
       >
         <IntegratedProgressiveImage
           slug="safety-image.svg"
           minWidth={{ md: "19.625rem" }}
-          maxWidth={{ base: "11.485rem", md: undefined }}
           alt="Safety image"
+          flexGrow={1}
         />
-        <Stack maxWidth="40.3125rem" color="petcode.neutral.700" spacing={4}>
+        <Stack maxWidth={{ md: "40.3125rem" }} color="petcode.neutral.700" spacing={4}>
           <Heading fontSize="5xl" textAlign={{ md: "right" }} paddingBottom={2}>
             Safety
           </Heading>

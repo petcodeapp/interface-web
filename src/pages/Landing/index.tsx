@@ -6,12 +6,12 @@ import { useBreakpointValue } from "@chakra-ui/media-query";
 import Layout from "../../components/Shared/layouts/Layout";
 import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
-import Hero from "../../components/Landing/hero";
-import FeaturesSection from "../../components/Landing/features-section";
-import SafetySection from "../../components/Landing/safety-section";
-import HealthSection from "../../components/Landing/health-section";
-import DiscoverySection from "../../components/Landing/discovery-section";
-import SignUpForUpdatesSection from "../../components/Landing/sign-up-for-updates-section";
+import Hero from "../../components/Landing/Hero";
+import FeaturesSection from "../../components/Landing/FeaturesSection";
+import SafetySection from "../../components/Landing/SafetySection";
+import HealthSection from "../../components/Landing/HealthSection";
+import DiscoverySection from "../../components/Landing/DiscoverySection";
+import SignUpForUpdatesSection from "../../components/Landing/SignUpForUpdatesSection";
 
 import { PetCodeTheme } from "../../theme";
 

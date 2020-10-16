@@ -1,5 +1,5 @@
 import React from "react";
-import RoundedInput from "../../atoms/RoundedInput/index";
+import RoundedInput from "../../atoms/RoundedInput";
 
 import {
   InputGroup,

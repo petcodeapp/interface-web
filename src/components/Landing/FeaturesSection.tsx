@@ -4,11 +4,11 @@ import { Box, Flex, Heading, Stack, Text, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 import { motion, Transition } from "framer-motion";
 
-import BaseButton from "../../components/Shared/atoms/button";
-import Feature from "./feature";
+import BaseButton from "../Shared/atoms/button";
+import Feature from "./Feature";
 
 import { PetCodeTheme } from "../../theme";
-import { ActionButtonStyle } from "../../components/Shared/ions/button";
+import { ActionButtonStyle } from "../Shared/ions/button";
 
 type FeaturesSectionProps = {
   safetySectionRef: React.MutableRefObject<HTMLDivElement | undefined>;
@@ -77,11 +77,15 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           alignItems="center"
           color="white"
           paddingY={{ base: 8, lg: 16 }}
-          paddingLeft={{ base: 12, xl: 40 }}
-          paddingRight={12}
+          justifyContent="space-between"
+          boxSizing="border-box"
+          flexGrow={1}
+          paddingX={16}
+          width="100%"
+          maxWidth="90rem"
           spacing={16}
         >
-          <Stack spacing={8} maxWidth="39.625rem">
+          <Stack spacing={8} maxWidth={{ lg: "39.625rem" }} paddingX={{ md: 24, lg: 0 }}>
             <Heading fontSize={{ base: "2.8rem", md: "3.125rem" }}>
               The Ultimate Pet Management System
             </Heading>

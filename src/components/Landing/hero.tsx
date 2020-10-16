@@ -43,22 +43,24 @@ const Hero: React.FC = () => {
             md: 0,
           }}
         >
-          <Flex
-            direction={{ base: "column", md: "row" }}
+          <Stack
+            direction={breakpoint > 1 ? "row" : "column"}
             alignItems={{ base: "center", md: "stretch" }}
+            width="100%"
             maxWidth="90rem"
             boxSizing="border-box"
             paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingRight={{ md: 12 }}
+            paddingX={12}
             flexGrow={1}
+            justifyContent="space-between"
+            spacing={{ md: 16 }}
           >
             <MotionFlex
               position="relative"
               top="-1rem"
               height={{ base: "19.464rem", sm: "28.125rem" }}
               width={{ base: "29.354rem", sm: "42.9375rem" }}
-              marginRight={{ md: 32 }}
-              flexGrow={{ md: 1 }}
+              flexGrow={{ md: 1, xl: 0 }}
               alignItems="flex-end"
               justifyContent="flex-end"
               animate={displayBounce}
@@ -122,7 +124,7 @@ const Hero: React.FC = () => {
                 maxWidth={{ base: "auto", md: "24.75rem" }}
               />
             </Stack>
-          </Flex>
+          </Stack>
         </Flex>
       )}
     </IntegratedProgressiveImage>

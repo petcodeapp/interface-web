@@ -3,8 +3,8 @@ import React from "react";
 import { Flex, Stack, Text, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 
-import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
-import ExclusiveUpdatesInput from "../../components/Shared/molecules/ExclusiveUpdatesInput";
+import FeaturePoint from "../Shared/molecules/FeaturePoint";
+import ExclusiveUpdatesInput from "../Shared/molecules/ExclusiveUpdatesInput";
 
 import { PetCodeTheme } from "../../theme";
 
@@ -35,9 +35,11 @@ const SignUpForUpdatesSection: React.FC = () => {
           direction={breakpoint > 1 ? "row" : "column"}
           paddingTop={{ base: 4, md: 2 }}
           paddingBottom={`calc(${(87 / 1440) * 100}% + 5.3125rem)`}
-          paddingX={{ base: 20, md: 32, lg: 40 }}
+          paddingX={16}
           justifyContent="space-between"
+          width="100%"
           maxWidth="90rem"
+          boxSizing="border-box"
           flexGrow={1}
           spacing={8}
         >
