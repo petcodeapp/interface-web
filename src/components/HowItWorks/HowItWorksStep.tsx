@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Box, Heading, Stack, StackProps, Text } from "@chakra-ui/core";
-import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
+
+import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveImage";
 
 export type HowItWorksStepProps = {
   imageSlug: string;

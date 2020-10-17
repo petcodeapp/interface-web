@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             maxWidth="90rem"
             boxSizing="border-box"
             paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingX={12}
+            paddingX={16}
             flexGrow={1}
             justifyContent="space-between"
             spacing={{ md: 16 }}

@@ -15,6 +15,8 @@ import SignUpForUpdatesSection from "../../components/Landing/SignUpForUpdatesSe
 
 import { PetCodeTheme } from "../../theme";
 
+import "html5-device-mockups/dist/device-mockups.min.css";
+
 const LandingPage: React.FC = () => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = useBreakpointValue({

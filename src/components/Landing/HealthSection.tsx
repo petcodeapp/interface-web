@@ -73,8 +73,7 @@ const HealthSection = forwardRef((_, ref) => {
           color="white"
           paddingTop={{ base: 16, md: 32, lg: 16 }}
           paddingBottom={{ base: 16, lg: 0 }}
-          paddingLeft={16}
-          paddingRight={16}
+          paddingX={16}
           boxSizing="border-box"
           width="100%"
           maxWidth="90rem"
