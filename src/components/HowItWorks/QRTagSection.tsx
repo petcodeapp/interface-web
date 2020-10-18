@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Flex, Heading, Stack, Text, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
+import { useHistory } from "react-router-dom";
 import Observer from "@researchgate/react-intersection-observer";
 
 import Link from "../Shared/atoms/link";
@@ -22,6 +23,8 @@ const QRTagSection = () => {
     lg: 3,
     xl: 4,
   }) as number;
+
+  const history = useHistory();
 
   const controls = useAnimation();
   const [isIntersectingQRTag, setIsIntersectingQRTag] = useState(false);
@@ -121,11 +124,12 @@ const QRTagSection = () => {
                 alignSelf={{ base: "center", lg: "start" }}
                 variantColor="white"
                 color="petcode.blue.400"
+                onClick={() => history.push({
+                  pathname: "/",
+                  state: { callToAction: true }
+                })}
               >
-                <Link to={{
-                pathname: "/",
-                state: { callToAction: true },
-              }}>Get Started</Link>
+                Get Started
               </BaseButton>
             </Stack>
             <Box

@@ -3,6 +3,7 @@ import React from "react";
 import { Flex, Heading, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { Transition } from "framer-motion";
+import { useHistory } from "react-router-dom";
 import { IPhoneX } from "react-device-mockups";
 
 import Link from "../../components/Shared/atoms/link";
@@ -23,6 +24,8 @@ const PetPortalSection = () => {
     lg: 3,
     xl: 4,
   }) as number;
+
+  const history = useHistory();
 
   const displayBounce = { y: [-5, 5] };
 
@@ -128,11 +131,12 @@ const PetPortalSection = () => {
               paddingX={{ base: 16, lg: 8 }}
               fontSize={{ base: "xl", lg: "lg" }}
               variantColor="petcode.blue"
-            >
-              <Link to={{
+              onClick={() => history.push({
                 pathname: "/",
-                state: { callToAction: true },
-              }}>Get Started</Link>
+                state: { callToAction: true }
+              })}
+            >
+              Get Started
             </BaseButton>
           </Flex>
         </Stack>

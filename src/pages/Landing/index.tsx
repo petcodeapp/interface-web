@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 
 import { ThemeProvider, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import Layout from "../../components/Shared/layouts/Layout";
 import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
@@ -31,6 +31,7 @@ const LandingPage: React.FC = () => {
   const location = useLocation<{
     callToAction?: boolean;
   }>();
+  const history = useHistory();
 
   const safetySectionRef = useRef<HTMLDivElement>();
   const healthSectionRef = useRef<HTMLDivElement>();
@@ -49,8 +50,9 @@ const LandingPage: React.FC = () => {
   useEffect(() => {
     if (location.state?.callToAction) {
       setTimeout(callToAction, 0);
+      history.replace('/', null);
     }
-  }, []);
+  }, [location.state]);
 
   return (
     <ThemeProvider

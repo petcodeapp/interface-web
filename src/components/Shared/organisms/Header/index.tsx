@@ -8,6 +8,7 @@ import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
 import { Flex, Stack } from "../../../Motion";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
 import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
+import { useHistory } from "react-router-dom";
 
 import { AuthContext } from "../../../../views/Auth/index";
 import { useObserver } from "mobx-react-lite";
@@ -30,10 +31,13 @@ const HeaderButtonStyle = {
 export type HeaderProps = StackProps & MotionProps;
 
 const MobileMenu: React.FC = () => {
-  const auth = React.useContext(AuthContext);
-  const menuRef = useRef<HTMLElement>();
-
   const theme = useTheme() as PetCodeTheme;
+
+  const history = useHistory();
+
+  const auth = React.useContext(AuthContext);
+
+  const menuRef = useRef<HTMLElement>();
 
   useEffect(() => {
     setTimeout(() => disableBodyScroll(menuRef.current as HTMLDivElement), 100);
@@ -116,8 +120,12 @@ const MobileMenu: React.FC = () => {
               <BaseButton
                 {...HeaderButtonStyle}
                 background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+                onClick={() => history.push({
+                  pathname: "/",
+                  state: { callToAction: true }
+                })}
               >
-                <Link to="/getstarted">Get Started</Link>
+                Get Started
               </BaseButton>
             ) : (
               <BaseButton {...HeaderButtonStyle}>
@@ -140,11 +148,14 @@ const MobileMenu: React.FC = () => {
 };
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const auth = React.useContext(AuthContext);
-  const [open, toggleOpen] = useCycle(false, true);
-
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = parseInt(useBreakpoint() as string);
+
+  const history = useHistory();
+
+  const auth = React.useContext(AuthContext);
+
+  const [open, toggleOpen] = useCycle(false, true);
   useEffect(() => {
     if (breakpoint >= 1 && open) {
       toggleOpen();
@@ -184,8 +195,12 @@ const Header: React.FC<HeaderProps> = (props) => {
             <BaseButton
               {...HeaderButtonStyle}
               background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+              onClick={() => history.push({
+                pathname: "/",
+                state: { callToAction: true }
+              })}
             >
-              <Link to="/getstarted">Get Started</Link>
+              Get Started
             </BaseButton>
           ) : (
             <BaseButton {...HeaderButtonStyle}>
