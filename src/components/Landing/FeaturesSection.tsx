@@ -11,15 +11,15 @@ import { PetCodeTheme } from "../../theme";
 import { ActionButtonStyle } from "../Shared/ions/button";
 
 type FeaturesSectionProps = {
-  safetySectionRef: React.MutableRefObject<HTMLDivElement | undefined>;
-  healthSectionRef: React.MutableRefObject<HTMLDivElement | undefined>;
-  discoverySectionRef: React.MutableRefObject<HTMLDivElement | undefined>;
+  scrollToSafetySection: () => void;
+  scrollToHealthSection: () => void;
+  scrollToDiscoverySection: () => void;
 };
 
 const FeaturesSection: React.FC<FeaturesSectionProps> = ({
-  safetySectionRef,
-  healthSectionRef,
-  discoverySectionRef,
+  scrollToSafetySection,
+  scrollToHealthSection,
+  scrollToDiscoverySection,
 }) => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = useBreakpointValue({
@@ -99,13 +99,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                 variant="outline"
                 color="white"
                 fontWeight="thin"
-                onClick={() =>
-                  safetySectionRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                    inline: "center",
-                  })
-                }
+                onClick={scrollToSafetySection}
               >
                 Safety
               </BaseButton>
@@ -115,13 +109,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                 variant="outline"
                 color="white"
                 fontWeight="thin"
-                onClick={() =>
-                  healthSectionRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                    inline: "center",
-                  })
-                }
+                onClick={scrollToHealthSection}
               >
                 Health
               </BaseButton>
@@ -131,13 +119,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                 variant="outline"
                 color="white"
                 fontWeight="thin"
-                onClick={() =>
-                  discoverySectionRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                    inline: "center",
-                  })
-                }
+                onClick={scrollToDiscoverySection}
               >
                 Discovery
               </BaseButton>

@@ -3,14 +3,17 @@ import React, { forwardRef } from "react";
 import { Flex, Heading, Icon, Stack, Text } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 
-import Link from "../Shared/atoms/link";
 import BaseButton from "../Shared/atoms/button";
 import FeaturePoint from "../Shared/molecules/FeaturePoint";
 import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveImage";
 
 import { ActionButtonStyle } from "../Shared/ions/button";
 
-const SafetySection = forwardRef((_, ref) => {
+type SafetySectionProps = {
+  scrollToSignUpSection: () => void;
+};
+
+const SafetySection = forwardRef<HTMLDivElement | undefined, SafetySectionProps>(({ scrollToSignUpSection }, ref) => {
   const breakpoint = useBreakpointValue({
     base: 0,
     sm: 1,
@@ -63,12 +66,10 @@ const SafetySection = forwardRef((_, ref) => {
             <FeaturePoint>Generates “lost pet” posters</FeaturePoint>
           </Stack>
           {breakpoint > 1 ? (
-            <Link to="/signup">
-              <Stack isInline alignItems="center" alignSelf="start" spacing={4}>
-                <Text fontSize="xl">Sign Up Now</Text>
-                <Icon size="36px" name="arrow" />
-              </Stack>
-            </Link>
+            <Stack isInline alignItems="center" alignSelf="start" spacing={4} onClick={scrollToSignUpSection} cursor="pointer">
+              <Text fontSize="xl">Sign Up Now</Text>
+              <Icon size="36px" name="arrow" />
+            </Stack>
           ) : (
             <BaseButton
               {...ActionButtonStyle}
@@ -78,8 +79,9 @@ const SafetySection = forwardRef((_, ref) => {
               color="white"
               alignSelf="center"
               background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+              onClick={scrollToSignUpSection}
             >
-              <Link to="/getstarted">Get Started</Link>
+              Get Started
             </BaseButton>
           )}
         </Stack>

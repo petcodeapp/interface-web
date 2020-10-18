@@ -11,7 +11,7 @@ import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveIma
 
 import { PetCodeTheme } from "../../theme";
 
-const HealthSection = forwardRef((_, ref) => {
+const HealthSection = forwardRef<HTMLDivElement| undefined>((_, ref) => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = useBreakpointValue({
     base: 0,

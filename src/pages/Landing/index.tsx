@@ -30,6 +30,15 @@ const LandingPage: React.FC = () => {
   const safetySectionRef = useRef<HTMLDivElement>();
   const healthSectionRef = useRef<HTMLDivElement>();
   const discoverySectionRef = useRef<HTMLDivElement>();
+  const signUpSectionRef = useRef<HTMLDivElement>();
+
+  const scrollToElement = (ref: React.MutableRefObject<HTMLDivElement | undefined>) => {
+    return () => ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    })
+  };
 
   return (
     <ThemeProvider
@@ -106,14 +115,17 @@ const LandingPage: React.FC = () => {
         />
         <Hero />
         <FeaturesSection
-          safetySectionRef={safetySectionRef}
-          healthSectionRef={healthSectionRef}
-          discoverySectionRef={discoverySectionRef}
+          scrollToSafetySection={scrollToElement(safetySectionRef)}
+          scrollToHealthSection={scrollToElement(healthSectionRef)}
+          scrollToDiscoverySection={scrollToElement(discoverySectionRef)}
         />
-        <SafetySection ref={safetySectionRef} />
+        <SafetySection
+          ref={safetySectionRef}
+          scrollToSignUpSection={scrollToElement(signUpSectionRef)}
+        />
         <HealthSection ref={healthSectionRef} />
         <DiscoverySection ref={discoverySectionRef} />
-        <SignUpForUpdatesSection />
+        <SignUpForUpdatesSection ref={signUpSectionRef} />
       </Layout>
     </ThemeProvider>
   );

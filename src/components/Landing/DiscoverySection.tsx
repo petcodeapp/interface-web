@@ -14,7 +14,7 @@ import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveIma
 import { PetCodeTheme } from "../../theme";
 import { ActionButtonStyle } from "../Shared/ions/button";
 
-const DiscoverySection = forwardRef((_, ref) => {
+const DiscoverySection = forwardRef<HTMLDivElement| undefined>((_, ref) => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = useBreakpointValue({
     base: 0,

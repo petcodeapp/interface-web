@@ -8,7 +8,7 @@ import ExclusiveUpdatesInput from "../Shared/molecules/ExclusiveUpdatesInput";
 
 import { PetCodeTheme } from "../../theme";
 
-const SignUpForUpdatesSection: React.FC = () => {
+const SignUpForUpdatesSection = React.forwardRef<HTMLDivElement| undefined>((_, ref) => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = useBreakpointValue({
     base: 0,
@@ -32,6 +32,7 @@ const SignUpForUpdatesSection: React.FC = () => {
         backgroundColor="petcode.neutral.200"
       >
         <Stack
+          ref={ref}
           direction={breakpoint > 1 ? "row" : "column"}
           paddingTop={{ base: 4, md: 2 }}
           paddingBottom={`calc(${(87 / 1440) * 100}% + 5.3125rem)`}
@@ -77,6 +78,6 @@ const SignUpForUpdatesSection: React.FC = () => {
       </Flex>
     </Flex>
   );
-};
+});
 
 export default SignUpForUpdatesSection;
