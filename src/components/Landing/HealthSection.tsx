@@ -81,7 +81,7 @@ const HealthSection = forwardRef((_, ref) => {
           spacing={{ base: 8, lg: 16 }}
         >
           <Stack paddingX={{ md: 24, lg: 0 }} maxWidth={{ lg: "35.875rem" }}>
-            <Heading fontSize="5xl" paddingBottom={4}>
+            <Heading fontSize="3rem" paddingBottom={4}>
               Health
             </Heading>
             <FeatureDropDown

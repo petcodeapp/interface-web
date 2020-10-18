@@ -85,7 +85,7 @@ const PetPortalSection = () => {
           spacing={4}
           color="petcode.neutral.700"
         >
-          <Heading fontSize="5xl">The Pet Portal</Heading>
+          <Heading fontSize="3rem">The Pet Portal</Heading>
           <Text
             fontSize={{ base: "3xl", md: "2xl" }}
             color="petcode.yellow.400"

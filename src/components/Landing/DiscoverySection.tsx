@@ -90,7 +90,7 @@ const DiscoverySection = forwardRef((_, ref) => {
           spacing={4}
           color="petcode.neutral.700"
         >
-          <Heading fontSize="5xl">Discovery</Heading>
+          <Heading fontSize="3rem">Discovery</Heading>
           <Stack isInline>
             <BaseButton
               {...ActionButtonStyle}

@@ -27,7 +27,7 @@ const GettingStartedSection = () => {
       >
         <Heading
           color="petcode.neutral.700"
-          fontSize="5xl"
+          fontSize="3rem"
           paddingBottom={4}
           textAlign="center"
         >

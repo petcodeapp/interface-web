@@ -100,7 +100,7 @@ const QRTagSection = () => {
               spacing={3}
               marginRight={{ lg: 8 }}
             >
-              <Heading fontSize="5xl">The QR Tag</Heading>
+              <Heading fontSize="3rem">The QR Tag</Heading>
               <Text
                 fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
                 fontWeight="thin"

@@ -44,7 +44,7 @@ const SafetySection = forwardRef((_, ref) => {
           color="petcode.neutral.700"
           spacing={4}
         >
-          <Heading fontSize="5xl" textAlign={{ md: "right" }} paddingBottom={2}>
+          <Heading fontSize="3rem" textAlign={{ md: "right" }} paddingBottom={2}>
             Safety
           </Heading>
           <Text

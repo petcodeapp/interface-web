@@ -100,7 +100,7 @@ const Hero: React.FC = () => {
               spacing={5}
             >
               <Box>
-                <Heading fontSize="5xl">One Code.</Heading>
+                <Heading fontSize="6xl">One Code.</Heading>
                 <Heading fontSize={{ base: "3xl", md: "2xl" }}>
                   An endless suite of features for pet owners.
                 </Heading>
