@@ -129,7 +129,10 @@ const PetPortalSection = () => {
               fontSize={{ base: "xl", lg: "lg" }}
               variantColor="petcode.blue"
             >
-              <Link to="/getstarted">Get Started</Link>
+              <Link to={{
+                pathname: "/",
+                state: { callToAction: true },
+              }}>Get Started</Link>
             </BaseButton>
           </Flex>
         </Stack>

@@ -122,7 +122,10 @@ const QRTagSection = () => {
                 variantColor="white"
                 color="petcode.blue.400"
               >
-                <Link to="/getstarted">Get Started</Link>
+                <Link to={{
+                pathname: "/",
+                state: { callToAction: true },
+              }}>Get Started</Link>
               </BaseButton>
             </Stack>
             <Box

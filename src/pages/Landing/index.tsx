@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { ThemeProvider, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
+import { useLocation } from "react-router-dom";
 
 import Layout from "../../components/Shared/layouts/Layout";
 import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
@@ -27,6 +28,10 @@ const LandingPage: React.FC = () => {
     xl: 4,
   }) as number;
 
+  const location = useLocation<{
+    callToAction?: boolean;
+  }>();
+
   const safetySectionRef = useRef<HTMLDivElement>();
   const healthSectionRef = useRef<HTMLDivElement>();
   const discoverySectionRef = useRef<HTMLDivElement>();
@@ -39,6 +44,13 @@ const LandingPage: React.FC = () => {
       inline: "center",
     })
   };
+
+  const callToAction = scrollToElement(signUpSectionRef);
+  useEffect(() => {
+    if (location.state?.callToAction) {
+      setTimeout(callToAction, 0);
+    }
+  }, []);
 
   return (
     <ThemeProvider
@@ -121,7 +133,7 @@ const LandingPage: React.FC = () => {
         />
         <SafetySection
           ref={safetySectionRef}
-          scrollToSignUpSection={scrollToElement(signUpSectionRef)}
+          scrollToSignUpSection={callToAction}
         />
         <HealthSection ref={healthSectionRef} />
         <DiscoverySection ref={discoverySectionRef} />
