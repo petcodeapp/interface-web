@@ -1,13 +1,6 @@
 import React from "react";
 
-import {
-  Flex,
-  Heading,
-  Icon,
-  Stack,
-  Text,
-  useTheme,
-} from "@chakra-ui/core";
+import { Flex, Heading, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
@@ -49,7 +42,7 @@ const PetPortalSection = () => {
         paddingBottom={16}
         justifyContent="center"
         maxWidth="calc(1080px + 6rem)"
-boxSizing="border-box"
+        boxSizing="border-box"
         width="100%"
         spacing={{ base: 8, lg: 16 }}
         flexGrow={1}
@@ -99,19 +92,20 @@ boxSizing="border-box"
           >
             A place your pet’s data can call home
           </Text>
-          <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }} fontWeight="thin">
-            All your pet’s info—from contact and medical info to name, age,
-            and breed—in one place. Your PetPortal syncs with the PetCode QR
-            tag and is easily accessible through our app, giving you access
-            to the full suite of features whenever, wherever. Get started
-            with PetCode today to unlock all the features we have to offer!
+          <Text
+            fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
+            fontWeight="thin"
+          >
+            All your pet’s info—from contact and medical info to name, age, and
+            breed—in one place. Your PetPortal syncs with the PetCode QR tag and
+            is easily accessible through our app, giving you access to the full
+            suite of features whenever, wherever. Get started with PetCode today
+            to unlock all the features we have to offer!
           </Text>
           <Stack spacing={3} marginLeft={{ lg: 6 }} paddingBottom={8}>
             <FeaturePoint>Keeps your pet safe</FeaturePoint>
             <FeaturePoint>Tracks medical records</FeaturePoint>
-            <FeaturePoint>
-              Provides fun opportunities and events
-            </FeaturePoint>
+            <FeaturePoint>Provides fun opportunities and events</FeaturePoint>
           </Stack>
           <Flex
             direction="row"
@@ -142,6 +136,6 @@ boxSizing="border-box"
       </Stack>
     </Flex>
   );
-}
+};
 
 export default PetPortalSection;

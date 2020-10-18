@@ -142,7 +142,10 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                 Discovery
               </BaseButton>
             </Stack>
-            <Text fontWeight="thin" fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
+            <Text
+              fontWeight="thin"
+              fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
+            >
               Discover the endless suite of features from PetCode. Keep your pet
               safe, manage their health, and discover nearby pet opportunities,
               all from our easy-to-use app. Managing your pet’s life has never

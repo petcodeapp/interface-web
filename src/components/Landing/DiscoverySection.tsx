@@ -43,7 +43,7 @@ const DiscoverySection = forwardRef((_, ref) => {
         paddingBottom={8}
         width="100%"
         maxWidth="calc(1080px + 6rem)"
-boxSizing="border-box"
+        boxSizing="border-box"
         flexGrow={1}
         spacing={{ base: 8, lg: 16 }}
       >
@@ -89,7 +89,7 @@ boxSizing="border-box"
           paddingX={{ md: 24, lg: 0 }}
           spacing={4}
           color="petcode.neutral.700"
-         >
+        >
           <Heading fontSize="5xl">Discovery</Heading>
           <Stack isInline>
             <BaseButton
@@ -111,7 +111,10 @@ boxSizing="border-box"
               Pet Perks
             </BaseButton>
           </Stack>
-          <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }} fontWeight="thin">
+          <Text
+            fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
+            fontWeight="thin"
+          >
             With PetCode’s Discovery feature, you can explore nearby pet
             opportunities, all with the tap of a finger.
           </Text>

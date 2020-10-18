@@ -1,12 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-} from "@chakra-ui/core";
+import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 
 import ExclusiveUpdatesInput from "../Shared/molecules/ExclusiveUpdatesInput";
@@ -54,9 +48,9 @@ const Hero = () => {
                 How It Works
               </Heading>
               <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
-                The PetCode system offers a seamless connection between
-                software and a physical QR code tag, allowing you to easily
-                and efficiently manage your pet.
+                The PetCode system offers a seamless connection between software
+                and a physical QR code tag, allowing you to easily and
+                efficiently manage your pet.
               </Text>
               <ExclusiveUpdatesInput
                 maxWidth={{ base: "auto", sm: "24.75rem" }}
@@ -68,6 +62,6 @@ const Hero = () => {
       )}
     </IntegratedProgressiveImage>
   );
-}
+};
 
 export default Hero;

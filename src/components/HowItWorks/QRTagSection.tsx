@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  Box,
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  useTheme,
-} from "@chakra-ui/core";
+import { Box, Flex, Heading, Stack, Text, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
 import Observer from "@researchgate/react-intersection-observer";
@@ -40,7 +33,7 @@ const QRTagSection = () => {
     repeatType: "reverse",
     duration: 2,
   };
-  
+
   useEffect(() => {
     if (isIntersectingQRTag && breakpoint >= 3) {
       controls.start("visible");
@@ -96,7 +89,7 @@ const QRTagSection = () => {
             alignItems={{ base: "center", lg: "stretch" }}
             paddingBottom={12}
             maxWidth="calc(1080px + 6rem)"
-boxSizing="border-box"
+            boxSizing="border-box"
             width="100%"
             flexGrow={1}
           >
@@ -113,12 +106,12 @@ boxSizing="border-box"
                 fontWeight="thin"
                 paddingBottom={4}
               >
-                Got a new phone? Moved recently? PetCode’s durable QR tags
-                allow you to easily update your pet’s contact info with the
-                tap of finger—you’ll never need to buy another pet tag
-                again. Anyone can scan our smart QR tags to see your pet’s
-                info in a flash. Lost your pet? Our tags can reunite you
-                with your furry friend in a flash.
+                Got a new phone? Moved recently? PetCode’s durable QR tags allow
+                you to easily update your pet’s contact info with the tap of
+                finger—you’ll never need to buy another pet tag again. Anyone
+                can scan our smart QR tags to see your pet’s info in a flash.
+                Lost your pet? Our tags can reunite you with your furry friend
+                in a flash.
               </Text>
               <BaseButton
                 {...ActionButtonStyle}
@@ -299,6 +292,6 @@ boxSizing="border-box"
       </Box>
     </Flex>
   );
-}
+};
 
 export default QRTagSection;

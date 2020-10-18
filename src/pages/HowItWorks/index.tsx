@@ -1,10 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  ThemeProvider,
-  useTheme,
-} from "@chakra-ui/core";
+import { Box, ThemeProvider, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 
 import Layout from "../../components/Shared/layouts/Layout";

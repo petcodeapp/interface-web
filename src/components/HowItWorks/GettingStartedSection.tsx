@@ -1,10 +1,6 @@
 import React from "react";
 
-import {
-  Flex,
-  Heading,
-  Stack,
-} from "@chakra-ui/core";
+import { Flex, Heading, Stack } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 
 import HowItWorksStep from "./HowItWorksStep";
@@ -20,12 +16,29 @@ const GettingStartedSection = () => {
 
   return (
     <Flex direction="row" justifyContent="center">
-      <Stack spacing={12} paddingY={12} paddingX={12} maxWidth="calc(1080px + 6rem)"
-boxSizing="border-box" width="100%" flexGrow={1}>
-        <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4} textAlign="center">
+      <Stack
+        spacing={12}
+        paddingY={12}
+        paddingX={12}
+        maxWidth="calc(1080px + 6rem)"
+        boxSizing="border-box"
+        width="100%"
+        flexGrow={1}
+      >
+        <Heading
+          color="petcode.neutral.700"
+          fontSize="5xl"
+          paddingBottom={4}
+          textAlign="center"
+        >
           Getting Started
         </Heading>
-        <Stack isInline={breakpoint > 1} spacing={12} alignItems={{ base: "center", md: "stretch" }} justifyContent="space-between">
+        <Stack
+          isInline={breakpoint > 1}
+          spacing={12}
+          alignItems={{ base: "center", md: "stretch" }}
+          justifyContent="space-between"
+        >
           <HowItWorksStep
             imageSlug="order-petcode-tag-step.svg"
             stepNumber={1}
@@ -52,6 +65,6 @@ boxSizing="border-box" width="100%" flexGrow={1}>
       </Stack>
     </Flex>
   );
-}
+};
 
 export default GettingStartedSection;

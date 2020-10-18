@@ -47,7 +47,10 @@ const SafetySection = forwardRef((_, ref) => {
           <Heading fontSize="5xl" textAlign={{ md: "right" }} paddingBottom={2}>
             Safety
           </Heading>
-          <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }} fontWeight="thin">
+          <Text
+            fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
+            fontWeight="thin"
+          >
             It’s a scary world out there, but with PetCode, keeping your pet
             safer is no longer a struggle. Stay safe with PetCode’s products and
             services.
