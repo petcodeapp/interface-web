@@ -34,18 +34,18 @@ const DiscoverySection = forwardRef((_, ref) => {
 
   return (
     <Flex direction="row" justifyContent="center">
-      <Flex
+      <Stack
         ref={ref}
-        direction={{ base: "column", lg: "row" }}
+        direction={breakpoint > 2 ? "row" : "column"}
         alignItems={{ base: "center", lg: "stretch" }}
-        paddingRight={16}
-        paddingLeft={16}
+        paddingX={12}
         paddingTop={{ base: 20, md: 32 }}
         paddingBottom={8}
         width="100%"
-        maxWidth="90rem"
+        maxWidth="calc(1080px + 6rem)"
+boxSizing="border-box"
         flexGrow={1}
-        boxSizing="border-box"
+        spacing={{ base: 8, lg: 16 }}
       >
         <MotionFlex
           position="relative"
@@ -89,7 +89,7 @@ const DiscoverySection = forwardRef((_, ref) => {
           paddingX={{ md: 24, lg: 0 }}
           spacing={4}
           color="petcode.neutral.700"
-        >
+         >
           <Heading fontSize="5xl">Discovery</Heading>
           <Stack isInline>
             <BaseButton
@@ -121,7 +121,7 @@ const DiscoverySection = forwardRef((_, ref) => {
             <FeaturePoint>Get premium discounts</FeaturePoint>
           </Stack>
         </Stack>
-      </Flex>
+      </Stack>
     </Flex>
   );
 });

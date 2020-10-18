@@ -68,15 +68,15 @@ const HealthSection = forwardRef((_, ref) => {
       >
         <Stack
           direction={breakpoint > 2 ? "row" : "column-reverse"}
-          alignItems={{ base: "center", md: "start", lg: "stretch" }}
+          alignItems={{ base: "center", lg: "stretch" }}
           ref={ref}
           color="white"
           paddingTop={{ base: 20, md: 32, lg: 16 }}
           paddingBottom={{ base: 16, lg: 0 }}
-          paddingX={16}
-          boxSizing="border-box"
+          paddingX={12}
           width="100%"
-          maxWidth="90rem"
+          maxWidth="calc(1080px + 6rem)"
+          boxSizing="border-box"
           flexGrow={1}
           spacing={{ base: 8, lg: 16 }}
         >

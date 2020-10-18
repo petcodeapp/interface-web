@@ -44,15 +44,15 @@ const PetPortalSection = () => {
       <Stack
         direction={breakpoint > 2 ? "row" : "column"}
         alignItems={{ base: "center", lg: "stretch" }}
-        paddingX={16}
+        paddingX={12}
         paddingTop={24}
         paddingBottom={16}
         justifyContent="center"
-        maxWidth="90rem"
+        maxWidth="calc(1080px + 6rem)"
+boxSizing="border-box"
         width="100%"
         spacing={{ base: 8, lg: 16 }}
         flexGrow={1}
-        boxSizing="border-box"
       >
         <MotionFlex
           position="relative"

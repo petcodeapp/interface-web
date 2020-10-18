@@ -35,10 +35,10 @@ const SignUpForUpdatesSection: React.FC = () => {
           direction={breakpoint > 1 ? "row" : "column"}
           paddingTop={{ base: 4, md: 2 }}
           paddingBottom={`calc(${(87 / 1440) * 100}% + 5.3125rem)`}
-          paddingX={16}
+          paddingX={12}
           justifyContent="space-between"
           width="100%"
-          maxWidth="90rem"
+          maxWidth="calc(1080px + 6rem)"
           boxSizing="border-box"
           flexGrow={1}
           spacing={8}

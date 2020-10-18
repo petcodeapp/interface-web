@@ -11,12 +11,12 @@ export type FeatureProps = {
 const Feature: React.FC<FeatureProps> = ({ imageSlug, name, ...props }) => (
   <Stack alignItems="center" width="8.0625rem" spacing={5} {...props}>
     <IntegratedProgressiveImage
-      size="6.5rem"
+      size={{ base: "6.5rem", lg: "5.625rem" }}
       rounded="full"
       alt={name}
       slug={imageSlug}
     />
-    <Text fontSize={{ base: "xl", md: "lg" }} textAlign="center">
+    <Text fontSize={{ base: "xl", md: "md" }} textAlign="center">
       {name}
     </Text>
   </Stack>

@@ -25,13 +25,13 @@ const SafetySection = forwardRef((_, ref) => {
         direction={breakpoint > 1 ? "row" : "column"}
         ref={ref}
         alignItems="center"
-        paddingX={16}
+        paddingX={{ base: 16, md: 40, lg: 16 }}
         paddingY={8}
         flexGrow={1}
         width="100%"
-        maxWidth="90rem"
+        maxWidth="calc(1080px + 6rem)"
         boxSizing="border-box"
-        spacing={{ base: 16, md: 40 }}
+        spacing={{ base: 8, md: 16 }}
       >
         <IntegratedProgressiveImage
           slug="safety-image.svg"

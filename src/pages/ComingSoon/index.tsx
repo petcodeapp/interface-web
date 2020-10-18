@@ -9,7 +9,7 @@ const ComingSoonPage = () => (
   <SupportPageLayout footerProps={{ wavesArePadded: false }}>
     <Flex direction="column" alignItems="center" flexGrow={1}>
       <Box flexGrow={1} />
-      <Stack textAlign="center" spacing={6} maxWidth="700px" paddingX={16}>
+      <Stack textAlign="center" spacing={6} maxWidth="700px" paddingX={12}>
         <Text fontWeight="bold" fontSize="5xl" color="petcode.neutral.700">
           Coming Soon!
         </Text>

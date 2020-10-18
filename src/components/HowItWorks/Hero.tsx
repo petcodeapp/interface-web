@@ -33,22 +33,22 @@ const Hero = () => {
           backgroundImage={`url(${src})`}
           style={{ filter: loading ? "blur(-5px)" : "" }}
           backgroundSize="cover"
-          height="max(min(calc(100vw * 0.5875), 843px), 600px)"
+          backgroundPosition="50% 50%"
+          height="100vh"
         >
           <Flex
             direction="column"
             width="100%"
-            maxWidth="90rem"
+            maxWidth="calc(1080px + 6rem)"
             boxSizing="border-box"
-            paddingTop="18.625rem"
-            paddingX={16}
+            paddingX={12}
           >
             <Box flexGrow={1} />
             <Stack
               alignSelf={{ base: "center", md: "flex-end" }}
               color="white"
               spacing={5}
-              maxWidth={{ lg: "26rem" }}
+              maxWidth={{ md: "26rem" }}
             >
               <Heading fontSize={{ base: "5xl", md: "2.8125rem" }}>
                 How It Works
@@ -62,7 +62,7 @@ const Hero = () => {
                 maxWidth={{ base: "auto", sm: "24.75rem" }}
               />
             </Stack>
-            <Box flexGrow={7} />
+            <Box flexGrow={1} />
           </Flex>
         </Flex>
       )}

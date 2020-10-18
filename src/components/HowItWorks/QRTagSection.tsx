@@ -92,12 +92,12 @@ const QRTagSection = () => {
           <Flex
             direction={{ base: "column-reverse", lg: "row" }}
             color="white"
-            paddingX={16}
+            paddingX={12}
             alignItems={{ base: "center", lg: "stretch" }}
             paddingBottom={12}
-            maxWidth="90rem"
+            maxWidth="calc(1080px + 6rem)"
+boxSizing="border-box"
             width="100%"
-            boxSizing="border-box"
             flexGrow={1}
           >
             <Stack

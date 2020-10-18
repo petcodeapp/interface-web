@@ -77,13 +77,12 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           alignItems="center"
           color="white"
           paddingY={{ base: 8, lg: 16 }}
-          justifyContent="space-between"
-          boxSizing="border-box"
           flexGrow={1}
-          paddingX={16}
+          paddingX={12}
           width="100%"
-          maxWidth="90rem"
-          spacing={16}
+          maxWidth="calc(1080px + 6rem)"
+          boxSizing="border-box"
+          spacing={{ base: 8, lg: 16 }}
         >
           <Stack
             spacing={8}
@@ -151,7 +150,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
             </Text>
           </Stack>
           <Stack spacing={10}>
-            <Stack isInline spacing={10}>
+            <Stack isInline spacing={8}>
               <Feature
                 imageSlug="personal-pet-profile-feature.png"
                 name="Personal Pet Profile"
@@ -165,7 +164,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                 name="No Monthly Fees"
               />
             </Stack>
-            <Stack isInline marginLeft={{ lg: 16 }} spacing={10}>
+            <Stack isInline marginLeft={{ lg: 12 }} spacing={8}>
               <Feature
                 imageSlug="durable-qr-pet-tags-feature.png"
                 name="Durable QR Pet Tags"

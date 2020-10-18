@@ -30,37 +30,32 @@ const Hero: React.FC = () => {
     <IntegratedProgressiveImage delay={500} slug="landing-splash.png">
       {(src: string, loading: boolean) => (
         <Flex
-          direction="row"
-          justifyContent="center"
+          direction="column"
+          alignItems="center"
           backgroundImage={`url(${src})`}
           style={{ filter: loading ? "blur(-5px)" : "" }}
           backgroundSize="cover"
-          height={{
-            md: "max(min(calc(100vw * 0.72083333333), 1035px), 800px)",
-          }}
-          paddingBottom={{
-            base: `calc(${(126 / 1440) * 100}% + 3rem)`,
-            md: 0,
-          }}
+          backgroundPosition="50% 50%"
+          height="100vh"
         >
+          <Box flexGrow={1} />
           <Stack
             direction={breakpoint > 1 ? "row" : "column"}
             alignItems={{ base: "center", md: "stretch" }}
             width="100%"
-            maxWidth="90rem"
+            maxWidth="calc(1080px + 6rem)"
             boxSizing="border-box"
-            paddingTop={{ base: "12rem", md: "20.5625rem" }}
-            paddingX={16}
-            flexGrow={1}
+            paddingX={12}
             justifyContent="space-between"
-            spacing={{ md: 16 }}
+            spacing={{ md: 8 }}
           >
             <MotionFlex
               position="relative"
               top="-1rem"
               height={{ base: "19.464rem", sm: "28.125rem" }}
               width={{ base: "29.354rem", sm: "42.9375rem" }}
-              flexGrow={{ md: 1, xl: 0 }}
+              minWidth={{ lg: "42.9375rem" }}
+              flexGrow={1}
               alignItems="flex-end"
               justifyContent="flex-end"
               animate={displayBounce}
@@ -124,6 +119,7 @@ const Hero: React.FC = () => {
               />
             </Stack>
           </Stack>
+          <Box flexGrow={1} />
         </Flex>
       )}
     </IntegratedProgressiveImage>

@@ -20,7 +20,8 @@ const GettingStartedSection = () => {
 
   return (
     <Flex direction="row" justifyContent="center">
-      <Stack spacing={12} paddingY={12} paddingX={16} maxWidth="90rem" width="100%" flexGrow={1} boxSizing="border-box">
+      <Stack spacing={12} paddingY={12} paddingX={12} maxWidth="calc(1080px + 6rem)"
+boxSizing="border-box" width="100%" flexGrow={1}>
         <Heading color="petcode.neutral.700" fontSize="5xl" paddingBottom={4} textAlign="center">
           Getting Started
         </Heading>
