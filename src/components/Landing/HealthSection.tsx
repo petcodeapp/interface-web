@@ -80,7 +80,7 @@ const HealthSection = forwardRef((_, ref) => {
           flexGrow={1}
           spacing={{ base: 8, lg: 16 }}
         >
-          <Stack paddingX={{ md: 24, lg: 0 }} maxWidth={{ lg: "35.875rem" }}>
+          <Stack paddingX={{ md: 24, lg: 0 }} minWidth={{ lg: "35.875rem" }} alignSelf="stretch">
             <Heading fontSize="3rem" paddingBottom={4}>
               Health
             </Heading>
