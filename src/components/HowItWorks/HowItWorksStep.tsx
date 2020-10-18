@@ -51,7 +51,7 @@ const HowItWorksStep: React.FC<HowItWorksStepProps> = ({
     <Text
       color="black"
       fontWeight="thin"
-      fontSize={{ base: "xl", md: "lg" }}
+      fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
       marginX={3}
     >
       {description}

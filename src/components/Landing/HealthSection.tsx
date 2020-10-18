@@ -71,14 +71,14 @@ const HealthSection = forwardRef((_, ref) => {
           alignItems={{ base: "center", md: "start", lg: "stretch" }}
           ref={ref}
           color="white"
-          paddingTop={{ base: 16, md: 32, lg: 16 }}
+          paddingTop={{ base: 20, md: 32, lg: 16 }}
           paddingBottom={{ base: 16, lg: 0 }}
           paddingX={16}
           boxSizing="border-box"
           width="100%"
           maxWidth="90rem"
           flexGrow={1}
-          spacing={16}
+          spacing={{ base: 8, lg: 16 }}
         >
           <Stack paddingX={{ md: 24, lg: 0 }} maxWidth={{ lg: "35.875rem" }}>
             <Heading fontSize="5xl" paddingBottom={4}>
@@ -109,15 +109,15 @@ const HealthSection = forwardRef((_, ref) => {
             // @ts-ignore
             transition={transition}
             alignSelf={{ md: "center", lg: "auto" }}
-            width={{ base: "27.729rem", md: "51.1875rem" }}
+            width={{ base: "28rem", md: "49.5rem" }}
           >
             <AnimatePresence>
               <IntegratedProgressiveImage
                 position="absolute"
-                transform="translateY(-25%)"
                 rounded="lg"
-                left={{ base: "3rem", md: "6.5rem" }}
-                width={{ base: "24.729rem", md: "44.6875rem" }}
+                left={{ base: "3rem", md: "7rem" }}
+                bottom="15%"
+                width={{ base: "25rem", md: "42.5rem" }}
                 key={featureShown}
                 slug={
                   featureShown == "vaccinations"
@@ -135,7 +135,7 @@ const HealthSection = forwardRef((_, ref) => {
               />
             </AnimatePresence>
             <IPhoneX
-              height={breakpoint > 1 ? "31.25rem" : "17.607rem"}
+              height={breakpoint > 1 ? "30rem" : "17.5rem"}
               screenProps={{
                 style: {
                   backgroundColor: theme.colors.petcode.blue[400],

@@ -19,10 +19,10 @@ import { ActionButtonStyle } from "../../ions/button";
 const HeaderButtonStyle = {
   ...ActionButtonStyle,
   variantColor: "petcode.yellow",
-  fontSize: { base: "2xl", sm: "xl" },
+  fontSize: { base: "xl", sm: "lg" },
   textTransform: "none",
   letterSpacing: "auto",
-  height: { base: "4rem", sm: "3.25rem" },
+  height: { base: "3rem", sm: "2.75rem" },
   paddingX: { base: 12, sm: 8 },
   boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2);",
 } as BaseButtonProps;
@@ -166,13 +166,13 @@ const Header: React.FC<HeaderProps> = (props) => {
       paddingY={{ base: 8, sm: 4 }}
       zIndex={999}
       color="white"
-      fontSize="2xl"
+      fontSize="xl"
       {...props}
     >
       <Link to="/">
         <IntegratedProgressiveImage
           slug="petcode-logo-with-qr-code.png"
-          height={{ base: "3.5rem", sm: "4.75rem" }}
+          height="3.5rem"
         />
       </Link>
       <Box flexGrow={1} />

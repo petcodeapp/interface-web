@@ -16,7 +16,7 @@ const Feature: React.FC<FeatureProps> = ({ imageSlug, name, ...props }) => (
       alt={name}
       slug={imageSlug}
     />
-    <Text fontSize="lg" textAlign="center">
+    <Text fontSize={{ base: "xl", md: "lg" }} textAlign="center">
       {name}
     </Text>
   </Stack>

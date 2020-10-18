@@ -57,7 +57,7 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
           >
             <Text
               marginLeft={6}
-              fontSize={{ base: "2xl", md: "xl" }}
+              fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
               fontWeight="thin"
             >
               {description}

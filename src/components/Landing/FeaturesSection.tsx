@@ -90,7 +90,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
             maxWidth={{ lg: "39.625rem" }}
             paddingX={{ md: 24, lg: 0 }}
           >
-            <Heading fontSize={{ base: "2.8rem", md: "3.125rem" }}>
+            <Heading fontSize="2.75rem">
               The Ultimate Pet Management System
             </Heading>
             <Stack isInline spacing={4}>
@@ -143,7 +143,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                 Discovery
               </BaseButton>
             </Stack>
-            <Text fontWeight="thin" fontSize={{ base: "2xl", md: "xl" }}>
+            <Text fontWeight="thin" fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
               Discover the endless suite of features from PetCode. Keep your pet
               safe, manage their health, and discover nearby pet opportunities,
               all from our easy-to-use app. Managing your pet’s life has never
@@ -165,7 +165,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
                 name="No Monthly Fees"
               />
             </Stack>
-            <Stack isInline marginLeft={{ xl: 16 }} spacing={10}>
+            <Stack isInline marginLeft={{ lg: 16 }} spacing={10}>
               <Feature
                 imageSlug="durable-qr-pet-tags-feature.png"
                 name="Durable QR Pet Tags"

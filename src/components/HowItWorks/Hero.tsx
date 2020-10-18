@@ -50,7 +50,7 @@ const Hero = () => {
               spacing={5}
               maxWidth={{ lg: "26rem" }}
             >
-              <Heading fontSize={{ base: "3.476rem", md: "2.8125rem" }}>
+              <Heading fontSize={{ base: "5xl", md: "2.8125rem" }}>
                 How It Works
               </Heading>
               <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>

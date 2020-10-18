@@ -99,21 +99,20 @@ const Hero: React.FC = () => {
               />
             </MotionFlex>
             <Stack
-              maxWidth={{ sm: "40rem", md: "28.375rem" }}
+              maxWidth={{ lg: "28.375rem" }}
               marginTop={{ base: 8, md: 0 }}
-              paddingX={{ base: 16, md: 0 }}
               color="white"
               spacing={5}
             >
-              <Box fontWeight="bold">
-                <Heading fontSize="2.8125rem">One Code.</Heading>
-                <Text fontSize="3xl">
+              <Box>
+                <Heading fontSize="5xl">One Code.</Heading>
+                <Heading fontSize={{ base: "3xl", md: "2xl" }}>
                   An endless suite of features for pet owners.
-                </Text>
+                </Heading>
               </Box>
               <Text
                 fontSize={{ base: "2xl", sm: "xl", md: "lg" }}
-                maxWidth={{ base: "auto", md: "25rem" }}
+                maxWidth={{ md: "25rem" }}
               >
                 PetCode is a new pet management platform that allows pet owners
                 to keep track of all aspects of their pet’s life. No matter your
