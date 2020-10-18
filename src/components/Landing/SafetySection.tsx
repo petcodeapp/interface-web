@@ -13,7 +13,10 @@ type SafetySectionProps = {
   scrollToSignUpSection: () => void;
 };
 
-const SafetySection = forwardRef<HTMLDivElement | undefined, SafetySectionProps>(({ scrollToSignUpSection }, ref) => {
+const SafetySection = forwardRef<
+  HTMLDivElement | undefined,
+  SafetySectionProps
+>(({ scrollToSignUpSection }, ref) => {
   const breakpoint = useBreakpointValue({
     base: 0,
     sm: 1,
@@ -47,7 +50,11 @@ const SafetySection = forwardRef<HTMLDivElement | undefined, SafetySectionProps>
           color="petcode.neutral.700"
           spacing={4}
         >
-          <Heading fontSize="3rem" textAlign={{ md: "right" }} paddingBottom={2}>
+          <Heading
+            fontSize="3rem"
+            textAlign={{ md: "right" }}
+            paddingBottom={2}
+          >
             Safety
           </Heading>
           <Text
@@ -66,7 +73,14 @@ const SafetySection = forwardRef<HTMLDivElement | undefined, SafetySectionProps>
             <FeaturePoint>Generates “lost pet” posters</FeaturePoint>
           </Stack>
           {breakpoint > 1 ? (
-            <Stack isInline alignItems="center" alignSelf="start" spacing={4} onClick={scrollToSignUpSection} cursor="pointer">
+            <Stack
+              isInline
+              alignItems="center"
+              alignSelf="start"
+              spacing={4}
+              onClick={scrollToSignUpSection}
+              cursor="pointer"
+            >
               <Text fontSize="xl">Sign Up Now</Text>
               <Icon size="36px" name="arrow" />
             </Stack>

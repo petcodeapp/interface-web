@@ -38,19 +38,22 @@ const LandingPage: React.FC = () => {
   const discoverySectionRef = useRef<HTMLDivElement>();
   const signUpSectionRef = useRef<HTMLDivElement>();
 
-  const scrollToElement = (ref: React.MutableRefObject<HTMLDivElement | undefined>) => {
-    return () => ref.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "center",
-    })
+  const scrollToElement = (
+    ref: React.MutableRefObject<HTMLDivElement | undefined>
+  ) => {
+    return () =>
+      ref.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
   };
 
   const callToAction = scrollToElement(signUpSectionRef);
   useEffect(() => {
     if (location.state?.callToAction) {
       setTimeout(callToAction, 0);
-      history.replace('/', null);
+      history.replace("/", null);
     }
   }, [location.state]);
 

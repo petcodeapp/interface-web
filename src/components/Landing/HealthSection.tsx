@@ -11,7 +11,7 @@ import IntegratedProgressiveImage from "../Shared/atoms/IntegratedProgressiveIma
 
 import { PetCodeTheme } from "../../theme";
 
-const HealthSection = forwardRef<HTMLDivElement| undefined>((_, ref) => {
+const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = useBreakpointValue({
     base: 0,
@@ -80,7 +80,11 @@ const HealthSection = forwardRef<HTMLDivElement| undefined>((_, ref) => {
           flexGrow={1}
           spacing={{ base: 8, lg: 16 }}
         >
-          <Stack paddingX={{ md: 24, lg: 0 }} minWidth={{ lg: "35.875rem" }} alignSelf="stretch">
+          <Stack
+            paddingX={{ md: 24, lg: 0 }}
+            minWidth={{ lg: "35.875rem" }}
+            alignSelf="stretch"
+          >
             <Heading fontSize="3rem" paddingBottom={4}>
               Health
             </Heading>

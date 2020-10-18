@@ -120,10 +120,12 @@ const MobileMenu: React.FC = () => {
               <BaseButton
                 {...HeaderButtonStyle}
                 background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
-                onClick={() => history.push({
-                  pathname: "/",
-                  state: { callToAction: true }
-                })}
+                onClick={() =>
+                  history.push({
+                    pathname: "/",
+                    state: { callToAction: true },
+                  })
+                }
               >
                 Get Started
               </BaseButton>
@@ -195,10 +197,12 @@ const Header: React.FC<HeaderProps> = (props) => {
             <BaseButton
               {...HeaderButtonStyle}
               background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
-              onClick={() => history.push({
-                pathname: "/",
-                state: { callToAction: true }
-              })}
+              onClick={() =>
+                history.push({
+                  pathname: "/",
+                  state: { callToAction: true },
+                })
+              }
             >
               Get Started
             </BaseButton>

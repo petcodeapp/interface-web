@@ -44,9 +44,7 @@ const Hero = () => {
               spacing={5}
               maxWidth={{ md: "26rem" }}
             >
-              <Heading fontSize="5xl">
-                How It Works
-              </Heading>
+              <Heading fontSize="5xl">How It Works</Heading>
               <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
                 The PetCode system offers a seamless connection between software
                 and a physical QR code tag, allowing you to easily and

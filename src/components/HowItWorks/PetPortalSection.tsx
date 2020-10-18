@@ -131,10 +131,12 @@ const PetPortalSection = () => {
               paddingX={{ base: 16, lg: 8 }}
               fontSize={{ base: "xl", lg: "lg" }}
               variantColor="petcode.blue"
-              onClick={() => history.push({
-                pathname: "/",
-                state: { callToAction: true }
-              })}
+              onClick={() =>
+                history.push({
+                  pathname: "/",
+                  state: { callToAction: true },
+                })
+              }
             >
               Get Started
             </BaseButton>

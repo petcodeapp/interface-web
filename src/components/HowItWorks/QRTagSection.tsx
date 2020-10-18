@@ -124,10 +124,12 @@ const QRTagSection = () => {
                 alignSelf={{ base: "center", lg: "start" }}
                 variantColor="white"
                 color="petcode.blue.400"
-                onClick={() => history.push({
-                  pathname: "/",
-                  state: { callToAction: true }
-                })}
+                onClick={() =>
+                  history.push({
+                    pathname: "/",
+                    state: { callToAction: true },
+                  })
+                }
               >
                 Get Started
               </BaseButton>
