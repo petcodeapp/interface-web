@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { ThemeProvider, useTheme } from "@chakra-ui/core";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 import { useHistory, useLocation } from "react-router-dom";
+import { useAnimation } from "framer-motion";
 
 import Layout from "../../components/Shared/layouts/Layout";
 import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
@@ -57,6 +58,25 @@ const LandingPage: React.FC = () => {
     }
   }, [location.state]);
 
+  const headerControls = useAnimation();
+  const isHeaderSticky = useRef(false);
+  useEffect(() => {
+    headerControls.start("fixed");
+    const scrollEventListener = async () => {
+      if (window.pageYOffset > window.innerHeight && !isHeaderSticky.current) {
+        isHeaderSticky.current = true;
+        await headerControls.start("sticky-before");
+        await headerControls.start("sticky");
+      } else if (window.pageYOffset <= 100 && isHeaderSticky.current) {
+        isHeaderSticky.current = false;
+        await headerControls.start("fixed-before");
+        await headerControls.start("fixed");
+      }
+    };
+    window.addEventListener("scroll", scrollEventListener);
+    return () => window.removeEventListener("scroll", scrollEventListener);
+  }, []);
+  
   return (
     <ThemeProvider
       theme={{
@@ -70,8 +90,43 @@ const LandingPage: React.FC = () => {
       <Layout
         position="relative"
         headerProps={{
-          position: "absolute",
-          backgroundColor: "transparent",
+          initial: "fixed-before",
+          animate: headerControls,
+          variants: {
+            sticky: {
+              position: "fixed",
+              backgroundColor: theme.colors.petcode.blue[400],
+              top: 0,
+              opacity: 1,
+              borderBottomLeftRadius: "2rem",
+              borderBottomRightRadius: "2rem",
+              boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+            },
+            "sticky-before": {
+              top: -100,
+              opacity: 0,
+              backgroundColor: "transparent",
+              transition: { duration: 0 },
+              transitionEnd: { position: "fixed" },
+
+            },
+            fixed: {
+              position: "absolute",
+              backgroundColor: "transparent",
+              top: 0,
+              opacity: 1,
+              borderBottomLeftRadius: "0",
+              borderBottomRightRadius: "0",
+              boxShadow: "none",
+            },
+            "fixed-before": {
+              top: 100,
+              opacity: 0,
+              backgroundColor: theme.colors.petcode.blue[400],
+              transition: { duration: 0 },
+              transitionEnd: { position: "absolute" },
+            },
+          },
         }}
         footerProps={{
           wavesArePadded: false,
