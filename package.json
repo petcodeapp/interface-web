@@ -41,6 +41,7 @@
     "react-scripts": "3.4.1",
     "react-star-ratings": "https://github.com/pschyma/react-star-ratings",
     "react-table": "^7.3.2",
+    "smoothscroll-polyfill": "^0.4.4",
     "typescript": "^4.0.3",
     "yup": "^0.29.3",
     "yup-phone": "^1.2.2"

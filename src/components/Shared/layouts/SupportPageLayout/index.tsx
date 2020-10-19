@@ -23,7 +23,6 @@ const LegalPageLayout: React.FC<LayoutProps> = ({ children, ...props }) => {
         position: "absolute",
         backgroundColor: "transparent",
       }}
-      paddingTop="12.5rem"
       {...props}
     >
       <svg

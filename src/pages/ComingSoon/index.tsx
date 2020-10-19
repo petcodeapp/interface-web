@@ -7,7 +7,7 @@ import SupportPageLayout from "../../components/Shared/layouts/SupportPageLayout
 
 const ComingSoonPage = () => (
   <SupportPageLayout footerProps={{ wavesArePadded: false }}>
-    <Flex direction="column" alignItems="center" flexGrow={1}>
+    <Flex direction="column" alignItems="center" flexGrow={1} height="100vh">
       <Box flexGrow={1} />
       <Stack textAlign="center" spacing={6} maxWidth="700px" paddingX={12}>
         <Text fontWeight="bold" fontSize="5xl" color="petcode.neutral.700">
@@ -17,7 +17,7 @@ const ComingSoonPage = () => (
           We are currently working on this page and will launch it soon!
         </Text>
       </Stack>
-      <Box flexGrow={2} />
+      <Box flexGrow={1} />
       <IntegratedProgressiveImage
         slug="coming-soon-dog.png"
         maxWidth="100%"
