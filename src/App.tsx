@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Routes from "./views/Router";
 import { AuthProvider } from "./views/Auth/index";
+import ScrollToTop from "./components/Util/ScrollToTop";
 import theme from "./theme";
 
 import "./styles/base.css";
@@ -16,6 +17,7 @@ function App() {
         <AuthProvider>
           <AnimatePresence>
             <Router>
+              <ScrollToTop />
               <Routes />
             </Router>
           </AnimatePresence>
