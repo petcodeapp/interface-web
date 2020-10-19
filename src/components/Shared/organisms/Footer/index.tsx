@@ -75,7 +75,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
           color="white"
           paddingTop={6}
           paddingBottom={16}
-          fontSize={{ base: "xl", md: "md", lg: "sm" }}
+          fontSize={{ base: "xl", md: "lg", lg: "md" }}
           maxWidth={{ base: "100vw", lg: "90rem" }}
           flexGrow={1}
         >
