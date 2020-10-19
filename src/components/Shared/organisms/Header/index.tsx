@@ -30,10 +30,12 @@ const HeaderButtonStyle = {
 
 export type HeaderProps = StackProps & MotionProps;
 
-const MobileMenu: React.FC = () => {
-  const theme = useTheme() as PetCodeTheme;
+type MobileMenuProps = {
+  callToAction: () => void;
+};
 
-  const history = useHistory();
+const MobileMenu: React.FC<MobileMenuProps> = ({ callToAction }) => {
+  const theme = useTheme() as PetCodeTheme;
 
   const auth = React.useContext(AuthContext);
 
@@ -120,12 +122,7 @@ const MobileMenu: React.FC = () => {
               <BaseButton
                 {...HeaderButtonStyle}
                 background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
-                onClick={() =>
-                  history.push({
-                    pathname: "/",
-                    state: { callToAction: true },
-                  })
-                }
+                onClick={callToAction}
               >
                 Get Started
               </BaseButton>
@@ -213,7 +210,13 @@ const Header: React.FC<HeaderProps> = (props) => {
           )}
         </Stack>
       </Hide>
-      <AnimatePresence>{open && <MobileMenu />}</AnimatePresence>
+      <AnimatePresence>{open && <MobileMenu callToAction={() => {
+        toggleOpen();
+        setTimeout(() => history.push({
+          pathname: "/",
+          state: { callToAction: true },
+        }), 250);
+      }} />}</AnimatePresence>
       <Show below="sm">
         <motion.svg
           style={{ cursor: "pointer", zIndex: 1000 }}
