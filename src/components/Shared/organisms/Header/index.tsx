@@ -164,8 +164,6 @@ const Header: React.FC<HeaderProps> = (props) => {
   return useObserver(() => (
     <Stack
       isInline
-      initial="closed"
-      animate={open ? "open" : "closed"}
       position="fixed"
       top={0}
       background="rgba(0, 0, 0, 0.4)"
@@ -219,6 +217,8 @@ const Header: React.FC<HeaderProps> = (props) => {
       }} />}</AnimatePresence>
       <Show below="sm">
         <motion.svg
+          initial="closed"
+          animate={open ? "open" : "closed"}
           style={{ cursor: "pointer", zIndex: 1000 }}
           onClick={() => toggleOpen()}
           variants={{
