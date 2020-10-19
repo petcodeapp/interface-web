@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Box, StackProps, useTheme } from "@chakra-ui/core";
 import BaseButton, { BaseButtonProps } from "../../atoms/button";
 import Link from "../../atoms/link";
-import { AnimatePresence, motion, MotionProps, useCycle } from "framer-motion";
+import { AnimatePresence, motion, MotionProps, useAnimation, useCycle } from "framer-motion";
 import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
 import { Flex, Stack } from "../../../Motion";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
@@ -27,8 +27,6 @@ const HeaderButtonStyle = {
   paddingX: { base: 12, sm: 8 },
   boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2);",
 } as BaseButtonProps;
-
-export type HeaderProps = StackProps & MotionProps;
 
 type MobileMenuProps = {
   callToAction: () => void;
@@ -146,7 +144,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ callToAction }) => {
   ));
 };
 
-const Header: React.FC<HeaderProps> = (props) => {
+export type HeaderProps = StackProps & MotionProps & {
+  becomesSticky?: boolean;
+};
+
+const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = parseInt(useBreakpoint() as string);
 
@@ -161,11 +163,29 @@ const Header: React.FC<HeaderProps> = (props) => {
     }
   }, [breakpoint]);
 
+  const controls = useAnimation();
+  const isHeaderSticky = useRef(false);
+  useEffect(() => {
+    if (becomesSticky) {
+      const scrollEventListener = async () => {
+        if (window.pageYOffset > window.innerHeight && !isHeaderSticky.current) {
+          isHeaderSticky.current = true;
+          await controls.start("sticky-before");
+          await controls.start("sticky");
+        } else if (window.pageYOffset <= 100 && isHeaderSticky.current) {
+          isHeaderSticky.current = false;
+          await controls.start("fixed-before");
+          await controls.start("fixed");
+        }
+      };
+      window.addEventListener("scroll", scrollEventListener);
+      return () => window.removeEventListener("scroll", scrollEventListener);
+    }
+  }, [becomesSticky]);
+
   return useObserver(() => (
     <Stack
       isInline
-      position="fixed"
-      top={0}
       background="rgba(0, 0, 0, 0.4)"
       width="100%"
       boxSizing="border-box"
@@ -175,6 +195,42 @@ const Header: React.FC<HeaderProps> = (props) => {
       zIndex={999}
       color="white"
       fontSize="xl"
+      initial="fixed"
+      animate={controls}
+      variants={{
+        sticky: {
+          position: "fixed",
+          backgroundColor: theme.colors.petcode.blue[400],
+          top: 0,
+          opacity: 1,
+          borderBottomLeftRadius: "2rem",
+          borderBottomRightRadius: "2rem",
+          boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        },
+        "sticky-before": {
+          top: -100,
+          opacity: 0,
+          backgroundColor: "transparent",
+          transition: { duration: 0 },
+          transitionEnd: { position: "fixed" },
+        },
+        fixed: {
+          position: "absolute",
+          backgroundColor: "transparent",
+          top: 0,
+          opacity: 1,
+          borderBottomLeftRadius: "0",
+          borderBottomRightRadius: "0",
+          boxShadow: "none",
+        },
+        "fixed-before": {
+          top: 100,
+          opacity: 0,
+          backgroundColor: theme.colors.petcode.blue[400],
+          transition: { duration: 0 },
+          transitionEnd: { position: "absolute" },
+        },
+      }}
       {...props}
     >
       <Link to="/">

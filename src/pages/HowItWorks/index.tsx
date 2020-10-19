@@ -37,8 +37,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
       <Layout
         position="relative"
         headerProps={{
-          position: "absolute",
-          backgroundColor: "transparent",
+          becomesSticky: true,
         }}
       >
         <svg
