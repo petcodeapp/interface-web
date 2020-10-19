@@ -28,7 +28,7 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
 
   return (
     <MotionFlex direction="column" {...props}>
-      <Stack isInline alignItems="center" marginBottom={2} spacing={3}>
+      <Stack isInline alignItems="center" marginBottom={2} spacing={3} cursor="pointer" onClick={onClick}>
         <BaseCheckbox
           isChecked
           color={theme.colors.petcode.blue[400]}
@@ -38,12 +38,10 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
         <Text fontSize={{ base: "3xl", md: "2xl" }}>{name}</Text>
         <Icon
           name="dropdown-arrow"
-          cursor="pointer"
           size="20px"
           paddingTop={3}
           paddingLeft={open ? 3 : 0}
           paddingBottom={1}
-          onClick={onClick}
           transform={open ? null : "rotate(-90deg)"}
           transition="0.2s all"
         />
@@ -51,9 +49,19 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
       <AnimatePresence>
         {open && (
           <MotionBox
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            variants={{
+              hidden: {
+                opacity: 0,
+                height: 0,
+              },
+              visible: {
+                opacity: 1,
+                height: 50
+              }
+            }}
           >
             <Text
               marginLeft={6}
