@@ -1,12 +1,11 @@
 import React from "react";
 
-import { Flex, Heading, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
-import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
+import { Flex, Heading, Stack, Text, useTheme } from "@chakra-ui/core";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 import { Transition } from "framer-motion";
 import { useHistory } from "react-router-dom";
 import { IPhoneX } from "react-device-mockups";
 
-import Link from "../../components/Shared/atoms/link";
 import BaseButton from "../../components/Shared/atoms/button";
 import MotionFlex from "../../components/Motion/Flex";
 import FeaturePoint from "../../components/Shared/molecules/FeaturePoint";
@@ -115,16 +114,6 @@ const PetPortalSection = () => {
             justifyContent="space-between"
             alignSelf={{ base: "center", md: "stretch" }}
           >
-            <Hide below="md">
-              <Link to="#">
-                <Icon
-                  color="petcode.neutral.400"
-                  name="arrow-thin"
-                  size="40px"
-                  alignSelf="start"
-                />
-              </Link>
-            </Hide>
             <BaseButton
               {...ActionButtonStyle}
               height={{ base: "3.25rem", lg: "2.25rem" }}

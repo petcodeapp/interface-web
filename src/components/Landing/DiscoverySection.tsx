@@ -1,11 +1,10 @@
 import React, { forwardRef } from "react";
 
-import { Flex, Heading, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
-import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
+import { Flex, Heading, Stack, Text, useTheme } from "@chakra-ui/core";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 import { Transition } from "framer-motion";
 import { IPhoneX } from "react-device-mockups";
 
-import Link from "../Shared/atoms/link";
 import BaseButton from "../Shared/atoms/button";
 import MotionFlex from "../Motion/Flex";
 import FeaturePoint from "../Shared/molecules/FeaturePoint";
@@ -79,11 +78,6 @@ const DiscoverySection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
             />
           </IPhoneX>
         </MotionFlex>
-        <Hide below="lg">
-          <Link to="#" alignSelf="flex-end" marginX={8}>
-            <Icon color="petcode.neutral.400" name="arrow-thin" size="40px" />
-          </Link>
-        </Hide>
         <Stack
           maxWidth={{ lg: "25.625rem" }}
           paddingX={{ md: 24, lg: 0 }}
