@@ -43,7 +43,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
       <Box position="relative">
         <svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="0 0 1440 74"
+          viewBox="2 0 1438 74"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -54,7 +54,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
         </svg>
         <motion.svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="0 0 1440 126"
+          viewBox="2 0 1438 126"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
@@ -169,7 +169,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
       <Box position="relative" paddingBottom={`${(116 / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", top: 0 }}
-          viewBox="0 2 1440 81"
+          viewBox="3 4 1434 81"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -180,7 +180,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
         </svg>
         <motion.svg
           style={{ position: "absolute", top: 0 }}
-          viewBox="0 0 1440 116"
+          viewBox="2 0 1434 116"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
