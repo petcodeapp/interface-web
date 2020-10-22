@@ -125,7 +125,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
                 key={featureShown}
                 slug={
                   featureShown == "vaccinations"
-                    ? "dashboard-web-screen.png"
+                    ? "medical-info-web-screen.png"
                     : featureShown == "reminders"
                     ? "reminders-web-screen.png"
                     : "medical-info-web-screen.png"
