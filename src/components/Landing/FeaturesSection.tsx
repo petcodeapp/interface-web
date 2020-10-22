@@ -46,6 +46,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           viewBox="0 0 1440 74"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
           <path
             d="M1440 15.3234C1340.95 -0.21926 1089.74 -10.6964 865 18.3403C527.214 61.9822 248.968 39.8867 33.3533 22.7648L33.353 22.7648C22.0635 21.8683 10.9457 20.9855 0 20.1264V76H1440V15.3234Z"
@@ -59,6 +60,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
           transition={transition}
+          preserveAspectRatio="none"
         >
           <path
             opacity="0.4"
@@ -172,6 +174,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           viewBox="0 2 1440 81"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
           <path
             d="M1440 -3.05176e-05H0V82.0683C95.3623 68.7786 464.317 46.6392 790 35.5844C1064.63 26.2625 1205.09 43.5557 1333.7 59.3885C1369.18 63.7565 1403.76 68.0134 1440 71.5695V-3.05176e-05Z"
@@ -185,6 +188,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
           transition={transition}
+          preserveAspectRatio="none"
         >
           <path
             opacity="0.4"

@@ -40,6 +40,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
           viewBox="0 0 1440 156"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
           <path
             d="M1440 7.81967C1232.66 -11.121 917.682 2.17599 572.5 71.7313C356.208 115.315 159.365 130.813 0 130.634V159H1440V7.81967Z"
@@ -53,6 +54,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
           transition={transition}
+          preserveAspectRatio="none"
         >
           <path
             opacity="0.4"
@@ -178,6 +180,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
           viewBox="0 71 1440 108"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
           <path
             d="M0 0V135.886C42.159 128.246 95.0876 123.642 163 123.642C273.07 123.642 396.65 135.44 529.45 148.117C805.912 174.509 1122.33 204.715 1440 140.241V0H0Z"
@@ -191,6 +194,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
           transition={transition}
+          preserveAspectRatio="none"
         >
           <path
             opacity="0.4"

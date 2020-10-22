@@ -51,6 +51,7 @@ const QRTagSection = () => {
           viewBox="0 0 1440 75"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
           <path
             d="M1440 16.1984C1340.95 0.65578 1089.74 -9.82133 865 19.2153C527.214 62.8572 248.968 40.7618 33.3533 23.6399L33.353 23.6399C22.0635 22.7434 10.9457 21.8605 0 21.0014V76.875H1440V16.1984Z"
@@ -64,6 +65,7 @@ const QRTagSection = () => {
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
           transition={transition}
+          preserveAspectRatio="none"
         >
           <path
             opacity="0.4"
@@ -279,6 +281,7 @@ const QRTagSection = () => {
           viewBox="0 1 1440 82"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
           <path
             d="M1440 0.875H0V82.9433C95.3623 69.6537 464.317 47.5142 790 36.4594C1064.63 27.1375 1205.09 44.4307 1333.7 60.2636C1369.18 64.6316 1403.76 68.8884 1440 72.4446V0.875Z"
@@ -292,6 +295,7 @@ const QRTagSection = () => {
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
           transition={transition}
+          preserveAspectRatio="none"
         >
           <path
             opacity="0.4"
