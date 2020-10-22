@@ -1,0 +1,885 @@
+diff --git a/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js b/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js
+index 7bdbe97..edb96d1 100644
+--- a/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js
++++ b/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js
+@@ -72,10 +72,10 @@ function useBreakpoint(defaultBreakpoint) {
+ 
+       var handleChange = function handleChange() {
+         update(mediaQuery, breakpoint);
+-      }; // add media query-listender
++      }; // add media query-listener
+ 
+ 
+-      mediaQuery.addEventListener("change", handleChange); // push the media query list handleChange
++      mediaQuery.addListener(handleChange); // push the media query list handleChange
+       // so we can use it to remove Listener
+ 
+       listeners.add({
+@@ -84,7 +84,7 @@ function useBreakpoint(defaultBreakpoint) {
+       });
+       return function () {
+         // clean up 1
+-        mediaQuery.removeEventListener("change", handleChange);
++        mediaQuery.removeListener(handleChange);
+       };
+     });
+     return function () {
+@@ -92,7 +92,7 @@ function useBreakpoint(defaultBreakpoint) {
+       listeners.forEach(function (_ref2) {
+         var mediaQuery = _ref2.mediaQuery,
+             handleChange = _ref2.handleChange;
+-        mediaQuery.removeEventListener("change", handleChange);
++        mediaQuery.removeListener(handleChange);
+       });
+       listeners.clear();
+     };
+diff --git a/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js.map b/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js.map
+index 0873c50..09d75e1 100644
+--- a/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js.map
++++ b/node_modules/@chakra-ui/media-query/dist/cjs/use-breakpoint.js.map
+@@ -1 +1 @@
+-{"version":3,"sources":["../../src/use-breakpoint.ts"],"names":["useBreakpoint","defaultBreakpoint","breakpoints","mediaQueries","React","useMemo","base","useState","undefined","mediaQuery","find","query","breakpoint","currentBreakpoint","setCurrentBreakpoint","current","update","useCallback","matches","useEffect","listeners","Set","forEach","window","matchMedia","handleChange","addEventListener","add","removeEventListener","clear"],"mappings":";;;;;AAAA;;AACA;;AACA;;;;;;;;AAaA;;;;;;;;;AASO,SAASA,aAAT,CAAuBC,iBAAvB,EAAmD;AAAA,kBAChC,uBADgC;AAAA,MAChDC,WADgD,aAChDA,WADgD;;AAGxD,MAAMC,YAAY,GAAGC,kBAAMC,OAAN,CACnB;AAAA,WAAM;AAAqBC,MAAAA,IAAI,EAAE;AAA3B,OAAqCJ,WAArC,EAAN;AAAA,GADmB,EAEnB,CAACA,WAAD,CAFmB,CAArB;;AAHwD,wBAQNE,kBAAMG,QAAN,CAAe,YAAM;AACrE,QAAI,CAACN,iBAAL,EAAwB,OAAOO,SAAP;AACxB,QAAMC,UAAU,GAAGN,YAAY,CAACO,IAAb,CACjB,UAACC,KAAD;AAAA,aAAWA,KAAK,CAACC,UAAN,KAAqBX,iBAAhC;AAAA,KADiB,CAAnB;;AAIA,QAAIQ,UAAJ,EAAgB;AAAA,UACNE,KADM,GACmBF,UADnB,CACNE,KADM;AAAA,UACIC,UADJ,iCACmBH,UADnB;;AAEd,aAAOG,UAAP;AACD;;AAED,WAAOJ,SAAP;AACD,GAZiD,CARM;AAAA,MAQjDK,iBARiD;AAAA,MAQ9BC,oBAR8B;;AAsBxD,MAAMC,OAAO,GAAGF,iBAAH,oBAAGA,iBAAiB,CAAED,UAAnC;;AAEA,MAAMI,MAAM,GAAGZ,kBAAMa,WAAN,CACb,UAACN,KAAD,EAAwBC,UAAxB,EAAmD;AACjD,QAAID,KAAK,CAACO,OAAN,IAAiBH,OAAO,KAAKH,UAAU,CAACA,UAA5C,EAAwD;AACtDE,MAAAA,oBAAoB,CAACF,UAAD,CAApB;AACD;AACF,GALY,EAMb,CAACG,OAAD,CANa,CAAf;;AASAX,oBAAMe,SAAN,CAAgB,YAAM;AACpB,QAAMC,SAAS,GAAG,IAAIC,GAAJ,EAAlB;AAEAlB,IAAAA,YAAY,CAACmB,OAAb,CAAqB,gBAA8B;AAAA,UAA3BX,KAA2B,QAA3BA,KAA2B;AAAA,UAAjBC,UAAiB;;AACjD,UAAMH,UAAU,GAAGc,MAAM,CAACC,UAAP,CAAkBb,KAAlB,CAAnB,CADiD,CAGjD;;AACAK,MAAAA,MAAM,CAACP,UAAD,EAAaG,UAAb,CAAN;;AAEA,UAAMa,YAAY,GAAG,SAAfA,YAAe,GAAM;AACzBT,QAAAA,MAAM,CAACP,UAAD,EAAaG,UAAb,CAAN;AACD,OAFD,CANiD,CAUjD;;;AACAH,MAAAA,UAAU,CAACiB,gBAAX,CAA4B,QAA5B,EAAsCD,YAAtC,EAXiD,CAajD;AACA;;AACAL,MAAAA,SAAS,CAACO,GAAV,CAAc;AAAElB,QAAAA,UAAU,EAAVA,UAAF;AAAcgB,QAAAA,YAAY,EAAZA;AAAd,OAAd;AAEA,aAAO,YAAM;AACX;AACAhB,QAAAA,UAAU,CAACmB,mBAAX,CAA+B,QAA/B,EAAyCH,YAAzC;AACD,OAHD;AAID,KArBD;AAuBA,WAAO,YAAM;AACX;AACAL,MAAAA,SAAS,CAACE,OAAV,CAAkB,iBAAkC;AAAA,YAA/Bb,UAA+B,SAA/BA,UAA+B;AAAA,YAAnBgB,YAAmB,SAAnBA,YAAmB;AAClDhB,QAAAA,UAAU,CAACmB,mBAAX,CAA+B,QAA/B,EAAyCH,YAAzC;AACD,OAFD;AAGAL,MAAAA,SAAS,CAACS,KAAV;AACD,KAND;AAOD,GAjCD,EAiCG,CAAC1B,YAAD,EAAeD,WAAf,EAA4Bc,MAA5B,CAjCH;;AAmCA,SAAOD,OAAP;AACD","sourcesContent":["import { useTheme } from \"@chakra-ui/system\"\nimport createMediaQueries from \"./create-media-query\"\nimport React from \"react\"\n\ninterface Listener {\n  mediaQuery: MediaQueryList\n  handleChange: () => void\n}\n\nexport interface Breakpoint {\n  breakpoint: string\n  maxWidth?: string\n  minWidth: string\n}\n\n/**\n * React hook used to get the current responsive media breakpoint.\n *\n * @param defaultBreakpoint default breakpoint name\n * (in non-window environments like SSR)\n *\n * For SSR, you can use a package like [is-mobile](https://github.com/kaimallea/isMobile)\n * to get the default breakpoint value from the user-agent\n */\nexport function useBreakpoint(defaultBreakpoint?: string) {\n  const { breakpoints } = useTheme()\n\n  const mediaQueries = React.useMemo(\n    () => createMediaQueries({ base: \"0px\", ...breakpoints }),\n    [breakpoints],\n  )\n\n  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(() => {\n    if (!defaultBreakpoint) return undefined\n    const mediaQuery = mediaQueries.find(\n      (query) => query.breakpoint === defaultBreakpoint,\n    )\n\n    if (mediaQuery) {\n      const { query, ...breakpoint } = mediaQuery\n      return breakpoint\n    }\n\n    return undefined\n  })\n\n  const current = currentBreakpoint?.breakpoint\n\n  const update = React.useCallback(\n    (query: MediaQueryList, breakpoint: Breakpoint) => {\n      if (query.matches && current !== breakpoint.breakpoint) {\n        setCurrentBreakpoint(breakpoint)\n      }\n    },\n    [current],\n  )\n\n  React.useEffect(() => {\n    const listeners = new Set<Listener>()\n\n    mediaQueries.forEach(({ query, ...breakpoint }) => {\n      const mediaQuery = window.matchMedia(query)\n\n      // trigger an initial update to determine media query\n      update(mediaQuery, breakpoint)\n\n      const handleChange = () => {\n        update(mediaQuery, breakpoint)\n      }\n\n      // add media query-listender\n      mediaQuery.addEventListener(\"change\", handleChange)\n\n      // push the media query list handleChange\n      // so we can use it to remove Listener\n      listeners.add({ mediaQuery, handleChange })\n\n      return () => {\n        // clean up 1\n        mediaQuery.removeEventListener(\"change\", handleChange)\n      }\n    })\n\n    return () => {\n      // clean up 2: for safety\n      listeners.forEach(({ mediaQuery, handleChange }) => {\n        mediaQuery.removeEventListener(\"change\", handleChange)\n      })\n      listeners.clear()\n    }\n  }, [mediaQueries, breakpoints, update])\n\n  return current\n}\n"],"file":"use-breakpoint.js"}
+\ No newline at end of file
++{"version":3,"sources":["../../src/use-breakpoint.ts"],"names":["useBreakpoint","defaultBreakpoint","breakpoints","mediaQueries","React","useMemo","base","useState","undefined","mediaQuery","find","query","breakpoint","currentBreakpoint","setCurrentBreakpoint","current","update","useCallback","matches","useEffect","listeners","Set","forEach","window","matchMedia","handleChange","addListener","add","removeListener","clear"],"mappings":";;;;;AAAA;;AACA;;AACA;;;;;;;;AAaA;;;;;;;;;AASO,SAASA,aAAT,CAAuBC,iBAAvB,EAAmD;AAAA,kBAChC,uBADgC;AAAA,MAChDC,WADgD,aAChDA,WADgD;;AAGxD,MAAMC,YAAY,GAAGC,kBAAMC,OAAN,CACnB;AAAA,WAAM;AAAqBC,MAAAA,IAAI,EAAE;AAA3B,OAAqCJ,WAArC,EAAN;AAAA,GADmB,EAEnB,CAACA,WAAD,CAFmB,CAArB;;AAHwD,wBAQNE,kBAAMG,QAAN,CAAe,YAAM;AACrE,QAAI,CAACN,iBAAL,EAAwB,OAAOO,SAAP;AACxB,QAAMC,UAAU,GAAGN,YAAY,CAACO,IAAb,CACjB,UAACC,KAAD;AAAA,aAAWA,KAAK,CAACC,UAAN,KAAqBX,iBAAhC;AAAA,KADiB,CAAnB;;AAIA,QAAIQ,UAAJ,EAAgB;AAAA,UACNE,KADM,GACmBF,UADnB,CACNE,KADM;AAAA,UACIC,UADJ,iCACmBH,UADnB;;AAEd,aAAOG,UAAP;AACD;;AAED,WAAOJ,SAAP;AACD,GAZiD,CARM;AAAA,MAQjDK,iBARiD;AAAA,MAQ9BC,oBAR8B;;AAsBxD,MAAMC,OAAO,GAAGF,iBAAH,oBAAGA,iBAAiB,CAAED,UAAnC;;AAEA,MAAMI,MAAM,GAAGZ,kBAAMa,WAAN,CACb,UAACN,KAAD,EAAwBC,UAAxB,EAAmD;AACjD,QAAID,KAAK,CAACO,OAAN,IAAiBH,OAAO,KAAKH,UAAU,CAACA,UAA5C,EAAwD;AACtDE,MAAAA,oBAAoB,CAACF,UAAD,CAApB;AACD;AACF,GALY,EAMb,CAACG,OAAD,CANa,CAAf;;AASAX,oBAAMe,SAAN,CAAgB,YAAM;AACpB,QAAMC,SAAS,GAAG,IAAIC,GAAJ,EAAlB;AAEAlB,IAAAA,YAAY,CAACmB,OAAb,CAAqB,gBAA8B;AAAA,UAA3BX,KAA2B,QAA3BA,KAA2B;AAAA,UAAjBC,UAAiB;;AACjD,UAAMH,UAAU,GAAGc,MAAM,CAACC,UAAP,CAAkBb,KAAlB,CAAnB,CADiD,CAGjD;;AACAK,MAAAA,MAAM,CAACP,UAAD,EAAaG,UAAb,CAAN;;AAEA,UAAMa,YAAY,GAAG,SAAfA,YAAe,GAAM;AACzBT,QAAAA,MAAM,CAACP,UAAD,EAAaG,UAAb,CAAN;AACD,OAFD,CANiD,CAUjD;;;AACAH,MAAAA,UAAU,CAACiB,WAAX,CAAuBD,YAAvB,EAXiD,CAajD;AACA;;AACAL,MAAAA,SAAS,CAACO,GAAV,CAAc;AAAElB,QAAAA,UAAU,EAAVA,UAAF;AAAcgB,QAAAA,YAAY,EAAZA;AAAd,OAAd;AAEA,aAAO,YAAM;AACX;AACAhB,QAAAA,UAAU,CAACmB,cAAX,CAA0BH,YAA1B;AACD,OAHD;AAID,KArBD;AAuBA,WAAO,YAAM;AACX;AACAL,MAAAA,SAAS,CAACE,OAAV,CAAkB,iBAAkC;AAAA,YAA/Bb,UAA+B,SAA/BA,UAA+B;AAAA,YAAnBgB,YAAmB,SAAnBA,YAAmB;AAClDhB,QAAAA,UAAU,CAACmB,cAAX,CAA0BH,YAA1B;AACD,OAFD;AAGAL,MAAAA,SAAS,CAACS,KAAV;AACD,KAND;AAOD,GAjCD,EAiCG,CAAC1B,YAAD,EAAeD,WAAf,EAA4Bc,MAA5B,CAjCH;;AAmCA,SAAOD,OAAP;AACD","sourcesContent":["import { useTheme } from \"@chakra-ui/system\"\nimport createMediaQueries from \"./create-media-query\"\nimport React from \"react\"\n\ninterface Listener {\n  mediaQuery: MediaQueryList\n  handleChange: () => void\n}\n\nexport interface Breakpoint {\n  breakpoint: string\n  maxWidth?: string\n  minWidth: string\n}\n\n/**\n * React hook used to get the current responsive media breakpoint.\n *\n * @param defaultBreakpoint default breakpoint name\n * (in non-window environments like SSR)\n *\n * For SSR, you can use a package like [is-mobile](https://github.com/kaimallea/isMobile)\n * to get the default breakpoint value from the user-agent\n */\nexport function useBreakpoint(defaultBreakpoint?: string) {\n  const { breakpoints } = useTheme()\n\n  const mediaQueries = React.useMemo(\n    () => createMediaQueries({ base: \"0px\", ...breakpoints }),\n    [breakpoints],\n  )\n\n  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(() => {\n    if (!defaultBreakpoint) return undefined\n    const mediaQuery = mediaQueries.find(\n      (query) => query.breakpoint === defaultBreakpoint,\n    )\n\n    if (mediaQuery) {\n      const { query, ...breakpoint } = mediaQuery\n      return breakpoint\n    }\n\n    return undefined\n  })\n\n  const current = currentBreakpoint?.breakpoint\n\n  const update = React.useCallback(\n    (query: MediaQueryList, breakpoint: Breakpoint) => {\n      if (query.matches && current !== breakpoint.breakpoint) {\n        setCurrentBreakpoint(breakpoint)\n      }\n    },\n    [current],\n  )\n\n  React.useEffect(() => {\n    const listeners = new Set<Listener>()\n\n    mediaQueries.forEach(({ query, ...breakpoint }) => {\n      const mediaQuery = window.matchMedia(query)\n\n      // trigger an initial update to determine media query\n      update(mediaQuery, breakpoint)\n\n      const handleChange = () => {\n        update(mediaQuery, breakpoint)\n      }\n\n      // add media query-listener\n      mediaQuery.addListener(handleChange)\n\n      // push the media query list handleChange\n      // so we can use it to remove Listener\n      listeners.add({ mediaQuery, handleChange })\n\n      return () => {\n        // clean up 1\n        mediaQuery.removeListener(handleChange)\n      }\n    })\n\n    return () => {\n      // clean up 2: for safety\n      listeners.forEach(({ mediaQuery, handleChange }) => {\n        mediaQuery.removeListener(handleChange)\n      })\n      listeners.clear()\n    }\n  }, [mediaQueries, breakpoints, update])\n\n  return current\n}\n"],"file":"use-breakpoint.js"}
+\ No newline at end of file
+diff --git a/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js b/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js
+index b41200f..7371227 100644
+--- a/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js
++++ b/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js
+@@ -54,10 +54,10 @@ export function useBreakpoint(defaultBreakpoint) {
+ 
+       var handleChange = () => {
+         update(mediaQuery, breakpoint);
+-      }; // add media query-listender
++      }; // add media query-listener
+ 
+ 
+-      mediaQuery.addEventListener("change", handleChange); // push the media query list handleChange
++      mediaQuery.addListener(handleChange); // push the media query list handleChange
+       // so we can use it to remove Listener
+ 
+       listeners.add({
+@@ -66,7 +66,7 @@ export function useBreakpoint(defaultBreakpoint) {
+       });
+       return () => {
+         // clean up 1
+-        mediaQuery.removeEventListener("change", handleChange);
++        mediaQuery.removeListener(handleChange);
+       };
+     });
+     return () => {
+@@ -76,7 +76,7 @@ export function useBreakpoint(defaultBreakpoint) {
+           mediaQuery,
+           handleChange
+         } = _ref2;
+-        mediaQuery.removeEventListener("change", handleChange);
++        mediaQuery.removeListener(handleChange);
+       });
+       listeners.clear();
+     };
+diff --git a/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js.map b/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js.map
+index 7225228..eb42667 100644
+--- a/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js.map
++++ b/node_modules/@chakra-ui/media-query/dist/esm/use-breakpoint.js.map
+@@ -1 +1 @@
+-{"version":3,"sources":["../../src/use-breakpoint.ts"],"names":["useTheme","createMediaQueries","React","useBreakpoint","defaultBreakpoint","breakpoints","mediaQueries","useMemo","base","currentBreakpoint","setCurrentBreakpoint","useState","undefined","mediaQuery","find","query","breakpoint","current","update","useCallback","matches","useEffect","listeners","Set","forEach","window","matchMedia","handleChange","addEventListener","add","removeEventListener","clear"],"mappings":";;;;AAAA,SAASA,QAAT,QAAyB,mBAAzB;AACA,OAAOC,kBAAP,MAA+B,sBAA/B;AACA,OAAOC,KAAP,MAAkB,OAAlB;;AAaA;;;;;;;;;AASA,OAAO,SAASC,aAAT,CAAuBC,iBAAvB,EAAmD;AACxD,MAAM;AAAEC,IAAAA;AAAF,MAAkBL,QAAQ,EAAhC;AAEA,MAAMM,YAAY,GAAGJ,KAAK,CAACK,OAAN,CACnB,MAAMN,kBAAkB;AAAGO,IAAAA,IAAI,EAAE;AAAT,KAAmBH,WAAnB,EADL,EAEnB,CAACA,WAAD,CAFmB,CAArB;AAKA,MAAM,CAACI,iBAAD,EAAoBC,oBAApB,IAA4CR,KAAK,CAACS,QAAN,CAAe,MAAM;AACrE,QAAI,CAACP,iBAAL,EAAwB,OAAOQ,SAAP;AACxB,QAAMC,UAAU,GAAGP,YAAY,CAACQ,IAAb,CAChBC,KAAD,IAAWA,KAAK,CAACC,UAAN,KAAqBZ,iBADf,CAAnB;;AAIA,QAAIS,UAAJ,EAAgB;AACd,UAAkBG,UAAlB,iCAAiCH,UAAjC;;AACA,aAAOG,UAAP;AACD;;AAED,WAAOJ,SAAP;AACD,GAZiD,CAAlD;AAcA,MAAMK,OAAO,GAAGR,iBAAH,oBAAGA,iBAAiB,CAAEO,UAAnC;AAEA,MAAME,MAAM,GAAGhB,KAAK,CAACiB,WAAN,CACb,CAACJ,KAAD,EAAwBC,UAAxB,KAAmD;AACjD,QAAID,KAAK,CAACK,OAAN,IAAiBH,OAAO,KAAKD,UAAU,CAACA,UAA5C,EAAwD;AACtDN,MAAAA,oBAAoB,CAACM,UAAD,CAApB;AACD;AACF,GALY,EAMb,CAACC,OAAD,CANa,CAAf;AASAf,EAAAA,KAAK,CAACmB,SAAN,CAAgB,MAAM;AACpB,QAAMC,SAAS,GAAG,IAAIC,GAAJ,EAAlB;AAEAjB,IAAAA,YAAY,CAACkB,OAAb,CAAqB,UAA8B;AAAA,UAA7B;AAAET,QAAAA;AAAF,OAA6B;AAAA,UAAjBC,UAAiB;;AACjD,UAAMH,UAAU,GAAGY,MAAM,CAACC,UAAP,CAAkBX,KAAlB,CAAnB,CADiD,CAGjD;;AACAG,MAAAA,MAAM,CAACL,UAAD,EAAaG,UAAb,CAAN;;AAEA,UAAMW,YAAY,GAAG,MAAM;AACzBT,QAAAA,MAAM,CAACL,UAAD,EAAaG,UAAb,CAAN;AACD,OAFD,CANiD,CAUjD;;;AACAH,MAAAA,UAAU,CAACe,gBAAX,CAA4B,QAA5B,EAAsCD,YAAtC,EAXiD,CAajD;AACA;;AACAL,MAAAA,SAAS,CAACO,GAAV,CAAc;AAAEhB,QAAAA,UAAF;AAAcc,QAAAA;AAAd,OAAd;AAEA,aAAO,MAAM;AACX;AACAd,QAAAA,UAAU,CAACiB,mBAAX,CAA+B,QAA/B,EAAyCH,YAAzC;AACD,OAHD;AAID,KArBD;AAuBA,WAAO,MAAM;AACX;AACAL,MAAAA,SAAS,CAACE,OAAV,CAAkB,WAAkC;AAAA,YAAjC;AAAEX,UAAAA,UAAF;AAAcc,UAAAA;AAAd,SAAiC;AAClDd,QAAAA,UAAU,CAACiB,mBAAX,CAA+B,QAA/B,EAAyCH,YAAzC;AACD,OAFD;AAGAL,MAAAA,SAAS,CAACS,KAAV;AACD,KAND;AAOD,GAjCD,EAiCG,CAACzB,YAAD,EAAeD,WAAf,EAA4Ba,MAA5B,CAjCH;AAmCA,SAAOD,OAAP;AACD","sourcesContent":["import { useTheme } from \"@chakra-ui/system\"\nimport createMediaQueries from \"./create-media-query\"\nimport React from \"react\"\n\ninterface Listener {\n  mediaQuery: MediaQueryList\n  handleChange: () => void\n}\n\nexport interface Breakpoint {\n  breakpoint: string\n  maxWidth?: string\n  minWidth: string\n}\n\n/**\n * React hook used to get the current responsive media breakpoint.\n *\n * @param defaultBreakpoint default breakpoint name\n * (in non-window environments like SSR)\n *\n * For SSR, you can use a package like [is-mobile](https://github.com/kaimallea/isMobile)\n * to get the default breakpoint value from the user-agent\n */\nexport function useBreakpoint(defaultBreakpoint?: string) {\n  const { breakpoints } = useTheme()\n\n  const mediaQueries = React.useMemo(\n    () => createMediaQueries({ base: \"0px\", ...breakpoints }),\n    [breakpoints],\n  )\n\n  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(() => {\n    if (!defaultBreakpoint) return undefined\n    const mediaQuery = mediaQueries.find(\n      (query) => query.breakpoint === defaultBreakpoint,\n    )\n\n    if (mediaQuery) {\n      const { query, ...breakpoint } = mediaQuery\n      return breakpoint\n    }\n\n    return undefined\n  })\n\n  const current = currentBreakpoint?.breakpoint\n\n  const update = React.useCallback(\n    (query: MediaQueryList, breakpoint: Breakpoint) => {\n      if (query.matches && current !== breakpoint.breakpoint) {\n        setCurrentBreakpoint(breakpoint)\n      }\n    },\n    [current],\n  )\n\n  React.useEffect(() => {\n    const listeners = new Set<Listener>()\n\n    mediaQueries.forEach(({ query, ...breakpoint }) => {\n      const mediaQuery = window.matchMedia(query)\n\n      // trigger an initial update to determine media query\n      update(mediaQuery, breakpoint)\n\n      const handleChange = () => {\n        update(mediaQuery, breakpoint)\n      }\n\n      // add media query-listender\n      mediaQuery.addEventListener(\"change\", handleChange)\n\n      // push the media query list handleChange\n      // so we can use it to remove Listener\n      listeners.add({ mediaQuery, handleChange })\n\n      return () => {\n        // clean up 1\n        mediaQuery.removeEventListener(\"change\", handleChange)\n      }\n    })\n\n    return () => {\n      // clean up 2: for safety\n      listeners.forEach(({ mediaQuery, handleChange }) => {\n        mediaQuery.removeEventListener(\"change\", handleChange)\n      })\n      listeners.clear()\n    }\n  }, [mediaQueries, breakpoints, update])\n\n  return current\n}\n"],"file":"use-breakpoint.js"}
+\ No newline at end of file
++{"version":3,"sources":["../../src/use-breakpoint.ts"],"names":["useTheme","createMediaQueries","React","useBreakpoint","defaultBreakpoint","breakpoints","mediaQueries","useMemo","base","currentBreakpoint","setCurrentBreakpoint","useState","undefined","mediaQuery","find","query","breakpoint","current","update","useCallback","matches","useEffect","listeners","Set","forEach","window","matchMedia","handleChange","addListener","add","removeListener","clear"],"mappings":";;;;AAAA,SAASA,QAAT,QAAyB,mBAAzB;AACA,OAAOC,kBAAP,MAA+B,sBAA/B;AACA,OAAOC,KAAP,MAAkB,OAAlB;;AAaA;;;;;;;;;AASA,OAAO,SAASC,aAAT,CAAuBC,iBAAvB,EAAmD;AACxD,MAAM;AAAEC,IAAAA;AAAF,MAAkBL,QAAQ,EAAhC;AAEA,MAAMM,YAAY,GAAGJ,KAAK,CAACK,OAAN,CACnB,MAAMN,kBAAkB;AAAGO,IAAAA,IAAI,EAAE;AAAT,KAAmBH,WAAnB,EADL,EAEnB,CAACA,WAAD,CAFmB,CAArB;AAKA,MAAM,CAACI,iBAAD,EAAoBC,oBAApB,IAA4CR,KAAK,CAACS,QAAN,CAAe,MAAM;AACrE,QAAI,CAACP,iBAAL,EAAwB,OAAOQ,SAAP;AACxB,QAAMC,UAAU,GAAGP,YAAY,CAACQ,IAAb,CAChBC,KAAD,IAAWA,KAAK,CAACC,UAAN,KAAqBZ,iBADf,CAAnB;;AAIA,QAAIS,UAAJ,EAAgB;AACd,UAAkBG,UAAlB,iCAAiCH,UAAjC;;AACA,aAAOG,UAAP;AACD;;AAED,WAAOJ,SAAP;AACD,GAZiD,CAAlD;AAcA,MAAMK,OAAO,GAAGR,iBAAH,oBAAGA,iBAAiB,CAAEO,UAAnC;AAEA,MAAME,MAAM,GAAGhB,KAAK,CAACiB,WAAN,CACb,CAACJ,KAAD,EAAwBC,UAAxB,KAAmD;AACjD,QAAID,KAAK,CAACK,OAAN,IAAiBH,OAAO,KAAKD,UAAU,CAACA,UAA5C,EAAwD;AACtDN,MAAAA,oBAAoB,CAACM,UAAD,CAApB;AACD;AACF,GALY,EAMb,CAACC,OAAD,CANa,CAAf;AASAf,EAAAA,KAAK,CAACmB,SAAN,CAAgB,MAAM;AACpB,QAAMC,SAAS,GAAG,IAAIC,GAAJ,EAAlB;AAEAjB,IAAAA,YAAY,CAACkB,OAAb,CAAqB,UAA8B;AAAA,UAA7B;AAAET,QAAAA;AAAF,OAA6B;AAAA,UAAjBC,UAAiB;;AACjD,UAAMH,UAAU,GAAGY,MAAM,CAACC,UAAP,CAAkBX,KAAlB,CAAnB,CADiD,CAGjD;;AACAG,MAAAA,MAAM,CAACL,UAAD,EAAaG,UAAb,CAAN;;AAEA,UAAMW,YAAY,GAAG,MAAM;AACzBT,QAAAA,MAAM,CAACL,UAAD,EAAaG,UAAb,CAAN;AACD,OAFD,CANiD,CAUjD;;;AACAH,MAAAA,UAAU,CAACe,WAAX,CAAuBD,YAAvB,EAXiD,CAajD;AACA;;AACAL,MAAAA,SAAS,CAACO,GAAV,CAAc;AAAEhB,QAAAA,UAAF;AAAcc,QAAAA;AAAd,OAAd;AAEA,aAAO,MAAM;AACX;AACAd,QAAAA,UAAU,CAACiB,cAAX,CAA0BH,YAA1B;AACD,OAHD;AAID,KArBD;AAuBA,WAAO,MAAM;AACX;AACAL,MAAAA,SAAS,CAACE,OAAV,CAAkB,WAAkC;AAAA,YAAjC;AAAEX,UAAAA,UAAF;AAAcc,UAAAA;AAAd,SAAiC;AAClDd,QAAAA,UAAU,CAACiB,cAAX,CAA0BH,YAA1B;AACD,OAFD;AAGAL,MAAAA,SAAS,CAACS,KAAV;AACD,KAND;AAOD,GAjCD,EAiCG,CAACzB,YAAD,EAAeD,WAAf,EAA4Ba,MAA5B,CAjCH;AAmCA,SAAOD,OAAP;AACD","sourcesContent":["import { useTheme } from \"@chakra-ui/system\"\nimport createMediaQueries from \"./create-media-query\"\nimport React from \"react\"\n\ninterface Listener {\n  mediaQuery: MediaQueryList\n  handleChange: () => void\n}\n\nexport interface Breakpoint {\n  breakpoint: string\n  maxWidth?: string\n  minWidth: string\n}\n\n/**\n * React hook used to get the current responsive media breakpoint.\n *\n * @param defaultBreakpoint default breakpoint name\n * (in non-window environments like SSR)\n *\n * For SSR, you can use a package like [is-mobile](https://github.com/kaimallea/isMobile)\n * to get the default breakpoint value from the user-agent\n */\nexport function useBreakpoint(defaultBreakpoint?: string) {\n  const { breakpoints } = useTheme()\n\n  const mediaQueries = React.useMemo(\n    () => createMediaQueries({ base: \"0px\", ...breakpoints }),\n    [breakpoints],\n  )\n\n  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(() => {\n    if (!defaultBreakpoint) return undefined\n    const mediaQuery = mediaQueries.find(\n      (query) => query.breakpoint === defaultBreakpoint,\n    )\n\n    if (mediaQuery) {\n      const { query, ...breakpoint } = mediaQuery\n      return breakpoint\n    }\n\n    return undefined\n  })\n\n  const current = currentBreakpoint?.breakpoint\n\n  const update = React.useCallback(\n    (query: MediaQueryList, breakpoint: Breakpoint) => {\n      if (query.matches && current !== breakpoint.breakpoint) {\n        setCurrentBreakpoint(breakpoint)\n      }\n    },\n    [current],\n  )\n\n  React.useEffect(() => {\n    const listeners = new Set<Listener>()\n\n    mediaQueries.forEach(({ query, ...breakpoint }) => {\n      const mediaQuery = window.matchMedia(query)\n\n      // trigger an initial update to determine media query\n      update(mediaQuery, breakpoint)\n\n      const handleChange = () => {\n        update(mediaQuery, breakpoint)\n      }\n\n      // add media query-listener\n      mediaQuery.addListener(handleChange)\n\n      // push the media query list handleChange\n      // so we can use it to remove Listener\n      listeners.add({ mediaQuery, handleChange })\n\n      return () => {\n        // clean up 1\n        mediaQuery.removeListener(handleChange)\n      }\n    })\n\n    return () => {\n      // clean up 2: for safety\n      listeners.forEach(({ mediaQuery, handleChange }) => {\n        mediaQuery.removeListener(handleChange)\n      })\n      listeners.clear()\n    }\n  }, [mediaQueries, breakpoints, update])\n\n  return current\n}\n"],"file":"use-breakpoint.js"}
+\ No newline at end of file
+diff --git a/node_modules/@chakra-ui/media-query/jest.config.js b/node_modules/@chakra-ui/media-query/jest.config.js
+new file mode 100644
+index 0000000..c4d1803
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/jest.config.js
+@@ -0,0 +1,5 @@
++const baseConfig = require("../../jest.config")
++
++module.exports = {
++  ...baseConfig,
++}
+diff --git a/node_modules/@chakra-ui/media-query/src/calculate-measurement.ts b/node_modules/@chakra-ui/media-query/src/calculate-measurement.ts
+new file mode 100644
+index 0000000..89042e0
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/calculate-measurement.ts
+@@ -0,0 +1,3 @@
++declare module "calculate-measurement" {
++  export default function (val: string | number, val2: string | number): string
++}
+diff --git a/node_modules/@chakra-ui/media-query/src/create-media-query.ts b/node_modules/@chakra-ui/media-query/src/create-media-query.ts
+new file mode 100644
+index 0000000..a1e7e03
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/create-media-query.ts
+@@ -0,0 +1,76 @@
++import { isNumber, isCustomBreakpoint } from "@chakra-ui/utils"
++import calculateMeasurement from "calculate-measurement"
++
++function createMediaQueries(breakpoints: string[]): MediaQuery[] {
++  /**
++   * Get the non-number breakpoint keys from the provided breakpoints
++   *
++   * reverse to begin with the largest
++   */
++  const keys = Object.keys(breakpoints).filter(isCustomBreakpoint).reverse()
++
++  /**
++   * create a min-max media query string
++   */
++  return keys.map((breakpoint, index) => {
++    const minWidth = breakpoints[breakpoint]
++
++    const next = keys[index - 1]
++    const maxWidth = next ? breakpoints[next] : undefined
++
++    const query = createMediaQueryString(minWidth, maxWidth)
++
++    return {
++      breakpoint,
++      maxWidth,
++      minWidth,
++      query,
++    }
++  })
++}
++
++/**
++ * Create a media query string from the breakpoints,
++ * using a combination of `min-width` and `max-width`.
++ */
++function createMediaQueryString(minWidth: string, maxWidth?: string) {
++  const hasMinWidth = parseInt(minWidth) >= 0
++
++  if (!hasMinWidth && !maxWidth) {
++    return ""
++  }
++
++  let query = `(min-width: ${toMediaString(minWidth)})`
++
++  if (!maxWidth) {
++    return query
++  }
++
++  if (query) {
++    query += " and "
++  }
++
++  query += `(max-width: ${toMediaString(subtract(maxWidth))})`
++
++  return query
++}
++
++interface MediaQuery {
++  breakpoint: string
++  maxWidth?: string
++  minWidth: string
++  query: string
++}
++
++function subtract(value: any) {
++  return calculateMeasurement(value, -0.01)
++}
++
++/**
++ * Convert media query value to string
++ */
++function toMediaString(value: any) {
++  return isNumber(value) ? `${value}px` : value
++}
++
++export default createMediaQueries
+diff --git a/node_modules/@chakra-ui/media-query/src/index.ts b/node_modules/@chakra-ui/media-query/src/index.ts
+new file mode 100644
+index 0000000..23e0e6b
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/index.ts
+@@ -0,0 +1,5 @@
++export * from "./media-query"
++export * from "./media-query.hook"
++export * from "./use-breakpoint"
++export * from "./use-media-query"
++export * from "./use-breakpoint-value"
+diff --git a/node_modules/@chakra-ui/media-query/src/media-query.hook.tsx b/node_modules/@chakra-ui/media-query/src/media-query.hook.tsx
+new file mode 100644
+index 0000000..01c9539
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/media-query.hook.tsx
+@@ -0,0 +1,20 @@
++import { useMediaQuery } from "./use-media-query"
++
++/**
++ * React hook used to get the user's animation preference.
++ */
++export function useAnimationPreference() {
++  const isReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)")
++  return !isReducedMotion
++}
++
++/**
++ * React hook for getting the user's color mode preference.
++ */
++export function useColorModePreference() {
++  const isLight = useMediaQuery("(prefers-color-scheme: light)")
++  const isDark = useMediaQuery("(prefers-color-scheme: dark)")
++
++  if (isLight) return "light"
++  if (isDark) return "dark"
++}
+diff --git a/node_modules/@chakra-ui/media-query/src/media-query.tsx b/node_modules/@chakra-ui/media-query/src/media-query.tsx
+new file mode 100644
+index 0000000..4b327ad
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/media-query.tsx
+@@ -0,0 +1,81 @@
++import { useMediaQuery } from "./use-media-query"
++import * as React from "react"
++import { useTheme } from "@chakra-ui/system"
++import { Dict, memoizedGet as get, __DEV__ } from "@chakra-ui/utils"
++
++interface VisibilityProps {
++  breakpoint: string
++  hide?: boolean
++  children: React.ReactNode
++}
++
++/**
++ * Visibility
++ *
++ * React component to control the visibility of it's
++ * children based on the current breakpoint
++ */
++const Visibility: React.FC<VisibilityProps> = (props) => {
++  const { breakpoint, hide, children } = props
++  const [show] = useMediaQuery(breakpoint)
++  const isVisible = hide ? !show : show
++
++  const rendered = isVisible ? children : null
++  return rendered as React.ReactElement
++}
++
++export type HideProps = ShowProps
++
++export const Hide: React.FC<HideProps> = (props) => {
++  const query = useQuery(props)
++  return (
++    <Visibility breakpoint={query} hide={true}>
++      {props.children}
++    </Visibility>
++  )
++}
++
++if (__DEV__) {
++  Hide.displayName = "Hide"
++}
++
++export interface ShowProps {
++  breakpoint?: string
++  below?: string
++  above?: string
++  children?: React.ReactNode
++}
++
++export const Show: React.FC<ShowProps> = (props) => {
++  const query = useQuery(props)
++  return <Visibility breakpoint={query}>{props.children}</Visibility>
++}
++
++if (__DEV__) {
++  Show.displayName = "Show"
++}
++
++const getBreakpoint = (theme: Dict, value: any) =>
++  get(theme, `breakpoints.${value}`, value)
++
++export interface UseQueryProps {
++  breakpoint?: string
++  below?: string
++  above?: string
++}
++
++export function useQuery(props: UseQueryProps) {
++  const { breakpoint = "", below, above } = props
++
++  const theme = useTheme()
++  const bpBelow = getBreakpoint(theme, below)
++  const bpAbove = getBreakpoint(theme, above)
++
++  const query = bpBelow
++    ? `(max-width: ${bpBelow})`
++    : bpAbove
++    ? `(min-width: ${bpAbove})`
++    : breakpoint
++
++  return query
++}
+diff --git a/node_modules/@chakra-ui/media-query/src/media-query.utils.ts b/node_modules/@chakra-ui/media-query/src/media-query.utils.ts
+new file mode 100644
+index 0000000..f4c93ad
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/media-query.utils.ts
+@@ -0,0 +1,29 @@
++import { breakpoints } from "@chakra-ui/utils"
++
++export function getClosestValue<T = any>(
++  values: Record<string, T>,
++  breakpoint: string,
++): T | undefined {
++  let index = Object.keys(values).indexOf(breakpoint)
++
++  if (index !== -1) {
++    return values[breakpoint]
++  }
++
++  let stopIndex = breakpoints.indexOf(breakpoint)
++
++  while (stopIndex >= 0) {
++    const key = breakpoints[stopIndex]
++
++    if (values[key] != null) {
++      index = stopIndex
++      break
++    }
++    stopIndex--
++  }
++
++  if (index !== -1) {
++    const key = breakpoints[index]
++    return values[key]
++  }
++}
+diff --git a/node_modules/@chakra-ui/media-query/src/use-breakpoint-value.ts b/node_modules/@chakra-ui/media-query/src/use-breakpoint-value.ts
+new file mode 100644
+index 0000000..015ffe1
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/use-breakpoint-value.ts
+@@ -0,0 +1,32 @@
++import { getClosestValue } from "./media-query.utils"
++import { useBreakpoint } from "./use-breakpoint"
++import { isArray, arrayToObjectNotation, fromEntries } from "@chakra-ui/utils"
++import { useTheme } from "@chakra-ui/system"
++
++/**
++ * React hook for getting the value for the current breakpoint from the
++ * provided responsive values object.
++ *
++ * @example
++ * const width = useBreakpointValue({ base: '150px', md: '250px' })
++ */
++export function useBreakpointValue<T = any>(
++  values: Record<string, T> | T[],
++): T | undefined {
++  const breakpoint = useBreakpoint()
++  const { breakpoints } = useTheme()
++
++  if (!breakpoint) {
++    return
++  }
++
++  const obj = isArray(values)
++    ? fromEntries<Record<string, T>>(
++        Object.entries(
++          arrayToObjectNotation(values, breakpoints),
++        ).map(([_, value]) => [value, value]),
++      )
++    : values
++
++  return getClosestValue(obj, breakpoint)
++}
+diff --git a/node_modules/@chakra-ui/media-query/src/use-breakpoint.ts b/node_modules/@chakra-ui/media-query/src/use-breakpoint.ts
+new file mode 100644
+index 0000000..e8abd3d
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/use-breakpoint.ts
+@@ -0,0 +1,94 @@
++import { useTheme } from "@chakra-ui/system"
++import createMediaQueries from "./create-media-query"
++import React from "react"
++
++interface Listener {
++  mediaQuery: MediaQueryList
++  handleChange: () => void
++}
++
++export interface Breakpoint {
++  breakpoint: string
++  maxWidth?: string
++  minWidth: string
++}
++
++/**
++ * React hook used to get the current responsive media breakpoint.
++ *
++ * @param defaultBreakpoint default breakpoint name
++ * (in non-window environments like SSR)
++ *
++ * For SSR, you can use a package like [is-mobile](https://github.com/kaimallea/isMobile)
++ * to get the default breakpoint value from the user-agent
++ */
++export function useBreakpoint(defaultBreakpoint?: string) {
++  const { breakpoints } = useTheme()
++
++  const mediaQueries = React.useMemo(
++    () => createMediaQueries({ base: "0px", ...breakpoints }),
++    [breakpoints],
++  )
++
++  const [currentBreakpoint, setCurrentBreakpoint] = React.useState(() => {
++    if (!defaultBreakpoint) return undefined
++    const mediaQuery = mediaQueries.find(
++      (query) => query.breakpoint === defaultBreakpoint,
++    )
++
++    if (mediaQuery) {
++      const { query, ...breakpoint } = mediaQuery
++      return breakpoint
++    }
++
++    return undefined
++  })
++
++  const current = currentBreakpoint?.breakpoint
++
++  const update = React.useCallback(
++    (query: MediaQueryList, breakpoint: Breakpoint) => {
++      if (query.matches && current !== breakpoint.breakpoint) {
++        setCurrentBreakpoint(breakpoint)
++      }
++    },
++    [current],
++  )
++
++  React.useEffect(() => {
++    const listeners = new Set<Listener>()
++
++    mediaQueries.forEach(({ query, ...breakpoint }) => {
++      const mediaQuery = window.matchMedia(query)
++
++      // trigger an initial update to determine media query
++      update(mediaQuery, breakpoint)
++
++      const handleChange = () => {
++        update(mediaQuery, breakpoint)
++      }
++
++      // add media query-listener
++      mediaQuery.addListener(handleChange)
++
++      // push the media query list handleChange
++      // so we can use it to remove Listener
++      listeners.add({ mediaQuery, handleChange })
++
++      return () => {
++        // clean up 1
++        mediaQuery.removeListener(handleChange)
++      }
++    })
++
++    return () => {
++      // clean up 2: for safety
++      listeners.forEach(({ mediaQuery, handleChange }) => {
++        mediaQuery.removeListener(handleChange)
++      })
++      listeners.clear()
++    }
++  }, [mediaQueries, breakpoints, update])
++
++  return current
++}
+diff --git a/node_modules/@chakra-ui/media-query/src/use-media-query.ts b/node_modules/@chakra-ui/media-query/src/use-media-query.ts
+new file mode 100644
+index 0000000..a19a204
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/src/use-media-query.ts
+@@ -0,0 +1,34 @@
++import * as React from "react"
++import { isBrowser } from "@chakra-ui/utils"
++
++const isSupported = (api: string) => isBrowser && api in window
++const useSafeLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect
++
++/**
++ * React hook that tracks state of a CSS media query
++ *
++ * @param query the media query to match
++ */
++export function useMediaQuery(query: string) {
++  const [matches, setMatches] = React.useState(() => {
++    if (!isSupported("matchMedia")) return false
++    return !!window.matchMedia(query).matches
++  })
++
++  useSafeLayoutEffect(() => {
++    if (!isSupported("matchMedia")) return
++
++    const mediaQueryList = window.matchMedia(query)
++    const listener = () => setMatches(!!mediaQueryList.matches)
++
++    mediaQueryList.addListener(listener)
++
++    listener()
++
++    return () => {
++      mediaQueryList.removeListener(listener)
++    }
++  }, [query])
++
++  return [matches, setMatches] as const
++}
+diff --git a/node_modules/@chakra-ui/media-query/stories/media-query.stories.tsx b/node_modules/@chakra-ui/media-query/stories/media-query.stories.tsx
+new file mode 100644
+index 0000000..f909f41
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/stories/media-query.stories.tsx
+@@ -0,0 +1,51 @@
++import * as React from "react"
++import { chakra } from "@chakra-ui/system"
++import { Hide, Show, useBreakpoint, useBreakpointValue } from "../src"
++
++export default {
++  title: "Breakpoints",
++}
++
++export const show = () => (
++  <Show above="sm">
++    <div>Hey! I'll show above sm (480px)</div>
++  </Show>
++)
++
++export const hide = () => (
++  <Hide below="md">
++    <div>Hallos! I'll hide below 768px</div>
++  </Hide>
++)
++
++export const HideWithQuery = () => (
++  <Hide breakpoint="(max-width: 400px)">
++    <div>Hallos! I'll be hide at 400px</div>
++  </Hide>
++)
++
++export const ShowWithQuery = () => (
++  <Show breakpoint="(max-width: 400px)">
++    <div>Hallos! I'll be show at 400px</div>
++  </Show>
++)
++
++export const BreakpointHook = () => {
++  const breakpoint = useBreakpoint()
++  const isMobile = breakpoint === "sm" || breakpoint === "xs"
++  return (
++    <code style={{ fontSize: isMobile ? 15 : 30 }}>
++      The current breakpoint is {JSON.stringify(breakpoint, null, 2)}!
++    </code>
++  )
++}
++
++export const BreakpointValueHook = () => {
++  const width = useBreakpointValue({ base: "150px", md: "250px" })
++  const color = useBreakpointValue(["red.500", null, "green.500"])
++  return (
++    <chakra.div bg={color} mx="auto" width={width}>
++      I'm {width} wide
++    </chakra.div>
++  )
++}
+diff --git a/node_modules/@chakra-ui/media-query/tests/create-media-query.test.ts b/node_modules/@chakra-ui/media-query/tests/create-media-query.test.ts
+new file mode 100644
+index 0000000..6a236f1
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/tests/create-media-query.test.ts
+@@ -0,0 +1,43 @@
++import { breakpoints } from "./test-data"
++import createMediaQueries from "../src/create-media-query"
++
++test("creates media queries for each named breakpoint", () => {
++  expect(createMediaQueries(breakpoints)).toEqual([
++    {
++      breakpoint: "customBreakpoint",
++      maxWidth: undefined,
++      minWidth: "500px",
++      query: "(min-width: 500px)",
++    },
++    {
++      breakpoint: "xl",
++      maxWidth: "500px",
++      minWidth: "400px",
++      query: "(min-width: 400px) and (max-width: 499.99px)",
++    },
++    {
++      breakpoint: "lg",
++      maxWidth: "400px",
++      minWidth: "300px",
++      query: "(min-width: 300px) and (max-width: 399.99px)",
++    },
++    {
++      breakpoint: "md",
++      maxWidth: "300px",
++      minWidth: "200px",
++      query: "(min-width: 200px) and (max-width: 299.99px)",
++    },
++    {
++      breakpoint: "sm",
++      maxWidth: "200px",
++      minWidth: "100px",
++      query: "(min-width: 100px) and (max-width: 199.99px)",
++    },
++    {
++      breakpoint: "base",
++      maxWidth: "100px",
++      minWidth: "0px",
++      query: "(min-width: 0px) and (max-width: 99.99px)",
++    },
++  ])
++})
+diff --git a/node_modules/@chakra-ui/media-query/tests/test-data.ts b/node_modules/@chakra-ui/media-query/tests/test-data.ts
+new file mode 100644
+index 0000000..095b2c6
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/tests/test-data.ts
+@@ -0,0 +1,21 @@
++import { createBreakpoints } from "@chakra-ui/theme-tools"
++
++export const breakpoints = createBreakpoints({
++  base: "0px",
++  sm: "100px",
++  md: "200px",
++  lg: "300px",
++  xl: "400px",
++  customBreakpoint: "500px",
++})
++
++export const theme = { breakpoints }
++
++export const queries = {
++  base: "(min-width: 0px) and (max-width: 99.99px)",
++  sm: "(min-width: 100px) and (max-width: 199.99px)",
++  md: "(min-width: 200px) and (max-width: 299.99px)",
++  lg: "(min-width: 300px) and (max-width: 399.99px)",
++  xl: "(min-width: 400px) and (max-width: 499.99px)",
++  customBreakpoint: "(min-width: 500px)",
++}
+diff --git a/node_modules/@chakra-ui/media-query/tests/use-breakpoint-value.test.tsx b/node_modules/@chakra-ui/media-query/tests/use-breakpoint-value.test.tsx
+new file mode 100644
+index 0000000..2823e17
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/tests/use-breakpoint-value.test.tsx
+@@ -0,0 +1,193 @@
++import React from "react"
++import { ThemeProvider } from "@chakra-ui/system"
++import { render, screen } from "@chakra-ui/test-utils"
++import MatchMediaMock from "jest-matchmedia-mock"
++import { theme, queries } from "./test-data"
++import { useBreakpointValue } from "../src"
++
++let matchMedia: any
++
++beforeAll(() => {
++  matchMedia = new MatchMediaMock()
++})
++
++afterEach(() => {
++  matchMedia.clear()
++})
++
++describe("with object", () => {
++  const values = {
++    base: "base",
++    sm: "sm",
++    md: "md",
++    lg: "lg",
++    xl: "xl",
++    customBreakpoint: "customBreakpoint",
++  }
++
++  test("uses base value if smaller than sm", () => {
++    renderWithQuery(values, queries.base)
++
++    Object.keys(values).forEach((key) => {
++      if (key === "base") {
++        expect(screen.getByText(key)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(key)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("sm", () => {
++    renderWithQuery(values, queries.sm)
++
++    Object.keys(values).forEach((key) => {
++      if (key === "sm") {
++        expect(screen.getByText(key)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(key)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("md", () => {
++    renderWithQuery(values, queries.md)
++
++    Object.keys(values).forEach((key) => {
++      if (key === "md") {
++        expect(screen.getByText(key)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(key)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("lg", () => {
++    renderWithQuery(values, queries.lg)
++
++    Object.keys(values).forEach((key) => {
++      if (key === "lg") {
++        expect(screen.getByText(key)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(key)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("xl", () => {
++    renderWithQuery(values, queries.xl)
++
++    Object.keys(values).forEach((key) => {
++      if (key === "xl") {
++        expect(screen.getByText(key)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(key)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("customBreakpoint", () => {
++    renderWithQuery(values, queries.customBreakpoint)
++
++    Object.keys(values).forEach((key) => {
++      if (key === "customBreakpoint") {
++        expect(screen.getByText(key)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(key)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("base value is used if no breakpoint matches", () => {
++    const values = { base: "base", md: "md" }
++    renderWithQuery(values, queries.sm)
++    expect(screen.getByText("base")).toBeInTheDocument()
++  })
++})
++
++describe("with array", () => {
++  const values = ["base", "sm", "md", "lg", "xl", "customBreakpoint"]
++
++  test("uses base value if smaller than sm", () => {
++    renderWithQuery(values, queries.base)
++    expect(screen.getByText("base")).toBeInTheDocument()
++  })
++
++  test("sm", () => {
++    renderWithQuery(values, queries.sm)
++
++    values.forEach((value) => {
++      if (value === "sm") {
++        expect(screen.getByText(value)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(value)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("md", () => {
++    renderWithQuery(values, queries.md)
++
++    values.forEach((value) => {
++      if (value === "md") {
++        expect(screen.getByText(value)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(value)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("lg", () => {
++    renderWithQuery(values, queries.lg)
++
++    values.forEach((value) => {
++      if (value === "lg") {
++        expect(screen.getByText(value)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(value)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("xl", () => {
++    renderWithQuery(values, queries.xl)
++
++    values.forEach((value) => {
++      if (value === "xl") {
++        expect(screen.getByText(value)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(value)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("customBreakpoint", () => {
++    renderWithQuery(values, queries.customBreakpoint)
++
++    values.forEach((value) => {
++      if (value === "customBreakpoint") {
++        expect(screen.getByText(value)).toBeInTheDocument()
++      } else {
++        expect(screen.queryByText(value)).not.toBeInTheDocument()
++      }
++    })
++  })
++
++  test("uses base value if no breakpoint matches", () => {
++    renderWithQuery(["base"], queries.sm)
++    expect(screen.getByText("base")).toBeInTheDocument()
++  })
++})
++
++function renderWithQuery(values: any, query: string) {
++  matchMedia.useMediaQuery(query)
++  return render(
++    <ThemeProvider theme={theme}>
++      <TestComponent values={values} />
++    </ThemeProvider>,
++  )
++}
++
++const TestComponent = ({ values }: { values: any }) => {
++  const value = useBreakpointValue(values)
++  return <>{value}</>
++}
+diff --git a/node_modules/@chakra-ui/media-query/tests/utils.test.ts b/node_modules/@chakra-ui/media-query/tests/utils.test.ts
+new file mode 100644
+index 0000000..28d83a0
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/tests/utils.test.ts
+@@ -0,0 +1,10 @@
++import { getClosestValue } from "../src/media-query.utils"
++
++test("should get the closest responsive value", () => {
++  expect(getClosestValue({ base: "40px", md: "500px" }, "xl")).toBe("500px")
++  expect(getClosestValue({ base: "40px", md: "500px" }, "sm")).toBe("40px")
++  expect(getClosestValue({ base: "40px" }, "lg")).toBe("40px")
++  expect(getClosestValue({ sm: "40px", md: "500px" }, "sm")).toBe("40px")
++  expect(getClosestValue({ sm: "40px", md: "500px" }, "base")).toBe(undefined)
++  expect(getClosestValue({}, "")).toBe(undefined)
++})
+diff --git a/node_modules/@chakra-ui/media-query/tsconfig.json b/node_modules/@chakra-ui/media-query/tsconfig.json
+new file mode 100644
+index 0000000..596e2cf
+--- /dev/null
++++ b/node_modules/@chakra-ui/media-query/tsconfig.json
+@@ -0,0 +1,4 @@
++{
++  "extends": "../../tsconfig.json",
++  "include": ["src"]
++}
