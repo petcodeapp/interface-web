@@ -48,7 +48,7 @@ const QRTagSection = () => {
       <Box position="relative" paddingBottom={`${(126 / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="4 0 1434 75"
+          viewBox="0 0 1440 75"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -59,7 +59,7 @@ const QRTagSection = () => {
         </svg>
         <motion.svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="2 0 1436 126"
+          viewBox="0 0 1440 126"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
@@ -276,7 +276,7 @@ const QRTagSection = () => {
       <Box position="relative" paddingBottom={`${(125 / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", top: 0 }}
-          viewBox="2 1 1436 82"
+          viewBox="0 1 1440 82"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -287,7 +287,7 @@ const QRTagSection = () => {
         </svg>
         <motion.svg
           style={{ position: "absolute", top: 0 }}
-          viewBox="3 0 1435 125"
+          viewBox="0 0 1440 125"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}

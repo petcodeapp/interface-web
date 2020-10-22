@@ -47,7 +47,6 @@ const Hero: React.FC = () => {
             boxSizing="border-box"
             paddingX={12}
             justifyContent="space-between"
-            paddingTop={{ base: 8, md: 0 }}
             spacing={{ md: 8 }}
           >
             <MotionFlex

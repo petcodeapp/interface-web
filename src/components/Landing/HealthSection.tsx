@@ -37,7 +37,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
       <Box position="relative" paddingBottom={`${((197 * 1.1) / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="1 0 1439 156"
+          viewBox="0 0 1440 156"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -48,7 +48,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
         </svg>
         <motion.svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="2 0 1438 197"
+          viewBox="0 0 1440 197"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}
@@ -175,7 +175,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
       <Box position="relative" paddingBottom={`${((128 * 1.1) / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", top: 0 }}
-          viewBox="4 72 1432 107"
+          viewBox="0 71 1440 108"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
