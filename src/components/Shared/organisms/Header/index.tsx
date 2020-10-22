@@ -25,7 +25,7 @@ const HeaderButtonStyle = {
   letterSpacing: "auto",
   height: { base: "3rem", sm: "2.75rem" },
   paddingX: { base: 12, sm: 8 },
-  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2);",
+  boxShadow: "0px 4px 20px 1px rgba(0, 0, 0, 0.2)",
 } as BaseButtonProps;
 
 type MobileMenuProps = {

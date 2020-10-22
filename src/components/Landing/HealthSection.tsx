@@ -34,10 +34,10 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
 
   return (
     <Flex direction="column" overflow="hidden">
-      <Box position="relative" paddingBottom={`${((197 * 1.2) / 1440) * 100}%`}>
+      <Box position="relative" paddingBottom={`${((197 * 1.1) / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="0 0 1440 157"
+          viewBox="0 0 1440 156"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -175,7 +175,7 @@ const HealthSection = forwardRef<HTMLDivElement | undefined>((_, ref) => {
       <Box position="relative" paddingBottom={`${((128 * 1.1) / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", top: 0 }}
-          viewBox="0 70 1440 109"
+          viewBox="0 71 1440 108"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

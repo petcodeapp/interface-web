@@ -39,7 +39,7 @@ const Footer: React.FC<FooterProps> = ({ wavesArePadded = true, ...props }) => {
       >
         <motion.svg
           style={{ position: "absolute", bottom: 0 }}
-          viewBox="0 0 1440 86"
+          viewBox="0 0 1440 85"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={waveBounce}

@@ -169,7 +169,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({
       <Box position="relative" paddingBottom={`${(116 / 1440) * 100}%`}>
         <svg
           style={{ position: "absolute", top: 0 }}
-          viewBox="0 0 1440 83"
+          viewBox="0 2 1440 81"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >

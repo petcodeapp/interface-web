@@ -59,7 +59,7 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
               },
               visible: {
                 opacity: 1,
-                height: 50
+                height: 75
               }
             }}
           >

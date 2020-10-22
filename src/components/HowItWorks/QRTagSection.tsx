@@ -123,6 +123,7 @@ const QRTagSection = () => {
                 fontSize={{ base: "xl", lg: "lg" }}
                 alignSelf={{ base: "center", lg: "start" }}
                 variantColor="white"
+                backgroundColor="white"
                 color="petcode.blue.400"
                 onClick={() =>
                   history.push({
