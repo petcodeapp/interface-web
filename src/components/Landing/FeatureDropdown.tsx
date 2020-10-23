@@ -28,7 +28,14 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
 
   return (
     <MotionFlex direction="column" {...props}>
-      <Stack isInline alignItems="center" marginBottom={2} spacing={3} cursor="pointer" onClick={onClick}>
+      <Stack
+        isInline
+        alignItems="center"
+        marginBottom={2}
+        spacing={3}
+        cursor="pointer"
+        onClick={onClick}
+      >
         <BaseCheckbox
           isChecked
           color={theme.colors.petcode.blue[400]}
@@ -59,8 +66,8 @@ const FeatureDropDown: React.FC<FeatureDropDownProps> = ({
               },
               visible: {
                 opacity: 1,
-                height: 75
-              }
+                height: 75,
+              },
             }}
           >
             <Text

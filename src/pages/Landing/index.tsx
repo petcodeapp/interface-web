@@ -56,7 +56,7 @@ const LandingPage: React.FC = () => {
       history.replace("/", null);
     }
   }, [location.state]);
-  
+
   return (
     <ThemeProvider
       theme={{

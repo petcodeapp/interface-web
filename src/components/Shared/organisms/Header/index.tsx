@@ -3,7 +3,13 @@ import React, { useEffect, useRef } from "react";
 import { Box, StackProps, useTheme } from "@chakra-ui/core";
 import BaseButton, { BaseButtonProps } from "../../atoms/button";
 import Link from "../../atoms/link";
-import { AnimatePresence, motion, MotionProps, useAnimation, useCycle } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  MotionProps,
+  useAnimation,
+  useCycle,
+} from "framer-motion";
 import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
 import { Flex, Stack } from "../../../Motion";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
@@ -144,9 +150,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ callToAction }) => {
   ));
 };
 
-export type HeaderProps = StackProps & MotionProps & {
-  becomesSticky?: boolean;
-};
+export type HeaderProps = StackProps &
+  MotionProps & {
+    becomesSticky?: boolean;
+  };
 
 const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
@@ -168,7 +175,10 @@ const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
   useEffect(() => {
     if (becomesSticky) {
       const scrollEventListener = async () => {
-        if (window.pageYOffset > window.innerHeight && !isHeaderSticky.current) {
+        if (
+          window.pageYOffset > window.innerHeight &&
+          !isHeaderSticky.current
+        ) {
           isHeaderSticky.current = true;
           await controls.start("sticky-before");
           await controls.start("sticky");
@@ -264,13 +274,23 @@ const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
           )}
         </Stack>
       </Hide>
-      <AnimatePresence>{open && <MobileMenu callToAction={() => {
-        toggleOpen();
-        setTimeout(() => history.push({
-          pathname: "/",
-          state: { callToAction: true },
-        }), 250);
-      }} />}</AnimatePresence>
+      <AnimatePresence>
+        {open && (
+          <MobileMenu
+            callToAction={() => {
+              toggleOpen();
+              setTimeout(
+                () =>
+                  history.push({
+                    pathname: "/",
+                    state: { callToAction: true },
+                  }),
+                250
+              );
+            }}
+          />
+        )}
+      </AnimatePresence>
       <Show below="sm">
         <motion.svg
           initial="closed"
