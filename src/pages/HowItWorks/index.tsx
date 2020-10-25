@@ -77,50 +77,7 @@ const HowItWorksPage: React.FunctionComponent = () => {
             <ellipse cx="156.664" cy="-30.7729" rx="150.622" ry="101.761" />
           )}
         </svg>
-<<<<<<< HEAD
-        <IntegratedProgressiveImage
-          delay={500}
-          slug={`how-it-works-splash${breakpoint > 1 ? "" : "-mobile"}.png`}
-        >
-          {(src: string, loading: boolean) => (
-            <Flex
-              position="relative"
-              flexDirection="column"
-              boxSizing="border-box"
-              paddingTop="18.625rem"
-              backgroundImage={`url(${src})`}
-              style={{ filter: loading ? "blur(-5px)" : "" }}
-              backgroundSize="cover"
-              paddingRight={{ base: 16, md: 40 }}
-              paddingLeft={{ base: 16, md: 0 }}
-              height="max(min(calc(100vw * 0.5875), 843px), 600px)"
-            >
-              <Box flexGrow={1} />
-              <Stack
-                alignSelf={{ base: "center", md: "flex-end" }}
-                color="white"
-                spacing={5}
-                maxWidth={{ sm: "40rem", md: "26rem" }}
-              >
-                <Heading fontSize={{ base: "3.476rem", md: "2.8125rem" }}>
-                  How It Works
-                </Heading>
-                <Text fontSize={{ base: "2xl", sm: "xl", md: "lg" }}>
-                  The PetCode system offers a seamless connection between
-                  software and a physical QR code tag, allowing you to easily
-                  and efficientlymanage your pet.
-                </Text>
-                <ExclusiveUpdatesInput
-                  maxWidth={{ base: "auto", sm: "24.75rem" }}
-                />
-              </Stack>
-              <Box flexGrow={7} />
-            </Flex>
-          )}
-        </IntegratedProgressiveImage>
-=======
         <Hero />
->>>>>>> fcd140fc854594bb33449ed1716816012827ee55
         <Box position="relative">
           <svg
             style={{ position: "absolute", bottom: 0 }}
