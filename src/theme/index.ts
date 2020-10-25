@@ -26,7 +26,7 @@ export default {
   },
   fontSizes: {
     ...theme.fontSizes,
-    "5xl": "3.75rem",
+    "5xl": "3.5rem",
     "7xl": "5.25rem",
     "8xl": "6.75rem",
     "9xl": "8.5rem",

@@ -32,7 +32,7 @@ const DigitInput = (props: InputProps) => (
       textAlign="center"
       fontSize={{ xs: "5xl", sm: "6xl", md: "7xl" }}
       fontFamily="Nunito"
-      paddingX={0}
+      paddingX={12}
       {...props}
     />
   </Box>
