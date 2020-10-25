@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { Box, Flex, Heading, Stack, Text, useTheme } from "@chakra-ui/core";
-import { useBreakpointValue, Hide } from "@chakra-ui/media-query";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 import { motion, useAnimation, Transition } from "framer-motion";
 import { useHistory } from "react-router-dom";
 import Observer from "@researchgate/react-intersection-observer";
@@ -159,7 +159,7 @@ const QRTagSection = () => {
                   alt="Tag back"
                   size="15.625rem"
                 />
-                <Hide below="lg">
+                {breakpoint >= 3 && (
                   <Flex
                     direction="row"
                     position="absolute"
@@ -214,8 +214,8 @@ const QRTagSection = () => {
                       />
                     </svg>
                   </Flex>
-                </Hide>
-                <Hide below="xl">
+                )}
+                {breakpoint >= 4 && (
                   <Flex
                     direction="row"
                     position="absolute"
@@ -269,7 +269,7 @@ const QRTagSection = () => {
                       </Text>
                     </MotionBox>
                   </Flex>
-                </Hide>
+                )}
               </MotionBox>
             </Box>
           </Flex>
