@@ -20,12 +20,7 @@ const Layout: React.FC<LayoutProps> = ({
   footerProps = {},
   ...props
 }) => (
-  <Flex
-    direction="column"
-    minHeight="100vh"
-    boxSizing="border-box"
-    {...props}
-  >
+  <Flex direction="column" minHeight="100vh" boxSizing="border-box" {...props}>
     <Header {...headerProps} />
     {children}
     <Footer {...footerProps} />

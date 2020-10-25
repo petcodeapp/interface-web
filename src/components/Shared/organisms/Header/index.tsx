@@ -3,11 +3,18 @@ import React, { useEffect, useRef } from "react";
 import { Box, StackProps, useTheme } from "@chakra-ui/core";
 import BaseButton, { BaseButtonProps } from "../../atoms/button";
 import Link from "../../atoms/link";
-import { AnimatePresence, motion, MotionProps, useCycle } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  MotionProps,
+  useAnimation,
+  useCycle,
+} from "framer-motion";
 import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
 import { Flex, Stack } from "../../../Motion";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
 import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
+import { useHistory } from "react-router-dom";
 
 import { AuthContext } from "../../../../views/Auth/index";
 import { useObserver } from "mobx-react-lite";
@@ -19,21 +26,24 @@ import { ActionButtonStyle } from "../../ions/button";
 const HeaderButtonStyle = {
   ...ActionButtonStyle,
   variantColor: "petcode.yellow",
-  fontSize: { base: "2xl", sm: "xl" },
+  fontSize: { base: "xl", sm: "lg" },
   textTransform: "none",
   letterSpacing: "auto",
-  height: { base: "4rem", sm: "3.25rem" },
+  height: { base: "3rem", sm: "2.75rem" },
   paddingX: { base: 12, sm: 8 },
-  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2);",
+  boxShadow: "0px 4px 20px 1px rgba(0, 0, 0, 0.2)",
 } as BaseButtonProps;
 
-export type HeaderProps = StackProps & MotionProps;
+type MobileMenuProps = {
+  callToAction: () => void;
+};
 
-const MobileMenu: React.FC = () => {
-  const auth = React.useContext(AuthContext);
-  const menuRef = useRef<HTMLElement>();
-
+const MobileMenu: React.FC<MobileMenuProps> = ({ callToAction }) => {
   const theme = useTheme() as PetCodeTheme;
+
+  const auth = React.useContext(AuthContext);
+
+  const menuRef = useRef<HTMLElement>();
 
   useEffect(() => {
     setTimeout(() => disableBodyScroll(menuRef.current as HTMLDivElement), 100);
@@ -116,8 +126,9 @@ const MobileMenu: React.FC = () => {
               <BaseButton
                 {...HeaderButtonStyle}
                 background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+                onClick={callToAction}
               >
-                <Link to="/getstarted">Get Started</Link>
+                Get Started
               </BaseButton>
             ) : (
               <BaseButton {...HeaderButtonStyle}>
@@ -139,25 +150,52 @@ const MobileMenu: React.FC = () => {
   ));
 };
 
-const Header: React.FC<HeaderProps> = (props) => {
-  const auth = React.useContext(AuthContext);
-  const [open, toggleOpen] = useCycle(false, true);
+export type HeaderProps = StackProps &
+  MotionProps & {
+    becomesSticky?: boolean;
+  };
 
+const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
   const breakpoint = parseInt(useBreakpoint() as string);
+
+  const history = useHistory();
+
+  const auth = React.useContext(AuthContext);
+
+  const [open, toggleOpen] = useCycle(false, true);
   useEffect(() => {
     if (breakpoint >= 1 && open) {
       toggleOpen();
     }
   }, [breakpoint]);
 
+  const controls = useAnimation();
+  const isHeaderSticky = useRef(false);
+  useEffect(() => {
+    if (becomesSticky) {
+      const scrollEventListener = async () => {
+        if (
+          window.pageYOffset > window.innerHeight &&
+          !isHeaderSticky.current
+        ) {
+          isHeaderSticky.current = true;
+          await controls.start("sticky-before");
+          await controls.start("sticky");
+        } else if (window.pageYOffset <= 100 && isHeaderSticky.current) {
+          isHeaderSticky.current = false;
+          await controls.start("fixed-before");
+          await controls.start("fixed");
+        }
+      };
+      window.addEventListener("scroll", scrollEventListener);
+      return () => window.removeEventListener("scroll", scrollEventListener);
+    }
+  }, [becomesSticky]);
+
   return useObserver(() => (
     <Stack
       isInline
-      initial="closed"
-      animate={open ? "open" : "closed"}
-      position="fixed"
-      top={0}
       background="rgba(0, 0, 0, 0.4)"
       width="100%"
       boxSizing="border-box"
@@ -166,13 +204,49 @@ const Header: React.FC<HeaderProps> = (props) => {
       paddingY={{ base: 8, sm: 4 }}
       zIndex={999}
       color="white"
-      fontSize="2xl"
+      fontSize="xl"
+      initial="fixed"
+      animate={controls}
+      variants={{
+        sticky: {
+          position: "fixed",
+          backgroundColor: theme.colors.petcode.blue[400],
+          top: 0,
+          opacity: 1,
+          borderBottomLeftRadius: "2rem",
+          borderBottomRightRadius: "2rem",
+          boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        },
+        "sticky-before": {
+          top: -100,
+          opacity: 0,
+          backgroundColor: "transparent",
+          transition: { duration: 0 },
+          transitionEnd: { position: "fixed" },
+        },
+        fixed: {
+          position: "absolute",
+          backgroundColor: "transparent",
+          top: 0,
+          opacity: 1,
+          borderBottomLeftRadius: "0",
+          borderBottomRightRadius: "0",
+          boxShadow: "none",
+        },
+        "fixed-before": {
+          top: 100,
+          opacity: 0,
+          backgroundColor: theme.colors.petcode.blue[400],
+          transition: { duration: 0 },
+          transitionEnd: { position: "absolute" },
+        },
+      }}
       {...props}
     >
       <Link to="/">
         <IntegratedProgressiveImage
           slug="petcode-logo-with-qr-code.png"
-          height={{ base: "3.5rem", sm: "4.75rem" }}
+          height="3.5rem"
         />
       </Link>
       <Box flexGrow={1} />
@@ -184,8 +258,14 @@ const Header: React.FC<HeaderProps> = (props) => {
             <BaseButton
               {...HeaderButtonStyle}
               background="linear-gradient(90deg, #51BCDA 12.06%, #F3AD55 91.96%), #FBC658;"
+              onClick={() =>
+                history.push({
+                  pathname: "/",
+                  state: { callToAction: true },
+                })
+              }
             >
-              <Link to="/getstarted">Get Started</Link>
+              Get Started
             </BaseButton>
           ) : (
             <BaseButton {...HeaderButtonStyle}>
@@ -194,9 +274,27 @@ const Header: React.FC<HeaderProps> = (props) => {
           )}
         </Stack>
       </Hide>
-      <AnimatePresence>{open && <MobileMenu />}</AnimatePresence>
+      <AnimatePresence>
+        {open && (
+          <MobileMenu
+            callToAction={() => {
+              toggleOpen();
+              setTimeout(
+                () =>
+                  history.push({
+                    pathname: "/",
+                    state: { callToAction: true },
+                  }),
+                250
+              );
+            }}
+          />
+        )}
+      </AnimatePresence>
       <Show below="sm">
         <motion.svg
+          initial="closed"
+          animate={open ? "open" : "closed"}
           style={{ cursor: "pointer", zIndex: 1000 }}
           onClick={() => toggleOpen()}
           variants={{

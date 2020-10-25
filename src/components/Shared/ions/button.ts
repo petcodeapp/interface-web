@@ -9,4 +9,5 @@ export const ActionButtonStyle = {
   fontFamily: "body",
   textTransform: "uppercase",
   letterSpacing: "0.07em",
+  cursor: "pointer",
 } as BaseButtonProps;
