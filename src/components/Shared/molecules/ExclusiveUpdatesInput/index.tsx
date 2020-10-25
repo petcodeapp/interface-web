@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/core";
 
 import { PetCodeTheme } from "../../../../theme";
+import { defineBoundAction } from "mobx/lib/internal";
+import firebase from 'firebase';
 
 export type EnterYourEmailInputProps = {
   inputProps?: InputProps;
@@ -23,9 +25,19 @@ const EnterYourEmailInput: React.FC<EnterYourEmailInputProps> = ({
 }) => {
   const theme = useTheme() as PetCodeTheme;
 
+  const [email, setEmail] = React.useState("");
+  const [submitted, setSubmitted] = React.useState(false);
+
   return (
-    <InputGroup maxWidth="24.75rem" {...props}>
+    <InputGroup onSubmit={() => {
+      console.log(email);
+    }}  maxWidth="24.75rem" {...props}>
       <Input
+      value={!submitted?email:"Welcome to Petcode!"}
+      onChange={(e: any) => setEmail(e.target.value)}
+      onSubmit={() => {
+        console.log(email);
+      }}
         type="email"
         rounded="1.25rem"
         height="3.625rem"
@@ -33,10 +45,12 @@ const EnterYourEmailInput: React.FC<EnterYourEmailInputProps> = ({
         variant="filled"
         fontSize="lg"
         fontFamily="body"
-        placeholder="Sign up for exclusive updates now"
+        placeholder="Sign up for exclusive updates now!"
         backgroundColor="rgba(255, 255, 255, 0.75)"
+        isDisabled={submitted}
         _focus={{ backgroundColor: "white" }}
         _placeholder={{ color: "black" }}
+        _disabled={{backgroundColor: "white"}}
         {...inputProps}
       />
       <InputRightElement
@@ -44,6 +58,18 @@ const EnterYourEmailInput: React.FC<EnterYourEmailInputProps> = ({
         top="auto"
         right="0.5rem"
         cursor="pointer"
+        
+        onClick={async () => {
+          await firebase.firestore().collection("emails").add({
+            email,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          })
+
+          setSubmitted(true)
+          setEmail("")
+
+          console.log("Welcome to Petcode!")
+        }}
       >
         <svg
           width="2.375rem"
@@ -56,7 +82,7 @@ const EnterYourEmailInput: React.FC<EnterYourEmailInputProps> = ({
             cx="19.25"
             cy="18.5"
             r="18.5"
-            fill={theme.colors.petcode.blue[400]}
+            fill={!submitted ? theme.colors.petcode.blue[400] : theme.colors.black[400]}
           />
           <path
             d="M29.6667 19H9M21.6296 11L29.6667 19L21.6296 11ZM29.6667 19L21.6296 27L29.6667 19Z"
