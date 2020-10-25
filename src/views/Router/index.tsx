@@ -1,7 +1,6 @@
 import React from "react";
 import LandingPage from "../../pages/Landing";
 import HowItWorksPage from "../../pages/HowItWorks";
-import OldLandingpage from "../../pages/OldLanding";
 import LoginPage from "../../pages/Login";
 import { Route, Switch } from "react-router-dom";
 import PublicRoute from "./PublicRoute";
