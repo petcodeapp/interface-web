@@ -7,7 +7,6 @@ import { useHistory, useLocation } from "react-router-dom";
 import Layout from "../../components/Shared/layouts/Layout";
 import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
-import Hero from "../../components/Landing/Hero";
 import FeaturesSection from "../../components/Landing/FeaturesSection";
 import SafetySection from "../../components/Landing/SafetySection";
 import HealthSection from "../../components/Landing/HealthSection";
@@ -17,6 +16,7 @@ import SignUpForUpdatesSection from "../../components/Landing/SignUpForUpdatesSe
 import { PetCodeTheme } from "../../theme";
 
 import "html5-device-mockups/dist/device-mockups.min.css";
+import Hero from '../../components/Landing/Hero';
 
 const LandingPage: React.FC = () => {
   const theme = useTheme() as PetCodeTheme;
