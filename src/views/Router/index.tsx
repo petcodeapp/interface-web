@@ -23,6 +23,7 @@ import PrivacyPolicyPage from "../../pages/Legal/PrivacyPolicyPage";
 import PetProfilePage from "../../pages/PetProfile";
 import TermsPage from "../../pages/Legal/TermsPage";
 import ComingSoonPage from "../../pages/ComingSoon";
+import OnboardingPage from "../../pages/Onboarding";
 import { useObserver } from "mobx-react-lite";
 import { motion } from "framer-motion";
 
@@ -175,6 +176,12 @@ const Routes = () => {
       <PublicRoute exact path="/howitworks">
         <PageAnim>
           <HowItWorksPage />
+        </PageAnim>
+      </PublicRoute>
+
+      <PublicRoute path="/onboarding">
+        <PageAnim>
+          <OnboardingPage />
         </PageAnim>
       </PublicRoute>
 
