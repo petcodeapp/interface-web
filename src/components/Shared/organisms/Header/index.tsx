@@ -10,7 +10,7 @@ import {
   useAnimation,
   useCycle,
 } from "framer-motion";
-import { useBreakpoint, Show, Hide } from "@chakra-ui/media-query";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 import { Flex, Stack } from "../../../Motion";
 import SocialMediaButtons from "../../molecules/SocialMediaButtons";
 import IntegratedProgressiveImage from "../../atoms/IntegratedProgressiveImage";
@@ -40,6 +40,13 @@ type MobileMenuProps = {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ callToAction }) => {
   const theme = useTheme() as PetCodeTheme;
+  const breakpoint = useBreakpointValue({
+    base: 0,
+    sm: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+  }) as number;
 
   const auth = React.useContext(AuthContext);
 
@@ -135,14 +142,16 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ callToAction }) => {
                 <Link to="/dashboard">Dashboard</Link>
               </BaseButton>
             )}
-            <Show below="sm">
-              <Box flexGrow={1} />
-              <SocialMediaButtons
-                alignSelf="center"
-                buttonsAreFilled
-                buttonSize="lg"
-              />
-            </Show>
+            {breakpoint < 1 && (
+              <>
+                <Box flexGrow={1} />
+                <SocialMediaButtons
+                  alignSelf="center"
+                  buttonsAreFilled
+                  buttonSize="lg"
+                />
+              </>
+            )}
           </Stack>
         </Flex>
       )}
@@ -157,7 +166,13 @@ export type HeaderProps = StackProps &
 
 const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
   const theme = useTheme() as PetCodeTheme;
-  const breakpoint = parseInt(useBreakpoint() as string);
+  const breakpoint = useBreakpointValue({
+    base: 0,
+    sm: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+  }) as number;
 
   const history = useHistory();
 
@@ -250,7 +265,24 @@ const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
         />
       </Link>
       <Box flexGrow={1} />
-      <Hide below="sm">
+      <AnimatePresence>
+        {open && (
+          <MobileMenu
+            callToAction={() => {
+              toggleOpen();
+              setTimeout(
+                () =>
+                  history.push({
+                    pathname: "/",
+                    state: { callToAction: true },
+                  }),
+                250
+              );
+            }}
+          />
+        )}
+      </AnimatePresence>
+      {breakpoint > 1 ? (
         <Stack alignItems="center" spacing={8} isInline>
           <Link to="/">Home</Link>
           <Link to="/howitworks">How It Works</Link>
@@ -273,25 +305,7 @@ const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
             </BaseButton>
           )}
         </Stack>
-      </Hide>
-      <AnimatePresence>
-        {open && (
-          <MobileMenu
-            callToAction={() => {
-              toggleOpen();
-              setTimeout(
-                () =>
-                  history.push({
-                    pathname: "/",
-                    state: { callToAction: true },
-                  }),
-                250
-              );
-            }}
-          />
-        )}
-      </AnimatePresence>
-      <Show below="sm">
+      ) : (
         <motion.svg
           initial="closed"
           animate={open ? "open" : "closed"}
@@ -319,7 +333,7 @@ const Header: React.FC<HeaderProps> = ({ becomesSticky = false, ...props }) => {
             stroke-linejoin="round"
           />
         </motion.svg>
-      </Show>
+      )}
     </Stack>
   ));
 };

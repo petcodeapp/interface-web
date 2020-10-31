@@ -159,7 +159,7 @@ const QRTagSection = () => {
                   alt="Tag back"
                   size="15.625rem"
                 />
-                <Hide below="lg">
+                {breakpoint > 2 && (
                   <Flex
                     direction="row"
                     position="absolute"
@@ -214,8 +214,8 @@ const QRTagSection = () => {
                       />
                     </svg>
                   </Flex>
-                </Hide>
-                <Hide below="xl">
+                )}
+                {breakpoint > 3 && (
                   <Flex
                     direction="row"
                     position="absolute"
@@ -269,7 +269,7 @@ const QRTagSection = () => {
                       </Text>
                     </MotionBox>
                   </Flex>
-                </Hide>
+                )}
               </MotionBox>
             </Box>
           </Flex>
