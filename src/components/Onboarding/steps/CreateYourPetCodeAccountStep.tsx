@@ -41,9 +41,11 @@ const CreateYourPetCodeAccountStep = () => {
       {({ errors, touched, handleSubmit }) => (
         <Stack
           paddingY={8}
-          paddingX={32}
+          paddingLeft={32}
+          paddingRight={8}
           spacing={6}
           color="petcode.neutral.700"
+          maxWidth="800px"
         >
           <Box flexGrow={1} />
           <Stack spacing={3}>
