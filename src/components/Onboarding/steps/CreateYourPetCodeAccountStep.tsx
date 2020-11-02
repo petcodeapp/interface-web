@@ -9,13 +9,15 @@ import * as Yup from "yup";
 import "yup-phone";
 import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
 
-export type CreateYourPetCodeAccountData = {
-  fullName: string;
-  emailAddress: string;
-  phoneNumber: string;
-  password: string;
-  confirmPassword: string;
-};
+const INITIAL_VALUES = {
+  fullName: "",
+  emailAddress: "",
+  phoneNumber: "",
+  password: "",
+  confirmPassword: "",
+}; 
+
+export type CreateYourPetCodeAccountData = typeof INITIAL_VALUES;
 
 const CreateYourPetCodeAccountSchema = Yup.object().shape({
   fullName: Yup.string().label("Full name").required(),
@@ -32,13 +34,7 @@ const CreateYourPetCodeAccountSchema = Yup.object().shape({
 const CreateYourPetCodeAccountStep = () => {
   return (
     <Formik
-      initialValues={{
-        fullName: "",
-        emailAddress: "",
-        phoneNumber: "",
-        password: "",
-        confirmPassword: "",
-      }}
+      initialValues={INITIAL_VALUES}
       validationSchema={CreateYourPetCodeAccountSchema}
       onSubmit={console.log}
     >
