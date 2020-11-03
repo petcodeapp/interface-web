@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Icon, Stack, Text } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
+import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
 
@@ -15,7 +16,7 @@ const INITIAL_VALUES = {
   phoneNumber: "",
   password: "",
   confirmPassword: "",
-}; 
+};
 
 export type CreateYourPetCodeAccountData = typeof INITIAL_VALUES;
 
@@ -39,14 +40,7 @@ const CreateYourPetCodeAccountStep = () => {
       onSubmit={console.log}
     >
       {({ errors, touched, handleSubmit }) => (
-        <Stack
-          paddingY={8}
-          paddingLeft={32}
-          paddingRight={8}
-          spacing={6}
-          color="petcode.neutral.700"
-          maxWidth="800px"
-        >
+        <OnboardingStepContainer>
           <Box flexGrow={1} />
           <Stack spacing={3}>
             <Text fontWeight="bold" fontSize="2.5rem">
@@ -100,7 +94,7 @@ const CreateYourPetCodeAccountStep = () => {
             <Icon name="chevron-right" size="20px" />
           </BaseButton>
           <Box flexGrow={1} />
-        </Stack>
+        </OnboardingStepContainer>
       )}
     </Formik>
   );
