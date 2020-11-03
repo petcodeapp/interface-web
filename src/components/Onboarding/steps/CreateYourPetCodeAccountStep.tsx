@@ -32,7 +32,7 @@ const CreateYourPetCodeAccountSchema = Yup.object().shape({
     }),
 });
 
-const CreateYourPetCodeAccountStep = () => {
+const CreateYourPetCodeAccountStep: React.FC = () => {
   return (
     <Formik
       initialValues={INITIAL_VALUES}

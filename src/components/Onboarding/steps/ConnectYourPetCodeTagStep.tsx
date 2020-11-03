@@ -28,7 +28,7 @@ const ConnectYourPetCodeTagSchema = Yup.object().shape({
     .required(),
 });
 
-const ConnectYourPetCodeTagStep = () => {
+const ConnectYourPetCodeTagStep: React.FC = () => {
   const theme = useTheme() as PetCodeTheme;
 
   return (

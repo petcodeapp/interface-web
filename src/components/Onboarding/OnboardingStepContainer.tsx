@@ -8,7 +8,7 @@ const OnboardingStepContainer: React.FC<StackProps> = (props) => (
     paddingRight={8}
     spacing={6}
     color="petcode.neutral.700"
-    maxWidth="800px"
+    maxWidth="600px"
     {...props}
   />
 );
