@@ -6,13 +6,14 @@ import CreateYourPetCodeAccountStep from "../../components/Onboarding/steps/Crea
 import ConnectYourPetCodeTagStep from "../../components/Onboarding/steps/ConnectYourPetCodeTagStep";
 import PetInformationStep from "../../components/Onboarding/steps/PetInformationStep";
 import OwnerInformationStep from "../../components/Onboarding/steps/OwnerInformationStep";
+import MedicalInformationStep from "../../components/Onboarding/steps/MedicalInformationStep";
 
 const OnboardingPage = () => {
   return (
     <Flex direction="row" minHeight="100vh">
       <Sidebar />
       <Box flexGrow={1} />
-      <OwnerInformationStep isPrimary ownerIndex={1} />
+      <MedicalInformationStep />
       <Box flexGrow={1} />
     </Flex>
   );
