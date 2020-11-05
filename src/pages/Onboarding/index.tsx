@@ -9,14 +9,12 @@ import OwnerInformationStep from "../../components/Onboarding/steps/OwnerInforma
 import MedicalInformationStep from "../../components/Onboarding/steps/MedicalInformationStep";
 import VaccinationHistoryStep from "../../components/Onboarding/steps/VaccinationHistoryStep";
 import RemindersStep from "../../components/Onboarding/steps/RemindersStep";
+import FinalStep from "../../components/Onboarding/steps/FinalStep";
 
 const OnboardingPage = () => {
   return (
     <Flex direction="row" minHeight="100vh">
-      <Sidebar />
-      <Box flexGrow={1} />
-      <RemindersStep reminderIndex={0} />
-      <Box flexGrow={1} />
+      <FinalStep />
     </Flex>
   );
 };
