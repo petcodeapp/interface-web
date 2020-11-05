@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/core";
+import { useHistory } from "react-router-dom";
 import { Formik, Field } from "formik";
 
 import OnboardingStepContainer from "../OnboardingStepContainer";
@@ -10,7 +11,6 @@ import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
 import { OnboardingValues } from ".";
 
 import * as Yup from "yup";
-import FinalStep from "./FinalStep";
 
 const INITIAL_VALUES = {
   name: "",
@@ -35,18 +35,14 @@ const RemindersStep: React.FC<RemindersStepProps> = ({
   reminderIndex,
   values,
 }) => {
+  const history = useHistory();
+
   const [submitted, setSubmitted] = useState(false);
   const [isAddingReminders, setIsAddingReminders] = useState(false);
 
-  if (submitted) {
-    if (isAddingReminders) {
-      return (
-        <RemindersStep values={values} reminderIndex={reminderIndex + 1} />
-      );
-    }
-
+  if (submitted && isAddingReminders) {
     return (
-      <FinalStep />
+      <RemindersStep values={values} reminderIndex={reminderIndex + 1} />
     );
   }
 
@@ -59,6 +55,7 @@ const RemindersStep: React.FC<RemindersStepProps> = ({
         setSubmitted(true);
 
         if (!isAddingReminders) {
+          history.push('/onboarding/complete');
           alert(JSON.stringify(values));
         }
       }}

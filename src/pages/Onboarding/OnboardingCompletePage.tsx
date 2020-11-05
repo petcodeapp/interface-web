@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Flex, Stack, Text } from "@chakra-ui/core";
-import IntegratedProgressiveImage from "../../Shared/atoms/IntegratedProgressiveImage";
+import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
 
-const FinalStep = () => {
+const OnboardingCompletePage = () => {
   return (
-    <Flex direction="row" justifyContent="center" width="100%" backgroundColor="petcode.blue.400">
+    <Flex direction="row" justifyContent="center" width="100%" backgroundColor="petcode.blue.400" minHeight="100vh">
       <Stack
         alignItems="center"
         color="white"
@@ -34,4 +34,4 @@ const FinalStep = () => {
   );
 };
 
-export default FinalStep;
+export default OnboardingCompletePage;

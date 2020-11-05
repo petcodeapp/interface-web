@@ -24,6 +24,7 @@ import PetProfilePage from "../../pages/PetProfile";
 import TermsPage from "../../pages/Legal/TermsPage";
 import ComingSoonPage from "../../pages/ComingSoon";
 import OnboardingPage from "../../pages/Onboarding";
+import OnboardingCompletePage from "../../pages/Onboarding/OnboardingCompletePage";
 import { useObserver } from "mobx-react-lite";
 import { motion } from "framer-motion";
 
@@ -179,9 +180,15 @@ const Routes = () => {
         </PageAnim>
       </PublicRoute>
 
-      <PublicRoute path="/onboarding">
+      <PublicRoute exact path="/onboarding">
         <PageAnim>
           <OnboardingPage />
+        </PageAnim>
+      </PublicRoute>
+
+      <PublicRoute path="/onboarding/complete">
+        <PageAnim>
+          <OnboardingCompletePage />
         </PageAnim>
       </PublicRoute>
 
