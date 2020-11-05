@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
@@ -6,6 +6,9 @@ import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
 import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
+import RemindersStep from "./RemindersStep";
+
+import { OnboardingValues } from "./";
 
 import * as Yup from "yup";
 
@@ -23,12 +26,36 @@ const VaccinationHistorySchema = Yup.object().shape({
   expirationDate: Yup.string().label("Vaccination expiration date").required(),
 });
 
-const VaccinationHistoryStep: React.FC = () => {
+type VaccinationHistoryProps = {
+  values: OnboardingValues;
+};
+
+const VaccinationHistoryStep: React.FC<VaccinationHistoryProps> = ({
+  values,
+}) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [isAddingVaccinations, setIsAddingVaccinations] = useState(false);
+
+  if (submitted) {
+    if (isAddingVaccinations) {
+      return (
+        <VaccinationHistoryStep values={values} />
+      );
+    }
+
+    return (
+      <RemindersStep values={values} reminderIndex={0} />
+    );
+  }
+
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={VaccinationHistorySchema}
-      onSubmit={console.log}
+      onSubmit={formValues => {
+        values.vaccinationHistory.push(formValues);
+        setSubmitted(true);
+      }}
     >
       {({ errors, touched, handleSubmit }) => (
         <OnboardingStepContainer>
@@ -50,7 +77,10 @@ const VaccinationHistoryStep: React.FC = () => {
           <Field as={LargeInput} name="expirationDate" placeholder="Vaccination Expiration Date" />
           <UnifiedErrorMessage touched={touched} errors={errors} />
           <Stack isInline justifyContent="flex-end" spacing={3}>
-            <BaseButton variantColor="petcode.yellow" onClick={handleSubmit}>
+            <BaseButton variantColor="petcode.yellow" onClick={e => {
+              setIsAddingVaccinations(true);
+              handleSubmit(e);
+            }}>
               <Text textTransform="uppercase" letterSpacing="0.07em">
                 Add Vaccination
               </Text>

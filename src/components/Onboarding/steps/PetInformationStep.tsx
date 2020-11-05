@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
@@ -6,6 +6,9 @@ import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
 import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
+import OwnerInformationStep from "./OwnerInformationStep";
+
+import { OnboardingValues } from ".";
 
 import * as Yup from "yup";
 
@@ -33,12 +36,29 @@ const PetInformationSchema = Yup.object().shape({
   field6: Yup.string().required(),
 });
 
-const PetInformationStep: React.FC = () => {
+type PetInformationProps = {
+  values: OnboardingValues;
+};
+
+const PetInformationStep: React.FC<PetInformationProps> = ({
+  values,
+}) => {
+  const [submitted, setSubmitted] = useState(false);
+
+  if (submitted) {
+    return (
+      <OwnerInformationStep values={values} isPrimary ownerIndex={0} />
+    );
+  }
+
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={PetInformationSchema}
-      onSubmit={console.log}
+      onSubmit={formValues => {
+        values.petInfo = formValues;
+        setSubmitted(true);
+      }}
     >
       {({ errors, touched, handleSubmit }) => (
         <OnboardingStepContainer>

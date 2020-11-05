@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Flex, Icon, Stack, Text } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
@@ -6,7 +6,9 @@ import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
 import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
+import MedicalInformationStep from "./MedicalInformationStep";
 
+import { OnboardingValues } from ".";
 
 import * as Yup from "yup";
 import "yup-phone";
@@ -30,17 +32,37 @@ const OwnerInformationSchema = Yup.object().shape({
 type OwnerInformationStepProps = {
   isPrimary?: boolean;
   ownerIndex: number;
+  values: OnboardingValues;
 };
 
 const OwnerInformationStep: React.FC<OwnerInformationStepProps> = ({
   isPrimary = false,
   ownerIndex,
+  values,
 }) => {
+  const [submitted, setSubmitted] = useState(false);
+  const [isAddingOwners, setIsAddingOwners] = useState(false);
+
+  if (submitted) {
+    if (isAddingOwners) {
+      return (
+        <OwnerInformationStep values={values} ownerIndex={ownerIndex + 1} />
+      );
+    }
+
+    return(
+      <MedicalInformationStep values={values} />
+    );
+  }
+
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={OwnerInformationSchema}
-      onSubmit={console.log}
+      onSubmit={formValues => {
+        values.owners.push(formValues);
+        setSubmitted(true);
+      }}
     >
       {({ errors, touched, handleSubmit }) => (
         <OnboardingStepContainer>
@@ -80,7 +102,10 @@ const OwnerInformationStep: React.FC<OwnerInformationStepProps> = ({
           <UnifiedErrorMessage touched={touched} errors={errors} />
           <Stack isInline justifyContent="flex-end" spacing={3}>
             {isPrimary && (
-              <BaseButton variantColor="petcode.yellow" onClick={handleSubmit}>
+              <BaseButton variantColor="petcode.yellow" onClick={e => {
+                setIsAddingOwners(true);
+                handleSubmit(e);
+              }}>
                 <Text textTransform="uppercase" letterSpacing="0.07em">
                   Add Owner
                 </Text>

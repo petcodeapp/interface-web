@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Flex, Icon, Stack, Text, useTheme } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 import { motion } from "framer-motion";
@@ -9,7 +9,9 @@ import BaseButton from "../../Shared/atoms/button";
 import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
 import IntegratedProgressiveImage from "../../Shared/atoms/IntegratedProgressiveImage";
 import { Box as MotionBox } from "../../Motion";
+import PetInformationStep from "./PetInformationStep";
 
+import { OnboardingValues } from ".";
 import { PetCodeTheme } from "../../../theme";
 
 import * as Yup from "yup";
@@ -24,18 +26,35 @@ export type ConnectYourPetCodeTagData = typeof INITIAL_VALUES;
 const ConnectYourPetCodeTagSchema = Yup.object().shape({
   tagId: Yup.string()
     .label("Tag ID")
-    .matches(/[0-9]{6}/g, ({ label }) => `${label} must be a 6 digit number`)
+    .matches(/^[0-9]{6}$/, ({ label }) => `${label} must be a 6 digit number`)
     .required(),
 });
 
-const ConnectYourPetCodeTagStep: React.FC = () => {
+type ConnectYourPetCodeTagProps = {
+  values: OnboardingValues;
+};
+
+const ConnectYourPetCodeTagStep: React.FC<ConnectYourPetCodeTagProps> = ({
+  values,
+}) => {
   const theme = useTheme() as PetCodeTheme;
 
+  const [submitted, setSubmitted] = useState(false);
+
+  if (submitted) {
+    return (
+      <PetInformationStep values={values} />
+    );
+  }
+  
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={ConnectYourPetCodeTagSchema}
-      onSubmit={console.log}
+      onSubmit={formValues => {
+        values.tagInfo = formValues;
+        setSubmitted(true);
+      }}
     >
       {({ errors, touched, handleSubmit }) => (
         <OnboardingStepContainer>

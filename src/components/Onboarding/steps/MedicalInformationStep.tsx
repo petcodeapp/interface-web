@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Flex, Icon, Text } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
@@ -6,6 +6,9 @@ import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
 import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
+import VaccinationHistoryStep from "./VaccinationHistoryStep";
+
+import { OnboardingValues } from ".";
 
 import * as Yup from "yup";
 import "yup-phone";
@@ -26,12 +29,29 @@ const MedicalInformationSchema = Yup.object().shape({
   vetPhoneNumber: Yup.string().label("Veterinarian Phone Number").phone("US", true).required(),
 });
 
-const MedicalInformationStep: React.FC = () => {
+type MedicalInformationProps = {
+  values: OnboardingValues;
+};
+
+const MedicalInformationStep: React.FC<MedicalInformationProps> = ({
+  values,
+}) => {
+  const [submitted, setSubmitted] = useState(false);
+
+  if (submitted) {
+    return (
+      <VaccinationHistoryStep values={values} />
+    );
+  }
+
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={MedicalInformationSchema}
-      onSubmit={console.log}
+      onSubmit={formValues => {
+        values.medicalInfo = formValues;
+        setSubmitted(true);
+      }}
     >
       {({ errors, touched, handleSubmit }) => (
         <OnboardingStepContainer>

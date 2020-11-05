@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Icon, Stack, Text } from "@chakra-ui/core";
 import { Formik, Field } from "formik";
 
@@ -6,6 +6,9 @@ import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
 import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
+import ConnectYourPetCodeTagStep from "./ConnectYourPetCodeTagStep";
+
+import { OnboardingValues } from ".";
 
 import * as Yup from "yup";
 import "yup-phone";
@@ -32,12 +35,29 @@ const CreateYourPetCodeAccountSchema = Yup.object().shape({
     }),
 });
 
-const CreateYourPetCodeAccountStep: React.FC = () => {
+type CreateYourPetCodeAccountProps = {
+  values: OnboardingValues;
+};
+
+const CreateYourPetCodeAccountStep: React.FC<CreateYourPetCodeAccountProps> = ({
+  values,
+}) => {
+  const [submitted, setSubmitted] = useState(false);
+
+  if (submitted) {
+    return (
+      <ConnectYourPetCodeTagStep values={values} />
+    );
+  }
+
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={CreateYourPetCodeAccountSchema}
-      onSubmit={console.log}
+      onSubmit={formValues => {
+        values.accountInfo = formValues;
+        setSubmitted(true);
+      }}
     >
       {({ errors, touched, handleSubmit }) => (
         <OnboardingStepContainer>
