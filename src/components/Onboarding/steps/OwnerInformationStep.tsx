@@ -5,10 +5,11 @@ import { Formik, Field } from "formik";
 import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
+import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
+
 
 import * as Yup from "yup";
 import "yup-phone";
-import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
 
 const INITIAL_VALUES = {
   fullName: "",
@@ -59,22 +60,22 @@ const OwnerInformationStep: React.FC<OwnerInformationStepProps> = ({
           <Field
             as={LargeInput}
             name="fullName"
-            placeholder={`Full Name - Owner #${ownerIndex}`}
+            placeholder={`Full Name - Owner #${ownerIndex + 1}`}
           />
           <Field
             as={LargeInput}
             name="phoneNumber"
-            placeholder={`Phone Number - Owner #${ownerIndex}`}
+            placeholder={`Phone Number - Owner #${ownerIndex + 1}`}
           />
           <Field
             as={LargeInput}
             name="emailAddress"
-            placeholder={`Email Address - Owner #${ownerIndex}`}
+            placeholder={`Email Address - Owner #${ownerIndex + 1}`}
           />
           <Field
             as={LargeInput}
             name="address"
-            placeholder={`Address - Owner #${ownerIndex}`}
+            placeholder={`Address - Owner #${ownerIndex + 1}`}
           />
           <UnifiedErrorMessage touched={touched} errors={errors} />
           <Stack isInline justifyContent="flex-end" spacing={3}>

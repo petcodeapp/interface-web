@@ -10,10 +10,10 @@ import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
 import IntegratedProgressiveImage from "../../Shared/atoms/IntegratedProgressiveImage";
 import { Box as MotionBox } from "../../Motion";
 
+import { PetCodeTheme } from "../../../theme";
+
 import * as Yup from "yup";
 import "yup-phone";
-
-import { PetCodeTheme } from "../../../theme";
 
 const INITIAL_VALUES = {
   tagId: "",

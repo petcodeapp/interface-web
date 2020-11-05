@@ -7,13 +7,15 @@ import ConnectYourPetCodeTagStep from "../../components/Onboarding/steps/Connect
 import PetInformationStep from "../../components/Onboarding/steps/PetInformationStep";
 import OwnerInformationStep from "../../components/Onboarding/steps/OwnerInformationStep";
 import MedicalInformationStep from "../../components/Onboarding/steps/MedicalInformationStep";
+import VaccinationHistoryStep from "../../components/Onboarding/steps/VaccinationHistoryStep";
+import RemindersStep from "../../components/Onboarding/steps/RemindersStep";
 
 const OnboardingPage = () => {
   return (
     <Flex direction="row" minHeight="100vh">
       <Sidebar />
       <Box flexGrow={1} />
-      <MedicalInformationStep />
+      <RemindersStep reminderIndex={0} />
       <Box flexGrow={1} />
     </Flex>
   );

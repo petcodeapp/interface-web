@@ -5,10 +5,10 @@ import { Formik, Field } from "formik";
 import OnboardingStepContainer from "../OnboardingStepContainer";
 import LargeInput from "../LargeInput";
 import BaseButton from "../../Shared/atoms/button";
+import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
 
 import * as Yup from "yup";
 import "yup-phone";
-import UnifiedErrorMessage from "../../Shared/molecules/UnifiedErrorMessage";
 
 const INITIAL_VALUES = {
   allergies: "",
