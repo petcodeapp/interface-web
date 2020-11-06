@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/core";
+import { Box, Flex, Heading, Image, Link, Stack, Text } from "@chakra-ui/core";
 
 import { AuthStore } from "../../views/Auth/";
 import InputWithIcon from "../../components/Shared/molecules/InputWithIcon";
@@ -108,22 +108,31 @@ const LoginForm = () => {
 };
 
 const RightContainer: React.FunctionComponent = ({ children }) => (
-  <Flex
-    display={{ xs: "none", lg: "flex" }}
-    flexDir="column"
-    flexBasis="720px"
-    flexShrink={1}
-    alignItems="center"
-    justifyContent="center"
-    backgroundImage="url(dogs-on-yellow-wall.png)"
-    backgroundPosition="center"
+  <IntegratedProgressiveImage
+    delay={500}
+    slug="dogs-on-yellow-wall.png"
   >
-    {children}
-  </Flex>
+    {(src: string, loading: boolean) => (
+      <Flex
+        display={{ xs: "none", lg: "flex" }}
+        flexDir="column"
+        flexBasis="720px"
+        flexShrink={1}
+        alignItems="center"
+        justifyContent="center"
+        backgroundImage={`url(${src})`}
+        style={{ filter: loading ? "blur(-5px)" : "" }}
+        backgroundSize="cover"
+        backgroundPosition="50% 50%"
+      >
+        {children}
+      </Flex>
+    )}
+  </IntegratedProgressiveImage>
 );
 
 const LogoWithTagLine = () => (
-  <>
+  <Stack alignItems="center">
     <IntegratedProgressiveImage alt="PetCode Logo" slug="petcode-logo.png" />
     <Heading
       color="petcode.neutral.700"
@@ -134,7 +143,7 @@ const LogoWithTagLine = () => (
     >
       One Code. An endless suite of features for pet owners.
     </Heading>
-  </>
+  </Stack>
 );
 
 const F = motion.custom(Flex);

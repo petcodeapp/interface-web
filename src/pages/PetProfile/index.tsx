@@ -274,7 +274,7 @@ const PetProfilePage = () => {
               </Stack>
             </Show>
           </Stack>
-          <Hide below="sm">
+          {breakpoint > 0 &&
             <Box position="relative">
               <svg
                 style={{ position: "absolute", left: 0 }}
@@ -304,24 +304,29 @@ const PetProfilePage = () => {
                 />
               </svg>
             </Box>
-          </Hide>
-          <Box
-            backgroundSize="cover"
-            backgroundPosition="center"
-            backgroundImage="url(placeholder-dog.png)"
-            {...(breakpoint > 0
-              ? {
-                  height: "100%",
-                  flexGrow: 1,
-                  roundedRight: "lg",
-                }
-              : {
-                  margin: 6,
-                  size: "100px",
-                  minWidth: "100px",
-                  rounded: "full",
-                })}
-          />
+          }
+          <IntegratedProgressiveImage slug="placeholder-dog.png">
+            {(src: string, loading: boolean) => (
+              <Box
+                backgroundSize="cover"
+                backgroundPosition="center"
+                backgroundImage={`url(${src})`}
+                style={{ filter: loading ? "blur(-5px)" : "" }}
+                {...(breakpoint > 0
+                  ? {
+                      height: "100%",
+                      flexGrow: 1,
+                      roundedRight: "lg",
+                    }
+                  : {
+                      margin: 6,
+                      size: "100px",
+                      minWidth: "100px",
+                      rounded: "full",
+                    })}
+              />
+            )}
+          </IntegratedProgressiveImage>
         </Card>
         <PrimaryHeader>Contact Information</PrimaryHeader>
         <Hide below="md">

@@ -31,9 +31,11 @@ import { motion } from "framer-motion";
 const pageVariants = {
   initial: {
     opacity: 0,
+    x: 100,
   },
   in: {
     opacity: 1,
+    x: 0,
     transition: {
       delayChildren: 0.5,
     },
@@ -64,7 +66,6 @@ const PageAnim: React.FC = (props) => {
 const Routes = () => {
   return useObserver(() => (
     <Switch>
-      {/*
       <PublicRoute restricted path="/signup">
         <PageAnim>
           <RegistrationPage />
@@ -140,6 +141,7 @@ const Routes = () => {
       <Route path="/profile/*">
         <PetProfilePage />
       </Route>
+      {/*
 
       <PublicRoute path="/oldlanding">
         <PageAnim>
