@@ -24,6 +24,7 @@ import BaseButton, {
 } from "../../components/Shared/atoms/button";
 import Layout from "../../components/Shared/layouts/Layout";
 import IntegratedProgressiveImage from "../../components/Shared/atoms/IntegratedProgressiveImage";
+import ExternalLink from "../../components/Shared/atoms/ExternalLink";
 
 import moment from "moment";
 
@@ -76,8 +77,12 @@ const ContactInfoStack: React.FC<{ contactInfo: ContactInfo }> = ({
   <Stack>
     <SecondaryHeader>{contactInfo.level} Contact Information</SecondaryHeader>
     <InfoField text={contactInfo.name.value} label="Name" />
-    <InfoField text={contactInfo.phoneNumber.value} label="Phone Number" />
-    <InfoField text={contactInfo.email.value} label="Email" />
+    <ExternalLink href={`tel:${contactInfo.phoneNumber.value}`}>
+      <InfoField text={contactInfo.phoneNumber.value} label="Phone Number" />
+    </ExternalLink>
+    <ExternalLink href={`mailto:${contactInfo.email.value}`}>
+      <InfoField text={contactInfo.email.value} label="Email" />
+    </ExternalLink>
     <InfoField text={contactInfo.address.value} label="Address" />
   </Stack>
 );
@@ -147,11 +152,11 @@ const PetProfilePage = () => {
       headerProps={{
         position: "absolute",
         backgroundColor: "transparent",
-        display: breakpoint > 0 ? "flex" : "none",
+        display: breakpoint > 1 ? "flex" : "none",
       }}
       paddingTop={{ md: "12.85%" }}
     >
-      {breakpoint > 0 ? (
+      {breakpoint > 1 ? (
         <>
           <svg
             style={{ position: "absolute", top: 0 }}
@@ -234,7 +239,7 @@ const PetProfilePage = () => {
         padding={6}
         spacing={8}
       >
-        {breakpoint > 0 ? (
+        {breakpoint > 1 ? (
           <PrimaryHeader>Help Me Get Home!</PrimaryHeader>
         ) : (
           <IntegratedProgressiveImage
@@ -244,14 +249,14 @@ const PetProfilePage = () => {
           />
         )}
         <Card paddingLeft={6} padding={0} overflow="hidden">
-          <Stack justifyContent="center" flexBasis="60%" paddingY={6}>
+          <Stack justifyContent="center" flexBasis="65%" paddingY={6}>
             <Text fontSize="5xl" color="petcode.neutral.700" lineHeight="none">
               Max
             </Text>
             <Text color="petcode.neutral.600">
               Weimaraner &middot; 2 years old
             </Text>
-            <Show below="md">
+            {breakpoint > 1 &&
               <Stack isInline>
                 <ActionButton>
                   <Text
@@ -272,9 +277,9 @@ const PetProfilePage = () => {
                   </Text>
                 </ActionButton>
               </Stack>
-            </Show>
+            }
           </Stack>
-          {breakpoint > 0 &&
+          {breakpoint > 1 &&
             <Box position="relative">
               <svg
                 style={{ position: "absolute", left: 0 }}
@@ -312,7 +317,7 @@ const PetProfilePage = () => {
                 backgroundPosition="center"
                 backgroundImage={`url(${src})`}
                 style={{ filter: loading ? "blur(-5px)" : "" }}
-                {...(breakpoint > 0
+                {...(breakpoint > 1
                   ? {
                       height: "100%",
                       flexGrow: 1,
@@ -329,7 +334,7 @@ const PetProfilePage = () => {
           </IntegratedProgressiveImage>
         </Card>
         <PrimaryHeader>Contact Information</PrimaryHeader>
-        <Hide below="md">
+        {breakpoint > 1 ?
           <Card>
             <Stack
               width="100%"
@@ -357,14 +362,13 @@ const PetProfilePage = () => {
                 )}
             </Stack>
           </Card>
-        </Hide>
-        <Show below="md">
-          {contactInfos.map((contactInfo, idx) => (
+          :
+          contactInfos.map((contactInfo, idx) => (
             <Card key={idx}>
               <ContactInfoStack key={idx} contactInfo={contactInfo} />
             </Card>
-          ))}
-        </Show>
+          ))
+        }
         <Card>
           <Stack spacing={3}>
             <SecondaryHeader>Veterinarian Contact Information</SecondaryHeader>
@@ -373,10 +377,9 @@ const PetProfilePage = () => {
                 <InfoField text={pet.vetName.value} label="Veterinarian Name" />
               )}
               {pet.vetPhoneNumber.visible && (
-                <InfoField
-                  text={pet.vetPhoneNumber.value}
-                  label="Veterinarian Phone Number"
-                />
+                <ExternalLink href={`tel:${pet.vetPhoneNumber.value}`}>
+                  <InfoField text={pet.vetPhoneNumber.value} label="Phone Number" />
+                </ExternalLink>
               )}
             </Stack>
           </Stack>
