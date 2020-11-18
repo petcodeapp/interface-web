@@ -21,7 +21,6 @@ import ReactMapGL, { Marker, InteractiveMapProps } from "react-map-gl";
 
 import AccountPageLayout from "../../components/Shared/layouts/AccountPageLayout";
 
-import { useObserver } from "mobx-react";
 import moment from "moment";
 
 import { ScanLocation } from "../../Models/ScanLocation";
@@ -31,15 +30,15 @@ const MAPBOX_TOKEN =
 const DEFAULT_MAP_ZOOM = 15;
 
 type LocationScanMapProps = {
-  viewport: Partial<InteractiveMapProps>;
-  setViewport: (viewport: any) => void;
+  viewport: InteractiveMapProps;
+  setViewport: (viewport: InteractiveMapProps) => void;
   scanLocations: ScanLocation[];
 };
 
 const ScanLocationMarker: React.FC<{ scanLocation: ScanLocation }> = ({
   scanLocation,
 }) => {
-  return useObserver(() => (
+  return (
     <Marker latitude={scanLocation.latitude} longitude={scanLocation.longitude}>
       <Popover usePortal placement="top">
         <PopoverTrigger>
@@ -72,7 +71,7 @@ const ScanLocationMarker: React.FC<{ scanLocation: ScanLocation }> = ({
         </PopoverContent>
       </Popover>
     </Marker>
-  ));
+  )
 };
 
 const LocationScanMap: React.FC<LocationScanMapProps> = ({
@@ -80,8 +79,7 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
   setViewport,
   scanLocations,
 }) => {
-  return useObserver(() => (
-    // @ts-ignore
+  return (
     <ReactMapGL
       {...viewport}
       mapboxApiAccessToken={MAPBOX_TOKEN}
@@ -98,7 +96,7 @@ const LocationScanMap: React.FC<LocationScanMapProps> = ({
         <ScanLocationMarker key={idx} scanLocation={scanLocation} />
       ))}
     </ReactMapGL>
-  ));
+  );
 };
 
 const ScanLocationCard: React.FC<
@@ -150,7 +148,7 @@ const ScanLocationsSection = () => {
         },
       ] as ScanLocation[]
   );
-  const [mapViewport, setMapViewport] = useState({
+  const [mapViewport, setMapViewport] = useState<InteractiveMapProps>({
     width: "100%",
     height: 400,
     zoom: DEFAULT_MAP_ZOOM,
